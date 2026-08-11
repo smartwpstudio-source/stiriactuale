@@ -10,8 +10,10 @@
     "migrate:export": "tsx scripts/migration/export-wp.ts",
     "migrate:redirects": "tsx scripts/migration/generate-redirects.ts",
     "db:generate": "drizzle-kit generate",
-    "db:migrate": "drizzle-kit migrate",
-    "pipeline:dry-run": "tsx scripts/pipeline/dry-run.ts"
+    "db:migrate": "node --env-file=.env.local node_modules/drizzle-kit/bin.cjs migrate",
+    "pipeline:dry-run": "tsx scripts/pipeline/dry-run.ts",
+    "articles:list-drafts": "tsx scripts/pipeline/list-drafts.ts",
+    "articles:publish": "tsx scripts/pipeline/publish-article.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.116.0",

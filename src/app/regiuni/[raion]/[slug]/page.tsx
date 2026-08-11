@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ArticlePage } from "@/components/article-page";
-import { getArticleBySection, getArticlesBySection } from "@/lib/content/queries";
+import { getArticleBySection } from "@/lib/content/queries";
 import { raionLabel } from "@/lib/content/geo";
 import { articleUrl } from "@/lib/content/url";
 import { absoluteUrl, breadcrumbJsonLd, newsArticleJsonLd } from "@/lib/seo";
 
-export function generateStaticParams() {
-  return getArticlesBySection("regiuni").map((a) => ({ raion: a.locality!, slug: a.slug }));
-}
+// Fără generateStaticParams: setul de articole vine din pipeline (crește
+// continuu), nu mai e o listă fixă. Pagina se generează la prima cerere și
+// se recache-uiește la fiecare `revalidate` — ISR, cf. arhitectura-site-nou-
+// taxonomie-pwa-seo.md secțiunea 2.
+export const revalidate = 300;
 
 export async function generateMetadata({
   params,
@@ -16,7 +18,7 @@ export async function generateMetadata({
   params: Promise<{ raion: string; slug: string }>;
 }): Promise<Metadata> {
   const { raion, slug } = await params;
-  const article = getArticleBySection("regiuni", slug, raion);
+  const article = await getArticleBySection("regiuni", slug, raion);
   if (!article) return {};
 
   const url = articleUrl(article);
@@ -34,7 +36,7 @@ export default async function RegiuniArticlePage({
   params: Promise<{ raion: string; slug: string }>;
 }) {
   const { raion, slug } = await params;
-  const article = getArticleBySection("regiuni", slug, raion);
+  const article = await getArticleBySection("regiuni", slug, raion);
   if (!article) notFound();
 
   const raionName = raionLabel(raion);

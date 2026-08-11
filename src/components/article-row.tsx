@@ -14,7 +14,13 @@ export function ArticleRow({ article }: { article: Article }) {
       href={articleUrl(article)}
       className="flex gap-4 border-b border-line py-4 first:pt-0 last:border-b-0"
     >
-      <ArticleThumb topics={article.topics} className="h-16 w-16 shrink-0" iconSize={20} />
+      <ArticleThumb
+        topics={article.topics}
+        imageUrl={article.imageUrl}
+        imageAlt={article.imageAlt}
+        className="h-16 w-16 shrink-0"
+        iconSize={20}
+      />
       <div>
         {article.topics[0] && <TopicLabel topic={article.topics[0]} />}
         <h3 className="mt-1 font-serif text-sm leading-snug text-ink">{article.title}</h3>

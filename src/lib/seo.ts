@@ -20,9 +20,6 @@ export function breadcrumbJsonLd(items: { name: string; url: string }[]) {
   };
 }
 
-// Notă: câmpurile `image` și `publisher.logo` lipsesc intenționat — nu există încă
-// imagini reale (vin din pipeline-ul AI, pasul 7) sau un logo/icon PWA (pasul 5).
-// Se adaugă când acele piese există, ca să nu se refere la assets inexistente.
 export function newsArticleJsonLd(article: Article) {
   const url = absoluteUrl(articleUrl(article));
   return {
@@ -34,7 +31,12 @@ export function newsArticleJsonLd(article: Article) {
     dateModified: article.publishedAt,
     url,
     mainEntityOfPage: url,
+    ...(article.imageUrl ? { image: [article.imageUrl] } : {}),
     author: { "@type": "Organization", name: "Stiri actuale" },
-    publisher: { "@type": "Organization", name: "Stiri actuale" },
+    publisher: {
+      "@type": "Organization",
+      name: "Stiri actuale",
+      logo: { "@type": "ImageObject", url: absoluteUrl("/icons/icon-512.png") },
+    },
   };
 }

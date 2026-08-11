@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { SectionFilterChips } from "@/components/section-filter-chips";
 import { ArticleRow } from "@/components/article-row";
-import { getArticlesBySection, getRaioaneWithArticles } from "@/lib/content/queries";
-import { raionLabel } from "@/lib/content/geo";
+import { getArticlesBySection } from "@/lib/content/queries";
+import { RAION_NAMES, raionLabel } from "@/lib/content/geo";
 import { absoluteUrl, breadcrumbJsonLd } from "@/lib/seo";
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Regiuni",
@@ -12,9 +14,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/regiuni/" },
 };
 
-export default function RegiuniPage() {
-  const articles = getArticlesBySection("regiuni");
-  const raioane = getRaioaneWithArticles().map((slug) => ({ slug, label: raionLabel(slug) }));
+export default async function RegiuniPage() {
+  const articles = await getArticlesBySection("regiuni");
+  const raioane = Object.keys(RAION_NAMES).map((slug) => ({ slug, label: raionLabel(slug) }));
 
   const jsonLd = breadcrumbJsonLd([
     { name: "Acasă", url: absoluteUrl("/") },
@@ -31,6 +33,9 @@ export default function RegiuniPage() {
       <h1 className="mt-2 font-serif text-2xl text-ink">Regiuni</h1>
       <SectionFilterChips basePath="/regiuni" items={raioane} />
       <div className="mt-6">
+        {articles.length === 0 && (
+          <p className="font-mono text-sm text-sub">Niciun articol publicat încă.</p>
+        )}
         {articles.map((a) => (
           <ArticleRow key={a.slug} article={a} />
         ))}

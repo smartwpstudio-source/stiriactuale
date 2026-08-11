@@ -23,4 +23,6 @@ export interface Article {
   topics: Topic[];
   publishedAt: string; // ISO 8601
   sourceCount: number;
+  imageUrl?: string; // generată de pipeline (fal.ai) — absentă pe fixtures/articole fără imagine
+  imageAlt?: string;
 }

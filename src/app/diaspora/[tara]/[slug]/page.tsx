@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ArticlePage } from "@/components/article-page";
-import { getArticleBySection, getArticlesBySection } from "@/lib/content/queries";
+import { getArticleBySection } from "@/lib/content/queries";
 import { countryLabel } from "@/lib/content/geo";
 import { articleUrl } from "@/lib/content/url";
 import { absoluteUrl, breadcrumbJsonLd, newsArticleJsonLd } from "@/lib/seo";
 
-export function generateStaticParams() {
-  return getArticlesBySection("diaspora").map((a) => ({ tara: a.country!, slug: a.slug }));
-}
+export const revalidate = 300;
 
 export async function generateMetadata({
   params,
@@ -16,7 +14,7 @@ export async function generateMetadata({
   params: Promise<{ tara: string; slug: string }>;
 }): Promise<Metadata> {
   const { tara, slug } = await params;
-  const article = getArticleBySection("diaspora", slug, undefined, tara);
+  const article = await getArticleBySection("diaspora", slug, undefined, tara);
   if (!article) return {};
 
   const url = articleUrl(article);
@@ -34,7 +32,7 @@ export default async function DiasporaArticlePage({
   params: Promise<{ tara: string; slug: string }>;
 }) {
   const { tara, slug } = await params;
-  const article = getArticleBySection("diaspora", slug, undefined, tara);
+  const article = await getArticleBySection("diaspora", slug, undefined, tara);
   if (!article) notFound();
 
   const countryName = countryLabel(tara);

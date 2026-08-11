@@ -3,12 +3,14 @@ import { notFound } from "next/navigation";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { SectionFilterChips } from "@/components/section-filter-chips";
 import { ArticleRow } from "@/components/article-row";
-import { getArticlesBySection, getCountriesWithArticles } from "@/lib/content/queries";
-import { countryLabel } from "@/lib/content/geo";
+import { getArticlesBySection } from "@/lib/content/queries";
+import { COUNTRY_NAMES, countryLabel } from "@/lib/content/geo";
 import { absoluteUrl, breadcrumbJsonLd } from "@/lib/seo";
 
+export const revalidate = 60;
+
 export function generateStaticParams() {
-  return getCountriesWithArticles().map((tara) => ({ tara }));
+  return Object.keys(COUNTRY_NAMES).map((tara) => ({ tara }));
 }
 
 export async function generateMetadata({
@@ -31,10 +33,9 @@ export default async function DiasporaTaraPage({
   params: Promise<{ tara: string }>;
 }) {
   const { tara } = await params;
-  const countries = getCountriesWithArticles();
-  if (!countries.includes(tara)) notFound();
+  if (!(tara in COUNTRY_NAMES)) notFound();
 
-  const articles = getArticlesBySection("diaspora", { country: tara });
+  const articles = await getArticlesBySection("diaspora", { country: tara });
   const label = countryLabel(tara);
 
   const jsonLd = breadcrumbJsonLd([
@@ -59,10 +60,13 @@ export default async function DiasporaTaraPage({
       <h1 className="mt-2 font-serif text-2xl text-ink">Diaspora — {label}</h1>
       <SectionFilterChips
         basePath="/diaspora"
-        items={countries.map((slug) => ({ slug, label: countryLabel(slug) }))}
+        items={Object.keys(COUNTRY_NAMES).map((slug) => ({ slug, label: countryLabel(slug) }))}
         active={tara}
       />
       <div className="mt-6">
+        {articles.length === 0 && (
+          <p className="font-mono text-sm text-sub">Niciun articol publicat încă din {label}.</p>
+        )}
         {articles.map((a) => (
           <ArticleRow key={a.slug} article={a} />
         ))}

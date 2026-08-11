@@ -37,6 +37,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# stare internă de sesiune Claude Code — nu ține de proiect
+.claude/scheduled_tasks.lock
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

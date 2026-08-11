@@ -60,7 +60,7 @@ export function raionLabel(slug: string): string {
   );
 }
 
-const COUNTRY_NAMES: Record<string, string> = {
+export const COUNTRY_NAMES: Record<string, string> = {
   italia: "Italia",
   franta: "Franța",
   germania: "Germania",

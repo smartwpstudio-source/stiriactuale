@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { ArticleRow } from "@/components/article-row";
-import { getArticlesByTopic, getTopicsWithArticles } from "@/lib/content/queries";
+import { getArticlesByTopic } from "@/lib/content/queries";
 import { TOPIC_LABELS } from "@/lib/content/topic-meta";
 import type { Topic } from "@/lib/content/types";
 import { absoluteUrl, breadcrumbJsonLd } from "@/lib/seo";
@@ -10,8 +10,11 @@ import { absoluteUrl, breadcrumbJsonLd } from "@/lib/seo";
 // Pagină hub pe subiect — listează articole din toate secțiunile, cf.
 // arhitectura-site-nou-taxonomie-pwa-seo.md secțiunea 3. Breadcrumb-ul reflectă
 // "Subiect", NU secțiunea (subiectul e etichetă, nu ierarhie).
+export const revalidate = 60;
+
+// Cele 10 subiecte sunt un set fix, cunoscut la build — nu depinde de DB.
 export function generateStaticParams() {
-  return getTopicsWithArticles().map((topic) => ({ topic }));
+  return Object.keys(TOPIC_LABELS).map((topic) => ({ topic }));
 }
 
 function isKnownTopic(value: string): value is Topic {
@@ -41,7 +44,7 @@ export default async function SubiectHubPage({
   const { topic } = await params;
   if (!isKnownTopic(topic)) notFound();
 
-  const articles = getArticlesByTopic(topic);
+  const articles = await getArticlesByTopic(topic);
   const label = TOPIC_LABELS[topic];
 
   const jsonLd = breadcrumbJsonLd([
@@ -56,11 +59,12 @@ export default async function SubiectHubPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Breadcrumb
-        items={[{ label: "Acasă", href: "/" }, { label: "Subiect" }, { label }]}
-      />
+      <Breadcrumb items={[{ label: "Acasă", href: "/" }, { label: "Subiect" }, { label }]} />
       <h1 className="mt-2 font-serif text-2xl text-ink">Subiect — {label}</h1>
       <div className="mt-6">
+        {articles.length === 0 && (
+          <p className="font-mono text-sm text-sub">Niciun articol publicat încă.</p>
+        )}
         {articles.map((a) => (
           <ArticleRow key={a.slug} article={a} />
         ))}

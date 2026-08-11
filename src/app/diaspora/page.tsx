@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { SectionFilterChips } from "@/components/section-filter-chips";
 import { ArticleRow } from "@/components/article-row";
-import { getArticlesBySection, getCountriesWithArticles } from "@/lib/content/queries";
-import { countryLabel } from "@/lib/content/geo";
+import { getArticlesBySection } from "@/lib/content/queries";
+import { COUNTRY_NAMES, countryLabel } from "@/lib/content/geo";
 import { absoluteUrl, breadcrumbJsonLd } from "@/lib/seo";
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Diaspora",
@@ -12,9 +14,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/diaspora/" },
 };
 
-export default function DiasporaPage() {
-  const articles = getArticlesBySection("diaspora");
-  const countries = getCountriesWithArticles().map((slug) => ({
+export default async function DiasporaPage() {
+  const articles = await getArticlesBySection("diaspora");
+  const countries = Object.keys(COUNTRY_NAMES).map((slug) => ({
     slug,
     label: countryLabel(slug),
   }));
@@ -34,6 +36,9 @@ export default function DiasporaPage() {
       <h1 className="mt-2 font-serif text-2xl text-ink">Diaspora</h1>
       <SectionFilterChips basePath="/diaspora" items={countries} />
       <div className="mt-6">
+        {articles.length === 0 && (
+          <p className="font-mono text-sm text-sub">Niciun articol publicat încă.</p>
+        )}
         {articles.map((a) => (
           <ArticleRow key={a.slug} article={a} />
         ))}

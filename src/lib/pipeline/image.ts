@@ -36,8 +36,32 @@ interface FalImageResult {
   images?: { url: string }[];
 }
 
+const TIMEOUT_MS = 45_000;
+
+function withTimeout<T>(promise: Promise<T>, ms: number, label: string): Promise<T> {
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => reject(new Error(`${label}: timeout după ${ms}ms`)), ms);
+    promise.then(
+      (value) => {
+        clearTimeout(timer);
+        resolve(value);
+      },
+      (err) => {
+        clearTimeout(timer);
+        reject(err);
+      },
+    );
+  });
+}
+
 // Fără FAL_KEY, pipeline-ul publică articole fără imagine în loc să eșueze;
 // niciodată nu se descarcă imaginea direct de pe site-ul sursă (3.6).
+//
+// Timeout explicit obligatoriu: fal.subscribe() nu are unul implicit — dacă
+// coada fal.ai rămâne blocată (ex. cont fără credit), fără acest timeout
+// TOATĂ rularea pipeline-ului rămâne agățată la nesfârșit (confirmat live,
+// 2026-08-11: un cont fără credit a blocat un run > 30 min pe un apel Schnell,
+// deși Pro a eșuat rapid și curat cu 403).
 export async function generateSymbolImage(
   prompt: string,
   tier: ImageTier = "schnell",
@@ -45,9 +69,11 @@ export async function generateSymbolImage(
   if (!ensureConfigured()) return null;
 
   try {
-    const result = await fal.subscribe(MODEL_BY_TIER[tier], {
-      input: { prompt },
-    });
+    const result = await withTimeout(
+      fal.subscribe(MODEL_BY_TIER[tier], { input: { prompt } }),
+      TIMEOUT_MS,
+      `fal.ai (${tier})`,
+    );
     const data = result.data as FalImageResult;
     const url = data.images?.[0]?.url;
     return url ? { url, altText: prompt } : null;

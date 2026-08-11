@@ -4,9 +4,11 @@ import { formatTimeAgo } from "@/lib/format-time-ago";
 // Semnătura vizuală a site-ului: arată DOAR rezultatul pipeline-ului
 // ("ultima știre publicată: acum X min"), niciodată mecanica internă
 // (nu "următoarea sincronizare", nu "N surse monitorizate") — vezi
-// sistem-design-ui.md secțiunea 1.
-export function StatusBar() {
-  const latest = getLatestArticle();
+// sistem-design-ui.md secțiunea 1. Dacă nu există încă niciun articol
+// publicat, banda nu se afișează deloc — nu se inventează un rezultat fals.
+export async function StatusBar() {
+  const latest = await getLatestArticle();
+  if (!latest) return null;
 
   return (
     <div className="bg-ink2 text-paper">

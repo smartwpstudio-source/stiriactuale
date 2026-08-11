@@ -4,14 +4,16 @@ import { ArticleRow } from "@/components/article-row";
 import { getArticlesBySection } from "@/lib/content/queries";
 import { absoluteUrl, breadcrumbJsonLd } from "@/lib/seo";
 
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: "Internațional",
   description: "Ultimele știri internaționale relevante pentru Republica Moldova.",
   alternates: { canonical: "/international/" },
 };
 
-export default function InternationalPage() {
-  const articles = getArticlesBySection("international");
+export default async function InternationalPage() {
+  const articles = await getArticlesBySection("international");
 
   const jsonLd = breadcrumbJsonLd([
     { name: "Acasă", url: absoluteUrl("/") },
@@ -27,6 +29,9 @@ export default function InternationalPage() {
       <Breadcrumb items={[{ label: "Acasă", href: "/" }, { label: "Internațional" }]} />
       <h1 className="mt-2 font-serif text-2xl text-ink">Internațional</h1>
       <div className="mt-6">
+        {articles.length === 0 && (
+          <p className="font-mono text-sm text-sub">Niciun articol publicat încă.</p>
+        )}
         {articles.map((a) => (
           <ArticleRow key={a.slug} article={a} />
         ))}

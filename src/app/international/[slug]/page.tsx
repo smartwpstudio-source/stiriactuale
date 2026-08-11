@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ArticlePage } from "@/components/article-page";
-import { getArticleBySection, getArticlesBySection } from "@/lib/content/queries";
+import { getArticleBySection } from "@/lib/content/queries";
 import { articleUrl } from "@/lib/content/url";
 import { absoluteUrl, breadcrumbJsonLd, newsArticleJsonLd } from "@/lib/seo";
 
-export function generateStaticParams() {
-  return getArticlesBySection("international").map((a) => ({ slug: a.slug }));
-}
+export const revalidate = 300;
 
 export async function generateMetadata({
   params,
@@ -15,7 +13,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const article = getArticleBySection("international", slug);
+  const article = await getArticleBySection("international", slug);
   if (!article) return {};
 
   const url = articleUrl(article);
@@ -33,7 +31,7 @@ export default async function InternationalArticlePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const article = getArticleBySection("international", slug);
+  const article = await getArticleBySection("international", slug);
   if (!article) notFound();
 
   const breadcrumbItems = [

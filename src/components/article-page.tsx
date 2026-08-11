@@ -15,14 +15,14 @@ import type { Article } from "@/lib/content/types";
 // etichetă de subiect, H1 Fraunces, byline mono, imagine full-width, lead mai mare,
 // corp cu subtitluri H2, tag-uri la final, bloc share + Telegram, articole
 // similare. Lățime de citire limitată (~600px).
-export function ArticlePage({
+export async function ArticlePage({
   article,
   breadcrumbItems,
 }: {
   article: Article;
   breadcrumbItems: BreadcrumbItem[];
 }) {
-  const similar = getSimilarArticles(article);
+  const similar = await getSimilarArticles(article);
 
   return (
     <article className="mx-auto w-full max-w-[600px] px-4 py-8">
@@ -37,7 +37,13 @@ export function ArticlePage({
         echipă editorială · {formatTimeAgo(article.publishedAt)} · raportat de{" "}
         {article.sourceCount} surse
       </p>
-      <ArticleThumb topics={article.topics} className="mt-6 h-64 w-full" iconSize={48} />
+      <ArticleThumb
+        topics={article.topics}
+        imageUrl={article.imageUrl}
+        imageAlt={article.imageAlt}
+        className="mt-6 h-64 w-full"
+        iconSize={48}
+      />
       <p className="mt-6 text-lg leading-relaxed text-ink">{article.lead}</p>
       <div
         className="prose-article mt-4 text-ink"

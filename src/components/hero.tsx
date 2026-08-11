@@ -31,7 +31,13 @@ export function Hero({ article }: { article: Article }) {
           raportat de {article.sourceCount} surse
         </p>
       </div>
-      <ArticleThumb topics={article.topics} className="h-40 w-full sm:h-full" iconSize={40} />
+      <ArticleThumb
+        topics={article.topics}
+        imageUrl={article.imageUrl}
+        imageAlt={article.imageAlt}
+        className="h-40 w-full sm:h-full"
+        iconSize={40}
+      />
     </Link>
   );
 }

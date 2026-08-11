@@ -3,12 +3,17 @@ import { notFound } from "next/navigation";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { SectionFilterChips } from "@/components/section-filter-chips";
 import { ArticleRow } from "@/components/article-row";
-import { getArticlesBySection, getRaioaneWithArticles } from "@/lib/content/queries";
-import { raionLabel } from "@/lib/content/geo";
+import { getArticlesBySection } from "@/lib/content/queries";
+import { RAION_NAMES, raionLabel } from "@/lib/content/geo";
 import { absoluteUrl, breadcrumbJsonLd } from "@/lib/seo";
 
+export const revalidate = 60;
+
+// Universul de raioane e fix și cunoscut (nu depinde de conținut/DB) — poate
+// fi pre-generat la build. Articolele din interior se reîmprospătează la
+// fiecare revalidare, indiferent dacă raionul are 0 sau N articole azi.
 export function generateStaticParams() {
-  return getRaioaneWithArticles().map((raion) => ({ raion }));
+  return Object.keys(RAION_NAMES).map((raion) => ({ raion }));
 }
 
 export async function generateMetadata({
@@ -31,10 +36,9 @@ export default async function RaionPage({
   params: Promise<{ raion: string }>;
 }) {
   const { raion } = await params;
-  const raioane = getRaioaneWithArticles();
-  if (!raioane.includes(raion)) notFound();
+  if (!(raion in RAION_NAMES)) notFound();
 
-  const articles = getArticlesBySection("regiuni", { locality: raion });
+  const articles = await getArticlesBySection("regiuni", { locality: raion });
   const label = raionLabel(raion);
 
   const jsonLd = breadcrumbJsonLd([
@@ -59,10 +63,13 @@ export default async function RaionPage({
       <h1 className="mt-2 font-serif text-2xl text-ink">Regiuni — {label}</h1>
       <SectionFilterChips
         basePath="/regiuni"
-        items={raioane.map((slug) => ({ slug, label: raionLabel(slug) }))}
+        items={Object.keys(RAION_NAMES).map((slug) => ({ slug, label: raionLabel(slug) }))}
         active={raion}
       />
       <div className="mt-6">
+        {articles.length === 0 && (
+          <p className="font-mono text-sm text-sub">Niciun articol publicat încă din {label}.</p>
+        )}
         {articles.map((a) => (
           <ArticleRow key={a.slug} article={a} />
         ))}
