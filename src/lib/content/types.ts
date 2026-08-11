@@ -1,0 +1,26 @@
+export type Section = "regiuni" | "national" | "international" | "diaspora";
+
+export type Topic =
+  | "accidente"
+  | "criminal"
+  | "coruptie"
+  | "alerta-112"
+  | "economic"
+  | "criza-energetica"
+  | "sanatate"
+  | "social"
+  | "cultura"
+  | "sport";
+
+export interface Article {
+  slug: string;
+  title: string;
+  lead: string;
+  bodyHtml: string;
+  section: Section;
+  locality?: string; // slug de raion, doar pentru section: "regiuni"
+  country?: string; // slug de țară, doar pentru section: "diaspora"
+  topics: Topic[];
+  publishedAt: string; // ISO 8601
+  sourceCount: number;
+}

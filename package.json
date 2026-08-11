@@ -1,0 +1,40 @@
+{
+  "name": "stiriactuale-concept-nou",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "migrate:export": "tsx scripts/migration/export-wp.ts",
+    "migrate:redirects": "tsx scripts/migration/generate-redirects.ts",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "pipeline:dry-run": "tsx scripts/pipeline/dry-run.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.116.0",
+    "@fal-ai/client": "^1.10.1",
+    "@tabler/icons-react": "^3.46.0",
+    "drizzle-orm": "^0.45.2",
+    "fast-xml-parser": "^5.10.1",
+    "next": "16.3.0",
+    "postgres": "^3.4.9",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "dotenv": "^17.4.2",
+    "drizzle-kit": "^0.31.10",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.0",
+    "tailwindcss": "^4",
+    "tsx": "^4.23.12",
+    "typescript": "^5"
+  }
+}

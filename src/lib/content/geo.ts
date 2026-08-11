@@ -1,0 +1,79 @@
+import type { Section } from "./types";
+
+export const SECTION_LABELS: Record<Section, string> = {
+  regiuni: "Regiuni",
+  national: "Național",
+  international: "Internațional",
+  diaspora: "Diaspora",
+};
+
+// Denumiri corecte pentru raioanele folosite în fixtures / date reale de migrare
+// și în interogările pipeline-ului AI (căutare Google News per raion).
+// Fallback la un title-case simplu pentru orice slug care nu e listat aici.
+export const RAION_NAMES: Record<string, string> = {
+  drochia: "Drochia",
+  straseni: "Strășeni",
+  floresti: "Florești",
+  orhei: "Orhei",
+  chisinau: "Chișinău",
+  balti: "Bălți",
+  cahul: "Cahul",
+  soroca: "Soroca",
+  edinet: "Edineț",
+  riscani: "Rîșcani",
+  falesti: "Fălești",
+  briceni: "Briceni",
+  donduseni: "Dondușeni",
+  singerei: "Sîngerei",
+  telenesti: "Telenești",
+  causeni: "Căușeni",
+  ocnita: "Ocnița",
+  "anenii-noi": "Anenii Noi",
+  glodeni: "Glodeni",
+  "stefan-voda": "Ștefan Vodă",
+  criuleni: "Criuleni",
+  soldanesti: "Soldănești",
+  ialoveni: "Ialoveni",
+  ungheni: "Ungheni",
+  cimislia: "Cimișlia",
+  hincesti: "Hîncești",
+  leova: "Leova",
+  nisporeni: "Nisporeni",
+  rezina: "Rezina",
+  calarasi: "Călărași",
+  cantemir: "Cantemir",
+  dubasari: "Dubăsari",
+  "ceadir-lunga": "Ceadîr-Lunga",
+  rabnita: "Rîbnița",
+  taraclia: "Taraclia",
+  transnistria: "Transnistria",
+  gagauzia: "Găgăuzia",
+};
+
+export function raionLabel(slug: string): string {
+  return (
+    RAION_NAMES[slug] ??
+    slug
+      .split("-")
+      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+      .join(" ")
+  );
+}
+
+const COUNTRY_NAMES: Record<string, string> = {
+  italia: "Italia",
+  franta: "Franța",
+  germania: "Germania",
+  "regatul-unit": "Regatul Unit",
+  spania: "Spania",
+};
+
+export function countryLabel(slug: string): string {
+  return (
+    COUNTRY_NAMES[slug] ??
+    slug
+      .split("-")
+      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+      .join(" ")
+  );
+}

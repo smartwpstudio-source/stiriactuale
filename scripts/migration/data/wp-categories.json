@@ -1,0 +1,762 @@
+{
+  "fetchedAt": "2026-08-11T14:52:57.708Z",
+  "count": 108,
+  "categories": [
+    {
+      "id": 160,
+      "count": 343,
+      "name": "Accidente",
+      "slug": "accidente",
+      "parent": 0
+    },
+    {
+      "id": 1441,
+      "count": 4,
+      "name": "Agricultura",
+      "slug": "agricultura",
+      "parent": 0
+    },
+    {
+      "id": 1594,
+      "count": 4,
+      "name": "Alegeri",
+      "slug": "alegeri",
+      "parent": 0
+    },
+    {
+      "id": 169,
+      "count": 38,
+      "name": "Alerta 112",
+      "slug": "alerta-112",
+      "parent": 0
+    },
+    {
+      "id": 1177,
+      "count": 2,
+      "name": "Astrologie",
+      "slug": "astrlogie",
+      "parent": 0
+    },
+    {
+      "id": 171,
+      "count": 95,
+      "name": "Auto",
+      "slug": "auto",
+      "parent": 0
+    },
+    {
+      "id": 553,
+      "count": 1,
+      "name": "Biografie",
+      "slug": "biografie",
+      "parent": 0
+    },
+    {
+      "id": 321,
+      "count": 38,
+      "name": "Calendar ortodox",
+      "slug": "calendar-ortodox",
+      "parent": 0
+    },
+    {
+      "id": 2071,
+      "count": 1,
+      "name": "Caritate",
+      "slug": "caritate",
+      "parent": 0
+    },
+    {
+      "id": 242,
+      "count": 177,
+      "name": "Coruptie",
+      "slug": "coruptie",
+      "parent": 0
+    },
+    {
+      "id": 2304,
+      "count": 1,
+      "name": "Coștangalia",
+      "slug": "costangalia",
+      "parent": 0
+    },
+    {
+      "id": 178,
+      "count": 240,
+      "name": "Criminal",
+      "slug": "criminal",
+      "parent": 0
+    },
+    {
+      "id": 163,
+      "count": 190,
+      "name": "Criza energetica",
+      "slug": "criza-energetica",
+      "parent": 0
+    },
+    {
+      "id": 157,
+      "count": 52,
+      "name": "Cultura",
+      "slug": "cultura",
+      "parent": 0
+    },
+    {
+      "id": 168,
+      "count": 41,
+      "name": "Diaspora",
+      "slug": "diaspora",
+      "parent": 0
+    },
+    {
+      "id": 2660,
+      "count": 1,
+      "name": "Digest",
+      "slug": "digest",
+      "parent": 0
+    },
+    {
+      "id": 1428,
+      "count": 4,
+      "name": "Digital",
+      "slug": "digital",
+      "parent": 0
+    },
+    {
+      "id": 158,
+      "count": 8,
+      "name": "Divertisment",
+      "slug": "divertisment",
+      "parent": 0
+    },
+    {
+      "id": 911,
+      "count": 5,
+      "name": "Ecologie",
+      "slug": "ecologie",
+      "parent": 0
+    },
+    {
+      "id": 165,
+      "count": 361,
+      "name": "Economic",
+      "slug": "economic",
+      "parent": 0
+    },
+    {
+      "id": 751,
+      "count": 62,
+      "name": "Educatie",
+      "slug": "educatie",
+      "parent": 0
+    },
+    {
+      "id": 1367,
+      "count": 60,
+      "name": "Energetica",
+      "slug": "energetica",
+      "parent": 0
+    },
+    {
+      "id": 308,
+      "count": 4,
+      "name": "Filme și Seriale",
+      "slug": "filme-si-seriale",
+      "parent": 0
+    },
+    {
+      "id": 1135,
+      "count": 5,
+      "name": "Gagauzia",
+      "slug": "gagauzia",
+      "parent": 0
+    },
+    {
+      "id": 172,
+      "count": 46,
+      "name": "Horoscop",
+      "slug": "horoscop",
+      "parent": 0
+    },
+    {
+      "id": 1380,
+      "count": 4,
+      "name": "Incidente",
+      "slug": "incidente",
+      "parent": 0
+    },
+    {
+      "id": 538,
+      "count": 63,
+      "name": "Interviu",
+      "slug": "interviu",
+      "parent": 0
+    },
+    {
+      "id": 220,
+      "count": 41,
+      "name": "Investigatii",
+      "slug": "investigatii",
+      "parent": 0
+    },
+    {
+      "id": 906,
+      "count": 2,
+      "name": "Istorie",
+      "slug": "istorie",
+      "parent": 0
+    },
+    {
+      "id": 2128,
+      "count": 1,
+      "name": "Istorii de succes",
+      "slug": "istorii-de-succes",
+      "parent": 0
+    },
+    {
+      "id": 388,
+      "count": 70,
+      "name": "Justitie",
+      "slug": "justitie",
+      "parent": 0
+    },
+    {
+      "id": 1994,
+      "count": 4,
+      "name": "Legislație",
+      "slug": "legislatie",
+      "parent": 0
+    },
+    {
+      "id": 186,
+      "count": 11,
+      "name": "LifeStyle",
+      "slug": "lifestyle",
+      "parent": 0
+    },
+    {
+      "id": 1468,
+      "count": 21,
+      "name": "mediu",
+      "slug": "mediu",
+      "parent": 0
+    },
+    {
+      "id": 170,
+      "count": 84,
+      "name": "Meteo",
+      "slug": "meteo",
+      "parent": 0
+    },
+    {
+      "id": 362,
+      "count": 7,
+      "name": "Muzica",
+      "slug": "muzica",
+      "parent": 0
+    },
+    {
+      "id": 2567,
+      "count": 1,
+      "name": "PODCAST",
+      "slug": "podcast",
+      "parent": 0
+    },
+    {
+      "id": 164,
+      "count": 247,
+      "name": "Politic",
+      "slug": "politic",
+      "parent": 0
+    },
+    {
+      "id": 162,
+      "count": 73,
+      "name": "Razboi in Ucraina",
+      "slug": "razboi-in-ucraina",
+      "parent": 0
+    },
+    {
+      "id": 995,
+      "count": 96,
+      "name": "Religie",
+      "slug": "religie",
+      "parent": 0
+    },
+    {
+      "id": 867,
+      "count": 78,
+      "name": "Reportaje",
+      "slug": "reportaje",
+      "parent": 0
+    },
+    {
+      "id": 307,
+      "count": 118,
+      "name": "Romania",
+      "slug": "romania",
+      "parent": 0
+    },
+    {
+      "id": 269,
+      "count": 99,
+      "name": "Sanatate",
+      "slug": "sanatate",
+      "parent": 0
+    },
+    {
+      "id": 1387,
+      "count": 1,
+      "name": "Sarbatori",
+      "slug": "sarbatori",
+      "parent": 0
+    },
+    {
+      "id": 2058,
+      "count": 13,
+      "name": "Scandal",
+      "slug": "scandal",
+      "parent": 0
+    },
+    {
+      "id": 173,
+      "count": 6,
+      "name": "Sci-Tech",
+      "slug": "sci-tech",
+      "parent": 0
+    },
+    {
+      "id": 296,
+      "count": 17,
+      "name": "Sfaturi utile",
+      "slug": "sfaturi-utile",
+      "parent": 0
+    },
+    {
+      "id": 182,
+      "count": 1,
+      "name": "Sinteza saptamanii",
+      "slug": "sinteza-saptamanii",
+      "parent": 0
+    },
+    {
+      "id": 161,
+      "count": 570,
+      "name": "Social",
+      "slug": "social",
+      "parent": 0
+    },
+    {
+      "id": 358,
+      "count": 21,
+      "name": "Sondaje",
+      "slug": "sondaje",
+      "parent": 0
+    },
+    {
+      "id": 1620,
+      "count": 1,
+      "name": "Știință",
+      "slug": "stiinta",
+      "parent": 0
+    },
+    {
+      "id": 199,
+      "count": 1663,
+      "name": "Stiri actuale",
+      "slug": "stiri-actuale",
+      "parent": 0
+    },
+    {
+      "id": 195,
+      "count": 41,
+      "name": "Stiri Anenii Noi",
+      "slug": "stiri-anenii-noi",
+      "parent": 0
+    },
+    {
+      "id": 248,
+      "count": 28,
+      "name": "Stiri Balti",
+      "slug": "stiri-balti",
+      "parent": 0
+    },
+    {
+      "id": 413,
+      "count": 72,
+      "name": "Stiri Briceni",
+      "slug": "stiri-briceni",
+      "parent": 0
+    },
+    {
+      "id": 499,
+      "count": 48,
+      "name": "Stiri Cahul",
+      "slug": "stiri-cahul",
+      "parent": 0
+    },
+    {
+      "id": 675,
+      "count": 10,
+      "name": "Stiri Calarasi",
+      "slug": "stiri-calarasi",
+      "parent": 0
+    },
+    {
+      "id": 2303,
+      "count": 9,
+      "name": "Stiri Cantemir",
+      "slug": "stiri-cantemir",
+      "parent": 0
+    },
+    {
+      "id": 786,
+      "count": 44,
+      "name": "Stiri Causeni",
+      "slug": "stiri-causeni",
+      "parent": 0
+    },
+    {
+      "id": 1079,
+      "count": 1,
+      "name": "Stiri Ceadir-Lunga",
+      "slug": "stiri-ceadir-lunga",
+      "parent": 0
+    },
+    {
+      "id": 600,
+      "count": 32,
+      "name": "Stiri Chisinau",
+      "slug": "stiri-chisinau",
+      "parent": 0
+    },
+    {
+      "id": 280,
+      "count": 25,
+      "name": "Stiri Cimislia",
+      "slug": "stiri-cimislia",
+      "parent": 0
+    },
+    {
+      "id": 706,
+      "count": 34,
+      "name": "Stiri Criuleni",
+      "slug": "stiri-criuleni",
+      "parent": 0
+    },
+    {
+      "id": 364,
+      "count": 65,
+      "name": "Stiri Donduseni",
+      "slug": "stiri-donduseni",
+      "parent": 0
+    },
+    {
+      "id": 159,
+      "count": 210,
+      "name": "Stiri Drochia",
+      "slug": "stiri-drochia",
+      "parent": 0
+    },
+    {
+      "id": 1923,
+      "count": 2,
+      "name": "Știri Dubasari",
+      "slug": "stiri-dubasari",
+      "parent": 0
+    },
+    {
+      "id": 653,
+      "count": 145,
+      "name": "Stiri Edinet",
+      "slug": "stiri-edinet",
+      "parent": 0
+    },
+    {
+      "id": 154,
+      "count": 614,
+      "name": "Stiri Externe",
+      "slug": "stiri-externe",
+      "parent": 0
+    },
+    {
+      "id": 405,
+      "count": 91,
+      "name": "Stiri Falesti",
+      "slug": "stiri-falesti",
+      "parent": 0
+    },
+    {
+      "id": 416,
+      "count": 67,
+      "name": "Stiri Floresti",
+      "slug": "stiri-floresti",
+      "parent": 0
+    },
+    {
+      "id": 631,
+      "count": 2,
+      "name": "Stiri Franta",
+      "slug": "stiri-franta",
+      "parent": 0
+    },
+    {
+      "id": 622,
+      "count": 41,
+      "name": "Stiri Glodeni",
+      "slug": "stiri-glodeni",
+      "parent": 0
+    },
+    {
+      "id": 805,
+      "count": 9,
+      "name": "Stiri Hancesti",
+      "slug": "stiri-hancesti",
+      "parent": 0
+    },
+    {
+      "id": 2195,
+      "count": 24,
+      "name": "Stiri Hincesti",
+      "slug": "stiri-hincesti",
+      "parent": 0
+    },
+    {
+      "id": 277,
+      "count": 31,
+      "name": "Stiri Ialoveni",
+      "slug": "stiri-ialoveni",
+      "parent": 0
+    },
+    {
+      "id": 629,
+      "count": 3,
+      "name": "Stiri Italia",
+      "slug": "stiri-italia",
+      "parent": 0
+    },
+    {
+      "id": 1092,
+      "count": 18,
+      "name": "Stiri Leova",
+      "slug": "stiri-leova",
+      "parent": 0
+    },
+    {
+      "id": 153,
+      "count": 738,
+      "name": "Stiri Moldova",
+      "slug": "stiri-moldova",
+      "parent": 0
+    },
+    {
+      "id": 2179,
+      "count": 14,
+      "name": "Stiri Nisporeni",
+      "slug": "stiri-nisporeni",
+      "parent": 0
+    },
+    {
+      "id": 549,
+      "count": 44,
+      "name": "Stiri Ocnita",
+      "slug": "stiri-ocnita",
+      "parent": 0
+    },
+    {
+      "id": 693,
+      "count": 74,
+      "name": "Stiri Orhei",
+      "slug": "stiri-orhei",
+      "parent": 0
+    },
+    {
+      "id": 166,
+      "count": 0,
+      "name": "Stiri pozitive",
+      "slug": "stiri-pozitive",
+      "parent": 0
+    },
+    {
+      "id": 265,
+      "count": 1,
+      "name": "Stiri Rabnita",
+      "slug": "stiri-rabnita",
+      "parent": 0
+    },
+    {
+      "id": 845,
+      "count": 14,
+      "name": "Stiri Rezina",
+      "slug": "stiri-rezina",
+      "parent": 0
+    },
+    {
+      "id": 192,
+      "count": 110,
+      "name": "Stiri Riscani",
+      "slug": "stiri-riscani",
+      "parent": 0
+    },
+    {
+      "id": 551,
+      "count": 116,
+      "name": "Stiri Romania",
+      "slug": "stiri-romania",
+      "parent": 0
+    },
+    {
+      "id": 389,
+      "count": 42,
+      "name": "Stiri Sangerei",
+      "slug": "stiri-sangerei",
+      "parent": 0
+    },
+    {
+      "id": 780,
+      "count": 52,
+      "name": "Stiri Singerei",
+      "slug": "stiri-singerei",
+      "parent": 0
+    },
+    {
+      "id": 857,
+      "count": 33,
+      "name": "Stiri Soldanesti",
+      "slug": "stiri-soldanesti",
+      "parent": 0
+    },
+    {
+      "id": 231,
+      "count": 153,
+      "name": "Stiri Soroca",
+      "slug": "stiri-soroca",
+      "parent": 0
+    },
+    {
+      "id": 156,
+      "count": 25,
+      "name": "Stiri sportive",
+      "slug": "stiri-sportive",
+      "parent": 0
+    },
+    {
+      "id": 221,
+      "count": 41,
+      "name": "Stiri Stefan Voda",
+      "slug": "stiri-stefan-voda",
+      "parent": 0
+    },
+    {
+      "id": 802,
+      "count": 55,
+      "name": "Stiri Straseni",
+      "slug": "stiri-straseni",
+      "parent": 0
+    },
+    {
+      "id": 2169,
+      "count": 1,
+      "name": "Stiri Taraclia",
+      "slug": "stiri-taraclia",
+      "parent": 0
+    },
+    {
+      "id": 207,
+      "count": 50,
+      "name": "Stiri Telenesti",
+      "slug": "stiri-telenesti",
+      "parent": 0
+    },
+    {
+      "id": 634,
+      "count": 9,
+      "name": "Stiri Ucraina",
+      "slug": "stiri-ucraina",
+      "parent": 0
+    },
+    {
+      "id": 309,
+      "count": 29,
+      "name": "Stiri Ungheni",
+      "slug": "stiri-ungheni",
+      "parent": 0
+    },
+    {
+      "id": 722,
+      "count": 1,
+      "name": "Stirile Nordului",
+      "slug": "stirile-nordului",
+      "parent": 0
+    },
+    {
+      "id": 1269,
+      "count": 10,
+      "name": "Stop Fals",
+      "slug": "stop-fals",
+      "parent": 0
+    },
+    {
+      "id": 2165,
+      "count": 0,
+      "name": "Taraclia",
+      "slug": "taraclia",
+      "parent": 0
+    },
+    {
+      "id": 2056,
+      "count": 5,
+      "name": "Tehnologii",
+      "slug": "tehnologii",
+      "parent": 0
+    },
+    {
+      "id": 1498,
+      "count": 2,
+      "name": "Tineret",
+      "slug": "tineret",
+      "parent": 0
+    },
+    {
+      "id": 464,
+      "count": 2,
+      "name": "Top",
+      "slug": "top",
+      "parent": 0
+    },
+    {
+      "id": 2659,
+      "count": 1,
+      "name": "Top știri",
+      "slug": "top-stiri",
+      "parent": 0
+    },
+    {
+      "id": 1826,
+      "count": 1,
+      "name": "Tradiții",
+      "slug": "traditii",
+      "parent": 0
+    },
+    {
+      "id": 167,
+      "count": 50,
+      "name": "Transnistria",
+      "slug": "transnistria",
+      "parent": 0
+    },
+    {
+      "id": 698,
+      "count": 7,
+      "name": "Turism",
+      "slug": "turism",
+      "parent": 0
+    },
+    {
+      "id": 155,
+      "count": 416,
+      "name": "Video",
+      "slug": "video",
+      "parent": 0
+    }
+  ]
+}
