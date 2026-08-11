@@ -71,7 +71,14 @@ export default {
 
 **Pagină categorie** — breadcrumb mono, H1 Fraunces, chip-uri de filtrare pe raion (pentru regiuni), listă de rânduri orizontale (thumb mic + conținut, nu grid dens) — mai potrivit pentru scanare rapidă la volum mare, paginare mono la final.
 
-**Pagină articol** — breadcrumb, etichetă de subiect, H1 Fraunces, byline mono (echipă editorială · timp · N surse), imagine full-width, lead cu font puțin mai mare, corp cu subtitluri H2 Fraunces, tag-uri la final, "articole similare" (3 carduri mici). Lățime de citire limitată (~600px), nu se întinde pe tot ecranul.
+**Pagină articol** — breadcrumb, etichetă de subiect, H1 Fraunces, byline mono (echipă editorială · timp · N surse), imagine full-width, lead cu font puțin mai mare, corp cu subtitluri H2 Fraunces, tag-uri la final, bloc de share + Telegram (vezi mai jos), "articole similare" (3 carduri mici). Lățime de citire limitată (~600px), nu se întinde pe tot ecranul.
+
+**Bloc de share + Telegram** — la finalul articolului, între tag-uri și "articole similare" (ordinea contează: share deasupra pentru cine tocmai a citit, Telegram dedesubt pentru cine vrea să revină; nu se inversează).
+- *Share buttons*: rând orizontal, iconițe Tabler mici, monocrome — culoare `sub`, hover `amber` (niciodată culorile oficiale de brand Facebook/X, respectă bugetul de 6 culori din secțiunea 6).
+  - Facebook: `https://www.facebook.com/sharer/sharer.php?u={URL canonic encodat}`
+  - X: `https://twitter.com/intent/tweet?url={URL encodat}&text={titlu encodat}`
+  - Ambele: `target="_blank" rel="noopener noreferrer"` obligatoriu.
+- *CTA Telegram*: bloc separat, sub share buttons, mai vizibil — fundal `rgba(201,141,46,.08)`, bordură `amber` 1px, icon Tabler telegram, text "Fii primul care află — abonează-te la canalul Reporter News", link `https://t.me/reporter_news_md` (tab nou), buton "Abonează-te".
 
 ## 6. Regula de restrângere (de respectat la orice extindere ulterioară)
 

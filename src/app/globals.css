@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
-@theme inline {
+/* Culori: @theme normal (nu "inline") — emite variabilele CSS globale în
+   :root, necesare ca modificatorii de opacitate arbitrari (ex. bg-amber/[0.08])
+   și clasele Tailwind implicite (ex. bg-red-500) să funcționeze corect. */
+@theme {
   --color-ink: #141820;
   --color-ink2: #1e2530;
   --color-paper: #eaeeea;
@@ -9,7 +12,12 @@
   --color-alert: #b23a2e;
   --color-line: #d3d7cf;
   --color-sub: #5c6259;
+}
 
+/* Fonturi: @theme inline — necesar ca să re-evalueze var(--font-fraunces) etc.
+   (setate de next/font pe className, scopate per pagină) la momentul folosirii,
+   nu la build. */
+@theme inline {
   --font-serif: var(--font-fraunces);
   --font-sans: var(--font-ibm-plex-sans);
   --font-mono: var(--font-ibm-plex-mono);

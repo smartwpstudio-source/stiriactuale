@@ -1,16 +1,20 @@
 import { Breadcrumb, type BreadcrumbItem } from "./breadcrumb";
 import { TopicLabel } from "./topic-label";
 import { ArticleThumb } from "./article-thumb";
+import { ShareButtons } from "./share-buttons";
+import { TelegramCta } from "./telegram-cta";
 import { SimilarArticles } from "./similar-articles";
 import { formatTimeAgo } from "@/lib/format-time-ago";
 import { getSimilarArticles } from "@/lib/content/queries";
 import { TOPIC_LABELS } from "@/lib/content/topic-meta";
+import { articleUrl } from "@/lib/content/url";
+import { absoluteUrl } from "@/lib/seo";
 import type { Article } from "@/lib/content/types";
 
 // Pattern de pagină articol din sistem-design-ui.md secțiunea 5: breadcrumb,
 // etichetă de subiect, H1 Fraunces, byline mono, imagine full-width, lead mai mare,
-// corp cu subtitluri H2, tag-uri la final, articole similare. Lățime de citire
-// limitată (~600px).
+// corp cu subtitluri H2, tag-uri la final, bloc share + Telegram, articole
+// similare. Lățime de citire limitată (~600px).
 export function ArticlePage({
   article,
   breadcrumbItems,
@@ -51,6 +55,8 @@ export function ArticlePage({
           ))}
         </div>
       )}
+      <ShareButtons url={absoluteUrl(articleUrl(article))} title={article.title} />
+      <TelegramCta />
       <SimilarArticles articles={similar} />
     </article>
   );
