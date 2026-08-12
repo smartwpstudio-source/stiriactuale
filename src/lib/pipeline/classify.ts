@@ -85,7 +85,12 @@ export async function classifyGroup(group: CandidateGroup): Promise<Classificati
   const message = await client.messages.create({
     model: HAIKU_MODEL,
     max_tokens: 400,
-    system: SYSTEM_PROMPT,
+    // Prompt caching: system prompt + schema tool sunt identice la fiecare
+    // apel (doar digest-ul din mesaj variază) — cache_control reduce costul
+    // de input cu până la 90% pe partea cache-uită, la volumul de aici
+    // (zeci de apeluri/rulare). Recomandat explicit în
+    // plan-implementare-agregator-stiri-ai.md secțiunea 5.
+    system: [{ type: "text", text: SYSTEM_PROMPT, cache_control: { type: "ephemeral" } }],
     messages: [
       {
         role: "user",

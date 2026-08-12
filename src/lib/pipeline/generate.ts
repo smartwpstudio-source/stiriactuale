@@ -67,7 +67,9 @@ export async function generateArticle(
   const message = await client.messages.create({
     model: SONNET_MODEL,
     max_tokens: 1600,
-    system: SYSTEM_PROMPT,
+    // Prompt caching — vezi nota din classify.ts. Aici contează și mai mult:
+    // Sonnet e modelul scump din pipeline (2-15x prețul Haiku pe input).
+    system: [{ type: "text", text: SYSTEM_PROMPT, cache_control: { type: "ephemeral" } }],
     messages: [
       {
         role: "user",

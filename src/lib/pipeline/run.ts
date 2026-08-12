@@ -37,6 +37,17 @@ function isWorthClassifying(group: CandidateGroup): boolean {
   return group.sourceNames.length >= 2;
 }
 
+// Plafon de cost, nu doar de performanță: modelul de cost din
+// plan-implementare-agregator-stiri-ai.md secțiunea 5 presupune ~5 candidați
+// clasificați per articol publicat. La volumul real de știri (~350-400
+// grupuri cu 2+ surse pe fereastra de 2h), a clasifica TOT ce trece filtrul
+// minim ar costa ~$120/lună doar pe Haiku — mult peste bugetul de 13-40$/lună
+// stabilit. Clasificăm doar top N după numărul de surse (semnalul cel mai
+// puternic din scor, 35% din pondere) — un plafon generos (>2.5x maximul
+// teoretic publicabil per rulare, suma plafoanelor din SECTION_CONFIG),
+// dar care taie coada lungă de candidați fără șansă reală de publicare.
+const MAX_CANDIDATES_TO_CLASSIFY = 40;
+
 export interface PipelineRunSummary {
   candidatesFetched: number;
   groupsFormed: number;
@@ -67,7 +78,10 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     const groups = groupCandidates(candidates);
     summary.groupsFormed = groups.length;
 
-    const worthClassifying = groups.filter(isWorthClassifying);
+    const worthClassifying = groups
+      .filter(isWorthClassifying)
+      .sort((a, b) => b.sourceNames.length - a.sourceNames.length)
+      .slice(0, MAX_CANDIDATES_TO_CLASSIFY);
     const classifyResults = await mapWithConcurrency(
       worthClassifying,
       CLASSIFY_CONCURRENCY,
