@@ -8,6 +8,7 @@ import { generateArticle } from "./generate";
 import { computeQualityScore } from "./scoring";
 import { generateSymbolImage, type ImageTier } from "./image";
 import { publishArticle, wasRecentlyPublished } from "./publish";
+import { mapWithConcurrency } from "./concurrency";
 import type { Section } from "@/lib/content/types";
 import type { CandidateGroup, ScoredCandidate } from "./types";
 
@@ -20,6 +21,14 @@ const SECTION_CONFIG: Record<Section, { minScore: number; cap: number }> = {
   international: { minScore: 50, cap: 3 },
   diaspora: { minScore: 45, cap: 2 },
 };
+
+// Vercel Hobby: maxDuration 300s e plafon absolut, nu doar implicit
+// (verificat în docs Vercel) — nu se poate mări. Clasificarea + generarea
+// rulează cu concurență limitată în loc de secvențial, ca rularea completă
+// să se încadreze confortabil sub 300s chiar și cu sute de candidați.
+// Plafoane alese conservator față de rate-limit-urile Anthropic implicite.
+const CLASSIFY_CONCURRENCY = 10;
+const PUBLISH_CONCURRENCY = 4;
 
 // Doar candidații cu semnal minim (2+ surse independente) merg la clasificare
 // (Haiku) — evită cheltuiala pe zgomotul de fond al miilor de grupuri cu o
@@ -58,20 +67,26 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     const groups = groupCandidates(candidates);
     summary.groupsFormed = groups.length;
 
-    const scored: ScoredCandidate[] = [];
-    for (const group of groups.filter(isWorthClassifying)) {
-      try {
-        const classification = await classifyGroup(group);
-        scored.push({
-          group,
-          classification,
-          qualityScore: computeQualityScore(group, classification),
-        });
-        summary.candidatesClassified++;
-      } catch {
-        // un candidat eșuat la clasificare nu oprește rularea
-      }
-    }
+    const worthClassifying = groups.filter(isWorthClassifying);
+    const classifyResults = await mapWithConcurrency(
+      worthClassifying,
+      CLASSIFY_CONCURRENCY,
+      async (group): Promise<ScoredCandidate | null> => {
+        try {
+          const classification = await classifyGroup(group);
+          return {
+            group,
+            classification,
+            qualityScore: computeQualityScore(group, classification),
+          };
+        } catch {
+          // un candidat eșuat la clasificare nu oprește rularea
+          return null;
+        }
+      },
+    );
+    const scored = classifyResults.filter((c): c is ScoredCandidate => c !== null);
+    summary.candidatesClassified = scored.length;
 
     // grupare pe secțiune + aplicare prag/plafon independent per secțiune
     const bySection = new Map<Section, ScoredCandidate[]>();
@@ -96,22 +111,32 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       null,
     );
 
-    for (const candidate of toPublish) {
-      if (await wasRecentlyPublished(candidate.group.representativeTitle)) continue;
+    const publishResults = await mapWithConcurrency(
+      toPublish,
+      PUBLISH_CONCURRENCY,
+      async (candidate): Promise<Section | null> => {
+        if (await wasRecentlyPublished(candidate.group.representativeTitle)) return null;
 
-      try {
-        const generated = await generateArticle(candidate.group, candidate.classification);
-        const tier: ImageTier = candidate === topCandidate ? "pro" : "schnell";
-        const image = await generateSymbolImage(
-          `Imagine simbol pentru un articol de știri despre: ${generated.titlu}`,
-          tier,
-        );
-        await publishArticle(candidate, generated, image?.url ?? null);
-        summary.articlesPublished++;
-        summary.bySection[candidate.classification.section]++;
-      } catch {
-        // un articol eșuat la generare/publicare nu oprește restul rulării
-      }
+        try {
+          const generated = await generateArticle(candidate.group, candidate.classification);
+          const tier: ImageTier = candidate === topCandidate ? "pro" : "schnell";
+          const image = await generateSymbolImage(
+            `Imagine simbol pentru un articol de știri despre: ${generated.titlu}`,
+            tier,
+          );
+          await publishArticle(candidate, generated, image?.url ?? null);
+          return candidate.classification.section;
+        } catch {
+          // un articol eșuat la generare/publicare nu oprește restul rulării
+          return null;
+        }
+      },
+    );
+
+    for (const section of publishResults) {
+      if (!section) continue;
+      summary.articlesPublished++;
+      summary.bySection[section]++;
     }
 
     await db

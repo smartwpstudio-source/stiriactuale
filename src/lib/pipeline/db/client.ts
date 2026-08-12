@@ -16,7 +16,10 @@ export function getDb() {
           "(Vercel Postgres sau Neon) și adaug-o în .env.local înainte de a rula pipeline-ul.",
       );
     }
-    const client = postgres(connectionString, { max: 1 });
+    // max > 1: etapa de publicare a pipeline-ului rulează cu concurență
+    // (vezi run.ts) — un singur connection ar serializa scrierile în DB și
+    // ar anula o parte din câștigul de timp obținut prin paralelizare.
+    const client = postgres(connectionString, { max: 6 });
     cachedDb = drizzle(client, { schema });
   }
   return cachedDb;
