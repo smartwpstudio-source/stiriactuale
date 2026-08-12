@@ -7,6 +7,17 @@ import { runPipeline } from "@/lib/pipeline/run";
 export const maxDuration = 300;
 
 export async function POST(request: Request) {
+  // Întrerupător manual — independent de cron-ul GitHub Actions. Setează
+  // PIPELINE_ENABLED=false în Vercel (Environment Variables) + Redeploy ca
+  // să blochezi orice rulare, indiferent de sursa cererii (cron, apel
+  // manual, orice). Util ca reacție rapidă la o anomalie de cost.
+  if (process.env.PIPELINE_ENABLED === "false") {
+    return NextResponse.json(
+      { ok: false, error: "Pipeline dezactivat manual (PIPELINE_ENABLED=false)" },
+      { status: 503 },
+    );
+  }
+
   const secret = process.env.CRON_SECRET;
   if (!secret) {
     return NextResponse.json({ error: "CRON_SECRET neconfigurat pe server" }, { status: 500 });
