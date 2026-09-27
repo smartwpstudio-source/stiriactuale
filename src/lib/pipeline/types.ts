@@ -39,4 +39,5 @@ export interface GeneratedArticle {
   corp_html: string;
   tag_uri: string[];
   alt_text_imagine: string;
+  stock_query: string;
 }

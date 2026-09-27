@@ -1,6 +1,13 @@
 # Plan de implementare: sistem automat de generare și publicare știri (AI)
 ### pentru stiriactuale.info (WordPress, tema Bimber)
 
+> **Actualizare 2026-09-27 — implementarea efectivă diferă de secțiunile 3.6, 3.8, 4 și 5 de mai jos:**
+> - Pipeline-ul rulează în **GitHub Actions** (nu pe Vercel/WordPress), fără limită de 300s.
+> - Apelurile Claude trec prin **Agent SDK cu abonamentul Max** (`CLAUDE_CODE_OAUTH_TOKEN`), din creditul lunar Agent SDK (100$ pe Max 5x) — nu facturare API. Clasificare: Haiku 4.5, **un singur apel pe rulare**; scriere: **Opus 5.5**.
+> - Imagini: **foto de stock Magnific prin API** (gratuit pe Premium+, max 100/zi), copiate în Vercel Blob; imaginile generate (rare) le face editorul manual în aplicația web Magnific. fal.ai eliminat.
+> - Prompt caching nu se aplică (prompturile sunt sub pragul minim: 4096 token-uri Haiku, 1024 Sonnet).
+> - Cost măsurat (token-uri reale): ~8$/lună clasificare + ~21$/lună scriere cu Opus 5.5 la ~600 articole — echivalent din creditul abonamentului, 0$ facturat suplimentar.
+
 ---
 
 ## 1. Context tehnic constatat

@@ -44,6 +44,9 @@ export async function ArticlePage({
         className="mt-6 h-64 w-full"
         iconSize={48}
       />
+      {article.imageUrl && (
+        <p className="mt-1 font-mono text-[10.5px] text-sub">Foto ilustrativă</p>
+      )}
       <p className="mt-6 text-lg leading-relaxed text-ink">{article.lead}</p>
       <div
         className="prose-article mt-4 text-ink"

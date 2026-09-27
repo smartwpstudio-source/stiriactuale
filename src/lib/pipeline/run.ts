@@ -3,18 +3,18 @@ import { getDb } from "./db/client";
 import { pipelineRuns } from "./db/schema";
 import { fetchAllSources } from "./sources";
 import { groupCandidates } from "./dedup";
-import { classifyGroup } from "./classify";
+import { classifyGroups } from "./classify";
 import { generateArticle } from "./generate";
 import { computeQualityScore } from "./scoring";
-import { generateSymbolImage, type ImageTier } from "./image";
-import { publishArticle, wasRecentlyPublished } from "./publish";
+import { findStockImage } from "./image";
+import { isDuplicate, loadRecentFingerprints, publishArticle } from "./publish";
 import { mapWithConcurrency } from "./concurrency";
+import { spentUsd } from "./llm";
 import type { Section } from "@/lib/content/types";
-import type { CandidateGroup, ScoredCandidate } from "./types";
+import type { ScoredCandidate } from "./types";
 
 // Prag minim + plafon de siguranță INDEPENDENTE per secțiune — nu cotă fixă
-// globală. Valori de pornire, ajustabile pe măsură ce se acumulează date
-// reale de calibrare. Vezi plan-implementare-agregator-stiri-ai.md 3.3.
+// globală. Vezi plan-implementare-agregator-stiri-ai.md 3.3.
 const SECTION_CONFIG: Record<Section, { minScore: number; cap: number }> = {
   regiuni: { minScore: 55, cap: 5 },
   national: { minScore: 55, cap: 5 },
@@ -22,31 +22,10 @@ const SECTION_CONFIG: Record<Section, { minScore: number; cap: number }> = {
   diaspora: { minScore: 45, cap: 2 },
 };
 
-// Vercel Hobby: maxDuration 300s e plafon absolut, nu doar implicit
-// (verificat în docs Vercel) — nu se poate mări. Clasificarea + generarea
-// rulează cu concurență limitată în loc de secvențial, ca rularea completă
-// să se încadreze confortabil sub 300s chiar și cu sute de candidați.
-// Plafoane alese conservator față de rate-limit-urile Anthropic implicite.
-const CLASSIFY_CONCURRENCY = 10;
-const PUBLISH_CONCURRENCY = 4;
-
-// Doar candidații cu semnal minim (2+ surse independente) merg la clasificare
-// (Haiku) — evită cheltuiala pe zgomotul de fond al miilor de grupuri cu o
-// singură sursă slabă, care oricum n-ar trece pragul de calitate.
-function isWorthClassifying(group: CandidateGroup): boolean {
-  return group.sourceNames.length >= 2;
-}
-
-// Plafon de cost, nu doar de performanță: modelul de cost din
-// plan-implementare-agregator-stiri-ai.md secțiunea 5 presupune ~5 candidați
-// clasificați per articol publicat. La volumul real de știri (~350-400
-// grupuri cu 2+ surse pe fereastra de 2h), a clasifica TOT ce trece filtrul
-// minim ar costa ~$120/lună doar pe Haiku — mult peste bugetul de 13-40$/lună
-// stabilit. Clasificăm doar top N după numărul de surse (semnalul cel mai
-// puternic din scor, 35% din pondere) — un plafon generos (>2.5x maximul
-// teoretic publicabil per rulare, suma plafoanelor din SECTION_CONFIG),
-// dar care taie coada lungă de candidați fără șansă reală de publicare.
+// Top N grupuri cu 2+ surse, după numărul de surse (35% din scor) — plafon
+// generos (>2.5x maximul publicabil per rulare), taie coada lungă.
 const MAX_CANDIDATES_TO_CLASSIFY = 40;
+const PUBLISH_CONCURRENCY = 4;
 
 export interface PipelineRunSummary {
   candidatesFetched: number;
@@ -55,6 +34,7 @@ export interface PipelineRunSummary {
   articlesPublished: number;
   failedFeeds: number;
   bySection: Record<Section, number>;
+  costUsd: number; // echivalent consumat din creditul Agent SDK al abonamentului
 }
 
 export async function runPipeline(): Promise<PipelineRunSummary> {
@@ -68,6 +48,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     articlesPublished: 0,
     failedFeeds: 0,
     bySection: { regiuni: 0, national: 0, international: 0, diaspora: 0 },
+    costUsd: 0,
   };
 
   try {
@@ -78,31 +59,26 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     const groups = groupCandidates(candidates);
     summary.groupsFormed = groups.length;
 
-    const worthClassifying = groups
-      .filter(isWorthClassifying)
+    // Evenimentele deja publicate/draft în ultimele 72h se elimină ÎNAINTE de
+    // clasificare — nu plătim clasificare/generare pentru duplicate.
+    const recent = await loadRecentFingerprints();
+    const fresh = groups
+      .filter((g) => g.sourceNames.length >= 2 && !isDuplicate(g, recent))
       .sort((a, b) => b.sourceNames.length - a.sourceNames.length)
       .slice(0, MAX_CANDIDATES_TO_CLASSIFY);
-    const classifyResults = await mapWithConcurrency(
-      worthClassifying,
-      CLASSIFY_CONCURRENCY,
-      async (group): Promise<ScoredCandidate | null> => {
-        try {
-          const classification = await classifyGroup(group);
-          return {
-            group,
-            classification,
-            qualityScore: computeQualityScore(group, classification),
-          };
-        } catch {
-          // un candidat eșuat la clasificare nu oprește rularea
-          return null;
-        }
-      },
-    );
-    const scored = classifyResults.filter((c): c is ScoredCandidate => c !== null);
+
+    const classifications = fresh.length ? await classifyGroups(fresh) : [];
+    const scored: ScoredCandidate[] = [];
+    classifications.forEach((classification, i) => {
+      if (!classification) return;
+      scored.push({
+        group: fresh[i],
+        classification,
+        qualityScore: computeQualityScore(fresh[i], classification),
+      });
+    });
     summary.candidatesClassified = scored.length;
 
-    // grupare pe secțiune + aplicare prag/plafon independent per secțiune
     const bySection = new Map<Section, ScoredCandidate[]>();
     for (const candidate of scored) {
       const { section } = candidate.classification;
@@ -112,46 +88,33 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
 
     const toPublish: ScoredCandidate[] = [];
     for (const [section, list] of bySection) {
-      const top = list
-        .sort((a, b) => b.qualityScore - a.qualityScore)
-        .slice(0, SECTION_CONFIG[section].cap);
-      toPublish.push(...top);
+      toPublish.push(
+        ...list.sort((a, b) => b.qualityScore - a.qualityScore).slice(0, SECTION_CONFIG[section].cap),
+      );
     }
 
-    // FLUX Pro doar pentru articolul cu scorul de calitate cel mai mare din
-    // toată rularea (nu per secțiune) — plan-implementare-agregator-stiri-ai.md 3.6.
-    const topCandidate = toPublish.reduce<ScoredCandidate | null>(
-      (best, c) => (!best || c.qualityScore > best.qualityScore ? c : best),
-      null,
-    );
-
-    const publishResults = await mapWithConcurrency(
+    const published = await mapWithConcurrency(
       toPublish,
       PUBLISH_CONCURRENCY,
       async (candidate): Promise<Section | null> => {
-        if (await wasRecentlyPublished(candidate.group.representativeTitle)) return null;
-
         try {
           const generated = await generateArticle(candidate.group, candidate.classification);
-          const tier: ImageTier = candidate === topCandidate ? "pro" : "schnell";
-          const image = await generateSymbolImage(
-            `Imagine simbol pentru un articol de știri despre: ${generated.titlu}`,
-            tier,
-          );
-          await publishArticle(candidate, generated, image?.url ?? null);
+          const imageUrl = await findStockImage(generated.stock_query, generated.slug);
+          await publishArticle(candidate, generated, imageUrl);
           return candidate.classification.section;
-        } catch {
-          // un articol eșuat la generare/publicare nu oprește restul rulării
+        } catch (err) {
+          console.error(`Articol eșuat: ${err instanceof Error ? err.message : String(err)}`);
           return null;
         }
       },
     );
 
-    for (const section of publishResults) {
+    for (const section of published) {
       if (!section) continue;
       summary.articlesPublished++;
       summary.bySection[section]++;
     }
+    summary.costUsd = Math.round(spentUsd() * 1000) / 1000;
 
     await db
       .update(pipelineRuns)

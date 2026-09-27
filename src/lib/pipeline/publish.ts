@@ -1,9 +1,9 @@
 import crypto from "node:crypto";
-import { and, eq, gte } from "drizzle-orm";
+import { gte } from "drizzle-orm";
 import { getDb } from "./db/client";
 import { articles } from "./db/schema";
 import { normalizeTitle } from "./dedup";
-import type { GeneratedArticle, ScoredCandidate } from "./types";
+import type { CandidateGroup, GeneratedArticle, ScoredCandidate } from "./types";
 
 const RECENT_WINDOW_HOURS = 72;
 
@@ -12,21 +12,32 @@ function titleHash(title: string): string {
 }
 
 // Verificare contra republicării aceluiași eveniment în rulările următoare —
-// plan-implementare-agregator-stiri-ai.md 3.2. Nu ține de pragul de calitate:
-// un eveniment deja publicat nu trebuie să reapară doar pentru că mai multe
-// surse îl preiau ulterior în aceeași fereastră de 72h.
-export async function wasRecentlyPublished(title: string): Promise<boolean> {
-  const db = getDb();
-  const hash = titleHash(title);
+// plan-implementare-agregator-stiri-ai.md 3.2. Hash-ul de titlu singur rata
+// duplicatele (două rulări aleg titluri reprezentative diferite pentru aceeași
+// știre — observat la "tranzit cereale"), așa că verificăm și dacă vreun URL
+// sursă al grupului (link yam.md / Google News, stabil per știre) apare deja
+// la un articol din ultimele 72h, draft sau publicat. O singură interogare
+// per rulare, verificarea în memorie.
+export async function loadRecentFingerprints() {
   const since = new Date(Date.now() - RECENT_WINDOW_HOURS * 60 * 60 * 1000);
-
-  const existing = await db
-    .select({ id: articles.id })
+  const rows = await getDb()
+    .select({ hash: articles.normalizedTitleHash, urls: articles.sourceUrls })
     .from(articles)
-    .where(and(eq(articles.normalizedTitleHash, hash), gte(articles.publishedAt, since)))
-    .limit(1);
+    .where(gte(articles.publishedAt, since));
+  return {
+    hashes: new Set(rows.map((r) => r.hash)),
+    urls: new Set(rows.flatMap((r) => r.urls)),
+  };
+}
 
-  return existing.length > 0;
+export function isDuplicate(
+  group: CandidateGroup,
+  recent: Awaited<ReturnType<typeof loadRecentFingerprints>>,
+): boolean {
+  return (
+    recent.hashes.has(titleHash(group.representativeTitle)) ||
+    group.items.some((i) => i.sourceUrl && recent.urls.has(i.sourceUrl))
+  );
 }
 
 // status: "draft" implicit din schema — primele 2-4 săptămâni, review manual

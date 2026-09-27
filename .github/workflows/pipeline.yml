@@ -1,9 +1,13 @@
 name: Pipeline stiri
 
-# Fereastră activă 06:00-22:00 Chișinău, 9 rulări/zi — decizie finală, vezi
+# Fereastră activă 06:00-22:00 Chișinău, 9 rulări/zi — vezi
 # plan-implementare-agregator-stiri-ai.md secțiunea 3.8. Orele sunt în UTC,
-# calculate pentru ora de vară (UTC+3); un derapaj de max. o oră față de ora
-# Chișinăului de două ori pe an (schimbarea orei) e acceptat ca irelevant.
+# pentru ora de vară (UTC+3); derapajul de o oră la schimbarea orei e acceptat.
+#
+# Pipeline-ul rulează AICI (nu pe Vercel): fără limita de 300s, iar apelurile
+# către Claude folosesc creditul Agent SDK al abonamentului Max prin
+# CLAUDE_CODE_OAUTH_TOKEN. Oprire de urgență: Actions -> "Pipeline stiri" ->
+# ... -> Disable workflow.
 on:
   schedule:
     - cron: "0 3 * * *" # 06:00 Chisinau
@@ -17,18 +21,23 @@ on:
     - cron: "0 19 * * *" # 22:00
   workflow_dispatch: {} # rulare manuală, pentru testare
 
+# Două rulări suprapuse ar produce duplicate — a doua așteaptă.
+concurrency: pipeline
+
 jobs:
-  trigger:
+  run:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
-      - name: Apeleaza endpoint-ul de pipeline
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run pipeline:run
         env:
-          # vars.PIPELINE_URL (Settings -> Secrets and variables -> Actions -> Variables)
-          # permite testare pe un URL de preview Vercel înainte de comutarea
-          # domeniului live, fără să editezi acest fișier. Implicit: domeniul final.
-          # Slash-ul final e obligatoriu (trailingSlash: true în next.config.ts) —
-          # fără el, request-ul primește un 308 și pipeline-ul nu se declanșează.
-          PIPELINE_URL: ${{ vars.PIPELINE_URL || 'https://stiriactuale.info/api/pipeline/run/' }}
-        run: |
-          curl -f -X POST "$PIPELINE_URL" \
-            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}"
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          MAGNIFIC_API_KEY: ${{ secrets.MAGNIFIC_API_KEY }}
+          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}

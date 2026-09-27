@@ -7,10 +7,10 @@ const nextConfig: NextConfig = {
   // un singur 301 curat către URL-ul nou, nu un lanț de redirect-uri.
   trailingSlash: true,
 
-  // Imaginile simbol generate de pipeline (fal.ai) sunt servite de pe
-  // domeniul lor CDN — vezi src/lib/pipeline/image.ts.
+  // Foto de stock copiate de pipeline în Vercel Blob — vezi
+  // src/lib/pipeline/image.ts.
   images: {
-    remotePatterns: [{ protocol: "https", hostname: "*.fal.media" }],
+    remotePatterns: [{ protocol: "https", hostname: "*.public.blob.vercel-storage.com" }],
   },
 };
 

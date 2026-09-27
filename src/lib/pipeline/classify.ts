@@ -1,4 +1,4 @@
-import { getAnthropicClient, HAIKU_MODEL } from "./anthropic-client";
+import { structured, HAIKU_MODEL } from "./llm";
 import type { CandidateGroup, ClassificationResult } from "./types";
 import type { Section, Topic } from "@/lib/content/types";
 
@@ -16,103 +16,90 @@ const TOPICS: Topic[] = [
   "sport",
 ];
 
-interface ClassifyToolInput {
-  section: Section;
-  locality?: string;
-  country?: string;
-  topics: Topic[];
-  factual_richness: number;
-  confidence: number;
-}
-
-const CLASSIFY_TOOL = {
-  name: "clasifica_stire",
-  description:
-    "Clasifică o știre pe secțiune, localitate/țară, subiecte, și scoruri de calitate.",
-  input_schema: {
-    type: "object" as const,
-    properties: {
-      section: { type: "string", enum: SECTIONS },
-      locality: {
-        type: "string",
-        description:
-          "Slug de raion din R. Moldova, minuscule, fără diacritice (ex: drochia, straseni, chisinau). DOAR dacă section=regiuni.",
-      },
-      country: {
-        type: "string",
-        description:
-          "Slug de țară, minuscule, fără diacritice (ex: italia, franta, germania). DOAR dacă section=diaspora.",
-      },
-      topics: {
-        type: "array",
-        items: { type: "string", enum: TOPICS },
-        description: "0-3 subiecte aplicabile din lista fixă. Gol dacă niciunul nu se aplică clar.",
-      },
-      factual_richness: {
-        type: "number",
-        description:
-          "0-100: cât de bogată e informația factuală (cifre, nume, locație clară) vs. titlu vag/speculativ.",
-      },
-      confidence: {
-        type: "number",
-        description: "0-100: încrederea că e o știre confirmată, nu speculație/sursă unică nesigură.",
+const SCHEMA = {
+  type: "object",
+  properties: {
+    items: {
+      type: "array",
+      items: {
+        type: "object",
+        properties: {
+          id: { type: "integer", description: "Numărul grupului (#N) din mesaj." },
+          section: { type: "string", enum: SECTIONS },
+          locality: {
+            type: "string",
+            description:
+              "Slug de raion din R. Moldova, minuscule, fără diacritice (ex: drochia, straseni, chisinau). DOAR dacă section=regiuni.",
+          },
+          country: {
+            type: "string",
+            description: "Slug de țară, minuscule, fără diacritice (ex: italia, franta). DOAR dacă section=diaspora.",
+          },
+          topics: { type: "array", items: { type: "string", enum: TOPICS }, description: "0-3 subiecte." },
+          factual_richness: { type: "number", description: "0-100: cifre, nume, locație clară vs. titlu vag." },
+          confidence: { type: "number", description: "0-100: știre confirmată vs. speculație/sursă unică nesigură." },
+        },
+        required: ["id", "section", "topics", "factual_richness", "confidence"],
       },
     },
-    required: ["section", "topics", "factual_richness", "confidence"],
   },
+  required: ["items"],
 };
 
 // Distincție cerută explicit în plan-implementare-agregator-stiri-ai.md 3.4:
-// un LLM face diferența, nu doar cuvinte cheie, între "știre despre Moldova
-// în presa internațională" (national) și "știre internațională" propriu-zisă.
+// "știre despre Moldova în presa internațională" (national) vs. "știre
+// internațională" propriu-zisă.
 const SYSTEM_PROMPT = [
   "Ești un clasificator de știri pentru un site din Republica Moldova.",
+  "Primești mai multe grupuri numerotate (#0, #1, ...); fiecare grup = relatări despre același eveniment. Clasifică FIECARE grup, cu id-ul lui.",
   "Reguli de clasificare pe secțiune:",
   "- regiuni: DOAR dacă știrea are o localitate/raion clar din R. Moldova (nu doar Chișinău menționat tangențial).",
   "- diaspora: DOAR dacă e despre moldoveni aflați în mod explicit în străinătate.",
-  "- national: știri despre R. Moldova la nivel de țară (politică, economie, societate), INCLUSIV când sunt relatate de presă internațională, dacă subiectul central e Moldova.",
+  "- national: știri despre R. Moldova la nivel de țară, INCLUSIV când sunt relatate de presă internațională, dacă subiectul central e Moldova.",
   "- international: știri fără o legătură directă, centrală cu R. Moldova.",
-  "Nu forța o clasificare pe regiuni/diaspora dacă localitatea/țara nu e clară — alege national sau international în caz de dubiu.",
+  "În caz de dubiu pentru regiuni/diaspora, alege national sau international.",
 ].join("\n");
 
-export async function classifyGroup(group: CandidateGroup): Promise<ClassificationResult> {
-  const client = getAnthropicClient();
-  const digest = group.items
-    .slice(0, 5)
-    .map((i) => `- [${i.sourceName}] ${i.title}\n  ${i.summary}`)
-    .join("\n");
+// Un singur apel pentru toți candidații rulării: instrucțiunile + schema
+// (~1.700 token-uri) se plătesc o dată, nu de 40 de ori — măsurat, ~76% din
+// costul clasificării era overhead repetat.
+export async function classifyGroups(
+  groups: CandidateGroup[],
+): Promise<(ClassificationResult | null)[]> {
+  const prompt = groups
+    .map(
+      (g, i) =>
+        `#${i} (${g.sourceNames.length} surse)\n` +
+        g.items
+          .slice(0, 5)
+          .map((it) => `- [${it.sourceName}] ${it.title}\n  ${it.summary}`)
+          .join("\n"),
+    )
+    .join("\n\n");
 
-  const message = await client.messages.create({
-    model: HAIKU_MODEL,
-    max_tokens: 400,
-    // Prompt caching: system prompt + schema tool sunt identice la fiecare
-    // apel (doar digest-ul din mesaj variază) — cache_control reduce costul
-    // de input cu până la 90% pe partea cache-uită, la volumul de aici
-    // (zeci de apeluri/rulare). Recomandat explicit în
-    // plan-implementare-agregator-stiri-ai.md secțiunea 5.
-    system: [{ type: "text", text: SYSTEM_PROMPT, cache_control: { type: "ephemeral" } }],
-    messages: [
-      {
-        role: "user",
-        content: `Clasifică acest grup de relatări despre același eveniment (${group.sourceNames.length} surse: ${group.sourceNames.join(", ")}):\n\n${digest}`,
-      },
-    ],
-    tools: [CLASSIFY_TOOL],
-    tool_choice: { type: "tool", name: "clasifica_stire" },
+  const out = await structured<{
+    items: {
+      id: number;
+      section: Section;
+      locality?: string;
+      country?: string;
+      topics?: Topic[];
+      factual_richness: number;
+      confidence: number;
+    }[];
+  }>({ model: HAIKU_MODEL, system: SYSTEM_PROMPT, prompt, schema: SCHEMA, maxBudgetUsd: 0.5 });
+
+  const byId = new Map(out.items.map((it) => [it.id, it]));
+  return groups.map((_, i) => {
+    const it = byId.get(i);
+    if (!it) return null;
+    return {
+      section: it.section,
+      locality: it.locality,
+      country: it.country,
+      topics: it.topics ?? [],
+      factualRichness: it.factual_richness,
+      confidence: it.confidence,
+    };
   });
-
-  const toolUse = message.content.find((b) => b.type === "tool_use");
-  if (!toolUse || toolUse.type !== "tool_use") {
-    throw new Error("Clasificarea nu a returnat un tool_use valid.");
-  }
-
-  const input = toolUse.input as ClassifyToolInput;
-  return {
-    section: input.section,
-    locality: input.locality,
-    country: input.country,
-    topics: input.topics ?? [],
-    factualRichness: input.factual_richness,
-    confidence: input.confidence,
-  };
 }
