@@ -1,49 +1,102 @@
 import { put } from "@vercel/blob";
 
 const API = "https://api.magnific.com/v1";
+const STOCK_RESULTS = 5;
+const GENERATION_TIMEOUT_MS = 120_000;
 
-// Foto de stock prin API Magnific: gratuit pe Premium+ (max 100 descărcări/zi;
-// noi folosim ~20-30). "Unlimited" din abonament acoperă DOAR aplicația web,
-// iar automatizarea ei e interzisă de Acceptable Use Policy — API-ul e canalul
-// permis. URL-urile de download sunt semnate și expiră (~1h), așa că fișierul
-// se copiază în Vercel Blob (stocare permanentă). Fără chei → articol fără
-// imagine, nu eșec. Imaginile generate (rare) le face editorul manual.
-export async function findStockImage(searchTerm: string, slug: string): Promise<string | null> {
+// Prefixul din Blob după care pagina afișează "Imagine generată AI" în loc de
+// "Foto ilustrativă" — transparență față de cititor.
+export const AI_IMAGE_PREFIX = "articole/ai-";
+
+export interface ArticleImage {
+  url: string;
+  resourceId: number | null; // null = generată
+}
+
+// 1. Stock Magnific: gratuit pe Premium+ (max 100/zi), primul din top 5
+//    nefolosit încă pe site — aceeași poză pe două articole arată a șablon.
+// 2. Altfel, generare Flux 2 Turbo prin API. Consumă credite din abonament:
+//    "Unlimited" (Nano Banana) e doar în aplicația web, iar Nano Banana nu
+//    există deloc în API-ul Magnific (verificat 2026-10-01).
+// URL-urile Magnific sunt semnate și expiră, așa că fișierul se copiază în
+// Vercel Blob. Fără chei sau la eroare -> articol fără imagine, nu eșec.
+export async function findArticleImage(
+  stockQuery: string,
+  imagePrompt: string,
+  slug: string,
+  usedIds: Set<number>,
+): Promise<ArticleImage | null> {
   const key = process.env.MAGNIFIC_API_KEY;
   if (!key || !process.env.BLOB_READ_WRITE_TOKEN) return null;
-
-  const headers = { "x-magnific-api-key": key };
-  const signal = () => AbortSignal.timeout(30_000); // lecție fal.ai: niciun apel extern fără timeout
+  const headers = { "x-magnific-api-key": key, "Content-Type": "application/json" };
+  const get = async <T>(url: string): Promise<T> => {
+    const res = await fetch(url, { headers, signal: AbortSignal.timeout(30_000) });
+    if (!res.ok) throw new Error(`HTTP ${res.status} la ${url.replace(API, "").split("?")[0]}`);
+    return res.json() as Promise<T>;
+  };
 
   try {
     const params = new URLSearchParams({
-      term: searchTerm,
-      limit: "1",
+      term: stockQuery,
+      limit: String(STOCK_RESULTS),
       order: "relevance",
       "filters[content_type][photo]": "1",
       "filters[orientation][landscape]": "1",
     });
-    const search = await fetch(`${API}/resources?${params}`, { headers, signal: signal() });
-    if (!search.ok) throw new Error(`căutare HTTP ${search.status}`);
-    const id = ((await search.json()) as { data?: { id: number }[] }).data?.[0]?.id;
-    if (!id) return null;
+    const { data: results = [] } = await get<{ data?: { id: number }[] }>(`${API}/resources?${params}`);
+    const id = results.find((r) => !usedIds.has(r.id))?.id;
 
-    const dl = await fetch(`${API}/resources/${id}/download?image_size=small`, { headers, signal: signal() });
-    if (!dl.ok) throw new Error(`download HTTP ${dl.status}`);
-    const { data } = (await dl.json()) as { data: { url: string; signed_url?: string } };
+    if (id) {
+      usedIds.add(id); // înainte de primul await — rulările paralele văd rezervarea
+      const { data } = await get<{ data: { url?: string; signed_url?: string } }>(
+        `${API}/resources/${id}/download?image_size=small`,
+      );
+      return { url: await copyToBlob(data.url ?? data.signed_url!, `articole/${slug}.jpg`), resourceId: id };
+    }
 
-    const file = await fetch(data.url ?? data.signed_url, { signal: signal() });
-    if (!file.ok) throw new Error(`fișier HTTP ${file.status}`);
-
-    const blob = await put(`articole/${slug}.jpg`, Buffer.from(await file.arrayBuffer()), {
-      access: "public",
-      contentType: file.headers.get("content-type") ?? "image/jpeg",
-      addRandomSuffix: true,
-    });
-    return blob.url;
+    return { url: await copyToBlob(await generate(imagePrompt, headers), `${AI_IMAGE_PREFIX}${slug}.jpg`), resourceId: null };
   } catch (err) {
     // Niciodată cheia sau header-ele în log — doar mesajul.
     console.error(`Magnific: imagine eșuată — ${err instanceof Error ? err.message : String(err)}`);
     return null;
   }
+}
+
+async function generate(prompt: string, headers: Record<string, string>): Promise<string> {
+  const endpoint = `${API}/ai/text-to-image/flux-2-turbo`;
+  const res = await fetch(endpoint, {
+    method: "POST",
+    headers,
+    signal: AbortSignal.timeout(30_000),
+    body: JSON.stringify({
+      prompt: `${prompt}. Realistic editorial news photograph, natural light, no text, no logos, no identifiable faces.`,
+      image_size: { width: 1280, height: 720 },
+      enable_safety_checker: true,
+      output_format: "jpeg",
+    }),
+  });
+  if (!res.ok) throw new Error(`generare HTTP ${res.status}`);
+  const { data } = (await res.json()) as { data: { task_id: string } };
+
+  const deadline = Date.now() + GENERATION_TIMEOUT_MS;
+  while (Date.now() < deadline) {
+    await new Promise((r) => setTimeout(r, 3000));
+    const poll = await fetch(`${endpoint}/${data.task_id}`, { headers, signal: AbortSignal.timeout(30_000) });
+    if (!poll.ok) throw new Error(`status generare HTTP ${poll.status}`);
+    const task = ((await poll.json()) as { data: { status: string; generated?: string[] } }).data;
+    if (task.status === "COMPLETED" && task.generated?.[0]) return task.generated[0];
+    if (task.status === "FAILED") throw new Error("generare eșuată");
+  }
+  throw new Error("generare: timeout");
+}
+
+async function copyToBlob(sourceUrl: string, path: string): Promise<string> {
+  const file = await fetch(sourceUrl, { signal: AbortSignal.timeout(30_000) });
+  if (!file.ok) throw new Error(`fișier HTTP ${file.status}`);
+  const blob = await put(path, Buffer.from(await file.arrayBuffer()), {
+    access: "public",
+    contentType: file.headers.get("content-type") ?? "image/jpeg",
+    addRandomSuffix: true,
+  });
+  return blob.url;
 }

@@ -8,6 +8,7 @@ import {
   real,
   jsonb,
   pgEnum,
+  boolean,
 } from "drizzle-orm/pg-core";
 
 export const sectionEnum = pgEnum("section", [
@@ -51,9 +52,32 @@ export const articles = pgTable("articles", {
   // sursele originale (nu yam.md ca și canal) care au raportat evenimentul —
   // pentru atribuire în articol, cf. plan-implementare-agregator-stiri-ai.md 3.1
   sourceUrls: jsonb("source_urls").$type<string[]>().notNull().default([]),
+  // aceleași surse, cu nume — afișate ca linkuri "Surse:" sub articol
+  sources: jsonb("sources").$type<{ name: string; url: string }[]>().notNull().default([]),
+
+  // id-ul resursei de stock Magnific — evită aceeași poză la articole diferite
+  imageResourceId: integer("image_resource_id"),
+  // id-ul articolului din WordPress, doar pentru arhiva importată
+  wpId: integer("wp_id").unique(),
 
   publishedAt: timestamp("published_at", { withTimezone: true }).notNull().defaultNow(),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
+// Știri brute preluate din RSS la fiecare 30 de minute (fără AI). Feed-urile
+// țin doar ultimele 2-12 ore — colectarea continuă garantează că nu se pierde
+// nimic între rulările de generare. `manual` = link adăugat de editor din
+// /admin, procesat obligatoriu la următoarea rulare, indiferent de scor.
+export const candidates = pgTable("candidates", {
+  id: serial("id").primaryKey(),
+  url: text("url").notNull().unique(),
+  title: text("title").notNull(),
+  summary: text("summary").notNull(),
+  sourceName: varchar("source_name", { length: 100 }).notNull(),
+  feedId: varchar("feed_id", { length: 50 }).notNull(),
+  publishedAt: timestamp("published_at", { withTimezone: true }).notNull(),
+  manual: boolean("manual").notNull().default(false),
+  processedAt: timestamp("processed_at", { withTimezone: true }),
 });
 
 // Un rând per rulare de pipeline — audit/observabilitate, nu blochează nimic
@@ -66,5 +90,7 @@ export const pipelineRuns = pgTable("pipeline_runs", {
   candidatesFetched: integer("candidates_fetched").notNull().default(0),
   candidatesClassified: integer("candidates_classified").notNull().default(0),
   articlesPublished: integer("articles_published").notNull().default(0),
+  // echivalent consumat din creditul Agent SDK — baza plafonului lunar din run.ts
+  costUsd: real("cost_usd").notNull().default(0),
   errorMessage: text("error_message"),
 });

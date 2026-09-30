@@ -24,7 +24,7 @@ async function main() {
   const db = getDb();
   const [row] = await db
     .update(articles)
-    .set({ status: "published" })
+    .set({ status: "published", publishedAt: new Date() })
     .where(eq(articles.id, id))
     .returning({ id: articles.id, title: articles.title, slug: articles.slug });
 

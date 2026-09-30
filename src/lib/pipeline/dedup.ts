@@ -1,4 +1,6 @@
 import type { RawCandidate, CandidateGroup } from "./types";
+
+export type StoredCandidate = RawCandidate & { id: number; manual: boolean };
 import { stripDiacritics } from "./text-normalize";
 
 // Grupare pe similaritate de titlu (Jaccard pe tokeni, fără diacritice/majuscule).
@@ -34,7 +36,7 @@ const STOPWORDS = new Set([
   "an",
 ]);
 
-const SIMILARITY_THRESHOLD = 0.45;
+const SIMILARITY_THRESHOLD = 0.3; // duplicatele ratate aici le prinde clasificatorul (same_as)
 
 export function normalizeTitle(title: string): string {
   return stripDiacritics(title)
@@ -59,8 +61,8 @@ function jaccardSimilarity(a: Set<string>, b: Set<string>): number {
   return intersection / (a.size + b.size - intersection);
 }
 
-export function groupCandidates(candidates: RawCandidate[]): CandidateGroup[] {
-  const groups: { tokens: Set<string>; items: RawCandidate[] }[] = [];
+export function groupCandidates(candidates: StoredCandidate[]): CandidateGroup[] {
+  const groups: { tokens: Set<string>; items: StoredCandidate[] }[] = [];
 
   for (const candidate of candidates) {
     if (!candidate.title) continue;
@@ -85,5 +87,7 @@ export function groupCandidates(candidates: RawCandidate[]): CandidateGroup[] {
     representativeTitle: g.items[0].title,
     items: g.items.sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime()),
     sourceNames: [...new Set(g.items.map((i) => i.sourceName))],
+    manual: g.items.some((i) => i.manual),
+    candidateIds: g.items.map((i) => i.id),
   }));
 }

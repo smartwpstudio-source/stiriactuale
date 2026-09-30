@@ -12,6 +12,7 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "node --env-file=.env.local node_modules/drizzle-kit/bin.cjs migrate",
     "pipeline:run": "tsx scripts/pipeline/run.ts",
+    "pipeline:collect": "tsx scripts/pipeline/collect.ts",
     "articles:list-drafts": "tsx scripts/pipeline/list-drafts.ts",
     "articles:publish": "tsx scripts/pipeline/publish-article.ts"
   },

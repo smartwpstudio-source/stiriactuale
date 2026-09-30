@@ -22,6 +22,7 @@ function mapRow(row: typeof articlesTable.$inferSelect): Article {
     sourceCount: row.sourceCount,
     imageUrl: row.imageUrl ?? undefined,
     imageAlt: row.imageAltText ?? undefined,
+    sources: row.sources,
   };
 }
 

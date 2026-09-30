@@ -8,7 +8,7 @@ export const SECTION_LABELS: Record<Section, string> = {
 };
 
 // Denumiri corecte pentru raioanele folosite în fixtures / date reale de migrare
-// și în interogările pipeline-ului AI (căutare Google News per raion).
+// și ca listă închisă pentru clasificatorul pipeline-ului AI.
 // Fallback la un title-case simplu pentru orice slug care nu e listat aici.
 export const RAION_NAMES: Record<string, string> = {
   drochia: "Drochia",
@@ -32,7 +32,8 @@ export const RAION_NAMES: Record<string, string> = {
   glodeni: "Glodeni",
   "stefan-voda": "Ștefan Vodă",
   criuleni: "Criuleni",
-  soldanesti: "Soldănești",
+  soldanesti: "Șoldănești",
+  basarabeasca: "Basarabeasca",
   ialoveni: "Ialoveni",
   ungheni: "Ungheni",
   cimislia: "Cimișlia",
@@ -66,6 +67,17 @@ export const COUNTRY_NAMES: Record<string, string> = {
   germania: "Germania",
   "regatul-unit": "Regatul Unit",
   spania: "Spania",
+  romania: "România",
+  portugalia: "Portugalia",
+  irlanda: "Irlanda",
+  belgia: "Belgia",
+  olanda: "Olanda",
+  cehia: "Cehia",
+  polonia: "Polonia",
+  israel: "Israel",
+  rusia: "Rusia",
+  sua: "SUA",
+  canada: "Canada",
 };
 
 export function countryLabel(slug: string): string {

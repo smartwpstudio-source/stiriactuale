@@ -1,40 +1,47 @@
-import { eq } from "drizzle-orm";
+import { and, eq, gte, inArray, isNull, or, sum } from "drizzle-orm";
 import { getDb } from "./db/client";
-import { pipelineRuns } from "./db/schema";
-import { fetchAllSources } from "./sources";
+import { candidates, pipelineRuns } from "./db/schema";
+import { collectCandidates } from "./collect";
 import { groupCandidates } from "./dedup";
 import { classifyGroups } from "./classify";
 import { generateArticle } from "./generate";
 import { computeQualityScore } from "./scoring";
-import { findStockImage } from "./image";
-import { isDuplicate, loadRecentFingerprints, publishArticle } from "./publish";
+import { findArticleImage } from "./image";
+import { isDuplicate, loadRecentFingerprints, loadUsedImageIds, publishArticle } from "./publish";
 import { mapWithConcurrency } from "./concurrency";
 import { spentUsd } from "./llm";
 import type { Section } from "@/lib/content/types";
 import type { ScoredCandidate } from "./types";
 
-// Prag minim + plafon de siguranță INDEPENDENTE per secțiune — nu cotă fixă
-// globală. Vezi plan-implementare-agregator-stiri-ai.md 3.3.
+// Prag minim + plafon per rulare, independente pe secțiuni. Regiunile și
+// diaspora au prag mai mic și plafon relativ mai mare — prioritatea redacției.
 const SECTION_CONFIG: Record<Section, { minScore: number; cap: number }> = {
-  regiuni: { minScore: 55, cap: 5 },
-  national: { minScore: 55, cap: 5 },
-  international: { minScore: 50, cap: 3 },
+  regiuni: { minScore: 45, cap: 3 },
+  national: { minScore: 55, cap: 3 },
+  international: { minScore: 65, cap: 1 },
   diaspora: { minScore: 45, cap: 2 },
 };
 
-// Top N grupuri cu 2+ surse, după numărul de surse (35% din scor) — plafon
-// generos (>2.5x maximul publicabil per rulare), taie coada lungă.
-const MAX_CANDIDATES_TO_CLASSIFY = 40;
+// Fereastra de candidați: rulările sunt la 2h, deci un eveniment e văzut de
+// 3 ori — dacă prinde surse noi, poate trece pragul la rularea următoare.
+const WINDOW_HOURS = 6;
+const MAX_GROUPS_TO_CLASSIFY = 60;
 const PUBLISH_CONCURRENCY = 4;
 
+// Plafon lunar din creditul Agent SDK (100$ pe Max 5x). Peste el, pipeline-ul
+// doar colectează — nu se ajunge niciodată la facturare suplimentară.
+const MONTHLY_BUDGET_USD = 80;
+
 export interface PipelineRunSummary {
-  candidatesFetched: number;
+  collected: number;
+  failedFeeds: string[];
   groupsFormed: number;
   candidatesClassified: number;
   articlesPublished: number;
-  failedFeeds: number;
   bySection: Record<Section, number>;
-  costUsd: number; // echivalent consumat din creditul Agent SDK al abonamentului
+  costUsd: number;
+  monthCostUsd: number;
+  skipped?: string;
 }
 
 export async function runPipeline(): Promise<PipelineRunSummary> {
@@ -42,96 +49,147 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
   const [run] = await db.insert(pipelineRuns).values({}).returning({ id: pipelineRuns.id });
 
   const summary: PipelineRunSummary = {
-    candidatesFetched: 0,
+    collected: 0,
+    failedFeeds: [],
     groupsFormed: 0,
     candidatesClassified: 0,
     articlesPublished: 0,
-    failedFeeds: 0,
     bySection: { regiuni: 0, national: 0, international: 0, diaspora: 0 },
     costUsd: 0,
+    monthCostUsd: 0,
   };
 
   try {
-    const { candidates, failedFeeds } = await fetchAllSources();
-    summary.candidatesFetched = candidates.length;
-    summary.failedFeeds = failedFeeds.length;
+    // Rezervă pentru colectarea la 30 min: dacă cron-ul Vercel a căzut, nu
+    // lucrăm pe date vechi.
+    try {
+      const c = await collectCandidates();
+      summary.collected = c.inserted;
+      summary.failedFeeds = c.failedFeeds;
+    } catch (err) {
+      summary.failedFeeds.push(`colectare: ${err instanceof Error ? err.message : String(err)}`);
+    }
 
-    const groups = groupCandidates(candidates);
+    const monthStart = new Date();
+    monthStart.setUTCDate(1);
+    monthStart.setUTCHours(0, 0, 0, 0);
+    const [{ total }] = await db
+      .select({ total: sum(pipelineRuns.costUsd) })
+      .from(pipelineRuns)
+      .where(gte(pipelineRuns.startedAt, monthStart));
+    summary.monthCostUsd = Number(total ?? 0);
+    if (summary.monthCostUsd >= MONTHLY_BUDGET_USD) {
+      summary.skipped = `plafon lunar atins (${summary.monthCostUsd.toFixed(2)}$ / ${MONTHLY_BUDGET_USD}$)`;
+      await finish(run.id, summary);
+      return summary;
+    }
+
+    const rows = await db
+      .select()
+      .from(candidates)
+      .where(
+        or(
+          gte(candidates.publishedAt, new Date(Date.now() - WINDOW_HOURS * 3600_000)),
+          and(eq(candidates.manual, true), isNull(candidates.processedAt)),
+        ),
+      );
+    const groups = groupCandidates(
+      rows.map((r) => ({ ...r, sourceUrl: r.url, manual: r.manual && !r.processedAt })),
+    );
     summary.groupsFormed = groups.length;
 
-    // Evenimentele deja publicate/draft în ultimele 72h se elimină ÎNAINTE de
-    // clasificare — nu plătim clasificare/generare pentru duplicate.
+    // Duplicatele (draft/publicat în ultimele 72h) ies ÎNAINTE de clasificare —
+    // nu plătim pentru ele. Linkurile manuale trec oricum: editorul a decis.
     const recent = await loadRecentFingerprints();
     const fresh = groups
-      .filter((g) => g.sourceNames.length >= 2 && !isDuplicate(g, recent))
-      .sort((a, b) => b.sourceNames.length - a.sourceNames.length)
-      .slice(0, MAX_CANDIDATES_TO_CLASSIFY);
+      .filter((g) => g.manual || !isDuplicate(g, recent))
+      .sort(
+        (a, b) =>
+          Number(b.manual) - Number(a.manual) ||
+          b.sourceNames.length - a.sourceNames.length ||
+          b.items[0].publishedAt.getTime() - a.items[0].publishedAt.getTime(),
+      )
+      .slice(0, MAX_GROUPS_TO_CLASSIFY);
 
     const classifications = fresh.length ? await classifyGroups(fresh) : [];
+    // Duplicatele semnalate de clasificator se contopesc în grupul anterior —
+    // mai multe surse = scor mai bun și un singur articol.
+    classifications.forEach((c, i) => {
+      if (c?.sameAs === undefined) return;
+      const target = fresh[resolve(classifications, c.sameAs)];
+      target.items.push(...fresh[i].items);
+      target.sourceNames = [...new Set([...target.sourceNames, ...fresh[i].sourceNames])];
+      target.candidateIds.push(...fresh[i].candidateIds);
+      target.manual ||= fresh[i].manual;
+    });
     const scored: ScoredCandidate[] = [];
     classifications.forEach((classification, i) => {
-      if (!classification) return;
-      scored.push({
-        group: fresh[i],
-        classification,
-        qualityScore: computeQualityScore(fresh[i], classification),
-      });
+      if (!classification || classification.sameAs !== undefined) return;
+      scored.push({ group: fresh[i], classification, qualityScore: computeQualityScore(fresh[i], classification) });
     });
     summary.candidatesClassified = scored.length;
 
+    const toPublish = scored.filter((c) => c.group.manual);
     const bySection = new Map<Section, ScoredCandidate[]>();
-    for (const candidate of scored) {
-      const { section } = candidate.classification;
-      if (candidate.qualityScore < SECTION_CONFIG[section].minScore) continue;
-      bySection.set(section, [...(bySection.get(section) ?? []), candidate]);
+    for (const c of scored) {
+      const { section, reject } = c.classification;
+      if (c.group.manual || reject || c.qualityScore < SECTION_CONFIG[section].minScore) continue;
+      bySection.set(section, [...(bySection.get(section) ?? []), c]);
     }
-
-    const toPublish: ScoredCandidate[] = [];
     for (const [section, list] of bySection) {
-      toPublish.push(
-        ...list.sort((a, b) => b.qualityScore - a.qualityScore).slice(0, SECTION_CONFIG[section].cap),
-      );
+      toPublish.push(...list.sort((a, b) => b.qualityScore - a.qualityScore).slice(0, SECTION_CONFIG[section].cap));
     }
 
-    const published = await mapWithConcurrency(
-      toPublish,
-      PUBLISH_CONCURRENCY,
-      async (candidate): Promise<Section | null> => {
-        try {
-          const generated = await generateArticle(candidate.group, candidate.classification);
-          const imageUrl = await findStockImage(generated.stock_query, generated.slug);
-          await publishArticle(candidate, generated, imageUrl);
-          return candidate.classification.section;
-        } catch (err) {
-          console.error(`Articol eșuat: ${err instanceof Error ? err.message : String(err)}`);
-          return null;
+    const usedImageIds = await loadUsedImageIds();
+    const published = await mapWithConcurrency(toPublish, PUBLISH_CONCURRENCY, async (c): Promise<Section | null> => {
+      try {
+        const generated = await generateArticle(c.group, c.classification);
+        const image = await findArticleImage(generated.stock_query, generated.image_prompt, generated.slug, usedImageIds);
+        await publishArticle(c, generated, image);
+        if (c.group.manual) {
+          await db.update(candidates).set({ processedAt: new Date() }).where(inArray(candidates.id, c.group.candidateIds));
         }
-      },
-    );
+        return c.classification.section;
+      } catch (err) {
+        console.error(`Articol eșuat: ${err instanceof Error ? err.message : String(err)}`);
+        return null;
+      }
+    });
 
     for (const section of published) {
       if (!section) continue;
       summary.articlesPublished++;
       summary.bySection[section]++;
     }
-    summary.costUsd = Math.round(spentUsd() * 1000) / 1000;
-
-    await db
-      .update(pipelineRuns)
-      .set({
-        finishedAt: new Date(),
-        candidatesFetched: summary.candidatesFetched,
-        candidatesClassified: summary.candidatesClassified,
-        articlesPublished: summary.articlesPublished,
-      })
-      .where(eq(pipelineRuns.id, run.id));
-
+    await finish(run.id, summary);
     return summary;
   } catch (err) {
+    summary.costUsd = spentUsd();
     await db
       .update(pipelineRuns)
-      .set({ finishedAt: new Date(), errorMessage: String(err) })
+      .set({ finishedAt: new Date(), costUsd: summary.costUsd, errorMessage: String(err) })
       .where(eq(pipelineRuns.id, run.id));
     throw err;
   }
+}
+
+// Lanț same_as (3 -> 1 -> 0) până la grupul rădăcină; sameAs < i garantează terminarea.
+function resolve(classifications: ({ sameAs?: number } | null)[], i: number): number {
+  const next = classifications[i]?.sameAs;
+  return next === undefined ? i : resolve(classifications, next);
+}
+
+async function finish(runId: number, summary: PipelineRunSummary) {
+  summary.costUsd = Math.round(spentUsd() * 1000) / 1000;
+  await getDb()
+    .update(pipelineRuns)
+    .set({
+      finishedAt: new Date(),
+      candidatesFetched: summary.collected,
+      candidatesClassified: summary.candidatesClassified,
+      articlesPublished: summary.articlesPublished,
+      costUsd: summary.costUsd,
+      errorMessage: summary.skipped ?? null,
+    })
+    .where(eq(pipelineRuns.id, runId));
 }

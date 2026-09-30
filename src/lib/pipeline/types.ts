@@ -14,6 +14,8 @@ export interface CandidateGroup {
   representativeTitle: string;
   items: RawCandidate[];
   sourceNames: string[]; // unice
+  manual: boolean; // adăugat de editor din /admin — sare peste scor și plafoane
+  candidateIds: number[];
 }
 
 export interface ClassificationResult {
@@ -21,8 +23,11 @@ export interface ClassificationResult {
   locality?: string;
   country?: string;
   topics: Topic[];
-  factualRichness: number; // 0-100, cf. plan-implementare-agregator-stiri-ai.md 3.3
+  impact: number; // 0-100, criteriile editoriale ale redacției
+  factualRichness: number; // 0-100
   confidence: number; // 0-100
+  reject: boolean; // horoscop, publicitate, monden fără miză etc.
+  sameAs?: number; // indexul unui grup anterior despre același eveniment
 }
 
 export interface ScoredCandidate {
@@ -40,4 +45,5 @@ export interface GeneratedArticle {
   tag_uri: string[];
   alt_text_imagine: string;
   stock_query: string;
+  image_prompt: string;
 }
