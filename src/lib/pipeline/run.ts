@@ -1,6 +1,6 @@
-import { and, eq, gte, inArray, isNull, or, sum } from "drizzle-orm";
+import { and, count, eq, gte, inArray, isNull, or } from "drizzle-orm";
 import { getDb } from "./db/client";
-import { candidates, pipelineRuns } from "./db/schema";
+import { articles, candidates, pipelineRuns } from "./db/schema";
 import { collectCandidates } from "./collect";
 import { groupCandidates } from "./dedup";
 import { classifyGroups } from "./classify";
@@ -14,7 +14,7 @@ import type { Section } from "@/lib/content/types";
 import type { ScoredCandidate } from "./types";
 
 // Prag minim + plafon per rulare, independente pe secțiuni. Regiunile și
-// diaspora au prag mai mic și plafon relativ mai mare — prioritatea redacției.
+// diaspora au prag mai mic — prioritatea redacției.
 const SECTION_CONFIG: Record<Section, { minScore: number; cap: number }> = {
   regiuni: { minScore: 45, cap: 3 },
   national: { minScore: 55, cap: 3 },
@@ -25,12 +25,15 @@ const SECTION_CONFIG: Record<Section, { minScore: number; cap: number }> = {
 // Fereastra de candidați: rulările sunt la 2h, deci un eveniment e văzut de
 // 3 ori — dacă prinde surse noi, poate trece pragul la rularea următoare.
 const WINDOW_HOURS = 6;
-const MAX_GROUPS_TO_CLASSIFY = 60;
+const MAX_GROUPS_TO_CLASSIFY = 40;
 const PUBLISH_CONCURRENCY = 4;
 
-// Plafon lunar din creditul Agent SDK (100$ pe Max 5x). Peste el, pipeline-ul
-// doar colectează — nu se ajunge niciodată la facturare suplimentară.
-const MONTHLY_BUDGET_USD = 80;
+// Apelurile Claude consumă din limitele abonamentului Max, comune cu munca
+// editorului — plafonul e în articole, nu în bani. 10/zi, max 3 pe rulare, ca
+// să rămână articole și pentru știrile de seară. Linkurile manuale nu intră
+// în plafon: editorul a decis explicit.
+const DAILY_ARTICLE_LIMIT = 10;
+const MAX_ARTICLES_PER_RUN = 3;
 
 export interface PipelineRunSummary {
   collected: number;
@@ -39,8 +42,7 @@ export interface PipelineRunSummary {
   candidatesClassified: number;
   articlesPublished: number;
   bySection: Record<Section, number>;
-  costUsd: number;
-  monthCostUsd: number;
+  costUsd: number; // echivalent la prețuri API — doar pentru a urmări consumul din limite
   skipped?: string;
 }
 
@@ -56,7 +58,6 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     articlesPublished: 0,
     bySection: { regiuni: 0, national: 0, international: 0, diaspora: 0 },
     costUsd: 0,
-    monthCostUsd: 0,
   };
 
   try {
@@ -68,20 +69,6 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       summary.failedFeeds = c.failedFeeds;
     } catch (err) {
       summary.failedFeeds.push(`colectare: ${err instanceof Error ? err.message : String(err)}`);
-    }
-
-    const monthStart = new Date();
-    monthStart.setUTCDate(1);
-    monthStart.setUTCHours(0, 0, 0, 0);
-    const [{ total }] = await db
-      .select({ total: sum(pipelineRuns.costUsd) })
-      .from(pipelineRuns)
-      .where(gte(pipelineRuns.startedAt, monthStart));
-    summary.monthCostUsd = Number(total ?? 0);
-    if (summary.monthCostUsd >= MONTHLY_BUDGET_USD) {
-      summary.skipped = `plafon lunar atins (${summary.monthCostUsd.toFixed(2)}$ / ${MONTHLY_BUDGET_USD}$)`;
-      await finish(run.id, summary);
-      return summary;
     }
 
     const rows = await db
@@ -100,9 +87,14 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
 
     // Duplicatele (draft/publicat în ultimele 72h) ies ÎNAINTE de clasificare —
     // nu plătim pentru ele. Linkurile manuale trec oricum: editorul a decis.
+    const dayStart = new Date();
+    dayStart.setUTCHours(0, 0, 0, 0); // 06-22 Chișinău cade în aceeași zi UTC
+    const [{ today }] = await db.select({ today: count() }).from(articles).where(gte(articles.createdAt, dayStart));
+    const autoSlots = Math.max(0, Math.min(MAX_ARTICLES_PER_RUN, DAILY_ARTICLE_LIMIT - today));
+
     const recent = await loadRecentFingerprints();
     const fresh = groups
-      .filter((g) => g.manual || !isDuplicate(g, recent))
+      .filter((g) => g.manual || (autoSlots > 0 && !isDuplicate(g, recent)))
       .sort(
         (a, b) =>
           Number(b.manual) - Number(a.manual) ||
@@ -136,9 +128,10 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       if (c.group.manual || reject || c.qualityScore < SECTION_CONFIG[section].minScore) continue;
       bySection.set(section, [...(bySection.get(section) ?? []), c]);
     }
-    for (const [section, list] of bySection) {
-      toPublish.push(...list.sort((a, b) => b.qualityScore - a.qualityScore).slice(0, SECTION_CONFIG[section].cap));
-    }
+    const auto = [...bySection].flatMap(([section, list]) =>
+      list.sort((a, b) => b.qualityScore - a.qualityScore).slice(0, SECTION_CONFIG[section].cap),
+    );
+    toPublish.push(...auto.sort((a, b) => b.qualityScore - a.qualityScore).slice(0, autoSlots));
 
     const usedImageIds = await loadUsedImageIds();
     const published = await mapWithConcurrency(toPublish, PUBLISH_CONCURRENCY, async (c): Promise<Section | null> => {
