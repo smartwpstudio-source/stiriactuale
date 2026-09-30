@@ -7,11 +7,11 @@ export interface BreadcrumbItem {
 
 export function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
   return (
-    <nav aria-label="breadcrumb" className="font-mono text-[10.5px] uppercase tracking-wide text-sub">
+    <nav aria-label="breadcrumb" className="font-mono text-xs uppercase tracking-wide text-sub">
       {items.map((item, i) => (
         <span key={i}>
           {item.href ? (
-            <Link href={item.href} className="hover:text-amber">
+            <Link href={item.href} className="hover:text-amber-ink">
               {item.label}
             </Link>
           ) : (

@@ -16,8 +16,8 @@ export function SectionFilterChips({
           href={basePath}
           className={`rounded border px-2.5 py-1 font-mono text-xs ${
             !active
-              ? "border-amber text-amber"
-              : "border-line text-sub hover:border-amber hover:text-amber"
+              ? "border-amber text-amber-ink"
+              : "border-line text-sub hover:border-amber hover:text-amber-ink"
           }`}
         >
           Toate
@@ -29,8 +29,8 @@ export function SectionFilterChips({
             href={`${basePath}/${item.slug}`}
             className={`rounded border px-2.5 py-1 font-mono text-xs ${
               active === item.slug
-                ? "border-amber text-amber"
-                : "border-line text-sub hover:border-amber hover:text-amber"
+                ? "border-amber text-amber-ink"
+                : "border-line text-sub hover:border-amber hover:text-amber-ink"
             }`}
           >
             {item.label}

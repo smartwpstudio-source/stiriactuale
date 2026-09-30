@@ -19,13 +19,13 @@ export function Hero({ article }: { article: Article }) {
       className="grid gap-6 border border-line bg-white p-4 sm:grid-cols-[1.2fr_1fr] sm:p-6"
     >
       <div>
-        <p className="font-mono text-[11px] uppercase tracking-wide text-amber">
+        <p className="font-mono text-xs uppercase tracking-wide text-amber-ink">
           în prim-plan
         </p>
         <h1 className="mt-2 font-serif text-2xl italic leading-tight text-ink sm:text-3xl">
           {article.title}
         </h1>
-        <p className="mt-3 font-mono text-[11px] text-sub">
+        <p className="mt-3 font-mono text-xs text-sub">
           {SECTION_LABELS[article.section]}
           {locationLabel ? ` · ${locationLabel}` : ""} · {formatTimeAgo(article.publishedAt)}
           {sourcesLabel(article.sourceCount)}

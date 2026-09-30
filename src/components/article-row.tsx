@@ -24,7 +24,7 @@ export function ArticleRow({ article }: { article: Article }) {
       <div>
         {article.topics[0] && <TopicLabel topic={article.topics[0]} />}
         <h3 className="mt-1 font-serif text-sm leading-snug text-ink">{article.title}</h3>
-        <p className="mt-1 font-mono text-[11px] text-sub">
+        <p className="mt-1 font-mono text-xs text-sub">
           {formatTimeAgo(article.publishedAt)}
           {sourcesLabel(article.sourceCount)}
         </p>

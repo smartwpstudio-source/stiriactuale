@@ -1,0 +1,73 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ContactEmail, StaticPage } from "@/components/static-page";
+import { FEEDS } from "@/lib/pipeline/sources";
+import { CONTACT_EMAIL } from "@/lib/site-info";
+
+export const metadata: Metadata = {
+  title: "Politica editorială",
+  description: "Cum alegem, redactăm și corectăm știrile — inclusiv folosirea inteligenței artificiale.",
+  alternates: { canonical: "/politica-editoriala/" },
+};
+
+export default function EditorialPolicyPage() {
+  return (
+    <StaticPage title="Politica editorială" updated="octombrie 2026">
+      <h2>Surse</h2>
+      <p>
+        Știrile pornesc de la informațiile publicate de redacții din Republica Moldova. Sursele urmărite în mod
+        curent: {FEEDS.map((f) => f.name).join(", ")}. Pe lângă acestea, editorul poate adăuga manual subiecte
+        relatate de alte publicații. Sursa originală e indicată nominal în text și, cu link, la finalul fiecărui
+        articol.
+      </p>
+
+      <h2>Folosirea inteligenței artificiale</h2>
+      <p>
+        Articolele sunt redactate cu ajutorul unui sistem de inteligență artificială, pe baza relatărilor surselor de
+        mai sus. Sistemul are reguli stricte: nu adaugă informații care nu apar în surse (nume, cifre, locuri,
+        declarații), rescrie textul cu propriile cuvinte în loc să-l copieze și atribuie fiecare informație sursei ei.
+        Un editor verifică articolele înainte de publicare și le corectează sau le respinge.
+      </p>
+
+      <h2>Ce publicăm</h2>
+      <p>
+        Prioritate au știrile cu efect direct asupra cititorilor: evenimentele din raioane, accidentele, cazurile
+        penale și de corupție, prețurile, tarifele și legile noi, subiectele care îi privesc pe moldovenii din
+        diaspora. Nu publicăm horoscoape, conținut publicitar deghizat în știre sau zvonuri neconfirmate.
+      </p>
+
+      <h2>Reguli pentru subiecte sensibile</h2>
+      <ul>
+        <li>
+          <strong>Prezumția de nevinovăție.</strong> Până la o hotărâre definitivă, persoanele sunt „bănuite”,
+          „învinuite” sau „acuzate”, niciodată prezentate ca vinovate.
+        </li>
+        <li>
+          <strong>Acuzațiile sunt atribuite</strong> celor care le formulează (procurori, poliție, denunțători) și nu
+          sunt prezentate ca fapte.
+        </li>
+        <li>
+          <strong>Victimele și minorii.</strong> Nu publicăm numele victimelor, ale minorilor și ale victimelor
+          violenței domestice sau sexuale.
+        </li>
+        <li>Fără detalii macabre, fără senzaționalism, fără judecăți de valoare.</li>
+      </ul>
+
+      <h2>Imagini</h2>
+      <p>
+        Fotografiile sunt ilustrative, din bănci de imagini licențiate, și nu înfățișează persoanele sau locurile
+        din articol, cu excepția cazurilor în care se precizează altfel. Imaginile generate cu inteligență artificială
+        sunt marcate „Imagine generată AI”. La accidente, crime și victime folosim doar imagini cu obiecte și locuri,
+        nu cu oameni.
+      </p>
+
+      <h2>Corecturi și drept la replică</h2>
+      <p>
+        Dacă găsești o greșeală de fapt sau ești vizat într-un articol, scrie-ne la{" "}
+        <ContactEmail email={CONTACT_EMAIL} /> (detalii pe pagina <Link href="/contact/">Contact</Link>). Corectăm
+        erorile cât mai repede, iar corecturile de fond sunt menționate în articol. Poziția persoanei vizate se adaugă
+        în articol sau se publică separat.
+      </p>
+    </StaticPage>
+  );
+}

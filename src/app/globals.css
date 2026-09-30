@@ -7,7 +7,10 @@
   --color-ink: #141820;
   --color-ink2: #1e2530;
   --color-paper: #eaeeea;
-  --color-amber: #c98d2e;
+  --color-amber: #c98d2e; /* accent: pe fundal închis, borduri, puncte */
+  /* amber pentru TEXT pe fundal deschis — #c98d2e are contrast 2,4 pe paper
+     (sub WCAG AA 4,5); #855a14 are 5,2 pe paper și 6,0 pe alb */
+  --color-amber-ink: #855a14;
   --color-teal: #2b6e64;
   --color-alert: #b23a2e;
   --color-line: #d3d7cf;
@@ -49,4 +52,26 @@ body {
 .prose-article p {
   margin-top: 0.75rem;
   line-height: 1.7;
+}
+
+/* Tailwind preflight scoate bulinele — lista "Ce înseamnă pentru tine" și
+   paginile statice au nevoie de ele. */
+.prose-article ul,
+.prose-article ol {
+  margin-top: 0.75rem;
+  padding-left: 1.25rem;
+  line-height: 1.7;
+}
+.prose-article ul { list-style: disc; }
+.prose-article ol { list-style: decimal; }
+.prose-article li { margin-top: 0.25rem; }
+.prose-article a {
+  color: var(--color-teal);
+  text-decoration: underline;
+}
+.prose-article blockquote {
+  margin-top: 0.75rem;
+  border-left: 3px solid var(--color-line);
+  padding-left: 1rem;
+  color: var(--color-sub);
 }

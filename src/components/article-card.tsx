@@ -18,7 +18,7 @@ export function ArticleCard({ article }: { article: Article }) {
       <div className="p-3">
         {article.topics[0] && <TopicLabel topic={article.topics[0]} />}
         <h3 className="mt-1 font-serif text-base leading-snug text-ink">{article.title}</h3>
-        <p className="mt-2 font-mono text-[11px] text-sub">
+        <p className="mt-2 font-mono text-xs text-sub">
           {formatTimeAgo(article.publishedAt)}
           {sourcesLabel(article.sourceCount)}
         </p>

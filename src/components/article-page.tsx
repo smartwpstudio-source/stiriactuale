@@ -74,7 +74,7 @@ export async function ArticlePage({
           {article.topics.map((t) => (
             <span
               key={t}
-              className="rounded border border-line px-2 py-1 font-mono text-[11px] text-sub"
+              className="rounded border border-line px-2 py-1 font-mono text-xs text-sub"
             >
               {TOPIC_LABELS[t]}
             </span>

@@ -42,7 +42,7 @@ export default async function HomePage() {
             <section key={section}>
               <div className="flex items-baseline justify-between">
                 <h2 className="font-serif text-xl text-ink">{SECTION_LABELS[section]}</h2>
-                <Link href={`/${section}/`} className="font-mono text-xs text-sub hover:text-amber">
+                <Link href={`/${section}/`} className="font-mono text-xs text-sub hover:text-amber-ink">
                   vezi toate
                 </Link>
               </div>

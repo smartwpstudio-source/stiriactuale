@@ -6,11 +6,14 @@
 //   - ultimele N articole citite                -> rămân disponibile offline
 // Fără push în v1 — decizie finală, brief-final-claude-code.md punctul 4.
 
-const VERSION = "v1";
+const VERSION = "v2"; // v2: admin exclus, cache static limitat
 const STATIC_CACHE = `stiriactuale-static-${VERSION}`;
 const PAGES_CACHE = `stiriactuale-pages-${VERSION}`;
 const ARTICLE_CACHE = `stiriactuale-articles-${VERSION}`;
 const MAX_OFFLINE_ARTICLES = 20;
+// Fișierele din /_next/static au hash în nume — fiecare deploy aduce altele,
+// cele vechi nu mai sunt cerute niciodată. Fără limită, cache-ul ar crește la infinit.
+const MAX_STATIC_ENTRIES = 150;
 
 const CURRENT_CACHES = [STATIC_CACHE, PAGES_CACHE, ARTICLE_CACHE];
 
@@ -57,12 +60,15 @@ async function trimCache(cacheName, maxEntries) {
   await Promise.all(toDelete.map((req) => cache.delete(req)));
 }
 
-async function cacheFirst(request, cacheName) {
+async function cacheFirst(request, cacheName, trimTo) {
   const cache = await caches.open(cacheName);
   const cached = await cache.match(request);
   if (cached) return cached;
   const response = await fetch(request);
-  if (response.ok) cache.put(request, response.clone());
+  if (response.ok) {
+    await cache.put(request, response.clone());
+    await trimCache(cacheName, trimTo);
+  }
   return response;
 }
 
@@ -88,9 +94,12 @@ self.addEventListener("fetch", (event) => {
 
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
+  // Panoul editorial, API-ul și căutarea nu se păstrează niciodată în cache —
+  // drafturile nepublicate nu au ce căuta în stocarea browserului.
+  if (/^\/(admin|api|cautare)(\/|$)/.test(url.pathname)) return;
 
   if (isStaticAsset(url)) {
-    event.respondWith(cacheFirst(request, STATIC_CACHE));
+    event.respondWith(cacheFirst(request, STATIC_CACHE, MAX_STATIC_ENTRIES));
     return;
   }
 

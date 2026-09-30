@@ -12,7 +12,7 @@ export async function StatusBar() {
 
   return (
     <div className="bg-ink2 text-paper">
-      <div className="mx-auto flex max-w-5xl items-center gap-2 px-4 py-1.5 font-mono text-[10.5px]">
+      <div className="mx-auto flex max-w-5xl items-center gap-2 px-4 py-1.5 font-mono text-xs">
         <span className="inline-block h-1.5 w-1.5 rounded-full bg-amber" />
         <span>ultima știre publicată: {formatTimeAgo(latest.publishedAt)}</span>
       </div>

@@ -22,7 +22,7 @@ export function ShareButtons({ url, title }: { url: string; title: string }) {
 
   return (
     <div className="mt-6 flex items-center gap-4">
-      <span className="font-mono text-[11px] uppercase tracking-wide text-sub">Distribuie</span>
+      <span className="font-mono text-xs uppercase tracking-wide text-sub">Distribuie</span>
       <div className="flex items-center gap-3">
         {links.map(({ label, href, Icon }) => (
           <a
@@ -31,7 +31,7 @@ export function ShareButtons({ url, title }: { url: string; title: string }) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={label}
-            className="text-sub hover:text-amber"
+            className="text-sub hover:text-amber-ink"
           >
             <Icon size={18} stroke={1.75} />
           </a>
