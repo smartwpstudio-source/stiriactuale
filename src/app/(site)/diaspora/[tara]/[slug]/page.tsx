@@ -8,6 +8,13 @@ import { absoluteUrl, breadcrumbJsonLd, newsArticleJsonLd } from "@/lib/seo";
 
 export const revalidate = 300;
 
+// Listă goală = nimic la build, fiecare URL se generează la prima vizită și
+// apoi se servește din cache (ISR). Fără ea, ruta ar fi randată la FIECARE
+// cerere, deși are `revalidate`.
+export function generateStaticParams() {
+  return [];
+}
+
 export async function generateMetadata({
   params,
 }: {

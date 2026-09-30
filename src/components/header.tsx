@@ -1,12 +1,6 @@
 import Link from "next/link";
 import { IconSearch } from "@tabler/icons-react";
-
-const NAV = [
-  { href: "/regiuni", label: "Regiuni" },
-  { href: "/national", label: "Național" },
-  { href: "/international", label: "Internațional" },
-  { href: "/diaspora", label: "Diaspora" },
-];
+import { NavLinks } from "./nav-links";
 
 export function Header() {
   return (
@@ -15,24 +9,15 @@ export function Header() {
         <Link href="/" className="font-serif text-2xl italic">
           Stiri actuale
         </Link>
-        <nav className="hidden gap-5 font-sans text-sm sm:flex">
-          {NAV.map((item) => (
-            <Link key={item.href} href={item.href} className="hover:text-amber">
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-        <button type="button" aria-label="Căutare" className="text-paper hover:text-amber">
+        <NavLinks className="hidden gap-5 font-sans text-sm sm:flex" itemClassName="" />
+        <Link href="/cautare/" aria-label="Căutare" className="text-paper hover:text-amber">
           <IconSearch size={18} stroke={1.75} />
-        </button>
+        </Link>
       </div>
-      <nav className="flex gap-4 overflow-x-auto px-4 pb-3 font-sans text-sm sm:hidden">
-        {NAV.map((item) => (
-          <Link key={item.href} href={item.href} className="whitespace-nowrap hover:text-amber">
-            {item.label}
-          </Link>
-        ))}
-      </nav>
+      <NavLinks
+        className="flex gap-4 overflow-x-auto px-4 pb-3 font-sans text-sm sm:hidden"
+        itemClassName="whitespace-nowrap"
+      />
     </header>
   );
 }

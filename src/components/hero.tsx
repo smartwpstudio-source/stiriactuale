@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArticleThumb } from "./article-thumb";
-import { formatTimeAgo } from "@/lib/format-time-ago";
+import { formatTimeAgo, sourcesLabel } from "@/lib/format-time-ago";
 import { articleUrl } from "@/lib/content/url";
 import { SECTION_LABELS, raionLabel, countryLabel } from "@/lib/content/geo";
 import type { Article } from "@/lib/content/types";
@@ -20,15 +20,15 @@ export function Hero({ article }: { article: Article }) {
     >
       <div>
         <p className="font-mono text-[11px] uppercase tracking-wide text-amber">
-          cel mai popular acum
+          în prim-plan
         </p>
         <h1 className="mt-2 font-serif text-2xl italic leading-tight text-ink sm:text-3xl">
           {article.title}
         </h1>
         <p className="mt-3 font-mono text-[11px] text-sub">
           {SECTION_LABELS[article.section]}
-          {locationLabel ? ` · ${locationLabel}` : ""} · {formatTimeAgo(article.publishedAt)} ·
-          raportat de {article.sourceCount} surse
+          {locationLabel ? ` · ${locationLabel}` : ""} · {formatTimeAgo(article.publishedAt)}
+          {sourcesLabel(article.sourceCount)}
         </p>
       </div>
       <ArticleThumb

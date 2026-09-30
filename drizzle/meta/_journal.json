@@ -29,6 +29,13 @@
       "when": 1790809814299,
       "tag": "0003_abandoned_eternity",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1790811367952,
+      "tag": "0004_unaccent",
+      "breakpoints": true
     }
   ]
 }

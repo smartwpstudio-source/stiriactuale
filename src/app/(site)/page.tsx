@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Hero } from "@/components/hero";
 import { ArticleCard } from "@/components/article-card";
-import { getAllArticles, getArticlesBySection } from "@/lib/content/queries";
+import { getHeroArticle, listArticles } from "@/lib/content/queries";
 import { SECTION_LABELS } from "@/lib/content/geo";
 import type { Section } from "@/lib/content/types";
 
@@ -14,9 +14,9 @@ export const revalidate = 60;
 const SECTIONS: Section[] = ["regiuni", "national", "international", "diaspora"];
 
 export default async function HomePage() {
-  const all = await getAllArticles();
+  const hero = await getHeroArticle();
 
-  if (all.length === 0) {
+  if (!hero) {
     return (
       <div className="mx-auto w-full max-w-5xl px-4 py-16 text-center">
         <p className="font-mono text-sm text-sub">Niciun articol publicat încă.</p>
@@ -24,13 +24,9 @@ export default async function HomePage() {
     );
   }
 
-  const hero = all[0];
-
   const sections = await Promise.all(
     SECTIONS.map(async (section) => {
-      const items = (await getArticlesBySection(section))
-        .filter((a) => a.slug !== hero.slug)
-        .slice(0, 3);
+      const items = (await listArticles({ section }, 1, 4)).items.filter((a) => a.slug !== hero.slug).slice(0, 3);
       return { section, items };
     }),
   );
@@ -46,7 +42,7 @@ export default async function HomePage() {
             <section key={section}>
               <div className="flex items-baseline justify-between">
                 <h2 className="font-serif text-xl text-ink">{SECTION_LABELS[section]}</h2>
-                <Link href={`/${section}`} className="font-mono text-xs text-sub hover:text-amber">
+                <Link href={`/${section}/`} className="font-mono text-xs text-sub hover:text-amber">
                   vezi toate
                 </Link>
               </div>

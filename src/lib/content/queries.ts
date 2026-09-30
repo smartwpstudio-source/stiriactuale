@@ -1,19 +1,37 @@
-import { and, desc, eq } from "drizzle-orm";
+import { and, count, desc, eq, gte, ne, or, sql, type SQL } from "drizzle-orm";
 import { getDb } from "@/lib/pipeline/db/client";
-import { articles as articlesTable } from "@/lib/pipeline/db/schema";
+import { articles as t } from "@/lib/pipeline/db/schema";
 import type { Article, Section, Topic } from "./types";
 
-// Citește din Postgres (populat de pipeline-ul AI) — doar articole cu
-// status "published". "draft" rămâne în review manual, nu apare pe site
-// (plan-implementare-agregator-stiri-ai.md 3.8). Nu mai există fixtures în
-// producție; decizia de conținut real de la pasul 4 e acum rezolvată.
+// Doar articole "published" — draft-urile stau în /admin. Listele nu citesc
+// corpul articolului (bodyHtml): cu arhiva WordPress sunt mii de rânduri, iar
+// o listă are nevoie doar de titlu, dată, imagine.
 
-function mapRow(row: typeof articlesTable.$inferSelect): Article {
+export const PAGE_SIZE = 20;
+
+const listColumns = {
+  slug: t.slug,
+  title: t.title,
+  leadText: t.leadText,
+  section: t.section,
+  locality: t.locality,
+  country: t.country,
+  topics: t.topics,
+  publishedAt: t.publishedAt,
+  sourceCount: t.sourceCount,
+  imageUrl: t.imageUrl,
+  imageAltText: t.imageAltText,
+  sources: t.sources,
+};
+
+type ListRow = { [K in keyof typeof listColumns]: (typeof t.$inferSelect)[K] };
+
+function mapRow(row: ListRow & { bodyHtml?: string }): Article {
   return {
     slug: row.slug,
     title: row.title,
     lead: row.leadText,
-    bodyHtml: row.bodyHtml,
+    bodyHtml: row.bodyHtml ?? "",
     section: row.section,
     locality: row.locality ?? undefined,
     country: row.country ?? undefined,
@@ -26,19 +44,58 @@ function mapRow(row: typeof articlesTable.$inferSelect): Article {
   };
 }
 
-export async function getAllArticles(): Promise<Article[]> {
+export interface ArticleFilter {
+  section?: Section;
+  locality?: string;
+  country?: string;
+  topic?: Topic;
+  q?: string;
+}
+
+function where(f: ArticleFilter): SQL {
+  const c: SQL[] = [eq(t.status, "published")];
+  if (f.section) c.push(eq(t.section, f.section));
+  if (f.locality) c.push(eq(t.locality, f.locality));
+  if (f.country) c.push(eq(t.country, f.country));
+  if (f.topic) c.push(sql`${t.topics} @> ${JSON.stringify([f.topic])}::jsonb`);
+  if (f.q) {
+    // unaccent: "chisinau" găsește "Chișinău". ponytail: scanare secvențială,
+    // ok la câteva mii de rânduri; index trigram dacă arhiva crește mult.
+    const pattern = `%${f.q.replace(/[\\%_]/g, (m) => `\\${m}`)}%`;
+    c.push(sql`(unaccent(${t.title}) ILIKE unaccent(${pattern}) OR unaccent(${t.leadText}) ILIKE unaccent(${pattern}))`);
+  }
+  return and(...c)!;
+}
+
+export async function listArticles(f: ArticleFilter, page = 1, pageSize = PAGE_SIZE) {
   const db = getDb();
-  const rows = await db
-    .select()
-    .from(articlesTable)
-    .where(eq(articlesTable.status, "published"))
-    .orderBy(desc(articlesTable.publishedAt));
-  return rows.map(mapRow);
+  const [rows, [{ total }]] = await Promise.all([
+    db
+      .select(listColumns)
+      .from(t)
+      .where(where(f))
+      .orderBy(desc(t.publishedAt))
+      .limit(pageSize)
+      .offset((page - 1) * pageSize),
+    db.select({ total: count() }).from(t).where(where(f)),
+  ]);
+  return { items: rows.map(mapRow), total, pages: Math.max(1, Math.ceil(total / pageSize)) };
 }
 
 export async function getLatestArticle(): Promise<Article | null> {
-  const all = await getAllArticles();
-  return all[0] ?? null;
+  return (await listArticles({}, 1, 1)).items[0] ?? null;
+}
+
+// Știrea din prim-plan: cel mai mare scor din ultimele 12 ore (nu doar cea
+// mai nouă); dacă nu e nimic recent, cea mai nouă.
+export async function getHeroArticle(): Promise<Article | null> {
+  const [row] = await getDb()
+    .select(listColumns)
+    .from(t)
+    .where(and(eq(t.status, "published"), gte(t.publishedAt, new Date(Date.now() - 12 * 3600_000))))
+    .orderBy(desc(t.qualityScore), desc(t.publishedAt))
+    .limit(1);
+  return row ? mapRow(row) : getLatestArticle();
 }
 
 export async function getArticleBySection(
@@ -47,51 +104,55 @@ export async function getArticleBySection(
   locality?: string,
   country?: string,
 ): Promise<Article | undefined> {
-  const db = getDb();
-  const conditions = [
-    eq(articlesTable.status, "published"),
-    eq(articlesTable.section, section),
-    eq(articlesTable.slug, slug),
-  ];
-  if (locality !== undefined) conditions.push(eq(articlesTable.locality, locality));
-  if (country !== undefined) conditions.push(eq(articlesTable.country, country));
-
-  const rows = await db
-    .select()
-    .from(articlesTable)
-    .where(and(...conditions))
+  const c = [eq(t.status, "published"), eq(t.section, section), eq(t.slug, slug)];
+  if (locality !== undefined) c.push(eq(t.locality, locality));
+  if (country !== undefined) c.push(eq(t.country, country));
+  const [row] = await getDb()
+    .select({ ...listColumns, bodyHtml: t.bodyHtml })
+    .from(t)
+    .where(and(...c))
     .limit(1);
-  return rows[0] ? mapRow(rows[0]) : undefined;
+  return row ? mapRow(row) : undefined;
 }
 
-export async function getArticlesBySection(
-  section: Section,
-  opts?: { locality?: string; country?: string },
-): Promise<Article[]> {
-  const db = getDb();
-  const conditions = [eq(articlesTable.status, "published"), eq(articlesTable.section, section)];
-  if (opts?.locality) conditions.push(eq(articlesTable.locality, opts.locality));
-  if (opts?.country) conditions.push(eq(articlesTable.country, opts.country));
+// Același subiect sau, pentru regiuni/diaspora, același raion/țară.
+export async function getSimilarArticles(article: Article, limit = 3): Promise<Article[]> {
+  const related: SQL[] = [];
+  for (const topic of article.topics) related.push(sql`${t.topics} @> ${JSON.stringify([topic])}::jsonb`);
+  if (article.locality) related.push(eq(t.locality, article.locality));
+  if (article.country) related.push(eq(t.country, article.country));
+  if (!related.length) related.push(eq(t.section, article.section));
 
-  const rows = await db
-    .select()
-    .from(articlesTable)
-    .where(and(...conditions))
-    .orderBy(desc(articlesTable.publishedAt));
+  const rows = await getDb()
+    .select(listColumns)
+    .from(t)
+    .where(and(eq(t.status, "published"), ne(t.slug, article.slug), or(...related)))
+    .orderBy(desc(t.publishedAt))
+    .limit(limit);
   return rows.map(mapRow);
 }
 
-export async function getArticlesByTopic(topic: Topic): Promise<Article[]> {
-  // Dataset la scara actuală (zeci-sute de articole) — filtrare pe subiect
-  // în JS, mai simplu și mai robust decât o interogare JSONB brută pe
-  // container-ul de topics. De reconsiderat dacă volumul crește mult.
-  const all = await getAllArticles();
-  return all.filter((a) => a.topics.includes(topic));
+// Câte articole are fiecare raion/țară — hub-urile goale primesc noindex,
+// ies din sitemap și din filtre.
+export async function getHubCounts() {
+  const rows = await getDb()
+    .select({ locality: t.locality, country: t.country, n: count() })
+    .from(t)
+    .where(eq(t.status, "published"))
+    .groupBy(t.locality, t.country);
+  const localities: Record<string, number> = {};
+  const countries: Record<string, number> = {};
+  for (const r of rows) {
+    if (r.locality) localities[r.locality] = (localities[r.locality] ?? 0) + r.n;
+    if (r.country) countries[r.country] = (countries[r.country] ?? 0) + r.n;
+  }
+  return { localities, countries };
 }
 
-export async function getSimilarArticles(article: Article, limit = 3): Promise<Article[]> {
-  const all = await getAllArticles();
-  return all
-    .filter((a) => a.slug !== article.slug && a.topics.some((t) => article.topics.includes(t)))
-    .slice(0, limit);
+export async function getSitemapArticles() {
+  return getDb()
+    .select({ slug: t.slug, section: t.section, locality: t.locality, country: t.country, publishedAt: t.publishedAt })
+    .from(t)
+    .where(eq(t.status, "published"))
+    .orderBy(desc(t.publishedAt));
 }

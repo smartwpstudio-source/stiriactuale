@@ -6,11 +6,14 @@ import { raionLabel } from "@/lib/content/geo";
 import { articleUrl } from "@/lib/content/url";
 import { absoluteUrl, breadcrumbJsonLd, newsArticleJsonLd } from "@/lib/seo";
 
-// Fără generateStaticParams: setul de articole vine din pipeline (crește
-// continuu), nu mai e o listă fixă. Pagina se generează la prima cerere și
-// se recache-uiește la fiecare `revalidate` — ISR, cf. arhitectura-site-nou-
-// taxonomie-pwa-seo.md secțiunea 2.
 export const revalidate = 300;
+
+// Listă goală = nimic la build, fiecare URL se generează la prima vizită și
+// apoi se servește din cache (ISR). Fără ea, ruta ar fi randată la FIECARE
+// cerere, deși are `revalidate`.
+export function generateStaticParams() {
+  return [];
+}
 
 export async function generateMetadata({
   params,

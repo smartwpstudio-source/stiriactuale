@@ -11,3 +11,8 @@ export function formatTimeAgo(iso: string, now: Date = new Date()): string {
   const diffDays = Math.round(diffHours / 24);
   return `acum ${diffDays} ${diffDays === 1 ? "zi" : "zile"}`;
 }
+
+// "din 3 surse" doar când e informativ — "raportat de 1 surse" suna a eroare.
+export function sourcesLabel(n: number): string {
+  return n > 1 ? ` · din ${n} surse` : "";
+}
