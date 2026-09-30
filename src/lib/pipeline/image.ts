@@ -20,40 +20,60 @@ export interface ArticleImage {
 //    există deloc în API-ul Magnific (verificat 2026-10-01).
 // URL-urile Magnific sunt semnate și expiră, așa că fișierul se copiază în
 // Vercel Blob. Fără chei sau la eroare -> articol fără imagine, nu eșec.
+function magnificHeaders(): Record<string, string> | null {
+  const key = process.env.MAGNIFIC_API_KEY;
+  if (!key || !process.env.BLOB_READ_WRITE_TOKEN) return null;
+  return { "x-magnific-api-key": key, "Content-Type": "application/json" };
+}
+
+async function getJson<T>(url: string, headers: Record<string, string>): Promise<T> {
+  const res = await fetch(url, { headers, signal: AbortSignal.timeout(30_000) });
+  if (!res.ok) throw new Error(`HTTP ${res.status} la ${url.replace(API, "").split("?")[0]}`);
+  return res.json() as Promise<T>;
+}
+
+// Folosit și de /admin (înlocuire imagine) — `preview` e miniatura publică.
+export async function searchStock(term: string, limit: number): Promise<{ id: number; preview: string }[]> {
+  const headers = magnificHeaders();
+  if (!headers) return [];
+  const params = new URLSearchParams({
+    term,
+    limit: String(limit),
+    order: "relevance",
+    "filters[content_type][photo]": "1",
+    "filters[orientation][landscape]": "1",
+  });
+  const { data = [] } = await getJson<{ data?: { id: number; image?: { source?: { url?: string } } }[] }>(
+    `${API}/resources?${params}`,
+    headers,
+  );
+  return data.map((r) => ({ id: r.id, preview: r.image?.source?.url ?? "" }));
+}
+
+export async function stockToBlob(id: number, slug: string): Promise<string> {
+  const headers = magnificHeaders();
+  if (!headers) throw new Error("MAGNIFIC_API_KEY / BLOB_READ_WRITE_TOKEN lipsesc");
+  const { data } = await getJson<{ data: { url?: string; signed_url?: string } }>(
+    `${API}/resources/${id}/download?image_size=small`,
+    headers,
+  );
+  return copyToBlob(data.url ?? data.signed_url!, `articole/${slug}.jpg`);
+}
+
 export async function findArticleImage(
   stockQuery: string,
   imagePrompt: string,
   slug: string,
   usedIds: Set<number>,
 ): Promise<ArticleImage | null> {
-  const key = process.env.MAGNIFIC_API_KEY;
-  if (!key || !process.env.BLOB_READ_WRITE_TOKEN) return null;
-  const headers = { "x-magnific-api-key": key, "Content-Type": "application/json" };
-  const get = async <T>(url: string): Promise<T> => {
-    const res = await fetch(url, { headers, signal: AbortSignal.timeout(30_000) });
-    if (!res.ok) throw new Error(`HTTP ${res.status} la ${url.replace(API, "").split("?")[0]}`);
-    return res.json() as Promise<T>;
-  };
-
+  const headers = magnificHeaders();
+  if (!headers) return null;
   try {
-    const params = new URLSearchParams({
-      term: stockQuery,
-      limit: String(STOCK_RESULTS),
-      order: "relevance",
-      "filters[content_type][photo]": "1",
-      "filters[orientation][landscape]": "1",
-    });
-    const { data: results = [] } = await get<{ data?: { id: number }[] }>(`${API}/resources?${params}`);
-    const id = results.find((r) => !usedIds.has(r.id))?.id;
-
+    const id = (await searchStock(stockQuery, STOCK_RESULTS)).find((r) => !usedIds.has(r.id))?.id;
     if (id) {
       usedIds.add(id); // înainte de primul await — rulările paralele văd rezervarea
-      const { data } = await get<{ data: { url?: string; signed_url?: string } }>(
-        `${API}/resources/${id}/download?image_size=small`,
-      );
-      return { url: await copyToBlob(data.url ?? data.signed_url!, `articole/${slug}.jpg`), resourceId: id };
+      return { url: await stockToBlob(id, slug), resourceId: id };
     }
-
     return { url: await copyToBlob(await generate(imagePrompt, headers), `${AI_IMAGE_PREFIX}${slug}.jpg`), resourceId: null };
   } catch (err) {
     // Niciodată cheia sau header-ele în log — doar mesajul.

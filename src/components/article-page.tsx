@@ -10,6 +10,7 @@ import { TOPIC_LABELS } from "@/lib/content/topic-meta";
 import { articleUrl } from "@/lib/content/url";
 import { absoluteUrl } from "@/lib/seo";
 import { AI_IMAGE_PREFIX } from "@/lib/pipeline/image";
+import { sanitizeBody } from "@/lib/content/sanitize";
 import type { Article } from "@/lib/content/types";
 
 // Pattern de pagină articol din sistem-design-ui.md secțiunea 5: breadcrumb,
@@ -53,7 +54,7 @@ export async function ArticlePage({
       <p className="mt-6 text-lg leading-relaxed text-ink">{article.lead}</p>
       <div
         className="prose-article mt-4 text-ink"
-        dangerouslySetInnerHTML={{ __html: article.bodyHtml }}
+        dangerouslySetInnerHTML={{ __html: sanitizeBody(article.bodyHtml) }}
       />
       {article.sources && article.sources.length > 0 && (
         <p className="mt-6 text-sm text-sub">

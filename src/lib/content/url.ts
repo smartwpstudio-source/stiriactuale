@@ -4,7 +4,7 @@ import type { Article } from "./types";
 // (secțiunea = canonic, subiectul = etichetă). Duplicată intenționat, nu
 // importată din scripts/ — aplicația nu trebuie să depindă de tooling-ul
 // de migrare la runtime.
-export function articleUrl(article: Article): string {
+export function articleUrl(article: Pick<Article, "section" | "slug" | "locality" | "country">): string {
   switch (article.section) {
     case "regiuni":
       return `/regiuni/${article.locality}/${article.slug}/`;

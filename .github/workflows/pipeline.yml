@@ -41,3 +41,5 @@ jobs:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           MAGNIFIC_API_KEY: ${{ secrets.MAGNIFIC_API_KEY }}
           BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_ADMIN_CHAT_ID: ${{ secrets.TELEGRAM_ADMIN_CHAT_ID }}

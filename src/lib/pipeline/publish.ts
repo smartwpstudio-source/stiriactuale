@@ -4,6 +4,7 @@ import { getDb } from "./db/client";
 import { articles } from "./db/schema";
 import { normalizeTitle } from "./dedup";
 import type { ArticleImage } from "./image";
+import { notifyEditor } from "@/lib/telegram";
 import type { CandidateGroup, GeneratedArticle, ScoredCandidate } from "./types";
 
 const RECENT_WINDOW_HOURS = 72;
@@ -83,7 +84,10 @@ export async function publishArticle(
       })
       .onConflictDoNothing({ target: articles.slug })
       .returning({ id: articles.id });
-    if (inserted.length) return;
+    if (inserted.length) {
+      await notifyEditor("draft", { id: inserted[0].id, title: generated.titlu, lead: generated.lead });
+      return;
+    }
   }
   throw new Error(`slug ocupat: ${generated.slug}`);
 }

@@ -1,13 +1,6 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { Fraunces, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
-import { Header } from "@/components/header";
-import { StatusBar } from "@/components/status-bar";
-import { Footer } from "@/components/footer";
-import { RegisterServiceWorker } from "@/components/register-service-worker";
-import { AdsenseRouteRefresh } from "@/components/adsense-route-refresh";
 import { SITE_URL } from "@/lib/seo";
-import { ADSENSE_CLIENT_ID } from "@/lib/adsense";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -62,18 +55,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${fraunces.variable} ${ibmPlexSans.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-paper text-ink font-sans">
-        <Header />
-        <StatusBar />
-        <main className="flex flex-1 flex-col">{children}</main>
-        <Footer />
-        <RegisterServiceWorker />
-        <AdsenseRouteRefresh />
-        <Script
-          async
-          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`}
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
+        {children}
       </body>
     </html>
   );

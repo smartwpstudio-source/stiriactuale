@@ -57,6 +57,9 @@ export const articles = pgTable("articles", {
 
   // id-ul resursei de stock Magnific — evită aceeași poză la articole diferite
   imageResourceId: integer("image_resource_id"),
+  // mesajul din canalul Telegram — ca retragerea să-l poată șterge și ca
+  // republicarea să nu dubleze postarea
+  telegramMessageId: integer("telegram_message_id"),
   // id-ul articolului din WordPress, doar pentru arhiva importată
   wpId: integer("wp_id").unique(),
 

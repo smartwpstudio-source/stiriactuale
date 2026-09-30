@@ -9,6 +9,10 @@ const nextConfig: NextConfig = {
 
   // Foto de stock copiate de pipeline în Vercel Blob — vezi
   // src/lib/pipeline/image.ts.
+  // Upload de imagini din /admin: fișierul e redimensionat în browser la
+  // ~300 KB, 4mb rămâne sub plafonul de 4,5 MB al funcțiilor Vercel.
+  experimental: { serverActions: { bodySizeLimit: "4mb" } },
+
   images: {
     remotePatterns: [{ protocol: "https", hostname: "*.public.blob.vercel-storage.com" }],
   },
