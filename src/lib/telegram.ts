@@ -41,6 +41,12 @@ export async function notifyEditor(kind: "draft" | "publicat", a: { id: number; 
   });
 }
 
+// Alertă tehnică pentru editor (pipeline căzut, feed-uri moarte, articole eșuate).
+export async function alertEditor(text: string) {
+  const chatId = process.env.TELEGRAM_ADMIN_CHAT_ID;
+  if (chatId) await call("sendMessage", { chat_id: chatId, text: `⚠️ Pipeline\n\n${text}`.slice(0, 4000) });
+}
+
 // Returnează message_id — se salvează ca retragerea să poată șterge postarea.
 export async function postToChannel(a: { title: string; lead: string; url: string }): Promise<number | null> {
   const chatId = process.env.TELEGRAM_CHANNEL_ID;

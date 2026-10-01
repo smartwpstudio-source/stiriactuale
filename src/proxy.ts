@@ -49,7 +49,7 @@ function target(segments: string[]): string | null {
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  if (/^\/[^/]*sitemap[^/]*\.xml$/.test(pathname) && pathname !== "/sitemap.xml") {
+  if (/^\/[^/]*sitemap[^/]*\.xml$/.test(pathname) && pathname !== "/sitemap.xml" && pathname !== "/news-sitemap.xml") {
     return NextResponse.redirect(new URL("/sitemap.xml", request.url), 301);
   }
 

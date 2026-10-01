@@ -10,6 +10,7 @@ import { findArticleImage } from "./image";
 import { isDuplicate, loadRecentFingerprints, loadUsedImageIds, publishArticle } from "./publish";
 import { mapWithConcurrency } from "./concurrency";
 import { spentUsd } from "./llm";
+import { alertEditor } from "@/lib/telegram";
 import type { Section } from "@/lib/content/types";
 import type { ScoredCandidate } from "./types";
 
@@ -38,6 +39,7 @@ const MAX_ARTICLES_PER_RUN = 3;
 export interface PipelineRunSummary {
   collected: number;
   failedFeeds: string[];
+  failedArticles: string[];
   groupsFormed: number;
   candidatesClassified: number;
   articlesPublished: number;
@@ -53,6 +55,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
   const summary: PipelineRunSummary = {
     collected: 0,
     failedFeeds: [],
+    failedArticles: [],
     groupsFormed: 0,
     candidatesClassified: 0,
     articlesPublished: 0,
@@ -148,7 +151,9 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
         }
         return c.classification.section;
       } catch (err) {
-        console.error(`Articol eșuat: ${err instanceof Error ? err.message : String(err)}`);
+        const msg = `${c.group.representativeTitle.slice(0, 80)}: ${err instanceof Error ? err.message : String(err)}`;
+        summary.failedArticles.push(msg);
+        console.error(`Articol eșuat: ${msg}`);
         return null;
       }
     });
@@ -161,6 +166,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     await finish(run.id, summary);
     return summary;
   } catch (err) {
+    await alertEditor(`Rularea a căzut: ${err instanceof Error ? err.message : String(err)}`);
     summary.costUsd = spentUsd();
     await db
       .update(pipelineRuns)
@@ -178,6 +184,11 @@ function resolve(classifications: ({ sameAs?: number } | null)[], i: number): nu
 
 async function finish(runId: number, summary: PipelineRunSummary) {
   summary.costUsd = Math.round(spentUsd() * 1000) / 1000;
+  const problems = [
+    ...summary.failedFeeds.map((f) => `Feed: ${f}`),
+    ...summary.failedArticles.map((a) => `Articol: ${a}`),
+  ];
+  if (problems.length) await alertEditor(problems.join("\n"));
   await getDb()
     .update(pipelineRuns)
     .set({

@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { ArticlePage } from "@/components/article-page";
 import { getArticleBySection } from "@/lib/content/queries";
 import { articleUrl } from "@/lib/content/url";
-import { absoluteUrl, breadcrumbJsonLd, newsArticleJsonLd } from "@/lib/seo";
+import { absoluteUrl, articleMetadata, breadcrumbJsonLd, newsArticleJsonLd } from "@/lib/seo";
 
 export const revalidate = 300;
 
@@ -23,15 +23,7 @@ export async function generateMetadata({
   const article = await getArticleBySection("international", slug);
   if (!article) return {};
 
-  const url = articleUrl(article);
-  return {
-    title: article.title,
-    description: article.lead,
-    alternates: { canonical: url },
-    // arhivă preluată de la altă redacție — nu se indexează (conținut duplicat)
-    ...(article.archived && { robots: { index: false, follow: true } }),
-    openGraph: { title: article.title, description: article.lead, type: "article", url },
-  };
+  return articleMetadata(article);
 }
 
 export default async function InternationalArticlePage({
