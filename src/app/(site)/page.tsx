@@ -51,7 +51,7 @@ export default async function HomePage() {
 
       <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px]">
         <section>
-          <SectionHeading title="Ultima oră" />
+          <SectionHeading title="Știri actuale" />
           <div className="mt-2">
             <NewsFeed
               initial={feed}
