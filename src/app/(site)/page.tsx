@@ -11,6 +11,7 @@ import type { Section } from "@/lib/content/types";
 export const revalidate = 60;
 
 const SECTIONS: Section[] = ["regiuni", "national", "international", "diaspora"];
+const SECTION_GRID: Record<number, string> = { 1: "", 3: "lg:grid-cols-3" };
 
 export default async function HomePage() {
   const hero = await getHeroArticle();
@@ -35,6 +36,8 @@ export default async function HomePage() {
       items: (await listArticles({ section }, 1, 12)).items.filter((a) => !shown.has(a.slug)).slice(0, 4),
     })),
   );
+
+  const visible = sections.filter((x) => x.items.length > 0);
 
   return (
     <div className="mx-auto w-full max-w-7xl px-4 py-6 lg:px-8">
@@ -79,22 +82,21 @@ export default async function HomePage() {
         </section>
       )}
 
-      <div className="mt-12 grid gap-x-10 gap-y-12 lg:grid-cols-2">
-        {sections.map(({ section, items }) =>
-          items.length === 0 ? null : (
-            <section key={section}>
-              <SectionHeading title={SECTION_LABELS[section]} href={`/${section}/`} />
-              <div className="mt-4">
-                <ArticleCard article={items[0]} size="lg" />
-              </div>
-              <div className="mt-2">
-                {items.slice(1).map((a) => (
-                  <ArticleRow key={a.slug} article={a} />
-                ))}
-              </div>
-            </section>
-          ),
-        )}
+      {/* grila se adaptează la câte secțiuni au știri: un bloc gol lăsa un rând pe jumătate gol */}
+      <div className={`mt-12 grid gap-x-10 gap-y-12 ${SECTION_GRID[visible.length] ?? "lg:grid-cols-2"}`}>
+        {visible.map(({ section, items }) => (
+          <section key={section}>
+            <SectionHeading title={SECTION_LABELS[section]} href={`/${section}/`} />
+            <div className="mt-4">
+              <ArticleCard article={items[0]} size="lg" />
+            </div>
+            <div className="mt-2">
+              {items.slice(1).map((a) => (
+                <ArticleRow key={a.slug} article={a} />
+              ))}
+            </div>
+          </section>
+        ))}
       </div>
     </div>
   );
