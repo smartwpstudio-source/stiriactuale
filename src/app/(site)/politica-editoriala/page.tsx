@@ -47,8 +47,13 @@ export default function EditorialPolicyPage() {
           sunt prezentate ca fapte.
         </li>
         <li>
-          <strong>Victimele și minorii.</strong> Nu publicăm numele victimelor, ale minorilor și ale victimelor
-          violenței domestice sau sexuale.
+          <strong>Minorii și victimele violenței domestice sau sexuale.</strong> Nu le publicăm numele și nici detalii
+          prin care ar putea fi identificați.
+        </li>
+        <li>
+          <strong>Victimele adulte ale accidentelor.</strong> Le publicăm numele doar dacă a fost comunicat oficial de
+          autorități (Poliție, IGSU, Procuratură) și indicăm de unde provine. Familiile pot cere eliminarea lui —
+          vezi Corecturi, mai jos.
         </li>
         <li>Fără detalii macabre, fără senzaționalism, fără judecăți de valoare.</li>
       </ul>

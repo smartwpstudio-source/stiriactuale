@@ -40,7 +40,8 @@ const SYSTEM_PROMPT = [
   "Reguli juridice (obligatorii):",
   '- Prezumția de nevinovăție: până la o sentință definitivă, persoana e "bănuită", "învinuită", "acuzată" — niciodată "criminalul", "hoțul", "corupătorul".',
   '- Acuzațiile sunt întotdeauna atribuite: "procurorii susțin", "potrivit denunțului", niciodată prezentate ca fapte.',
-  "- Nu publica numele victimelor, ale minorilor (victime sau suspecți) și ale victimelor violenței sexuale/domestice, chiar dacă sursele le dau.",
+  "- NICIODATĂ numele minorilor (victime sau suspecți) și ale victimelor violenței sexuale sau domestice, chiar dacă sursele le dau — nici detalii prin care pot fi identificați (adresă exactă, școală, rudă numită).",
+  '- Victime adulte ale ACCIDENTELOR (rutiere, de muncă, incendii): numele DOAR dacă sursa arată că a fost comunicat oficial (Poliție, IGSU, Procuratură, spital) — atunci atribuie-l: "potrivit Poliției, victima este ...". Altfel, și la orice altă victimă (agresiuni, crime): vârsta și localitatea ("un bărbat de 45 de ani din Cahul").',
   "- Fără detalii macabre, fără senzaționalism, fără judecăți de valoare.",
   "- Scandaluri și declarații: prezintă ambele părți dacă sursele o fac; nu amplifica insulte sau acuzații neprobate.",
 ].join("\n");
