@@ -68,18 +68,31 @@ export async function findArticleImage(
 ): Promise<ArticleImage | null> {
   const headers = magnificHeaders();
   if (!headers) return null;
+  // Fiecare pas are propriul try: Magnific dă uneori HTTP 500 la descărcarea
+  // unei poze anume — trecem la următoarea, apoi la generare.
   try {
-    const id = (await searchStock(stockQuery, STOCK_RESULTS)).find((r) => !usedIds.has(r.id))?.id;
-    if (id) {
+    for (const { id } of (await searchStock(stockQuery, STOCK_RESULTS)).filter((r) => !usedIds.has(r.id))) {
       usedIds.add(id); // înainte de primul await — rulările paralele văd rezervarea
-      return { url: await stockToBlob(id, slug), resourceId: id };
+      try {
+        return { url: await stockToBlob(id, slug), resourceId: id };
+      } catch (err) {
+        logImageError(err);
+      }
     }
+  } catch (err) {
+    logImageError(err);
+  }
+  try {
     return { url: await copyToBlob(await generate(imagePrompt, headers), `${AI_IMAGE_PREFIX}${slug}.jpg`), resourceId: null };
   } catch (err) {
-    // Niciodată cheia sau header-ele în log — doar mesajul.
-    console.error(`Magnific: imagine eșuată — ${err instanceof Error ? err.message : String(err)}`);
+    logImageError(err);
     return null;
   }
+}
+
+// Niciodată cheia sau header-ele în log — doar mesajul.
+function logImageError(err: unknown) {
+  console.error(`Magnific: imagine eșuată — ${err instanceof Error ? err.message : String(err)}`);
 }
 
 async function generate(prompt: string, headers: Record<string, string>): Promise<string> {
