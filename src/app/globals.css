@@ -24,6 +24,7 @@
   --font-serif: var(--font-fraunces);
   --font-sans: var(--font-ibm-plex-sans);
   --font-mono: var(--font-ibm-plex-mono);
+  --font-logo: var(--font-alfa-slab);
 }
 
 body {

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Alfa_Slab_One, Fraunces, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import { SITE_URL } from "@/lib/seo";
 import "./globals.css";
 
@@ -14,6 +14,13 @@ const ibmPlexSans = IBM_Plex_Sans({
   variable: "--font-ibm-plex-sans",
   subsets: ["latin", "latin-ext"],
   weight: ["400", "500"],
+});
+
+// doar pentru logo ("ȘTIRI·ACTUALE", ca pe logo-ul vechi al site-ului)
+const alfaSlab = Alfa_Slab_One({
+  variable: "--font-alfa-slab",
+  subsets: ["latin", "latin-ext"],
+  weight: "400",
 });
 
 const ibmPlexMono = IBM_Plex_Mono({
@@ -41,6 +48,8 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
+      { url: "/favicon.ico", sizes: "32x32 48x48" },
+      { url: "/icons/favicon-32.png", sizes: "32x32", type: "image/png" },
       { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
       { url: "/icons/icon-512.png", sizes: "512x512", type: "image/png" },
     ],
@@ -61,7 +70,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="ro"
-      className={`${fraunces.variable} ${ibmPlexSans.variable} ${ibmPlexMono.variable} h-full antialiased`}
+      className={`${fraunces.variable} ${ibmPlexSans.variable} ${ibmPlexMono.variable} ${alfaSlab.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-paper text-ink font-sans">
         {children}

@@ -19,11 +19,12 @@ export async function GET(request: Request) {
   const params = new URL(request.url).searchParams;
   const title = (params.get("t") ?? "Stiri actuale").slice(0, 160);
   const section = (params.get("s") ?? "").slice(0, 40);
-  const brand = "Stiri actuale";
+  const brand = "ȘTIRIACTUALE";
 
-  const [serif, mono] = await Promise.all([
-    font("Fraunces", 500, title + brand),
+  const [serif, mono, logo] = await Promise.all([
+    font("Fraunces", 500, title),
     font("IBM+Plex+Mono", 500, section.toUpperCase() + "stiriactuale.info"),
+    font("Alfa+Slab+One", 400, brand),
   ]);
 
   return new ImageResponse(
@@ -47,7 +48,23 @@ export async function GET(request: Request) {
           {title}
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
-          <div style={{ display: "flex", fontFamily: "Serif", fontSize: 40, fontStyle: "italic" }}>{brand}</div>
+          {/* logo-ul site-ului: cutia albastră "ȘTIRI·ACTUALE" */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "flex-end",
+              background: "#0047ab",
+              borderRadius: 10,
+              padding: "6px 18px 10px",
+              fontFamily: "Logo",
+              fontSize: 40,
+              color: "#fff",
+            }}
+          >
+            ȘTIRI
+            <div style={{ width: 12, height: 12, borderRadius: 12, background: "#111", margin: "0 4px 6px" }} />
+            ACTUALE
+          </div>
           <div style={{ display: "flex", fontFamily: "Mono", fontSize: 22, color: "#9aa39a" }}>stiriactuale.info</div>
         </div>
       </div>
@@ -58,6 +75,7 @@ export async function GET(request: Request) {
       fonts: [
         { name: "Serif", data: serif, weight: 500, style: "normal" },
         { name: "Mono", data: mono, weight: 500, style: "normal" },
+        { name: "Logo", data: logo, weight: 400, style: "normal" },
       ],
       headers: { "Cache-Control": "public, max-age=31536000, immutable" },
     },
