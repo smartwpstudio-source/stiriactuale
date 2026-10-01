@@ -17,6 +17,21 @@ import type { Article } from "@/lib/content/types";
 // etichetă de subiect, H1 Fraunces, byline mono, imagine full-width, lead mai mare,
 // corp cu subtitluri H2, tag-uri la final, bloc share + Telegram, articole
 // similare. Lățime de citire limitată (~600px).
+// Doar pozele puse de pipeline/admin (Blob "articole/") sunt ilustrative; pozele
+// arhivei WordPress sunt de regulă fotografii reale ale evenimentului.
+function imageLabel(url?: string): string | null {
+  if (!url) return null;
+  if (url.includes(`/${AI_IMAGE_PREFIX}`)) return "Imagine generată AI";
+  return url.includes("/articole/") ? "Foto ilustrativă" : null;
+}
+
+const ARCHIVE_DATE: Intl.DateTimeFormatOptions = {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+  timeZone: "Europe/Chisinau",
+};
+
 export async function ArticlePage({
   article,
   breadcrumbItems,
@@ -27,7 +42,8 @@ export async function ArticlePage({
   const similar = await getSimilarArticles(article);
 
   return (
-    <article className="mx-auto w-full max-w-[600px] px-4 py-8">
+    // data-no-ads: AdSense nu se încarcă pe arhiva preluată (vezi adsense-script.tsx)
+    <article className="mx-auto w-full max-w-[600px] px-4 py-8" data-no-ads={article.archived || undefined}>
       <Breadcrumb items={breadcrumbItems} />
       {article.topics[0] && (
         <div className="mt-3">
@@ -36,27 +52,46 @@ export async function ArticlePage({
       )}
       <h1 className="mt-2 font-serif text-3xl leading-tight text-ink">{article.title}</h1>
       <p className="mt-3 font-mono text-xs text-sub">
-        echipă editorială · {formatTimeAgo(article.publishedAt)}
+        {article.archived
+          ? `arhivă · ${new Date(article.publishedAt).toLocaleDateString("ro-MD", ARCHIVE_DATE)}`
+          : `echipă editorială · ${formatTimeAgo(article.publishedAt)}`}
         {article.sourceCount > 1 && ` · din ${article.sourceCount} surse`}
       </p>
-      <ArticleThumb
-        topics={article.topics}
-        imageUrl={article.imageUrl}
-        imageAlt={article.imageAlt}
-        className="mt-6 h-64 w-full"
-        iconSize={48}
-      />
-      {article.imageUrl && (
-        <p className="mt-1 font-mono text-xs text-sub">
-          {article.imageUrl.includes(`/${AI_IMAGE_PREFIX}`) ? "Imagine generată AI" : "Foto ilustrativă"}
-        </p>
+      {article.archived && article.sources?.[0] ? (
+        <>
+          <p className="mt-6 text-lg leading-relaxed text-ink">{article.lead}</p>
+          <a
+            href={article.sources[0].url}
+            target="_blank"
+            rel="noopener"
+            className="mt-6 block rounded border border-line bg-white p-4 text-ink hover:border-teal"
+          >
+            <span className="block font-mono text-xs text-sub">
+              Articol din arhivă, preluat de la {article.sources[0].name}
+            </span>
+            <span className="mt-1 block font-medium text-teal">Citește articolul complet la sursă →</span>
+          </a>
+        </>
+      ) : (
+        <>
+          <ArticleThumb
+            topics={article.topics}
+            imageUrl={article.imageUrl}
+            imageAlt={article.imageAlt}
+            className="mt-6 h-64 w-full"
+            iconSize={48}
+          />
+          {imageLabel(article.imageUrl) && (
+            <p className="mt-1 font-mono text-xs text-sub">{imageLabel(article.imageUrl)}</p>
+          )}
+          <p className="mt-6 text-lg leading-relaxed text-ink">{article.lead}</p>
+          <div
+            className="prose-article mt-4 text-ink"
+            dangerouslySetInnerHTML={{ __html: sanitizeBody(article.bodyHtml) }}
+          />
+        </>
       )}
-      <p className="mt-6 text-lg leading-relaxed text-ink">{article.lead}</p>
-      <div
-        className="prose-article mt-4 text-ink"
-        dangerouslySetInnerHTML={{ __html: sanitizeBody(article.bodyHtml) }}
-      />
-      {article.sources && article.sources.length > 0 && (
+      {!article.archived && article.sources && article.sources.length > 0 && (
         <p className="mt-6 text-sm text-sub">
           Surse:{" "}
           {article.sources.map((s, i) => (

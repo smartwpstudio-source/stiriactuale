@@ -22,6 +22,7 @@ const listColumns = {
   imageUrl: t.imageUrl,
   imageAltText: t.imageAltText,
   sources: t.sources,
+  archived: t.archived,
 };
 
 type ListRow = { [K in keyof typeof listColumns]: (typeof t.$inferSelect)[K] };
@@ -41,6 +42,7 @@ function mapRow(row: ListRow & { bodyHtml?: string }): Article {
     imageUrl: row.imageUrl ?? undefined,
     imageAlt: row.imageAltText ?? undefined,
     sources: row.sources,
+    archived: row.archived,
   };
 }
 
@@ -50,10 +52,12 @@ export interface ArticleFilter {
   country?: string;
   topic?: Topic;
   q?: string;
+  includeArchived?: boolean; // doar căutarea — arhiva preluată nu apare în liste
 }
 
 function where(f: ArticleFilter): SQL {
   const c: SQL[] = [eq(t.status, "published")];
+  if (!f.includeArchived) c.push(eq(t.archived, false));
   if (f.section) c.push(eq(t.section, f.section));
   if (f.locality) c.push(eq(t.locality, f.locality));
   if (f.country) c.push(eq(t.country, f.country));
@@ -92,7 +96,7 @@ export async function getHeroArticle(): Promise<Article | null> {
   const [row] = await getDb()
     .select(listColumns)
     .from(t)
-    .where(and(eq(t.status, "published"), gte(t.publishedAt, new Date(Date.now() - 12 * 3600_000))))
+    .where(and(where({}), gte(t.publishedAt, new Date(Date.now() - 12 * 3600_000))))
     .orderBy(desc(t.qualityScore), desc(t.publishedAt))
     .limit(1);
   return row ? mapRow(row) : getLatestArticle();
@@ -126,7 +130,7 @@ export async function getSimilarArticles(article: Article, limit = 3): Promise<A
   const rows = await getDb()
     .select(listColumns)
     .from(t)
-    .where(and(eq(t.status, "published"), ne(t.slug, article.slug), or(...related)))
+    .where(and(where({}), ne(t.slug, article.slug), or(...related)))
     .orderBy(desc(t.publishedAt))
     .limit(limit);
   return rows.map(mapRow);
@@ -138,7 +142,7 @@ export async function getHubCounts() {
   const rows = await getDb()
     .select({ locality: t.locality, country: t.country, n: count() })
     .from(t)
-    .where(eq(t.status, "published"))
+    .where(where({}))
     .groupBy(t.locality, t.country);
   const localities: Record<string, number> = {};
   const countries: Record<string, number> = {};
@@ -153,6 +157,6 @@ export async function getSitemapArticles() {
   return getDb()
     .select({ slug: t.slug, section: t.section, locality: t.locality, country: t.country, publishedAt: t.publishedAt })
     .from(t)
-    .where(eq(t.status, "published"))
+    .where(where({}))
     .orderBy(desc(t.publishedAt));
 }

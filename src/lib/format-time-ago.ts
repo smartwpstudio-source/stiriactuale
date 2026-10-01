@@ -9,7 +9,14 @@ export function formatTimeAgo(iso: string, now: Date = new Date()): string {
   if (diffHours < 24) return `acum ${diffHours} ${diffHours === 1 ? "oră" : "ore"}`;
 
   const diffDays = Math.round(diffHours / 24);
-  return `acum ${diffDays} ${diffDays === 1 ? "zi" : "zile"}`;
+  if (diffDays <= 7) return `acum ${diffDays} ${diffDays === 1 ? "zi" : "zile"}`;
+  // "acum 202 zile" nu spune nimic — peste o săptămână, data exactă
+  return new Date(iso).toLocaleDateString("ro-MD", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "Europe/Chisinau",
+  });
 }
 
 // "din 3 surse" doar când e informativ — "raportat de 1 surse" suna a eroare.

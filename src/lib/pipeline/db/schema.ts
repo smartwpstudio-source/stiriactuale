@@ -62,6 +62,9 @@ export const articles = pgTable("articles", {
   telegramMessageId: integer("telegram_message_id"),
   // id-ul articolului din WordPress, doar pentru arhiva importată
   wpId: integer("wp_id").unique(),
+  // articol de arhivă preluat de la altă redacție: doar rezumat + link spre
+  // sursă, noindex, fără reclame, exclus din liste și sitemap
+  archived: boolean("archived").notNull().default(false),
 
   publishedAt: timestamp("published_at", { withTimezone: true }).notNull().defaultNow(),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),

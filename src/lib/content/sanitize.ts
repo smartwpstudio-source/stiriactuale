@@ -16,6 +16,8 @@ const filter: FilterXSS = new FilterXSS({
     a: ["href", "title", "target", "rel"],
     img: ["src", "alt", "width", "height", "loading"],
     iframe: ["src", "width", "height", "allow", "allowfullscreen", "frameborder", "title"],
+    video: ["src", "controls", "width", "height", "poster", "preload"], // clipurile din arhivă, mutate în Blob
+    source: ["src", "type"],
   },
   stripIgnoreTag: true, // tag-urile nepermise dispar, textul rămâne
   stripIgnoreTagBody: ["script", "style"],

@@ -8,4 +8,6 @@ assert.equal(s('<iframe src="https://evil.com/x"></iframe>'), "<iframe></iframe>
 assert.equal(s('<iframe src="https://www.youtube.com/embed/a"></iframe>'), '<iframe src="https://www.youtube.com/embed/a"></iframe>');
 assert.equal(s("<img src=x onerror=alert(1)>"), "<img src>");
 assert.equal(s('<a href="https://zdg.md/x">z</a>'), '<a href="https://zdg.md/x">z</a>');
+assert.equal(s('<video src="https://x.public.blob.vercel-storage.com/a.mp4" controls onplay="x()"></video>'), '<video src="https://x.public.blob.vercel-storage.com/a.mp4" controls></video>');
+assert.equal(s('<video src="javascript:alert(1)"></video>'), "<video src></video>");
 console.log("sanitize: OK");

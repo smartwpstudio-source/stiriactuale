@@ -8,6 +8,7 @@ import { articles, candidates } from "@/lib/pipeline/db/schema";
 import { put } from "@vercel/blob";
 import { AI_IMAGE_PREFIX, stockToBlob } from "@/lib/pipeline/image";
 import { sanitizeBody } from "@/lib/content/sanitize";
+import { decodeEntities } from "@/lib/html-entities";
 import { COUNTRY_NAMES, RAION_NAMES } from "@/lib/content/geo";
 import { logIn, logOut, requireAdmin } from "@/lib/admin/auth";
 import { deleteFromChannel, notifyEditor, postToChannel } from "@/lib/telegram";
@@ -126,18 +127,6 @@ export async function removeImage(id: number) {
   await getDb().update(articles).set({ imageUrl: null, imageResourceId: null }).where(eq(articles.id, id));
   refreshSite();
   redirect(`/admin/articol/${id}/`);
-}
-
-function decodeEntities(s: string): string {
-  return s
-    .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(Number(n)))
-    .replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCodePoint(parseInt(n, 16)))
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;|&apos;/g, "'")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&nbsp;/g, " ")
-    .replace(/&amp;/g, "&");
 }
 
 function metaContent(html: string, prop: string): string {

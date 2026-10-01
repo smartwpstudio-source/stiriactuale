@@ -14,7 +14,7 @@ export default async function SearchPage({ searchParams }: PageProps<"/cautare">
   const { q, pagina } = await searchParams;
   const query = typeof q === "string" ? q.trim().slice(0, 100) : "";
   const page = Math.max(1, Number(pagina) || 1);
-  const result = query.length >= 2 ? await listArticles({ q: query }, page) : null;
+  const result = query.length >= 2 ? await listArticles({ q: query, includeArchived: true }, page) : null;
   const pageHref = (p: number) => `/cautare/?q=${encodeURIComponent(query)}${p > 1 ? `&pagina=${p}` : ""}`;
 
   return (

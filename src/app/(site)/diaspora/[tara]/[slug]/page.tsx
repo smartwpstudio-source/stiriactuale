@@ -29,6 +29,8 @@ export async function generateMetadata({
     title: article.title,
     description: article.lead,
     alternates: { canonical: url },
+    // arhivă preluată de la altă redacție — nu se indexează (conținut duplicat)
+    ...(article.archived && { robots: { index: false, follow: true } }),
     openGraph: { title: article.title, description: article.lead, type: "article", url },
   };
 }

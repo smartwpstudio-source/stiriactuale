@@ -43,3 +43,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# arhiva WordPress: conținut și poze descărcate local, pentru import
+scripts/migration/data/wp-content.json
+scripts/migration/data/uploads/
+scripts/migration/data/download-failed.txt
