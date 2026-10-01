@@ -89,7 +89,11 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     // nu plătim pentru ele. Linkurile manuale trec oricum: editorul a decis.
     const dayStart = new Date();
     dayStart.setUTCHours(0, 0, 0, 0); // 06-22 Chișinău cade în aceeași zi UTC
-    const [{ today }] = await db.select({ today: count() }).from(articles).where(gte(articles.createdAt, dayStart));
+    // doar articolele pipeline-ului (wpId null) — arhiva importată are createdAt = ziua importului
+    const [{ today }] = await db
+      .select({ today: count() })
+      .from(articles)
+      .where(and(gte(articles.createdAt, dayStart), isNull(articles.wpId)));
     const autoSlots = Math.max(0, Math.min(MAX_ARTICLES_PER_RUN, DAILY_ARTICLE_LIMIT - today));
 
     const recent = await loadRecentFingerprints();

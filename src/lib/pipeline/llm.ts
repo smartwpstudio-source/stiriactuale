@@ -3,8 +3,9 @@ import { query } from "@anthropic-ai/claude-agent-sdk";
 
 // Apelurile către Claude trec prin Agent SDK, autentificat cu abonamentul Max
 // (CLAUDE_CODE_OAUTH_TOKEN, generat cu `claude setup-token`) — consumă din
-// creditul lunar Agent SDK al abonamentului (100$ pe Max 5x), nu facturare API.
-// Când creditul se termină, cererile se opresc: plafon natural de cheltuieli.
+// limitele abonamentului, nu facturare API (creditul separat Agent SDK e
+// suspendat de Anthropic, 2026-10). Cu usage credits OFF, la limită cererile
+// se opresc — nu se facturează nimic în plus.
 export const HAIKU_MODEL = "claude-haiku-4-5-20251001";
 export const OPUS_MODEL = "claude-opus-5-5";
 
@@ -39,10 +40,15 @@ export async function structured<T>(opts: {
   })) {
     if (m.type !== "result") continue;
     totalCostUsd += m.total_cost_usd;
-    if (m.subtype !== "success" || m.structured_output === undefined) {
-      throw new Error(`Claude: ${m.subtype}`);
+    if (m.subtype !== "success") throw new Error(`Claude: ${m.subtype}`);
+    if (m.structured_output !== undefined) return m.structured_output as T;
+    // Uneori modelul răspunde cu JSON-ul ca text, fără unealta StructuredOutput
+    // (observat la Haiku) — SDK-ul raportează "success" cu structured_output gol.
+    try {
+      return JSON.parse(m.result.replace(/^```(?:json)?\s*|\s*```$/g, "")) as T;
+    } catch {
+      throw new Error(`Claude: răspuns fără JSON — ${m.result.slice(0, 200)}`);
     }
-    return m.structured_output as T;
   }
   throw new Error("Claude: niciun rezultat");
 }
