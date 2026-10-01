@@ -7,7 +7,7 @@ import type { Article, Section, Topic } from "./types";
 // corpul articolului (bodyHtml): cu arhiva WordPress sunt mii de rânduri, iar
 // o listă are nevoie doar de titlu, dată, imagine.
 
-export const PAGE_SIZE = 20;
+export const PAGE_SIZE = 24; // se împarte la 2 și 3 coloane
 
 const listColumns = {
   slug: t.slug,

@@ -13,7 +13,7 @@ const INFO = [
 export function Footer() {
   return (
     <footer className="mt-auto bg-ink text-paper">
-      <div className="mx-auto grid max-w-5xl gap-6 px-4 py-8 text-sm sm:grid-cols-3">
+      <div className="mx-auto grid max-w-7xl gap-6 px-4 py-10 text-base sm:grid-cols-3 lg:px-8">
         <nav aria-label="Secțiuni" className="flex flex-col gap-2">
           {Object.entries(SECTION_LABELS).map(([slug, label]) => (
             <Link key={slug} href={`/${slug}/`} className="hover:text-amber">
@@ -38,7 +38,7 @@ export function Footer() {
           <PrivacySettingsLink />
         </div>
       </div>
-      <p className="mx-auto max-w-5xl px-4 pb-6 font-mono text-xs text-paper/70">
+      <p className="mx-auto max-w-7xl px-4 pb-6 font-mono text-xs text-paper/70 lg:px-8">
         © {new Date().getFullYear()} Stiri actuale · Știri reale, din surse publice indicate la fiecare articol.
       </p>
     </footer>

@@ -6,7 +6,9 @@ import { TelegramCta } from "./telegram-cta";
 import { PushOptIn } from "./push-opt-in";
 import { SimilarArticles } from "./similar-articles";
 import { formatTimeAgo } from "@/lib/format-time-ago";
-import { getSimilarArticles } from "@/lib/content/queries";
+import { getSimilarArticles, listArticles } from "@/lib/content/queries";
+import { ArticleRow } from "./article-row";
+import { SectionHeading } from "./section-heading";
 import { TOPIC_LABELS } from "@/lib/content/topic-meta";
 import { articleUrl } from "@/lib/content/url";
 import { absoluteUrl } from "@/lib/seo";
@@ -40,87 +42,105 @@ export async function ArticlePage({
   article: Article;
   breadcrumbItems: BreadcrumbItem[];
 }) {
-  const similar = await getSimilarArticles(article);
+  const [similar, { items: latest }] = await Promise.all([getSimilarArticles(article), listArticles({}, 1, 9)]);
 
   return (
-    // data-no-ads: AdSense nu se încarcă pe arhiva preluată (vezi adsense-script.tsx)
-    <article className="mx-auto w-full max-w-[600px] px-4 py-8" data-no-ads={article.archived || undefined}>
-      <Breadcrumb items={breadcrumbItems} />
-      {article.topics[0] && (
-        <div className="mt-3">
-          <TopicLabel topic={article.topics[0]} />
-        </div>
-      )}
-      <h1 className="mt-2 font-serif text-3xl leading-tight text-ink">{article.title}</h1>
-      <p className="mt-3 font-mono text-xs text-sub">
-        {article.archived
-          ? `arhivă · ${new Date(article.publishedAt).toLocaleDateString("ro-MD", ARCHIVE_DATE)}`
-          : `echipă editorială · ${formatTimeAgo(article.publishedAt)}`}
-        {article.sourceCount > 1 && ` · din ${article.sourceCount} surse`}
-      </p>
-      {article.archived && article.sources?.[0] ? (
-        <>
-          <p className="mt-6 text-lg leading-relaxed text-ink">{article.lead}</p>
-          <a
-            href={article.sources[0].url}
-            target="_blank"
-            rel="noopener"
-            className="mt-6 block rounded border border-line bg-white p-4 text-ink hover:border-teal"
-          >
-            <span className="block font-mono text-xs text-sub">
-              Articol din arhivă, preluat de la {article.sources[0].name}
-            </span>
-            <span className="mt-1 block font-medium text-teal">Citește articolul complet la sursă →</span>
-          </a>
-        </>
-      ) : (
-        <>
-          <ArticleThumb
-            topics={article.topics}
-            imageUrl={article.imageUrl}
-            imageAlt={article.imageAlt}
-            className="mt-6 h-64 w-full"
-            iconSize={48}
-          />
-          {imageLabel(article.imageUrl) && (
-            <p className="mt-1 font-mono text-xs text-sub">{imageLabel(article.imageUrl)}</p>
-          )}
-          <p className="mt-6 text-lg leading-relaxed text-ink">{article.lead}</p>
-          <div
-            className="prose-article mt-4 text-ink"
-            dangerouslySetInnerHTML={{ __html: sanitizeBody(article.bodyHtml) }}
-          />
-        </>
-      )}
-      {!article.archived && article.sources && article.sources.length > 0 && (
-        <p className="mt-6 text-sm text-sub">
-          Surse:{" "}
-          {article.sources.map((s, i) => (
-            <span key={s.url}>
-              {i > 0 && ", "}
-              <a href={s.url} target="_blank" rel="noopener nofollow" className="underline hover:text-ink">
-                {s.name}
-              </a>
-            </span>
-          ))}
+    <div className="mx-auto grid w-full max-w-7xl gap-12 px-4 py-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:px-8">
+      {/* data-no-ads: AdSense nu se încarcă pe arhiva preluată (vezi adsense-script.tsx) */}
+      <article className="min-w-0 max-w-[720px]" data-no-ads={article.archived || undefined}>
+        <Breadcrumb items={breadcrumbItems} />
+        {article.topics[0] && (
+          <div className="mt-3">
+            <TopicLabel topic={article.topics[0]} />
+          </div>
+        )}
+        <h1 className="mt-2 font-serif text-3xl leading-tight text-ink sm:text-4xl lg:text-[2.75rem]">
+          {article.title}
+        </h1>
+        <p className="mt-4 font-mono text-sm text-sub">
+          {article.archived
+            ? `arhivă · ${new Date(article.publishedAt).toLocaleDateString("ro-MD", ARCHIVE_DATE)}`
+            : `echipă editorială · ${formatTimeAgo(article.publishedAt)}`}
+          {article.sourceCount > 1 && ` · din ${article.sourceCount} surse`}
         </p>
-      )}
-      {article.topics.length > 0 && (
-        <div className="mt-8 flex flex-wrap gap-2 border-t border-line pt-4">
-          {article.topics.map((t) => (
-            <span
-              key={t}
-              className="rounded border border-line px-2 py-1 font-mono text-xs text-sub"
+        {article.archived && article.sources?.[0] ? (
+          <>
+            <p className="mt-6 text-xl leading-relaxed text-ink">{article.lead}</p>
+            <a
+              href={article.sources[0].url}
+              target="_blank"
+              rel="noopener"
+              className="mt-6 block rounded border border-line bg-white p-4 text-ink hover:border-teal"
             >
-              {TOPIC_LABELS[t]}
-            </span>
-          ))}
+              <span className="block font-mono text-xs text-sub">
+                Articol din arhivă, preluat de la {article.sources[0].name}
+              </span>
+              <span className="mt-1 block font-medium text-teal">Citește articolul complet la sursă →</span>
+            </a>
+          </>
+        ) : (
+          <>
+            <ArticleThumb
+              topics={article.topics}
+              imageUrl={article.imageUrl}
+              imageAlt={article.imageAlt}
+              className="mt-6 aspect-video w-full rounded"
+              iconSize={64}
+              sizes="(max-width: 768px) 100vw, 720px"
+            priority
+            />
+            {imageLabel(article.imageUrl) && (
+              <p className="mt-1 font-mono text-xs text-sub">{imageLabel(article.imageUrl)}</p>
+            )}
+            <p className="mt-6 text-xl font-medium leading-relaxed text-ink">{article.lead}</p>
+            <div
+              className="prose-article mt-4 text-ink"
+              dangerouslySetInnerHTML={{
+                __html: sanitizeBody(article.bodyHtml),
+              }}
+            />
+          </>
+        )}
+        {!article.archived && article.sources && article.sources.length > 0 && (
+          <p className="mt-6 text-sm text-sub">
+            Surse:{" "}
+            {article.sources.map((s, i) => (
+              <span key={s.url}>
+                {i > 0 && ", "}
+                <a href={s.url} target="_blank" rel="noopener nofollow" className="underline hover:text-ink">
+                  {s.name}
+                </a>
+              </span>
+            ))}
+          </p>
+        )}
+        {article.topics.length > 0 && (
+          <div className="mt-8 flex flex-wrap gap-2 border-t border-line pt-4">
+            {article.topics.map((t) => (
+              <span key={t} className="rounded border border-line px-2 py-1 font-mono text-xs text-sub">
+                {TOPIC_LABELS[t]}
+              </span>
+            ))}
+          </div>
+        )}
+        <ShareButtons url={absoluteUrl(articleUrl(article))} title={article.title} />
+        <TelegramCta />
+        <PushOptIn />
+        <SimilarArticles articles={similar} />
+      </article>
+      <aside className="hidden lg:block">
+        <div className="sticky top-6">
+          <SectionHeading title="Ultimele știri" />
+          <div className="mt-1">
+            {latest
+              .filter((a) => a.slug !== article.slug)
+              .slice(0, 8)
+              .map((a) => (
+                <ArticleRow key={a.slug} article={a} compact />
+              ))}
+          </div>
         </div>
-      )}
-      <ShareButtons url={absoluteUrl(articleUrl(article))} title={article.title} />
-      <TelegramCta />
-      <PushOptIn />
-      <SimilarArticles articles={similar} />
-    </article>
+      </aside>
+    </div>
   );
 }

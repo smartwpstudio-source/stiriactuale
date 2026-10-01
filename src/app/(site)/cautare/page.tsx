@@ -18,8 +18,8 @@ export default async function SearchPage({ searchParams }: PageProps<"/cautare">
   const pageHref = (p: number) => `/cautare/?q=${encodeURIComponent(query)}${p > 1 ? `&pagina=${p}` : ""}`;
 
   return (
-    <div className="mx-auto w-full max-w-3xl px-4 py-8">
-      <h1 className="font-serif text-2xl text-ink">Căutare</h1>
+    <div className="mx-auto w-full max-w-4xl px-4 py-8 lg:px-8">
+      <h1 className="font-serif text-3xl text-ink sm:text-4xl">Căutare</h1>
       <Form action="/cautare/" className="mt-4 flex gap-2">
         <input
           name="q"

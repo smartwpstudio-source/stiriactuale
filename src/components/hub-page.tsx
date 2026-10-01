@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumb } from "./breadcrumb";
-import { ArticleRow } from "./article-row";
+import { ArticleCard } from "./article-card";
 import { SectionFilterChips } from "./section-filter-chips";
 import { getHubCounts, listArticles } from "@/lib/content/queries";
 import { countryLabel, raionLabel } from "@/lib/content/geo";
@@ -44,23 +44,23 @@ export async function HubPage({ hub, page }: { hub: Hub | null; page: number | n
   );
 
   return (
-    <div className="mx-auto w-full max-w-3xl px-4 py-8">
+    <div className="mx-auto w-full max-w-7xl px-4 py-8 lg:px-8">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
       />
       <Breadcrumb items={hub.crumbs} />
-      <h1 className="mt-2 font-serif text-2xl text-ink">
+      <h1 className="mt-2 font-serif text-3xl text-ink sm:text-4xl">
         {hub.title}
         {page > 1 && <span className="text-sub"> — pagina {page}</span>}
       </h1>
       {chipItems && chipItems.length > 0 && (
         <SectionFilterChips basePath={chips!.basePath} items={chipItems} active={chips!.active} />
       )}
-      <div className="mt-6">
-        {items.length === 0 && <p className="font-mono text-sm text-sub">Niciun articol publicat încă.</p>}
+      {items.length === 0 && <p className="mt-6 font-mono text-sm text-sub">Niciun articol publicat încă.</p>}
+      <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((a) => (
-          <ArticleRow key={a.slug} article={a} />
+          <ArticleCard key={a.slug} article={a} />
         ))}
       </div>
       {pages > 1 && (
