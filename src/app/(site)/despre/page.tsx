@@ -21,9 +21,10 @@ export default function AboutPage() {
 
       <h2>Cum lucrăm</h2>
       <p>
-        Monitorizăm permanent publicațiile de presă din Republica Moldova. Când un subiect e important, redactăm o
-        știre scurtă și clară, cu ajutorul unui sistem de inteligență artificială, pornind de la informațiile publicate
-        de acele redacții. Fiecare articol indică, la final, sursele originale, cu link către ele.
+        Nu inventăm știri. Monitorizăm permanent publicațiile de presă și comunicatele oficiale din Republica Moldova,
+        iar când un subiect contează pentru oameni, îl prezentăm pe scurt și clar, cu trimitere la sursa originală —
+        fiecare articol indică la final sursele, cu link către ele. Pentru a lucra rapid folosim instrumente de
+        automatizare, inclusiv inteligență artificială la redactarea textului; faptele vin întotdeauna din surse.
       </p>
       <p>
         Știrile pe subiecte sensibile — tragedii, victime, acuzații la adresa unor persoane — sunt verificate de un

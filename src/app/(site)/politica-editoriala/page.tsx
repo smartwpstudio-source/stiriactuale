@@ -21,10 +21,11 @@ export default function EditorialPolicyPage() {
         articol.
       </p>
 
-      <h2>Folosirea inteligenței artificiale</h2>
+      <h2>Automatizare și inteligență artificială</h2>
       <p>
-        Articolele sunt redactate cu ajutorul unui sistem de inteligență artificială, pe baza relatărilor surselor de
-        mai sus. Sistemul are reguli stricte: nu adaugă informații care nu apar în surse (nume, cifre, locuri,
+        Știrile sunt reale: fiecare pornește de la informații publicate de sursele de mai sus și le indică la final.
+        Pentru viteză, textul este redactat cu ajutorul unui sistem de inteligență artificială, care lucrează după
+        reguli stricte: nu adaugă informații care nu apar în surse (nume, cifre, locuri,
         declarații), rescrie textul cu propriile cuvinte în loc să-l copieze și atribuie fiecare informație sursei ei.
         Articolele pe subiecte sensibile — decese, violență, victime, minori, acuzații de infracțiuni sau corupție la
         adresa unor persoane — sunt verificate de un editor <strong>înainte</strong> de publicare. Celelalte (prețuri,

@@ -37,8 +37,7 @@ export function Footer() {
         </div>
       </div>
       <p className="mx-auto max-w-5xl px-4 pb-6 font-mono text-xs text-paper/70">
-        © {new Date().getFullYear()} Stiri actuale · Știri redactate cu ajutorul inteligenței artificiale, sub
-        supravegherea unui editor.
+        © {new Date().getFullYear()} Stiri actuale · Știri reale, din surse publice indicate la fiecare articol.
       </p>
     </footer>
   );
