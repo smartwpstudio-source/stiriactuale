@@ -28,6 +28,10 @@ const SECTION_CONFIG: Record<Section, { minScore: number; cap: number }> = {
 const WINDOW_HOURS = 6;
 const MAX_GROUPS_TO_CLASSIFY = 40;
 const PUBLISH_CONCURRENCY = 4;
+// Fereastra de publicare automată, ora Chișinăului: 06:00-22:59 (rularea de
+// 22:00 poate întârzia puțin; după 23:00 nu mai publică).
+const PUBLISH_FROM_HOUR = 6;
+const PUBLISH_UNTIL_HOUR = 23;
 
 // Apelurile Claude consumă din limitele abonamentului Max, comune cu munca
 // editorului — plafonul e în articole, nu în bani. 10/zi, max 3 pe rulare, ca
@@ -74,6 +78,17 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       summary.failedFeeds = c.failedFeeds;
     } catch (err) {
       summary.failedFeeds.push(`colectare: ${err instanceof Error ? err.message : String(err)}`);
+    }
+
+    // Noaptea nu se publică nimic (decizia proprietarului: postările de noapte
+    // în canal îi fac pe oameni să se dezaboneze). Verificat aici, nu doar în
+    // orarul din pipeline.yml: GitHub amână rulările programate cu ore (rularea
+    // de 22:00 a pornit la 00:30). Dimineața, fereastra de 6h prinde tot.
+    const hour = Number(new Date().toLocaleString("en-GB", { hour: "2-digit", hour12: false, timeZone: "Europe/Chisinau" }));
+    if (hour < PUBLISH_FROM_HOUR || hour >= PUBLISH_UNTIL_HOUR) {
+      summary.skipped = `în afara orelor de publicare (${hour}:00 la Chișinău) — doar colectare`;
+      await finish(run.id, summary);
+      return summary;
     }
 
     const rows = await db
