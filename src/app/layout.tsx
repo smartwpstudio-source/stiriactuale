@@ -30,6 +30,9 @@ export const metadata: Metadata = {
   },
   description: "Știri din Moldova — regiuni, național, internațional, diaspora.",
   manifest: "/manifest.webmanifest",
+  // aceeași proprietate Search Console ca site-ul WordPress — istoricul se păstrează
+  verification: { google: "D3-OLYwLDh37LyoQPynKaPN_EGe62ztq7rB_SXMJNow" },
+  alternates: { types: { "application/rss+xml": "/feed/" } },
   icons: {
     icon: [
       { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
