@@ -30,6 +30,7 @@ Ordinea contează: emailul și pozele se rezolvă ÎNAINTE de mutarea DNS.
 | `TELEGRAM_CHANNEL_ID` | da | da | `-1001082195144` (Reporter News). Golit intenționat în `.env.local` până la lansare — altfel testele locale ar posta în canalul public |
 | `NEXT_PUBLIC_VAPID_PUBLIC_KEY` | da | da | notificări push; aceeași valoare ca în `.env.local` |
 | `VAPID_PRIVATE_KEY` | da | da | NU se schimbă după lansare — altfel toți abonații se pierd |
+| `GITHUB_DISPATCH_TOKEN` | da | — | token fine-grained, doar repo-ul stiriactuale, „Actions: Read and write” — cron-ul Vercel pornește pipeline-ul exact la oră (GitHub schedule întârzie cu ore) |
 
 De șters din Vercel: `ANTHROPIC_API_KEY`, `FAL_KEY` (nu se mai folosesc; cheia API Anthropic ar avea prioritate și s-ar factura).
 
