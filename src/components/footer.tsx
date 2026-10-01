@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SECTION_LABELS } from "@/lib/content/geo";
 import { TELEGRAM_URL } from "@/lib/site-info";
+import { PrivacySettingsLink } from "./privacy-settings-link";
 
 const INFO = [
   { href: "/despre/", label: "Despre noi" },
@@ -34,6 +35,7 @@ export function Footer() {
           <Link href="/cautare/" className="hover:text-amber">
             Căutare
           </Link>
+          <PrivacySettingsLink />
         </div>
       </div>
       <p className="mx-auto max-w-5xl px-4 pb-6 font-mono text-xs text-paper/70">
