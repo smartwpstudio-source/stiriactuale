@@ -1,5 +1,7 @@
 # Checklist lansare — stiriactuale.info pe Vercel
 
+**Lansat 2026-10-01, ~18:00 Chișinău** (A @ → 216.150.1.1, www → CNAME Vercel).
+
 Nimic din lista asta nu se face înainte de plata Vercel Pro (decizia proprietarului).
 Ordinea contează: emailul și pozele se rezolvă ÎNAINTE de mutarea DNS.
 
@@ -45,9 +47,9 @@ De șters din Vercel: `ANTHROPIC_API_KEY`, `FAL_KEY` (nu se mai folosesc; cheia 
 
 ## 4. Lansare
 
-- [ ] push pe GitHub, deploy Vercel, domeniul adăugat în proiect
-- [ ] DNS TopHost: `A @` → IP-ul afișat de Vercel, `CNAME www` → valoarea afișată de Vercel (restul neatins)
+- [x] push pe GitHub, deploy Vercel, domeniul adăugat în proiect
+- [x] DNS TopHost: `A @` → IP-ul afișat de Vercel, `CNAME www` → valoarea afișată de Vercel (restul neatins)
 - [ ] AdSense → Privacy & messaging: mesaj GDPR activ
 - [ ] Search Console: sitemap `https://stiriactuale.info/sitemap.xml` retrimis (proprietatea rămâne aceeași — tag-ul de verificare e în layout)
-- [ ] verificat câteva URL-uri vechi (301) și `/feed/`
-- [ ] GitHub Actions → workflow „Pipeline stiri” activ; prima rulare manuală urmărită
+- [x] verificat câteva URL-uri vechi (301) și `/feed/`
+- [x] GitHub Actions → workflow „Pipeline stiri” activ; prima rulare manuală urmărită

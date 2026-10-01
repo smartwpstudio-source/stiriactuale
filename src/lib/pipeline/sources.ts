@@ -5,7 +5,8 @@ import type { RawCandidate } from "./types";
 //  - yam.md: termenii interzic preluarea automată în scop comercial — rămâne
 //    unealta editorului, pentru "Adaugă știre după link" din /admin;
 //  - Google News RSS: licență "personal, non-commercial use";
-//  - ipn, esp, noi.md: 403 pentru clienți non-browser.
+//  - ipn, esp, noi.md: 403 pentru clienți non-browser;
+//  - nokta.md: 403 pentru IP-urile din cloud (GitHub Actions, Vercel) — merge doar local.
 // `trusted` = credibilitate ridicată în Media Radar CJI; contează în scor, nu
 // exclude nimic (surse cu credibilitate scăzută nu sunt în listă deloc).
 export const FEEDS = [
@@ -16,7 +17,6 @@ export const FEEDS = [
   { id: "zdg", name: "Ziarul de Gardă", url: "https://www.zdg.md/feed/", trusted: true },
   { id: "newsmaker", name: "NewsMaker", url: "https://newsmaker.md/ro/feed/", trusted: true },
   { id: "tv8", name: "TV8", url: "https://tv8.md/feed", trusted: false },
-  { id: "nokta", name: "Nokta", url: "https://nokta.md/feed/", trusted: true }, // în rusă, Găgăuzia
   { id: "diez", name: "Diez", url: "https://www.diez.md/feed/", trusted: false },
   { id: "pulsmedia", name: "Puls Media", url: "https://pulsmedia.md/rss/all/", trusted: false },
 ];
