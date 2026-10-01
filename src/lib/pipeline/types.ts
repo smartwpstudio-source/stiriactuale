@@ -29,6 +29,7 @@ export interface ClassificationResult {
   reject: boolean; // horoscop, publicitate, monden fără miză etc.
   sameAs?: number; // indexul unui grup anterior despre același eveniment
   pushWorthy: boolean; // propunere de notificare push (criteriile redacției)
+  sensitive: boolean; // impact emoțional puternic / risc juridic -> draft, așteaptă aprobarea
 }
 
 export interface ScoredCandidate {

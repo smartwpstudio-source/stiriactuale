@@ -26,7 +26,10 @@ export default function EditorialPolicyPage() {
         Articolele sunt redactate cu ajutorul unui sistem de inteligență artificială, pe baza relatărilor surselor de
         mai sus. Sistemul are reguli stricte: nu adaugă informații care nu apar în surse (nume, cifre, locuri,
         declarații), rescrie textul cu propriile cuvinte în loc să-l copieze și atribuie fiecare informație sursei ei.
-        Un editor verifică articolele înainte de publicare și le corectează sau le respinge.
+        Articolele pe subiecte sensibile — decese, violență, victime, minori, acuzații de infracțiuni sau corupție la
+        adresa unor persoane — sunt verificate de un editor <strong>înainte</strong> de publicare. Celelalte (prețuri,
+        legi, decizii, evenimente) se publică imediat și sunt verificate de editor <strong>după</strong> publicare;
+        greșelile se corectează, iar articolele cu probleme se retrag.
       </p>
 
       <h2>Ce publicăm</h2>

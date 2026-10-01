@@ -5,6 +5,7 @@ import { articles } from "./db/schema";
 import { normalizeTitle } from "./dedup";
 import type { ArticleImage } from "./image";
 import { notifyEditor } from "@/lib/telegram";
+import { announcePublished } from "@/lib/publish-effects";
 import type { CandidateGroup, GeneratedArticle, ScoredCandidate } from "./types";
 
 const RECENT_WINDOW_HOURS = 72;
@@ -43,8 +44,9 @@ export async function loadUsedImageIds(): Promise<Set<number>> {
   return new Set(rows.map((r) => r.id!));
 }
 
-// status "draft" implicit din schema — review manual în /admin înainte de
-// publicare (plan-implementare-agregator-stiri-ai.md 3.8).
+// Subiectele sensibile (impact emoțional puternic, acuzații la adresa unor
+// persoane) rămân draft până le aprobă editorul; restul se publică imediat și
+// editorul le verifică după, din notificarea Telegram (decizia proprietarului).
 export async function publishArticle(
   candidate: ScoredCandidate,
   generated: GeneratedArticle,
@@ -82,15 +84,18 @@ export async function publishArticle(
         sourceUrls,
         sources,
         pushWorthy: candidate.classification.pushWorthy,
+        status: candidate.classification.sensitive ? "draft" : "published",
       })
       .onConflictDoNothing({ target: articles.slug })
       .returning({ id: articles.id });
     if (inserted.length) {
-      await notifyEditor(candidate.classification.pushWorthy ? "draft-alerta" : "draft", {
-        id: inserted[0].id,
-        title: generated.titlu,
-        lead: generated.lead,
-      });
+      const id = inserted[0].id;
+      if (candidate.classification.sensitive) {
+        const kind = candidate.classification.pushWorthy ? "draft-alerta" : "draft";
+        await notifyEditor(kind, { id, title: generated.titlu, lead: generated.lead });
+      } else {
+        await announcePublished(id, "auto");
+      }
       return;
     }
   }

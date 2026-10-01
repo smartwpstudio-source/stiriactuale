@@ -25,9 +25,9 @@ Ordinea contează: emailul și pozele se rezolvă ÎNAINTE de mutarea DNS.
 | `CRON_SECRET` | da | — | colectarea RSS la 30 min |
 | `TELEGRAM_BOT_TOKEN` | da | da | bot @sa_md_adminbot |
 | `TELEGRAM_ADMIN_CHAT_ID` | da | da | chat privat editor |
-| `TELEGRAM_CHANNEL_ID` | da | — | canalul Reporter News |
-| `NEXT_PUBLIC_VAPID_PUBLIC_KEY` | da | — | notificări push; aceeași valoare ca în `.env.local` |
-| `VAPID_PRIVATE_KEY` | da | — | NU se schimbă după lansare — altfel toți abonații se pierd |
+| `TELEGRAM_CHANNEL_ID` | da | da | `-1001082195144` (Reporter News). Golit intenționat în `.env.local` până la lansare — altfel testele locale ar posta în canalul public |
+| `NEXT_PUBLIC_VAPID_PUBLIC_KEY` | da | da | notificări push; aceeași valoare ca în `.env.local` |
+| `VAPID_PRIVATE_KEY` | da | da | NU se schimbă după lansare — altfel toți abonații se pierd |
 
 De șters din Vercel: `ANTHROPIC_API_KEY`, `FAL_KEY` (nu se mai folosesc; cheia API Anthropic ar avea prioritate și s-ar factura).
 

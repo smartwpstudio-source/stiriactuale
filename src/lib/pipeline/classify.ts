@@ -37,12 +37,13 @@ const SCHEMA = {
           confidence: { type: "number", description: "0-100: știre confirmată vs. speculație/sursă unică nesigură." },
           reject: { type: "boolean", description: "true dacă e în lista de respingere." },
           push_alert: { type: "boolean", description: "true DOAR pentru știrile care merită o notificare pe telefon (criteriile din instrucțiuni)." },
+          sensitive: { type: "boolean", description: "true dacă subiectul are impact emoțional puternic sau risc juridic (criteriile din instrucțiuni)." },
           same_as: {
             type: "integer",
             description: "Id-ul unui grup ANTERIOR (număr mai mic) despre EXACT același eveniment, dacă există.",
           },
         },
-        required: ["id", "section", "topics", "impact", "factual_richness", "confidence", "reject", "push_alert"],
+        required: ["id", "section", "topics", "impact", "factual_richness", "confidence", "reject", "push_alert", "sensitive"],
       },
     },
   },
@@ -70,6 +71,8 @@ const SYSTEM_PROMPT = [
   "Mic (0-39): declarații fără conținut, protocol, ceremonii, vizite de curtoazie, anunțuri instituționale fără efect.",
   "",
   "same_as: grupuri diferite pot descrie același eveniment formulat altfel (aceeași explozie, același accident) SAU etape diferite ale aceluiași incident (ex. anunțul inițial al unui obiect în spațiul aerian + drona găsită căzută; accidentul + starea victimelor). Marchează-le pe toate — publicăm un singur articol pe incident. Două evenimente distincte cu aceiași actori (două întâlniri diferite ale premierului) NU sunt același eveniment.",
+  "",
+  "sensitive=true — articolul așteaptă aprobarea editorului înainte de publicare. Pune true pentru: morți, crime, violență, victime, răniți grav, tragedii, sinucideri, abuzuri, minori implicați, boli grave ale unor persoane, ȘI pentru acuzații de infracțiuni sau corupție la adresa unor persoane numite (risc de defăimare). Pune false pentru: prețuri, tarife, legi, decizii, economie, politică de rutină, vreme, evenimente culturale/sportive, accidente fără victime grave. În caz de dubiu: true.",
   "",
   "push_alert=true — notificare pe telefonul cititorilor, prag FOARTE sus (maxim câteva pe zi din zeci de știri): DOAR știri de interes național sau internațional pentru oamenii din Moldova — cazuri de rezonanță, scumpiri și tarife noi, legi și reguli noi care îi afectează pe toți, scandaluri politice mari, accidente sau tragedii mari (morți multiple, catastrofe), cazuri sociale care au mișcat țara. NU: știri locale obișnuite, accidente cu un rănit, declarații politice de rutină, internațional fără efect asupra Moldovei. În caz de dubiu: false.",
   "",
@@ -102,6 +105,7 @@ export async function classifyGroups(groups: CandidateGroup[]): Promise<(Classif
       confidence: number;
       reject: boolean;
       push_alert?: boolean;
+      sensitive?: boolean;
       same_as?: number;
     }[];
   }>({ model: HAIKU_MODEL, system: SYSTEM_PROMPT, prompt, schema: SCHEMA, maxBudgetUsd: 0.5 });
@@ -123,6 +127,7 @@ export async function classifyGroups(groups: CandidateGroup[]): Promise<(Classif
       confidence: it.confidence,
       reject: it.reject,
       pushWorthy: it.push_alert === true,
+      sensitive: it.sensitive !== false, // lipsă = sensibil (prudență)
       sameAs: it.same_as !== undefined && it.same_as >= 0 && it.same_as < i ? it.same_as : undefined,
     };
   });

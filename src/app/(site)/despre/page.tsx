@@ -26,7 +26,9 @@ export default function AboutPage() {
         de acele redacții. Fiecare articol indică, la final, sursele originale, cu link către ele.
       </p>
       <p>
-        Articolele sunt verificate de un editor înainte de publicare. Regulile pe care le respectăm sunt descrise în{" "}
+        Știrile pe subiecte sensibile — tragedii, victime, acuzații la adresa unor persoane — sunt verificate de un
+        editor înainte de publicare; celelalte sunt verificate după publicare și corectate dacă e nevoie. Regulile pe
+        care le respectăm sunt descrise în{" "}
         <Link href="/politica-editoriala/">Politica editorială</Link>.
       </p>
 

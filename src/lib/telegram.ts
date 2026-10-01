@@ -30,9 +30,10 @@ async function call<T>(method: string, body: Record<string, unknown>): Promise<T
 }
 
 const HEADS = {
-  draft: "📝 Draft nou",
-  "draft-alerta": "🔔 Draft nou — propus pentru notificare push",
+  draft: "📝 Draft — subiect sensibil, așteaptă aprobarea ta",
+  "draft-alerta": "📝🔔 Draft — subiect sensibil, așteaptă aprobarea ta (propus și pentru notificare push)",
   publicat: "✅ Publicat",
+  "publicat-auto": "✅ Publicat automat — verifică-l când poți",
 };
 
 export async function notifyEditor(kind: keyof typeof HEADS, a: { id: number; title: string; lead: string }) {

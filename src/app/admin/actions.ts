@@ -11,10 +11,8 @@ import { sanitizeBody } from "@/lib/content/sanitize";
 import { decodeEntities } from "@/lib/html-entities";
 import { COUNTRY_NAMES, RAION_NAMES } from "@/lib/content/geo";
 import { logIn, logOut, requireAdmin } from "@/lib/admin/auth";
-import { deleteFromChannel, notifyEditor, postToChannel } from "@/lib/telegram";
-import { articleUrl } from "@/lib/content/url";
-import { absoluteUrl } from "@/lib/seo";
-import { pushBlockedReason, sendPush } from "@/lib/push";
+import { deleteFromChannel } from "@/lib/telegram";
+import { announcePublished, pushNow } from "@/lib/publish-effects";
 import type { Section } from "@/lib/content/types";
 
 // Fiecare action verifică sesiunea — sunt endpoint-uri POST publice.
@@ -66,36 +64,17 @@ export async function setStatus(id: number, status: "draft" | "published") {
   const [a] = await db.select().from(articles).where(eq(articles.id, id));
   if (!a) redirect("/admin/");
 
-  let telegramMessageId = a.telegramMessageId;
-  if (status === "published") {
-    await notifyEditor("publicat", { id, title: a.title, lead: a.leadText });
-    const url = absoluteUrl(articleUrl({ ...a, locality: a.locality ?? undefined, country: a.country ?? undefined }));
-    telegramMessageId ??= await postToChannel({ title: a.title, lead: a.leadText, url });
-  } else if (telegramMessageId) {
-    await deleteFromChannel(telegramMessageId);
-    telegramMessageId = null;
-  }
-
+  if (status === "draft" && a.telegramMessageId) await deleteFromChannel(a.telegramMessageId);
   await db
     .update(articles)
     // publishedAt = momentul publicării, nu al generării — altfel un draft
     // aprobat după 5 ore apare îngropat în listă
-    .set(status === "published" ? { status, publishedAt: new Date(), telegramMessageId } : { status, telegramMessageId })
+    .set(status === "published" ? { status, publishedAt: new Date() } : { status, telegramMessageId: null })
     .where(eq(articles.id, id));
   refreshSite();
 
-  const push = status === "published" && a.pushWorthy && !a.pushSentAt ? await tryPush(id) : "";
-  redirect(`/admin/articol/${id}/${push}`);
-}
-
-// Trimite notificarea push a unui articol publicat; întoarce ?push=... pentru mesajul din pagină.
-async function tryPush(id: number): Promise<string> {
-  const blocked = await pushBlockedReason();
-  if (blocked) return `?push=${encodeURIComponent(`netrimisă: ${blocked}`)}`;
-  const [a] = await getDb().select().from(articles).where(eq(articles.id, id));
-  const url = articleUrl({ ...a, locality: a.locality ?? undefined, country: a.country ?? undefined });
-  const r = await sendPush(id, { title: a.title, body: a.leadText.slice(0, 180), url, image: a.imageUrl ?? undefined });
-  return `?push=${encodeURIComponent(`trimisă la ${r.delivered} din ${r.total} abonați`)}`;
+  const push = status === "published" ? await announcePublished(id, "manual") : "";
+  redirect(`/admin/articol/${id}/${push ? `?push=${encodeURIComponent(push)}` : ""}`);
 }
 
 export async function togglePush(id: number, value: boolean) {
@@ -108,7 +87,7 @@ export async function sendPushNow(id: number) {
   await requireAdmin();
   const [a] = await getDb().select().from(articles).where(eq(articles.id, id));
   if (!a || a.status !== "published" || a.pushSentAt) redirect(`/admin/articol/${id}/`);
-  redirect(`/admin/articol/${id}/${await tryPush(id)}`);
+  redirect(`/admin/articol/${id}/?push=${encodeURIComponent(await pushNow(id))}`);
 }
 
 export async function deleteArticle(id: number) {
