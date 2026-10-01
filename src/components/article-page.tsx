@@ -9,6 +9,7 @@ import { formatTimeAgo } from "@/lib/format-time-ago";
 import { getSimilarArticles, listArticles } from "@/lib/content/queries";
 import { ArticleRow } from "./article-row";
 import { SectionHeading } from "./section-heading";
+import { ViewBeacon } from "./view-beacon";
 import { TOPIC_LABELS } from "@/lib/content/topic-meta";
 import { articleUrl } from "@/lib/content/url";
 import { absoluteUrl } from "@/lib/seo";
@@ -127,6 +128,7 @@ export async function ArticlePage({
         <TelegramCta />
         <PushOptIn />
         <SimilarArticles articles={similar} />
+      {!article.archived && <ViewBeacon slug={article.slug} />}
       </article>
       <aside className="hidden lg:block">
         <div className="sticky top-6">

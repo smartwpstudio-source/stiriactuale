@@ -7,6 +7,8 @@ export interface RawCandidate {
   sourceUrl: string;
   publishedAt: Date;
   feedId: string;
+  tgViews?: number | null; // interesul de pe canalul Telegram al sursei (telegram-signal.ts)
+  tgInterest?: number | null; // vizualizări / media canalului; 1 = obișnuit
 }
 
 // Un eveniment = grup de RawCandidate deduplicate (aceeași știre, surse diferite)

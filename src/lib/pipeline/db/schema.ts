@@ -68,6 +68,8 @@ export const articles = pgTable("articles", {
 
   // notificare push: propusă de clasificator (știri de rezonanță națională),
   // editabilă în /admin; trimisă o singură dată, la publicare
+  // afișări pe site (beacon din pagina de articol) — "Cele mai citite"
+  views: integer("views").notNull().default(0),
   pushWorthy: boolean("push_worthy").notNull().default(false),
   pushSentAt: timestamp("push_sent_at", { withTimezone: true }),
 
@@ -89,6 +91,11 @@ export const candidates = pgTable("candidates", {
   publishedAt: timestamp("published_at", { withTimezone: true }).notNull(),
   manual: boolean("manual").notNull().default(false),
   processedAt: timestamp("processed_at", { withTimezone: true }),
+  // interesul public de pe canalul Telegram al sursei (telegram-signal.ts):
+  // vizualizări, reacții și raportul față de media canalului (1 = obișnuit)
+  tgViews: integer("tg_views"),
+  tgReactions: integer("tg_reactions"),
+  tgInterest: real("tg_interest"),
 });
 
 // Abonații la notificări push (Web Push, chei VAPID proprii, fără serviciu

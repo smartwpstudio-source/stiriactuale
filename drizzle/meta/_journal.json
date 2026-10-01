@@ -50,6 +50,13 @@
       "when": 1790819055709,
       "tag": "0006_productive_wildside",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1790873243766,
+      "tag": "0007_wakeful_radioactive_man",
+      "breakpoints": true
     }
   ]
 }

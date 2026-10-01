@@ -9,16 +9,18 @@ import type { RawCandidate } from "./types";
 //  - nokta.md: 403 pentru IP-urile din cloud (GitHub Actions, Vercel) — merge doar local.
 // `trusted` = credibilitate ridicată în Media Radar CJI; contează în scor, nu
 // exclude nimic (surse cu credibilitate scăzută nu sunt în listă deloc).
-export const FEEDS = [
-  { id: "unimedia", name: "Unimedia", url: "https://www.unimedia.info/rss/news.xml", trusted: false },
+// `telegram` = canalul public al redacției — vizualizările și reacțiile de acolo
+// măsoară interesul public (telegram-signal.ts). Moldova 1 și Moldpres n-au.
+export const FEEDS: { id: string; name: string; url: string; trusted: boolean; telegram?: string }[] = [
+  { id: "unimedia", name: "Unimedia", url: "https://www.unimedia.info/rss/news.xml", trusted: false, telegram: "unimedia_info" },
   { id: "moldova1", name: "Moldova 1", url: "https://moldova1.md/rss", trusted: true },
-  { id: "ziarulnational", name: "Ziarul Național", url: "https://ziarulnational.md/feed/", trusted: false },
+  { id: "ziarulnational", name: "Ziarul Național", url: "https://ziarulnational.md/feed/", trusted: false, telegram: "ziarulnational" },
   { id: "moldpres", name: "Moldpres", url: "https://www.moldpres.md/config/rss.php?lang=rom", trusted: false },
-  { id: "zdg", name: "Ziarul de Gardă", url: "https://www.zdg.md/feed/", trusted: true },
-  { id: "newsmaker", name: "NewsMaker", url: "https://newsmaker.md/ro/feed/", trusted: true },
-  { id: "tv8", name: "TV8", url: "https://tv8.md/feed", trusted: false },
-  { id: "diez", name: "Diez", url: "https://www.diez.md/feed/", trusted: false },
-  { id: "pulsmedia", name: "Puls Media", url: "https://pulsmedia.md/rss/all/", trusted: false },
+  { id: "zdg", name: "Ziarul de Gardă", url: "https://www.zdg.md/feed/", trusted: true, telegram: "zdgmd" },
+  { id: "newsmaker", name: "NewsMaker", url: "https://newsmaker.md/ro/feed/", trusted: true, telegram: "newsmakerlive" },
+  { id: "tv8", name: "TV8", url: "https://tv8.md/feed", trusted: false, telegram: "tv8md" },
+  { id: "diez", name: "Diez", url: "https://www.diez.md/feed/", trusted: false, telegram: "diezmd" },
+  { id: "pulsmedia", name: "Puls Media", url: "https://pulsmedia.md/rss/all/", trusted: false, telegram: "pulsmedia" },
 ];
 
 export const TRUSTED_SOURCES = new Set(FEEDS.filter((f) => f.trusted).map((f) => f.name));

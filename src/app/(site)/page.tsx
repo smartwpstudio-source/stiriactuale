@@ -3,7 +3,7 @@ import { ArticleCard } from "@/components/article-card";
 import { ArticleRow } from "@/components/article-row";
 import { SectionHeading } from "@/components/section-heading";
 import { PushOptIn } from "@/components/push-opt-in";
-import { getHeroArticle, listArticles } from "@/lib/content/queries";
+import { getHeroArticle, getMostRead, listArticles } from "@/lib/content/queries";
 import { SECTION_LABELS } from "@/lib/content/geo";
 import type { Section } from "@/lib/content/types";
 
@@ -23,7 +23,8 @@ export default async function HomePage() {
     );
   }
 
-  const latest = (await listArticles({}, 1, 16)).items.filter((a) => a.slug !== hero.slug);
+  const [{ items: latestAll }, mostRead] = await Promise.all([listArticles({}, 1, 16), getMostRead(5)]);
+  const latest = latestAll.filter((a) => a.slug !== hero.slug);
   const sidebar = latest.slice(0, 7);
   const grid = latest.slice(7, 15);
   const shown = new Set([hero.slug, ...sidebar.map((a) => a.slug), ...grid.map((a) => a.slug)]);
@@ -52,6 +53,20 @@ export default async function HomePage() {
       </div>
 
       <PushOptIn />
+
+      {mostRead.length >= 3 && (
+        <section className="mt-10">
+          <SectionHeading title="Cele mai citite" />
+          <ol className="mt-4 grid gap-x-8 gap-y-4 sm:grid-cols-2 lg:grid-cols-5">
+            {mostRead.map((a, i) => (
+              <li key={a.slug} className="flex gap-3">
+                <span className="font-serif text-4xl leading-none text-amber-ink">{i + 1}</span>
+                <ArticleRow article={a} compact />
+              </li>
+            ))}
+          </ol>
+        </section>
+      )}
 
       {grid.length > 0 && (
         <section className="mt-10">

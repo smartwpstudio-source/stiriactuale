@@ -2,6 +2,7 @@ import { and, eq, lt } from "drizzle-orm";
 import { getDb } from "./db/client";
 import { candidates } from "./db/schema";
 import { fetchAllSources } from "./sources";
+import { updateTelegramSignals } from "./telegram-signal";
 
 const MAX_ITEM_AGE_HOURS = 24;
 const KEEP_DAYS = 7;
@@ -33,5 +34,6 @@ export async function collectCandidates() {
     .delete(candidates)
     .where(and(lt(candidates.publishedAt, new Date(Date.now() - KEEP_DAYS * 86400_000)), eq(candidates.manual, false)));
 
-  return { fetched: fetched.length, inserted: inserted.length, failedFeeds };
+  const telegram = await updateTelegramSignals();
+  return { fetched: fetched.length, inserted: inserted.length, failedFeeds, telegram };
 }

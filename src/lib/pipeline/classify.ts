@@ -68,6 +68,7 @@ const SYSTEM_PROMPT = [
   "- scandaluri politice, demisii, anchete; evenimente din raioane care afectează comunitatea;",
   "- diaspora: pericole, drepturi, reguli noi în țara-gazdă, istorii de succes remarcabile.",
   "Mediu (40-69): politică de rutină cu consecințe, internațional cu efect regional (Ucraina, România, UE, Rusia).",
+  "Interesul public: unele grupuri au „interes Telegram ×N” — de câte ori mai multe vizualizări are postarea redacției față de media canalului ei. ×2 sau mai mult înseamnă că subiectul preocupă clar publicul: crește impactul. ×1 sau lipsa semnalului nu scade nimic.",
   "Mic (0-39): declarații fără conținut, protocol, ceremonii, vizite de curtoazie, anunțuri instituționale fără efect.",
   "",
   "same_as: grupuri diferite pot descrie același eveniment formulat altfel (aceeași explozie, același accident) SAU etape diferite ale aceluiași incident (ex. anunțul inițial al unui obiect în spațiul aerian + drona găsită căzută; accidentul + starea victimelor). Marchează-le pe toate — publicăm un singur articol pe incident. Două evenimente distincte cu aceiași actori (două întâlniri diferite ale premierului) NU sunt același eveniment.",
@@ -79,13 +80,22 @@ const SYSTEM_PROMPT = [
   "reject=true pentru: horoscop, publicitate/advertorial/promoții, monden și vedete fără interes public, rețete, sfaturi generale, sondaje de opinie online, rezultate sportive fără legătură cu Moldova, știri vechi reluate.",
 ].join("\n");
 
+// "interes Telegram ×2.4, 5.370 vizualizări" — semnal real de la public, nu doar al nostru
+function interestLine(g: CandidateGroup): string {
+  const best = g.items.reduce<CandidateGroup["items"][number] | null>(
+    (b, i) => ((i.tgInterest ?? 0) > (b?.tgInterest ?? 0) ? i : b),
+    null,
+  );
+  return best?.tgInterest ? `, interes Telegram ×${best.tgInterest} față de media canalului, ${best.tgViews} vizualizări` : "";
+}
+
 // Un singur apel pentru toți candidații rulării — instrucțiunile + schema se
 // plătesc o dată, nu per grup.
 export async function classifyGroups(groups: CandidateGroup[]): Promise<(ClassificationResult | null)[]> {
   const prompt = groups
     .map(
       (g, i) =>
-        `#${i} (${g.sourceNames.length} surse)\n` +
+        `#${i} (${g.sourceNames.length} surse${interestLine(g)})\n` +
         g.items
           .slice(0, 4)
           .map((it) => `- [${it.sourceName}] ${it.title}\n  ${it.summary.slice(0, 300)}`)

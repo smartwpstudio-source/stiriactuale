@@ -1,4 +1,4 @@
-import { and, count, desc, eq, gte, ne, or, sql, type SQL } from "drizzle-orm";
+import { and, count, desc, eq, gt, gte, ne, or, sql, type SQL } from "drizzle-orm";
 import { getDb } from "@/lib/pipeline/db/client";
 import { articles as t } from "@/lib/pipeline/db/schema";
 import type { Article, Section, Topic } from "./types";
@@ -100,6 +100,17 @@ export async function getHeroArticle(): Promise<Article | null> {
     .orderBy(desc(t.qualityScore), desc(t.publishedAt))
     .limit(1);
   return row ? mapRow(row) : getLatestArticle();
+}
+
+// "Cele mai citite" — afișări pe site (ViewBeacon), articole din ultimele 48 de ore.
+export async function getMostRead(limit = 5): Promise<Article[]> {
+  const rows = await getDb()
+    .select(listColumns)
+    .from(t)
+    .where(and(where({}), gte(t.publishedAt, new Date(Date.now() - 48 * 3600_000)), gt(t.views, 0)))
+    .orderBy(desc(t.views))
+    .limit(limit);
+  return rows.map(mapRow);
 }
 
 export async function getArticleBySection(
