@@ -29,10 +29,16 @@ async function call<T>(method: string, body: Record<string, unknown>): Promise<T
   }
 }
 
-export async function notifyEditor(kind: "draft" | "publicat", a: { id: number; title: string; lead: string }) {
+const HEADS = {
+  draft: "📝 Draft nou",
+  "draft-alerta": "🔔 Draft nou — propus pentru notificare push",
+  publicat: "✅ Publicat",
+};
+
+export async function notifyEditor(kind: keyof typeof HEADS, a: { id: number; title: string; lead: string }) {
   const chatId = process.env.TELEGRAM_ADMIN_CHAT_ID;
   if (!chatId) return;
-  const head = kind === "draft" ? "📝 Draft nou" : "✅ Publicat";
+  const head = HEADS[kind];
   await call("sendMessage", {
     chat_id: chatId,
     parse_mode: "HTML",

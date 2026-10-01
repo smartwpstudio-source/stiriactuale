@@ -81,11 +81,16 @@ export async function publishArticle(
         imageAltText: generated.alt_text_imagine,
         sourceUrls,
         sources,
+        pushWorthy: candidate.classification.pushWorthy,
       })
       .onConflictDoNothing({ target: articles.slug })
       .returning({ id: articles.id });
     if (inserted.length) {
-      await notifyEditor("draft", { id: inserted[0].id, title: generated.titlu, lead: generated.lead });
+      await notifyEditor(candidate.classification.pushWorthy ? "draft-alerta" : "draft", {
+        id: inserted[0].id,
+        title: generated.titlu,
+        lead: generated.lead,
+      });
       return;
     }
   }

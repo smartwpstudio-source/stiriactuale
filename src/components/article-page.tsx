@@ -3,6 +3,7 @@ import { TopicLabel } from "./topic-label";
 import { ArticleThumb } from "./article-thumb";
 import { ShareButtons } from "./share-buttons";
 import { TelegramCta } from "./telegram-cta";
+import { PushOptIn } from "./push-opt-in";
 import { SimilarArticles } from "./similar-articles";
 import { formatTimeAgo } from "@/lib/format-time-ago";
 import { getSimilarArticles } from "@/lib/content/queries";
@@ -118,6 +119,7 @@ export async function ArticlePage({
       )}
       <ShareButtons url={absoluteUrl(articleUrl(article))} title={article.title} />
       <TelegramCta />
+      <PushOptIn />
       <SimilarArticles articles={similar} />
     </article>
   );

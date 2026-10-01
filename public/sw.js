@@ -4,9 +4,9 @@
 //   - pagini (articole, liste de știri)         -> network-first (mereu proaspăt;
 //                                                   fallback pe cache doar offline)
 //   - ultimele N articole citite                -> rămân disponibile offline
-// Fără push în v1 — decizie finală, brief-final-claude-code.md punctul 4.
+//   - notificări push (handler la final) — doar știrile de rezonanță, vezi src/lib/push.ts
 
-const VERSION = "v2"; // v2: admin exclus, cache static limitat
+const VERSION = "v3"; // v3: push + pagină offline
 const STATIC_CACHE = `stiriactuale-static-${VERSION}`;
 const PAGES_CACHE = `stiriactuale-pages-${VERSION}`;
 const ARTICLE_CACHE = `stiriactuale-articles-${VERSION}`;
@@ -17,8 +17,12 @@ const MAX_STATIC_ENTRIES = 150;
 
 const CURRENT_CACHES = [STATIC_CACHE, PAGES_CACHE, ARTICLE_CACHE];
 
-self.addEventListener("install", () => {
-  self.skipWaiting();
+const OFFLINE_URL = "/offline/";
+
+self.addEventListener("install", (event) => {
+  // pagina "fără conexiune" e salvată de la instalare, ca să existe chiar dacă
+  // cititorul n-a vizitat-o niciodată
+  event.waitUntil(caches.open(PAGES_CACHE).then((c) => c.add(OFFLINE_URL)).then(() => self.skipWaiting()));
 });
 
 self.addEventListener("activate", (event) => {
@@ -84,6 +88,8 @@ async function networkFirst(request, cacheName, trimTo) {
   } catch (err) {
     const cached = await cache.match(request);
     if (cached) return cached;
+    const offline = await caches.match(OFFLINE_URL);
+    if (offline) return offline;
     throw err;
   }
 }
@@ -112,4 +118,34 @@ self.addEventListener("fetch", (event) => {
   } else {
     event.respondWith(networkFirst(request, PAGES_CACHE));
   }
+});
+
+// Notificări push — payload trimis de src/lib/push.ts: { title, body, url, image }
+self.addEventListener("push", (event) => {
+  let data = {};
+  try {
+    data = event.data ? event.data.json() : {};
+  } catch {}
+  event.waitUntil(
+    self.registration.showNotification(data.title || "Stiri actuale", {
+      body: data.body || "",
+      icon: "/icons/icon-192.png",
+      badge: "/icons/icon-192.png",
+      image: data.image,
+      data: { url: data.url || "/" },
+      tag: data.url, // aceeași știre nu apare de două ori
+      lang: "ro",
+    }),
+  );
+});
+
+self.addEventListener("notificationclick", (event) => {
+  event.notification.close();
+  const url = new URL(event.notification.data?.url || "/", self.location.origin).href;
+  event.waitUntil(
+    self.clients.matchAll({ type: "window", includeUncontrolled: true }).then((wins) => {
+      const same = wins.find((w) => w.url === url);
+      return same ? same.focus() : self.clients.openWindow(url);
+    }),
+  );
 });

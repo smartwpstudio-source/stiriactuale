@@ -26,6 +26,7 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
     section: articles.section,
     score: articles.qualityScore,
     image: articles.imageUrl,
+    push: articles.pushWorthy,
     createdAt: articles.createdAt,
     publishedAt: articles.publishedAt,
   };
@@ -47,6 +48,7 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
             <span className="w-20 shrink-0 font-mono text-xs text-sub">{time(dateOf(r))}</span>
             <span className="w-24 shrink-0 font-mono text-xs text-teal">{SECTION_LABELS[r.section]}</span>
             <span className="flex-1 text-ink">{r.title}</span>
+            {r.push && <span title="propus pentru notificare push">🔔</span>}
             {!r.image && <span className="font-mono text-xs text-alert">fără foto</span>}
             <span className="font-mono text-xs text-sub">{Math.round(r.score)}</span>
           </Link>

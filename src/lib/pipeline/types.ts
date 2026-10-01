@@ -28,6 +28,7 @@ export interface ClassificationResult {
   confidence: number; // 0-100
   reject: boolean; // horoscop, publicitate, monden fără miză etc.
   sameAs?: number; // indexul unui grup anterior despre același eveniment
+  pushWorthy: boolean; // propunere de notificare push (criteriile redacției)
 }
 
 export interface ScoredCandidate {

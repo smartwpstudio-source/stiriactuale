@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Hero } from "@/components/hero";
+import { PushOptIn } from "@/components/push-opt-in";
 import { ArticleCard } from "@/components/article-card";
 import { getHeroArticle, listArticles } from "@/lib/content/queries";
 import { SECTION_LABELS } from "@/lib/content/geo";
@@ -34,6 +35,7 @@ export default async function HomePage() {
   return (
     <div className="mx-auto w-full max-w-5xl px-4 py-8">
       <Hero article={hero} />
+      <PushOptIn />
       <div className="mt-10 grid gap-10 sm:grid-cols-2">
         {sections.map(({ section, items }) => {
           if (items.length === 0) return null;

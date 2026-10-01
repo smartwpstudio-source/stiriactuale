@@ -26,6 +26,8 @@ Ordinea contează: emailul și pozele se rezolvă ÎNAINTE de mutarea DNS.
 | `TELEGRAM_BOT_TOKEN` | da | da | bot @sa_md_adminbot |
 | `TELEGRAM_ADMIN_CHAT_ID` | da | da | chat privat editor |
 | `TELEGRAM_CHANNEL_ID` | da | — | canalul Reporter News |
+| `NEXT_PUBLIC_VAPID_PUBLIC_KEY` | da | — | notificări push; aceeași valoare ca în `.env.local` |
+| `VAPID_PRIVATE_KEY` | da | — | NU se schimbă după lansare — altfel toți abonații se pierd |
 
 De șters din Vercel: `ANTHROPIC_API_KEY`, `FAL_KEY` (nu se mai folosesc; cheia API Anthropic ar avea prioritate și s-ar factura).
 
@@ -33,13 +35,18 @@ De șters din Vercel: `ANTHROPIC_API_KEY`, `FAL_KEY` (nu se mai folosesc; cheia 
 
 - [ ] `npm run migrate:upload-images` — urcă cele 615 poze/clipuri ale arhivei (223 MB) în Blob și rescrie URL-urile în baza de date
 - [ ] scos `stiriactuale.info/wp-content/uploads` din `next.config.ts` (images.remotePatterns)
-- [ ] **Email:** MX-ul domeniului arată acum spre serverul WordPress (`stiriactuale.info`). La mutarea pe Vercel emailul `contact@stiriactuale.info` se oprește dacă MX-ul nu e mutat explicit pe furnizorul de email (ex. serverul de mail al găzduirii actuale prin hostname propriu, sau alt serviciu)
+- [ ] **Email (cu o zi înainte), în DNS TopHost** — altfel `contact@stiriactuale.info` se oprește la mutare:
+  - adaugă `A  mail  195.178.106.95`
+  - modifică `MX  @` → `mail.stiriactuale.info` (prioritate 0)
+  - modifică SPF `TXT  @` → `v=spf1 ip4:195.178.106.95 ip4:195.178.106.195 ~all`
+  - găzduirea TopHost rămâne activă cât emailul e acolo
+- [ ] TTL pentru `A @` și `www` coborât la 300 s (revenire rapidă la WordPress dacă e nevoie)
 - [ ] `npm run migrate:export-content` + `migrate:import` din nou, dacă pe WordPress s-a mai publicat ceva între timp
 
 ## 4. Lansare
 
 - [ ] push pe GitHub, deploy Vercel, domeniul adăugat în proiect
-- [ ] DNS mutat pe Vercel
+- [ ] DNS TopHost: `A @` → IP-ul afișat de Vercel, `CNAME www` → valoarea afișată de Vercel (restul neatins)
 - [ ] AdSense → Privacy & messaging: mesaj GDPR activ
 - [ ] Search Console: sitemap `https://stiriactuale.info/sitemap.xml` retrimis (proprietatea rămâne aceeași — tag-ul de verificare e în layout)
 - [ ] verificat câteva URL-uri vechi (301) și `/feed/`

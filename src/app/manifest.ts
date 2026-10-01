@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next";
 
-// PWA instalabilă: manifest + service worker, fără push în v1 — decizie finală,
-// vezi brief-final-claude-code.md punctul 4-5. Iconițe placeholder generate din
+// PWA instalabilă: manifest + service worker cu citire offline și notificări
+// push (adăugate la cererea proprietarului, 2026-10-01 — brief-ul inițial le
+// excludea din v1). Iconițe placeholder generate din
 // tokenii de design (scripts/generate-icons.tsx), de înlocuit cu un logo real
 // ulterior fără să schimbe structura manifestului.
 export default function manifest(): MetadataRoute.Manifest {

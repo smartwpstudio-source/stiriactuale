@@ -9,7 +9,16 @@ import { COUNTRY_NAMES, RAION_NAMES, SECTION_LABELS } from "@/lib/content/geo";
 import { articleUrl } from "@/lib/content/url";
 import { sanitizeBody } from "@/lib/content/sanitize";
 import type { Section } from "@/lib/content/types";
-import { deleteArticle, removeImage, replaceImage, saveArticle, setStatus, uploadImage } from "../../actions";
+import {
+  deleteArticle,
+  removeImage,
+  replaceImage,
+  saveArticle,
+  sendPushNow,
+  setStatus,
+  togglePush,
+  uploadImage,
+} from "../../actions";
 import { ConfirmButton } from "../../confirm-button";
 import { UploadImage } from "../../upload-image";
 
@@ -20,7 +29,7 @@ const ERRORS: Record<string, string> = { raion: "Alege raionul.", tara: "Alege �
 export default async function EditArticlePage({ params, searchParams }: PageProps<"/admin/articol/[id]">) {
   await requireAdmin();
   const id = Number((await params).id);
-  const { q, ok, e } = await searchParams;
+  const { q, ok, e, push } = await searchParams;
   const [a] = Number.isInteger(id) ? await getDb().select().from(articles).where(eq(articles.id, id)) : [];
   if (!a) notFound();
 
@@ -57,6 +66,34 @@ export default async function EditArticlePage({ params, searchParams }: PageProp
         </div>
       </header>
       {ok && <p className="text-sm text-teal">Salvat.</p>}
+      {typeof push === "string" && (
+        <p className={`text-sm ${push.startsWith("trimisă") ? "text-teal" : "text-alert"}`}>Notificare push {push}.</p>
+      )}
+
+      <section className="flex flex-wrap items-center gap-3 rounded border border-line bg-white px-4 py-3 text-sm">
+        <span className="font-medium text-ink">🔔 Notificare push:</span>
+        {a.pushSentAt ? (
+          <span className="text-teal">
+            trimisă {a.pushSentAt.toLocaleString("ro-MD", { timeZone: "Europe/Chisinau", hour: "2-digit", minute: "2-digit", day: "2-digit", month: "2-digit" })}
+          </span>
+        ) : (
+          <>
+            <span className={a.pushWorthy ? "text-teal" : "text-sub"}>
+              {a.pushWorthy ? "DA — pleacă la publicare" : "nu"}
+            </span>
+            <form action={togglePush.bind(null, id, !a.pushWorthy)}>
+              <button className="rounded border border-line px-2 py-1 text-xs text-ink">
+                {a.pushWorthy ? "Fără notificare" : "Marchează pentru notificare"}
+              </button>
+            </form>
+            {!isDraft && a.pushWorthy && (
+              <form action={sendPushNow.bind(null, id)}>
+                <button className="rounded bg-teal px-2 py-1 text-xs text-white">Trimite alerta acum</button>
+              </form>
+            )}
+          </>
+        )}
+      </section>
       {typeof e === "string" && ERRORS[e] && <p className="text-sm text-alert">{ERRORS[e]}</p>}
 
       <div className="grid gap-8 lg:grid-cols-2">

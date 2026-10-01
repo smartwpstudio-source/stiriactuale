@@ -14,6 +14,7 @@ import { logIn, logOut, requireAdmin } from "@/lib/admin/auth";
 import { deleteFromChannel, notifyEditor, postToChannel } from "@/lib/telegram";
 import { articleUrl } from "@/lib/content/url";
 import { absoluteUrl } from "@/lib/seo";
+import { pushBlockedReason, sendPush } from "@/lib/push";
 import type { Section } from "@/lib/content/types";
 
 // Fiecare action verifică sesiunea — sunt endpoint-uri POST publice.
@@ -82,7 +83,32 @@ export async function setStatus(id: number, status: "draft" | "published") {
     .set(status === "published" ? { status, publishedAt: new Date(), telegramMessageId } : { status, telegramMessageId })
     .where(eq(articles.id, id));
   refreshSite();
+
+  const push = status === "published" && a.pushWorthy && !a.pushSentAt ? await tryPush(id) : "";
+  redirect(`/admin/articol/${id}/${push}`);
+}
+
+// Trimite notificarea push a unui articol publicat; întoarce ?push=... pentru mesajul din pagină.
+async function tryPush(id: number): Promise<string> {
+  const blocked = await pushBlockedReason();
+  if (blocked) return `?push=${encodeURIComponent(`netrimisă: ${blocked}`)}`;
+  const [a] = await getDb().select().from(articles).where(eq(articles.id, id));
+  const url = articleUrl({ ...a, locality: a.locality ?? undefined, country: a.country ?? undefined });
+  const r = await sendPush(id, { title: a.title, body: a.leadText.slice(0, 180), url, image: a.imageUrl ?? undefined });
+  return `?push=${encodeURIComponent(`trimisă la ${r.delivered} din ${r.total} abonați`)}`;
+}
+
+export async function togglePush(id: number, value: boolean) {
+  await requireAdmin();
+  await getDb().update(articles).set({ pushWorthy: value }).where(eq(articles.id, id));
   redirect(`/admin/articol/${id}/`);
+}
+
+export async function sendPushNow(id: number) {
+  await requireAdmin();
+  const [a] = await getDb().select().from(articles).where(eq(articles.id, id));
+  if (!a || a.status !== "published" || a.pushSentAt) redirect(`/admin/articol/${id}/`);
+  redirect(`/admin/articol/${id}/${await tryPush(id)}`);
 }
 
 export async function deleteArticle(id: number) {

@@ -43,6 +43,13 @@
       "when": 1790814605883,
       "tag": "0005_lush_nightmare",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1790819055709,
+      "tag": "0006_productive_wildside",
+      "breakpoints": true
     }
   ]
 }

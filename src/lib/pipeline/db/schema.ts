@@ -66,6 +66,11 @@ export const articles = pgTable("articles", {
   // sursă, noindex, fără reclame, exclus din liste și sitemap
   archived: boolean("archived").notNull().default(false),
 
+  // notificare push: propusă de clasificator (știri de rezonanță națională),
+  // editabilă în /admin; trimisă o singură dată, la publicare
+  pushWorthy: boolean("push_worthy").notNull().default(false),
+  pushSentAt: timestamp("push_sent_at", { withTimezone: true }),
+
   publishedAt: timestamp("published_at", { withTimezone: true }).notNull().defaultNow(),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
@@ -84,6 +89,16 @@ export const candidates = pgTable("candidates", {
   publishedAt: timestamp("published_at", { withTimezone: true }).notNull(),
   manual: boolean("manual").notNull().default(false),
   processedAt: timestamp("processed_at", { withTimezone: true }),
+});
+
+// Abonații la notificări push (Web Push, chei VAPID proprii, fără serviciu
+// extern). Abonamentele expirate (404/410 la trimitere) se șterg automat.
+export const pushSubscriptions = pgTable("push_subscriptions", {
+  id: serial("id").primaryKey(),
+  endpoint: text("endpoint").notNull().unique(),
+  p256dh: text("p256dh").notNull(),
+  auth: text("auth").notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 
 // Un rând per rulare de pipeline — audit/observabilitate, nu blochează nimic
