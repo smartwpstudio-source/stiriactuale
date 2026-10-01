@@ -16,8 +16,6 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "*.public.blob.vercel-storage.com" },
-      // TEMPORAR: pozele arhivei, până le mută upload-images.ts în Blob (după Vercel Pro)
-      { protocol: "https", hostname: "stiriactuale.info", pathname: "/wp-content/uploads/**" },
     ],
   },
 };

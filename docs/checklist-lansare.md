@@ -5,11 +5,11 @@ Ordinea contează: emailul și pozele se rezolvă ÎNAINTE de mutarea DNS.
 
 ## 1. Conturi și chei (proprietarul)
 
-- [ ] Vercel Pro plătit
+- [x] Vercel Pro plătit
 - [ ] Vercel → Settings → Spend Management: notificare la ~5$
-- [ ] Vercel → Storage → Blob creat; `BLOB_READ_WRITE_TOKEN` copiat
-- [ ] `claude setup-token` → `CLAUDE_CODE_OAUTH_TOKEN`
-- [ ] Cheie API Magnific → `MAGNIFIC_API_KEY`
+- [x] Vercel → Storage → Blob creat; `BLOB_READ_WRITE_TOKEN` copiat
+- [x] `claude setup-token` → `CLAUDE_CODE_OAUTH_TOKEN`
+- [x] Cheie API Magnific → `MAGNIFIC_API_KEY`
 - [ ] Usage credits Claude: rămân OFF
 - [ ] Chei vechi revocate: Anthropic API (console.anthropic.com), fal.ai
 
@@ -33,14 +33,14 @@ De șters din Vercel: `ANTHROPIC_API_KEY`, `FAL_KEY` (nu se mai folosesc; cheia 
 
 ## 3. Înainte de mutarea DNS
 
-- [ ] `npm run migrate:upload-images` — urcă cele 615 poze/clipuri ale arhivei (223 MB) în Blob și rescrie URL-urile în baza de date
-- [ ] scos `stiriactuale.info/wp-content/uploads` din `next.config.ts` (images.remotePatterns)
-- [ ] **Email (cu o zi înainte), în DNS TopHost** — altfel `contact@stiriactuale.info` se oprește la mutare:
-  - adaugă `A  mail  195.178.106.95`
+- [x] `npm run migrate:upload-images` — urcă cele 615 poze/clipuri ale arhivei (223 MB) în Blob și rescrie URL-urile în baza de date
+- [x] scos `stiriactuale.info/wp-content/uploads` din `next.config.ts` (images.remotePatterns)
+- [x] **Email (cu o zi înainte), în DNS TopHost** — altfel `contact@stiriactuale.info` se oprește la mutare:
+  - `mail` și `ftp`: din CNAME în `A 195.178.106.95` (făcut 2026-10-01)
   - modifică `MX  @` → `mail.stiriactuale.info` (prioritate 0)
   - modifică SPF `TXT  @` → `v=spf1 ip4:195.178.106.95 ip4:195.178.106.195 ~all`
   - găzduirea TopHost rămâne activă cât emailul e acolo
-- [ ] TTL pentru `A @` și `www` coborât la 300 s (revenire rapidă la WordPress dacă e nevoie)
+- [x] TTL pentru `A @` și `www` coborât la 300 s (revenire rapidă la WordPress dacă e nevoie)
 - [ ] `npm run migrate:export-content` + `migrate:import` din nou, dacă pe WordPress s-a mai publicat ceva între timp
 
 ## 4. Lansare
