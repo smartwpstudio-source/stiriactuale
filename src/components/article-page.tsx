@@ -138,7 +138,7 @@ export async function ArticlePage({
               .filter((a) => a.slug !== article.slug)
               .slice(0, 8)
               .map((a) => (
-                <ArticleRow key={a.slug} article={a} compact />
+                <ArticleRow key={a.slug} article={a} variant="compact" />
               ))}
           </div>
         </div>

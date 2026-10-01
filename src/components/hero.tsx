@@ -5,8 +5,8 @@ import { articleUrl } from "@/lib/content/url";
 import { SECTION_LABELS, raionLabel, countryLabel } from "@/lib/content/geo";
 import type { Article } from "@/lib/content/types";
 
-// Știrea din prim-plan: poză mare, titlu mare, rezumat. Pe desktop ocupă 2/3
-// din lățime, lângă coloana "Ultimele știri" (vezi (site)/page.tsx).
+// Știrea din prim-plan: pe desktop poza în stânga, titlul și rezumatul în
+// dreapta (ca pe portalurile de știri); pe telefon una sub alta.
 export function Hero({ article }: { article: Article }) {
   const locationLabel =
     article.section === "regiuni"
@@ -16,17 +16,20 @@ export function Hero({ article }: { article: Article }) {
         : null;
 
   return (
-    <Link href={articleUrl(article)} className="group block overflow-hidden rounded border border-line bg-white">
+    <Link
+      href={articleUrl(article)}
+      className="group grid overflow-hidden rounded border border-line bg-white lg:grid-cols-[3fr_2fr]"
+    >
       <ArticleThumb
         topics={article.topics}
         imageUrl={article.imageUrl}
         imageAlt={article.imageAlt}
-        className="aspect-video w-full"
+        className="aspect-video w-full lg:aspect-auto lg:h-full lg:min-h-[360px]"
         iconSize={64}
-        sizes="(max-width: 1024px) 100vw, 840px"
+        sizes="(max-width: 1024px) 100vw, 760px"
         priority
       />
-      <div className="p-5 sm:p-6">
+      <div className="flex flex-col justify-center p-5 sm:p-6 lg:p-8">
         <p className="font-mono text-xs uppercase tracking-wide text-amber-ink">
           în prim-plan · {SECTION_LABELS[article.section]}
           {locationLabel ? ` · ${locationLabel}` : ""}

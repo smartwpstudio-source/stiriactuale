@@ -5,10 +5,18 @@ import { formatTimeAgo, sourcesLabel } from "@/lib/format-time-ago";
 import { articleUrl } from "@/lib/content/url";
 import type { Article } from "@/lib/content/types";
 
-// Rând orizontal: poză mică + titlu. `compact` (fără poză, fără rezumat) pentru
-// coloanele laterale "Ultimele știri".
-export function ArticleRow({ article, compact = false }: { article: Article; compact?: boolean }) {
-  if (compact) {
+// Rând orizontal de listă:
+//  - "default": poză 160px + titlu + rezumat pe 2 rânduri (căutare, liste late);
+//  - "small": poză 96px + titlu + dată, fără rezumat (blocurile de pe prima pagină);
+//  - "compact": doar dată + titlu (coloanele laterale "Ultimele știri").
+export function ArticleRow({
+  article,
+  variant = "default",
+}: {
+  article: Article;
+  variant?: "default" | "small" | "compact";
+}) {
+  if (variant === "compact") {
     return (
       <Link href={articleUrl(article)} className="group block border-b border-line py-3 last:border-b-0">
         <p className="font-mono text-xs text-sub">{formatTimeAgo(article.publishedAt)}</p>
@@ -16,23 +24,29 @@ export function ArticleRow({ article, compact = false }: { article: Article; com
       </Link>
     );
   }
+  const small = variant === "small";
   return (
-    <Link href={articleUrl(article)} className="group flex gap-4 border-b border-line py-4 last:border-b-0">
+    <Link href={articleUrl(article)} className="group flex items-start gap-4 border-b border-line py-3 last:border-b-0">
+      {/* items-start + self-start: poza își păstrează forma, nu se întinde cât textul */}
       <ArticleThumb
         topics={article.topics}
         imageUrl={article.imageUrl}
         imageAlt={article.imageAlt}
-        className="aspect-[4/3] w-28 shrink-0 rounded sm:w-40"
-        iconSize={28}
-        sizes="160px"
+        className={`aspect-[4/3] shrink-0 self-start rounded ${small ? "w-24" : "w-28 sm:w-40"}`}
+        iconSize={small ? 20 : 28}
+        sizes={small ? "96px" : "160px"}
       />
       <div className="min-w-0">
-        {article.topics[0] && <TopicLabel topic={article.topics[0]} />}
-        <h3 className="mt-1 font-serif text-lg leading-snug text-ink group-hover:text-teal">{article.title}</h3>
-        {article.lead && <p className="mt-1 line-clamp-2 hidden text-[0.95rem] text-sub sm:block">{article.lead}</p>}
+        {!small && article.topics[0] && <TopicLabel topic={article.topics[0]} />}
+        <h3
+          className={`font-serif leading-snug text-ink group-hover:text-teal ${small ? "line-clamp-3 text-base" : "mt-1 text-lg"}`}
+        >
+          {article.title}
+        </h3>
+        {!small && article.lead && <p className="mt-1 hidden text-[0.95rem] text-sub sm:line-clamp-2">{article.lead}</p>}
         <p className="mt-1.5 font-mono text-xs text-sub">
           {formatTimeAgo(article.publishedAt)}
-          {sourcesLabel(article.sourceCount)}
+          {!small && sourcesLabel(article.sourceCount)}
         </p>
       </div>
     </Link>

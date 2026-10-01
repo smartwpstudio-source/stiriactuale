@@ -1,18 +1,19 @@
+import Link from "next/link";
 import { Hero } from "@/components/hero";
 import { ArticleCard } from "@/components/article-card";
-import { ArticleRow } from "@/components/article-row";
 import { SectionHeading } from "@/components/section-heading";
 import { PushOptIn } from "@/components/push-opt-in";
+import { NewsFeed } from "@/components/news-feed";
+import { CurrencyBox } from "@/components/currency-box";
 import { getHeroArticle, getMostRead, listArticles } from "@/lib/content/queries";
-import { SECTION_LABELS } from "@/lib/content/geo";
-import type { Section } from "@/lib/content/types";
+import { articleUrl } from "@/lib/content/url";
 
 // Randare ISR, revalidată la un minut — conținutul vine din pipeline.
 export const revalidate = 60;
 
-const SECTIONS: Section[] = ["regiuni", "national", "international", "diaspora"];
-const SECTION_GRID: Record<number, string> = { 1: "", 3: "lg:grid-cols-3" };
-
+// Structura de portal: știrea principală, grila "Știri noi", apoi lenta
+// "Ultima oră" care se derulează la nesfârșit (oamenii derulează, nu caută în
+// blocuri pe secțiuni). Pe desktop, alături: Cele mai citite + cursul BNM.
 export default async function HomePage() {
   const hero = await getHeroArticle();
 
@@ -24,79 +25,63 @@ export default async function HomePage() {
     );
   }
 
-  const [{ items: latestAll }, mostRead] = await Promise.all([listArticles({}, 1, 16), getMostRead(5)]);
-  const latest = latestAll.filter((a) => a.slug !== hero.slug);
-  const sidebar = latest.slice(0, 7);
-  const grid = latest.slice(7, 15);
-  const shown = new Set([hero.slug, ...sidebar.map((a) => a.slug), ...grid.map((a) => a.slug)]);
-
-  const sections = await Promise.all(
-    SECTIONS.map(async (section) => ({
-      section,
-      items: (await listArticles({ section }, 1, 12)).items.filter((a) => !shown.has(a.slug)).slice(0, 4),
-    })),
-  );
-
-  const visible = sections.filter((x) => x.items.length > 0);
+  const [{ items: latest }, { items: feedFirst, pages }, mostRead] = await Promise.all([
+    listArticles({}, 1, 9),
+    listArticles({}, 1, 20),
+    getMostRead(6),
+  ]);
+  const fresh = latest.filter((a) => a.slug !== hero.slug).slice(0, 8);
+  const exclude = [hero.slug, ...fresh.map((a) => a.slug)];
+  const feed = feedFirst.filter((a) => !exclude.includes(a.slug));
 
   return (
     <div className="mx-auto w-full max-w-7xl px-4 py-6 lg:px-8">
-      <div className="grid gap-8 lg:grid-cols-3">
-        <div className="lg:col-span-2">
-          <Hero article={hero} />
+      <Hero article={hero} />
+
+      <section className="mt-8">
+        <SectionHeading title="Știri noi" />
+        <div className="mt-4 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
+          {fresh.map((a) => (
+            <ArticleCard key={a.slug} article={a} size="sm" />
+          ))}
         </div>
-        <aside>
-          <SectionHeading title="Ultimele știri" />
-          <div className="mt-1">
-            {sidebar.map((a) => (
-              <ArticleRow key={a.slug} article={a} compact />
-            ))}
-          </div>
-        </aside>
-      </div>
+      </section>
 
       <PushOptIn />
 
-      {mostRead.length >= 3 && (
-        <section className="mt-10">
-          <SectionHeading title="Cele mai citite" />
-          <ol className="mt-4 grid gap-x-8 gap-y-4 sm:grid-cols-2 lg:grid-cols-5">
-            {mostRead.map((a, i) => (
-              <li key={a.slug} className="flex gap-3">
-                <span className="font-serif text-4xl leading-none text-amber-ink">{i + 1}</span>
-                <ArticleRow article={a} compact />
-              </li>
-            ))}
-          </ol>
-        </section>
-      )}
-
-      {grid.length > 0 && (
-        <section className="mt-10">
-          <SectionHeading title="Mai multe știri" />
-          <div className="mt-4 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {grid.map((a) => (
-              <ArticleCard key={a.slug} article={a} />
-            ))}
+      <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px]">
+        <section>
+          <SectionHeading title="Ultima oră" />
+          <div className="mt-2">
+            <NewsFeed
+              initial={feed}
+              exclude={exclude}
+              hasMore={pages > 1}
+              today={new Date().toLocaleDateString("en-CA", { timeZone: "Europe/Chisinau" })}
+            />
           </div>
         </section>
-      )}
 
-      {/* grila se adaptează la câte secțiuni au știri: un bloc gol lăsa un rând pe jumătate gol */}
-      <div className={`mt-12 grid gap-x-10 gap-y-12 ${SECTION_GRID[visible.length] ?? "lg:grid-cols-2"}`}>
-        {visible.map(({ section, items }) => (
-          <section key={section}>
-            <SectionHeading title={SECTION_LABELS[section]} href={`/${section}/`} />
-            <div className="mt-4">
-              <ArticleCard article={items[0]} size="lg" />
-            </div>
-            <div className="mt-2">
-              {items.slice(1).map((a) => (
-                <ArticleRow key={a.slug} article={a} />
-              ))}
-            </div>
-          </section>
-        ))}
+        <aside className="hidden lg:block">
+          <div className="sticky top-6 space-y-6">
+            {mostRead.length >= 3 && (
+              <section>
+                <SectionHeading title="Cele mai citite" />
+                <ol className="mt-2">
+                  {mostRead.map((a, i) => (
+                    <li key={a.slug} className="flex gap-3 border-b border-line py-3 last:border-b-0">
+                      <span className="font-serif text-3xl leading-none text-amber-ink">{i + 1}</span>
+                      <Link href={articleUrl(a)} className="font-serif text-[1.05rem] leading-snug text-ink hover:text-teal">
+                        {a.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ol>
+              </section>
+            )}
+            <CurrencyBox />
+          </div>
+        </aside>
       </div>
     </div>
   );
