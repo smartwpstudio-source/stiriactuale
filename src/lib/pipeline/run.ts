@@ -40,6 +40,7 @@ export interface PipelineRunSummary {
   collected: number;
   failedFeeds: string[];
   failedArticles: string[];
+  skippedThin: string[]; // material prea puțin chiar și din textele integrale — nescrise
   groupsFormed: number;
   candidatesClassified: number;
   articlesPublished: number;
@@ -56,6 +57,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     collected: 0,
     failedFeeds: [],
     failedArticles: [],
+    skippedThin: [],
     groupsFormed: 0,
     candidatesClassified: 0,
     articlesPublished: 0,
@@ -144,6 +146,10 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     const published = await mapWithConcurrency(toPublish, PUBLISH_CONCURRENCY, async (c): Promise<Section | null> => {
       try {
         const generated = await generateArticle(c.group, c.classification);
+        if (!generated) {
+          summary.skippedThin.push(c.group.representativeTitle.slice(0, 80));
+          return null;
+        }
         const image = await findArticleImage(generated.stock_query, generated.image_prompt, generated.slug, usedImageIds);
         await publishArticle(c, generated, image);
         if (c.group.manual) {

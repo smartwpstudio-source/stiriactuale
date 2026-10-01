@@ -8,7 +8,7 @@ import { articles, candidates } from "@/lib/pipeline/db/schema";
 import { put } from "@vercel/blob";
 import { AI_IMAGE_PREFIX, stockToBlob } from "@/lib/pipeline/image";
 import { sanitizeBody } from "@/lib/content/sanitize";
-import { decodeEntities } from "@/lib/html-entities";
+import { fetchArticle } from "@/lib/pipeline/fulltext";
 import { COUNTRY_NAMES, RAION_NAMES } from "@/lib/content/geo";
 import { logIn, logOut, requireAdmin } from "@/lib/admin/auth";
 import { deleteFromChannel } from "@/lib/telegram";
@@ -134,13 +134,6 @@ export async function removeImage(id: number) {
   redirect(`/admin/articol/${id}/`);
 }
 
-function metaContent(html: string, prop: string): string {
-  const m =
-    html.match(new RegExp(`<meta[^>]+(?:property|name)=["']${prop}["'][^>]+content=["']([^"']*)["']`, "i")) ??
-    html.match(new RegExp(`<meta[^>]+content=["']([^"']*)["'][^>]+(?:property|name)=["']${prop}["']`, "i"));
-  return m ? decodeEntities(m[1]).trim() : "";
-}
-
 // "Adaugă știre după link" (ex. găsită pe yam.md): se citește pagina sursei
 // originale și intră în candidates cu manual=true — următoarea rulare a
 // pipeline-ului o scrie obligatoriu, în afara plafonului zilnic.
@@ -154,23 +147,11 @@ export async function addLink(formData: FormData) {
     redirect("/admin/?link=invalid");
   }
 
-  let title = "";
-  let summary = "";
-  try {
-    const res = await fetch(url, {
-      headers: { "User-Agent": "Mozilla/5.0 (stiriactuale-editor)" },
-      signal: AbortSignal.timeout(15_000),
-    });
-    const html = await res.text();
-    title = metaContent(html, "og:title") || decodeEntities(html.match(/<title>([^<]*)<\/title>/i)?.[1] ?? "").trim();
-    // textul paragrafelor = materialul faptic pentru scriere; og:description e prea scurt
-    const paragraphs = [...html.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)]
-      .map((m) => decodeEntities(m[1].replace(/<[^>]+>/g, " ")).replace(/\s+/g, " ").trim())
-      .filter((p) => p.length > 60);
-    summary = [metaContent(html, "og:description"), ...paragraphs].join("\n").slice(0, 2000);
-  } catch {
-    // pagina nu poate fi citită — titlul rămâne gol, raportăm mai jos
-  }
+  // textul integral se descarcă din nou la scriere (generate.ts); aici doar
+  // titlul și un rezumat pentru clasificare
+  const page = await fetchArticle(url.toString());
+  const title = page?.title ?? "";
+  const summary = [page?.description, page?.text].filter(Boolean).join("\n").slice(0, 2000);
   if (!title) redirect("/admin/?link=unreadable");
 
   await getDb()
