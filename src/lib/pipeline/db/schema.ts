@@ -70,6 +70,8 @@ export const articles = pgTable("articles", {
   // editabilă în /admin; trimisă o singură dată, la publicare
   // afișări pe site (beacon din pagina de articol) — "Cele mai citite"
   views: integer("views").notNull().default(0),
+  // fixat de editor în prim-planul primei pagini până la această oră
+  featuredUntil: timestamp("featured_until", { withTimezone: true }),
   pushWorthy: boolean("push_worthy").notNull().default(false),
   pushSentAt: timestamp("push_sent_at", { withTimezone: true }),
 

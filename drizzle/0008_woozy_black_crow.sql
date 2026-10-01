@@ -1,0 +1,1 @@
+ALTER TABLE "articles" ADD COLUMN "featured_until" timestamp with time zone;

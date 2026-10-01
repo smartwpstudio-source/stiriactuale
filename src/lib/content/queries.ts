@@ -90,16 +90,28 @@ export async function getLatestArticle(): Promise<Article | null> {
   return (await listArticles({}, 1, 1)).items[0] ?? null;
 }
 
-// Știrea din prim-plan: cel mai mare scor din ultimele 12 ore (nu doar cea
-// mai nouă); dacă nu e nimic recent, cea mai nouă.
+// Știrea din prim-plan — trebuie să se schimbe odată cu știrile (cea mai
+// importantă din ultimele 12 ore ținea sus o știre de dimineață până seara):
+//  1. fixată de editor în /admin (featuredUntil în viitor);
+//  2. cea mai nouă marcată pentru notificare (interes național) din ultimele 6 ore;
+//  3. cea mai nouă importantă (scor ≥ 65) din ultimele 6 ore;
+//  4. cea mai nouă.
+const HERO_MIN_SCORE = 65;
+
 export async function getHeroArticle(): Promise<Article | null> {
-  const [row] = await getDb()
-    .select(listColumns)
-    .from(t)
-    .where(and(where({}), gte(t.publishedAt, new Date(Date.now() - 12 * 3600_000))))
-    .orderBy(desc(t.qualityScore), desc(t.publishedAt))
-    .limit(1);
-  return row ? mapRow(row) : getLatestArticle();
+  const now = new Date();
+  const since = new Date(now.getTime() - 6 * 3600_000);
+  const newest = (cond: SQL) =>
+    getDb().select(listColumns).from(t).where(and(where({}), cond)).orderBy(desc(t.publishedAt)).limit(1);
+  for (const cond of [
+    gt(t.featuredUntil, now),
+    and(eq(t.pushWorthy, true), gte(t.publishedAt, since))!,
+    and(gte(t.qualityScore, HERO_MIN_SCORE), gte(t.publishedAt, since))!,
+  ]) {
+    const [row] = await newest(cond);
+    if (row) return mapRow(row);
+  }
+  return getLatestArticle();
 }
 
 // "Cele mai citite" — afișări pe site (ViewBeacon), articole din ultimele 48 de ore.

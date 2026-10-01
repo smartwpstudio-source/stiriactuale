@@ -15,6 +15,7 @@ import {
   replaceImage,
   saveArticle,
   sendPushNow,
+  setFeatured,
   setStatus,
   togglePush,
   uploadImage,
@@ -68,6 +69,27 @@ export default async function EditArticlePage({ params, searchParams }: PageProp
       {ok && <p className="text-sm text-teal">Salvat.</p>}
       {typeof push === "string" && (
         <p className={`text-sm ${push.startsWith("trimisă") ? "text-teal" : "text-alert"}`}>Notificare push {push}.</p>
+      )}
+
+      {!isDraft && (
+        <section className="flex flex-wrap items-center gap-3 rounded border border-line bg-white px-4 py-3 text-sm">
+          <span className="font-medium text-ink">⭐ Prim-plan pe prima pagină:</span>
+          {a.featuredUntil && a.featuredUntil > new Date() ? (
+            <>
+              <span className="text-teal">
+                fixat până la{" "}
+                {a.featuredUntil.toLocaleTimeString("ro-MD", { timeZone: "Europe/Chisinau", hour: "2-digit", minute: "2-digit" })}
+              </span>
+              <form action={setFeatured.bind(null, id, false)}>
+                <button className="rounded border border-line px-2 py-1 text-xs text-ink">Scoate din prim-plan</button>
+              </form>
+            </>
+          ) : (
+            <form action={setFeatured.bind(null, id, true)}>
+              <button className="rounded bg-amber-ink px-2 py-1 text-xs text-white">Fixează în prim-plan (6 ore)</button>
+            </form>
+          )}
+        </section>
       )}
 
       <section className="flex flex-wrap items-center gap-3 rounded border border-line bg-white px-4 py-3 text-sm">
