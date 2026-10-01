@@ -11,8 +11,14 @@ export const OPUS_MODEL = "claude-opus-5-5";
 
 // ANTHROPIC_API_KEY are prioritate față de token-ul de abonament în Claude
 // Code — dacă ar fi prezentă în mediu, s-ar factura API-ul. O scoatem explicit.
-const env: Record<string, string | undefined> = { ...process.env };
-delete env.ANTHROPIC_API_KEY;
+// Citit la FIECARE apel, nu la încărcarea modulului: scripturile încarcă
+// .env.local după importuri, iar o copie făcută devreme n-ar avea token-ul.
+function claudeEnv(): Record<string, string | undefined> {
+  const env: Record<string, string | undefined> = { ...process.env };
+  delete env.ANTHROPIC_API_KEY;
+  if (!env.CLAUDE_CODE_OAUTH_TOKEN) throw new Error("CLAUDE_CODE_OAUTH_TOKEN lipsește");
+  return env;
+}
 
 let totalCostUsd = 0;
 export const spentUsd = () => totalCostUsd;
@@ -33,14 +39,14 @@ export async function structured<T>(opts: {
       settingSources: [],
       persistSession: false,
       cwd: os.tmpdir(), // fără CLAUDE.md-ul proiectului în context
-      env,
+      env: claudeEnv(),
       maxBudgetUsd: opts.maxBudgetUsd,
       outputFormat: { type: "json_schema", schema: opts.schema },
     },
   })) {
     if (m.type !== "result") continue;
     totalCostUsd += m.total_cost_usd;
-    if (m.subtype !== "success") throw new Error(`Claude: ${m.subtype}`);
+    if (m.subtype !== "success" || m.is_error) throw new Error(`Claude: ${m.subtype} — ${"result" in m ? m.result : ""}`);
     if (m.structured_output !== undefined) return m.structured_output as T;
     // Uneori modelul răspunde cu JSON-ul ca text, fără unealta StructuredOutput
     // (observat la Haiku) — SDK-ul raportează "success" cu structured_output gol.

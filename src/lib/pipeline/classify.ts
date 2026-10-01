@@ -53,7 +53,7 @@ const SYSTEM_PROMPT = [
   "Primești grupuri numerotate (#0, #1, ...); fiecare grup = relatări despre același eveniment. Clasifică FIECARE grup, cu id-ul lui.",
   "",
   "Secțiune:",
-  "- regiuni: eveniment localizat clar într-un raion/oraș din R. Moldova (inclusiv Găgăuzia, Transnistria). Chișinău doar dacă evenimentul e local (accident, incendiu, caz în municipiu), nu o decizie guvernamentală.",
+  "- regiuni: eveniment localizat clar într-un raion/oraș din R. Moldova (inclusiv Găgăuzia, Transnistria). Accidentele, incendiile, crimele și cazurile dintr-o stradă/cartier din Chișinău sunt OBLIGATORIU regiuni + locality=chisinau. Deciziile guvernamentale, Parlamentul, instituțiile centrale NU sunt regiuni.",
   "- diaspora: moldoveni aflați în străinătate — probleme, accidente, drepturi, dar și istorii de succes. Țara în care se află.",
   "- national: R. Moldova la nivel de țară, inclusiv relatat de presa străină.",
   "- international: fără legătură centrală cu R. Moldova.",
@@ -68,7 +68,7 @@ const SYSTEM_PROMPT = [
   "Mediu (40-69): politică de rutină cu consecințe, internațional cu efect regional (Ucraina, România, UE, Rusia).",
   "Mic (0-39): declarații fără conținut, protocol, ceremonii, vizite de curtoazie, anunțuri instituționale fără efect.",
   "",
-  "same_as: grupuri diferite pot descrie același eveniment formulat altfel (ex. aceeași explozie, același accident). Marchează-le; două evenimente distincte cu aceiași actori (două întâlniri diferite ale premierului) NU sunt același eveniment.",
+  "same_as: grupuri diferite pot descrie același eveniment formulat altfel (aceeași explozie, același accident) SAU etape diferite ale aceluiași incident (ex. anunțul inițial al unui obiect în spațiul aerian + drona găsită căzută; accidentul + starea victimelor). Marchează-le pe toate — publicăm un singur articol pe incident. Două evenimente distincte cu aceiași actori (două întâlniri diferite ale premierului) NU sunt același eveniment.",
   "",
   "reject=true pentru: horoscop, publicitate/advertorial/promoții, monden și vedete fără interes public, rețete, sfaturi generale, sondaje de opinie online, rezultate sportive fără legătură cu Moldova, știri vechi reluate.",
 ].join("\n");
