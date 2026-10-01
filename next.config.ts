@@ -7,6 +7,12 @@ const nextConfig: NextConfig = {
   // un singur 301 curat către URL-ul nou, nu un lanț de redirect-uri.
   trailingSlash: true,
 
+  // Ghidurile și contactele de raion/țară sunt fișiere JSON citite pe server
+  // (content/) — incluse explicit în pachetul fiecărei rute regenerate (ISR).
+  outputFileTracingIncludes: {
+    "/**": ["./content/**/*.json"],
+  },
+
   // Foto de stock copiate de pipeline în Vercel Blob — vezi
   // src/lib/pipeline/image.ts.
   // Upload de imagini din /admin: fișierul e redimensionat în browser la

@@ -29,6 +29,9 @@ export function Footer() {
           ))}
         </nav>
         <div className="flex flex-col gap-2">
+          <Link href="/ghiduri/" className="hover:text-amber">
+            Ghiduri practice
+          </Link>
           <a href={TELEGRAM_URL} className="hover:text-amber">
             Telegram
           </a>

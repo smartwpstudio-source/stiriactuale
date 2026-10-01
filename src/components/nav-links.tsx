@@ -8,6 +8,7 @@ const NAV = [
   { href: "/national/", label: "Național" },
   { href: "/international/", label: "Internațional" },
   { href: "/diaspora/", label: "Diaspora" },
+  { href: "/ghiduri/", label: "Ghiduri" },
 ];
 
 // Secțiunea curentă subliniată în amber — orientare pe articol și pe hub.

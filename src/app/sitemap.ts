@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getHubCounts, getSitemapArticles } from "@/lib/content/queries";
+import { getGuides } from "@/lib/content/guides";
+import { listPlaces } from "@/lib/content/places";
 import { articleUrl } from "@/lib/content/url";
 import { SITE_URL } from "@/lib/seo";
 
@@ -10,17 +12,28 @@ export const revalidate = 3600;
 // ponytail: un singur sitemap; Google acceptă max 50.000 URL-uri, împarte
 // cu generateSitemaps() când arhiva se apropie de limită.
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [articles, counts] = await Promise.all([getSitemapArticles(), getHubCounts()]);
+  const [articles, counts, guides, raioane, tari] = await Promise.all([
+    getSitemapArticles(),
+    getHubCounts(),
+    getGuides(),
+    listPlaces("raioane"),
+    listPlaces("tari"),
+  ]);
+  // hub-uri cu articole SAU cu informații utile (fără ele au noindex)
+  const raionSlugs = [...new Set([...Object.keys(counts.localities), ...raioane])];
+  const taraSlugs = [...new Set([...Object.keys(counts.countries), ...tari])];
 
   const hubs = [
     { url: "/", priority: 1 },
     ...["regiuni", "national", "international", "diaspora"].map((s) => ({ url: `/${s}/`, priority: 0.8 })),
-    ...Object.keys(counts.localities).map((r) => ({ url: `/regiuni/${r}/`, priority: 0.7 })),
-    ...Object.keys(counts.countries).map((t) => ({ url: `/diaspora/${t}/`, priority: 0.7 })),
+    ...raionSlugs.map((r) => ({ url: `/regiuni/${r}/`, priority: 0.7 })),
+    ...taraSlugs.map((t) => ({ url: `/diaspora/${t}/`, priority: 0.7 })),
     ...["despre", "contact", "politica-editoriala", "confidentialitate"].map((p) => ({ url: `/${p}/`, priority: 0.3 })),
+    { url: "/ghiduri/", priority: 0.7 },
   ];
 
   return [
+    ...guides.map((g) => ({ url: `${SITE_URL}/ghiduri/${g.slug}/`, lastModified: g.updated, priority: 0.7 })),
     ...hubs.map((h) => ({ url: `${SITE_URL}${h.url}`, changeFrequency: "hourly" as const, priority: h.priority })),
     ...articles.map((a) => ({
       url: `${SITE_URL}${articleUrl({ ...a, locality: a.locality ?? undefined, country: a.country ?? undefined })}`,

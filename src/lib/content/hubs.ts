@@ -12,6 +12,7 @@ export interface Hub {
   crumbs: { label: string; href?: string }[];
   filter: ArticleFilter;
   chips?: { kind: "raion" | "tara"; basePath: string; active?: string };
+  place?: { kind: "raioane" | "tari"; slug: string; name: string }; // contacte utile (content/locuri/)
 }
 
 const home = { label: "Acasă", href: "/" };
@@ -49,6 +50,7 @@ export function raionHub(raion: string): Hub | null {
     crumbs: [home, { label: "Regiuni", href: "/regiuni/" }, { label }],
     filter: { section: "regiuni", locality: raion },
     chips: { kind: "raion", basePath: "/regiuni", active: raion },
+    place: { kind: "raioane", slug: raion, name: label },
   };
 }
 
@@ -62,6 +64,7 @@ export function taraHub(tara: string): Hub | null {
     crumbs: [home, { label: "Diaspora", href: "/diaspora/" }, { label }],
     filter: { section: "diaspora", country: tara },
     chips: { kind: "tara", basePath: "/diaspora", active: tara },
+    place: { kind: "tari", slug: tara, name: label },
   };
 }
 
