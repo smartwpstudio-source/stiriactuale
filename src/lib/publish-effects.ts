@@ -4,12 +4,13 @@ import { articles } from "@/lib/pipeline/db/schema";
 import { articleUrl } from "@/lib/content/url";
 import { absoluteUrl } from "@/lib/seo";
 import { notifyEditor, postToChannel } from "@/lib/telegram";
+import { postToPage } from "@/lib/facebook";
 import { pushBlockedReason, sendPush } from "@/lib/push";
 
 // Tot ce se întâmplă când un articol devine public — același lucru indiferent
 // dacă l-a publicat editorul din /admin sau pipeline-ul automat:
 //  - mesaj privat către editor ("Publicat" / "Publicat automat");
-//  - postare în canalul Telegram (o singură dată per articol);
+//  - postare în canalul Telegram și pe pagina de Facebook (o singură dată per articol);
 //  - notificare push, dacă e marcat și nu e blocat de plafon / ore de liniște.
 // Întoarce rezultatul push-ului ca text (afișat în /admin), sau "" dacă n-a fost cazul.
 export async function announcePublished(id: number, how: "manual" | "auto"): Promise<string> {
@@ -22,6 +23,10 @@ export async function announcePublished(id: number, how: "manual" | "auto"): Pro
   if (!a.telegramMessageId) {
     const telegramMessageId = await postToChannel({ title: a.title, lead: a.leadText, url: absoluteUrl(path) });
     if (telegramMessageId) await db.update(articles).set({ telegramMessageId }).where(eq(articles.id, id));
+  }
+  if (!a.facebookPostId) {
+    const facebookPostId = await postToPage({ title: a.title, lead: a.leadText, url: absoluteUrl(path) });
+    if (facebookPostId) await db.update(articles).set({ facebookPostId }).where(eq(articles.id, id));
   }
   return a.pushWorthy && !a.pushSentAt ? pushNow(id) : "";
 }

@@ -60,6 +60,8 @@ export const articles = pgTable("articles", {
   // mesajul din canalul Telegram — ca retragerea să-l poată șterge și ca
   // republicarea să nu dubleze postarea
   telegramMessageId: integer("telegram_message_id"),
+  // postarea de pe pagina de Facebook — aceleași motive ca la Telegram
+  facebookPostId: varchar("facebook_post_id", { length: 64 }),
   // id-ul articolului din WordPress, doar pentru arhiva importată
   wpId: integer("wp_id").unique(),
   // articol de arhivă preluat de la altă redacție: doar rezumat + link spre

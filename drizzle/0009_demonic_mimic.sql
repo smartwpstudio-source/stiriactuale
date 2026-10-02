@@ -1,0 +1,1 @@
+ALTER TABLE "articles" ADD COLUMN "facebook_post_id" varchar(64);

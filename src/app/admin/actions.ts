@@ -13,6 +13,7 @@ import { COUNTRY_NAMES, RAION_NAMES } from "@/lib/content/geo";
 import { logIn, logOut, requireAdmin } from "@/lib/admin/auth";
 import { dispatchPipeline } from "@/lib/pipeline-dispatch";
 import { deleteFromChannel } from "@/lib/telegram";
+import { deleteFromPage } from "@/lib/facebook";
 import { announcePublished, pushNow } from "@/lib/publish-effects";
 import type { Section } from "@/lib/content/types";
 
@@ -66,11 +67,12 @@ export async function setStatus(id: number, status: "draft" | "published") {
   if (!a) redirect("/admin/");
 
   if (status === "draft" && a.telegramMessageId) await deleteFromChannel(a.telegramMessageId);
+  if (status === "draft" && a.facebookPostId) await deleteFromPage(a.facebookPostId);
   await db
     .update(articles)
     // publishedAt = momentul publicării, nu al generării — altfel un draft
     // aprobat după 5 ore apare îngropat în listă
-    .set(status === "published" ? { status, publishedAt: new Date() } : { status, telegramMessageId: null })
+    .set(status === "published" ? { status, publishedAt: new Date() } : { status, telegramMessageId: null, facebookPostId: null })
     .where(eq(articles.id, id));
   refreshSite();
 
@@ -104,8 +106,9 @@ export async function sendPushNow(id: number) {
 
 export async function deleteArticle(id: number) {
   await requireAdmin();
-  const [a] = await getDb().delete(articles).where(eq(articles.id, id)).returning({ tg: articles.telegramMessageId });
+  const [a] = await getDb().delete(articles).where(eq(articles.id, id)).returning({ tg: articles.telegramMessageId, fb: articles.facebookPostId });
   if (a?.tg) await deleteFromChannel(a.tg);
+  if (a?.fb) await deleteFromPage(a.fb);
   refreshSite();
   redirect("/admin/");
 }
