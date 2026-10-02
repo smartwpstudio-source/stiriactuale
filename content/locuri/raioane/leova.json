@@ -1,0 +1,75 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    {
+      "name": "Guvernul — Consiliul Raional Leova (particip.gov.md)",
+      "url": "https://particip.gov.md/ro/authorities/833"
+    },
+    {
+      "name": "Poliția — IP Leova",
+      "url": "https://politia.md/ro/inspectoratul-de-politie-leova"
+    },
+    {
+      "name": "Spitalul Raional Leova",
+      "url": "https://srleova.md"
+    },
+    {
+      "name": "Primăria Leova",
+      "url": "https://primarialeova.md"
+    },
+    {
+      "name": "ASP — oficiul Leova",
+      "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/leova"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Urgențe",
+      "items": [
+        {
+          "name": "Inspectoratul de Poliție Leova (serviciul de serviciu)",
+          "phone": "+373 263 20502",
+          "address": "str. Unirii 28, Leova",
+          "url": "https://politia.md/ro/inspectoratul-de-politie-leova"
+        },
+        {
+          "name": "Spitalul Raional Leova — recepție",
+          "phone": "+373 263 22141",
+          "address": "str. Ștefan cel Mare 63, Leova",
+          "url": "https://srleova.md"
+        },
+        {
+          "name": "Spitalul Raional Leova — urgențe",
+          "phone": "+373 263 23187",
+          "url": "https://srleova.md"
+        }
+      ]
+    },
+    {
+      "title": "Autorități",
+      "items": [
+        {
+          "name": "Consiliul Raional Leova",
+          "phone": "+373 263 24524"
+        },
+        {
+          "name": "Primăria Leova",
+          "phone": "+373 263 22206",
+          "address": "str. Unirii 22, Leova",
+          "url": "https://primarialeova.md"
+        }
+      ]
+    },
+    {
+      "title": "Servicii",
+      "items": [
+        {
+          "name": "Agenția Servicii Publice — Centrul Multifuncțional Leova",
+          "phone": "+373 263 20231",
+          "address": "str. B. P. Hașdeu 2/B, Leova",
+          "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/leova"
+        }
+      ]
+    }
+  ]
+}

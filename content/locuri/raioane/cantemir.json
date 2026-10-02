@@ -1,0 +1,32 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    { "name": "Consiliul Raional Cantemir", "url": "https://cantemir.md/contacte" },
+    { "name": "Poliția Republicii Moldova — IP Cantemir", "url": "https://politia.md/ro/inspectoratul-de-politie-cantemir" },
+    { "name": "IMSP Spitalul Raional Cantemir", "url": "https://spitalcantemir.wordpress.com/date-de-contact-imsp-sr-cant/" },
+    { "name": "Agenția Servicii Publice — Cantemir", "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/cantemir" },
+    { "name": "ANOFM — lista subdiviziunilor teritoriale", "url": "https://www.anofm.md/files/elfinder/+Lista%20STOFM%20email%20contacte.pdf" }
+  ],
+  "blocks": [
+    {
+      "title": "Urgențe",
+      "items": [
+        { "name": "Inspectoratul de Poliție Cantemir", "phone": "+373 273 20130", "address": "str. N. Testimițeanu 2, Cantemir", "url": "https://politia.md/ro/inspectoratul-de-politie-cantemir" },
+        { "name": "Spitalul Raional Cantemir — administrație", "phone": "+373 273 22448", "url": "https://spitalcantemir.wordpress.com/date-de-contact-imsp-sr-cant/" }
+      ]
+    },
+    {
+      "title": "Autorități",
+      "items": [
+        { "name": "Consiliul Raional Cantemir", "phone": "+373 273 22058", "address": "str. Trandafirilor 2, Cantemir", "url": "https://cantemir.md/contacte" }
+      ]
+    },
+    {
+      "title": "Servicii",
+      "items": [
+        { "name": "Agenția Servicii Publice — Centrul Multifuncțional Cantemir", "phone": "+373 273 23020", "address": "str. Basarabia 4, Cantemir", "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/cantemir" },
+        { "name": "Direcția ocuparea forței de muncă Cantemir", "phone": "+373 273 23300", "address": "str. Trandafirilor 2, Cantemir", "url": "https://www.anofm.md/files/elfinder/+Lista%20STOFM%20email%20contacte.pdf" }
+      ]
+    }
+  ]
+}

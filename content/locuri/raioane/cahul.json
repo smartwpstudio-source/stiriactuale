@@ -1,0 +1,36 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    { "name": "Consiliul Raional Cahul", "url": "https://cahul.md" },
+    { "name": "Primăria Cahul", "url": "https://primariacahul.md" },
+    { "name": "Poliția Republicii Moldova — IP Cahul", "url": "https://politia.md/ro/inspectoratul-de-politie-cahul" },
+    { "name": "Spitalul Raional Cahul", "url": "https://spital.md/contact/" },
+    { "name": "Agenția Servicii Publice — Cahul", "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/cahul" },
+    { "name": "CNAS — CTAS Cahul", "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/%D1%81ahul" },
+    { "name": "ANOFM — lista subdiviziunilor teritoriale", "url": "https://www.anofm.md/files/elfinder/+Lista%20STOFM%20email%20contacte.pdf" }
+  ],
+  "blocks": [
+    {
+      "title": "Urgențe",
+      "items": [
+        { "name": "Inspectoratul de Poliție Cahul", "phone": "+373 299 25615", "address": "str. 31 August 28-30, mun. Cahul", "url": "https://politia.md/ro/inspectoratul-de-politie-cahul" },
+        { "name": "Spitalul Raional Cahul — Unitatea Primiri Urgențe", "phone": "+373 299 34492", "url": "https://spital.md/contact/" }
+      ]
+    },
+    {
+      "title": "Autorități",
+      "items": [
+        { "name": "Consiliul Raional Cahul", "phone": "+373 299 22058", "address": "Piața Independenței 2, mun. Cahul", "url": "https://cahul.md" },
+        { "name": "Primăria Cahul", "phone": "+373 299 22400", "address": "Piața Independenței 6, mun. Cahul", "url": "https://primariacahul.md" }
+      ]
+    },
+    {
+      "title": "Servicii",
+      "items": [
+        { "name": "Casa Teritorială de Asigurări Sociale Cahul", "address": "Piața Independenței 6, mun. Cahul", "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/%D1%81ahul" },
+        { "name": "Agenția Servicii Publice — Centrul Multifuncțional Cahul", "phone": "+373 299 84691", "address": "Prospectul Republicii 24 G, mun. Cahul", "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/cahul" },
+        { "name": "Direcția ocuparea forței de muncă Cahul", "phone": "+373 299 22186", "address": "str. Ștefan cel Mare 15, Cahul", "url": "https://www.anofm.md/files/elfinder/+Lista%20STOFM%20email%20contacte.pdf" }
+      ]
+    }
+  ]
+}

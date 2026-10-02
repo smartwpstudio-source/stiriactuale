@@ -1,0 +1,72 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    {
+      "name": "Consiliul Raional Hîncești",
+      "url": "https://hincesti.md"
+    },
+    {
+      "name": "Poliția — IP Hîncești",
+      "url": "https://politia.md/ro/inspectoratul-de-politie-hincesti"
+    },
+    {
+      "name": "Spitalul Raional Hîncești",
+      "url": "https://srhincesti.md"
+    },
+    {
+      "name": "Primăria Hîncești",
+      "url": "https://primariahincesti.md"
+    },
+    {
+      "name": "ASP — oficiul Hîncești",
+      "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/hincesti"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Urgențe",
+      "items": [
+        {
+          "name": "Inspectoratul de Poliție Hîncești (serviciul de serviciu)",
+          "phone": "+373 269 20701",
+          "address": "str. Mihai Moraru 93, Hîncești",
+          "url": "https://politia.md/ro/inspectoratul-de-politie-hincesti"
+        },
+        {
+          "name": "Spitalul Raional Hîncești — recepție",
+          "phone": "+373 269 23235",
+          "address": "str. Mihalcea Hîncu 238, Hîncești",
+          "url": "https://srhincesti.md"
+        }
+      ]
+    },
+    {
+      "title": "Autorități",
+      "items": [
+        {
+          "name": "Consiliul Raional Hîncești",
+          "phone": "+373 269 22058",
+          "address": "str. Mihalcea Hîncu 126, et. III, Hîncești",
+          "url": "https://hincesti.md"
+        },
+        {
+          "name": "Primăria Hîncești",
+          "phone": "+373 269 23286",
+          "address": "str. Mihalcea Hîncu 132, Hîncești",
+          "url": "https://primariahincesti.md"
+        }
+      ]
+    },
+    {
+      "title": "Servicii",
+      "items": [
+        {
+          "name": "Agenția Servicii Publice — Centrul Multifuncțional Hîncești",
+          "phone": "+373 269 20102",
+          "address": "str. Chișinău 12A, Hîncești",
+          "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/hincesti"
+        }
+      ]
+    }
+  ]
+}

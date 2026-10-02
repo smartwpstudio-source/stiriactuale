@@ -1,0 +1,34 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    { "name": "Consiliul Raional Basarabeasca", "url": "https://basarabeasca.md/ro/contacte/" },
+    { "name": "Primăria Basarabeasca", "url": "https://primariabessarabka.md" },
+    { "name": "Poliția Republicii Moldova — IP Basarabeasca", "url": "https://politia.md/ro/inspectoratul-de-politie-basarabeasca" },
+    { "name": "Agenția Servicii Publice — Basarabeasca", "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/basarabeasca" },
+    { "name": "CNAS — CTAS Basarabeasca", "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/basarabeasca" },
+    { "name": "ANOFM — lista subdiviziunilor teritoriale", "url": "https://www.anofm.md/files/elfinder/+Lista%20STOFM%20email%20contacte.pdf" }
+  ],
+  "blocks": [
+    {
+      "title": "Urgențe",
+      "items": [
+        { "name": "Inspectoratul de Poliție Basarabeasca — serviciul de gardă", "phone": "+373 297 64061", "address": "str. Școlii 38, Basarabeasca", "url": "https://politia.md/ro/inspectoratul-de-politie-basarabeasca" }
+      ]
+    },
+    {
+      "title": "Autorități",
+      "items": [
+        { "name": "Consiliul Raional Basarabeasca", "phone": "+373 297 22058", "address": "str. Karl Marx 55, Basarabeasca", "url": "https://basarabeasca.md/ro/contacte/" },
+        { "name": "Primăria Basarabeasca", "phone": "+373 297 22760", "address": "str. Karl Marx 57, Basarabeasca", "url": "https://primariabessarabka.md" }
+      ]
+    },
+    {
+      "title": "Servicii",
+      "items": [
+        { "name": "Casa Teritorială de Asigurări Sociale Basarabeasca", "address": "str. Carl Marx 57, Basarabeasca", "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/basarabeasca" },
+        { "name": "Agenția Servicii Publice — Centrul Multifuncțional Basarabeasca", "phone": "+373 297 20454", "address": "str. Naberejnaia 9, Basarabeasca", "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/basarabeasca" },
+        { "name": "Secția ocuparea forței de muncă Basarabeasca", "phone": "+373 297 22505", "address": "str. K. Marx 55, Basarabeasca", "url": "https://www.anofm.md/files/elfinder/+Lista%20STOFM%20email%20contacte.pdf" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    { "name": "Gagauzia.md — portalul UTA Găgăuzia", "url": "https://gagauzia.md/" },
+    { "name": "Inspectoratul de Poliție Comrat", "url": "https://igp.gov.md/ro/inspectoratul-de-politie-comrat" },
+    { "name": "Agenția Servicii Publice — Comrat", "url": "https://asp.gov.md/en/contacte/subdiviziuni-teritoriale/comrat" },
+    { "name": "CNAS — CTAS Comrat", "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/сomrat" },
+    { "name": "Inspectoratul General pentru Situații de Urgență", "url": "https://igsu.gov.md/" }
+  ],
+  "blocks": [
+    {
+      "title": "Urgențe",
+      "items": [
+        { "name": "Număr unic de urgență 112", "note": "Apel gratuit, 24 de ore din 24", "url": "https://igsu.gov.md/" },
+        { "name": "Inspectoratul de Poliție Comrat — secretariat", "phone": "+373 298 2 00 11", "address": "or. Comrat, str. Tretiacov 20", "url": "https://igp.gov.md/ro/inspectoratul-de-politie-comrat" },
+        { "name": "Inspectoratul de Poliție Comrat — serviciul de gardă", "phone": "+373 298 2 00 02" }
+      ]
+    },
+    {
+      "title": "Autorități",
+      "items": [
+        { "name": "Comitetul Executiv al UTA Găgăuzia (Başkanlık)", "phone": "+373 298 2 46 36", "url": "https://gagauzia.md/" },
+        { "name": "Comitetul Executiv al UTA Găgăuzia — linie secundară", "phone": "+373 298 2 12 21" }
+      ]
+    },
+    {
+      "title": "Servicii",
+      "items": [
+        { "name": "Agenția Servicii Publice — Centrul Multifuncțional Comrat", "phone": "+373 298 8 40 05", "address": "mun. Comrat, str. Lenin 36", "url": "https://asp.gov.md/en/contacte/subdiviziuni-teritoriale/comrat" },
+        { "name": "Casa Teritorială de Asigurări Sociale Comrat", "address": "Comrat, str. Tretiacov 42/1", "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/сomrat" }
+      ]
+    }
+  ]
+}

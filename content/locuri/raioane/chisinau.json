@@ -1,0 +1,40 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    { "name": "Direcția de Poliție mun. Chișinău", "url": "https://igp.gov.md/ro/directia-de-politie-mun-chisinau" },
+    { "name": "Primăria Chișinău", "url": "https://chisinau.md/" },
+    { "name": "IMSP Institutul de Medicină Urgentă", "url": "https://urgenta.md/" },
+    { "name": "Inspectoratul General pentru Situații de Urgență", "url": "https://igsu.gov.md/" },
+    { "name": "Casa Națională de Asigurări Sociale — subdiviziuni Chișinău", "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/chisinau" },
+    { "name": "Agenția Servicii Publice", "url": "https://asp.gov.md/" }
+  ],
+  "blocks": [
+    {
+      "title": "Urgențe",
+      "items": [
+        { "name": "Număr unic de urgență 112", "note": "Apel gratuit, 24 de ore din 24", "url": "https://igsu.gov.md/" },
+        { "name": "Direcția de Poliție mun. Chișinău — secretariat", "phone": "+373 22 25 47 88", "address": "str. Tighina 6, mun. Chișinău", "url": "https://igp.gov.md/ro/directia-de-politie-mun-chisinau" },
+        { "name": "Direcția de Poliție mun. Chișinău — serviciul de gardă", "phone": "+373 22 25 47 05" },
+        { "name": "IMSP Institutul de Medicină Urgentă", "phone": "+373 22 25 07 61", "address": "str. Toma Ciorbă 1, mun. Chișinău", "url": "https://urgenta.md/" },
+        { "name": "IGSU — Centrul Operativ de Dispecerat Republican", "phone": "+373 22 785 031", "address": "str. Gh. Asachi 69, mun. Chișinău", "url": "https://igsu.gov.md/" }
+      ]
+    },
+    {
+      "title": "Autorități",
+      "items": [
+        { "name": "Primăria municipiului Chișinău", "phone": "+373 22 20 15 05", "address": "bd. Ștefan cel Mare și Sfânt 83, mun. Chișinău", "url": "https://chisinau.md/" }
+      ]
+    },
+    {
+      "title": "Servicii",
+      "items": [
+        { "name": "CTAS Botanica", "phone": "+373 22 55 30 03", "address": "str. Burebista 108", "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/chisinau" },
+        { "name": "CTAS Buiucani", "phone": "+373 22 75 78 00", "address": "str. George Enescu 21" },
+        { "name": "CTAS Centru", "phone": "+373 22 54 85 00", "address": "str. 31 August 1989 87" },
+        { "name": "CTAS Ciocana", "phone": "+373 22 40 72 20", "address": "str. Meșterul Manole 12A" },
+        { "name": "CTAS Rîșcani", "phone": "+373 22 24 02 77", "address": "str. Grigore Vieru 22/1" },
+        { "name": "Agenția Servicii Publice — sediul central", "phone": "+373 22 25 70 70", "address": "str. Alexandr Pușkin 42, mun. Chișinău", "url": "https://asp.gov.md/" }
+      ]
+    }
+  ]
+}

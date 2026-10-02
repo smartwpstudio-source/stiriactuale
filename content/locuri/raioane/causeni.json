@@ -1,0 +1,36 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    { "name": "Consiliul Raional Căușeni", "url": "https://causeni.md/contacte/" },
+    { "name": "Primăria Căușeni", "url": "https://primaria.causeni.org/" },
+    { "name": "Poliția Republicii Moldova — IP Căușeni", "url": "https://igp.gov.md/inspectoratul-de-politie-causeni" },
+    { "name": "IGSU — contacte subdiviziuni", "url": "https://igsu.gov.md/ro/contactele-institutiei" },
+    { "name": "Agenția Servicii Publice — Căușeni", "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/causeni" },
+    { "name": "CNAS — CTAS Căușeni", "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/%D1%81%C4%83u%C5%9Feni" },
+    { "name": "ANOFM — lista subdiviziunilor teritoriale", "url": "https://anofm.md/files/elfinder/+Lista%20contacte%20STOFM.pdf" }
+  ],
+  "blocks": [
+    {
+      "title": "Urgențe",
+      "items": [
+        { "name": "Inspectoratul de Poliție Căușeni", "phone": "+373 243 20221", "address": "str. Meșteru Stanciu 4, or. Căușeni", "url": "https://igp.gov.md/inspectoratul-de-politie-causeni" },
+        { "name": "Direcția regională situații excepționale Căușeni (IGSU)", "phone": "+373 243 29060", "address": "str. Kogălniceanu 1/1, Căușeni", "url": "https://igsu.gov.md/ro/contactele-institutiei" }
+      ]
+    },
+    {
+      "title": "Autorități",
+      "items": [
+        { "name": "Consiliul Raional Căușeni", "address": "bd. Mihai Eminescu 31, or. Căușeni", "url": "https://causeni.md/contacte/" },
+        { "name": "Primăria Căușeni", "phone": "+373 243 22233", "address": "str. Meșterul Radu 3, or. Căușeni", "url": "https://primaria.causeni.org/" }
+      ]
+    },
+    {
+      "title": "Servicii",
+      "items": [
+        { "name": "Casa Teritorială de Asigurări Sociale Căușeni", "phone": "+373 243 22071", "address": "str. Alexei Mateevici 9, or. Căușeni", "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/%D1%81%C4%83u%C5%9Feni" },
+        { "name": "Agenția Servicii Publice — Centrul Multifuncțional Căușeni", "phone": "+373 243 26883", "address": "str. Mihai Eminescu 4, or. Căușeni", "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/causeni" },
+        { "name": "Direcția ocuparea forței de muncă Căușeni", "phone": "+373 243 23055", "address": "str. Mateevici 9, or. Căușeni", "url": "https://anofm.md/files/elfinder/+Lista%20contacte%20STOFM.pdf" }
+      ]
+    }
+  ]
+}
