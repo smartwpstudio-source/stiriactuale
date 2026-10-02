@@ -24,14 +24,40 @@ function meta(html: string, prop: string): string {
   return m ? text(m[1]) : "";
 }
 
+function paragraphsOf(html: string): string[] {
+  const seen = new Set<string>();
+  return [...html.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)]
+    .map((m) => text(m[1]))
+    .filter((p) => p.length > 60 && !NOISE.test(p) && !seen.has(p) && seen.add(p));
+}
+
+// Site-urile Next.js (ex. stiri.md) trimit corpul articolului doar în datele
+// de hidratare (self.__next_f.push), ca HTML într-un string JS — fără <p> în
+// pagină. Se decodează stringurile; corpul e o bucată de HTML curat (începe
+// cu "<"), nu JSON-ul paginii, care are și descrieri de rubrici, meniuri.
+function nextFlightChunks(html: string): string[] {
+  return [...html.matchAll(/self\.__next_f\.push\(\[1,("(?:[^"\\]|\\.)*")\]\)/g)]
+    .map((m) => {
+      try {
+        return JSON.parse(m[1]) as string;
+      } catch {
+        return "";
+      }
+    })
+    .filter((c) => c.trimStart().startsWith("<"));
+}
+
 export function extractArticle(html: string) {
   const clean = html.replace(/<(script|style|noscript|nav|footer|aside|form|header)\b[\s\S]*?<\/\1>/gi, " ");
   // <article> când există, altfel toată pagina — paragrafele scurte (meniuri, legende) cad la filtru
   const body = clean.match(/<article\b[\s\S]*<\/article>/i)?.[0] ?? clean;
-  const seen = new Set<string>();
-  const paragraphs = [...body.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)]
-    .map((m) => text(m[1]))
-    .filter((p) => p.length > 60 && !NOISE.test(p) && !seen.has(p) && seen.add(p));
+  let paragraphs = paragraphsOf(body);
+  if (paragraphs.join("").length < 500) {
+    const flight = nextFlightChunks(html)
+      .map(paragraphsOf)
+      .reduce((a, b) => (b.join("").length > a.join("").length ? b : a), []);
+    if (flight.join("").length > paragraphs.join("").length) paragraphs = flight;
+  }
   return {
     title: meta(html, "og:title") || text(html.match(/<title>([^<]*)<\/title>/i)?.[1] ?? ""),
     description: meta(html, "og:description"),
