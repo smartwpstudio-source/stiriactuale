@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { Breadcrumb } from "./breadcrumb";
 import { ArticleCard } from "./article-card";
 import { PlaceInfoBox } from "./place-info";
-import { getPlaceInfo } from "@/lib/content/places";
+import { getPlaceInfo, listPlaces } from "@/lib/content/places";
 import { SectionFilterChips } from "./section-filter-chips";
 import { getHubCounts, listArticles } from "@/lib/content/queries";
 import { countryLabel, raionLabel } from "@/lib/content/geo";
@@ -30,19 +30,20 @@ export async function hubMetadata(hub: Hub | null, page: number): Promise<Metada
 
 export async function HubPage({ hub, page }: { hub: Hub | null; page: number | null }) {
   if (!hub || !page) notFound();
-  const [{ items, pages }, counts, place] = await Promise.all([
+  const [{ items, pages }, counts, place, placeSlugs] = await Promise.all([
     listArticles(hub.filter, page),
     hub.chips ? getHubCounts() : null,
     hub.place && page === 1 ? getPlaceInfo(hub.place.kind, hub.place.slug) : null,
+    hub.chips ? listPlaces(hub.chips.kind === "raion" ? "raioane" : "tari") : [],
   ]);
   if (page > pages) notFound();
 
-  // filtre doar pentru raioanele/țările cu articole (+ cel curent)
+  // filtre pentru raioanele/țările cu articole sau cu informații utile (+ cel curent)
   const chips = hub.chips;
   const chipItems =
     chips &&
     counts &&
-    [...new Set([...Object.keys(chips.kind === "raion" ? counts.localities : counts.countries), ...(chips.active ? [chips.active] : [])])]
+    [...new Set([...Object.keys(chips.kind === "raion" ? counts.localities : counts.countries), ...placeSlugs, ...(chips.active ? [chips.active] : [])])]
       .map((slug) => ({ slug, label: chips.kind === "raion" ? raionLabel(slug) : countryLabel(slug) }))
       .sort((a, b) => a.label.localeCompare(b.label, "ro"));
 
