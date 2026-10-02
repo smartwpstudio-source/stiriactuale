@@ -1,0 +1,99 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    {
+      "name": "Inspectoratul General al Poliției (politia.md)",
+      "url": "https://politia.md/inspectoratul-de-politie-calarasi"
+    },
+    {
+      "name": "Inspectoratul General pentru Situații de Urgență",
+      "url": "https://igsu.gov.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "Casa Națională de Asigurări Sociale – subdiviziuni teritoriale",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+    },
+    {
+      "name": "Agenția Servicii Publice – subdiviziuni teritoriale",
+      "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/calarasi"
+    },
+    {
+      "name": "Agenția Națională pentru Ocuparea Forței de Muncă – subdiviziuni",
+      "url": "https://anofm.md/ro/subdiviziuni"
+    },
+    {
+      "name": "Consiliul Raional Călărași",
+      "url": "https://calarasi.md/contacte/"
+    },
+    {
+      "name": "Primăria Călărași",
+      "url": "https://calarasi-primaria.md/contacte/"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Urgențe",
+      "items": [
+        {
+          "name": "Inspectoratul de Poliție Călărași",
+          "phone": "+373 244 22 251",
+          "address": "str. Alexandru cel Bun 149, Călărași",
+          "url": "https://politia.md/inspectoratul-de-politie-calarasi",
+          "note": "Serviciul de gardă: +373 244 20 980"
+        },
+        {
+          "name": "Spitalul raional Călărași",
+          "phone": "+373 244 22 448",
+          "address": "str. Testemițanu 59, Călărași",
+          "url": "https://calarasi.md/contacte/"
+        },
+        {
+          "name": "Secția Situații Excepționale Călărași (IGSU)",
+          "phone": "+373 244 20 979",
+          "address": "str. Toma Ciorbă 15, Călărași",
+          "url": "https://igsu.gov.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Autorități",
+      "items": [
+        {
+          "name": "Consiliul Raional Călărași",
+          "phone": "+373 244 22 058",
+          "address": "str. Biruinței 1, Călărași",
+          "url": "https://calarasi.md/contacte/"
+        },
+        {
+          "name": "Primăria orașului Călărași",
+          "phone": "+373 244 22 773",
+          "address": "str. Mihai Eminescu 19, Călărași",
+          "url": "https://calarasi-primaria.md/contacte/"
+        }
+      ]
+    },
+    {
+      "title": "Servicii",
+      "items": [
+        {
+          "name": "Casa Teritorială de Asigurări Sociale Călărași",
+          "phone": "+373 244 23 724",
+          "address": "str. Mihai Eminescu 19, Călărași",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+        },
+        {
+          "name": "Agenția Servicii Publice – Centrul multifuncțional Călărași",
+          "phone": "+373 244 21 296",
+          "address": "str. Bojole 2, Călărași",
+          "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/calarasi"
+        },
+        {
+          "name": "Oficiul Forței de Muncă Călărași",
+          "phone": "+373 244 22 071",
+          "address": "str. M. Eminescu 19, Călărași",
+          "url": "https://anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}

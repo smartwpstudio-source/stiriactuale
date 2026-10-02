@@ -1,0 +1,103 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    {
+      "name": "Inspectoratul General al Poliției (politia.md)",
+      "url": "https://politia.md/inspectoratul-de-politie-telenesti"
+    },
+    {
+      "name": "Inspectoratul General pentru Situații de Urgență",
+      "url": "https://igsu.gov.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "Casa Națională de Asigurări Sociale – subdiviziuni teritoriale",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+    },
+    {
+      "name": "Agenția Servicii Publice – subdiviziuni teritoriale",
+      "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/telenesti"
+    },
+    {
+      "name": "Agenția Națională pentru Ocuparea Forței de Muncă – subdiviziuni",
+      "url": "https://anofm.md/ro/subdiviziuni"
+    },
+    {
+      "name": "Consiliul Raional Telenești",
+      "url": "https://telenesti.md/contacte/"
+    },
+    {
+      "name": "Spitalul raional Telenești",
+      "url": "https://srtelenesti.md/contacte/"
+    },
+    {
+      "name": "Primăria Telenești",
+      "url": "https://www.primariatelenesti.md/contacte/"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Urgențe",
+      "items": [
+        {
+          "name": "Inspectoratul de Poliție Telenești",
+          "phone": "+373 258 23 034",
+          "address": "str. Dacia 5, Telenești",
+          "url": "https://politia.md/inspectoratul-de-politie-telenesti",
+          "note": "Serviciul de gardă: +373 67 402 636"
+        },
+        {
+          "name": "Spitalul raional Telenești – anticameră",
+          "phone": "+373 258 22 448",
+          "address": "str. Ciprian Porumbescu 8, Telenești",
+          "url": "https://srtelenesti.md/contacte/",
+          "note": "Camera de gardă: +373 79 113 025"
+        },
+        {
+          "name": "Secția Situații Excepționale Telenești (IGSU)",
+          "phone": "+373 258 24 081",
+          "address": "str. Gheorghe Șova 1, Telenești",
+          "url": "https://igsu.gov.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Autorități",
+      "items": [
+        {
+          "name": "Consiliul Raional Telenești",
+          "phone": "+373 258 22 058",
+          "address": "str. 31 August 1989 nr. 9, Telenești",
+          "url": "https://telenesti.md/contacte/"
+        },
+        {
+          "name": "Primăria orașului Telenești",
+          "address": "str. 31 August nr. 8, Telenești",
+          "url": "https://www.primariatelenesti.md/contacte/"
+        }
+      ]
+    },
+    {
+      "title": "Servicii",
+      "items": [
+        {
+          "name": "Casa Teritorială de Asigurări Sociale Telenești",
+          "phone": "+373 258 22 996",
+          "address": "str. Renașterii 69, Telenești",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+        },
+        {
+          "name": "Agenția Servicii Publice – Centrul multifuncțional Telenești",
+          "phone": "+373 258 24 575",
+          "address": "str. 31 August 1989 nr. 18, Telenești",
+          "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/telenesti"
+        },
+        {
+          "name": "Oficiul Forței de Muncă Telenești",
+          "phone": "+373 258 22 795",
+          "address": "str. Renașterii 69, Telenești",
+          "url": "https://anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}

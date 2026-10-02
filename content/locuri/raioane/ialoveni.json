@@ -1,0 +1,88 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    {
+      "name": "Inspectoratul General al Poliției (politia.md)",
+      "url": "https://politia.md/inspectoratul-de-politie-ialoveni"
+    },
+    {
+      "name": "Inspectoratul General pentru Situații de Urgență",
+      "url": "https://igsu.gov.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "Casa Națională de Asigurări Sociale – subdiviziuni teritoriale",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+    },
+    {
+      "name": "Agenția Servicii Publice – subdiviziuni teritoriale",
+      "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/ialoveni"
+    },
+    {
+      "name": "Agenția Națională pentru Ocuparea Forței de Muncă – subdiviziuni",
+      "url": "https://anofm.md/ro/subdiviziuni"
+    },
+    {
+      "name": "Consiliul Raional Ialoveni",
+      "url": "https://il.md/contacte/"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Urgențe",
+      "items": [
+        {
+          "name": "Inspectoratul de Poliție Ialoveni",
+          "phone": "+373 68 244 443",
+          "address": "str. Grigore Vieru 24, Ialoveni",
+          "url": "https://politia.md/inspectoratul-de-politie-ialoveni",
+          "note": "Număr al serviciului de gardă"
+        },
+        {
+          "name": "Secția Situații Excepționale Ialoveni (IGSU)",
+          "phone": "+373 79 706 531",
+          "address": "str. Grigore Vieru 26, Ialoveni",
+          "url": "https://igsu.gov.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Autorități",
+      "items": [
+        {
+          "name": "Consiliul Raional Ialoveni",
+          "phone": "+373 268 20 007",
+          "address": "str. Alexandru cel Bun 33, Ialoveni",
+          "url": "https://il.md/contacte/"
+        },
+        {
+          "name": "Primăria orașului Ialoveni",
+          "address": "str. Alexandru cel Bun 45, Ialoveni",
+          "url": "https://ialoveni.md/"
+        }
+      ]
+    },
+    {
+      "title": "Servicii",
+      "items": [
+        {
+          "name": "Casa Teritorială de Asigurări Sociale Ialoveni",
+          "phone": "+373 268 21 505",
+          "address": "str. Alexandru cel Bun 18, Ialoveni",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+        },
+        {
+          "name": "Agenția Servicii Publice – Centrul multifuncțional Ialoveni",
+          "phone": "+373 268 27 200",
+          "address": "str. Alexandru cel Bun 31, Ialoveni",
+          "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/ialoveni"
+        },
+        {
+          "name": "Oficiul Forței de Muncă Ialoveni",
+          "phone": "+373 268 23 452",
+          "address": "str. A. cel Bun 49, Ialoveni",
+          "url": "https://anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}

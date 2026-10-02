@@ -1,0 +1,68 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    {
+      "name": "Inspectoratul General al Poliției (politia.md)",
+      "url": "https://politia.md/inspectoratul-de-politie-criuleni"
+    },
+    {
+      "name": "Inspectoratul General pentru Situații de Urgență",
+      "url": "https://igsu.gov.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "Casa Națională de Asigurări Sociale – subdiviziuni teritoriale",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+    },
+    {
+      "name": "Agenția Servicii Publice – subdiviziuni teritoriale",
+      "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/criuleni"
+    },
+    {
+      "name": "Agenția Națională pentru Ocuparea Forței de Muncă – subdiviziuni",
+      "url": "https://anofm.md/ro/subdiviziuni"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Urgențe",
+      "items": [
+        {
+          "name": "Inspectoratul de Poliție Criuleni",
+          "phone": "+373 248 58 100",
+          "address": "str. 31 August 1989 nr. 72, Criuleni",
+          "url": "https://politia.md/inspectoratul-de-politie-criuleni",
+          "note": "Număr al serviciului de gardă"
+        },
+        {
+          "name": "Secția Situații Excepționale Criuleni (IGSU)",
+          "phone": "+373 248 22 181",
+          "address": "str. 31 August 4, Criuleni",
+          "url": "https://igsu.gov.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Servicii",
+      "items": [
+        {
+          "name": "Casa Teritorială de Asigurări Sociale Criuleni",
+          "phone": "+373 248 21 723",
+          "address": "str. Biruinței 12, Criuleni",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+        },
+        {
+          "name": "Agenția Servicii Publice – Centrul multifuncțional Criuleni",
+          "phone": "+373 248 21 986",
+          "address": "str. 31 August 1989 nr. 139, Criuleni",
+          "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/criuleni"
+        },
+        {
+          "name": "Oficiul Forței de Muncă Criuleni",
+          "phone": "+373 248 21 450",
+          "address": "str. Biruința 12, Criuleni",
+          "url": "https://anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}
