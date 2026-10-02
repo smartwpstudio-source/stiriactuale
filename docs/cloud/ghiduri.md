@@ -23,7 +23,7 @@ Câte un fișier `content/ghiduri/<slug>.json` pe ghid, apoi **un singur Pull Re
 }
 ```
 
-Categorii: `diaspora`, `acte`, `bani`, `sanatate`, `auto`, `afaceri`, `educatie`, `siguranta`. (`dosare` e doar pentru dosare, vezi `docs/cloud/dosare.md`.)
+Categorii: `diaspora`, `acte`, `bani`, `sanatate`, `auto`, `afaceri`, `educatie`, `siguranta`. (`dosare` și `orase` au brief-uri proprii: `docs/cloud/dosare.md`, `docs/cloud/orase.md`.)
 
 ## Reguli de conținut (obligatorii)
 
@@ -138,3 +138,57 @@ Categorii: `diaspora`, `acte`, `bani`, `sanatate`, `auto`, `afaceri`, `educatie`
 6. Serviciul de îngrijire la domiciliu pentru vârstnici
 7. Certificatul medical pentru permisul de conducere
 8. Asistența juridică garantată de stat: cine o primește gratuit
+
+## Loturi pe țări (diaspora) și de sezon
+
+La ghidurile pe țări: titlul începe cu țara sau orașul („Pașaportul moldovenesc în Italia: …”). Sursele principale sunt site-ul ambasadei sau al consulatului Moldovei din acea țară (`<tara>.mfa.gov.md`) și, pentru regulile țării gazdă, site-urile oficiale ale acelei țări. Unde informația e deja în ghidul general (ex. `pasaport-moldovenesc-din-strainatate`), ghidul pe țară dă ce e **specific țării** (adresa misiunii, programare, taxe locale, acte cerute acolo) și trimite cu link la ghidul general.
+
+**Lot 11 — Italia**
+1. Pașaportul și buletinul moldovenesc în Italia: consulatele, programarea, taxele
+2. Procura și actele notariale la consulatele Moldovei din Italia
+3. Permesso di soggiorno pentru moldoveni: tipuri, reînnoire, acte
+4. Pensia italiană și cea moldovenească: acordul de securitate socială Italia–Moldova
+5. Permisul de conducere moldovenesc în Italia: conversie și termene
+6. Cetățenia italiană pentru moldoveni: condiții și pași
+7. Codice fiscale, tessera sanitaria și medicul de familie în Italia
+8. Transcrierea actelor italiene (naștere, căsătorie) în Moldova
+
+**Lot 12 — Germania și Franța**
+1. Pașaportul și buletinul moldovenesc în Germania: Berlin, Frankfurt, programare
+2. Munca în Germania pentru moldoveni: viză, Blue Card, recunoașterea calificării
+3. Anmeldung, asigurarea medicală și Kindergeld pentru moldovenii din Germania
+4. Pensia din Germania pentru cei care se întorc în Moldova
+5. Pașaportul și actele moldovenești în Franța: ambasada din Paris, programare
+6. Titre de séjour pentru moldoveni în Franța: tipuri și reînnoire
+7. Munca legală în Franța și recunoașterea diplomelor moldovenești
+8. Asigurarea medicală (Carte Vitale) și ajutoarele CAF pentru moldovenii din Franța
+
+**Lot 13 — Regatul Unit, Spania, Portugalia, Irlanda**
+1. Pașaportul moldovenesc în Regatul Unit: ambasada din Londra, programare
+2. Munca și șederea în Regatul Unit pentru moldovenii cu cetățenie română
+3. Pașaportul și actele moldovenești în Spania: ambasada din Madrid
+4. NIE, empadronamiento și sistemul de sănătate în Spania pentru moldoveni
+5. Pașaportul și actele moldovenești în Portugalia: ambasada din Lisabona
+6. Rezidența în Portugalia (AIMA) pentru moldoveni: acte și pași
+7. Actele moldovenești în Irlanda: misiunea competentă și programare
+8. PPS, munca și sănătatea în Irlanda pentru moldoveni
+
+**Lot 14 — România, Israel, Rusia, SUA și Canada**
+1. Cetățenia română pentru moldoveni: dosarul, jurământul, pașaportul
+2. Actele moldovenești în România: ambasada din București, consulatele din Iași și Brașov
+3. Munca în Israel pentru moldoveni: acordul bilateral, contracte, agenții autorizate
+4. Actele moldovenești în Israel: ambasada din Tel Aviv, programare
+5. Actele moldovenești în Rusia: ambasada din Moscova, programare, pașaport
+6. Moldovenii în SUA: ambasada din Washington, pașaport, procură
+7. Moldovenii în Canada: ambasada din Ottawa, pașaport, acte
+8. Viza de turist pentru rudele din Moldova (SUA, Canada, Regatul Unit): ce acte cer
+
+**Lot 15 — de sezon** (folosesc anul în titlu, actualizate pentru 2026–2027)
+1. Sezonul de încălzire 2026–2027: când pornește căldura și cum citești factura
+2. Bacalaureatul 2027: calendar, probe, contestații
+3. Admiterea 2027 la colegii și facultăți: calendar și acte (completează ghidul general)
+4. Declarația pe venit 2027: termenul de 30 aprilie, cine depune, cum online
+5. Călătoria cu copiii peste hotare în vacanță: acte, procura părintelui, controlul la frontieră
+6. Pregătirea pentru iarnă: ajutorul pentru perioada rece și compensațiile 2026–2027
+7. Alegerile: cum verifici unde votezi și ce acte îți trebuie (general, pentru orice scrutin)
+8. Sărbătorile legale în Moldova în 2027: zile libere și transferuri
