@@ -16,7 +16,7 @@ export function MobileMenu() {
   const open = openOn === pathname;
 
   return (
-    <div className="sm:hidden">
+    <div className="lg:hidden">
       <button
         type="button"
         onClick={() => setOpenOn(open ? null : pathname)}

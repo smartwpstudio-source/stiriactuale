@@ -9,6 +9,7 @@ export const NAV = [
   { href: "/international/", label: "Internațional" },
   { href: "/diaspora/", label: "Diaspora" },
   { href: "/ghiduri/", label: "Ghiduri" },
+  { href: "/calculatoare/", label: "Calculatoare" },
 ];
 
 // Secțiunea curentă subliniată în amber — orientare pe articol și pe hub.

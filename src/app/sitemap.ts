@@ -4,6 +4,8 @@ import { getGuides } from "@/lib/content/guides";
 import { listPlaces } from "@/lib/content/places";
 import { articleUrl } from "@/lib/content/url";
 import { SITE_URL } from "@/lib/seo";
+import { availableCalculators } from "@/lib/calculators";
+import { getCalcParams } from "@/lib/calculators-data";
 
 // Se regenerează o dată pe oră, nu la fiecare cerere.
 export const revalidate = 3600;
@@ -12,12 +14,13 @@ export const revalidate = 3600;
 // ponytail: un singur sitemap; Google acceptă max 50.000 URL-uri, împarte
 // cu generateSitemaps() când arhiva se apropie de limită.
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [articles, counts, guides, raioane, tari] = await Promise.all([
+  const [articles, counts, guides, raioane, tari, calcParams] = await Promise.all([
     getSitemapArticles(),
     getHubCounts(),
     getGuides(),
     listPlaces("raioane"),
     listPlaces("tari"),
+    getCalcParams(),
   ]);
   // hub-uri cu articole SAU cu informații utile (fără ele au noindex)
   const raionSlugs = [...new Set([...Object.keys(counts.localities), ...raioane])];
@@ -30,6 +33,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...taraSlugs.map((t) => ({ url: `/diaspora/${t}/`, priority: 0.7 })),
     ...["despre", "contact", "politica-editoriala", "confidentialitate"].map((p) => ({ url: `/${p}/`, priority: 0.3 })),
     { url: "/ghiduri/", priority: 0.7 },
+    { url: "/calculatoare/", priority: 0.7 },
+    ...availableCalculators(calcParams).map((c) => ({ url: `/calculatoare/${c.slug}/`, priority: 0.7 })),
   ];
 
   return [

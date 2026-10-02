@@ -24,6 +24,8 @@ Scrii **un singur fișier**: `content/calculatoare/parametri.json`, branch `calc
     "cnam_angajat_pct": 9,
     "cnas_angajat_pct": 6,
     "salariu_minim_lei": 0,
+    "cnas_deductibil": true,
+    "cnam_deductibil": false,
     "nota": "ce e inclus / excepții importante, 1-3 fraze",
     "surse": [{ "name": "...", "url": "https://..." }]
   },
@@ -31,6 +33,7 @@ Scrii **un singur fișier**: `content/calculatoare/parametri.json`, branch `calc
     "trepte": [{ "stagiu_min_ani": 0, "procent": 60 }],
     "baza": "cum se calculează baza (venitul mediu lunar asigurat pe ultimele N luni)",
     "luni_baza": 6,
+    "zile_medii_luna": 21,
     "plafon_lei": null,
     "primele_zile_angajator": 5,
     "surse": [{ "name": "...", "url": "https://..." }]
@@ -39,12 +42,13 @@ Scrii **un singur fișier**: `content/calculatoare/parametri.json`, branch `calc
     "procent": 100,
     "luni_baza": 12,
     "zile_total": 126,
+    "zile_medii_luna": 30.4,
     "plafon_lei": null,
     "surse": [{ "name": "...", "url": "https://..." }]
   }
 }
 ```
-Valorile din exemplu sunt doar forma — înlocuiește-le cu cele reale. Dacă o valoare nu există (ex. plafon), pune `null`. Dacă regula reală nu încape în format (ex. scutirea depinde de venit), descrie-o în `nota` și pune valoarea pentru cazul obișnuit. În descrierea PR-ului: tabel valoare → sursă (link exact).
+Câmpurile `*_deductibil` spun dacă contribuția se scade din baza impozabilă. `zile_medii_luna` = numărul de zile la care se împarte venitul lunar ca să obții indemnizația pe o zi (lucrătoare la concediul medical, calendaristice la maternitate) — exact cum spune legea. Calculul din site: impozit = (brut − contribuțiile deductibile − scutire/12) × procent; indemnizația = venit mediu / zile_medii_luna × procent / 100 × zile. Dacă legea calculează altfel, scrie diferența în `nota` și în PR. Valorile din exemplu sunt doar forma — înlocuiește-le cu cele reale. Dacă o valoare nu există (ex. plafon), pune `null`. Dacă regula reală nu încape în format (ex. scutirea depinde de venit), descrie-o în `nota` și pune valoarea pentru cazul obișnuit. În descrierea PR-ului: tabel valoare → sursă (link exact).
 
 ## Sarcina 3 — „Cât costă în Moldova”, lot 1
 
