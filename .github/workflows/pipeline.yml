@@ -1,25 +1,15 @@
 name: Pipeline stiri
 
-# Fereastră activă 06:00-22:00 Chișinău, 9 rulări/zi — vezi
-# plan-implementare-agregator-stiri-ai.md secțiunea 3.8. Orele sunt în UTC,
-# pentru ora de vară (UTC+3); derapajul de o oră la schimbarea orei e acceptat.
+# Pornit de cron-ul Vercel (vercel.json -> /api/cron/pipeline/) la 06:00-22:00
+# Chișinău, din 2 în 2 ore, exact la oră. Orarul GitHub (schedule) întârzia
+# cu ore, așa că a fost scos. Noaptea, run.ts nu publică oricum.
 #
 # Pipeline-ul rulează AICI (nu pe Vercel): fără limita de 300s, iar apelurile
 # către Claude folosesc creditul Agent SDK al abonamentului Max prin
 # CLAUDE_CODE_OAUTH_TOKEN. Oprire de urgență: Actions -> "Pipeline stiri" ->
 # ... -> Disable workflow.
 on:
-  schedule:
-    - cron: "0 3 * * *" # 06:00 Chisinau
-    - cron: "0 5 * * *" # 08:00
-    - cron: "0 7 * * *" # 10:00
-    - cron: "0 9 * * *" # 12:00
-    - cron: "0 11 * * *" # 14:00
-    - cron: "0 13 * * *" # 16:00
-    - cron: "0 15 * * *" # 18:00
-    - cron: "0 17 * * *" # 20:00
-    - cron: "0 19 * * *" # 22:00
-  workflow_dispatch: {} # rulare manuală, pentru testare
+  workflow_dispatch: {} # Vercel cron + rulare manuală
 
 # Două rulări suprapuse ar produce duplicate — a doua așteaptă.
 concurrency: pipeline
