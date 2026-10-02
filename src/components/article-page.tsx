@@ -15,6 +15,21 @@ import { articleUrl } from "@/lib/content/url";
 import { absoluteUrl } from "@/lib/seo";
 import { AI_IMAGE_PREFIX } from "@/lib/pipeline/image";
 import { sanitizeBody } from "@/lib/content/sanitize";
+import { ADSENSE_IN_ARTICLE_SLOT } from "@/lib/adsense";
+import { AdSlot } from "./ad-slot";
+
+// Împarte corpul după al n-lea paragraf; [tot, ""] dacă după el nu mai rămân
+// măcar 2 paragrafe (reclama nu stă lipită de final).
+function splitAfterParagraph(html: string, n: number): [string, string] {
+  let idx = -1;
+  for (let i = 0; i < n; i++) {
+    idx = html.indexOf("</p>", idx + 1);
+    if (idx < 0) return [html, ""];
+  }
+  const cut = idx + 4;
+  const rest = html.slice(cut);
+  return (rest.match(/<\/p>/g) ?? []).length >= 2 ? [html.slice(0, cut), rest] : [html, ""];
+}
 import type { Article } from "@/lib/content/types";
 
 // Pattern de pagină articol din sistem-design-ui.md secțiunea 5: breadcrumb,
@@ -94,12 +109,20 @@ export async function ArticlePage({
               <p className="mt-1 font-mono text-xs text-sub">{imageLabel(article.imageUrl)}</p>
             )}
             <p className="mt-6 text-xl font-medium leading-relaxed text-ink">{article.lead}</p>
-            <div
-              className="prose-article mt-4 text-ink"
-              dangerouslySetInnerHTML={{
-                __html: sanitizeBody(article.bodyHtml, article.imageAlt ?? article.title),
-              }}
-            />
+            {(() => {
+              const body = sanitizeBody(article.bodyHtml, article.imageAlt ?? article.title);
+              const ads = !article.archived && ADSENSE_IN_ARTICLE_SLOT;
+              // primul bloc după al doilea paragraf, doar la articolele cu destul text
+              const [head, tail] = ads ? splitAfterParagraph(body, 2) : [body, ""];
+              return (
+                <>
+                  <div className="prose-article mt-4 text-ink" dangerouslySetInnerHTML={{ __html: head }} />
+                  {ads && tail && <AdSlot slot={ADSENSE_IN_ARTICLE_SLOT} />}
+                  {tail && <div className="prose-article text-ink" dangerouslySetInnerHTML={{ __html: tail }} />}
+                  {ads && <AdSlot slot={ADSENSE_IN_ARTICLE_SLOT} />}
+                </>
+              );
+            })()}
           </>
         )}
         {!article.archived && article.sources && article.sources.length > 0 && (
