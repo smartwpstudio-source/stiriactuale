@@ -100,6 +100,24 @@ async function main() {
     }
   }
 
+  // calendarul ortodox: sfinții pe zile, un fișier pe lună (docs/cloud/calendar.md)
+  const DAYS = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  for (const { f, data: c } of await readJson(path.join(ROOT, "calendar", "sfinti"))) {
+    if (!c) continue;
+    const file = `calendar/sfinti/${f}`;
+    const m = Number(f.slice(0, 2));
+    if (!/^(0[1-9]|1[0-2])\.json$/.test(f) || c.luna !== m) { fail(file, "nume de fișier / luna greșite"); continue; }
+    checkDate(file, c.updated);
+    checkSources(file, c.surse, 1, false);
+    for (let d = 1; d <= DAYS[m - 1]; d++) {
+      const z = c.zile?.[String(d)];
+      if (!z) { fail(file, `lipsește ziua ${d}`); continue; }
+      if (!Array.isArray(z.sfinti) || z.sfinti.length === 0 || z.sfinti.some((s: unknown) => typeof s !== "string" || !s)) fail(file, `ziua ${d}: sfinti`);
+      if (z.sarbatoare !== null && typeof z.sarbatoare !== "string") fail(file, `ziua ${d}: sarbatoare`);
+      if (![null, "rosie", "neagra"].includes(z.cruce)) fail(file, `ziua ${d}: cruce`);
+    }
+  }
+
   if (errors.length) {
     console.error(`${errors.length} probleme:\n- ${errors.join("\n- ")}`);
     process.exit(1);

@@ -19,6 +19,7 @@ export const GUIDE_CATEGORIES = {
   orase: "Orașe: contacte utile",
   costuri: "Cât costă în Moldova",
   explicat: "Explicat simplu",
+  sarbatori: "Sărbători și tradiții",
 } as const;
 
 export type GuideCategory = keyof typeof GUIDE_CATEGORIES;
