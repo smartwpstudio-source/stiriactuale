@@ -1,0 +1,98 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    {
+      "name": "Inspectoratul General al Poliției (politia.md)",
+      "url": "https://politia.md/inspectoratul-de-politie-orhei"
+    },
+    {
+      "name": "Inspectoratul General pentru Situații de Urgență",
+      "url": "https://igsu.gov.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "Casa Națională de Asigurări Sociale – subdiviziuni teritoriale",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+    },
+    {
+      "name": "Agenția Servicii Publice – subdiviziuni teritoriale",
+      "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/orhei"
+    },
+    {
+      "name": "Agenția Națională pentru Ocuparea Forței de Muncă – subdiviziuni",
+      "url": "https://anofm.md/ro/subdiviziuni"
+    },
+    {
+      "name": "Consiliul Raional Orhei",
+      "url": "https://or.md/ro/contacte/119"
+    },
+    {
+      "name": "Primăria Orhei",
+      "url": "https://orhei.md"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Urgențe",
+      "items": [
+        {
+          "name": "Inspectoratul de Poliție Orhei",
+          "phone": "+373 235 78 105",
+          "address": "str. Vasile Mahu 144, mun. Orhei",
+          "url": "https://politia.md/inspectoratul-de-politie-orhei",
+          "note": "Serviciul de gardă: +373 235 78 101"
+        },
+        {
+          "name": "Spitalul raional Orhei – anticameră",
+          "phone": "+373 235 22 448",
+          "address": "str. Constantin Negruzzi 85, Orhei"
+        },
+        {
+          "name": "Direcția Situații Excepționale Orhei (IGSU)",
+          "phone": "+373 79 604 271",
+          "address": "str. Eliberării 172 A, mun. Orhei",
+          "url": "https://igsu.gov.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Autorități",
+      "items": [
+        {
+          "name": "Consiliul Raional Orhei",
+          "phone": "+373 235 22 650",
+          "address": "bd. M. Eminescu 2, Orhei",
+          "url": "https://or.md/ro/contacte/119"
+        },
+        {
+          "name": "Primăria municipiului Orhei – Centrul de Informare și Prestări Servicii",
+          "phone": "+373 235 22 767",
+          "address": "str. Vasile Mahu 160, mun. Orhei",
+          "url": "https://orhei.md/index.php?pag=feedback&id=561&l=ro"
+        }
+      ]
+    },
+    {
+      "title": "Servicii",
+      "items": [
+        {
+          "name": "Casa Teritorială de Asigurări Sociale Orhei",
+          "phone": "+373 235 22 548",
+          "address": "str. Vasile Lupu 113, Orhei",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+        },
+        {
+          "name": "Agenția Servicii Publice – Centrul multifuncțional Orhei",
+          "phone": "+373 235 20 042",
+          "address": "str. Vasile Lupu 47, mun. Orhei",
+          "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/orhei"
+        },
+        {
+          "name": "Oficiul Forței de Muncă Orhei",
+          "phone": "+373 235 21 490",
+          "address": "str. V. Lupu 24, Orhei",
+          "url": "https://anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}

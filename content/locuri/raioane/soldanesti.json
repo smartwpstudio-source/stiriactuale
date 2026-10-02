@@ -1,0 +1,91 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    {
+      "name": "Inspectoratul General al Poliției (politia.md)",
+      "url": "https://politia.md/inspectoratul-de-politie-soldanesti"
+    },
+    {
+      "name": "Inspectoratul General pentru Situații de Urgență",
+      "url": "https://igsu.gov.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "Casa Națională de Asigurări Sociale – subdiviziuni teritoriale",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+    },
+    {
+      "name": "Agenția Servicii Publice – subdiviziuni teritoriale",
+      "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/soldanesti"
+    },
+    {
+      "name": "Agenția Națională pentru Ocuparea Forței de Muncă – subdiviziuni",
+      "url": "https://anofm.md/ro/subdiviziuni"
+    },
+    {
+      "name": "Consiliul Raional Șoldănești",
+      "url": "https://soldanesti.md/contacte/"
+    },
+    {
+      "name": "Spitalul raional Șoldănești",
+      "url": "https://srsoldanesti.md/contacte/"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Urgențe",
+      "items": [
+        {
+          "name": "Inspectoratul de Poliție Șoldănești",
+          "phone": "+373 272 64 106",
+          "address": "str. Victoriei 32, Șoldănești",
+          "url": "https://politia.md/inspectoratul-de-politie-soldanesti"
+        },
+        {
+          "name": "Spitalul raional Șoldănești – anticameră",
+          "phone": "+373 272 25 260",
+          "address": "str. Păcii 24, Șoldănești",
+          "url": "https://srsoldanesti.md/contacte/"
+        },
+        {
+          "name": "Secția Situații Excepționale Șoldănești (IGSU)",
+          "phone": "+373 79 604 179",
+          "address": "str. Livezilor 31, Șoldănești",
+          "url": "https://igsu.gov.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Autorități",
+      "items": [
+        {
+          "name": "Consiliul Raional Șoldănești",
+          "address": "str. 31 August 1, Șoldănești",
+          "url": "https://soldanesti.md/contacte/"
+        }
+      ]
+    },
+    {
+      "title": "Servicii",
+      "items": [
+        {
+          "name": "Casa Teritorială de Asigurări Sociale Șoldănești",
+          "phone": "+373 272 25 712",
+          "address": "str. 31 August 1989 nr. 5, Șoldănești",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+        },
+        {
+          "name": "Agenția Servicii Publice – Centrul multifuncțional Șoldănești",
+          "phone": "+373 272 22 137",
+          "address": "str. 31 August 1989 nr. 7, Șoldănești",
+          "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/soldanesti"
+        },
+        {
+          "name": "Oficiul Forței de Muncă Șoldănești",
+          "phone": "+373 272 22 454",
+          "address": "str. Păcii 8-A, Șoldănești",
+          "url": "https://anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}

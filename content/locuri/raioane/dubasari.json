@@ -1,0 +1,87 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    {
+      "name": "Inspectoratul General al Poliției (politia.md)",
+      "url": "https://politia.md/inspectoratul-de-politie-dubasari"
+    },
+    {
+      "name": "Inspectoratul General pentru Situații de Urgență",
+      "url": "https://igsu.gov.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "Casa Națională de Asigurări Sociale – subdiviziuni teritoriale",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+    },
+    {
+      "name": "Agenția Servicii Publice – subdiviziuni teritoriale",
+      "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/dubasari"
+    },
+    {
+      "name": "Agenția Națională pentru Ocuparea Forței de Muncă – subdiviziuni",
+      "url": "https://anofm.md/ro/subdiviziuni"
+    },
+    {
+      "name": "Consiliul Raional Dubăsari",
+      "url": "https://dubasari.md/pagins/contact"
+    },
+    {
+      "name": "ASP Dubăsari – Ustia",
+      "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/dubasari-ustia"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Urgențe",
+      "items": [
+        {
+          "name": "Inspectoratul de Poliție Dubăsari",
+          "phone": "+373 22 255 630",
+          "address": "s. Ustia, raionul Dubăsari",
+          "url": "https://politia.md/inspectoratul-de-politie-dubasari",
+          "note": "Număr al serviciului de gardă"
+        },
+        {
+          "name": "Secția Situații Excepționale Dubăsari (IGSU)",
+          "phone": "+373 248 52 503",
+          "address": "s. Cocieri, str. Independenței 30",
+          "url": "https://igsu.gov.md/ro/contactele-institutiei",
+          "note": "Număr PSP Cocieri"
+        }
+      ]
+    },
+    {
+      "title": "Autorități",
+      "items": [
+        {
+          "name": "Consiliul Raional Dubăsari",
+          "address": "s. Coșnița, str. Păcii 70",
+          "url": "https://dubasari.md/pagins/contact"
+        }
+      ]
+    },
+    {
+      "title": "Servicii",
+      "items": [
+        {
+          "name": "Casa Teritorială de Asigurări Sociale Criuleni – Secția Dubăsari",
+          "phone": "+373 248 52 484",
+          "address": "s. Cocieri, str. Cosmonauților 10",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+        },
+        {
+          "name": "Agenția Servicii Publice – Coșnița (acte de identitate)",
+          "phone": "+373 248 44 780",
+          "address": "s. Coșnița, str. Păcii 68/a",
+          "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/dubasari-cosnita"
+        },
+        {
+          "name": "Oficiul Forței de Muncă Dubăsari (Secția)",
+          "phone": "+373 248 93 360",
+          "address": "s. Cocieri, str. Țărmului 2",
+          "url": "https://anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}

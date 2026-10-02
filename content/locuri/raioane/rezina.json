@@ -1,0 +1,103 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    {
+      "name": "Inspectoratul General al Poliției (politia.md)",
+      "url": "https://politia.md/inspectoratul-de-politie-rezina"
+    },
+    {
+      "name": "Inspectoratul General pentru Situații de Urgență",
+      "url": "https://igsu.gov.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "Casa Națională de Asigurări Sociale – subdiviziuni teritoriale",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+    },
+    {
+      "name": "Agenția Servicii Publice – subdiviziuni teritoriale",
+      "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/rezina"
+    },
+    {
+      "name": "Agenția Națională pentru Ocuparea Forței de Muncă – subdiviziuni",
+      "url": "https://anofm.md/ro/subdiviziuni"
+    },
+    {
+      "name": "Consiliul Raional Rezina",
+      "url": "https://consiliu.rezina.md/contacte/"
+    },
+    {
+      "name": "Spitalul raional Rezina",
+      "url": "https://srrezina.md/contacte/"
+    },
+    {
+      "name": "Primăria Rezina",
+      "url": "https://primaria-rezina.md/contacte/"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Urgențe",
+      "items": [
+        {
+          "name": "Inspectoratul de Poliție Rezina",
+          "phone": "+373 254 20 516",
+          "address": "str. Voluntarilor 1, Rezina",
+          "url": "https://politia.md/inspectoratul-de-politie-rezina",
+          "note": "Serviciul de gardă: +373 254 22 980"
+        },
+        {
+          "name": "Spitalul raional Rezina – anticameră",
+          "phone": "+373 254 22 448",
+          "address": "str. 27 August 7, Rezina",
+          "url": "https://srrezina.md/contacte/"
+        },
+        {
+          "name": "Secția Situații Excepționale Rezina (IGSU)",
+          "phone": "+373 254 23 001",
+          "address": "str. 1 Mai 3/4, Rezina",
+          "url": "https://igsu.gov.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Autorități",
+      "items": [
+        {
+          "name": "Consiliul Raional Rezina",
+          "phone": "+373 254 22 058",
+          "address": "str. 27 August 1 A, Rezina",
+          "url": "https://consiliu.rezina.md/contacte/"
+        },
+        {
+          "name": "Primăria orașului Rezina",
+          "phone": "+373 254 22 844",
+          "address": "str. 27 August 1989 nr. 1, Rezina",
+          "url": "https://primaria-rezina.md/contacte/"
+        }
+      ]
+    },
+    {
+      "title": "Servicii",
+      "items": [
+        {
+          "name": "Casa Teritorială de Asigurări Sociale Rezina",
+          "phone": "+373 254 21 537",
+          "address": "str. 27 August 1, Rezina",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+        },
+        {
+          "name": "Agenția Servicii Publice – Centrul multifuncțional Rezina",
+          "phone": "+373 254 21 588",
+          "address": "str. Matrosov 4, Rezina",
+          "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/rezina"
+        },
+        {
+          "name": "Oficiul Forței de Muncă Rezina",
+          "phone": "+373 254 23 173",
+          "address": "str. A. Sciusev 2a, Rezina",
+          "url": "https://anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}

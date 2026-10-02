@@ -1,0 +1,68 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    {
+      "name": "Inspectoratul General al Poliției (politia.md)",
+      "url": "https://politia.md/inspectoratul-de-politie-straseni"
+    },
+    {
+      "name": "Inspectoratul General pentru Situații de Urgență",
+      "url": "https://igsu.gov.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "Casa Națională de Asigurări Sociale – subdiviziuni teritoriale",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+    },
+    {
+      "name": "Agenția Servicii Publice – subdiviziuni teritoriale",
+      "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/straseni"
+    },
+    {
+      "name": "Agenția Națională pentru Ocuparea Forței de Muncă – subdiviziuni",
+      "url": "https://anofm.md/ro/subdiviziuni"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Urgențe",
+      "items": [
+        {
+          "name": "Inspectoratul de Poliție Strășeni",
+          "phone": "+373 237 20 450",
+          "address": "str. Ștefan cel Mare 181, Strășeni",
+          "url": "https://politia.md/inspectoratul-de-politie-straseni",
+          "note": "Serviciul de gardă: +373 237 20 441"
+        },
+        {
+          "name": "Secția Situații Excepționale Strășeni (IGSU)",
+          "phone": "+373 237 21 312",
+          "address": "str. Ștefan cel Mare 9, Strășeni",
+          "url": "https://igsu.gov.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Servicii",
+      "items": [
+        {
+          "name": "Casa Teritorială de Asigurări Sociale Strășeni",
+          "phone": "+373 237 20 035",
+          "address": "str. Ștefan cel Mare 92/2, Strășeni",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+        },
+        {
+          "name": "Agenția Servicii Publice – Centrul multifuncțional Strășeni",
+          "phone": "+373 237 21 553",
+          "address": "str. Mihai Eminescu 51 B, Strășeni",
+          "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/straseni"
+        },
+        {
+          "name": "Oficiul Forței de Muncă Strășeni",
+          "phone": "+373 237 22 620",
+          "address": "str. M. Eminescu 56, Strășeni",
+          "url": "https://anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}
