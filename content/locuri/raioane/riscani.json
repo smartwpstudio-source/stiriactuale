@@ -1,0 +1,99 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    {
+      "name": "Poliția Republicii Moldova",
+      "url": "https://politia.md/inspectoratul-de-politie-riscani-0"
+    },
+    {
+      "name": "Spitalul Raional Rîșcani",
+      "url": "https://srriscani.md/contacte/"
+    },
+    {
+      "name": "Inspectoratul General pentru Situații de Urgență",
+      "url": "https://igsu.gov.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "Primăria orașului Rîșcani",
+      "url": "https://www.riscani.md/contacte/"
+    },
+    {
+      "name": "Platforma particip.gov.md — Consiliul Raional Rîșcani",
+      "url": "https://particip.gov.md/ro/authorities/970/utils"
+    },
+    {
+      "name": "Casa Națională de Asigurări Sociale",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+    },
+    {
+      "name": "Agenția Servicii Publice",
+      "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/riscani"
+    },
+    {
+      "name": "Agenția Națională pentru Ocuparea Forței de Muncă",
+      "url": "https://anofm.md/ro/subdiviziuni"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Urgențe",
+      "items": [
+        {
+          "name": "Inspectoratul de Poliție Rîșcani — serviciul de gardă",
+          "phone": "+373 256 29 302",
+          "address": "str. Independenței 36, or. Rîșcani",
+          "url": "https://politia.md/inspectoratul-de-politie-riscani-0"
+        },
+        {
+          "name": "Spitalul Raional Rîșcani — anticameră",
+          "phone": "+373 256 22 448",
+          "address": "str. N. Testemițanu 6, or. Rîșcani",
+          "url": "https://srriscani.md/contacte/"
+        },
+        {
+          "name": "Secția Situații Excepționale Rîșcani (IGSU)",
+          "phone": "+373 256 24 501",
+          "address": "str. Trandafirilor 1, or. Rîșcani",
+          "url": "https://igsu.gov.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Autorități",
+      "items": [
+        {
+          "name": "Consiliul Raional Rîșcani",
+          "phone": "+373 256 22 400"
+        },
+        {
+          "name": "Primăria orașului Rîșcani",
+          "phone": "+373 256 24 664",
+          "address": "str. 31 August 4, or. Rîșcani",
+          "url": "https://www.riscani.md/contacte/"
+        }
+      ]
+    },
+    {
+      "title": "Servicii",
+      "items": [
+        {
+          "name": "Casa Teritorială de Asigurări Sociale Rîșcani",
+          "address": "str. Ion Neculce 2, or. Rîșcani",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+        },
+        {
+          "name": "Agenția Servicii Publice — Centrul multifuncțional Rîșcani",
+          "phone": "+373 256 23 102",
+          "address": "str. Ștefan cel Mare și Sfânt 1, or. Rîșcani",
+          "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/riscani"
+        },
+        {
+          "name": "Oficiul Forței de Muncă Rîșcani (ANOFM)",
+          "phone": "+373 256 23 261",
+          "address": "str. 31 August 16, or. Rîșcani",
+          "url": "https://anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}

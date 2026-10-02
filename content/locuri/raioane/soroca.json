@@ -1,0 +1,91 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    {
+      "name": "Inspectoratul de Poliție Soroca",
+      "url": "https://politia.md/inspectoratul-de-politie-soroca"
+    },
+    {
+      "name": "Spitalul Raional Soroca",
+      "url": "https://sr-soroca.md/"
+    },
+    {
+      "name": "Inspectoratul General pentru Situații de Urgență",
+      "url": "https://igsu.gov.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "Primăria municipiului Soroca",
+      "url": "https://www.primsoroca.md/ro/contacte"
+    },
+    {
+      "name": "Casa Națională de Asigurări Sociale",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/soroca"
+    },
+    {
+      "name": "Agenția Servicii Publice",
+      "url": "https://www.asp.gov.md/contacte/subdiviziuni-teritoriale/soroca"
+    },
+    {
+      "name": "Agenția Națională pentru Ocuparea Forței de Muncă",
+      "url": "https://anofm.md/ro/subdiviziuni"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Urgențe",
+      "items": [
+        {
+          "name": "Inspectoratul de Poliție Soroca (serviciul de gardă)",
+          "phone": "+373 230 23 602",
+          "address": "str. Ion Creangă 18, mun. Soroca",
+          "url": "https://politia.md/inspectoratul-de-politie-soroca"
+        },
+        {
+          "name": "Spitalul Raional Soroca „A. Prisacari”",
+          "phone": "+373 230 23 741",
+          "address": "str. Mihail Kogălniceanu 1, or. Soroca",
+          "url": "https://sr-soroca.md/"
+        },
+        {
+          "name": "Direcția Situații Excepționale Soroca",
+          "phone": "+373 230 24 120",
+          "address": "str. Ocolirii 1, mun. Soroca",
+          "url": "https://igsu.gov.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Autorități",
+      "items": [
+        {
+          "name": "Primăria municipiului Soroca",
+          "phone": "+373 230 22 660",
+          "address": "str. Ștefan cel Mare 5, mun. Soroca",
+          "url": "https://www.primsoroca.md/ro/"
+        }
+      ]
+    },
+    {
+      "title": "Servicii",
+      "items": [
+        {
+          "name": "Casa Teritorială de Asigurări Sociale Soroca",
+          "phone": "+373 230 22 415",
+          "address": "str. Gheorghe Asachi 1, Soroca",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/soroca"
+        },
+        {
+          "name": "Agenția Servicii Publice — Centrul multifuncțional Soroca",
+          "phone": "+373 230 22 035",
+          "address": "str. Ion Creangă 19/1, mun. Soroca",
+          "url": "https://www.asp.gov.md/contacte/subdiviziuni-teritoriale/soroca"
+        },
+        {
+          "name": "Agenția Teritorială pentru Ocuparea Forței de Muncă Soroca",
+          "address": "str. V. Alecsandri 2, or. Soroca",
+          "url": "https://anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}

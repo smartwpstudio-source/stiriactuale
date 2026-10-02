@@ -1,0 +1,95 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    {
+      "name": "Consiliul Raional Briceni",
+      "url": "https://briceni.md/contacte/"
+    },
+    {
+      "name": "Poliția Republicii Moldova",
+      "url": "https://politia.md/inspectoratul-de-politie-briceni"
+    },
+    {
+      "name": "IGSU — contactele instituției",
+      "url": "https://igsu.gov.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "IMSP Spitalul Raional Briceni",
+      "url": "https://imspsrbriceni.md/?page_id=58"
+    },
+    {
+      "name": "Agenția Servicii Publice",
+      "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/briceni"
+    },
+    {
+      "name": "CNAS — subdiviziuni teritoriale",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/briceni"
+    },
+    {
+      "name": "ANOFM — subdiviziuni teritoriale",
+      "url": "https://www.anofm.md/ro/subdiviziuni"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Urgențe",
+      "items": [
+        {
+          "name": "Inspectoratul de Poliție Briceni — serviciul de gardă",
+          "phone": "+373 247 20 201",
+          "address": "str. Independenței 46, or. Briceni",
+          "url": "https://politia.md/inspectoratul-de-politie-briceni"
+        },
+        {
+          "name": "IMSP Spitalul Raional Briceni — camera de gardă",
+          "phone": "+373 247 22 205",
+          "url": "https://imspsrbriceni.md/?page_id=58"
+        },
+        {
+          "name": "Secția Situații Excepționale Briceni (IGSU)",
+          "phone": "+373 79 183 800",
+          "address": "str. D. Cantemir 25 B, or. Briceni",
+          "url": "https://igsu.gov.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Autorități",
+      "items": [
+        {
+          "name": "Consiliul Raional Briceni",
+          "phone": "+373 247 22 058",
+          "address": "str. Independenței 48, or. Briceni",
+          "url": "https://briceni.md/contacte/"
+        },
+        {
+          "name": "Primăria orașului Briceni — anticameră",
+          "phone": "+373 247 22 440",
+          "url": "https://briceni.md/primarii/"
+        }
+      ]
+    },
+    {
+      "title": "Servicii",
+      "items": [
+        {
+          "name": "Casa Teritorială de Asigurări Sociale Briceni",
+          "address": "str. Independenței 44, or. Briceni",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/briceni"
+        },
+        {
+          "name": "Agenția Servicii Publice — Centrul Multifuncțional Briceni",
+          "phone": "+373 247 22 607",
+          "address": "str. Independenței 21, or. Briceni",
+          "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/briceni"
+        },
+        {
+          "name": "Subdiviziunea teritorială pentru ocuparea forței de muncă Briceni (ANOFM)",
+          "phone": "+373 247 22 653",
+          "address": "str. Independenței 28, or. Briceni",
+          "url": "https://www.anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}

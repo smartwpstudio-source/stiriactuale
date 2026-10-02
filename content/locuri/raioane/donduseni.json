@@ -1,0 +1,101 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    {
+      "name": "Consiliul Raional Dondușeni",
+      "url": "https://donduseni.md/contacte/"
+    },
+    {
+      "name": "Poliția Republicii Moldova",
+      "url": "https://politia.md/inspectoratul-de-politie-donduseni"
+    },
+    {
+      "name": "IGSU — contactele instituției",
+      "url": "https://igsu.gov.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "IMSP Spitalul Raional Dondușeni",
+      "url": "https://srdonduseni.md/contacte/"
+    },
+    {
+      "name": "Primăria orașului Dondușeni",
+      "url": "https://primariadonduseni.md/contacte/"
+    },
+    {
+      "name": "Agenția Servicii Publice",
+      "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/donduseni"
+    },
+    {
+      "name": "CNAS — subdiviziuni teritoriale",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/donduşeni"
+    },
+    {
+      "name": "ANOFM — subdiviziuni teritoriale",
+      "url": "https://www.anofm.md/ro/subdiviziuni"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Urgențe",
+      "items": [
+        {
+          "name": "Inspectoratul de Poliție Dondușeni — serviciul de gardă",
+          "phone": "+373 251 20 302",
+          "address": "str. Independenței 43, or. Dondușeni",
+          "url": "https://politia.md/inspectoratul-de-politie-donduseni"
+        },
+        {
+          "name": "IMSP Spitalul Raional Dondușeni — Unitatea Primiri Urgențe",
+          "phone": "+373 251 22 098",
+          "address": "str. M. Eminescu 26/1, or. Dondușeni",
+          "url": "https://srdonduseni.md/contacte/"
+        },
+        {
+          "name": "Secția Situații Excepționale Dondușeni (IGSU)",
+          "phone": "+373 79 604 161",
+          "address": "str. Păcii 1/3, or. Dondușeni",
+          "url": "https://igsu.gov.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Autorități",
+      "items": [
+        {
+          "name": "Consiliul Raional Dondușeni",
+          "phone": "+373 251 22 058",
+          "address": "str. Independenței 47, or. Dondușeni",
+          "url": "https://donduseni.md/contacte/"
+        },
+        {
+          "name": "Primăria orașului Dondușeni",
+          "phone": "+373 251 22 203",
+          "address": "str. Independenței 49, or. Dondușeni",
+          "url": "https://primariadonduseni.md/contacte/"
+        }
+      ]
+    },
+    {
+      "title": "Servicii",
+      "items": [
+        {
+          "name": "Casa Teritorială de Asigurări Sociale Dondușeni",
+          "address": "str. Komarov 12, or. Dondușeni",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/donduşeni"
+        },
+        {
+          "name": "Agenția Servicii Publice — Centrul Multifuncțional Dondușeni",
+          "phone": "+373 251 61 006",
+          "address": "str. 31 August 1989 6/1, or. Dondușeni",
+          "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/donduseni"
+        },
+        {
+          "name": "Subdiviziunea teritorială pentru ocuparea forței de muncă Dondușeni (ANOFM)",
+          "phone": "+373 251 22 489",
+          "address": "str. Feroviarilor 4, or. Dondușeni",
+          "url": "https://www.anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}
