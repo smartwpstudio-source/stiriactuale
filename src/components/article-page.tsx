@@ -17,6 +17,8 @@ import { AI_IMAGE_PREFIX } from "@/lib/pipeline/image";
 import { sanitizeBody } from "@/lib/content/sanitize";
 import { ADSENSE_IN_ARTICLE_SLOT } from "@/lib/adsense";
 import { AdSlot } from "./ad-slot";
+import { RelatedGuide } from "./related-guide";
+import { getRelatedGuide } from "@/lib/content/related-guide";
 
 // Împarte corpul după al n-lea paragraf; [tot, ""] dacă după el nu mai rămân
 // măcar 2 paragrafe (reclama nu stă lipită de final).
@@ -58,7 +60,11 @@ export async function ArticlePage({
   article: Article;
   breadcrumbItems: BreadcrumbItem[];
 }) {
-  const [similar, { items: latest }] = await Promise.all([getSimilarArticles(article), listArticles({}, 1, 9)]);
+  const [similar, { items: latest }, guide] = await Promise.all([
+    getSimilarArticles(article),
+    listArticles({}, 1, 9),
+    article.archived ? undefined : getRelatedGuide(article.title, article.lead),
+  ]);
 
   return (
     <div className="mx-auto grid w-full max-w-7xl gap-12 px-4 py-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:px-8">
@@ -147,6 +153,7 @@ export async function ArticlePage({
             ))}
           </div>
         )}
+        {guide && <RelatedGuide guide={guide} />}
         <ShareButtons url={absoluteUrl(articleUrl(article))} title={article.title} />
         <TelegramCta />
         <PushOptIn />

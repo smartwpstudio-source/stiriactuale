@@ -26,11 +26,11 @@ export function AdSlot({ slot }: { slot: string }) {
   }, []);
 
   return (
-    <div className="my-6">
+    <div className="my-6 w-full">
       <p className="mb-1 text-center font-mono text-[10px] uppercase tracking-wide text-sub">Publicitate</p>
       <ins
         className="adsbygoogle"
-        style={{ display: "block", textAlign: "center" }}
+        style={{ display: "block", width: "100%", textAlign: "center" }}
         data-ad-layout="in-article"
         data-ad-format="fluid"
         data-ad-client={ADSENSE_CLIENT_ID}
