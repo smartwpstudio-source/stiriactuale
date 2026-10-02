@@ -1,0 +1,53 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    {
+      "name": "Ambasada Republicii Moldova — contacte",
+      "url": "https://rusia.mfa.gov.md/content/contacte"
+    },
+    {
+      "name": "Ambasada Republicii Moldova — program de lucru și informații de contact",
+      "url": "https://rusia.mfa.gov.md/content/programul-de-lucru-%C5%9Fi-informa%C5%A3ii-de-contact"
+    },
+    {
+      "name": "МЧС России — Система 112",
+      "url": "https://50.mchs.gov.ru/deyatelnost/poleznaya-informaciya/rekomendacii-naseleniyu/sistema-112"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Ambasada și consulatele",
+      "items": [
+        {
+          "name": "Secția consulară a Ambasadei Republicii Moldova la Moscova",
+          "phone": "+7 495 790 75 46",
+          "address": "str. Rojdestvenka 7, 107031 Moscova",
+          "url": "https://rusia.mfa.gov.md/"
+        },
+        {
+          "name": "Ambasada Republicii Moldova la Moscova — anticameră",
+          "phone": "+7 495 624 53 53",
+          "address": "str. Kuznețki Most 18, 107031 Moscova"
+        }
+      ]
+    },
+    {
+      "title": "Urgențe",
+      "items": [
+        {
+          "name": "Număr unic de urgență (Rusia): 112",
+          "url": "https://50.mchs.gov.ru/deyatelnost/poleznaya-informaciya/rekomendacii-naseleniyu/sistema-112"
+        }
+      ]
+    },
+    {
+      "title": "Programare consulară",
+      "items": [
+        {
+          "name": "Programare online pentru servicii consulare (Reservio)",
+          "url": "https://ambasada-r-moldova-in-f-rusa.reservio.com/"
+        }
+      ]
+    }
+  ]
+}

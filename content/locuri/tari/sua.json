@@ -1,0 +1,52 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    {
+      "name": "Ambasada Republicii Moldova — contacte",
+      "url": "https://sua.mfa.gov.md/content/contacte"
+    },
+    {
+      "name": "Ambasada Republicii Moldova — program de lucru și informații de contact",
+      "url": "https://sua.mfa.gov.md/content/programul-de-lucru-%C5%9Fi-informa%C5%A3ii-de-contact"
+    },
+    {
+      "name": "911.gov — Calling 911",
+      "url": "https://www.911.gov/calling-911/"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Ambasada și consulatele",
+      "items": [
+        {
+          "name": "Ambasada Republicii Moldova la Washington — consultații consulare (luni–joi, 14:00–16:00 ora Washington)",
+          "phone": "+1 202 390 0392",
+          "address": "2101 S Street NW, Washington, DC 20008",
+          "url": "https://sua.mfa.gov.md/"
+        }
+      ]
+    },
+    {
+      "title": "Urgențe",
+      "items": [
+        {
+          "name": "Număr de urgență al Ambasadei (fără informații consulare generale)",
+          "phone": "+1 202 390 0392"
+        },
+        {
+          "name": "Număr local de urgență (SUA): 911",
+          "url": "https://www.911.gov/calling-911/"
+        }
+      ]
+    },
+    {
+      "title": "Programare consulară",
+      "items": [
+        {
+          "name": "Programare online pentru servicii consulare",
+          "url": "https://programari.gov.md/ro/mae/appointments/217127eb-beb4-4226-95af-0f384ded41d1"
+        }
+      ]
+    }
+  ]
+}

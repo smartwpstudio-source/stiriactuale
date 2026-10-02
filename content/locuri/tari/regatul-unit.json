@@ -1,0 +1,56 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    {
+      "name": "Ambasada Republicii Moldova — contacte",
+      "url": "https://regatulunit.mfa.gov.md/content/contacte"
+    },
+    {
+      "name": "Ambasada Republicii Moldova — program de lucru și informații de contact",
+      "url": "https://regatulunit.mfa.gov.md/content/programul-de-lucru-%C5%9Fi-informa%C5%A3ii"
+    },
+    {
+      "name": "NHS — When to call 999",
+      "url": "https://www.nhs.uk/nhs-services/urgent-and-emergency-care-services/when-to-call-999/"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Ambasada și consulatele",
+      "items": [
+        {
+          "name": "Ambasada Republicii Moldova la Londra — cancelarie",
+          "phone": "+44 20 3518 6286",
+          "address": "55 Catherine Place, London SW1E 6DY",
+          "url": "https://regatulunit.mfa.gov.md/"
+        },
+        {
+          "name": "Secția consulară — consultații (luni–vineri, 14:00–16:00)",
+          "phone": "+44 20 3518 6221"
+        }
+      ]
+    },
+    {
+      "title": "Urgențe",
+      "items": [
+        {
+          "name": "Telefon de urgență consulară (fără programări și informații consulare)",
+          "phone": "+44 7895 805306"
+        },
+        {
+          "name": "Număr local de urgență (Regatul Unit): 999",
+          "url": "https://www.nhs.uk/nhs-services/urgent-and-emergency-care-services/when-to-call-999/"
+        }
+      ]
+    },
+    {
+      "title": "Programare consulară",
+      "items": [
+        {
+          "name": "Programare online pentru servicii consulare",
+          "url": "https://embassyoftherepublicofmoldova6534.setmore.com/"
+        }
+      ]
+    }
+  ]
+}

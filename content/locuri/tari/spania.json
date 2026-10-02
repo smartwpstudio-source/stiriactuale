@@ -1,0 +1,58 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    {
+      "name": "Ambasada Republicii Moldova — contacte",
+      "url": "https://spania.mfa.gov.md/content/contacte"
+    },
+    {
+      "name": "Ambasada Republicii Moldova — program de lucru",
+      "url": "https://spania.mfa.gov.md/content/programul-de-lucru"
+    },
+    {
+      "name": "Your Europe — Single emergency number",
+      "url": "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Ambasada și consulatele",
+      "items": [
+        {
+          "name": "Ambasada Republicii Moldova la Madrid — consultații consulare (luni–joi, 13:00–15:00, ext. 1)",
+          "phone": "+34 91 828 79 89",
+          "address": "Paseo de la Castellana 178, 5 dcha., 28046 Madrid",
+          "url": "https://spania.mfa.gov.md/"
+        },
+        {
+          "name": "Consulatul General al Republicii Moldova la Barcelona",
+          "phone": "+34 93 754 54 40",
+          "address": "Calle Corsega 329, 3-3, 08037 Barcelona",
+          "url": "https://barcelona.mfa.gov.md/"
+        }
+      ]
+    },
+    {
+      "title": "Urgențe",
+      "items": [
+        {
+          "name": "Telefon de urgență, 24/7 (fără programări și informații consulare)",
+          "phone": "+34 664 598 545"
+        },
+        {
+          "name": "Număr unic european de urgență (poliție, ambulanță, pompieri): 112",
+          "url": "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+        }
+      ]
+    },
+    {
+      "title": "Programare consulară",
+      "items": [
+        {
+          "name": "Programare online pentru servicii consulare (Madrid)",
+          "url": "https://programari.gov.md/ro/mae/appointments/35ee1340-f8d2-440a-89bf-566a92630e31"
+        }
+      ]
+    }
+  ]
+}

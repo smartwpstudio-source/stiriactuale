@@ -1,0 +1,52 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    {
+      "name": "Ambasada Republicii Moldova — contacte",
+      "url": "https://olanda.mfa.gov.md/content/contacte"
+    },
+    {
+      "name": "Ambasada Republicii Moldova — program de lucru și informații de contact",
+      "url": "https://olanda.mfa.gov.md/content/programul-de-lucru-%C5%9Fi-informa%C5%A3ii-de-contact"
+    },
+    {
+      "name": "Your Europe — Single emergency number",
+      "url": "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Ambasada și consulatele",
+      "items": [
+        {
+          "name": "Ambasada Republicii Moldova la Haga — consultații consulare (marți și joi, 14:00–17:00)",
+          "phone": "+31 70 737 1200",
+          "address": "Bezuidenhoutseweg 117, 2594 AD Haga",
+          "url": "https://olanda.mfa.gov.md/"
+        }
+      ]
+    },
+    {
+      "title": "Urgențe",
+      "items": [
+        {
+          "name": "Telefon de urgență (fără programări și informații consulare)",
+          "phone": "+31 658 827 910"
+        },
+        {
+          "name": "Număr unic european de urgență (poliție, ambulanță, pompieri): 112",
+          "url": "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+        }
+      ]
+    },
+    {
+      "title": "Programare consulară",
+      "items": [
+        {
+          "name": "Programare online (E-Programări) — servicii consulare marți și joi",
+          "url": "https://programari.gov.md/ro/maeie/appointments/c841bf54-5041-4198-9daa-65109645c96d"
+        }
+      ]
+    }
+  ]
+}

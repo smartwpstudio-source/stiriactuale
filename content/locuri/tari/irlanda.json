@@ -1,0 +1,56 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    {
+      "name": "Ambasada Republicii Moldova — contacte",
+      "url": "https://irlanda.mfa.gov.md/content/contacte"
+    },
+    {
+      "name": "Ambasada Republicii Moldova — program de lucru și informații de contact",
+      "url": "https://irlanda.mfa.gov.md/content/programul-de-lucru-%C8%99i-informa%C8%9Bii-de-contact"
+    },
+    {
+      "name": "Your Europe — Single emergency number",
+      "url": "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Ambasada și consulatele",
+      "items": [
+        {
+          "name": "Ambasada Republicii Moldova la Dublin",
+          "phone": "+353 1 555 4365",
+          "address": "2 Mount Street Upper, Dublin, D02 E006",
+          "url": "https://irlanda.mfa.gov.md/"
+        },
+        {
+          "name": "Oficiul consular — consultații (luni–joi, 14:00–16:00)",
+          "phone": "+353 1 515 3444"
+        }
+      ]
+    },
+    {
+      "title": "Urgențe",
+      "items": [
+        {
+          "name": "Telefon de urgență (fără programări și consultații consulare)",
+          "phone": "+353 89 977 1081"
+        },
+        {
+          "name": "Număr unic european de urgență (poliție, ambulanță, pompieri): 112",
+          "url": "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+        }
+      ]
+    },
+    {
+      "title": "Programare consulară",
+      "items": [
+        {
+          "name": "Programare online pentru servicii consulare",
+          "url": "https://programari.gov.md/ro/mae/appointments/4fac1c2c-be45-493b-9268-8d0e8715d888"
+        }
+      ]
+    }
+  ]
+}
