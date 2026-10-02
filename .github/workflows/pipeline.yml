@@ -17,7 +17,7 @@ concurrency: pipeline
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 40 # linkurile editorului n-au plafon
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

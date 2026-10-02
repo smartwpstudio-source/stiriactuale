@@ -59,6 +59,10 @@ export async function publishArticle(
     .filter(([, url]) => url)
     .map(([name, url]) => ({ name, url }));
 
+  // Știrile sensibile rămân draft până la aprobare — cu excepția linkurilor
+  // adăugate de editor: le-a ales el, se publică direct.
+  const draft = candidate.classification.sensitive && !candidate.group.manual;
+
   // Slug-ul poate coincide cu un articol mai vechi (subiect recurent) ->
   // sufix -2, -3... Unicitatea o garantează constrângerea din DB.
   for (let n = 1; n <= 10; n++) {
@@ -84,13 +88,13 @@ export async function publishArticle(
         sourceUrls,
         sources,
         pushWorthy: candidate.classification.pushWorthy,
-        status: candidate.classification.sensitive ? "draft" : "published",
+        status: draft ? "draft" : "published",
       })
       .onConflictDoNothing({ target: articles.slug })
       .returning({ id: articles.id });
     if (inserted.length) {
       const id = inserted[0].id;
-      if (candidate.classification.sensitive) {
+      if (draft) {
         const kind = candidate.classification.pushWorthy ? "draft-alerta" : "draft";
         await notifyEditor(kind, { id, title: generated.titlu, lead: generated.lead });
       } else {

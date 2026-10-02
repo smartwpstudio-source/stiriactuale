@@ -4,7 +4,7 @@ import { getDb } from "@/lib/pipeline/db/client";
 import { articles, candidates, pipelineRuns } from "@/lib/pipeline/db/schema";
 import { requireAdmin } from "@/lib/admin/auth";
 import { SECTION_LABELS } from "@/lib/content/geo";
-import { addLink, logoutAction } from "./actions";
+import { addLink, logoutAction, runPipelineNow } from "./actions";
 
 const LINK_MESSAGES: Record<string, string> = {
   ok: "Adăugat. Se scrie la următoarea rulare a pipeline-ului (max. 2 ore).",
@@ -12,12 +12,17 @@ const LINK_MESSAGES: Record<string, string> = {
   unreadable: "Pagina nu a putut fi citită — încearcă linkul sursei originale.",
 };
 
+const RUN_MESSAGES: Record<string, string> = {
+  ok: "Publicarea a pornit. Articolele apar în 5–15 minute; primești notificare pe Telegram pentru fiecare.",
+  fail: "Nu s-a putut porni publicarea (GitHub). Încearcă din nou peste un minut.",
+};
+
 const time = (d: Date) =>
   d.toLocaleString("ro-MD", { timeZone: "Europe/Chisinau", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
 
 export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
   await requireAdmin();
-  const { link } = await searchParams;
+  const { link, run } = await searchParams;
   const db = getDb();
 
   const cols = {
@@ -79,8 +84,20 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
             placeholder="https://… (linkul sursei originale, nu al agregatorului)"
             className="flex-1 rounded border border-line bg-white px-3 py-2 text-ink"
           />
-          <button className="rounded bg-ink px-4 py-2 text-white">Adaugă</button>
+          <button className="rounded border border-ink px-4 py-2 text-ink">Adaugă</button>
+          <button name="now" value="1" className="rounded bg-alert px-4 py-2 font-medium text-white">
+            Adaugă și publică acum
+          </button>
         </form>
+        <form action={runPipelineNow} className="mt-3 flex flex-wrap items-center gap-3">
+          <button className="rounded bg-ink px-4 py-2 font-medium text-white">Publică acum</button>
+          <span className="text-sm text-sub">
+            scrie imediat toate linkurile în așteptare{pending.length > 0 && ` (${pending.length})`}, fără să aștepte rularea programată
+          </span>
+        </form>
+        {typeof run === "string" && RUN_MESSAGES[run] && (
+          <p className={`mt-2 text-sm ${run === "ok" ? "text-teal" : "text-alert"}`}>{RUN_MESSAGES[run]}</p>
+        )}
         {typeof link === "string" && LINK_MESSAGES[link] && (
           <p className={`mt-2 text-sm ${link === "ok" ? "text-teal" : "text-alert"}`}>{LINK_MESSAGES[link]}</p>
         )}

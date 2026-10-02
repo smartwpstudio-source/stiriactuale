@@ -11,6 +11,7 @@ import { sanitizeBody } from "@/lib/content/sanitize";
 import { fetchArticle } from "@/lib/pipeline/fulltext";
 import { COUNTRY_NAMES, RAION_NAMES } from "@/lib/content/geo";
 import { logIn, logOut, requireAdmin } from "@/lib/admin/auth";
+import { dispatchPipeline } from "@/lib/pipeline-dispatch";
 import { deleteFromChannel } from "@/lib/telegram";
 import { announcePublished, pushNow } from "@/lib/publish-effects";
 import type { Section } from "@/lib/content/types";
@@ -145,9 +146,18 @@ export async function removeImage(id: number) {
   redirect(`/admin/articol/${id}/`);
 }
 
+// Butonul "Publică acum": rularea pornește în ~1 minut, nu la următoarea
+// rulare programată. Scrie linkurile adăugate și, ziua, știrile noi din fluxuri.
+export async function runPipelineNow() {
+  await requireAdmin();
+  const { ok } = await dispatchPipeline();
+  redirect(ok ? "/admin/?run=ok" : "/admin/?run=fail");
+}
+
 // "Adaugă știre după link" (ex. găsită pe yam.md): se citește pagina sursei
 // originale și intră în candidates cu manual=true — următoarea rulare a
-// pipeline-ului o scrie obligatoriu, în afara plafonului zilnic.
+// pipeline-ului o scrie obligatoriu, în afara plafonului zilnic. Butonul
+// "Adaugă și publică acum" pornește și rularea.
 export async function addLink(formData: FormData) {
   await requireAdmin();
   let url: URL;
@@ -177,5 +187,9 @@ export async function addLink(formData: FormData) {
       manual: true,
     })
     .onConflictDoUpdate({ target: candidates.url, set: { manual: true, processedAt: null } });
+  if (formData.get("now")) {
+    const { ok } = await dispatchPipeline();
+    redirect(ok ? "/admin/?run=ok" : "/admin/?run=fail");
+  }
   redirect("/admin/?link=ok");
 }

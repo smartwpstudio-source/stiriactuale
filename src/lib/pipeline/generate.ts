@@ -59,8 +59,10 @@ const SYSTEM_PROMPT = [
 ].join("\n");
 
 // Sub atât material (după descărcarea textelor integrale), articolul ar ieși
-// gol — știrea se sare, nu se publică subțire.
+// gol — știrea se sare, nu se publică subțire. Linkurile editorului au prag
+// mai mic: le-a ales el, iar o știre scurtă dar urgentă tot se scrie.
 const MIN_MATERIAL_CHARS = 1200;
+const MIN_MATERIAL_CHARS_MANUAL = 400;
 const MAX_SOURCES = 4;
 
 export async function generateArticle(
@@ -75,7 +77,7 @@ export async function generateArticle(
     return `### [${i.sourceName}] ${i.title}\n${body}`;
   });
   const digest = blocks.join("\n\n");
-  if (digest.length < MIN_MATERIAL_CHARS) return null;
+  if (digest.length < (group.manual ? MIN_MATERIAL_CHARS_MANUAL : MIN_MATERIAL_CHARS)) return null;
 
   return structured<GeneratedArticle>({
     model: OPUS_MODEL,

@@ -80,16 +80,12 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       summary.failedFeeds.push(`colectare: ${err instanceof Error ? err.message : String(err)}`);
     }
 
-    // Noaptea nu se publică nimic (decizia proprietarului: postările de noapte
-    // în canal îi fac pe oameni să se dezaboneze). Verificat aici, nu doar în
-    // orarul din pipeline.yml: GitHub amână rulările programate cu ore (rularea
-    // de 22:00 a pornit la 00:30). Dimineața, fereastra de 6h prinde tot.
+    // Noaptea nu se publică automat (decizia proprietarului: postările de
+    // noapte în canal îi fac pe oameni să se dezaboneze). Dimineața, fereastra
+    // de 6h prinde tot. Linkurile adăugate de editor se publică și noaptea —
+    // butonul "Publică acum" e pentru știri urgente.
     const hour = Number(new Date().toLocaleString("en-GB", { hour: "2-digit", hour12: false, timeZone: "Europe/Chisinau" }));
-    if (hour < PUBLISH_FROM_HOUR || hour >= PUBLISH_UNTIL_HOUR) {
-      summary.skipped = `în afara orelor de publicare (${hour}:00 la Chișinău) — doar colectare`;
-      await finish(run.id, summary);
-      return summary;
-    }
+    const night = hour < PUBLISH_FROM_HOUR || hour >= PUBLISH_UNTIL_HOUR;
 
     const rows = await db
       .select()
@@ -100,6 +96,11 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
           and(eq(candidates.manual, true), isNull(candidates.processedAt)),
         ),
       );
+    if (night && !rows.some((r) => r.manual && !r.processedAt)) {
+      summary.skipped = `în afara orelor de publicare (${hour}:00 la Chișinău) — doar colectare`;
+      await finish(run.id, summary);
+      return summary;
+    }
     const groups = groupCandidates(
       rows.map((r) => ({ ...r, sourceUrl: r.url, manual: r.manual && !r.processedAt })),
     );
@@ -114,7 +115,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       .select({ today: count() })
       .from(articles)
       .where(and(gte(articles.createdAt, dayStart), isNull(articles.wpId)));
-    const autoSlots = Math.max(0, Math.min(MAX_ARTICLES_PER_RUN, DAILY_ARTICLE_LIMIT - today));
+    const autoSlots = night ? 0 : Math.max(0, Math.min(MAX_ARTICLES_PER_RUN, DAILY_ARTICLE_LIMIT - today));
 
     const recent = await loadRecentFingerprints();
     const fresh = groups
@@ -163,6 +164,11 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
         const generated = await generateArticle(c.group, c.classification);
         if (!generated) {
           summary.skippedThin.push(c.group.representativeTitle.slice(0, 80));
+          // linkul editorului nu rămâne la coadă la nesfârșit — editorul e anunțat
+          if (c.group.manual) {
+            await db.update(candidates).set({ processedAt: new Date() }).where(inArray(candidates.id, c.group.candidateIds));
+            summary.failedArticles.push(`${c.group.representativeTitle.slice(0, 80)}: prea puțin text la sursă — nescris`);
+          }
           return null;
         }
         const image = await findArticleImage(generated.stock_query, generated.image_prompt, generated.slug, usedImageIds);
