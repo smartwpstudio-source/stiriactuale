@@ -44,9 +44,12 @@ export default async function GuidePage({ params }: PageProps<"/ghiduri/[slug]">
       headline: g.title,
       description: g.description,
       dateModified: g.updated,
+      inLanguage: "ro",
       mainEntityOfPage: url,
-      author: { "@type": "Organization", name: "Stiri actuale" },
-      publisher: { "@type": "Organization", name: "Stiri actuale", logo: { "@type": "ImageObject", url: absoluteUrl("/icons/icon-512.png?v=2") } },
+      // sursele oficiale consultate — semnal de încredere pentru Google și asistenții AI
+      citation: g.sources.map((s) => ({ "@type": "CreativeWork", name: s.name, url: s.url })),
+      author: { "@type": "Organization", name: "Știri Actuale", url: absoluteUrl("/") },
+      publisher: { "@type": "Organization", name: "Știri Actuale", logo: { "@type": "ImageObject", url: absoluteUrl("/icons/icon-512.png?v=2") } },
     },
     ...(g.faq?.length
       ? [
