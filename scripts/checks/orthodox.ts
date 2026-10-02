@@ -1,7 +1,7 @@
 // Calendarul ortodox calculat (src/lib/orthodox.ts) pe date cunoscute.
 // npx tsx scripts/checks/orthodox.ts
 import assert from "node:assert";
-import { churchDay, fixedDate, orthodoxEaster, yearFasts } from "../../src/lib/orthodox";
+import { churchDay, civilDays, fixedDate, orthodoxEaster, yearFasts } from "../../src/lib/orthodox";
 
 const iso = (d: Date | null) => d?.toISOString().slice(0, 10);
 // Paștele ortodox, date publicate
@@ -19,4 +19,9 @@ const p = yearFasts(2026, "vechi").find((f) => f.name.startsWith("Postul Nașter
 assert.deepEqual([iso(p.from), iso(p.to)], ["2026-11-28", "2027-01-06"]);
 const pn = yearFasts(2026, "nou").find((f) => f.name.startsWith("Postul Nașterii"))!;
 assert.deepEqual([iso(pn.from), iso(pn.to)], ["2026-11-15", "2026-12-24"]);
+// Ziua Vinului: primul weekend din octombrie (2026: 3–4 oct); Ziua Mamei: prima duminică din mai
+const civ = civilDays(2026);
+assert.equal(iso(civ.find((d) => d.name.startsWith("Ziua Națională a Vinului"))!.date), "2026-10-03");
+assert.equal(iso(civ.find((d) => d.name === "Ziua Mamei")!.date), "2026-05-03");
+assert.equal(iso(civilDays(2027).find((d) => d.name === "Ziua Mamei")!.date), "2027-05-02");
 console.log("orthodox: OK");

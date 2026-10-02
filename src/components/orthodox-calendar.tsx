@@ -3,7 +3,7 @@ import { Breadcrumb } from "./breadcrumb";
 import { SectionHeading } from "./section-heading";
 import { getSaintsMonth, holidayGuides, type SaintDay } from "@/lib/calendar-data";
 import {
-  addDays, churchDay, formatDay, monthName, orthodoxEaster, weekday, yearFasts, yearFeasts, type Style,
+  addDays, churchDay, civilDays, formatDay, monthName, orthodoxEaster, weekday, yearFasts, yearFeasts, type Style,
 } from "@/lib/orthodox";
 
 // Pilonul calendarului: sărbători mari, posturi, Paștele și (când există
@@ -22,6 +22,7 @@ export function todayChisinau(): Date {
 export async function OrthodoxCalendar({ year, style, basePath }: { year: number; style: Style; basePath: string }) {
   const feasts = yearFeasts(year, style);
   const fasts = yearFasts(year, style);
+  const civil = civilDays(year);
   const [guides, months] = await Promise.all([
     holidayGuides(),
     Promise.all(Array.from({ length: 12 }, (_, i) => getSaintsMonth(i + 1))),
@@ -110,6 +111,32 @@ export async function OrthodoxCalendar({ year, style, basePath }: { year: number
                 </span>
                 <span className="text-ink">
                   <span className="text-alert">✝</span>{" "}
+                  {href ? (
+                    <Link href={href} className="underline hover:text-teal">
+                      {f.name}
+                    </Link>
+                  ) : (
+                    f.name
+                  )}
+                </span>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+
+      <section className="mt-10">
+        <SectionHeading title={`Sărbători populare și zile naționale ${year}`} />
+        <ul className="mt-2 divide-y divide-line rounded-lg border border-line bg-white">
+          {civil.map((f) => {
+            const href = guideHref(f.guide);
+            return (
+              <li key={f.name} className="flex gap-4 px-4 py-2.5">
+                <span className="w-28 shrink-0 font-mono text-sm text-sub">
+                  {formatDay(f.date)}
+                  <span className="block text-xs">{weekday(f.date)}</span>
+                </span>
+                <span className="text-ink">
                   {href ? (
                     <Link href={href} className="underline hover:text-teal">
                       {f.name}

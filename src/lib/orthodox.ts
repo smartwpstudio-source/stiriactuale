@@ -42,7 +42,7 @@ const isGregorianLeap = (y: number) => (y % 4 === 0 && y % 100 !== 0) || y % 400
 export interface Feast {
   date: Date;
   name: string;
-  kind: "mare" | "post" | "sfant";
+  kind: "mare" | "post" | "sfant" | "laic";
   guide?: string;
 }
 
@@ -97,6 +97,33 @@ export function yearFeasts(year: number, style: Style): Feast[] {
     if (date) out.push({ date, name, kind: "mare", guide });
   }
   return out.sort((a, b) => a.date.getTime() - b.date.getTime());
+}
+
+// Sărbătorile populare și zilele naționale (calendar civil, aceleași pe
+// ambele stiluri), cu pagina lor din /ghiduri/ — legată doar dacă există.
+const firstWeekday = (year: number, month: number, weekday: number) => {
+  const d = utc(year, month, 1);
+  return addDays(d, (weekday - d.getUTCDay() + 7) % 7);
+};
+
+export function civilDays(year: number): Feast[] {
+  const wineSat = firstWeekday(year, 10, 6);
+  const days: [Date, string, string?][] = [
+    [utc(year, 1, 1), "Anul Nou", "revelionul-traditii-si-cum-il-petreci"],
+    [utc(year, 2, 14), "Ziua Îndrăgostiților — Sfântul Valentin", "sfantul-valentin-in-moldova"],
+    [utc(year, 2, 24), "Dragobete", "dragobete-traditii"],
+    [utc(year, 3, 1), "Mărțișorul", "martisorul-traditii"],
+    [utc(year, 3, 8), "Ziua Internațională a Femeii", "8-martie-ziua-femeii"],
+    [firstWeekday(year, 5, 0), "Ziua Mamei", "ziua-mamei-in-moldova"],
+    [utc(year, 5, 9), "Ziua Europei și Ziua Victoriei", "9-mai-ziua-europei-si-ziua-victoriei"],
+    [utc(year, 6, 1), "Ziua Ocrotirii Copilului", "1-iunie-ziua-copilului"],
+    [utc(year, 8, 27), "Ziua Independenței", "ziua-independentei-27-august"],
+    [utc(year, 8, 31), "Limba noastră cea română", "limba-noastra-cea-romana-31-august"],
+    [wineSat, "Ziua Națională a Vinului (primul weekend din octombrie)", "ziua-nationala-a-vinului"],
+    [utc(year, 10, 14), "Hramul orașului Chișinău", "hramul-chisinaului-14-octombrie"],
+    [utc(year, 12, 31), "Revelionul", "revelionul-traditii-si-cum-il-petreci"],
+  ];
+  return days.map(([date, name, guide]) => ({ date, name, kind: "laic" as const, guide }));
 }
 
 export interface Fast {
