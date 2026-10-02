@@ -1,22 +1,22 @@
 import Link from "next/link";
 import { IconSearch } from "@tabler/icons-react";
 import { NavLinks } from "./nav-links";
+import { MobileMenu } from "./mobile-menu";
 import { Logo } from "./logo";
 
 export function Header() {
   return (
-    <header className="bg-ink text-paper">
+    <header className="relative bg-ink text-paper">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-4 lg:px-8 lg:py-5">
         <Logo />
         <NavLinks className="hidden gap-7 font-sans text-base font-medium sm:flex" itemClassName="" />
-        <Link href="/cautare/" aria-label="Căutare" className="text-paper hover:text-amber">
-          <IconSearch size={22} stroke={1.75} />
-        </Link>
+        <div className="flex items-center gap-2">
+          <Link href="/cautare/" aria-label="Căutare" className="text-paper hover:text-amber">
+            <IconSearch size={22} stroke={1.75} />
+          </Link>
+          <MobileMenu />
+        </div>
       </div>
-      <NavLinks
-        className="flex gap-5 overflow-x-auto px-4 pb-3 font-sans text-base font-medium sm:hidden"
-        itemClassName="whitespace-nowrap"
-      />
     </header>
   );
 }

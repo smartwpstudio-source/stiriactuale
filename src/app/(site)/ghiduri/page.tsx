@@ -25,9 +25,22 @@ export default async function GuidesPage() {
         sursele oficiale, cu data ultimei actualizări.
       </p>
       {byCategory.length === 0 && <p className="mt-8 font-mono text-sm text-sub">Primele ghiduri apar în curând.</p>}
+      {/* teme: salt direct la secțiune — ghidurile sunt multe */}
+      <ul className="mt-6 flex flex-wrap gap-2">
+        {byCategory.map(({ c, items }) => (
+          <li key={c}>
+            <a
+              href={`#${c}`}
+              className="block rounded border border-line bg-white px-3 py-1.5 font-mono text-xs text-ink hover:border-amber hover:text-amber-ink"
+            >
+              {GUIDE_CATEGORIES[c]} <span className="text-sub">({items.length})</span>
+            </a>
+          </li>
+        ))}
+      </ul>
       <div className="mt-10 grid gap-x-10 gap-y-12 lg:grid-cols-2">
         {byCategory.map(({ c, items }) => (
-          <section key={c}>
+          <section key={c} id={c} className="scroll-mt-6">
             <SectionHeading title={GUIDE_CATEGORIES[c]} />
             <ul className="mt-2">
               {items.map((g) => (

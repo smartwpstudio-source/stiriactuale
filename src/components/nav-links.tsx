@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const NAV = [
+export const NAV = [
   { href: "/regiuni/", label: "Regiuni" },
   { href: "/national/", label: "Național" },
   { href: "/international/", label: "Internațional" },
