@@ -1,0 +1,48 @@
+{
+  "slug": "cum-citesti-factura-de-gaz-sau-de-energie-electrica",
+  "title": "Cum citești factura de gaz sau de energie electrică: ce înseamnă fiecare rubrică",
+  "description": "Ce găsești pe factura de gaz sau de curent: indexul contorului, „Real” sau „Estimat”, componentele prețului, penalitățile, și ce verifici înainte să plătești.",
+  "category": "bani",
+  "updated": "2026-10-02",
+  "sources": [
+    {
+      "name": "ANRE — întrebări și răspunsuri: energie electrică",
+      "url": "https://anre.md/intrebari-raspunsuri-energie-electrica-3-44"
+    },
+    {
+      "name": "ANRE — întrebări și răspunsuri: gaze naturale",
+      "url": "https://anre.md/intrebari-raspunsuri-gaze-naturale-3-43"
+    },
+    {
+      "name": "ANRE — componentele de cost în structura prețului final al energiei electrice",
+      "url": "https://www.anre.md/anre-explica-care-sunt-componentele-de-cost-in-structura-pretului-final-al-energiei-electrice-3-987"
+    },
+    {
+      "name": "ANRE — consumatori de energie electrică (drepturi și obligații)",
+      "url": "https://anre.md/energia-electrica-3-163"
+    }
+  ],
+  "bodyHtml": "<p>Factura de gaz sau de curent pare un tabel greu de înțeles, dar se citește simplu dacă știi ce cauți: cât ai consumat, cu ce preț a fost înmulțit consumul, ce s-a adăugat și până când trebuie plătită. Mai jos găsești rubricile principale și ce verifici la fiecare. Cifrele (prețuri, tarife) se schimbă, așa că nu le dăm aici: le găsești mereu la zi pe anre.md, în secțiunea „Tarife în vigoare”. Dacă ai deja o factură pe care vrei s-o contești, pașii sunt într-un alt ghid de pe site, despre contestarea facturii la gaz sau lumină.</p>\n\n<h2>Cum citești factura, pas cu pas</h2>\n<ol>\n<li><strong>Datele tale:</strong> nume, adresa de consum, numărul contractului sau al contului. Dacă o dată e greșită, spune furnizorului din prima lună.</li>\n<li><strong>Perioada facturată:</strong> luna sau intervalul pentru care ai de plată.</li>\n<li><strong>Indexul contorului:</strong> numărul de pe contor. Factura arată de obicei indexul vechi (de la ultima citire) și indexul nou. Diferența dintre ele este consumul tău.</li>\n<li><strong>Rubrica „Evaluare”:</strong> vezi mai jos, e cea mai importantă pentru a ști dacă plătești după contor sau după estimare.</li>\n<li><strong>Prețul sau tariful</strong> și suma pentru consum.</li>\n<li><strong>Alte sume:</strong> eventuale penalități, restanțe, regularizări.</li>\n<li><strong>Totalul de plată și termenul de achitare.</strong></li>\n</ol>\n\n<h2>„Real” sau „Estimat”: de unde vine consumul</h2>\n<p>La energia electrică, ANRE explică în întrebările frecvente că, dacă în rubrica „Evaluare” scrie „Real”, consumul a fost calculat după indicii reali ai contorului. Dacă scrie „Estimat”, volumul de energie a fost stabilit estimativ. Același răspuns arată că citirea contorului pentru facturare se face lunar, iar dacă operatorul rețelei nu are acces la contor, poate emite facturi pe baza consumului estimat cel mult 2 luni.</p>\n<p>Ce faci practic:</p>\n<ul>\n<li>Fă o poză a contorului în ziua citirii sau la sfârșitul lunii și compară-l cu indexul de pe factură.</li>\n<li>Dacă pe factură apare „Estimat” de mai multe ori la rând, sună furnizorul și stabilește cum poate fi citit contorul (acces, program, transmiterea indexului).</li>\n<li>Dacă indexul de pe factură este mai mare decât cel real, cere în scris verificarea și corectarea.</li>\n</ul>\n<p>La gaze naturale, ANRE vorbește despre recalcularea pe baza indicilor corecți și a erorii echipamentului de măsurare, dar nu detaliază pe pagina consultată frecvența citirii. Frecvența și modul de citire le vezi în contractul tău și le poți cere furnizorului.</p>\n\n<h2>Din ce se compune prețul la energia electrică</h2>\n<p>ANRE a explicat, într-un document public, că prețul final al energiei electrice pentru consumatorii casnici are patru componente de cost:</p>\n<ul>\n<li><strong>energia electrică propriu-zisă</strong> (prețul mediu ponderat al energiei);</li>\n<li><strong>tariful pentru transport</strong> (transportul energiei prin rețelele de înaltă tensiune);</li>\n<li><strong>tariful pentru distribuție</strong> (livrarea până la casa ta prin rețelele de distribuție);</li>\n<li><strong>serviciul de furnizare</strong> (costul furnizorului pentru contractare, facturare și relația cu clientul).</li>\n</ul>\n<p>ANRE precizează și că furnizorul include în factură costurile serviciilor de transport și distribuție prestate pentru consumatorul respectiv. Cu alte cuvinte, nu plătești separat „la rețea”: aceste tarife sunt deja în preț. Valorile exacte se modifică de la o decizie ANRE la alta, de aceea le verifici în secțiunea de tarife de pe anre.md, nu din facturi vechi sau din discuții.</p>\n<p>Despre TVA: pe paginile ANRE consultate nu am găsit o explicație a modului în care apare TVA în factură. Dacă vrei să știi dacă prețul din factură include sau nu TVA și ce cotă se aplică, cere furnizorului să-ți indice rubrica, sau consultă legislația fiscală pe legis.md și informațiile Serviciului Fiscal de Stat (sfs.md).</p>\n\n<h2>Penalități și restanțe</h2>\n<p>La gaze naturale, ANRE arată că furnizorul poate aplica penalități pentru fiecare zi de întârziere, începând cu prima zi după termenul de plată, doar dacă acest lucru este prevăzut în contract. Penalitățile se arată separat de consum. La energia electrică, consumatorul este obligat să plătească suma datorată și penalitățile calculate, conform contractului și în termenul din factură, și are dreptul să ceară de la furnizor informații despre istoricul consumului, plățile și penalitățile calculate.</p>\n<p>Verifică:</p>\n<ul>\n<li>dacă penalitatea apare doar după data scadenței din factură;</li>\n<li>dacă ai plătit factura anterioară și plata e înregistrată (păstrează chitanța sau confirmarea);</li>\n<li>dacă contractul tău chiar prevede penalități.</li>\n</ul>\n\n<h2>Avansul și recalcularea</h2>\n<p>ANRE menționează că furnizorul de gaze poate cere plată în avans de la consumatorii ale căror instalații au fost reconectate după deconectarea pentru neplată sau care nu au drept de proprietate asupra imobilului, urmând o recalculare ulterioară pe baza indicilor reali. Dacă pe factură apare o regularizare, cere să ți se explice cum a fost calculată: ce consum estimat s-a scăzut și ce consum real s-a adăugat.</p>\n\n<h2>Greșeli frecvente</h2>\n<ul>\n<li>Plătești fără să compari indexul de pe factură cu cel de pe contor.</li>\n<li>Nu observi că factura e „Estimat” luni la rând și se adună o diferență mare.</li>\n<li>Confunzi penalitatea cu consumul și contești totalul în loc de rubrica greșită.</li>\n<li>Păstrezi facturile doar în telefon. Ține cel puțin ultimele facturi și dovezile de plată într-un loc sigur.</li>\n<li>Folosești tarife dintr-un articol vechi. Verifică data deciziei ANRE.</li>\n</ul>\n\n<h2>Unde întrebi dacă nu înțelegi o rubrică</h2>\n<p>Întâi, furnizorul tău: poți cere în scris explicații despre orice sumă. ANRE are o linie de informare gratuită (08001 0008), iar pe anre.md găsești tarifele în vigoare, drepturile consumatorilor și întrebările frecvente pentru energie electrică și gaze naturale.</p>\n",
+  "faq": [
+    {
+      "q": "Ce înseamnă „Real” și „Estimat” pe factura de curent?",
+      "a": "„Real” înseamnă că consumul a fost calculat după indicii reali ai contorului, „Estimat” că a fost determinat estimativ. Conform ANRE, estimarea poate fi folosită cel mult 2 luni, dacă operatorul nu are acces la contor."
+    },
+    {
+      "q": "Din ce se compune prețul energiei electrice din factură?",
+      "a": "Din energia electrică propriu-zisă, tariful de transport, tariful de distribuție și serviciul de furnizare. Valorile actuale le găsești la „Tarife în vigoare” pe anre.md."
+    },
+    {
+      "q": "Când pot să-mi pună penalități la factura de gaz?",
+      "a": "Conform ANRE, furnizorul poate aplica penalități pentru fiecare zi de întârziere, de la prima zi după termenul de plată, doar dacă sunt prevăzute în contract."
+    },
+    {
+      "q": "Cum aflu cât am consumat și cât am plătit în trecut?",
+      "a": "La energie electrică ai dreptul să ceri furnizorului informații despre istoricul consumului, plățile și penalitățile calculate."
+    },
+    {
+      "q": "Unde văd tariful actual la gaz sau la curent?",
+      "a": "Pe anre.md, în secțiunea „Tarife în vigoare”, pentru gaze naturale și energie electrică. Nu te baza pe cifre din articole vechi."
+    }
+  ]
+}
