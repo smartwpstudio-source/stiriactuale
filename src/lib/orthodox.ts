@@ -43,10 +43,11 @@ export interface Feast {
   date: Date;
   name: string;
   kind: "mare" | "post" | "sfant";
+  guide?: string;
 }
 
 // Sărbătorile mobile, față de Paști (aceleași pe ambele stiluri).
-const MOVABLE: [number, string][] = [
+const MOVABLE: [number, string, string?][] = [
   [-48, "Începutul Postului Mare"],
   [-7, "Floriile — Intrarea Domnului în Ierusalim"],
   [-2, "Vinerea Mare"],
@@ -60,11 +61,14 @@ const MOVABLE: [number, string][] = [
 
 // Sărbătorile mari cu dată fixă (data bisericească). Lista completă de sfinți
 // pe zile vine din content/calendar/sfinti/ (calendar-data.ts).
-export const FIXED_FEASTS: [number, number, string][] = [
-  [1, 1, "Tăierea împrejur a Domnului; Sfântul Vasile cel Mare"],
-  [1, 6, "Botezul Domnului — Boboteaza"],
-  [1, 7, "Soborul Sfântului Ioan Botezătorul"],
-  [2, 2, "Întâmpinarea Domnului"],
+// al 4-lea element: slug-ul paginii de sărbătoare din /ghiduri/ (categoria
+// sarbatori), legat explicit — potrivirea pe cuvinte greșea între sărbători
+// cu nume asemănătoare (Soborul / Nașterea / Tăierea capului Sf. Ioan).
+export const FIXED_FEASTS: [number, number, string, string?][] = [
+  [1, 1, "Tăierea împrejur a Domnului; Sfântul Vasile cel Mare", "sfantul-vasile-si-anul-nou-traditii"],
+  [1, 6, "Botezul Domnului — Boboteaza", "boboteaza-traditii-si-agheasma-mare"],
+  [1, 7, "Soborul Sfântului Ioan Botezătorul", "sfantul-ioan-botezatorul-soborul-onomastica"],
+  [2, 2, "Întâmpinarea Domnului", "intampinarea-domnului-stretenia-traditii"],
   [3, 25, "Buna Vestire"],
   [4, 23, "Sfântul Mare Mucenic Gheorghe"],
   [6, 24, "Nașterea Sfântului Ioan Botezătorul"],
@@ -79,24 +83,25 @@ export const FIXED_FEASTS: [number, number, string][] = [
   [10, 26, "Sfântul Mare Mucenic Dimitrie"],
   [11, 8, "Soborul Sfinților Arhangheli Mihail și Gavriil"],
   [11, 21, "Intrarea în Biserică a Maicii Domnului"],
-  [11, 30, "Sfântul Apostol Andrei"],
-  [12, 6, "Sfântul Ierarh Nicolae"],
-  [12, 25, "Nașterea Domnului — Crăciunul"],
+  [11, 30, "Sfântul Apostol Andrei", "sfantul-andrei-traditii-si-credinte"],
+  [12, 6, "Sfântul Ierarh Nicolae", "sfantul-nicolae-traditii-si-onomastica"],
+  [12, 25, "Nașterea Domnului — Crăciunul", "craciunul-nasterea-domnului-traditii-in-moldova"],
   [12, 26, "Soborul Maicii Domnului"],
 ];
 
 export function yearFeasts(year: number, style: Style): Feast[] {
   const easter = orthodoxEaster(year);
-  const out: Feast[] = MOVABLE.map(([off, name]) => ({ date: addDays(easter, off), name, kind: "mare" as const }));
-  for (const [m, d, name] of FIXED_FEASTS) {
+  const out: Feast[] = MOVABLE.map(([off, name, guide]) => ({ date: addDays(easter, off), name, kind: "mare" as const, guide }));
+  for (const [m, d, name, guide] of FIXED_FEASTS) {
     const date = fixedDate(m, d, year, style);
-    if (date) out.push({ date, name, kind: "mare" });
+    if (date) out.push({ date, name, kind: "mare", guide });
   }
   return out.sort((a, b) => a.date.getTime() - b.date.getTime());
 }
 
 export interface Fast {
   name: string;
+  guide?: string;
   from: Date;
   to: Date;
 }
@@ -117,7 +122,7 @@ export function yearFasts(year: number, style: Style): Fast[] {
   const nov15 = fd(11, 15);
   // pe stil vechi, 24 decembrie bisericesc cade pe 6 ianuarie anul următor
   const dec24 = style === "nou" ? fd(12, 24) : fixedDate(12, 24, year + 1, style);
-  if (nov15 && dec24) out.push({ name: "Postul Nașterii Domnului (al Crăciunului)", from: nov15, to: dec24 });
+  if (nov15 && dec24) out.push({ name: "Postul Nașterii Domnului (al Crăciunului)", from: nov15, to: dec24, guide: "postul-craciunului-cand-incepe-si-cum-se-tine" });
   return out;
 }
 

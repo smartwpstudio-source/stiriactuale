@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Breadcrumb } from "./breadcrumb";
 import { SectionHeading } from "./section-heading";
-import { getSaintsMonth, guideForFeast, holidayGuides, type SaintDay } from "@/lib/calendar-data";
+import { getSaintsMonth, holidayGuides, type SaintDay } from "@/lib/calendar-data";
 import {
   addDays, churchDay, formatDay, monthName, orthodoxEaster, weekday, yearFasts, yearFeasts, type Style,
 } from "@/lib/orthodox";
@@ -30,6 +30,9 @@ export async function OrthodoxCalendar({ year, style, basePath }: { year: number
     return months[month - 1]?.[String(day)] ?? null;
   };
   const hasSaints = months.some(Boolean);
+  // linkul spre pagina sărbătorii doar dacă pagina există deja
+  const published = new Set(guides.map((g) => g.slug));
+  const guideHref = (slug?: string) => (slug && published.has(slug) ? `/ghiduri/${slug}/` : null);
   const easter = orthodoxEaster(year);
   const today = todayChisinau();
   const isThisYear = today.getUTCFullYear() === year;
@@ -97,7 +100,7 @@ export async function OrthodoxCalendar({ year, style, basePath }: { year: number
         <SectionHeading title={`Sărbătorile mari ${year}`} />
         <ul className="mt-2 divide-y divide-line rounded-lg border border-line bg-white">
           {feasts.map((f) => {
-            const g = guideForFeast(f.name, guides);
+            const href = guideHref(f.guide);
             return (
               <li key={f.name + f.date.toISOString()} className="flex gap-4 px-4 py-2.5">
                 <span className="w-28 shrink-0 font-mono text-sm text-sub">
@@ -106,8 +109,8 @@ export async function OrthodoxCalendar({ year, style, basePath }: { year: number
                 </span>
                 <span className="text-ink">
                   <span className="text-alert">✝</span>{" "}
-                  {g ? (
-                    <Link href={`/ghiduri/${g.slug}/`} className="underline hover:text-teal">
+                  {href ? (
+                    <Link href={href} className="underline hover:text-teal">
                       {f.name}
                     </Link>
                   ) : (
@@ -125,7 +128,13 @@ export async function OrthodoxCalendar({ year, style, basePath }: { year: number
         <ul className="mt-2 divide-y divide-line rounded-lg border border-line bg-white">
           {fasts.map((f) => (
             <li key={f.name} className="px-4 py-2.5 text-ink">
-              <span className="font-medium">{f.name}</span>
+              {guideHref(f.guide) ? (
+                <Link href={guideHref(f.guide)!} className="font-medium underline hover:text-teal">
+                  {f.name}
+                </Link>
+              ) : (
+                <span className="font-medium">{f.name}</span>
+              )}
               <span className="block font-mono text-sm text-sub">
                 {formatDay(f.from)} {f.from.getUTCFullYear()} – {formatDay(f.to)} {f.to.getUTCFullYear()}
               </span>
