@@ -6,6 +6,7 @@ import { SectionHeading } from "@/components/section-heading";
 import { PushOptIn } from "@/components/push-opt-in";
 import { NewsFeed } from "@/components/news-feed";
 import { CurrencyBox } from "@/components/currency-box";
+import { SaintOfDay } from "@/components/saint-of-day";
 import { getHeroArticle, getMostRead, listArticles } from "@/lib/content/queries";
 import { articleUrl } from "@/lib/content/url";
 
@@ -84,6 +85,7 @@ export default async function HomePage() {
               </section>
             )}
             <CurrencyBox />
+            <SaintOfDay />
           </div>
         </aside>
       </div>

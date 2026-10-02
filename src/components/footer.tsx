@@ -32,6 +32,12 @@ export function Footer() {
           <Link href="/ghiduri/" className="hover:text-amber">
             Ghiduri practice
           </Link>
+          <Link href="/calculatoare/" className="hover:text-amber">
+            Calculatoare
+          </Link>
+          <Link href="/calendar-crestin-ortodox/" className="hover:text-amber">
+            Calendar ortodox
+          </Link>
           <a href={TELEGRAM_URL} className="hover:text-amber">
             Telegram
           </a>

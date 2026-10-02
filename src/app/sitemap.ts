@@ -34,6 +34,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...["despre", "contact", "politica-editoriala", "confidentialitate"].map((p) => ({ url: `/${p}/`, priority: 0.3 })),
     { url: "/ghiduri/", priority: 0.7 },
     { url: "/calculatoare/", priority: 0.7 },
+    { url: "/calendar-crestin-ortodox/", priority: 0.8 },
+    ...[0, 1].map((d) => ({ url: `/calendar-crestin-ortodox/${new Date().getFullYear() + d}/`, priority: 0.6 })),
     ...availableCalculators(calcParams).map((c) => ({ url: `/calculatoare/${c.slug}/`, priority: 0.7 })),
   ];
 
