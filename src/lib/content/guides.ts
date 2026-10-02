@@ -17,6 +17,8 @@ export const GUIDE_CATEGORIES = {
   siguranta: "Siguranță și drepturi",
   dosare: "Dosare: subiectele mari",
   orase: "Orașe: contacte utile",
+  costuri: "Cât costă în Moldova",
+  explicat: "Explicat simplu",
 } as const;
 
 export type GuideCategory = keyof typeof GUIDE_CATEGORIES;
