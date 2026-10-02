@@ -86,7 +86,7 @@ export function PushOptIn() {
         <p>
           {state === "on"
             ? "Primești alertele importante: scumpiri, legi, cazuri de rezonanță."
-            : "Primește doar alertele importante — maxim 4 pe zi, niciodată noaptea."}
+            : "Primește doar alertele importante ale zilei, niciodată noaptea."}
         </p>
       </div>
       <button
