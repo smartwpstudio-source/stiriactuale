@@ -1,0 +1,52 @@
+{
+  "slug": "medicamente-compensate-lista-reteta-farmacii",
+  "title": "Medicamente compensate: lista, rețeta electronică și farmaciile (CNAM)",
+  "description": "Cum primești medicamente compensate de CNAM: cine le prescrie, cum funcționează eRețeta, ce procent se compensează și unde verifici lista actuală.",
+  "category": "sanatate",
+  "sources": [
+    {
+      "name": "CNAM — Sistemul electronic de prescriere și eliberare a medicamentelor compensate",
+      "url": "https://cnam.md/4143/sistemul-electronic-de-prescriere-si-eliberare-a-medicamentelor-si-dispozitivelor-medicale-compensate-lansat-la-nivel-national/"
+    },
+    {
+      "name": "CNAM — Ghid pentru medici privind prescrierea medicamentelor și dispozitivelor compensate",
+      "url": "https://cnam.md/prestatori/informatii-pentru-medici/ghid-pentru-medici-privind-prescrierea-medicamentelor-si-dispozitivelor-compensate/"
+    },
+    {
+      "name": "CNAM — Peste 166 de mii de persoane au beneficiat în ianuarie de medicamente compensate (25.02.2026)",
+      "url": "https://cnam.md/8444/peste-166-de-mii-de-persoane-au-beneficiat-in-ianuarie-de-medicamente-si-dispozitive-medicale-compensate/"
+    },
+    {
+      "name": "Ministerul Sănătății — Medicamente compensate pentru tratamentul COVID-19 la domiciliu",
+      "url": "https://ms.gov.md/comunicare/comunicate/medicamente-compensate-pentru-tratamentul-covid-19-la-domiciliu/"
+    },
+    {
+      "name": "Portalul Datelor Deschise — Lista medicamentelor compensate din fondurile AOAM (CNAM)",
+      "url": "https://dataset.gov.md/dataset/5041-lista-medicamentelor-compensate-din-fondurile-asigurarii-obligatorii-de-asistenta-medicala"
+    }
+  ],
+  "bodyHtml": "<p><strong>Pe scurt:</strong> unele medicamente le plătești doar parțial sau deloc, pentru că o parte din preț o acoperă Compania Națională de Asigurări în Medicină (CNAM) din fondurile asigurării obligatorii. Medicul îți prescrie rețeta electronică (eRețeta), iar la farmacia contractată de CNAM ridici medicamentul cu buletinul de identitate. Procentul de compensare depinde de vârstă și de boală, iar lista exactă se schimbă, deci o verifici mereu la sursă.</p>\n\n<h2>Ce înseamnă „medicament compensat”</h2>\n<p>Compensarea înseamnă că statul, prin CNAM, plătește farmaciei o parte din prețul medicamentului sau tot prețul, iar tu plătești doar diferența. Nu toate medicamentele sunt compensate: contează substanța activă (denumirea comună internațională, DCI), boala pentru care e prescris și medicul care îl prescrie. Lista medicamentelor compensate din fondurile asigurării obligatorii de asistență medicală (AOAM) este stabilită prin ordine comune ale Ministerului Sănătății și CNAM și se actualizează periodic.</p>\n<p>Conform CNAM și Ministerului Sănătății, procentul diferă în funcție de categorie:</p>\n<ul>\n<li><strong>copiii până la 18 ani</strong> beneficiază de compensare integrală pentru medicamentele din listă;</li>\n<li><strong>adulții</strong> primesc compensare parțială: 70% pentru tratamentul stărilor acute (la domiciliu, în staționar de zi, în sala de proceduri), iar pentru unele boli cronice 50%, 70% sau 100%, în funcție de medicament și de diagnostic.</li>\n</ul>\n<p>Procentul pentru fiecare medicament și diagnostic îl vezi în lista oficială, nu din ce ți-a spus un vecin. Dacă ai dubii, sună la Info CNAM, 0 800 99999 (număr indicat de Ministerul Sănătății pentru informații despre medicamentele compensate).</p>\n\n<h2>Cum obții medicamentele pas cu pas</h2>\n<ol>\n<li><strong>Mergi la medic.</strong> Medicul de familie poate prescrie medicamente din toată lista, în funcție de diagnostic. Medicii specialiști prescriu în limita profilului lor. În trecut, rețeta compensată o scriau în special medicul de familie, pediatrul, endocrinologul, psihiatrul și neurologul; CNAM arată că în sistemul eRețeta pot prescrie și alți specialiști, inclusiv din unitățile de primiri urgențe.</li>\n<li><strong>Medicul verifică lista și emite eRețeta.</strong> După stabilirea diagnosticului, medicul vede dacă medicamentul e compensat și introduce rețeta în sistemul informațional „eRețeta”. Formularul electronic a înlocuit rețeta pe hârtie.</li>\n<li><strong>Alegi farmacia.</strong> Mergi la o farmacie care are contract cu CNAM. Rețeta e valabilă în farmaciile contractate din toată țara, deci nu ești legat de o singură farmacie. Întreabă la ghișeu dacă farmacia lucrează cu CNAM.</li>\n<li><strong>Prezinți buletinul.</strong> Conform CNAM, medicamentele și dispozitivele medicale compensate se ridică prezentând doar buletinul de identitate, fără rețetă tipărită.</li>\n<li><strong>Plătești doar partea ta.</strong> Farmacistul îți spune diferența de plată, după procentul de compensare.</li>\n</ol>\n<p>CNAM precizează că o rețetă electronică poate fi valorificată în mai multe vizite la farmacie (CNAM a indicat trei vizite), după nevoile tratamentului. Termenul de valabilitate și numărul de vizite depind de ce a scris medicul, așa că întreabă-l clar când îți dă tratamentul.</p>\n\n<h2>Ce trebuie să ai la tine</h2>\n<ul>\n<li><strong>actul de identitate</strong> (buletinul) al pacientului, ca să fie găsită eRețeta în sistem;</li>\n<li><strong>pentru copiii mici</strong>, un adult care ridică medicamentele: CNAM indică faptul că, la copiii sub 16 ani sau la cererea pacientului, medicul trece în rețetă IDNP-ul reprezentantului legal sau al persoanei împuternicite să ridice medicamentele (IDNP este numărul personal de identificare din buletin).</li>\n</ul>\n\n<h2>Unde găsești lista actuală</h2>\n<p>Lista este publică și se poate consulta în mai multe locuri, conform Ministerului Sănătății:</p>\n<ul>\n<li>la medicul de familie;</li>\n<li>în farmacii;</li>\n<li>la Info CNAM, 0 800 99999;</li>\n<li>pe site-ul CNAM, în secțiunea despre medicamente compensate, unde apar și denumirile comerciale. Versiunile publicate ca date deschise sunt pe <a href=\"https://dataset.gov.md/dataset/5041-lista-medicamentelor-compensate-din-fondurile-asigurarii-obligatorii-de-asistenta-medicala\">dataset.gov.md</a>, dar pentru versiunea în vigoare mergi pe cnam.md.</li>\n</ul>\n<p>Nu ne bazăm aici pe un număr de medicamente din listă sau pe prețuri, pentru că ele se schimbă; deschide lista oficială și caută substanța activă din rețeta ta.</p>\n\n<h2>Ce spun cifrele CNAM despre eRețeta</h2>\n<p>CNAM a anunțat că în ianuarie 2026 peste 166 de mii de persoane au primit medicamente și dispozitive medicale compensate prescrise prin eRețeta. Sistemul funcționează așadar la scară națională și nu mai e un experiment, iar medicii și farmacile îl folosesc zilnic.</p>\n\n<h2>Greșeli frecvente</h2>\n<ul>\n<li>Cumperi medicamentul înainte să ai eRețeta și ceri apoi banii înapoi. Compensarea se face la farmacie, în momentul eliberării.</li>\n<li>Mergi la o farmacie care nu are contract cu CNAM și plătești prețul întreg.</li>\n<li>Presupui că orice medicament prescris e compensat. Dacă nu e în listă pentru diagnosticul tău, plătești integral.</li>\n<li>Uiți buletinul sau trimiți pe cineva fără să știi dacă medicul a trecut IDNP-ul persoanei împuternicite.</li>\n<li>Compari doar procentul, nu și prețul: același ingredient activ poate avea denumiri comerciale cu prețuri diferite. Cere farmacistului variantele disponibile pentru aceeași substanță.</li>\n</ul>\n\n<h2>Ce faci dacă ai o problemă</h2>\n<p>Dacă farmacia spune că nu găsește rețeta sau nu poate aplica compensarea, cere medicului să verifice dacă eRețeta a fost emisă și, în caz de nevoie, sună la Info CNAM, 0 800 99999. Dacă ești plecat din țară sau abia ai revenit, verifică la CNAM dacă ești asigurat, fiindcă drepturile din asigurarea obligatorie depind de statutul de asigurat. Pentru situații speciale (boli rare, dispozitive medicale), cere informații direct de la medic și de la CNAM.</p>",
+  "faq": [
+    {
+      "q": "Pot ridica medicamente compensate doar cu buletinul?",
+      "a": "Da. Conform CNAM, în sistemul eRețeta medicamentele compensate se ridică de la farmacia contractată prezentând buletinul de identitate, fără rețetă pe hârtie."
+    },
+    {
+      "q": "Cât se compensează din prețul medicamentului?",
+      "a": "Conform CNAM, copiii până la 18 ani primesc compensare integrală, iar adulții 70% pentru stări acute și 50%, 70% sau 100% pentru unele boli cronice. Procentul exact pentru fiecare medicament îl vezi în lista oficială CNAM."
+    },
+    {
+      "q": "Unde văd lista medicamentelor compensate?",
+      "a": "La medicul de familie, în farmacii, la Info CNAM (0 800 99999) și pe site-ul cnam.md, în secțiunea despre medicamente compensate."
+    },
+    {
+      "q": "Pot folosi aceeași rețetă la mai multe farmacii?",
+      "a": "Rețeta electronică e valabilă în farmaciile contractate de CNAM din toată țara și poate fi valorificată în mai multe vizite, după cum a indicat medicul. Întreabă medicul câte vizite și în ce termen poți folosi rețeta."
+    },
+    {
+      "q": "Cine poate ridica medicamentele în locul meu?",
+      "a": "O persoană împuternicită, dacă medicul i-a trecut IDNP-ul în rețetă. Pentru copiii sub 16 ani, în rețetă se indică IDNP-ul reprezentantului legal sau al persoanei împuternicite."
+    }
+  ],
+  "updated": "2026-10-02"
+}
