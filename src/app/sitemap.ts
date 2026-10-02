@@ -35,7 +35,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     ...guides.map((g) => ({ url: `${SITE_URL}/ghiduri/${g.slug}/`, lastModified: g.updated, priority: 0.7 })),
     ...hubs.map((h) => ({ url: `${SITE_URL}${h.url}`, changeFrequency: "hourly" as const, priority: h.priority })),
-    ...articles.map((a) => ({
+    // slug-uri cu "%" (emoji codat la migrare) dau 404 — nu le punem în sitemap
+    ...articles.filter((a) => !a.slug.includes("%")).map((a) => ({
       url: `${SITE_URL}${articleUrl({ ...a, locality: a.locality ?? undefined, country: a.country ?? undefined })}`,
       lastModified: a.publishedAt,
       priority: 0.6,

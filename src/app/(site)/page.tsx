@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Hero } from "@/components/hero";
 import { ArticleCard } from "@/components/article-card";
@@ -7,6 +8,9 @@ import { NewsFeed } from "@/components/news-feed";
 import { CurrencyBox } from "@/components/currency-box";
 import { getHeroArticle, getMostRead, listArticles } from "@/lib/content/queries";
 import { articleUrl } from "@/lib/content/url";
+
+// Canonical pentru prima pagină (restul metadatelor vin din layout).
+export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 // Randare ISR, revalidată la un minut — conținutul vine din pipeline.
 export const revalidate = 60;
