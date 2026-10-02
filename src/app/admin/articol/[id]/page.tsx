@@ -29,6 +29,7 @@ const label = "mb-1 block text-sm text-sub";
 const ERRORS: Record<string, string> = {
   raion: "Alege raionul.",
   tara: "Alege țara.",
+  video: "Linkul video nu e recunoscut — doar YouTube sau un video Facebook.",
   facebook: "Postarea pe Facebook a eșuat — verifică FACEBOOK_PAGE_ID / FACEBOOK_PAGE_TOKEN în Vercel.",
 };
 
@@ -182,6 +183,16 @@ export default async function EditArticlePage({ params, searchParams }: PageProp
           <div>
             <label className={label} htmlFor="alt">Text alternativ imagine</label>
             <input id="alt" name="alt" defaultValue={a.imageAltText ?? ""} className={input} />
+          </div>
+          <div>
+            <label className={label} htmlFor="video">Link video (YouTube sau Facebook) — apare sub lead; gol = fără video</label>
+            <input
+              id="video"
+              name="video"
+              defaultValue={a.videoUrl ? decodeURIComponent(a.videoUrl.match(/href=([^&]+)/)?.[1] ?? "") || a.videoUrl.replace("youtube-nocookie.com/embed/", "youtube.com/watch?v=") : ""}
+              placeholder="https://www.youtube.com/watch?v=… sau https://www.facebook.com/…/videos/…"
+              className={input}
+            />
           </div>
           <button className="self-start rounded bg-ink px-4 py-2 text-white">Salvează</button>
           {a.slug !== url && <p className="font-mono text-xs text-sub">{url}</p>}

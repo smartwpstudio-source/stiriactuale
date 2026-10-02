@@ -18,6 +18,7 @@ import { sanitizeBody } from "@/lib/content/sanitize";
 import { ADSENSE_IN_ARTICLE_SLOT } from "@/lib/adsense";
 import { AdSlot } from "./ad-slot";
 import { RelatedGuide } from "./related-guide";
+import { VideoEmbed } from "./video-embed";
 import { getRelatedGuide } from "@/lib/content/related-guide";
 
 // Împarte corpul după al n-lea paragraf; [tot, ""] dacă după el nu mai rămân
@@ -115,6 +116,7 @@ export async function ArticlePage({
               <p className="mt-1 font-mono text-xs text-sub">{imageLabel(article.imageUrl)}</p>
             )}
             <p className="mt-6 text-xl font-medium leading-relaxed text-ink">{article.lead}</p>
+            {article.videoUrl && !article.archived && <VideoEmbed src={article.videoUrl} title={article.title} />}
             {(() => {
               const body = sanitizeBody(article.bodyHtml, article.imageAlt ?? article.title);
               const ads = !article.archived && ADSENSE_IN_ARTICLE_SLOT;

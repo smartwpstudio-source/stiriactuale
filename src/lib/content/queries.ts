@@ -27,7 +27,7 @@ const listColumns = {
 
 type ListRow = { [K in keyof typeof listColumns]: (typeof t.$inferSelect)[K] };
 
-function mapRow(row: ListRow & { bodyHtml?: string }): Article {
+function mapRow(row: ListRow & { bodyHtml?: string; videoUrl?: string | null }): Article {
   return {
     slug: row.slug,
     title: row.title,
@@ -41,6 +41,7 @@ function mapRow(row: ListRow & { bodyHtml?: string }): Article {
     sourceCount: row.sourceCount,
     imageUrl: row.imageUrl ?? undefined,
     imageAlt: row.imageAltText ?? undefined,
+    videoUrl: row.videoUrl ?? undefined,
     sources: row.sources,
     archived: row.archived,
   };
@@ -135,7 +136,7 @@ export async function getArticleBySection(
   if (locality !== undefined) c.push(eq(t.locality, locality));
   if (country !== undefined) c.push(eq(t.country, country));
   const [row] = await getDb()
-    .select({ ...listColumns, bodyHtml: t.bodyHtml })
+    .select({ ...listColumns, bodyHtml: t.bodyHtml, videoUrl: t.videoUrl })
     .from(t)
     .where(and(...c))
     .limit(1);

@@ -25,6 +25,7 @@ export interface Article {
   sourceCount: number;
   imageUrl?: string; // stock Magnific sau generată — absentă pe fixtures/articole fără imagine
   imageAlt?: string;
+  videoUrl?: string;
   sources?: { name: string; url: string }[];
   archived?: boolean; // arhivă preluată de la altă redacție: rezumat + link, noindex, fără reclame
 }

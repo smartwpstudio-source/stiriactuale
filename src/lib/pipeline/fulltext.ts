@@ -1,4 +1,5 @@
 import { decodeEntities } from "@/lib/html-entities";
+import { findVideo } from "@/lib/video";
 
 // Textul integral al unei știri de pe pagina sursei. RSS-ul dă doar 2-3 fraze;
 // din atât, orice model scrie 100 de cuvinte goale. Textul complet e materialul
@@ -47,6 +48,14 @@ function nextFlightChunks(html: string): string[] {
     .filter((c) => c.trimStart().startsWith("<"));
 }
 
+// Video-ul știrii: doar din <article> când există (altfel prindem playerul
+// site-ului din bara laterală, același pe toate paginile) plus og:video din <head>.
+function articleVideo(html: string): string | null {
+  const article = html.match(/<article\b[\s\S]*<\/article>/i)?.[0];
+  if (!article) return findVideo(html);
+  return findVideo(article) ?? findVideo(html.match(/<head\b[\s\S]*?<\/head>/i)?.[0] ?? "");
+}
+
 export function extractArticle(html: string) {
   const clean = html.replace(/<(script|style|noscript|nav|footer|aside|form|header)\b[\s\S]*?<\/\1>/gi, " ");
   // <article> când există, altfel toată pagina — paragrafele scurte (meniuri, legende) cad la filtru
@@ -62,6 +71,7 @@ export function extractArticle(html: string) {
     title: meta(html, "og:title") || text(html.match(/<title>([^<]*)<\/title>/i)?.[1] ?? ""),
     description: meta(html, "og:description"),
     text: paragraphs.join("\n").slice(0, MAX_CHARS),
+    video: articleVideo(html),
   };
 }
 

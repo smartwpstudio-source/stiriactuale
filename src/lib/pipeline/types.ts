@@ -50,4 +50,5 @@ export interface GeneratedArticle {
   alt_text_imagine: string;
   stock_query: string;
   image_prompt: string;
+  video_url?: string; // nu vine de la model: primul video găsit în surse
 }

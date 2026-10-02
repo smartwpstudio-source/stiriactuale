@@ -15,6 +15,7 @@ import { dispatchPipeline } from "@/lib/pipeline-dispatch";
 import { deleteFromChannel } from "@/lib/telegram";
 import { deleteFromPage, lastFacebookError, postToPage } from "@/lib/facebook";
 import { articleUrl } from "@/lib/content/url";
+import { toEmbedUrl } from "@/lib/video";
 import { absoluteUrl } from "@/lib/seo";
 import { announcePublished, pushNow } from "@/lib/publish-effects";
 import type { Section } from "@/lib/content/types";
@@ -44,6 +45,9 @@ export async function saveArticle(id: number, formData: FormData) {
   const country = String(formData.get("country") ?? "");
   if (section === "regiuni" && !(locality in RAION_NAMES)) redirect(`/admin/articol/${id}/?e=raion`);
   if (section === "diaspora" && !(country in COUNTRY_NAMES)) redirect(`/admin/articol/${id}/?e=tara`);
+  const videoLink = String(formData.get("video") ?? "").trim();
+  const videoUrl = videoLink ? toEmbedUrl(videoLink) : null;
+  if (videoLink && !videoUrl) redirect(`/admin/articol/${id}/?e=video`);
 
   await getDb()
     .update(articles)
@@ -53,6 +57,7 @@ export async function saveArticle(id: number, formData: FormData) {
       bodyHtml: sanitizeBody(String(formData.get("body"))),
       metaDescription: String(formData.get("meta")).trim().slice(0, 200),
       imageAltText: String(formData.get("alt") ?? "").trim() || null,
+      videoUrl,
       section,
       locality: section === "regiuni" ? locality : null,
       country: section === "diaspora" ? country : null,

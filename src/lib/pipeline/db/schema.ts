@@ -62,6 +62,8 @@ export const articles = pgTable("articles", {
   telegramMessageId: integer("telegram_message_id"),
   // postarea de pe pagina de Facebook — aceleași motive ca la Telegram
   facebookPostId: varchar("facebook_post_id", { length: 64 }),
+  // playerul YouTube/Facebook al video-ului din sursă (src/lib/video.ts)
+  videoUrl: text("video_url"),
   // id-ul articolului din WordPress, doar pentru arhiva importată
   wpId: integer("wp_id").unique(),
   // articol de arhivă preluat de la altă redacție: doar rezumat + link spre

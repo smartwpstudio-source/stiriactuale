@@ -71,6 +71,13 @@
       "when": 1790943145872,
       "tag": "0009_demonic_mimic",
       "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1790961873658,
+      "tag": "0010_many_glorian",
+      "breakpoints": true
     }
   ]
 }

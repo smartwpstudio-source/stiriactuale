@@ -79,11 +79,13 @@ export async function generateArticle(
   const digest = blocks.join("\n\n");
   if (digest.length < (group.manual ? MIN_MATERIAL_CHARS_MANUAL : MIN_MATERIAL_CHARS)) return null;
 
-  return structured<GeneratedArticle>({
+  const article = await structured<GeneratedArticle>({
     model: OPUS_MODEL,
     system: SYSTEM_PROMPT,
     prompt: `Secțiune: ${classification.section}. Subiecte: ${classification.topics.join(", ") || "—"}.\n\nRelatări despre același eveniment (text integral):\n\n${digest}`,
     schema: SCHEMA,
     maxBudgetUsd: 0.5,
   });
+  const video = texts.find((t) => t?.video)?.video;
+  return video ? { ...article, video_url: video } : article;
 }
