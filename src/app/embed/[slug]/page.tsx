@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { loadCalculator } from "@/components/calc/calculator-body";
 import { CALCULATORS } from "@/lib/calculators";
+import { EmbedHeight } from "@/components/calc/embed-height";
 
 // Widget-ul inserat pe alte site-uri (iframe): doar calculatorul, fără meniu
 // și fără reclame (e în afara layout-ului (site)). noindex: pagina canonică e
@@ -19,8 +20,9 @@ export default async function EmbedPage({ params }: PageProps<"/embed/[slug]">) 
   const r = await loadCalculator(slug);
   if (!r) notFound();
   return (
-    <div className="mx-auto w-full max-w-[640px] bg-paper p-4">
-      <h1 className="font-serif text-2xl text-ink">{r.calc.title}</h1>
+    <div className="mx-auto w-full max-w-[640px] bg-paper p-3 sm:p-4">
+      <EmbedHeight slug={slug} />
+      <h1 className="font-serif text-xl text-ink sm:text-2xl">{r.calc.title}</h1>
       <div className="mt-4">{r.body}</div>
       {r.note && <p className="mt-4 text-xs text-sub">{r.note}</p>}
       <p className="mt-3 text-xs text-sub">

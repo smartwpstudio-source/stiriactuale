@@ -43,13 +43,13 @@ export function ResultRows({ rows, total }: { rows: [string, string][]; total: [
         {rows.map(([k, v]) => (
           <div key={k} className="flex justify-between gap-4 px-4 py-2.5 text-[0.95rem]">
             <dt className="text-sub">{k}</dt>
-            <dd className="font-mono text-ink">{v}</dd>
+            <dd className="shrink-0 whitespace-nowrap font-mono text-ink">{v}</dd>
           </div>
         ))}
       </dl>
       <div className="flex justify-between gap-4 rounded-b-lg bg-teal px-4 py-3 text-white">
         <span className="font-medium">{total[0]}</span>
-        <span className="font-mono text-lg font-semibold">{total[1]}</span>
+        <span className="shrink-0 whitespace-nowrap font-mono text-lg font-semibold">{total[1]}</span>
       </div>
     </div>
   );
