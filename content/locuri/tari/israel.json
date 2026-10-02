@@ -1,0 +1,64 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    {
+      "name": "Ambasada Republicii Moldova — contacte",
+      "url": "https://israel.mfa.gov.md/content/contacte"
+    },
+    {
+      "name": "Ambasada Republicii Moldova — program de lucru și informații de contact",
+      "url": "https://israel.mfa.gov.md/content/programul-de-lucru-%C5%9Fi-informa%C5%A3ii-de-contact"
+    },
+    {
+      "name": "Guvernul Israelului — Emergency Information",
+      "url": "https://www.gov.il/en/departments/general/emergency_inforamation"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Ambasada și consulatele",
+      "items": [
+        {
+          "name": "Ambasada Republicii Moldova la Tel Aviv",
+          "phone": "+972 3 523 2000",
+          "address": "Str. Leonardo da Vinci 21, Tel Aviv",
+          "url": "https://israel.mfa.gov.md/"
+        },
+        {
+          "name": "Secția consulară — consultații telefonice",
+          "phone": "+972 3 523 1000"
+        }
+      ]
+    },
+    {
+      "title": "Urgențe",
+      "items": [
+        {
+          "name": "Linia telefonică de urgență a Ambasadei (fără programări și informații consulare)",
+          "phone": "+972 52 778 9772"
+        },
+        {
+          "name": "Poliția (număr local de urgență): 100",
+          "url": "https://www.gov.il/en/departments/general/emergency_inforamation"
+        },
+        {
+          "name": "Ambulanța (număr local de urgență): 101",
+          "url": "https://www.gov.il/en/departments/general/emergency_inforamation"
+        },
+        {
+          "name": "Pompierii (număr local de urgență): 102",
+          "url": "https://www.gov.il/en/departments/general/emergency_inforamation"
+        }
+      ]
+    },
+    {
+      "title": "Programare consulară",
+      "items": [
+        {
+          "name": "Programare online (e-Programări) pentru servicii consulare",
+          "url": "https://programari.gov.md/ro/mae/appointments/5df83adc-0572-44f3-9183-25078b723105"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    {
+      "name": "Ambasada Republicii Moldova — contacte",
+      "url": "https://romania.mfa.gov.md/content/contacte"
+    },
+    {
+      "name": "Ambasada Republicii Moldova — program de lucru și informații de contact",
+      "url": "https://romania.mfa.gov.md/content/programul-de-lucru"
+    },
+    {
+      "name": "Your Europe — Single emergency number",
+      "url": "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Ambasada și consulatele",
+      "items": [
+        {
+          "name": "Ambasada Republicii Moldova la București",
+          "phone": "+40 21 230 04 74",
+          "address": "Aleea Alexandru 40, sector 1, 011824 București",
+          "url": "https://romania.mfa.gov.md/"
+        },
+        {
+          "name": "Secția consulară — consultații (luni–joi, 14:00–16:00)",
+          "phone": "+40 21 410 98 27",
+          "address": "Str. Ermil Pangratti 12, sector 1, 011424 București"
+        }
+      ]
+    },
+    {
+      "title": "Urgențe",
+      "items": [
+        {
+          "name": "Linia de urgență a Secției consulare (fără informații consulare)",
+          "phone": "+40 787 898 050"
+        },
+        {
+          "name": "Număr unic european de urgență (poliție, ambulanță, pompieri): 112",
+          "url": "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+        }
+      ]
+    },
+    {
+      "title": "Programare consulară",
+      "items": [
+        {
+          "name": "Programare online pentru servicii consulare",
+          "url": "https://programari.gov.md/ro/mae/appointments/272088ee-0f02-4880-aa17-cd72b085ff31"
+        }
+      ]
+    }
+  ]
+}

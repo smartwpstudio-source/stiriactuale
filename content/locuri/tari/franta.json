@@ -1,0 +1,57 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    {
+      "name": "Ambasada Republicii Moldova — contacte",
+      "url": "https://franta.mfa.gov.md/content/contacte"
+    },
+    {
+      "name": "Ambasada Republicii Moldova — program de lucru și informații de contact",
+      "url": "https://franta.mfa.gov.md/content/programul-de-lucru-%C5%9Fi-informa%C5%A3ii-de-contact"
+    },
+    {
+      "name": "Your Europe — Single emergency number",
+      "url": "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Ambasada și consulatele",
+      "items": [
+        {
+          "name": "Ambasada Republicii Moldova la Paris — consultații consulare (luni–vineri, 14:00–17:00)",
+          "phone": "+33 1 42 94 04 57",
+          "address": "19 rue Henri Rochefort, 75017 Paris",
+          "url": "https://franta.mfa.gov.md/"
+        },
+        {
+          "name": "Consulatul General al Republicii Moldova la Nisa",
+          "phone": "+33 4 93 92 35 77",
+          "url": "https://nisa.mfa.gov.md/"
+        }
+      ]
+    },
+    {
+      "title": "Urgențe",
+      "items": [
+        {
+          "name": "Linia de urgență a Ambasadei (fără informații consulare)",
+          "phone": "+33 6 38 34 47 86"
+        },
+        {
+          "name": "Număr unic european de urgență (poliție, ambulanță, pompieri): 112",
+          "url": "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+        }
+      ]
+    },
+    {
+      "title": "Programare consulară",
+      "items": [
+        {
+          "name": "Programare online (toate serviciile consulare se prestează cu programare)",
+          "url": "https://book.timify.com/services?accountId=6887826b30230511b4fe9335&hideCloseButton=true"
+        }
+      ]
+    }
+  ]
+}
