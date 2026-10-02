@@ -28,6 +28,7 @@ const SECTION_CONFIG: Record<Section, { minScore: number; cap: number }> = {
 const WINDOW_HOURS = 6;
 const MAX_GROUPS_TO_CLASSIFY = 40;
 const PUBLISH_CONCURRENCY = 4;
+const FEED_ALERT_MIN = 3; // feed-uri căzute deodată, din 9
 // Fereastra de publicare automată, ora Chișinăului: 06:00-22:59 (rularea de
 // 22:00 poate întârzia puțin; după 23:00 nu mai publică).
 const PUBLISH_FROM_HOUR = 6;
@@ -211,8 +212,12 @@ function resolve(classifications: ({ sameAs?: number } | null)[], i: number): nu
 
 async function finish(runId: number, summary: PipelineRunSummary) {
   summary.costUsd = Math.round(spentUsd() * 1000) / 1000;
+  // Un feed lent o dată (timeout) nu e o problemă — colectarea revine la 30 de
+  // minute. Alertă doar când pică colectarea sau mai multe feed-uri deodată.
+  const feedsDown =
+    summary.failedFeeds.length >= FEED_ALERT_MIN || summary.failedFeeds.some((f) => f.startsWith("colectare:"));
   const problems = [
-    ...summary.failedFeeds.map((f) => `Feed: ${f}`),
+    ...(feedsDown ? summary.failedFeeds.map((f) => `Feed: ${f}`) : []),
     ...summary.failedArticles.map((a) => `Articol: ${a}`),
   ];
   if (problems.length) await alertEditor(problems.join("\n"));
