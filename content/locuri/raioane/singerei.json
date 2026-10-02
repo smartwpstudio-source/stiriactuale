@@ -1,0 +1,95 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    {
+      "name": "Poliția Moldovei – IP Sîngerei",
+      "url": "https://politia.md/inspectoratul-de-politie-singerei"
+    },
+    {
+      "name": "IGSU – contactele instituției",
+      "url": "https://dse.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "Consiliul Raional Sîngerei",
+      "url": "https://singerei.md/contacte/"
+    },
+    {
+      "name": "Primăria Sîngerei",
+      "url": "https://primariasingerei.md"
+    },
+    {
+      "name": "CNAS – CTAS Sîngerei",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/s%C3%AEngerei"
+    },
+    {
+      "name": "ASP – subdiviziuni teritoriale",
+      "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/singerei"
+    },
+    {
+      "name": "ANOFM – subdiviziuni",
+      "url": "https://anofm.md/ro/subdiviziuni"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Urgențe",
+      "items": [
+        {
+          "name": "Inspectoratul de Poliție Sîngerei (serviciul de gardă)",
+          "phone": "+373 262 22 980",
+          "address": "str. Independenței 100, or. Sîngerei",
+          "url": "https://politia.md/inspectoratul-de-politie-singerei"
+        },
+        {
+          "name": "Spitalul Raional Sîngerei (camera de gardă)",
+          "phone": "+373 262 84 423"
+        },
+        {
+          "name": "Secția Situații Excepționale Sîngerei (IGSU)",
+          "phone": "+373 262 25 001",
+          "address": "str. Dostoievski 7, or. Sîngerei",
+          "url": "https://dse.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Autorități",
+      "items": [
+        {
+          "name": "Consiliul Raional Sîngerei",
+          "phone": "+373 262 22 058",
+          "address": "str. Independenței 111, or. Sîngerei",
+          "url": "https://singerei.md"
+        },
+        {
+          "name": "Primăria Sîngerei",
+          "phone": "+373 262 22 480",
+          "address": "str. Independenței 124, or. Sîngerei",
+          "url": "https://primariasingerei.md"
+        }
+      ]
+    },
+    {
+      "title": "Servicii",
+      "items": [
+        {
+          "name": "Casa Teritorială de Asigurări Sociale Sîngerei",
+          "address": "str. Calea Pieții 2A, or. Sîngerei",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/s%C3%AEngerei"
+        },
+        {
+          "name": "Agenția Servicii Publice – oficiul Sîngerei",
+          "phone": "+373 262 21 848",
+          "address": "str. Independenței 95, bl. 3, or. Sîngerei",
+          "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/singerei"
+        },
+        {
+          "name": "Subdiviziunea teritorială ANOFM Sîngerei",
+          "phone": "+373 262 24 237",
+          "address": "str. Independenței 136, or. Sîngerei",
+          "url": "https://anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}

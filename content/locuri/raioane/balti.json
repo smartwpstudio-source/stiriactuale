@@ -1,0 +1,75 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    {
+      "name": "Poliția Moldovei – IP Bălți",
+      "url": "https://politia.md/inspectoratul-de-politie-balti"
+    },
+    {
+      "name": "IGSU – contactele instituției",
+      "url": "https://dse.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "CNAS – CTAS Bălți",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/balti"
+    },
+    {
+      "name": "ASP – subdiviziuni teritoriale",
+      "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/balt"
+    },
+    {
+      "name": "ANOFM – subdiviziuni",
+      "url": "https://anofm.md/ro/subdiviziuni"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Urgențe",
+      "items": [
+        {
+          "name": "Inspectoratul de Poliție Bălți (serviciul de gardă)",
+          "phone": "+373 231 23 476",
+          "address": "str. Ștefan cel Mare 50, mun. Bălți",
+          "url": "https://politia.md/inspectoratul-de-politie-balti"
+        },
+        {
+          "name": "Direcția Situații Excepționale mun. Bălți (IGSU)",
+          "phone": "+373 231 21 010",
+          "address": "str. Păcii 38, mun. Bălți",
+          "url": "https://dse.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Autorități",
+      "items": [
+        {
+          "name": "Primăria municipiului Bălți",
+          "url": "https://balti.md"
+        }
+      ]
+    },
+    {
+      "title": "Servicii",
+      "items": [
+        {
+          "name": "Casa Teritorială de Asigurări Sociale Bălți",
+          "address": "str. 31 August 47, mun. Bălți",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/balti"
+        },
+        {
+          "name": "Agenția Servicii Publice – oficiul Bălți",
+          "phone": "+373 231 52 974",
+          "address": "Piața Vasile Alecsandri 8, mun. Bălți",
+          "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/balt"
+        },
+        {
+          "name": "Subdiviziunea teritorială ANOFM Bălți",
+          "phone": "+373 231 21 254",
+          "address": "str. A. Pușkin 16, mun. Bălți",
+          "url": "https://anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}

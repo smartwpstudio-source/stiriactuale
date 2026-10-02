@@ -1,0 +1,98 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    {
+      "name": "Consiliul Raional Ocnița",
+      "url": "https://ocnita.md/contacte/"
+    },
+    {
+      "name": "Poliția Republicii Moldova",
+      "url": "https://politia.md/inspectoratul-de-politie-ocnita"
+    },
+    {
+      "name": "IGSU — contactele instituției",
+      "url": "https://igsu.gov.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "IMSP Spitalul Raional Ocnița",
+      "url": "https://srocnita.md/contacte-2/"
+    },
+    {
+      "name": "Primăria orașului Ocnița",
+      "url": "https://primariaocnita.md/"
+    },
+    {
+      "name": "Agenția Servicii Publice",
+      "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/ocnita"
+    },
+    {
+      "name": "CNAS — subdiviziuni teritoriale",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/ocniţa"
+    },
+    {
+      "name": "ANOFM — subdiviziuni teritoriale",
+      "url": "https://www.anofm.md/ro/subdiviziuni"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Urgențe",
+      "items": [
+        {
+          "name": "Inspectoratul de Poliție Ocnița — serviciul de gardă",
+          "phone": "+373 271 68 100",
+          "address": "str. Burebista 49, or. Ocnița",
+          "url": "https://politia.md/inspectoratul-de-politie-ocnita"
+        },
+        {
+          "name": "IMSP Spitalul Raional Ocnița — secția internare",
+          "phone": "+373 67 615 196",
+          "address": "str. Sănătății 20, or. Ocnița",
+          "url": "https://srocnita.md/contacte-2/"
+        },
+        {
+          "name": "Secția Situații Excepționale Ocnița (IGSU)",
+          "phone": "+373 79 604 218",
+          "address": "str. Alexandru cel Bun 41, or. Ocnița",
+          "url": "https://igsu.gov.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Autorități",
+      "items": [
+        {
+          "name": "Consiliul Raional Ocnița",
+          "address": "str. Independenței 51, or. Ocnița",
+          "url": "https://ocnita.md/contacte/"
+        },
+        {
+          "name": "Primăria orașului Ocnița",
+          "url": "https://primariaocnita.md/zile-de-audienta-si-date-de-contact/"
+        }
+      ]
+    },
+    {
+      "title": "Servicii",
+      "items": [
+        {
+          "name": "Casa Teritorială de Asigurări Sociale Ocnița",
+          "address": "str. Independenței 51, or. Ocnița",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/ocniţa"
+        },
+        {
+          "name": "Agenția Servicii Publice — Centrul Multifuncțional Ocnița",
+          "phone": "+373 271 80 081",
+          "address": "str. Mihai Viteazul 72B, or. Ocnița",
+          "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/ocnita"
+        },
+        {
+          "name": "Subdiviziunea teritorială pentru ocuparea forței de muncă Ocnița (ANOFM)",
+          "phone": "+373 271 21 497",
+          "address": "str. Independenței 51, or. Ocnița",
+          "url": "https://www.anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}

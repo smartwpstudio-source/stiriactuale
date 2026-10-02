@@ -1,0 +1,99 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    {
+      "name": "Poliția Republicii Moldova",
+      "url": "https://politia.md/inspectoratul-de-politie-glodeni"
+    },
+    {
+      "name": "Spitalul Raional Glodeni",
+      "url": "https://www.srglodeni.md"
+    },
+    {
+      "name": "Inspectoratul General pentru Situații de Urgență",
+      "url": "https://igsu.gov.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "Primăria orașului Glodeni",
+      "url": "https://primaria-glodeni.md"
+    },
+    {
+      "name": "Platforma particip.gov.md — Consiliul Raional Glodeni",
+      "url": "https://particip.gov.md/ro/authorities/747/utils"
+    },
+    {
+      "name": "Casa Națională de Asigurări Sociale",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+    },
+    {
+      "name": "Agenția Servicii Publice",
+      "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/glodeni"
+    },
+    {
+      "name": "Agenția Națională pentru Ocuparea Forței de Muncă",
+      "url": "https://anofm.md/ro/subdiviziuni"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Urgențe",
+      "items": [
+        {
+          "name": "Inspectoratul de Poliție Glodeni — serviciul de gardă",
+          "phone": "+373 249 22 606",
+          "address": "str. Tricolorului 6, or. Glodeni",
+          "url": "https://politia.md/inspectoratul-de-politie-glodeni"
+        },
+        {
+          "name": "Spitalul Raional Glodeni — anticameră",
+          "phone": "+373 249 22 963",
+          "address": "str. Moldova 29, or. Glodeni",
+          "url": "https://www.srglodeni.md"
+        },
+        {
+          "name": "Secția Situații Excepționale Glodeni (IGSU)",
+          "phone": "+373 249 22 007",
+          "address": "str. Ștefan cel Mare 50, or. Glodeni",
+          "url": "https://igsu.gov.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Autorități",
+      "items": [
+        {
+          "name": "Consiliul Raional Glodeni",
+          "phone": "+373 249 22 348"
+        },
+        {
+          "name": "Primăria orașului Glodeni",
+          "phone": "+373 249 22 236",
+          "address": "str. Suveranității 4, or. Glodeni",
+          "url": "https://primaria-glodeni.md"
+        }
+      ]
+    },
+    {
+      "title": "Servicii",
+      "items": [
+        {
+          "name": "Casa Teritorială de Asigurări Sociale Glodeni",
+          "address": "str. Tricolorului 2/A, or. Glodeni",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+        },
+        {
+          "name": "Agenția Servicii Publice — Centrul multifuncțional Glodeni",
+          "phone": "+373 249 29 092",
+          "address": "str. Vasile Zgîrcea 15/1, or. Glodeni",
+          "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/glodeni"
+        },
+        {
+          "name": "Oficiul Forței de Muncă Glodeni (ANOFM)",
+          "phone": "+373 249 23 360",
+          "address": "str. Suveranității 4, or. Glodeni",
+          "url": "https://anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}

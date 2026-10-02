@@ -1,0 +1,102 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    {
+      "name": "Inspectoratul de Poliție Edineț",
+      "url": "https://politia.md/inspectoratul-de-politie-edinet"
+    },
+    {
+      "name": "Spitalul Raional Edineț",
+      "url": "https://sredinet.md/"
+    },
+    {
+      "name": "Inspectoratul General pentru Situații de Urgență",
+      "url": "https://igsu.gov.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "Consiliul Raional Edineț",
+      "url": "https://edinet.md/"
+    },
+    {
+      "name": "Primăria municipiului Edineț",
+      "url": "https://primariaedinet.md/contacte/"
+    },
+    {
+      "name": "Casa Națională de Asigurări Sociale",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+    },
+    {
+      "name": "Agenția Servicii Publice",
+      "url": "https://www.asp.gov.md/contacte/subdiviziuni-teritoriale/edinet"
+    },
+    {
+      "name": "Agenția Națională pentru Ocuparea Forței de Muncă",
+      "url": "https://anofm.md/ro/subdiviziuni"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Urgențe",
+      "items": [
+        {
+          "name": "Inspectoratul de Poliție Edineț (serviciul de gardă)",
+          "phone": "+373 246 22 175",
+          "address": "str. Ștefan Vodă 5, mun. Edineț",
+          "url": "https://politia.md/inspectoratul-de-politie-edinet"
+        },
+        {
+          "name": "Spitalul Raional Edineț",
+          "phone": "+373 246 21 320",
+          "address": "str. Șoseaua Bucovinei 1, mun. Edineț",
+          "url": "https://sredinet.md/"
+        },
+        {
+          "name": "Direcția Situații Excepționale Edineț",
+          "phone": "+373 79 604 155",
+          "address": "str. Octavian Cirimpei 34, mun. Edineț",
+          "url": "https://igsu.gov.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Autorități",
+      "items": [
+        {
+          "name": "Consiliul Raional Edineț",
+          "phone": "+373 246 25 068",
+          "address": "str. Independenței 33, mun. Edineț",
+          "url": "https://edinet.md/"
+        },
+        {
+          "name": "Primăria municipiului Edineț",
+          "phone": "+373 246 22 930",
+          "address": "str. Octavian Cirimpei 30, mun. Edineț",
+          "url": "https://primariaedinet.md/"
+        }
+      ]
+    },
+    {
+      "title": "Servicii",
+      "items": [
+        {
+          "name": "Casa Teritorială de Asigurări Sociale Edineț",
+          "phone": "+373 246 22 686",
+          "address": "str. Independenței 95, mun. Edineț",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+        },
+        {
+          "name": "Agenția Servicii Publice — Centrul multifuncțional Edineț",
+          "phone": "+373 246 22 884",
+          "address": "str. 31 August 40, mun. Edineț",
+          "url": "https://www.asp.gov.md/contacte/subdiviziuni-teritoriale/edinet"
+        },
+        {
+          "name": "Agenția Teritorială pentru Ocuparea Forței de Muncă Edineț",
+          "phone": "+373 246 22 779",
+          "address": "str. Independenței 33, et. 1, mun. Edineț",
+          "url": "https://anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}
