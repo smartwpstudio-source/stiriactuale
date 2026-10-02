@@ -8,8 +8,11 @@ const GRAPH = "https://graph.facebook.com";
 // ultima eroare (mesajul Facebook, fără token) — afișată în /admin
 export let lastFacebookError = "";
 
+// ghilimelele sau spațiile copiate din răspunsul JSON fac tokenul ilizibil
+const env = (name: string) => process.env[name]?.trim().replace(/^["']|["']$/g, "") || "";
+
 async function graph<T>(path: string, method: "POST" | "DELETE", params: Record<string, string>): Promise<T | null> {
-  const token = process.env.FACEBOOK_PAGE_TOKEN;
+  const token = env("FACEBOOK_PAGE_TOKEN");
   if (!token) return null;
   try {
     const res = await fetch(`${GRAPH}/${path}`, {
@@ -33,8 +36,8 @@ async function graph<T>(path: string, method: "POST" | "DELETE", params: Record<
 
 // Previzualizarea (poza, titlul) o generează Facebook din link (og:image).
 export async function postToPage(a: { title: string; lead: string; url: string }): Promise<string | null> {
-  const pageId = process.env.FACEBOOK_PAGE_ID;
-  if (!pageId || !process.env.FACEBOOK_PAGE_TOKEN) {
+  const pageId = env("FACEBOOK_PAGE_ID");
+  if (!pageId || !env("FACEBOOK_PAGE_TOKEN")) {
     lastFacebookError = "FACEBOOK_PAGE_ID sau FACEBOOK_PAGE_TOKEN lipsește (redeploy după adăugare?)";
     return null;
   }
