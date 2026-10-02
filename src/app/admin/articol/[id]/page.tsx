@@ -35,7 +35,7 @@ const ERRORS: Record<string, string> = {
 export default async function EditArticlePage({ params, searchParams }: PageProps<"/admin/articol/[id]">) {
   await requireAdmin();
   const id = Number((await params).id);
-  const { q, ok, e, push } = await searchParams;
+  const { q, ok, e, push, fb } = await searchParams;
   const [a] = Number.isInteger(id) ? await getDb().select().from(articles).where(eq(articles.id, id)) : [];
   if (!a) notFound();
 
@@ -126,7 +126,12 @@ export default async function EditArticlePage({ params, searchParams }: PageProp
           </>
         )}
       </section>
-      {typeof e === "string" && ERRORS[e] && <p className="text-sm text-alert">{ERRORS[e]}</p>}
+      {typeof e === "string" && ERRORS[e] && (
+        <p className="text-sm text-alert">
+          {ERRORS[e]}
+          {typeof fb === "string" && fb && <span className="block font-mono text-xs">Facebook: {fb}</span>}
+        </p>
+      )}
 
       <div className="grid gap-8 lg:grid-cols-2">
         <form action={saveArticle.bind(null, id)} className="flex flex-col gap-4">

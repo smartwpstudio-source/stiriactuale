@@ -13,7 +13,7 @@ import { COUNTRY_NAMES, RAION_NAMES } from "@/lib/content/geo";
 import { logIn, logOut, requireAdmin } from "@/lib/admin/auth";
 import { dispatchPipeline } from "@/lib/pipeline-dispatch";
 import { deleteFromChannel } from "@/lib/telegram";
-import { deleteFromPage, postToPage } from "@/lib/facebook";
+import { deleteFromPage, lastFacebookError, postToPage } from "@/lib/facebook";
 import { articleUrl } from "@/lib/content/url";
 import { absoluteUrl } from "@/lib/seo";
 import { announcePublished, pushNow } from "@/lib/publish-effects";
@@ -116,7 +116,7 @@ export async function postToFacebookNow(id: number) {
   const path = articleUrl({ ...a, locality: a.locality ?? undefined, country: a.country ?? undefined });
   const facebookPostId = await postToPage({ title: a.title, lead: a.leadText, url: absoluteUrl(path) });
   if (facebookPostId) await db.update(articles).set({ facebookPostId }).where(eq(articles.id, id));
-  redirect(`/admin/articol/${id}/${facebookPostId ? "" : "?e=facebook"}`);
+  redirect(`/admin/articol/${id}/${facebookPostId ? "" : `?e=facebook&fb=${encodeURIComponent(lastFacebookError)}`}`);
 }
 
 export async function deleteArticle(id: number) {

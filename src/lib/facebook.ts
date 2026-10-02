@@ -5,6 +5,9 @@
 // Erorile nu opresc publicarea: se loghează doar mesajul, niciodată tokenul.
 const GRAPH = "https://graph.facebook.com";
 
+// ultima eroare (mesajul Facebook, fără token) — afișată în /admin
+export let lastFacebookError = "";
+
 async function graph<T>(path: string, method: "POST" | "DELETE", params: Record<string, string>): Promise<T | null> {
   const token = process.env.FACEBOOK_PAGE_TOKEN;
   if (!token) return null;
@@ -16,12 +19,14 @@ async function graph<T>(path: string, method: "POST" | "DELETE", params: Record<
     });
     const data = (await res.json()) as T & { error?: { message?: string } };
     if (!res.ok || data.error) {
-      console.error(`Facebook: ${data.error?.message ?? `HTTP ${res.status}`}`);
+      lastFacebookError = data.error?.message ?? `HTTP ${res.status}`;
+      console.error(`Facebook: ${lastFacebookError}`);
       return null;
     }
     return data;
   } catch (err) {
-    console.error(`Facebook: ${err instanceof Error ? err.message : String(err)}`);
+    lastFacebookError = err instanceof Error ? err.message : String(err);
+    console.error(`Facebook: ${lastFacebookError}`);
     return null;
   }
 }
@@ -29,7 +34,10 @@ async function graph<T>(path: string, method: "POST" | "DELETE", params: Record<
 // Previzualizarea (poza, titlul) o generează Facebook din link (og:image).
 export async function postToPage(a: { title: string; lead: string; url: string }): Promise<string | null> {
   const pageId = process.env.FACEBOOK_PAGE_ID;
-  if (!pageId) return null;
+  if (!pageId || !process.env.FACEBOOK_PAGE_TOKEN) {
+    lastFacebookError = "FACEBOOK_PAGE_ID sau FACEBOOK_PAGE_TOKEN lipsește (redeploy după adăugare?)";
+    return null;
+  }
   const r = await graph<{ id: string }>(`${pageId}/feed`, "POST", { message: `${a.title}\n\n${a.lead}`, link: a.url });
   return r?.id ?? null;
 }
