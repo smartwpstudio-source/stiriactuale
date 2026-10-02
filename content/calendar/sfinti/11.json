@@ -1,0 +1,282 @@
+{
+  "luna": 11,
+  "updated": "2026-10-02",
+  "surse": [
+    {
+      "name": "Mitropolia Moldovei — Calendarul ortodox (calendar.ortodox.md, portalul ortodox.md)",
+      "url": "https://calendar.ortodox.md/"
+    }
+  ],
+  "zile": {
+    "1": {
+      "sfinti": [
+        "Sf. Cosma și Damian, doctorii fără de arginți, fiii Teodotei din Asia",
+        "Sf. Mc. Chirienia și Iuliana",
+        "Sf. Sfințiți Mc.: Iulian preotul și Chesarie diaconul din Campania Italiei"
+      ],
+      "sarbatoare": null,
+      "cruce": "neagra"
+    },
+    "2": {
+      "sfinti": [
+        "Sf. Mc. Achindin, Pigasie, Aftonie, Elpidifor și Anempodist",
+        "Sf. Preacuvios Marcian din Cyr în Siria",
+        "Sf. Mc. Eudoxie și Agapie"
+      ],
+      "sarbatoare": null,
+      "cruce": null
+    },
+    "3": {
+      "sfinti": [
+        "Sf. Mc. Achepsima, episcop de Henaita, Iosif preotul și Aitala diaconul",
+        "Sf. Cuv. Ilie din Egipt",
+        "Sf. Cuv. Achepsima din Antiohia Siriei"
+      ],
+      "sarbatoare": null,
+      "cruce": null
+    },
+    "4": {
+      "sfinti": [
+        "Sf. Cuv. Ioanichie cel Mare de la Olimpul Bitiniei, mare apărător al Sfintelor Icoane",
+        "Sf. Sfințiți Mc.: Nicandru, episcopul Mirelor și Ermeu preotul",
+        "Sf. Cuv. Mercurie Postitorul de la Pecerska, din Peșterile din Depărtare"
+      ],
+      "sarbatoare": null,
+      "cruce": null
+    },
+    "5": {
+      "sfinti": [
+        "Sf. Cuv. Mucenici: Galaction și Epistimia, soția sa, din Emesa în Siria",
+        "Sf. Ierarh Iona, Arhiepiscopul Novgorodului, făcătorul de minuni din Rusia",
+        "Sf. Tihon (Belavin), Patriarhul Moscovei și al întregii Rusii"
+      ],
+      "sarbatoare": null,
+      "cruce": null
+    },
+    "6": {
+      "sfinti": [
+        "Sf. Cuv. Ierarh Pavel Mărturisitorul, arhiepiscopul Constantinopolului",
+        "Sf. Cuv. Ierarh Varlaam, mitropolit de Novgorod în Rusia",
+        "Sfintele șapte Mucenițe fecioare: Tecusa, Matroana, Atanasia, Alexandra, Claudia"
+      ],
+      "sarbatoare": null,
+      "cruce": null
+    },
+    "7": {
+      "sfinti": [
+        "Sf. Mc. Ieron din Meletina",
+        "Sf. Cuv. Lazăr, făcătorul de minuni, din Muntele Galisiului",
+        "Sf. Sfințit Mc. Teodot, Episcopul Ancirei, și cele 7 fecioare"
+      ],
+      "sarbatoare": null,
+      "cruce": null
+    },
+    "8": {
+      "sfinti": [
+        "Soborul Sf. Arhangheli Mihail și Gavriil și al tuturor Puterilor cerești",
+        "Sf. Ierarh Maur, episcop de Verdun în Franța",
+        "Sf. Clair, preot lângă Marmoutier în Franța"
+      ],
+      "sarbatoare": "Sfinții Arhangheli Mihail și Gavriil",
+      "cruce": "rosie"
+    },
+    "9": {
+      "sfinti": [
+        "Sf. Ierarh Nectarie Taumaturgul",
+        "Sf. Cuv. Matroana din Perga Pamfiliei",
+        "Sf. Mc. Onisifor și Porfirie din Efes"
+      ],
+      "sarbatoare": null,
+      "cruce": "neagra"
+    },
+    "10": {
+      "sfinti": [
+        "Sf. Cuv. Arsenie Capadocianul, făcătorul de minuni",
+        "Sf. Ap. din cei 70: (Olimp) Olimpian, Irodion (Rodion), episcop de Patras, Sosipatru",
+        "Sf. Mc. Orest Doctorul din Capadocia"
+      ],
+      "sarbatoare": null,
+      "cruce": null
+    },
+    "11": {
+      "sfinti": [
+        "Sf. Mare Mc. Mina din Frigia (Cotiani), egiptean de neam",
+        "Sf. Mc. Victor și Ștefanida",
+        "Sf. Mc. Vichentie, diaconul Sfântului Valerian, episcop de Augustopoli în Spania"
+      ],
+      "sarbatoare": null,
+      "cruce": "neagra"
+    },
+    "12": {
+      "sfinti": [
+        "Sf. Ierarh Ioan Milostivul, arhiepiscopul Alexandriei",
+        "Sf. Cuv. Nil, izvorâtorul de mir de pe Muntele Athos",
+        "Sf. Cuv. Ioan cel Pletos cel nebun pentru Hristos din Rostov în Rusia"
+      ],
+      "sarbatoare": null,
+      "cruce": null
+    },
+    "13": {
+      "sfinti": [
+        "Sf. Ioan Gură de Aur (Hrisostomul), arhiepiscopul Constantinopolului",
+        "Sf. Mc. Antonin, Nichifor, Gherman și Manetha din Cezareea Palestinei",
+        "Sf. Preacuvios Mucenic Damaschin"
+      ],
+      "sarbatoare": null,
+      "cruce": "neagra"
+    },
+    "14": {
+      "sfinti": [
+        "Sf. Ap. Filip",
+        "Sf. Ierarh Grigorie Palama, arhiepiscopul Tesalonicului",
+        "Mucenicii Teodor, Serghie"
+      ],
+      "sarbatoare": null,
+      "cruce": "neagra"
+    },
+    "15": {
+      "sfinti": [
+        "Sf. Cuv. Paisie Velicikovski de la Neamț",
+        "Sf. Mc. Gurie, Samona și Aviv din Edesa",
+        "Sf. Mc. Dimitrie din Tracia"
+      ],
+      "sarbatoare": null,
+      "cruce": "neagra"
+    },
+    "16": {
+      "sfinti": [
+        "Sf. Ap. și Ev. Matei",
+        "Sf. Sfințiți Noi Mc. din Rusia: protoiereul Teodor (Corelov)",
+        "Sf. Preacuvios Serghie, egumen la Malopinega în Rusia"
+      ],
+      "sarbatoare": null,
+      "cruce": "neagra"
+    },
+    "17": {
+      "sfinti": [
+        "Sf. Ierarh Grigorie Taumaturgul, episcopul Neocezareii și făcătorul de minuni",
+        "Sf. Cuv. Nicon de Radonej, ucenicul Sfântului Serghie de la Radonej",
+        "Sf. Cuv. Lazăr Mărturisitorul"
+      ],
+      "sarbatoare": null,
+      "cruce": null
+    },
+    "18": {
+      "sfinti": [
+        "Sf. Mare Mc. Platon din Ancira, fratele Sfântului Mucenic Antioh",
+        "Sf. Mc. Roman, diaconul bisericii din Cezareea Palestinei și Sfântul Prunc Mucenic Varula",
+        "Sf. Mc. Zaheu, diaconul bisericii Gadirilor, și Alfeu, citețul din Cezareea"
+      ],
+      "sarbatoare": null,
+      "cruce": null
+    },
+    "19": {
+      "sfinti": [
+        "Sf. Prooroc Avdie",
+        "Sf. Cuvioși: Varlaam pustnicul, Ioasaf, prințul Indiei și tatăl său",
+        "Sf. Ierarh Filaret, Mitropolitul Moscovei și al Kolomnei"
+      ],
+      "sarbatoare": null,
+      "cruce": null
+    },
+    "20": {
+      "sfinti": [
+        "Sf. Cuv. Grigorie Decapolitul",
+        "Sf. Ierarh Proclu, arhiepiscopul Constantinopolului",
+        "Sf. Mc. episcopii: Nirsa și Iosif, ucenicul său, și alți mucenici"
+      ],
+      "sarbatoare": null,
+      "cruce": "neagra"
+    },
+    "21": {
+      "sfinti": [
+        "Intrarea în Biserică a Maicii Domnului",
+        "Sf. Rufie, ucenicul Sfântului Apostol Pavel din Roma",
+        "Sf. Mc. Chelsie și Clement din Roma"
+      ],
+      "sarbatoare": "Intrarea în Biserică a Maicii Domnului",
+      "cruce": "rosie"
+    },
+    "22": {
+      "sfinti": [
+        "Sf. Ap. din cei 70: Filimon, episcop de Gaza, Arhip, fiul său, Apfia, soția sa",
+        "Sf. Mare Mc. Procopie din Palestina",
+        "Sf. Mc. Cecilia, Valerian, soțul său, Tiburtie, fratele Sfântului Valerian"
+      ],
+      "sarbatoare": null,
+      "cruce": null
+    },
+    "23": {
+      "sfinti": [
+        "Sf. Ierarh Amfilohie, Episcopul Iconiei (după 394)",
+        "Pomenirea mutării moaștelor Sfântului Alexandru Nevsky, prinț de Novgorod",
+        "Sf. Ierarh Grigorie, episcop de Agrigandia în Sicilia"
+      ],
+      "sarbatoare": null,
+      "cruce": null
+    },
+    "24": {
+      "sfinti": [
+        "Sf. Mare Mc. Ecaterina",
+        "Sf. Mare Mc. Mercurie din Cezareea Capadociei",
+        "Sf. Mc. Mastridia din Alexandria"
+      ],
+      "sarbatoare": null,
+      "cruce": "neagra"
+    },
+    "25": {
+      "sfinti": [
+        "Sf. Mc. Ierarh Clement, episcopul Romei și ucenicul Sfântului Apostol Petru",
+        "Sf. Sfințit Mc. Petru, Episcopul Alexandriei",
+        "Sf. Cuv. Petru din Galatia, Turcia"
+      ],
+      "sarbatoare": null,
+      "cruce": "neagra"
+    },
+    "26": {
+      "sfinti": [
+        "Sf. Cuv. Alipie Stâlpnicul din Adrianopol",
+        "Sf. Cuv. Iacov Pustnicul din Antiohia",
+        "Sf. Ierarh Inochentie, Episcop de Irkutsk în Rusia"
+      ],
+      "sarbatoare": null,
+      "cruce": null
+    },
+    "27": {
+      "sfinti": [
+        "Sf. Marele Mucenic Iacov Persul",
+        "Sf. Cuv. Paladie din Tesalonic, Alexandria",
+        "Sf. 17 Preacuvioși Mucenici din India"
+      ],
+      "sarbatoare": null,
+      "cruce": "neagra"
+    },
+    "28": {
+      "sfinti": [
+        "Sf. Cuv. Părintele nostru Ștefan cel Nou, mărturisitor din Constantinopol",
+        "Sf. Mc. Irinarh",
+        "Sf. Ierarh Teodor, Arhiepiscop de Rostov în Rusia"
+      ],
+      "sarbatoare": null,
+      "cruce": null
+    },
+    "29": {
+      "sfinti": [
+        "Sf. Mc. Paramon și Sfinții 370 de Mucenici din Nicomidia",
+        "Sf. Mc. Filumen din Licaonia în Ancira",
+        "Sf. Cuv. Nectarie Ascultătorul de la Pecerska din Kiev, din Peșterile din Apropiere"
+      ],
+      "sarbatoare": null,
+      "cruce": null
+    },
+    "30": {
+      "sfinti": [
+        "Sf. Ap. Andrei, cel Întâi chemat",
+        "Sf. Ierarh Frumentie (Frumențiu), episcopul Etiopiei (Abisiniei)",
+        "Sf. Ierarh Andrei Șaguna, mitropolitul Transilvaniei"
+      ],
+      "sarbatoare": "Sfântul Andrei",
+      "cruce": "rosie"
+    }
+  }
+}
