@@ -9,6 +9,16 @@ export function absoluteUrl(path: string): string {
   return new URL(path, SITE_URL).toString();
 }
 
+// Descrierea din rezultatele Google se taie în jur de 160 de caractere; leadul
+// articolelor ajunge la 580. Tăiem la limita unui cuvânt și punem "…".
+export function metaDescription(text: string, max = 160): string {
+  const clean = text.replace(/\s+/g, " ").trim();
+  if (clean.length <= max) return clean;
+  const cut = clean.slice(0, max - 1);
+  const lastSpace = cut.lastIndexOf(" ");
+  return `${(lastSpace > max * 0.6 ? cut.slice(0, lastSpace) : cut).replace(/[\s,;:.\-–—]+$/, "")}…`;
+}
+
 export function breadcrumbJsonLd(items: { name: string; url: string }[]) {
   return {
     "@context": "https://schema.org",
@@ -51,15 +61,16 @@ export function articleMetadata(article: Article): Metadata {
   const image =
     article.imageUrl ??
     `/og/?${new URLSearchParams({ t: article.title, s: SECTION_LABELS[article.section] })}`;
+  const description = metaDescription(article.lead);
   return {
     title: article.title,
-    description: article.lead,
+    description,
     alternates: { canonical: url },
     // arhivă preluată de la altă redacție — nu se indexează (conținut duplicat)
     ...(article.archived && { robots: { index: false, follow: true } }),
     openGraph: {
       title: article.title,
-      description: article.lead,
+      description,
       type: "article",
       url,
       siteName: "Stiri actuale",
@@ -67,6 +78,6 @@ export function articleMetadata(article: Article): Metadata {
       publishedTime: article.publishedAt,
       images: [{ url: image, width: 1200, height: 630, alt: article.imageAlt ?? article.title }],
     },
-    twitter: { card: "summary_large_image", title: article.title, description: article.lead, images: [image] },
+    twitter: { card: "summary_large_image", title: article.title, description, images: [image] },
   };
 }
