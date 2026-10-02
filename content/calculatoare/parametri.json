@@ -1,0 +1,104 @@
+{
+  "updated": "2026-10-02",
+  "an": 2026,
+  "salariu": {
+    "impozit_venit_pct": 12,
+    "scutire_personala_anuala_lei": 29700,
+    "cnam_angajat_pct": 9,
+    "cnas_angajat_pct": 0,
+    "salariu_minim_lei": 6300,
+    "cnas_deductibil": false,
+    "cnam_deductibil": true,
+    "nota": "Din 2026 angajatul nu mai plătește contribuție individuală la CNAS: contribuția de 24% (29% la instituțiile bugetare) o achită angajatorul peste salariul brut, deci din brut se rețin doar prima CNAM de 9% și impozitul pe venit de 12%. Prima CNAM se scade din venitul impozabil (art. 35² din Codul fiscal), iar scutirea personală de 29.700 lei pe an (2.475 lei pe lună) se acordă doar dacă venitul anual impozabil e sub 360.000 lei; scutirile pentru persoane întreținute și scutirea majorată nu sunt incluse în calcul. Cota de 12% și scutirea de 29.700 lei sunt confirmate de „norma în vigoare” din tabelul comparativ al Ministerului Finanțelor (august 2026); pagina SFS despre CET18 confirmă pragul de 360.000 lei, cota de 12% (art. 15 lit. a) și deducerea primelor CNAM.",
+    "surse": [
+      {
+        "name": "Ministerul Finanțelor: tabel comparativ la proiectul de lege privind simplificarea legislației fiscale (2026) — norma în vigoare: art. 15 lit. a) 12%, art. 33 alin. (1) scutire 29.700 lei sub 360.000 lei",
+        "url": "https://mf.gov.md/sites/default/files/Tabel%20comparativ%20%281%29_2.pdf"
+      },
+      {
+        "name": "Ministerul Finanțelor: nota de fundamentare la proiectul din 2026 (scutirea personală ar crește de la 29.700 la 40.000 lei, abia din 2027, dacă se adoptă)",
+        "url": "https://mf.gov.md/sites/default/files/Not%C4%83%20de%20fundamentare_0.pdf"
+      },
+      {
+        "name": "Serviciul Fiscal de Stat: Declarația CET18 — art. 15 lit. a) 12%, pragul de 360.000 lei, deducerea primelor de asigurare obligatorie de asistență medicală (art. 35²)",
+        "url": "https://www.sfs.md/ro/pagina/cet18"
+      },
+      {
+        "name": "Guvern: proiectul Legii fondurilor AOAM pe anul 2026 (adoptată ca Legea nr. 321/2025) — prima în contribuție procentuală 9%",
+        "url": "https://gov.md/sites/default/files/media/documents/sedinte-de-guvern/2025-12/NU-914-MS-CNAM-2025.pdf"
+      },
+      {
+        "name": "Guvern: nota la modificarea Legii fondurilor AOAM pe anul 2026 nr. 321/2025 (MO nr. 659-661/2025)",
+        "url": "https://gov.md/sites/default/files/media/documents/sedinte-de-guvern/2026-09/NU-869-MS-2026_0.pdf"
+      },
+      {
+        "name": "CNAS: Particularitățile calculării contribuțiilor de asigurări sociale în anul 2026 (Ordin CNAS nr. 31-A din 18.02.2026; angajatorul 24%/29%)",
+        "url": "https://cnas.gov.md/sites/default/files/Edit%20%3Cem%20class%3D%22placeholder%22%3EDispozi%C5%A3ii%3C/em%3E-2026-04/Particularitati2026.pdf"
+      },
+      {
+        "name": "Guvern: Guvernul a aprobat cuantumul salariului minim și mediu pentru anul 2026 (6.300 lei)",
+        "url": "https://gov.md/ro/node/5613"
+      },
+      {
+        "name": "Guvern: proiectul HG privind salariul minim pe țară pentru anul 2026",
+        "url": "https://www.gov.md/sites/default/files/media/documents/sedinte-de-guvern/2025-11/915-MMPS-2025.pdf"
+      }
+    ]
+  },
+  "concediu_medical": {
+    "trepte": [
+      {
+        "stagiu_min_ani": 0,
+        "procent": 60
+      },
+      {
+        "stagiu_min_ani": 5,
+        "procent": 70
+      },
+      {
+        "stagiu_min_ani": 8,
+        "procent": 90
+      }
+    ],
+    "baza": "Venitul mediu lunar asigurat din ultimele 12 luni calendaristice dinaintea lunii îmbolnăvirii (venitul pe 12 luni împărțit la 12), din care s-au plătit contribuții CNAS. Venitul fiecărei luni se plafonează la 5 salarii medii lunare pe economie prognozate pentru anul respectiv (17.400 lei în 2026, deci 87.000 lei pe lună).",
+    "luni_baza": 12,
+    "zile_medii_luna": 30.4,
+    "plafon_lei": 87000,
+    "primele_zile_angajator": 5,
+    "surse": [
+      {
+        "name": "CNAS: Indemnizație pentru incapacitate temporară de muncă (Legea nr. 289/2004, HG nr. 108/2005)",
+        "url": "https://cnas.gov.md/ro/node/256"
+      },
+      {
+        "name": "CNAS: Indemnizație paternală — venitul pentru o zi calendaristică = venitul mediu lunar asigurat / zilele calendaristice ale lunii",
+        "url": "https://cnas.gov.md/ro/servicii/servicii/indemnizatii/indemnizatie-paternala"
+      },
+      {
+        "name": "Guvern: salariul mediu lunar pe economie prognozat pentru 2026 — 17.400 lei",
+        "url": "https://gov.md/ro/node/5613"
+      }
+    ]
+  },
+  "maternitate": {
+    "procent": 100,
+    "luni_baza": 12,
+    "zile_total": 126,
+    "zile_medii_luna": 30.4,
+    "plafon_lei": 87000,
+    "surse": [
+      {
+        "name": "CNAS: Indemnizație de maternitate femeilor asigurate și soțiilor aflate la întreținerea soților asigurați",
+        "url": "https://cnas.gov.md/ro/servicii/servicii/indemnizatii/indemnizatie-de-maternitate-femeilor-asigurate-si-sotiilor-aflate-la"
+      },
+      {
+        "name": "CNAS: Indemnizație paternală — venitul pentru o zi calendaristică = venitul mediu lunar asigurat / zilele calendaristice ale lunii",
+        "url": "https://cnas.gov.md/ro/servicii/servicii/indemnizatii/indemnizatie-paternala"
+      },
+      {
+        "name": "Guvern: salariul mediu lunar pe economie prognozat pentru 2026 — 17.400 lei",
+        "url": "https://gov.md/ro/node/5613"
+      }
+    ]
+  }
+}
