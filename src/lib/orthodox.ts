@@ -118,9 +118,9 @@ export function civilDays(year: number): Feast[] {
     [utc(year, 5, 9), "Ziua Europei și Ziua Victoriei", "9-mai-ziua-europei-si-ziua-victoriei"],
     [utc(year, 6, 1), "Ziua Ocrotirii Copilului", "1-iunie-ziua-copilului"],
     [utc(year, 8, 27), "Ziua Independenței", "ziua-independentei-27-august"],
-    [utc(year, 8, 31), "Limba noastră cea română", "limba-noastra-cea-romana-31-august"],
+    [utc(year, 8, 31), "Ziua Limbii Române („Limba noastră”)", "limba-noastra-cea-romana-31-august"],
     [wineSat, "Ziua Națională a Vinului (primul weekend din octombrie)", "ziua-nationala-a-vinului"],
-    [utc(year, 10, 14), "Hramul orașului Chișinău", "hramul-chisinaului-14-octombrie"],
+    [utc(year, 10, 14), "Hramul orașului Chișinău (Acoperământul Maicii Domnului)", "hramul-chisinaului-14-octombrie"],
     [utc(year, 12, 31), "Revelionul", "revelionul-traditii-si-cum-il-petreci"],
   ];
   return days.map(([date, name, guide]) => ({ date, name, kind: "laic" as const, guide }));
