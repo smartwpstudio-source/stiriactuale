@@ -15,6 +15,7 @@ export const GUIDE_CATEGORIES = {
   afaceri: "Afaceri și muncă",
   educatie: "Educație",
   siguranta: "Siguranță și drepturi",
+  dosare: "Dosare: subiectele mari",
 } as const;
 
 export type GuideCategory = keyof typeof GUIDE_CATEGORIES;

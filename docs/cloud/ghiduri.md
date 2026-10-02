@@ -23,7 +23,7 @@ Câte un fișier `content/ghiduri/<slug>.json` pe ghid, apoi **un singur Pull Re
 }
 ```
 
-Categorii: `diaspora`, `acte`, `bani`, `sanatate`, `auto`, `afaceri`, `educatie`, `siguranta`.
+Categorii: `diaspora`, `acte`, `bani`, `sanatate`, `auto`, `afaceri`, `educatie`, `siguranta`. (`dosare` e doar pentru dosare, vezi `docs/cloud/dosare.md`.)
 
 ## Reguli de conținut (obligatorii)
 
@@ -88,3 +88,53 @@ Categorii: `diaspora`, `acte`, `bani`, `sanatate`, `auto`, `afaceri`, `educatie`
 6. Cum contești o factură la gaz sau lumină (ANRE)
 7. Drepturile chiriașului: contractul de închiriere în Moldova
 8. Numerele de urgență și ce informații dai când suni la 112
+
+**Lot 6 — familie și moștenire**
+1. Moștenirea în Moldova: cum o accepți și cum obții certificatul de moștenitor
+2. Divorțul în Moldova: la oficiul de stare civilă sau în instanță
+3. Căsătoria în Moldova și înregistrarea celei încheiate în străinătate
+4. Pensia de întreținere pentru copii: cum se stabilește și cum o obții
+5. Plecarea copilului minor peste hotare: acordul părinților și actele
+6. Testamentul: cum îl faci la notar și ce trebuie să conțină
+7. Schimbarea numelui sau prenumelui: acte și pași
+8. Tutela și curatela: cine poate fi tutore și cum se stabilește
+
+**Lot 7 — locuință și proprietate**
+1. Drepturile chiriașului: contractul de închiriere în Moldova
+2. Cumpărarea unui apartament: ce verifici la Cadastru și pașii la notar
+3. Extrasul din Registrul bunurilor imobile: cum îl obții, inclusiv online
+4. Impozitul pe bunurile imobiliare: cine plătește, cât și până când
+5. Înregistrarea la domiciliu și viza de reședință
+6. Autorizația de construire pentru o casă: acte și pași
+7. Racordarea unei case la rețeaua de gaz: pași și costuri
+8. Asociația de proprietari (condominiu): drepturile locatarilor
+
+**Lot 8 — muncă și salarii**
+1. Contractul individual de muncă: ce trebuie să conțină
+2. Concediul anual de odihnă: câte zile și cum se plătește
+3. Concediul de maternitate și cel paternal: durată, plată, acte
+4. Șomajul: cum te înregistrezi la ANOFM și ce ajutor primești
+5. Concedierea: preaviz, indemnizații și cum o contești
+6. Munca legală în străinătate: agențiile licențiate și cum le verifici
+7. Activitatea independentă și patenta de întreprinzător
+8. Plângerea la Inspectoratul de Stat al Muncii: când și cum
+
+**Lot 9 — consumator, bani, siguranță online**
+1. Drepturile consumatorului: returnarea unui produs și garanția
+2. Creditul de consum: ce verifici înainte să semnezi (DAE, costuri)
+3. Fraudele telefonice și online: cum le recunoști și unde le raportezi
+4. RCA și Cartea Verde: ce acoperă și cum le cumperi
+5. Vinieta (taxa de drum) pentru mașini: cine plătește și cum
+6. Impozitele și taxele plătite online prin MPay
+7. Cum citești factura de gaz sau de energie electrică
+8. Protecția datelor personale: cum depui o plângere la CNPDCP
+
+**Lot 10 — sănătate și protecție socială**
+1. Gradul de dizabilitate: cum se stabilește și ce drepturi oferă
+2. Biletele de tratament balnear prin CNAS: cine le primește și cum
+3. Medicamentele compensate: lista, rețeta și farmaciile
+4. Vaccinarea copiilor: calendarul național și unde se face
+5. Alocațiile pentru copiii cu dizabilități
+6. Serviciul de îngrijire la domiciliu pentru vârstnici
+7. Certificatul medical pentru permisul de conducere
+8. Asistența juridică garantată de stat: cine o primește gratuit
