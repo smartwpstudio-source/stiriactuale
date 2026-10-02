@@ -38,7 +38,7 @@ export function newsArticleJsonLd(article: Article) {
     publisher: {
       "@type": "Organization",
       name: "Stiri actuale",
-      logo: { "@type": "ImageObject", url: absoluteUrl("/icons/icon-512.png") },
+      logo: { "@type": "ImageObject", url: absoluteUrl("/icons/icon-512.png?v=2") },
     },
   };
 }

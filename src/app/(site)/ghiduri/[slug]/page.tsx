@@ -44,7 +44,7 @@ export default async function GuidePage({ params }: PageProps<"/ghiduri/[slug]">
       dateModified: g.updated,
       mainEntityOfPage: url,
       author: { "@type": "Organization", name: "Stiri actuale" },
-      publisher: { "@type": "Organization", name: "Stiri actuale", logo: { "@type": "ImageObject", url: absoluteUrl("/icons/icon-512.png") } },
+      publisher: { "@type": "Organization", name: "Stiri actuale", logo: { "@type": "ImageObject", url: absoluteUrl("/icons/icon-512.png?v=2") } },
     },
     ...(g.faq?.length
       ? [

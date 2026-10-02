@@ -6,7 +6,7 @@
 //   - ultimele N articole citite                -> rămân disponibile offline
 //   - notificări push (handler la final) — doar știrile de rezonanță, vezi src/lib/push.ts
 
-const VERSION = "v3"; // v3: push + pagină offline
+const VERSION = "v4"; // v4: iconițele noi (Ș) — șterge cache-ul cu cele vechi
 const STATIC_CACHE = `stiriactuale-static-${VERSION}`;
 const PAGES_CACHE = `stiriactuale-pages-${VERSION}`;
 const ARTICLE_CACHE = `stiriactuale-articles-${VERSION}`;
@@ -129,8 +129,8 @@ self.addEventListener("push", (event) => {
   event.waitUntil(
     self.registration.showNotification(data.title || "Stiri actuale", {
       body: data.body || "",
-      icon: "/icons/icon-192.png",
-      badge: "/icons/icon-192.png",
+      icon: "/icons/icon-192.png?v=2",
+      badge: "/icons/icon-192.png?v=2",
       image: data.image,
       data: { url: data.url || "/" },
       tag: data.url, // aceeași știre nu apare de două ori
