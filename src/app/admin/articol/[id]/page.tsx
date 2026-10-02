@@ -14,6 +14,7 @@ import {
   removeImage,
   replaceImage,
   saveArticle,
+  postToFacebookNow,
   sendPushNow,
   setFeatured,
   setStatus,
@@ -25,7 +26,11 @@ import { UploadImage } from "../../upload-image";
 
 const input = "w-full rounded border border-line bg-white px-3 py-2 text-ink";
 const label = "mb-1 block text-sm text-sub";
-const ERRORS: Record<string, string> = { raion: "Alege raionul.", tara: "Alege țara." };
+const ERRORS: Record<string, string> = {
+  raion: "Alege raionul.",
+  tara: "Alege țara.",
+  facebook: "Postarea pe Facebook a eșuat — verifică FACEBOOK_PAGE_ID / FACEBOOK_PAGE_TOKEN în Vercel.",
+};
 
 export default async function EditArticlePage({ params, searchParams }: PageProps<"/admin/articol/[id]">) {
   await requireAdmin();
@@ -108,6 +113,11 @@ export default async function EditArticlePage({ params, searchParams }: PageProp
                 {a.pushWorthy ? "Fără notificare" : "Marchează pentru notificare"}
               </button>
             </form>
+            {!isDraft && !a.facebookPostId && (
+              <form action={postToFacebookNow.bind(null, id)}>
+                <button className="rounded bg-[#1877f2] px-2 py-1 text-xs text-white">Postează pe Facebook</button>
+              </form>
+            )}
             {!isDraft && a.pushWorthy && (
               <form action={sendPushNow.bind(null, id)}>
                 <button className="rounded bg-teal px-2 py-1 text-xs text-white">Trimite alerta acum</button>

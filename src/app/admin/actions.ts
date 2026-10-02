@@ -13,7 +13,9 @@ import { COUNTRY_NAMES, RAION_NAMES } from "@/lib/content/geo";
 import { logIn, logOut, requireAdmin } from "@/lib/admin/auth";
 import { dispatchPipeline } from "@/lib/pipeline-dispatch";
 import { deleteFromChannel } from "@/lib/telegram";
-import { deleteFromPage } from "@/lib/facebook";
+import { deleteFromPage, postToPage } from "@/lib/facebook";
+import { articleUrl } from "@/lib/content/url";
+import { absoluteUrl } from "@/lib/seo";
 import { announcePublished, pushNow } from "@/lib/publish-effects";
 import type { Section } from "@/lib/content/types";
 
@@ -102,6 +104,19 @@ export async function sendPushNow(id: number) {
   const [a] = await getDb().select().from(articles).where(eq(articles.id, id));
   if (!a || a.status !== "published" || a.pushSentAt) redirect(`/admin/articol/${id}/`);
   redirect(`/admin/articol/${id}/?push=${encodeURIComponent(await pushNow(id))}`);
+}
+
+// Pentru articolele care n-au ajuns pe Facebook (eroare, sau publicate
+// înainte de conectarea paginii). O singură postare per articol.
+export async function postToFacebookNow(id: number) {
+  await requireAdmin();
+  const db = getDb();
+  const [a] = await db.select().from(articles).where(eq(articles.id, id));
+  if (!a || a.status !== "published" || a.facebookPostId) redirect(`/admin/articol/${id}/`);
+  const path = articleUrl({ ...a, locality: a.locality ?? undefined, country: a.country ?? undefined });
+  const facebookPostId = await postToPage({ title: a.title, lead: a.leadText, url: absoluteUrl(path) });
+  if (facebookPostId) await db.update(articles).set({ facebookPostId }).where(eq(articles.id, id));
+  redirect(`/admin/articol/${id}/${facebookPostId ? "" : "?e=facebook"}`);
 }
 
 export async function deleteArticle(id: number) {
