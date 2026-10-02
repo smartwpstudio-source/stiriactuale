@@ -1,0 +1,72 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    {
+      "name": "Consiliul Raional Cimișlia",
+      "url": "https://raioncimislia.md"
+    },
+    {
+      "name": "Poliția — IP Cimișlia",
+      "url": "https://politia.md/ro/inspectoratul-de-politie-cimislia"
+    },
+    {
+      "name": "Spitalul Raional Cimișlia",
+      "url": "https://srcimislia.md"
+    },
+    {
+      "name": "Primăria Cimișlia",
+      "url": "https://cimislia.md"
+    },
+    {
+      "name": "ASP — oficiul Cimișlia",
+      "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/cimislia"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Urgențe",
+      "items": [
+        {
+          "name": "Inspectoratul de Poliție Cimișlia (serviciul de serviciu)",
+          "phone": "+373 241 92229",
+          "address": "bd. Mihai Viteazu 42, Cimișlia",
+          "url": "https://politia.md/ro/inspectoratul-de-politie-cimislia"
+        },
+        {
+          "name": "Spitalul Raional Cimișlia — anticameră",
+          "phone": "+373 241 22391",
+          "address": "str. Alexandru cel Bun 135, Cimișlia",
+          "url": "https://srcimislia.md"
+        }
+      ]
+    },
+    {
+      "title": "Autorități",
+      "items": [
+        {
+          "name": "Consiliul Raional Cimișlia",
+          "phone": "+373 241 22058",
+          "address": "bd. Ștefan cel Mare 12, Cimișlia",
+          "url": "https://raioncimislia.md"
+        },
+        {
+          "name": "Primăria Cimișlia",
+          "phone": "+373 241 22187",
+          "address": "str. Ștefan cel Mare 14, Cimișlia",
+          "url": "https://cimislia.md"
+        }
+      ]
+    },
+    {
+      "title": "Servicii",
+      "items": [
+        {
+          "name": "Agenția Servicii Publice — oficiul Cimișlia",
+          "phone": "+373 241 22388",
+          "address": "str. Alexandru cel Bun 133, Cimișlia",
+          "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/cimislia"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    { "name": "Consiliul Raional Taraclia", "url": "https://raiontaraclia.md" },
+    { "name": "Primăria Taraclia", "url": "https://www.taraclia.md/ro/topage/contactsView" },
+    { "name": "Poliția Republicii Moldova — IP Taraclia", "url": "https://igp.gov.md/inspectoratul-de-politie-taraclia" },
+    { "name": "IGSU — contacte subdiviziuni", "url": "https://igsu.gov.md/ro/contactele-institutiei" },
+    { "name": "Agenția Servicii Publice — Taraclia", "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/taraclia" },
+    { "name": "CNAS — CTAS Taraclia", "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/taraclia" },
+    { "name": "ANOFM — lista subdiviziunilor teritoriale", "url": "https://anofm.md/files/elfinder/+Lista%20contacte%20STOFM.pdf" }
+  ],
+  "blocks": [
+    {
+      "title": "Urgențe",
+      "items": [
+        { "name": "Inspectoratul de Poliție Taraclia", "phone": "+373 294 23089", "address": "str. Pervomaiscaia 69, or. Taraclia", "url": "https://igp.gov.md/inspectoratul-de-politie-taraclia" },
+        { "name": "Secția Situații Excepționale Taraclia (IGSU)", "phone": "+373 294 23201", "address": "str. Lenina 130, or. Taraclia", "url": "https://igsu.gov.md/ro/contactele-institutiei" }
+      ]
+    },
+    {
+      "title": "Autorități",
+      "items": [
+        { "name": "Consiliul Raional Taraclia", "phone": "+373 294 24650", "address": "str. Ștefan cel Mare 59, or. Taraclia", "url": "https://raiontaraclia.md" },
+        { "name": "Primăria Taraclia", "address": "str. Lenin 128, or. Taraclia", "url": "https://www.taraclia.md/ro/topage/contactsView" }
+      ]
+    },
+    {
+      "title": "Servicii",
+      "items": [
+        { "name": "Casa Teritorială de Asigurări Sociale Taraclia", "phone": "+373 294 23028", "address": "str. Ștefan cel Mare 36, or. Taraclia", "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/taraclia" },
+        { "name": "Agenția Servicii Publice — Centrul Multifuncțional Taraclia", "phone": "+373 294 24850", "address": "str. Ștefan cel Mare 32, or. Taraclia", "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/taraclia" },
+        { "name": "Secția ocuparea forței de muncă Taraclia", "phone": "+373 294 25998", "address": "str. Ștefan cel Mare 9B, or. Taraclia", "url": "https://anofm.md/files/elfinder/+Lista%20contacte%20STOFM.pdf" }
+      ]
+    }
+  ]
+}

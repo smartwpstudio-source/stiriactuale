@@ -1,0 +1,36 @@
+{
+  "updated": "2026-10-02",
+  "sources": [
+    { "name": "Consiliul Raional Ștefan Vodă (particip.gov.md)", "url": "https://particip.gov.md/ro/authorities/1086" },
+    { "name": "Primăria Ștefan Vodă", "url": "https://www.primariastefanvoda.md/contacte/" },
+    { "name": "Poliția Republicii Moldova — IP Ștefan Vodă", "url": "https://igp.gov.md/inspectoratul-de-politie-stefan-voda" },
+    { "name": "IGSU — contacte subdiviziuni", "url": "https://igsu.gov.md/ro/contactele-institutiei" },
+    { "name": "Agenția Servicii Publice — Ștefan Vodă", "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/stefan-voda" },
+    { "name": "CNAS — CTAS Ștefan Vodă", "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/stefan-vod%C4%83" },
+    { "name": "ANOFM — lista subdiviziunilor teritoriale", "url": "https://anofm.md/files/elfinder/+Lista%20contacte%20STOFM.pdf" }
+  ],
+  "blocks": [
+    {
+      "title": "Urgențe",
+      "items": [
+        { "name": "Inspectoratul de Poliție Ștefan Vodă", "phone": "+373 242 22914", "address": "str. Grigore Vieru 6/1, or. Ștefan Vodă", "url": "https://igp.gov.md/inspectoratul-de-politie-stefan-voda" },
+        { "name": "Secția Situații Excepționale Ștefan Vodă (IGSU)", "phone": "+373 242 22832", "address": "str. Chișinăului 23, or. Ștefan Vodă", "url": "https://igsu.gov.md/ro/contactele-institutiei" }
+      ]
+    },
+    {
+      "title": "Autorități",
+      "items": [
+        { "name": "Consiliul Raional Ștefan Vodă", "phone": "+373 242 22058", "url": "https://particip.gov.md/ro/authorities/1086" },
+        { "name": "Primăria Ștefan Vodă", "phone": "+373 242 23053", "address": "str. Ștefan cel Mare 31, or. Ștefan Vodă", "url": "https://www.primariastefanvoda.md/contacte/" }
+      ]
+    },
+    {
+      "title": "Servicii",
+      "items": [
+        { "name": "Casa Teritorială de Asigurări Sociale Ștefan Vodă", "address": "str. Grigore Vieru 8, or. Ștefan Vodă", "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/stefan-vod%C4%83" },
+        { "name": "Agenția Servicii Publice — Centrul Multifuncțional Ștefan Vodă", "phone": "+373 242 22666", "address": "str. Nicolae Testemițanu 4, or. Ștefan Vodă", "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/stefan-voda" },
+        { "name": "Direcția ocuparea forței de muncă Ștefan Vodă", "phone": "+373 242 23670", "address": "str. Libertății 1, or. Ștefan Vodă", "url": "https://anofm.md/files/elfinder/+Lista%20contacte%20STOFM.pdf" }
+      ]
+    }
+  ]
+}
