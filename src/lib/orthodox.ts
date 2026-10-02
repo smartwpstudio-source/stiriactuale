@@ -1,8 +1,8 @@
 // Calendarul creștin-ortodox, calculat: Paștele (pascalia iuliană, aceeași
 // pentru stil vechi și nou), sărbătorile mobile, posturile, și conversia
 // sărbătorilor fixe pe cele două stiluri:
-//  - stil nou (Mitropolia Basarabiei): data bisericească = data civilă;
-//  - stil vechi (Mitropolia Moldovei): data bisericească e în calendarul
+//  - stil nou (calendarul îndreptat, doar unele parohii): data bisericească = data civilă;
+//  - stil vechi (majoritatea parohiilor din Moldova, din ambele mitropolii): data bisericească e în calendarul
 //    iulian, deci în calendarul civil cade cu 13 zile mai târziu.
 // ponytail: diferența de 13 zile e valabilă 1900–2099; din 2100 devine 14.
 
@@ -72,15 +72,15 @@ export const FIXED_FEASTS: [number, number, string, string?][] = [
   [3, 25, "Buna Vestire", "buna-vestire-traditii-si-credinte"],
   [4, 23, "Sfântul Mare Mucenic Gheorghe", "sfantul-gheorghe-traditii-si-onomastica"],
   [6, 24, "Nașterea Sfântului Ioan Botezătorul"],
-  [6, 29, "Sfinții Apostoli Petru și Pavel"],
-  [7, 20, "Sfântul Proroc Ilie"],
-  [8, 6, "Schimbarea la Față a Domnului"],
-  [8, 15, "Adormirea Maicii Domnului"],
-  [8, 29, "Tăierea capului Sfântului Ioan Botezătorul"],
-  [9, 8, "Nașterea Maicii Domnului"],
-  [9, 14, "Înălțarea Sfintei Cruci"],
+  [6, 29, "Sfinții Apostoli Petru și Pavel", "sfintii-petru-si-pavel-traditii"],
+  [7, 20, "Sfântul Proroc Ilie", "sfantul-ilie-traditii-si-credinte"],
+  [8, 6, "Schimbarea la Față a Domnului", "schimbarea-la-fata-traditii"],
+  [8, 15, "Adormirea Maicii Domnului", "sfanta-maria-mare-adormirea-maicii-domnului"],
+  [8, 29, "Tăierea capului Sfântului Ioan Botezătorul", "taierea-capului-sfantului-ioan-traditii"],
+  [9, 8, "Nașterea Maicii Domnului", "sfanta-maria-mica-nasterea-maicii-domnului"],
+  [9, 14, "Înălțarea Sfintei Cruci", "inaltarea-sfintei-cruci-ziua-crucii"],
   [10, 1, "Acoperământul Maicii Domnului"],
-  [10, 26, "Sfântul Mare Mucenic Dimitrie"],
+  [10, 26, "Sfântul Mare Mucenic Dimitrie", "sfantul-dumitru-traditii-si-onomastica"],
   [11, 8, "Soborul Sfinților Arhangheli Mihail și Gavriil"],
   [11, 21, "Intrarea în Biserică a Maicii Domnului"],
   [11, 30, "Sfântul Apostol Andrei", "sfantul-andrei-traditii-si-credinte"],
@@ -115,10 +115,10 @@ export function yearFasts(year: number, style: Style): Fast[] {
   ];
   const peterEnd = fd(6, 28);
   const peterStart = addDays(easter, 57);
-  if (peterEnd && peterEnd > peterStart) out.push({ name: "Postul Sfinților Apostoli Petru și Pavel", from: peterStart, to: peterEnd });
+  if (peterEnd && peterEnd > peterStart) out.push({ name: "Postul Sfinților Apostoli Petru și Pavel", from: peterStart, to: peterEnd, guide: "sfintii-petru-si-pavel-traditii" });
   const aug1 = fd(8, 1);
   const aug14 = fd(8, 14);
-  if (aug1 && aug14) out.push({ name: "Postul Adormirii Maicii Domnului", from: aug1, to: aug14 });
+  if (aug1 && aug14) out.push({ name: "Postul Adormirii Maicii Domnului", from: aug1, to: aug14, guide: "sfanta-maria-mare-adormirea-maicii-domnului" });
   const nov15 = fd(11, 15);
   // pe stil vechi, 24 decembrie bisericesc cade pe 6 ianuarie anul următor
   const dec24 = style === "nou" ? fd(12, 24) : fixedDate(12, 24, year + 1, style);

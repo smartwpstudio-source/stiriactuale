@@ -3,7 +3,7 @@ import { CALENDAR_PATH, todayChisinau } from "./orthodox-calendar";
 import { getSaintDay } from "@/lib/calendar-data";
 import { churchDay, formatDay, weekday, yearFeasts } from "@/lib/orthodox";
 
-// „Sfântul zilei” pe prima pagină — stil vechi (Mitropolia Moldovei), cu
+// „Sfântul zilei” pe prima pagină — stil vechi (majoritatea parohiilor din Moldova), cu
 // sărbătoarea mare a zilei dacă e una; trimite spre pilonul calendarului.
 export async function SaintOfDay() {
   const today = todayChisinau();

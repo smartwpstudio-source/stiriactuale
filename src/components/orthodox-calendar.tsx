@@ -8,7 +8,8 @@ import {
 
 // Pilonul calendarului: sărbători mari, posturi, Paștele și (când există
 // datele din content/calendar/sfinti/) sfinții fiecărei zile, pe stil vechi
-// (implicit — Mitropolia Moldovei) sau nou (Mitropolia Basarabiei).
+// (implicit — majoritatea parohiilor din Moldova, din ambele mitropolii) sau
+// nou (calendarul îndreptat, doar unele parohii).
 export const CALENDAR_PATH = "/calendar-crestin-ortodox/";
 export const FIRST_YEAR = 2024;
 export const LAST_YEAR = 2035;
@@ -42,7 +43,7 @@ export async function OrthodoxCalendar({ year, style, basePath }: { year: number
 
   const faq = [
     { q: `Când este Paștele în ${year}?`, a: `Paștele ortodox în ${year} este ${weekday(easter)}, ${formatDay(easter)} ${year} — aceeași dată pe stil vechi și pe stil nou.` },
-    { q: "Când este Crăciunul pe stil vechi și pe stil nou?", a: "Pe stil nou, Crăciunul este pe 25 decembrie. Pe stil vechi (Mitropolia Moldovei) este pe 7 ianuarie. În Republica Moldova ambele zile sunt libere." },
+    { q: "Când este Crăciunul pe stil vechi și pe stil nou?", a: "Pe stil nou, Crăciunul este pe 25 decembrie. Pe stil vechi, ținut de majoritatea parohiilor din Moldova, este pe 7 ianuarie. În Republica Moldova ambele zile sunt libere." },
     { q: "Ce înseamnă stil vechi și stil nou?", a: "Stilul vechi urmează calendarul iulian: sărbătorile cu dată fixă cad cu 13 zile mai târziu. Stilul nou le ține la data din calendarul civil. Paștele este calculat la fel pentru ambele." },
   ];
   const faqLd = {
@@ -70,7 +71,7 @@ export async function OrthodoxCalendar({ year, style, basePath }: { year: number
             href={styleLink(s)}
             className={`rounded px-3 py-1.5 text-sm ${style === s ? "bg-ink text-white" : "border border-line text-ink hover:border-teal"}`}
           >
-            {s === "vechi" ? "Stil vechi (Mitropolia Moldovei)" : "Stil nou (Mitropolia Basarabiei)"}
+            {s === "vechi" ? "Stil vechi (majoritatea parohiilor)" : "Stil nou (calendarul îndreptat)"}
           </Link>
         ))}
       </div>
