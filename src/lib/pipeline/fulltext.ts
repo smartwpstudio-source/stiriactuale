@@ -49,11 +49,15 @@ function nextFlightChunks(html: string): string[] {
 }
 
 // Video-ul știrii: doar din <article> când există (altfel prindem playerul
-// site-ului din bara laterală, același pe toate paginile) plus og:video din <head>.
+// site-ului din bara laterală, același pe toate paginile) plus og:video din <head>,
+// apoi corpul din datele Next.js.
 function articleVideo(html: string): string | null {
   const article = html.match(/<article\b[\s\S]*<\/article>/i)?.[0];
-  if (!article) return findVideo(html);
-  return findVideo(article) ?? findVideo(html.match(/<head\b[\s\S]*?<\/head>/i)?.[0] ?? "");
+  const direct = article
+    ? (findVideo(article) ?? findVideo(html.match(/<head\b[\s\S]*?<\/head>/i)?.[0] ?? ""))
+    : findVideo(html);
+  // site-urile Next.js (stiri.md) țin playerul în corpul din datele de hidratare
+  return direct ?? findVideo(nextFlightChunks(html).join(""));
 }
 
 export function extractArticle(html: string) {
