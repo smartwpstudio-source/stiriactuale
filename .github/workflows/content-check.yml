@@ -17,4 +17,5 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run check:content
+      - run: npx next typegen # PageProps/LayoutProps — generate, nu sunt în repo
       - run: npx tsc --noEmit -p .
