@@ -13,12 +13,11 @@ export function SickPayCalculator({ p }: { p: NonNullable<CalcParams["concediu_m
     <div className="grid gap-4">
       <NumberField label={`Venitul mediu lunar asigurat (ultimele ${p.luni_baza} luni)`} value={avg} onChange={setAvg} suffix="lei" step={100} />
       <NumberField label="Stagiul total de cotizare" value={years} onChange={setYears} suffix="ani" />
-      <NumberField label="Zile de concediu medical (lucrătoare)" value={days} onChange={setDays} suffix="zile" />
+      <NumberField label="Zile de concediu medical (din certificat)" value={days} onChange={setDays} suffix="zile" />
       <ResultRows
         rows={[
-          ["Procent după stagiu", `${r.pct}%`],
-          ["Indemnizația pe o zi", lei(r.daily)],
-          [`Primele ${p.primele_zile_angajator} zile`, "plătite de angajator"],
+          [`Primele ${r.empDays} zile — plătește angajatorul (${r.empPct}%)`, lei(r.employer)],
+          [`Restul de ${Math.max(0, days - r.empDays)} zile — plătește CNAS (${r.pct}%, după stagiu)`, lei(r.cnas)],
         ]}
         total={[`Total pentru ${days} zile`, lei(r.total)]}
       />

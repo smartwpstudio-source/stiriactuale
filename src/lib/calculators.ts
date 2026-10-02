@@ -13,6 +13,7 @@ export interface CalcParams {
   salariu?: {
     impozit_venit_pct: number;
     scutire_personala_anuala_lei: number;
+    scutire_prag_venit_anual_lei?: number | null; // peste acest venit anual nu se acordă scutirea
     cnam_angajat_pct: number;
     cnas_angajat_pct: number;
     salariu_minim_lei: number;
@@ -28,12 +29,14 @@ export interface CalcParams {
     zile_medii_luna: number;
     plafon_lei: number | null;
     primele_zile_angajator: number;
+    angajator_pct?: number; // primele zile le plătește angajatorul, din salariul mediu
     surse: Source[];
   };
   maternitate?: {
     procent: number;
     luni_baza: number;
     zile_total: number;
+    durate?: { zile: number; caz: string }[];
     zile_medii_luna: number;
     plafon_lei: number | null;
     surse: Source[];
@@ -59,10 +62,8 @@ const round = (n: number) => Math.round(n * 100) / 100;
 export function netSalary(gross: number, s: NonNullable<CalcParams["salariu"]>) {
   const cnam = round((gross * s.cnam_angajat_pct) / 100);
   const cnas = round((gross * s.cnas_angajat_pct) / 100);
-  const base = Math.max(
-    0,
-    gross - (s.cnas_deductibil ? cnas : 0) - (s.cnam_deductibil ? cnam : 0) - s.scutire_personala_anuala_lei / 12,
-  );
+  const exempt = s.scutire_prag_venit_anual_lei && gross * 12 >= s.scutire_prag_venit_anual_lei ? 0 : s.scutire_personala_anuala_lei / 12;
+  const base = Math.max(0, gross - (s.cnas_deductibil ? cnas : 0) - (s.cnam_deductibil ? cnam : 0) - exempt);
   const tax = round((base * s.impozit_venit_pct) / 100);
   return { gross: round(gross), cnam, cnas, tax, net: round(gross - cnam - cnas - tax) };
 }
@@ -79,15 +80,22 @@ export function grossForNet(net: number, s: NonNullable<CalcParams["salariu"]>):
   return round(hi);
 }
 
+// Primele zile: angajatorul (angajator_pct), restul: CNAS după stagiu.
+// ponytail: un singur plafon pe venitul mediu și împărțire la media zilelor
+// lunii — legea plafonează fiecare lună și împarte la zilele lunii (estimare).
 export function sickPay(avgMonthly: number, years: number, days: number, c: NonNullable<CalcParams["concediu_medical"]>) {
   const pct = [...c.trepte].sort((a, b) => b.stagiu_min_ani - a.stagiu_min_ani).find((t) => years >= t.stagiu_min_ani)?.procent ?? 0;
   const base = c.plafon_lei ? Math.min(avgMonthly, c.plafon_lei) : avgMonthly;
-  const daily = round(((base / c.zile_medii_luna) * pct) / 100);
-  return { pct, daily, total: round(daily * days) };
+  const perDay = base / c.zile_medii_luna;
+  const empPct = c.angajator_pct ?? pct;
+  const empDays = Math.min(days, c.primele_zile_angajator);
+  const employer = round(((perDay * empPct) / 100) * empDays);
+  const cnas = round(((perDay * pct) / 100) * (days - empDays));
+  return { pct, empPct, empDays, daily: round((perDay * pct) / 100), employer, cnas, total: round(employer + cnas) };
 }
 
-export function maternityPay(avgMonthly: number, m: NonNullable<CalcParams["maternitate"]>) {
+export function maternityPay(avgMonthly: number, m: NonNullable<CalcParams["maternitate"]>, days = m.zile_total) {
   const base = m.plafon_lei ? Math.min(avgMonthly, m.plafon_lei) : avgMonthly;
   const daily = round(((base / m.zile_medii_luna) * m.procent) / 100);
-  return { daily, total: round(daily * m.zile_total), days: m.zile_total };
+  return { daily, total: round(daily * days), days };
 }

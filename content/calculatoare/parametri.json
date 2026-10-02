@@ -43,7 +43,8 @@
         "name": "Guvern: proiectul HG privind salariul minim pe țară pentru anul 2026",
         "url": "https://www.gov.md/sites/default/files/media/documents/sedinte-de-guvern/2025-11/915-MMPS-2025.pdf"
       }
-    ]
+    ],
+    "scutire_prag_venit_anual_lei": 360000
   },
   "concediu_medical": {
     "trepte": [
@@ -78,7 +79,8 @@
         "name": "Guvern: salariul mediu lunar pe economie prognozat pentru 2026 — 17.400 lei",
         "url": "https://gov.md/ro/node/5613"
       }
-    ]
+    ],
+    "angajator_pct": 75
   },
   "maternitate": {
     "procent": 100,
@@ -98,6 +100,20 @@
       {
         "name": "Guvern: salariul mediu lunar pe economie prognozat pentru 2026 — 17.400 lei",
         "url": "https://gov.md/ro/node/5613"
+      }
+    ],
+    "durate": [
+      {
+        "zile": 126,
+        "caz": "naștere normală"
+      },
+      {
+        "zile": 140,
+        "caz": "naștere complicată sau gemeni"
+      },
+      {
+        "zile": 182,
+        "caz": "trei sau mai mulți copii"
       }
     ]
   }
