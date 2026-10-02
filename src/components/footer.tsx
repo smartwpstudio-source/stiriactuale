@@ -38,6 +38,9 @@ export function Footer() {
           <Link href="/calendar-crestin-ortodox/" className="hover:text-amber">
             Calendar ortodox
           </Link>
+          <Link href="/publicitate/" className="hover:text-amber">
+            Publicitate
+          </Link>
           <a href={TELEGRAM_URL} className="hover:text-amber">
             Telegram
           </a>

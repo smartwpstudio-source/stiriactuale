@@ -31,6 +31,7 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
     section: articles.section,
     score: articles.qualityScore,
     image: articles.imageUrl,
+    video: articles.videoUrl,
     push: articles.pushWorthy,
     views: articles.views,
     createdAt: articles.createdAt,
@@ -55,7 +56,8 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
             <span className="w-24 shrink-0 font-mono text-xs text-teal">{SECTION_LABELS[r.section]}</span>
             <span className="flex-1 text-ink">{r.title}</span>
             {r.push && <span title="propus pentru notificare push">🔔</span>}
-            {!r.image && <span className="font-mono text-xs text-alert">fără foto</span>}
+            {r.video && <span title="are video din sursă">▶</span>}
+            {!r.image && !r.video && <span className="font-mono text-xs text-alert">fără foto</span>}
             <span className="w-16 text-right font-mono text-xs text-sub" title="afișări pe site">{r.views} viz.</span>
             <span className="font-mono text-xs text-sub" title="scor pipeline">{Math.round(r.score)}</span>
           </Link>

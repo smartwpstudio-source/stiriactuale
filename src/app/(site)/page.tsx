@@ -7,6 +7,7 @@ import { PushOptIn } from "@/components/push-opt-in";
 import { NewsFeed } from "@/components/news-feed";
 import { CurrencyBox } from "@/components/currency-box";
 import { SaintOfDay } from "@/components/saint-of-day";
+import { WeatherBox } from "@/components/weather-box";
 import { getHeroArticle, getMostRead, listArticles } from "@/lib/content/queries";
 import { articleUrl } from "@/lib/content/url";
 
@@ -86,6 +87,7 @@ export default async function HomePage() {
             )}
             <CurrencyBox />
             <SaintOfDay />
+            <WeatherBox />
           </div>
         </aside>
       </div>
