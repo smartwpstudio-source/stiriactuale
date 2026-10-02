@@ -23,6 +23,7 @@ export function Hero({ article }: { article: Article }) {
       <ArticleThumb
         topics={article.topics}
         imageUrl={article.imageUrl}
+        video={!!article.videoUrl}
         imageAlt={article.imageAlt}
         className="aspect-video w-full lg:aspect-auto lg:h-full lg:min-h-[360px]"
         iconSize={64}

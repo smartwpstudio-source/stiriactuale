@@ -51,3 +51,11 @@ export function findVideo(html: string): string | null {
   }
   return null;
 }
+
+// Miniatura publică a unui video YouTube (fără cheie). hqdefault există mereu;
+// e 4:3 cu benzi negre, tăiate de object-cover în cadrele 16:9. Facebook nu
+// are miniatură publică — acolo rămâne poza de stock.
+export function youtubeThumb(embedUrl?: string | null): string | null {
+  const id = embedUrl?.match(/youtube-nocookie\.com\/embed\/([\w-]{11})/)?.[1];
+  return id ? `https://i.ytimg.com/vi/${id}/hqdefault.jpg` : null;
+}

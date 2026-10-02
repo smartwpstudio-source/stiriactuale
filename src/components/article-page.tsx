@@ -91,20 +91,26 @@ export async function ArticlePage({
           </>
         ) : (
           <>
-            <ArticleThumb
-              topics={article.topics}
-              imageUrl={article.imageUrl}
-              imageAlt={article.imageAlt}
-              className="mt-6 aspect-video w-full rounded"
-              iconSize={64}
-              sizes="(max-width: 768px) 100vw, 720px"
-            priority
-            />
-            {imageLabel(article.imageUrl) && (
-              <p className="mt-1 font-mono text-xs text-sub">{imageLabel(article.imageUrl)}</p>
+            {article.videoUrl ? (
+              // video din sursă: playerul ia locul pozei, sus
+              <VideoEmbed src={article.videoUrl} title={article.title} />
+            ) : (
+              <>
+              <ArticleThumb
+                topics={article.topics}
+                imageUrl={article.imageUrl}
+                imageAlt={article.imageAlt}
+                className="mt-6 aspect-video w-full rounded"
+                iconSize={64}
+                sizes="(max-width: 768px) 100vw, 720px"
+              priority
+              />
+              {imageLabel(article.imageUrl) && (
+                <p className="mt-1 font-mono text-xs text-sub">{imageLabel(article.imageUrl)}</p>
+              )}
+              </>
             )}
             <p className="mt-6 text-xl font-medium leading-relaxed text-ink">{article.lead}</p>
-            {article.videoUrl && !article.archived && <VideoEmbed src={article.videoUrl} title={article.title} />}
             {(() => {
               const body = sanitizeBody(article.bodyHtml, article.imageAlt ?? article.title);
               const ads = !article.archived && ADSENSE_IN_ARTICLE_SLOT;

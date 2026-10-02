@@ -85,6 +85,7 @@ export function NewsFeed({
               <ArticleThumb
                 topics={a.topics}
                 imageUrl={a.imageUrl}
+                video={!!a.videoUrl}
                 imageAlt={a.imageAlt}
                 className="aspect-[16/10] w-32 shrink-0 self-start rounded sm:w-56"
                 iconSize={32}

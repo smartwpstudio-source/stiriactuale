@@ -31,6 +31,7 @@ export function ArticleRow({
       <ArticleThumb
         topics={article.topics}
         imageUrl={article.imageUrl}
+        video={!!article.videoUrl}
         imageAlt={article.imageAlt}
         className={`aspect-[4/3] shrink-0 self-start rounded ${small ? "w-24" : "w-28 sm:w-40"}`}
         iconSize={small ? 20 : 28}

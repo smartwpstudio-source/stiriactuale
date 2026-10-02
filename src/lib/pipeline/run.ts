@@ -7,6 +7,7 @@ import { classifyGroups } from "./classify";
 import { generateArticle } from "./generate";
 import { computeQualityScore } from "./scoring";
 import { findArticleImage } from "./image";
+import { youtubeThumb } from "@/lib/video";
 import { isDuplicate, loadRecentFingerprints, loadUsedImageIds, publishArticle } from "./publish";
 import { mapWithConcurrency } from "./concurrency";
 import { spentUsd } from "./llm";
@@ -172,7 +173,10 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
           }
           return null;
         }
-        const image = await findArticleImage(generated.stock_query, generated.image_prompt, generated.slug, usedImageIds);
+        // cu video YouTube, captura din video ține loc de poză (youtubeThumb) — fără stock
+        const image = youtubeThumb(generated.video_url)
+          ? null
+          : await findArticleImage(generated.stock_query, generated.image_prompt, generated.slug, usedImageIds);
         await publishArticle(c, generated, image);
         if (c.group.manual) {
           await db.update(candidates).set({ processedAt: new Date() }).where(inArray(candidates.id, c.group.candidateIds));

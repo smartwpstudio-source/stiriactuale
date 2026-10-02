@@ -2,6 +2,7 @@ import { and, count, desc, eq, gt, gte, ne, or, sql, type SQL } from "drizzle-or
 import { getDb } from "@/lib/pipeline/db/client";
 import { articles as t } from "@/lib/pipeline/db/schema";
 import type { Article, Section, Topic } from "./types";
+import { youtubeThumb } from "@/lib/video";
 
 // Doar articole "published" — draft-urile stau în /admin. Listele nu citesc
 // corpul articolului (bodyHtml): cu arhiva WordPress sunt mii de rânduri, iar
@@ -23,11 +24,12 @@ const listColumns = {
   imageAltText: t.imageAltText,
   sources: t.sources,
   archived: t.archived,
+  videoUrl: t.videoUrl,
 };
 
 type ListRow = { [K in keyof typeof listColumns]: (typeof t.$inferSelect)[K] };
 
-function mapRow(row: ListRow & { bodyHtml?: string; videoUrl?: string | null }): Article {
+function mapRow(row: ListRow & { bodyHtml?: string }): Article {
   return {
     slug: row.slug,
     title: row.title,
@@ -39,7 +41,8 @@ function mapRow(row: ListRow & { bodyHtml?: string; videoUrl?: string | null }):
     topics: (row.topics as Topic[]) ?? [],
     publishedAt: row.publishedAt.toISOString(),
     sourceCount: row.sourceCount,
-    imageUrl: row.imageUrl ?? undefined,
+    // cu video YouTube în sursă: captura din video, nu poza de stock
+    imageUrl: youtubeThumb(row.videoUrl) ?? row.imageUrl ?? undefined,
     imageAlt: row.imageAltText ?? undefined,
     videoUrl: row.videoUrl ?? undefined,
     sources: row.sources,
@@ -136,7 +139,7 @@ export async function getArticleBySection(
   if (locality !== undefined) c.push(eq(t.locality, locality));
   if (country !== undefined) c.push(eq(t.country, country));
   const [row] = await getDb()
-    .select({ ...listColumns, bodyHtml: t.bodyHtml, videoUrl: t.videoUrl })
+    .select({ ...listColumns, bodyHtml: t.bodyHtml })
     .from(t)
     .where(and(...c))
     .limit(1);

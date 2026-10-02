@@ -32,6 +32,7 @@ export function ArticleThumb({
   iconSize = 28,
   sizes = "(max-width: 640px) 100vw, 600px",
   priority = false,
+  video = false,
 }: {
   topics: Topic[];
   imageUrl?: string;
@@ -40,6 +41,7 @@ export function ArticleThumb({
   iconSize?: number;
   sizes?: string;
   priority?: boolean; // poza principală a paginii: se încarcă imediat, nu leneș (LCP)
+  video?: boolean; // articol cu video: semnul ▶ peste imagine
 }) {
   const topic = topics[0];
   const color = topic ? TOPIC_COLORS[topic] : FALLBACK_COLOR;
@@ -57,6 +59,11 @@ export function ArticleThumb({
           fetchPriority={priority ? "high" : undefined}
           className="object-cover"
         />
+        {video && (
+          <span className="absolute inset-0 flex items-center justify-center" aria-label="Articol cu video">
+            <span className="flex h-11 w-11 items-center justify-center rounded-full bg-black/60 text-lg text-white">▶</span>
+          </span>
+        )}
       </div>
     );
   }

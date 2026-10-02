@@ -15,6 +15,7 @@ export function ArticleCard({ article, size = "md" }: { article: Article; size?:
       <ArticleThumb
         topics={article.topics}
         imageUrl={article.imageUrl}
+        video={!!article.videoUrl}
         imageAlt={article.imageAlt}
         className="aspect-video w-full"
         iconSize={lg ? 48 : 36}
