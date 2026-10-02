@@ -48,15 +48,15 @@ export interface Feast {
 
 // Sărbătorile mobile, față de Paști (aceleași pe ambele stiluri).
 const MOVABLE: [number, string, string?][] = [
-  [-48, "Începutul Postului Mare"],
-  [-7, "Floriile — Intrarea Domnului în Ierusalim"],
-  [-2, "Vinerea Mare"],
-  [0, "Învierea Domnului — Paștele"],
-  [1, "A doua zi de Paști"],
-  [8, "Paștele Blajinilor (Memorialul)"],
-  [39, "Înălțarea Domnului"],
-  [49, "Rusaliile — Pogorârea Sfântului Duh"],
-  [50, "A doua zi de Rusalii — Sfânta Treime"],
+  [-48, "Începutul Postului Mare", "postul-mare-cand-incepe-si-cum-se-tine"],
+  [-7, "Floriile — Intrarea Domnului în Ierusalim", "floriile-traditii-si-onomastica"],
+  [-2, "Vinerea Mare", "saptamana-mare-si-vinerea-mare"],
+  [0, "Învierea Domnului — Paștele", "pastele-traditii-in-moldova"],
+  [1, "A doua zi de Paști", "pastele-traditii-in-moldova"],
+  [8, "Paștele Blajinilor (Memorialul)", "pastele-blajinilor-traditii-si-pomenirea-mortilor"],
+  [39, "Înălțarea Domnului", "inaltarea-domnului-si-rusaliile-traditii"],
+  [49, "Rusaliile — Pogorârea Sfântului Duh", "inaltarea-domnului-si-rusaliile-traditii"],
+  [50, "A doua zi de Rusalii — Sfânta Treime", "inaltarea-domnului-si-rusaliile-traditii"],
 ];
 
 // Sărbătorile mari cu dată fixă (data bisericească). Lista completă de sfinți
@@ -69,8 +69,8 @@ export const FIXED_FEASTS: [number, number, string, string?][] = [
   [1, 6, "Botezul Domnului — Boboteaza", "boboteaza-traditii-si-agheasma-mare"],
   [1, 7, "Soborul Sfântului Ioan Botezătorul", "sfantul-ioan-botezatorul-soborul-onomastica"],
   [2, 2, "Întâmpinarea Domnului", "intampinarea-domnului-stretenia-traditii"],
-  [3, 25, "Buna Vestire"],
-  [4, 23, "Sfântul Mare Mucenic Gheorghe"],
+  [3, 25, "Buna Vestire", "buna-vestire-traditii-si-credinte"],
+  [4, 23, "Sfântul Mare Mucenic Gheorghe", "sfantul-gheorghe-traditii-si-onomastica"],
   [6, 24, "Nașterea Sfântului Ioan Botezătorul"],
   [6, 29, "Sfinții Apostoli Petru și Pavel"],
   [7, 20, "Sfântul Proroc Ilie"],
@@ -111,7 +111,7 @@ export function yearFasts(year: number, style: Style): Fast[] {
   const easter = orthodoxEaster(year);
   const fd = (m: number, d: number, y = year) => fixedDate(m, d, y, style);
   const out: Fast[] = [
-    { name: "Postul Mare (al Paștelui)", from: addDays(easter, -48), to: addDays(easter, -1) },
+    { name: "Postul Mare (al Paștelui)", from: addDays(easter, -48), to: addDays(easter, -1), guide: "postul-mare-cand-incepe-si-cum-se-tine" },
   ];
   const peterEnd = fd(6, 28);
   const peterStart = addDays(easter, 57);
