@@ -3,7 +3,9 @@ import { notFound } from "next/navigation";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { ShareButtons } from "@/components/share-buttons";
 import { TelegramCta } from "@/components/telegram-cta";
-import { sanitizeBody } from "@/lib/content/sanitize";
+import { sanitizeBody, splitAfterParagraph } from "@/lib/content/sanitize";
+import { ADSENSE_IN_ARTICLE_SLOT } from "@/lib/adsense";
+import { AdSlot } from "@/components/ad-slot";
 import { GUIDE_CATEGORIES, getGuide, getGuides } from "@/lib/content/guides";
 import { absoluteUrl } from "@/lib/seo";
 
@@ -67,7 +69,18 @@ export default async function GuidePage({ params }: PageProps<"/ghiduri/[slug]">
       <p className="mt-4 font-mono text-sm text-sub">Ghid · actualizat la {updated}</p>
       <p className="mt-6 text-xl font-medium leading-relaxed text-ink">{g.description}</p>
 
-      <div className="prose-article mt-4 text-ink" dangerouslySetInnerHTML={{ __html: sanitizeBody(g.bodyHtml) }} />
+      {(() => {
+        // ghidurile sunt lungi și citite atent: un bloc după paragraful 3, unul la final
+        const [head, tail] = ADSENSE_IN_ARTICLE_SLOT ? splitAfterParagraph(sanitizeBody(g.bodyHtml, g.title), 3) : [sanitizeBody(g.bodyHtml), ""];
+        return (
+          <>
+            <div className="prose-article mt-4 text-ink" dangerouslySetInnerHTML={{ __html: head }} />
+            {tail && <AdSlot slot={ADSENSE_IN_ARTICLE_SLOT} />}
+            {tail && <div className="prose-article text-ink" dangerouslySetInnerHTML={{ __html: tail }} />}
+            {ADSENSE_IN_ARTICLE_SLOT && <AdSlot slot={ADSENSE_IN_ARTICLE_SLOT} />}
+          </>
+        );
+      })()}
 
       {g.faq && g.faq.length > 0 && (
         <section className="mt-10">

@@ -14,25 +14,13 @@ import { TOPIC_LABELS } from "@/lib/content/topic-meta";
 import { articleUrl } from "@/lib/content/url";
 import { absoluteUrl } from "@/lib/seo";
 import { AI_IMAGE_PREFIX } from "@/lib/pipeline/image";
-import { sanitizeBody } from "@/lib/content/sanitize";
+import { sanitizeBody, splitAfterParagraph } from "@/lib/content/sanitize";
 import { ADSENSE_IN_ARTICLE_SLOT } from "@/lib/adsense";
 import { AdSlot } from "./ad-slot";
 import { RelatedGuide } from "./related-guide";
 import { VideoEmbed } from "./video-embed";
 import { getRelatedGuide } from "@/lib/content/related-guide";
 
-// Împarte corpul după al n-lea paragraf; [tot, ""] dacă după el nu mai rămân
-// măcar 2 paragrafe (reclama nu stă lipită de final).
-function splitAfterParagraph(html: string, n: number): [string, string] {
-  let idx = -1;
-  for (let i = 0; i < n; i++) {
-    idx = html.indexOf("</p>", idx + 1);
-    if (idx < 0) return [html, ""];
-  }
-  const cut = idx + 4;
-  const rest = html.slice(cut);
-  return (rest.match(/<\/p>/g) ?? []).length >= 2 ? [html.slice(0, cut), rest] : [html, ""];
-}
 import type { Article } from "@/lib/content/types";
 
 // Pattern de pagină articol din sistem-design-ui.md secțiunea 5: breadcrumb,

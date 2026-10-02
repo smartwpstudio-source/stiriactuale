@@ -40,3 +40,16 @@ export function sanitizeBody(html: string, imageAlt?: string): string {
     return `<img${a}>`;
   });
 }
+
+// Împarte corpul după al n-lea paragraf; [tot, ""] dacă după el nu mai rămân
+// măcar 2 paragrafe (reclama nu stă lipită de final).
+export function splitAfterParagraph(html: string, n: number): [string, string] {
+  let idx = -1;
+  for (let i = 0; i < n; i++) {
+    idx = html.indexOf("</p>", idx + 1);
+    if (idx < 0) return [html, ""];
+  }
+  const cut = idx + 4;
+  const rest = html.slice(cut);
+  return (rest.match(/<\/p>/g) ?? []).length >= 2 ? [html.slice(0, cut), rest] : [html, ""];
+}
