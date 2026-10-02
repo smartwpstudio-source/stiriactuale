@@ -5,7 +5,7 @@ import type { CandidateGroup, ClassificationResult, GeneratedArticle } from "./t
 const SCHEMA = {
   type: "object",
   properties: {
-    titlu: { type: "string", description: "Max 70 caractere, informativ, cuvântul cheie la început. Fără clickbait." },
+    titlu: { type: "string", description: "Max 60 de caractere (Google taie titlurile mai lungi), informativ, cuvântul cheie la început. Fără clickbait." },
     slug: { type: "string", description: "Slug URL, minuscule, fără diacritice, cuvinte separate prin cratimă, max 8 cuvinte." },
     meta_description: { type: "string", description: "140-160 caractere." },
     lead: { type: "string", description: "1-2 propoziții: cine, ce, unde, când." },

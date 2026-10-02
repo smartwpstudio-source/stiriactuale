@@ -32,17 +32,18 @@ const ibmPlexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Stiri actuale",
-    template: "%s — Stiri actuale",
+    // prima pagină; restul paginilor își dau titlul, cu sufixul scurt
+    default: "Știri din Moldova — ultima oră | Știri Actuale",
+    template: "%s | Știri Actuale",
   },
-  description: "Știri din Moldova — regiuni, național, internațional, diaspora.",
+  description: "Știri din Moldova actualizate toată ziua: raioane, național, internațional și diaspora. Scumpiri, legi, accidente și scandaluri, din surse verificate.",
   manifest: "/manifest.webmanifest",
   // aceeași proprietate Search Console ca site-ul WordPress — istoricul se păstrează
   verification: { google: "D3-OLYwLDh37LyoQPynKaPN_EGe62ztq7rB_SXMJNow" },
   alternates: { types: { "application/rss+xml": "/feed/" } },
   // imaginea de distribuire implicită (prima pagină, secțiuni); articolele o înlocuiesc
   openGraph: {
-    siteName: "Stiri actuale",
+    siteName: "Știri Actuale",
     locale: "ro_MD",
     images: [{ url: "/og/?t=%C8%98tiri%20din%20Moldova%20%E2%80%94%20regiuni%2C%20na%C8%9Bional%2C%20interna%C8%9Bional%2C%20diaspora", width: 1200, height: 630 }],
   },
@@ -58,7 +59,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "Stiri actuale",
+    title: "Știri Actuale",
   },
 };
 

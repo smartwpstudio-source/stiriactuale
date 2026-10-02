@@ -27,6 +27,16 @@ const filter: FilterXSS = new FilterXSS({
   },
 });
 
-export function sanitizeBody(html: string): string {
-  return filter.process(html);
+// Imaginile din arhiva WordPress au adesea alt gol — primesc titlul
+// articolului (accesibilitate, căutarea de imagini) și încărcare lazy.
+export function sanitizeBody(html: string, imageAlt?: string): string {
+  const clean = filter.process(html);
+  if (!imageAlt) return clean;
+  const alt = escapeAttrValue(imageAlt);
+  return clean.replace(/<img\b([^>]*)>/gi, (_, attrs: string) => {
+    let a = attrs.replace(/\salt(="")?(?=[\s/]|$)/i, "");
+    if (!/\salt=/i.test(a)) a = ` alt="${alt}"${a}`;
+    if (!/\sloading=/i.test(a)) a += ' loading="lazy"';
+    return `<img${a}>`;
+  });
 }

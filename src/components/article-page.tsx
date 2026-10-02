@@ -97,7 +97,7 @@ export async function ArticlePage({
             <div
               className="prose-article mt-4 text-ink"
               dangerouslySetInnerHTML={{
-                __html: sanitizeBody(article.bodyHtml),
+                __html: sanitizeBody(article.bodyHtml, article.imageAlt ?? article.title),
               }}
             />
           </>
