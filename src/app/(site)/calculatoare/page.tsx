@@ -20,7 +20,7 @@ export default async function CalculatorsPage() {
       <p className="mt-3 max-w-2xl text-lg text-sub">
         Calcule rapide pentru bani și acte în Moldova, cu valorile oficiale în vigoare și sursa fiecăreia.
       </p>
-      <ul className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="mt-8 grid max-w-5xl gap-5 md:grid-cols-2">
         {list.map((c) => (
           <li key={c.slug}>
             <Link
