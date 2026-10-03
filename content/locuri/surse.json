@@ -2420,5 +2420,305 @@
   "name": "Grafică: cutremur",
   "keywords": "cutremur, seism, magnitudine, Vrancea",
   "files": []
+ },
+ {
+  "id": "ciocan-judecator",
+  "name": "Ciocanul judecătorului pe masă, fără oameni",
+  "keywords": "decizie judecătorească, sentință, instanța a decis, condamnat, proces, judecată",
+  "files": []
+ },
+ {
+  "id": "sala-judecata",
+  "name": "Sală de judecată goală",
+  "keywords": "proces, ședință de judecată, instanță",
+  "files": []
+ },
+ {
+  "id": "catuse",
+  "name": "Cătușe",
+  "keywords": "reținut, arestat, cătușe, reținere",
+  "files": []
+ },
+ {
+  "id": "penitenciar",
+  "name": "Penitenciar / gratii",
+  "keywords": "închisoare, penitenciar, deținuți, pedeapsă cu închisoare",
+  "files": []
+ },
+ {
+  "id": "harta-moldovei",
+  "name": "Harta Republicii Moldova",
+  "keywords": "Moldova, la nivel național, în toată țara, raioane, statistică pe regiuni",
+  "files": []
+ },
+ {
+  "id": "steag-moldova",
+  "name": "Drapelul Republicii Moldova",
+  "keywords": "Republica Moldova, stat, Independența, sărbătoare națională",
+  "files": []
+ },
+ {
+  "id": "steag-ue",
+  "name": "Drapelul Uniunii Europene / UE și Moldova",
+  "keywords": "Uniunea Europeană, aderare, integrare europeană, Bruxelles, fonduri UE",
+  "files": []
+ },
+ {
+  "id": "grafic-economie",
+  "name": "Grafice economice / bursă / indicatori",
+  "keywords": "economie, PIB, inflație, creștere economică, indicatori, statistică",
+  "files": []
+ },
+ {
+  "id": "calculator-facturi",
+  "name": "Calculator și facturi / buget familial",
+  "keywords": "facturi, cheltuieli, buget, calcul, impozite",
+  "files": []
+ },
+ {
+  "id": "curs-valutar",
+  "name": "Casă de schimb valutar / curs euro dolar",
+  "keywords": "curs valutar, euro, dolar, schimb valutar",
+  "files": []
+ },
+ {
+  "id": "card-bancar",
+  "name": "Card bancar / plăți",
+  "keywords": "card, plăți, bancă, transfer bancar",
+  "files": []
+ },
+ {
+  "id": "pompa-carburant",
+  "name": "Pistol de alimentare la benzinărie, prim-plan",
+  "keywords": "benzină, motorină, carburanți, scumpire la pompă, ANRE carburanți",
+  "files": []
+ },
+ {
+  "id": "contor-gaz",
+  "name": "Contor de gaz / aragaz flacără",
+  "keywords": "gaz, tarif gaz, factura la gaz, încălzire",
+  "files": []
+ },
+ {
+  "id": "contor-electric",
+  "name": "Contor electric / prize / bec",
+  "keywords": "energie electrică, factura la lumină, tarif energie",
+  "files": []
+ },
+ {
+  "id": "robinet-apa",
+  "name": "Robinet cu apă",
+  "keywords": "apă potabilă, tarif apă, sistare apă, Apă-Canal",
+  "files": []
+ },
+ {
+  "id": "calorifer",
+  "name": "Calorifer / încălzire",
+  "keywords": "agent termic, căldură în case, sezon de încălzire, Termoelectrica",
+  "files": []
+ },
+ {
+  "id": "prognoza-meteo",
+  "name": "Cer, nori și soare / prognoză generală",
+  "keywords": "prognoza meteo, vremea, temperaturi, weekend",
+  "files": []
+ },
+ {
+  "id": "tractor",
+  "name": "Tractor pe câmp / lucrări agricole",
+  "keywords": "agricultură, fermieri, semănat, recoltare, subvenții agricole",
+  "files": []
+ },
+ {
+  "id": "cereale",
+  "name": "Grâu / porumb / boabe",
+  "keywords": "cereale, grâu, porumb, export cereale, prețul grâului",
+  "files": []
+ },
+ {
+  "id": "camioane-vama",
+  "name": "Camioane / transport de mărfuri",
+  "keywords": "export, import, camioane, transport de mărfuri, cozi de camioane",
+  "files": []
+ },
+ {
+  "id": "santier",
+  "name": "Șantier de construcție / macarale",
+  "keywords": "construcții, șantier, blocuri noi, investiții",
+  "files": []
+ },
+ {
+  "id": "blocuri",
+  "name": "Blocuri de locuințe",
+  "keywords": "apartamente, imobiliare, prețul locuințelor, chirie, ipotecă",
+  "files": []
+ },
+ {
+  "id": "drum-reparatie",
+  "name": "Lucrări de reparație a drumului",
+  "keywords": "reparație drum, asfaltare, lucrări rutiere, drum închis",
+  "files": []
+ },
+ {
+  "id": "trecere-pietoni",
+  "name": "Trecere de pietoni",
+  "keywords": "pietoni, trecere de pietoni, accident cu pieton, siguranță rutieră",
+  "files": []
+ },
+ {
+  "id": "radar-viteza",
+  "name": "Radar de viteză / indicator limită",
+  "keywords": "radar, viteză, amenzi, limita de viteză",
+  "files": []
+ },
+ {
+  "id": "semafor",
+  "name": "Semafor / intersecție",
+  "keywords": "trafic, intersecție, ambuteiaj, circulație",
+  "files": []
+ },
+ {
+  "id": "farmacie",
+  "name": "Farmacie / medicamente",
+  "keywords": "medicamente, farmacie, prețul medicamentelor, compensate",
+  "files": []
+ },
+ {
+  "id": "vaccin",
+  "name": "Vaccin / seringă",
+  "keywords": "vaccinare, vaccin, imunizare, gripa",
+  "files": []
+ },
+ {
+  "id": "spital-coridor",
+  "name": "Coridor de spital / pat de spital",
+  "keywords": "spital, pacienți, internare, medici, sistemul de sănătate",
+  "files": []
+ },
+ {
+  "id": "clasa-scoala",
+  "name": "Sală de clasă goală",
+  "keywords": "școală, elevi, profesori, an școlar, examene, bacalaureat",
+  "files": []
+ },
+ {
+  "id": "laptop-hacker",
+  "name": "Laptop / securitate cibernetică",
+  "keywords": "atac cibernetic, hackeri, date personale, internet, online",
+  "files": []
+ },
+ {
+  "id": "smartphone",
+  "name": "Telefon mobil / aplicații",
+  "keywords": "telefon, aplicație, SMS, rețele sociale, Telegram",
+  "files": []
+ },
+ {
+  "id": "colet-posta",
+  "name": "Colete / poștă / curierat",
+  "keywords": "colete, poștă, livrare, curierat, cumpărături online",
+  "files": []
+ },
+ {
+  "id": "avion-cer",
+  "name": "Avion pe cer",
+  "keywords": "zboruri, avion, companie aeriană, bilete de avion",
+  "files": []
+ },
+ {
+  "id": "autobuz-interurban",
+  "name": "Autocar / autobuz interurban",
+  "keywords": "curse interurbane, autocar, transport de pasageri, rute",
+  "files": []
+ },
+ {
+  "id": "paine",
+  "name": "Pâine / brutărie",
+  "keywords": "pâine, prețul pâinii, făină, brutărie",
+  "files": []
+ },
+ {
+  "id": "legume-piata",
+  "name": "Legume și fructe la piață",
+  "keywords": "prețuri la piață, legume, fructe, roșii, cartofi",
+  "files": []
+ },
+ {
+  "id": "vin-sticle",
+  "name": "Sticle de vin / pivniță",
+  "keywords": "vin, vinării, export vin, Ziua Vinului",
+  "files": []
+ },
+ {
+  "id": "minge-fotbal",
+  "name": "Fotbal / minge pe gazon",
+  "keywords": "fotbal, meci, naționala, campionat",
+  "files": []
+ },
+ {
+  "id": "sport-general",
+  "name": "Sport / atletism / sală de sport",
+  "keywords": "sport, sportivi, medalie, campionat",
+  "files": []
+ },
+ {
+  "id": "concert-scena",
+  "name": "Scenă de concert / lumini",
+  "keywords": "concert, festival, spectacol, artiști",
+  "files": []
+ },
+ {
+  "id": "biblioteca-carti",
+  "name": "Cărți / bibliotecă",
+  "keywords": "cărți, bibliotecă, lectură, literatură, cultură",
+  "files": []
+ },
+ {
+  "id": "cimitir-lumanari",
+  "name": "Lumânări / doliu",
+  "keywords": "doliu, comemorare, decedat, înmormântare, Paștele Blajinilor",
+  "files": []
+ },
+ {
+  "id": "copii-joaca",
+  "name": "Loc de joacă pentru copii (fără copii identificabili)",
+  "keywords": "copii, grădiniță, alocații pentru copii, familie",
+  "files": []
+ },
+ {
+  "id": "batrani-banca",
+  "name": "Bancă în parc / vârstnici de departe",
+  "keywords": "vârstnici, pensionari, îngrijire, singurătate",
+  "files": []
+ },
+ {
+  "id": "munca-muncitor",
+  "name": "Muncitor pe șantier (din spate) / cască de protecție",
+  "keywords": "muncă, salarii, locuri de muncă, angajați, șomaj",
+  "files": []
+ },
+ {
+  "id": "documente-stampila",
+  "name": "Documente cu ștampilă / acte",
+  "keywords": "acte, documente, ștampilă, birocrație, certificat",
+  "files": []
+ },
+ {
+  "id": "urna-vot-detaliu",
+  "name": "Buletin de vot / urnă (detaliu)",
+  "keywords": "alegeri, buletin de vot, vot, scrutin, campanie electorală",
+  "files": []
+ },
+ {
+  "id": "microfon-conferinta",
+  "name": "Microfoane la o conferință de presă (fără vorbitor)",
+  "keywords": "declarație, conferință de presă, briefing",
+  "files": []
+ },
+ {
+  "id": "steag-ucraina-razboi",
+  "name": "Ucraina: clădiri distruse de război (fără victime)",
+  "keywords": "Ucraina, război, atac rusesc, bombardament, Kiev, Odesa",
+  "files": []
  }
 ]
