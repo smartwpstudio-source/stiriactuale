@@ -99,6 +99,13 @@ function titleRule(c: ClassificationResult): string {
   return "Titlul începe cu cuvintele pe care oamenii le-ar căuta pe Google despre acest subiect (ex. „RCA se scumpește din 4 octombrie: …”), concret, fără clickbait.";
 }
 
+// Continuarea unei povești deja publicate: cititorul trebuie să vadă din titlu
+// că e altă știre (ce e nou), nu aceeași spusă altfel.
+function continuationRule(c: ClassificationResult): string {
+  if (!c.continuesTitle) return "";
+  return `\n\nE CONTINUAREA unui articol deja publicat: „${c.continuesTitle}”. Titlul spune ce e NOU, nu repetă evenimentul (ex. „Dronele căzute în Moldova: ce spune Ministerul Apărării”, „Accidentul de la Telenești: ce a stabilit ancheta”). Primul paragraf spune în una-două fraze ce s-a schimbat față de ce se știa, apoi detaliile noi; evenimentul inițial doar pe scurt, la final.`;
+}
+
 export async function generateArticle(
   group: CandidateGroup,
   classification: ClassificationResult,
@@ -120,7 +127,7 @@ export async function generateArticle(
   const article = await structured<GeneratedArticle>({
     model: OPUS_MODEL,
     system: mode === "full" ? SYSTEM_PROMPT : `${SYSTEM_PROMPT}\n\n${MODE_RULES[mode]}`,
-    prompt: `${titleRule(classification)}\n\nSecțiune: ${classification.section}. Subiecte: ${classification.topics.join(", ") || "—"}.\n\nRelatări despre același eveniment (text integral):\n\n${digest}`,
+    prompt: `${titleRule(classification)}${continuationRule(classification)}\n\nSecțiune: ${classification.section}. Subiecte: ${classification.topics.join(", ") || "—"}.\n\nRelatări despre același eveniment (text integral):\n\n${digest}`,
     schema: SCHEMA,
     maxBudgetUsd: 0.5,
   });
