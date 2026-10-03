@@ -40,15 +40,13 @@ export function bestGuide(text: string, guides: Guide[]): Guide | undefined {
 
 // Ghidurile de oraș („Cahul: primăria, spitalul…”) au cuvinte comune cu orice
 // accident sau spital: apar DOAR la știrile din acel oraș, după localitate.
-const CITY_LOCALITY: Record<string, string> = { comrat: "gagauzia" };
+// slug ghid = localitatea știrii + "-…" (anenii-noi-…); Comrat = Găgăuzia
+const GUIDE_PREFIX: Record<string, string> = { gagauzia: "comrat" };
 
 export function pickGuide(text: string, locality: string | undefined, guides: Guide[]): Guide | undefined {
   const cities = guides.filter((g) => g.category === "orase");
-  const own = cities.find((g) => {
-    const city = g.slug.split("-")[0];
-    return locality === (CITY_LOCALITY[city] ?? city);
-  });
-  return own ?? bestGuide(text, guides.filter((g) => g.category !== "orase"));
+  const own = locality && cities.find((g) => g.slug.startsWith(`${GUIDE_PREFIX[locality] ?? locality}-`));
+  return own || bestGuide(text, guides.filter((g) => g.category !== "orase"));
 }
 
 export async function getRelatedGuide(title: string, lead: string, locality?: string): Promise<Guide | undefined> {

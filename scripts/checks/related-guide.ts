@@ -19,4 +19,7 @@ const cahul = { ...g("cahul-primaria-spitalul-asp-transportul", "Cahul: primări
 const accident = "Mărinești: doi răniți transportați la spitalul raional, au intervenit poliției";
 assert.equal(pickGuide(accident, "sangerei", [...guides, cahul]), undefined);
 assert.equal(pickGuide(accident, "cahul", [...guides, cahul])?.slug, cahul.slug);
+const anenii = { ...cahul, slug: "anenii-noi-primaria-spitalul-asp-transportul" } as Guide;
+assert.equal(pickGuide(accident, "anenii-noi", [cahul, anenii])?.slug, anenii.slug);
+assert.equal(pickGuide(accident, "anenii-noi", [cahul]), undefined);
 console.log("related-guide: OK");
