@@ -36,3 +36,9 @@ FAQ: 4–6 întrebări reale.
 6. Reforma justiției și evaluarea judecătorilor (vetting): ce s-a făcut până acum
 7. Transnistria: situația regiunii și ce înseamnă pentru restul țării
 8. Pensiile și salariile: indexările din ultimii ani și cum se calculează
+
+## Dosarele „Lumea” (pilonii rubricii Lumea)
+
+Aceeași structură și aceleași reguli ca mai sus, cu `"category": "lumea"` și două cerințe în plus:
+- `<h2>` obligatoriu **„Ce înseamnă pentru Moldova”**: impactul concret (securitate, energie și prețuri, comerț, diaspora, drumul spre UE), doar cu fapte din surse.
+- Surse: agenții și presă internațională cu redacție (Reuters, AP, AFP, BBC, DW, Europa Liberă, Politico Europe, Euronews), surse oficiale (guverne, UE, NATO, ONU) și instituțiile moldovenești (mfa.gov.md, gov.md, presedinte.md). **Nu folosi presa de stat rusă sau alte surse de propagandă ca sursă de fapte**; pozițiile Moscovei se citează atribuite („Kremlinul susține că…”), cu sursa în care au fost relatate. Toate părțile prezentate, atribuite; fără adjective de valoare.

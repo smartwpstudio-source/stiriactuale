@@ -21,6 +21,7 @@ export const GUIDE_CATEGORIES = {
   explicat: "Explicat simplu",
   sarbatori: "Sărbători și tradiții",
   calatorii: "Călătorii din Moldova",
+  lumea: "Lumea: dosare",
 } as const;
 
 export type GuideCategory = keyof typeof GUIDE_CATEGORIES;
