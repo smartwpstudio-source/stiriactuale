@@ -223,12 +223,16 @@ export async function addLink(formData: FormData) {
     .map((p) => `${p!.title}\n${p!.text}`);
   let title: string;
   let summary: string;
+  let sourceUrl = url.toString();
   let sourceName = url.hostname.replace(/^www\./, "");
   if (video) {
     title = manualTitle || video.title;
     summary = [video.description, extra, ...extraTexts].filter(Boolean).join("\n\n").slice(0, 20000);
     sourceName = video.channel;
     if (!title) redirect("/admin/?link=videotitle");
+    // postare Telegram fără video (text + poze): știre obișnuită, nu video —
+    // adresa t.me/s/canal/N nu e recunoscută ca player (video.ts)
+    if (!video.hasVideo) sourceUrl = video.embed.replace("https://t.me/", "https://t.me/s/").replace("?embed=1", "");
   } else {
     // textul integral se descarcă din nou la scriere (generate.ts); aici doar
     // titlul și un rezumat pentru clasificare
@@ -241,7 +245,7 @@ export async function addLink(formData: FormData) {
   await getDb()
     .insert(candidates)
     .values({
-      url: url.toString(),
+      url: sourceUrl,
       title,
       summary,
       sourceName,

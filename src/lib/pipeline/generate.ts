@@ -132,7 +132,10 @@ export async function generateArticle(
   // o relatare per redacție, cele mai noi întâi
   const items = [...new Map(group.items.map((i) => [i.sourceName, i])).values()].slice(0, MAX_SOURCES);
   // linkurile video (YouTube/Facebook) nu au text de citit — materialul e descrierea din summary
-  const texts = await Promise.all(items.map((i) => (toEmbedUrl(i.sourceUrl) ? null : fetchArticle(i.sourceUrl))));
+  // (postările Telegram, cu sau fără video: textul postării e în summary)
+  const texts = await Promise.all(
+    items.map((i) => (toEmbedUrl(i.sourceUrl) || i.sourceUrl.startsWith("https://t.me/") ? null : fetchArticle(i.sourceUrl))),
+  );
   const blocks = items.map((i, k) => {
     const body = texts[k]?.text && texts[k]!.text.length > i.summary.length ? texts[k]!.text : i.summary;
     return `### [${i.sourceName}] ${i.title}\n${body}`;

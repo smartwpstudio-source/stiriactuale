@@ -10,6 +10,7 @@ export interface VideoSource {
   title: string;
   channel: string;
   description: string;
+  hasVideo: boolean; // postarea Telegram poate fi doar text + poze: atunci e știre obișnuită
 }
 
 const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36";
@@ -40,7 +41,7 @@ export async function readVideoSource(url: string): Promise<VideoSource | null> 
   const embed = toEmbedUrl(url);
   if (!embed) return null;
   if (embed.startsWith("https://t.me/")) return readTelegramPost(embed);
-  if (!embed.includes("youtube")) return { embed, title: "", channel: "Facebook", description: "" };
+  if (!embed.includes("youtube")) return { embed, title: "", channel: "Facebook", description: "", hasVideo: true };
   const id = embed.split("/embed/")[1];
   const watch = `https://www.youtube.com/watch?v=${id}`;
   const [meta, html] = await Promise.all([
@@ -56,6 +57,7 @@ export async function readVideoSource(url: string): Promise<VideoSource | null> 
     title: meta?.title ?? "",
     channel: meta?.author_name ?? "YouTube",
     description: (jsonStringField(html, "shortDescription") ?? "").trim(),
+    hasVideo: true,
   };
 }
 
@@ -70,5 +72,6 @@ async function readTelegramPost(embed: string): Promise<VideoSource | null> {
   const channel = plain(html.match(/tgme_widget_message_owner_name"[^>]*><span[^>]*>([^<]*)/)?.[1] ?? "") || "Telegram";
   if (!description) return null;
   const first = description.split(/(?<=[.!?])[ ]/)[0].replace(/^[^A-Za-zĂÂÎȘȚăâîșț0-9„"]+/, "");
-  return { embed, title: first.length > 110 ? `${first.slice(0, 107)}…` : first, channel, description };
+  const hasVideo = /tgme_widget_message_(video|roundvideo)|<video/.test(html);
+  return { embed, title: first.length > 110 ? `${first.slice(0, 107)}…` : first, channel, description, hasVideo };
 }
