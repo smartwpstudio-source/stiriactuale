@@ -35,7 +35,8 @@ function paragraphsOf(html: string): string[] {
 // Site-urile Next.js (ex. stiri.md) trimit corpul articolului doar în datele
 // de hidratare (self.__next_f.push), ca HTML într-un string JS — fără <p> în
 // pagină. Se decodează stringurile; corpul e o bucată de HTML curat (începe
-// cu "<"), nu JSON-ul paginii, care are și descrieri de rubrici, meniuri.
+// cu "<", după prefixul de rând „39:T438,”), nu JSON-ul paginii, care are
+// și descrieri de rubrici, meniuri.
 function nextFlightChunks(html: string): string[] {
   return [...html.matchAll(/self\.__next_f\.push\(\[1,("(?:[^"\\]|\\.)*")\]\)/g)]
     .map((m) => {
@@ -44,6 +45,11 @@ function nextFlightChunks(html: string): string[] {
       } catch {
         return "";
       }
+    })
+    .map((c) => {
+      // rândul de text poate veni după alte rânduri în același push („29:C … 39:T438,<p…”)
+      const row = c.match(/[0-9a-f]+:T[0-9a-f]+,(?=<)/);
+      return row ? c.slice(row.index! + row[0].length) : c;
     })
     .filter((c) => c.trimStart().startsWith("<"));
 }

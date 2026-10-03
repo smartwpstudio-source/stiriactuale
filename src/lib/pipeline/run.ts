@@ -30,9 +30,6 @@ const SECTION_CONFIG: Record<Section, { minScore: number; cap: number }> = {
 const WINDOW_HOURS = 6;
 const MAX_GROUPS_TO_CLASSIFY = 40;
 const PUBLISH_CONCURRENCY = 4;
-// scorul de la care o știre cu material puțin se publică „pe scurt” în loc să
-// fie sărită (povestea abia începe — o completăm la rulările următoare)
-const BRIEF_MIN_SCORE = 60;
 const FEED_ALERT_MIN = 3; // feed-uri căzute deodată, din 9
 // Fereastra de publicare automată, ora Chișinăului: 06:00-22:59 (rularea de
 // 22:00 poate întârzia puțin; după 23:00 nu mai publică).
@@ -188,12 +185,12 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     const published = await mapWithConcurrency(toPublish, PUBLISH_CONCURRENCY, async (c): Promise<Section | null> => {
       try {
         // material puțin: linkul video al editorului -> știre video scurtă (fără
-        // AI); altfel, la subiectele importante sau cerute de editor -> „pe scurt”,
+        // AI); altfel orice știre aleasă iese „pe scurt” (regula proprietarului),
         // completată la rulările următoare când apar detalii
         let kind: "stire" | "pe-scurt" | "analiza" = c.group.analysis ? "analiza" : "stire";
         let generated = await generateArticle(c.group, c.classification);
         if (!generated && c.group.manual) generated = shortVideoArticle(c.group);
-        if (!generated && (c.group.manual || c.qualityScore >= BRIEF_MIN_SCORE)) {
+        if (!generated) {
           generated = await generateArticle(c.group, c.classification, "brief");
           if (generated) kind = "pe-scurt";
         }

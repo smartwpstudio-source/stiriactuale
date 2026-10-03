@@ -91,6 +91,7 @@ const SYSTEM_PROMPT = [
   "- update_of: articolul e marcat (pe scurt) și grupul aduce detalii despre ACELAȘI eveniment, încă în desfășurare (ex. avionul deturnat: atacul, aterizarea, ce s-a întâmplat la bord, primele declarații oficiale). Nu e o știre nouă, ci completarea ei.",
   "- continues: evenimentul din articolul recent s-a încheiat, iar grupul e o dezvoltare ulterioară a aceleiași povești (declarații ulterioare, ancheta, descoperiri noi, consecințe). E o știre nouă, legată de cea veche.",
   "- niciuna: subiect diferit.",
+  "reject=true dacă grupul relatează ACELAȘI fapt ca un articol recent [RN], fără nimic nou (altă formulare, altă sursă, alt titlu — ex. „contract de 23 mil. pentru drumul R13” și „23 mil. investiți în drumul R13”): e dublură, nu publicăm de două ori.",
   "reject=true pentru: horoscop, publicitate/advertorial/promoții, monden și vedete fără interes public, rețete, sfaturi generale, sondaje de opinie online, rezultate sportive fără legătură cu Moldova, știri vechi reluate.",
 ].join("\n");
 
