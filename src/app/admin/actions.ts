@@ -190,6 +190,17 @@ export async function addLink(formData: FormData) {
   } catch {
     redirect("/admin/?link=invalid");
   }
+  // poza și postarea atașate acum intră în articol de la publicare
+  const postLink = String(formData.get("post") ?? "").trim();
+  const postUrl = postLink ? toPostEmbedUrl(postLink) : null;
+  if (postLink && !postUrl) redirect("/admin/?link=post");
+  const photo = formData.get("photo");
+  const imageUrl =
+    photo instanceof File && photo.size > 0 && photo.type.startsWith("image/")
+      ? (await put(`articole/manual-${Date.now()}.jpg`, photo, { access: "public", contentType: photo.type, addRandomSuffix: true })).url
+      : null;
+  const imageCredit = String(formData.get("credit") ?? "").trim().slice(0, 80) || null;
+  const attached = { postUrl, ...(imageUrl && { imageUrl, imageCredit }) };
 
   // link video (YouTube/Facebook): titlul, canalul și descrierea video-ului;
   // la Facebook titlul îl scrie editorul (câmpul opțional din formular)
@@ -238,10 +249,11 @@ export async function addLink(formData: FormData) {
       publishedAt: new Date(),
       manual: true,
       kind: formData.get("kind") === "analiza" ? "analiza" : "stire",
+      ...attached,
     })
     .onConflictDoUpdate({
       target: candidates.url,
-      set: { manual: true, processedAt: null, kind: formData.get("kind") === "analiza" ? "analiza" : "stire" },
+      set: { manual: true, processedAt: null, kind: formData.get("kind") === "analiza" ? "analiza" : "stire", ...attached },
     });
   if (formData.get("now")) {
     const { ok } = await dispatchPipeline();

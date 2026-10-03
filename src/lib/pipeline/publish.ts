@@ -93,6 +93,7 @@ export async function publishArticle(
         pushWorthy: candidate.classification.pushWorthy,
         kind,
         continuesId: candidate.classification.continuesId,
+        postUrl: candidate.group.postUrl,
         status: draft ? "draft" : "published",
       })
       .onConflictDoNothing({ target: articles.slug })

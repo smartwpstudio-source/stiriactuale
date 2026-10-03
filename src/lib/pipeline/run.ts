@@ -212,9 +212,13 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
         // comunicatul ei), poza reală a locului din arhivă, apoi stock ales
         // după subiect / generată
         const subject = `${generated.titlu}. ${generated.lead}`;
-        const official = generated.source_photo ?? (await matchOfficialPhoto(subject, officialItems).then((m) => m && { url: m.photo, credit: m.credit }));
-        const place = official ? null : await matchPlacePhoto(subject, places, c.classification.locality);
-        const image = youtubeThumb(generated.video_url)
+        // poza încărcată de editor bate orice altceva
+        const editor = c.group.photo && { url: c.group.photo.url, resourceId: null, credit: c.group.photo.credit ?? undefined };
+        const official = editor ? null : await matchOfficialPhoto(subject, officialItems).then((m) => m && { url: m.photo, credit: m.credit });
+        const place = editor || official ? null : await matchPlacePhoto(subject, places, c.classification.locality);
+        const image = editor
+          ? editor
+          : youtubeThumb(generated.video_url)
           ? null
           : (place && { url: place.url, resourceId: null, credit: place.credit }) ??
             ((official && (await sourcePhoto(official, generated.slug))) ??

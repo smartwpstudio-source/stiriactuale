@@ -6,12 +6,14 @@ import { requireAdmin } from "@/lib/admin/auth";
 import { SECTION_LABELS } from "@/lib/content/geo";
 import { addLink, logoutAction, runPipelineNow, sendPushNow } from "./actions";
 import { ConfirmButton } from "./confirm-button";
+import { PhotoField } from "./photo-field";
 
 const LINK_MESSAGES: Record<string, string> = {
   ok: "Adăugat. Se scrie la următoarea rulare a pipeline-ului (max. 2 ore).",
   invalid: "Link invalid.",
   unreadable: "Pagina nu a putut fi citită — încearcă linkul sursei originale.",
   videotitle: "Video Facebook: scrie titlul știrii în câmpul „Titlu” (Facebook nu permite citirea lui automată).",
+  post: "Postarea nu e recunoscută — doar o postare Facebook (posts/photos) sau Telegram (t.me/canal/123).",
 };
 
 const RUN_MESSAGES: Record<string, string> = {
@@ -125,6 +127,21 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
             placeholder="Transcriptul video-ului (YouTube: ⋯ sub video → Afișează transcrierea → copiază) sau alt text al sursei — opțional; din el AI-ul scrie articolul complet"
             className="basis-full rounded border border-line bg-white px-3 py-2 text-sm text-ink"
           />
+          {/* poza și postarea intră în articol de la publicare — nu după, când e deja în cache */}
+          <fieldset className="flex basis-full flex-wrap items-center gap-3 rounded border border-line bg-white px-3 py-2 text-sm">
+            <span className="text-sub">Poză (opțional):</span>
+            <PhotoField />
+            <input
+              name="credit"
+              placeholder="Foto: autorul (ex. IGSU); gol = foto ilustrativă"
+              className="w-72 rounded border border-line px-2 py-1 text-ink"
+            />
+            <input
+              name="post"
+              placeholder="Postare cu poze: https://www.facebook.com/…/posts/… sau https://t.me/canal/123"
+              className="min-w-72 flex-1 rounded border border-line px-2 py-1 text-ink"
+            />
+          </fieldset>
           <button className="rounded border border-ink px-4 py-2 text-ink">Adaugă</button>
           <button name="now" value="1" className="rounded bg-alert px-4 py-2 font-medium text-white">
             Adaugă și publică acum

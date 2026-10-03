@@ -132,6 +132,5 @@ export async function generateArticle(
     maxBudgetUsd: 0.5,
   });
   const video = items.map((i) => toEmbedUrl(i.sourceUrl)).find(Boolean) ?? texts.find((t) => t?.video)?.video;
-  const photo = texts.find((t) => t?.photo)?.photo ?? undefined;
-  return { ...article, ...(video && { video_url: video }), ...(photo && { source_photo: photo }) };
+  return video ? { ...article, video_url: video } : article;
 }

@@ -18,6 +18,8 @@ export interface CandidateGroup {
   sourceNames: string[]; // unice
   manual: boolean; // adăugat de editor din /admin — sare peste scor și plafoane
   analysis?: boolean; // editorul a cerut o analiză (admin → tip „Analiză”)
+  photo?: { url: string; credit: string | null }; // poza încărcată de editor la adăugarea linkului
+  postUrl?: string; // postarea cu poze lipită de editor la adăugarea linkului
   candidateIds: number[];
 }
 
@@ -55,5 +57,4 @@ export interface GeneratedArticle {
   stock_query: string;
   image_prompt: string;
   video_url?: string; // nu vine de la model: primul video găsit în surse
-  source_photo?: { url: string; credit: string }; // poza unei instituții din surse
 }

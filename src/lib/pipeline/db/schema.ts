@@ -109,6 +109,10 @@ export const candidates = pgTable("candidates", {
   manual: boolean("manual").notNull().default(false),
   // tipul cerut de editor pentru linkul manual: "stire" sau "analiza"
   kind: varchar("kind", { length: 20 }).notNull().default("stire"),
+  // poza și postarea atașate de editor la adăugarea linkului (intră în articol)
+  imageUrl: text("image_url"),
+  imageCredit: text("image_credit"),
+  postUrl: text("post_url"),
   processedAt: timestamp("processed_at", { withTimezone: true }),
   // interesul public de pe canalul Telegram al sursei (telegram-signal.ts):
   // vizualizări, reacții și raportul față de media canalului (1 = obișnuit)

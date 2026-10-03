@@ -1,6 +1,13 @@
 import type { RawCandidate, CandidateGroup } from "./types";
 
-export type StoredCandidate = RawCandidate & { id: number; manual: boolean; kind?: string };
+export type StoredCandidate = RawCandidate & {
+  id: number;
+  manual: boolean;
+  kind?: string;
+  imageUrl?: string | null;
+  imageCredit?: string | null;
+  postUrl?: string | null;
+};
 import { stripDiacritics } from "./text-normalize";
 
 // Grupare pe similaritate de titlu (Jaccard pe tokeni, fără diacritice/majuscule).
@@ -61,6 +68,16 @@ function jaccardSimilarity(a: Set<string>, b: Set<string>): number {
   return intersection / (a.size + b.size - intersection);
 }
 
+// Poza / postarea puse de editor pe linkul lui (admin) trec pe grup.
+function photoOf(items: StoredCandidate[]): Pick<CandidateGroup, "photo" | "postUrl"> {
+  const withPhoto = items.find((i) => i.manual && i.imageUrl);
+  const withPost = items.find((i) => i.manual && i.postUrl);
+  return {
+    ...(withPhoto && { photo: { url: withPhoto.imageUrl!, credit: withPhoto.imageCredit ?? null } }),
+    ...(withPost && { postUrl: withPost.postUrl! }),
+  };
+}
+
 export function groupCandidates(candidates: StoredCandidate[]): CandidateGroup[] {
   const groups: { tokens: Set<string>; items: StoredCandidate[] }[] = [];
 
@@ -89,6 +106,7 @@ export function groupCandidates(candidates: StoredCandidate[]): CandidateGroup[]
     sourceNames: [...new Set(g.items.map((i) => i.sourceName))],
     manual: g.items.some((i) => i.manual),
     analysis: g.items.some((i) => i.manual && i.kind === "analiza"),
+    ...photoOf(g.items),
     candidateIds: g.items.map((i) => i.id),
   }));
 }
