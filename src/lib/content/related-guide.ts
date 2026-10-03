@@ -38,6 +38,19 @@ export function bestGuide(text: string, guides: Guide[]): Guide | undefined {
   return best?.g;
 }
 
-export async function getRelatedGuide(title: string, lead: string): Promise<Guide | undefined> {
-  return bestGuide(`${title} ${lead}`, await getGuides());
+// Ghidurile de oraș („Cahul: primăria, spitalul…”) au cuvinte comune cu orice
+// accident sau spital: apar DOAR la știrile din acel oraș, după localitate.
+const CITY_LOCALITY: Record<string, string> = { comrat: "gagauzia" };
+
+export function pickGuide(text: string, locality: string | undefined, guides: Guide[]): Guide | undefined {
+  const cities = guides.filter((g) => g.category === "orase");
+  const own = cities.find((g) => {
+    const city = g.slug.split("-")[0];
+    return locality === (CITY_LOCALITY[city] ?? city);
+  });
+  return own ?? bestGuide(text, guides.filter((g) => g.category !== "orase"));
+}
+
+export async function getRelatedGuide(title: string, lead: string, locality?: string): Promise<Guide | undefined> {
+  return pickGuide(`${title} ${lead}`, locality, await getGuides());
 }

@@ -54,7 +54,7 @@ export async function ArticlePage({
   const [similar, { items: latest }, guide, previous] = await Promise.all([
     getSimilarArticles(article),
     listArticles({}, 1, 9),
-    article.archived ? undefined : getRelatedGuide(article.title, article.lead),
+    article.archived ? undefined : getRelatedGuide(article.title, article.lead, article.locality),
     article.continuesId ? getArticleLink(article.continuesId) : null,
   ]);
 
