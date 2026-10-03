@@ -2379,6 +2379,23 @@
   ]
  },
  {
+  "id": "accident-rutier",
+  "name": "Accident rutier (mașini avariate, fără victime vizibile)",
+  "keywords": "accident, tamponare, mașini avariate, traseu",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/accident-rutier-1-8uSmxolzD4Or0GMwUd5QDECQvLoBNL.jpg",
+    "credit": "Roulex 45 / Wikimedia Commons, CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Triangle_de_pr%C3%A9signalisation.JPG"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/accident-rutier-2-zJVjxqMqtIaxChoKSA5sm8g07sEQaN.jpg",
+    "credit": "Jaller94 / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:2024-08-31_Warndreieck_vor_Kurve.jpg"
+   }
+  ]
+ },
+ {
   "id": "canicula",
   "name": "Arșiță / caniculă",
   "keywords": "caniculă, arșiță, temperaturi ridicate, căldură",
