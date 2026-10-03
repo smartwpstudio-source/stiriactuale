@@ -20,6 +20,7 @@ import { ADSENSE_IN_ARTICLE_SLOT } from "@/lib/adsense";
 import { AdSlot } from "./ad-slot";
 import { RelatedGuide } from "./related-guide";
 import { VideoEmbed } from "./video-embed";
+import { TelegramVideo } from "./telegram-video";
 import { PostEmbed } from "./post-embed";
 import { KindBadge } from "./kind-badge";
 import { getRelatedGuide } from "@/lib/content/related-guide";
@@ -38,6 +39,9 @@ function imageLabel(url?: string, credit?: string): string | null {
   if (url.includes(`/${AI_IMAGE_PREFIX}`)) return "Imagine generată AI";
   return url.includes("/articole/") ? "Foto ilustrativă" : null;
 }
+
+// „canal/123” din adresa playerului Telegram (video.ts: t.me/canal/123?embed=1)
+const telegramPost = (url?: string) => url?.match(/^https:[/][/]t[.]me[/]([A-Za-z0-9_]{4,}[/][0-9]+)/)?.[1];
 
 const ARCHIVE_DATE: Intl.DateTimeFormatOptions = {
   day: "numeric",
@@ -108,7 +112,20 @@ export async function ArticlePage({
           </>
         ) : (
           <>
-            {article.videoUrl ? (
+            {telegramPost(article.videoUrl) ? (
+              // video Telegram: doar video-ul, primul; fără el — poza
+              <TelegramVideo post={telegramPost(article.videoUrl)!} channel={article.sources?.[0]?.name ?? "Telegram"}>
+                <ArticleThumb
+                  topics={article.topics}
+                  imageUrl={article.imageUrl}
+                  imageAlt={article.imageAlt}
+                  className="mt-6 aspect-video w-full rounded"
+                  iconSize={64}
+                  sizes="(max-width: 768px) 100vw, 720px"
+                  priority
+                />
+              </TelegramVideo>
+            ) : article.videoUrl ? (
               // video din sursă: playerul ia locul pozei, sus
               <VideoEmbed src={article.videoUrl} title={article.title} />
             ) : (
