@@ -8,6 +8,7 @@ import { generateArticle } from "./generate";
 import { computeQualityScore } from "./scoring";
 import { findArticleImage } from "./image";
 import { youtubeThumb } from "@/lib/video";
+import { shortVideoArticle } from "./video-article";
 import { isDuplicate, loadRecentFingerprints, loadUsedImageIds, publishArticle } from "./publish";
 import { mapWithConcurrency } from "./concurrency";
 import { spentUsd } from "./llm";
@@ -163,7 +164,9 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     const usedImageIds = await loadUsedImageIds();
     const published = await mapWithConcurrency(toPublish, PUBLISH_CONCURRENCY, async (c): Promise<Section | null> => {
       try {
-        const generated = await generateArticle(c.group, c.classification);
+        // link video al editorului cu descriere scurtă: știre video scurtă, fără AI
+        const generated =
+          (await generateArticle(c.group, c.classification)) ?? (c.group.manual ? shortVideoArticle(c.group) : null);
         if (!generated) {
           summary.skippedThin.push(c.group.representativeTitle.slice(0, 80));
           // linkul editorului nu rămâne la coadă la nesfârșit — editorul e anunțat

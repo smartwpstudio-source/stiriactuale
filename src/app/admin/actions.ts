@@ -16,6 +16,7 @@ import { deleteFromChannel } from "@/lib/telegram";
 import { deleteFromPage, lastFacebookError, postToPage } from "@/lib/facebook";
 import { articleUrl } from "@/lib/content/url";
 import { toEmbedUrl } from "@/lib/video";
+import { readVideoSource } from "@/lib/video-source";
 import { absoluteUrl } from "@/lib/seo";
 import { announcePublished, pushNow } from "@/lib/publish-effects";
 import type { Section } from "@/lib/content/types";
@@ -191,12 +192,26 @@ export async function addLink(formData: FormData) {
     redirect("/admin/?link=invalid");
   }
 
-  // textul integral se descarcă din nou la scriere (generate.ts); aici doar
-  // titlul și un rezumat pentru clasificare
-  const page = await fetchArticle(url.toString());
-  const title = page?.title ?? "";
-  const summary = [page?.description, page?.text].filter(Boolean).join("\n").slice(0, 2000);
-  if (!title) redirect("/admin/?link=unreadable");
+  // link video (YouTube/Facebook): titlul, canalul și descrierea video-ului;
+  // la Facebook titlul îl scrie editorul (câmpul opțional din formular)
+  const video = await readVideoSource(url.toString());
+  const manualTitle = String(formData.get("title") ?? "").trim();
+  let title: string;
+  let summary: string;
+  let sourceName = url.hostname.replace(/^www\./, "");
+  if (video) {
+    title = manualTitle || video.title;
+    summary = video.description.slice(0, 4000);
+    sourceName = video.channel;
+    if (!title) redirect("/admin/?link=videotitle");
+  } else {
+    // textul integral se descarcă din nou la scriere (generate.ts); aici doar
+    // titlul și un rezumat pentru clasificare
+    const page = await fetchArticle(url.toString());
+    title = manualTitle || (page?.title ?? "");
+    summary = [page?.description, page?.text].filter(Boolean).join("\n").slice(0, 2000);
+    if (!title) redirect("/admin/?link=unreadable");
+  }
 
   await getDb()
     .insert(candidates)
@@ -204,7 +219,7 @@ export async function addLink(formData: FormData) {
       url: url.toString(),
       title,
       summary,
-      sourceName: url.hostname.replace(/^www\./, ""),
+      sourceName,
       feedId: "manual",
       publishedAt: new Date(),
       manual: true,

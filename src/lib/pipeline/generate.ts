@@ -1,5 +1,6 @@
 import { structured, OPUS_MODEL } from "./llm";
 import { fetchArticle } from "./fulltext";
+import { toEmbedUrl } from "@/lib/video";
 import type { CandidateGroup, ClassificationResult, GeneratedArticle } from "./types";
 
 const SCHEMA = {
@@ -71,7 +72,8 @@ export async function generateArticle(
 ): Promise<GeneratedArticle | null> {
   // o relatare per redacție, cele mai noi întâi
   const items = [...new Map(group.items.map((i) => [i.sourceName, i])).values()].slice(0, MAX_SOURCES);
-  const texts = await Promise.all(items.map((i) => fetchArticle(i.sourceUrl)));
+  // linkurile video (YouTube/Facebook) nu au text de citit — materialul e descrierea din summary
+  const texts = await Promise.all(items.map((i) => (toEmbedUrl(i.sourceUrl) ? null : fetchArticle(i.sourceUrl))));
   const blocks = items.map((i, k) => {
     const body = texts[k]?.text && texts[k]!.text.length > i.summary.length ? texts[k]!.text : i.summary;
     return `### [${i.sourceName}] ${i.title}\n${body}`;
@@ -86,6 +88,6 @@ export async function generateArticle(
     schema: SCHEMA,
     maxBudgetUsd: 0.5,
   });
-  const video = texts.find((t) => t?.video)?.video;
+  const video = items.map((i) => toEmbedUrl(i.sourceUrl)).find(Boolean) ?? texts.find((t) => t?.video)?.video;
   return video ? { ...article, video_url: video } : article;
 }

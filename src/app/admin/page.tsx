@@ -10,6 +10,7 @@ const LINK_MESSAGES: Record<string, string> = {
   ok: "Adăugat. Se scrie la următoarea rulare a pipeline-ului (max. 2 ore).",
   invalid: "Link invalid.",
   unreadable: "Pagina nu a putut fi citită — încearcă linkul sursei originale.",
+  videotitle: "Video Facebook: scrie titlul știrii în câmpul „Titlu” (Facebook nu permite citirea lui automată).",
 };
 
 const RUN_MESSAGES: Record<string, string> = {
@@ -78,13 +79,18 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
 
       <section>
         <h2 className="mb-2 font-medium text-ink">Adaugă știre după link</h2>
-        <form action={addLink} className="flex gap-2">
+        <form action={addLink} className="flex flex-wrap gap-2">
           <input
             name="url"
             type="url"
             required
             placeholder="https://… (linkul sursei originale, nu al agregatorului)"
             className="flex-1 rounded border border-line bg-white px-3 py-2 text-ink"
+          />
+          <input
+            name="title"
+            placeholder="Titlu (opțional; necesar la video Facebook)"
+            className="w-64 rounded border border-line bg-white px-3 py-2 text-ink"
           />
           <button className="rounded border border-ink px-4 py-2 text-ink">Adaugă</button>
           <button name="now" value="1" className="rounded bg-alert px-4 py-2 font-medium text-white">
