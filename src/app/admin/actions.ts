@@ -84,8 +84,8 @@ export async function setStatus(id: number, status: "draft" | "published") {
     .where(eq(articles.id, id));
   refreshSite();
 
-  const push = status === "published" ? await announcePublished(id, "manual") : "";
-  redirect(`/admin/articol/${id}/${push ? `?push=${encodeURIComponent(push)}` : ""}`);
+  if (status === "published") await announcePublished(id, "manual");
+  redirect(`/admin/articol/${id}/`);
 }
 
 // Fixează articolul în prim-planul primei pagini 6 ore (sau îl scoate).
@@ -96,12 +96,6 @@ export async function setFeatured(id: number, on: boolean) {
     .set({ featuredUntil: on ? new Date(Date.now() + 6 * 3600_000) : null })
     .where(eq(articles.id, id));
   refreshSite();
-  redirect(`/admin/articol/${id}/`);
-}
-
-export async function togglePush(id: number, value: boolean) {
-  await requireAdmin();
-  await getDb().update(articles).set({ pushWorthy: value }).where(eq(articles.id, id));
   redirect(`/admin/articol/${id}/`);
 }
 

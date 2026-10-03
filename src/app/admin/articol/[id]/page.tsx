@@ -18,7 +18,6 @@ import {
   sendPushNow,
   setFeatured,
   setStatus,
-  togglePush,
   uploadImage,
 } from "../../actions";
 import { ConfirmButton } from "../../confirm-button";
@@ -107,19 +106,14 @@ export default async function EditArticlePage({ params, searchParams }: PageProp
         ) : (
           <>
             <span className={a.pushWorthy ? "text-teal" : "text-sub"}>
-              {a.pushWorthy ? "DA — pleacă la publicare" : "nu"}
+              {a.pushWorthy ? "netrimisă — AI o propune" : "netrimisă"}
             </span>
-            <form action={togglePush.bind(null, id, !a.pushWorthy)}>
-              <button className="rounded border border-line px-2 py-1 text-xs text-ink">
-                {a.pushWorthy ? "Fără notificare" : "Marchează pentru notificare"}
-              </button>
-            </form>
             {!isDraft && !a.facebookPostId && (
               <form action={postToFacebookNow.bind(null, id)}>
                 <button className="rounded bg-[#1877f2] px-2 py-1 text-xs text-white">Postează pe Facebook</button>
               </form>
             )}
-            {!isDraft && a.pushWorthy && (
+            {!isDraft && (
               <form action={sendPushNow.bind(null, id)}>
                 <button className="rounded bg-teal px-2 py-1 text-xs text-white">Trimite alerta acum</button>
               </form>

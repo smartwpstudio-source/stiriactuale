@@ -1,11 +1,11 @@
 import webpush from "web-push";
-import { and, count, eq, gte, inArray, isNotNull } from "drizzle-orm";
+import { eq, inArray } from "drizzle-orm";
 import { getDb } from "@/lib/pipeline/db/client";
 import { articles, pushSubscriptions } from "@/lib/pipeline/db/schema";
 
-// Notificări Web Push pentru știrile de rezonanță. Reguli anti-spam (decizia
-// proprietarului): max 4 pe zi, nimic între 22:00 și 07:00 (ora Chișinăului).
-export const MAX_PUSH_PER_DAY = 4;
+// Notificări Web Push, trimise DOAR manual din /admin (decizia proprietarului,
+// 2026-10-03: fără trimitere automată, fără plafon zilnic). Rămân orele de
+// liniște: nimic între 22:00 și 07:00 (ora Chișinăului).
 const QUIET_FROM = 22;
 const QUIET_TO = 7;
 const CONCURRENCY = 20;
@@ -32,12 +32,7 @@ export async function pushBlockedReason(): Promise<string | null> {
   if (!process.env.VAPID_PRIVATE_KEY || !process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY) return "cheile VAPID lipsesc";
   const h = chisinauHour();
   if (h >= QUIET_FROM || h < QUIET_TO) return `ore de liniște (${QUIET_FROM}:00–0${QUIET_TO}:00)`;
-  const dayStart = new Date(Date.now() - 24 * 3600_000);
-  const [{ sent }] = await getDb()
-    .select({ sent: count() })
-    .from(articles)
-    .where(and(isNotNull(articles.pushSentAt), gte(articles.pushSentAt, dayStart)));
-  return sent >= MAX_PUSH_PER_DAY ? `plafonul de ${MAX_PUSH_PER_DAY} notificări în 24 de ore` : null;
+  return null;
 }
 
 export async function sendPush(articleId: number, payload: { title: string; body: string; url: string; image?: string }) {
