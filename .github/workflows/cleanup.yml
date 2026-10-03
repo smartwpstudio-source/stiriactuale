@@ -1,0 +1,29 @@
+name: Ștergere articole
+
+# Ștergere de urgență (bază de date + Telegram + Facebook), pornită manual:
+# Actions -> "Ștergere articole" -> Run workflow, cu id-urile din /admin.
+on:
+  workflow_dispatch:
+    inputs:
+      ids:
+        description: "Id-urile articolelor, separate prin spațiu"
+        required: true
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx tsx scripts/pipeline/delete-articles.ts ${{ inputs.ids }}
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+          FACEBOOK_PAGE_ID: ${{ secrets.FACEBOOK_PAGE_ID }}
+          FACEBOOK_PAGE_TOKEN: ${{ secrets.FACEBOOK_PAGE_TOKEN }}
