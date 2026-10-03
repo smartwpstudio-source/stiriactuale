@@ -19,7 +19,8 @@ export async function GET(request: Request) {
   const target = params.has("poster")
     ? html.match(/tgme_widget_message_video_thumb"[^>]*background-image:url[(]'([^']+)'/)?.[1]
     : html.match(/<video[^>]+src="(https:[/][/][^"]+)"/)?.[1];
-  if (!target) return new Response("fără video", { status: 404 });
+  // și răspunsul „fără video” stă în cache: altfel fiecare afișare ar cere Telegram
+  if (!target) return new Response("fără video", { status: 404, headers: { "Cache-Control": "public, s-maxage=3600" } });
   return new Response(null, {
     status: 302,
     // o oră în cache-ul Vercel: cheia Telegram ține mai mult, iar o redare nu mai cere funcția
