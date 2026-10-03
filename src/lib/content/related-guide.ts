@@ -40,12 +40,13 @@ export function bestGuide(text: string, guides: Guide[]): Guide | undefined {
 
 // Ghidurile de oraș („Cahul: primăria, spitalul…”) au cuvinte comune cu orice
 // accident sau spital: apar DOAR la știrile din acel oraș, după localitate.
-// slug ghid = localitatea știrii + "-…" (anenii-noi-…); Comrat = Găgăuzia
-const GUIDE_PREFIX: Record<string, string> = { gagauzia: "comrat" };
+// slug ghid = localitatea știrii + "-…" (anenii-noi-…). Știrile din Găgăuzia
+// primesc ghidul autonomiei (contextul politic), Rîbnița pe cel al Transnistriei.
+const GUIDE_PREFIX: Record<string, string> = { rabnita: "transnistria" };
 
 export function pickGuide(text: string, locality: string | undefined, guides: Guide[]): Guide | undefined {
-  const cities = guides.filter((g) => g.category === "orase");
-  const own = locality && cities.find((g) => g.slug.startsWith(`${GUIDE_PREFIX[locality] ?? locality}-`));
+  // după prefix în toate ghidurile: dosarul Transnistriei e la „dosare”
+  const own = locality && guides.find((g) => g.slug.startsWith(`${GUIDE_PREFIX[locality] ?? locality}-`));
   return own || bestGuide(text, guides.filter((g) => g.category !== "orase"));
 }
 

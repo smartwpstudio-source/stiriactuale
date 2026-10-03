@@ -16,7 +16,7 @@ export const GUIDE_CATEGORIES = {
   educatie: "Educație",
   siguranta: "Siguranță și drepturi",
   dosare: "Dosare: subiectele mari",
-  orase: "Orașe: contacte utile",
+  orase: "Orașe și raioane: contacte utile",
   costuri: "Cât costă în Moldova",
   explicat: "Explicat simplu",
   sarbatori: "Sărbători și tradiții",
