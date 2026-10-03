@@ -1,6 +1,13 @@
 {
   "crons": [
-    { "path": "/api/cron/collect/", "schedule": "*/30 * * * *" },
-    { "path": "/api/cron/pipeline/", "schedule": "0 3-19/2 * * *" }
-  ]
+    {
+      "path": "/api/cron/collect/",
+      "schedule": "*/30 * * * *"
+    },
+    {
+      "path": "/api/cron/pipeline/",
+      "schedule": "0 3-19/2 * * *"
+    }
+  ],
+  "ignoreCommand": "[ -n \"$VERCEL_GIT_PREVIOUS_SHA\" ] && git cat-file -e \"$VERCEL_GIT_PREVIOUS_SHA\" 2>/dev/null && git diff --quiet \"$VERCEL_GIT_PREVIOUS_SHA\" HEAD -- . ':!docs' ':!scripts' ':!.github' ':!content/locuri/locuri.json' ':!content/locuri/surse.json' ':!drizzle' ':!*.md'"
 }
