@@ -9,7 +9,9 @@ export function VideoEmbed({ src, title }: { src: string; title: string }) {
           src={src}
           title={`Video: ${title}`}
           loading="lazy"
-          className="mx-auto block h-[640px] w-full max-w-[520px] rounded border-0 bg-white"
+          // înălțimea = antetul canalului + video-ul (crește cu lățimea); textul
+          // postării (în limba canalului) rămâne dedesubt, doar la derulare
+          className="mx-auto block h-[calc((100vw_-_48px)*0.69_+_28px)] w-full max-w-[520px] rounded border-0 bg-white sm:h-[335px]"
         />
         <figcaption className="mt-1 text-center font-mono text-xs text-sub">Video: Telegram, preluat de la sursa știrii</figcaption>
       </figure>
