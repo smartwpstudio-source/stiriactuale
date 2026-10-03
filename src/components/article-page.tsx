@@ -31,7 +31,8 @@ import type { Article } from "@/lib/content/types";
 // similare. Lățime de citire limitată (~600px).
 // Doar pozele puse de pipeline/admin (Blob "articole/") sunt ilustrative; pozele
 // arhivei WordPress sunt de regulă fotografii reale ale evenimentului.
-function imageLabel(url?: string): string | null {
+function imageLabel(url?: string, credit?: string): string | null {
+  if (credit) return `Foto: ${credit}`;
   if (!url) return null;
   if (url.includes(`/${AI_IMAGE_PREFIX}`)) return "Imagine generată AI";
   return url.includes("/articole/") ? "Foto ilustrativă" : null;
@@ -120,8 +121,8 @@ export async function ArticlePage({
                 sizes="(max-width: 768px) 100vw, 720px"
               priority
               />
-              {imageLabel(article.imageUrl) && (
-                <p className="mt-1 font-mono text-xs text-sub">{imageLabel(article.imageUrl)}</p>
+              {imageLabel(article.imageUrl, article.imageCredit) && (
+                <p className="mt-1 font-mono text-xs text-sub">{imageLabel(article.imageUrl, article.imageCredit)}</p>
               )}
               </>
             )}

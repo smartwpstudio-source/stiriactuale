@@ -85,6 +85,7 @@ export async function publishArticle(
         qualityScore: candidate.qualityScore,
         imageUrl: image?.url,
         imageResourceId: image?.resourceId,
+        imageCredit: image?.credit,
         imageAltText: generated.alt_text_imagine,
         videoUrl: generated.video_url,
         sourceUrls,

@@ -134,7 +134,7 @@ export async function replaceImage(id: number, resourceId: number) {
   const [row] = await db.select({ slug: articles.slug }).from(articles).where(eq(articles.id, id));
   if (!row) redirect("/admin/");
   const url = await stockToBlob(resourceId, row.slug);
-  await db.update(articles).set({ imageUrl: url, imageResourceId: resourceId }).where(eq(articles.id, id));
+  await db.update(articles).set({ imageUrl: url, imageResourceId: resourceId, imageCredit: null }).where(eq(articles.id, id));
   refreshSite();
   redirect(`/admin/articol/${id}/`);
 }
@@ -146,20 +146,21 @@ export async function uploadImage(id: number, formData: FormData) {
   const db = getDb();
   const [row] = await db.select({ slug: articles.slug }).from(articles).where(eq(articles.id, id));
   if (!row) redirect("/admin/");
-  const prefix = formData.get("ai") ? AI_IMAGE_PREFIX : "articole/";
+  const credit = String(formData.get("credit") ?? "").trim().slice(0, 80) || null;
+  const prefix = formData.get("ai") && !credit ? AI_IMAGE_PREFIX : "articole/";
   const blob = await put(`${prefix}${row.slug}.jpg`, file, {
     access: "public",
     contentType: file.type,
     addRandomSuffix: true,
   });
-  await db.update(articles).set({ imageUrl: blob.url, imageResourceId: null }).where(eq(articles.id, id));
+  await db.update(articles).set({ imageUrl: blob.url, imageResourceId: null, imageCredit: credit }).where(eq(articles.id, id));
   refreshSite();
   redirect(`/admin/articol/${id}/`);
 }
 
 export async function removeImage(id: number) {
   await requireAdmin();
-  await getDb().update(articles).set({ imageUrl: null, imageResourceId: null }).where(eq(articles.id, id));
+  await getDb().update(articles).set({ imageUrl: null, imageResourceId: null, imageCredit: null }).where(eq(articles.id, id));
   refreshSite();
   redirect(`/admin/articol/${id}/`);
 }

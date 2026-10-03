@@ -22,6 +22,7 @@ const listColumns = {
   sourceCount: t.sourceCount,
   imageUrl: t.imageUrl,
   imageAltText: t.imageAltText,
+  imageCredit: t.imageCredit,
   sources: t.sources,
   archived: t.archived,
   videoUrl: t.videoUrl,
@@ -47,6 +48,7 @@ function mapRow(row: ListRow & { bodyHtml?: string }): Article {
     // cu video YouTube în sursă: captura din video, nu poza de stock
     imageUrl: youtubeThumb(row.videoUrl) ?? row.imageUrl ?? undefined,
     imageAlt: row.imageAltText ?? undefined,
+    imageCredit: row.imageCredit ?? undefined,
     videoUrl: row.videoUrl ?? undefined,
     kind: row.kind,
     updatedAt: row.updatedAt?.toISOString(),

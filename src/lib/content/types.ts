@@ -25,6 +25,7 @@ export interface Article {
   sourceCount: number;
   imageUrl?: string; // stock Magnific sau generată — absentă pe fixtures/articole fără imagine
   imageAlt?: string;
+  imageCredit?: string; // „Foto: …” — poză reală, cu autorul ei
   videoUrl?: string;
   kind?: string; // "stire" | "pe-scurt" | "analiza"
   updatedAt?: string; // știre pe scurt completată ulterior

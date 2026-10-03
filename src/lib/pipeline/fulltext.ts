@@ -66,6 +66,24 @@ function articleVideo(html: string): string | null {
   return direct ?? findVideo(nextFlightChunks(html).join(""));
 }
 
+// Poza reală a știrii, dacă e semnată de o instituție publică („Foto: IGSU”,
+// „Sursa foto: Poliția”): pozele instituțiilor sunt date publicului ca
+// informare și se pot prelua cu semnătura. Pozele redacțiilor NU se preiau
+// (drept de autor; risc AdSense) — decizia proprietarului, 2026-10-03.
+const PHOTO_CREDIT = /(?:sursa foto|sursă foto|foto|photo)[ ]*[:–—-][ ]*([^.|<;(]{2,60})/gi;
+const INSTITUTION =
+  /IGSU|Poliți|IGP|MAI|Minister|Guvern|MApN|MAE|Președinți|Parlament|Primări|ANSP|Inspectorat|Serviciul|CNA|Procuratur|Armat|Agenți|Consiliul raional|Cancelari|Vama|ANSA|Agenția|Comisia|Curtea|Judecători|INSP|SAMU|Centrul Național|Moldpres/i;
+
+export function institutionPhoto(html: string, body: string): { url: string; credit: string } | null {
+  const url = meta(html, "og:image");
+  if (!/^https:[/][/]/.test(url) || /logo|placeholder/i.test(url)) return null;
+  for (const m of text(body).matchAll(PHOTO_CREDIT)) {
+    const credit = m[1].trim();
+    if (INSTITUTION.test(credit)) return { url, credit };
+  }
+  return null;
+}
+
 export function extractArticle(html: string) {
   const clean = html.replace(/<(script|style|noscript|nav|footer|aside|form|header)\b[\s\S]*?<\/\1>/gi, " ");
   // <article> când există, altfel toată pagina — paragrafele scurte (meniuri, legende) cad la filtru
@@ -82,6 +100,7 @@ export function extractArticle(html: string) {
     description: meta(html, "og:description"),
     text: paragraphs.join("\n").slice(0, MAX_CHARS),
     video: articleVideo(html),
+    photo: institutionPhoto(html, body),
   };
 }
 

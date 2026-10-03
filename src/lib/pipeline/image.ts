@@ -1,7 +1,8 @@
 import { put } from "@vercel/blob";
+import { HAIKU_MODEL, structured } from "./llm";
 
 const API = "https://api.magnific.com/v1";
-const STOCK_RESULTS = 5;
+const STOCK_RESULTS = 10;
 const GENERATION_TIMEOUT_MS = 120_000;
 
 // Prefixul din Blob după care pagina afișează "Imagine generată AI" în loc de
@@ -10,7 +11,8 @@ export const AI_IMAGE_PREFIX = "articole/ai-";
 
 export interface ArticleImage {
   url: string;
-  resourceId: number | null; // null = generată
+  resourceId: number | null; // null = generată sau poză reală
+  credit?: string; // poza reală a unei instituții: „Foto: IGSU”
 }
 
 // 1. Stock Magnific: gratuit pe Premium+ (max 100/zi), primul din top 5
@@ -33,7 +35,7 @@ async function getJson<T>(url: string, headers: Record<string, string>): Promise
 }
 
 // Folosit și de /admin (înlocuire imagine) — `preview` e miniatura publică.
-export async function searchStock(term: string, limit: number): Promise<{ id: number; preview: string }[]> {
+export async function searchStock(term: string, limit: number): Promise<{ id: number; preview: string; title: string }[]> {
   const headers = magnificHeaders();
   if (!headers) return [];
   const params = new URLSearchParams({
@@ -43,11 +45,11 @@ export async function searchStock(term: string, limit: number): Promise<{ id: nu
     "filters[content_type][photo]": "1",
     "filters[orientation][landscape]": "1",
   });
-  const { data = [] } = await getJson<{ data?: { id: number; image?: { source?: { url?: string } } }[] }>(
+  const { data = [] } = await getJson<{ data?: { id: number; title?: string; image?: { source?: { url?: string } } }[] }>(
     `${API}/resources?${params}`,
     headers,
   );
-  return data.map((r) => ({ id: r.id, preview: r.image?.source?.url ?? "" }));
+  return data.map((r) => ({ id: r.id, preview: r.image?.source?.url ?? "", title: r.title ?? "" }));
 }
 
 export async function stockToBlob(id: number, slug: string): Promise<string> {
@@ -60,18 +62,50 @@ export async function stockToBlob(id: number, slug: string): Promise<string> {
   return copyToBlob(data.url ?? data.signed_url!, `articole/${slug}.jpg`);
 }
 
+// Haiku alege, după titlurile pozelor, pe cea care arată subiectul principal
+// al știrii (drona, nu câmpul). Niciuna potrivită -> poza generată.
+async function pickStock(subject: string, results: { id: number; title: string }[]): Promise<{ id: number; title: string }[]> {
+  if (!results.length) return [];
+  try {
+    const { best } = await structured<{ best: number[] }>({
+      model: HAIKU_MODEL,
+      system:
+        "Alegi fotografia ilustrativă pentru o știre. Potrivită = arată SUBIECTUL PRINCIPAL al știrii (obiectul, evenimentul), nu doar decorul sau o temă vagă. Răspunzi cu numerele pozelor potrivite, cea mai bună prima; listă goală dacă niciuna nu arată subiectul.",
+      prompt: `Știrea: ${subject}\n\nPoze:\n${results.map((r, i) => `${i}. ${r.title}`).join("\n")}`,
+      schema: { type: "object", properties: { best: { type: "array", items: { type: "integer" } } }, required: ["best"] },
+      maxBudgetUsd: 0.05,
+    });
+    return best.map((i) => results[i]).filter(Boolean);
+  } catch (err) {
+    logImageError(err);
+    return results.slice(0, 3); // fără verdict: primele, ca înainte
+  }
+}
+
+// Poza reală (a unei instituții) copiată în Blob, cu semnătura ei.
+export async function sourcePhoto(photo: { url: string; credit: string }, slug: string): Promise<ArticleImage | null> {
+  try {
+    return { url: await copyToBlob(photo.url, `articole/${slug}.jpg`), resourceId: null, credit: photo.credit };
+  } catch (err) {
+    logImageError(err);
+    return null;
+  }
+}
+
 export async function findArticleImage(
   stockQuery: string,
   imagePrompt: string,
   slug: string,
   usedIds: Set<number>,
+  subject: string,
 ): Promise<ArticleImage | null> {
   const headers = magnificHeaders();
   if (!headers) return null;
   // Fiecare pas are propriul try: Magnific dă uneori HTTP 500 la descărcarea
   // unei poze anume — trecem la următoarea, apoi la generare.
   try {
-    for (const { id } of (await searchStock(stockQuery, STOCK_RESULTS)).filter((r) => !usedIds.has(r.id))) {
+    const fresh = (await searchStock(stockQuery, STOCK_RESULTS)).filter((r) => !usedIds.has(r.id));
+    for (const { id } of await pickStock(subject, fresh)) {
       usedIds.add(id); // înainte de primul await — rulările paralele văd rezervarea
       try {
         return { url: await stockToBlob(id, slug), resourceId: id };
@@ -124,7 +158,10 @@ async function generate(prompt: string, headers: Record<string, string>): Promis
 }
 
 async function copyToBlob(sourceUrl: string, path: string): Promise<string> {
-  const file = await fetch(sourceUrl, { signal: AbortSignal.timeout(30_000) });
+  const file = await fetch(sourceUrl, {
+    headers: { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/130 Safari/537.36" },
+    signal: AbortSignal.timeout(30_000),
+  });
   if (!file.ok) throw new Error(`fișier HTTP ${file.status}`);
   const blob = await put(path, Buffer.from(await file.arrayBuffer()), {
     access: "public",

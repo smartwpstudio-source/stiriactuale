@@ -55,4 +55,5 @@ export interface GeneratedArticle {
   stock_query: string;
   image_prompt: string;
   video_url?: string; // nu vine de la model: primul video găsit în surse
+  source_photo?: { url: string; credit: string }; // poza unei instituții din surse
 }

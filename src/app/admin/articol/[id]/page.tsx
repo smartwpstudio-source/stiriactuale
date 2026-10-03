@@ -210,6 +210,7 @@ export default async function EditArticlePage({ params, searchParams }: PageProp
               <div className="flex flex-col gap-2">
                 {/* eslint-disable-next-line @next/next/no-img-element -- previzualizare admin */}
                 <img src={a.imageUrl} alt={a.imageAltText ?? ""} className="w-full rounded" />
+                {a.imageCredit && <p className="font-mono text-xs text-sub">Foto: {a.imageCredit}</p>}
                 <form action={removeImage.bind(null, id)}>
                   <button className="text-sm text-alert underline">Scoate imaginea</button>
                 </form>

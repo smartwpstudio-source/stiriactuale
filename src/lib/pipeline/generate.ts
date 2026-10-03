@@ -20,12 +20,12 @@ const SCHEMA = {
     stock_query: {
       type: "string",
       description:
-        "2-4 cuvinte în ENGLEZĂ pentru o fotografie de stock (ex. 'police car night', 'hospital corridor', 'wheat harvest'). Fără nume proprii. La accidente, crime, victime, boli: DOAR obiecte și locuri (bandă de poliție, ambulanță, sală de judecată), niciodată oameni.",
+        "2-4 cuvinte în ENGLEZĂ pentru o fotografie de stock care arată SUBIECTUL PRINCIPAL al știrii, nu locul sau decorul (drona căzută într-o vie -> 'military drone wreckage', nu 'vineyard'; zborurile anulate -> 'airport departures board', nu 'city'). Fără nume proprii. La accidente, crime, victime, boli: DOAR obiecte și locuri (bandă de poliție, ambulanță, sală de judecată), niciodată oameni.",
     },
     image_prompt: {
       type: "string",
       description:
-        "O propoziție în ENGLEZĂ pentru generarea unei fotografii editoriale realiste, folosită doar dacă stock-ul nu are nimic. Aceleași reguli: fără persoane identificabile, fără text, fără logo-uri, fără steaguri.",
+        "O propoziție în ENGLEZĂ pentru generarea unei fotografii editoriale realiste a SUBIECTULUI PRINCIPAL al știrii, folosită doar dacă stock-ul nu are nimic. Aceleași reguli: fără persoane identificabile, fără text, fără logo-uri, fără steaguri.",
     },
   },
   required: ["titlu", "slug", "meta_description", "lead", "corp_html", "tag_uri", "alt_text_imagine", "stock_query", "image_prompt"],
@@ -132,5 +132,6 @@ export async function generateArticle(
     maxBudgetUsd: 0.5,
   });
   const video = items.map((i) => toEmbedUrl(i.sourceUrl)).find(Boolean) ?? texts.find((t) => t?.video)?.video;
-  return video ? { ...article, video_url: video } : article;
+  const photo = texts.find((t) => t?.photo)?.photo ?? undefined;
+  return { ...article, ...(video && { video_url: video }), ...(photo && { source_photo: photo }) };
 }

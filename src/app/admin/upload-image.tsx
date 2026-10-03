@@ -29,12 +29,17 @@ export function UploadImage({ action }: { action: (formData: FormData) => Promis
 
   return (
     <form className="flex flex-col gap-1 text-sm">
+      {/* poza reală, cu acordul autorului sau a unei instituții: semnătura sub poză */}
+      <label className="text-sub">
+        Foto (autorul pozei reale, completează ÎNAINTE de a alege fișierul):{" "}
+        <input name="credit" placeholder="ex. IGSU, Poliția, Ion Popescu" className="rounded border border-line px-2 py-1" />
+      </label>
       <label className="text-sub">
         Încarcă imagine (ex. generată cu Nano Banana):{" "}
         <input type="file" name="file" accept="image/*" onChange={onChange} disabled={busy} />
       </label>
       <label className="flex items-center gap-2 text-sub">
-        <input type="checkbox" name="ai" defaultChecked /> generată AI (afișează „Imagine generată AI”)
+        <input type="checkbox" name="ai" defaultChecked /> generată AI (afișează „Imagine generată AI”; ignorat când e completat „Foto”)
       </label>
       {busy && <span className="text-teal">Se încarcă…</span>}
     </form>
