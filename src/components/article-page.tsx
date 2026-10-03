@@ -19,6 +19,7 @@ import { ADSENSE_IN_ARTICLE_SLOT } from "@/lib/adsense";
 import { AdSlot } from "./ad-slot";
 import { RelatedGuide } from "./related-guide";
 import { VideoEmbed } from "./video-embed";
+import { KindBadge } from "./kind-badge";
 import { getRelatedGuide } from "@/lib/content/related-guide";
 
 import type { Article } from "@/lib/content/types";
@@ -60,9 +61,10 @@ export async function ArticlePage({
       {/* data-no-ads: AdSense nu se încarcă pe arhiva preluată (vezi adsense-script.tsx) */}
       <article className="min-w-0 max-w-[720px]" data-no-ads={article.archived || undefined}>
         <Breadcrumb items={breadcrumbItems} />
-        {article.topics[0] && (
-          <div className="mt-3">
-            <TopicLabel topic={article.topics[0]} />
+        {(article.topics[0] || article.kind === "pe-scurt" || article.kind === "analiza") && (
+          <div className="mt-3 flex items-center gap-2">
+            <KindBadge kind={article.kind} />
+            {article.topics[0] && <TopicLabel topic={article.topics[0]} />}
           </div>
         )}
         <h1 className="mt-2 font-serif text-3xl leading-tight text-ink sm:text-4xl lg:text-[2.75rem]">
@@ -73,6 +75,8 @@ export async function ArticlePage({
             ? `arhivă · ${new Date(article.publishedAt).toLocaleDateString("ro-MD", ARCHIVE_DATE)}`
             : `echipă editorială · ${formatTimeAgo(article.publishedAt)}`}
           {article.sourceCount > 1 && ` · din ${article.sourceCount} surse`}
+          {article.updatedAt &&
+            ` · actualizat la ${new Date(article.updatedAt).toLocaleString("ro-MD", { timeZone: "Europe/Chisinau", hour: "2-digit", minute: "2-digit", day: "numeric", month: "long" })}`}
         </p>
         {article.archived && article.sources?.[0] ? (
           <>

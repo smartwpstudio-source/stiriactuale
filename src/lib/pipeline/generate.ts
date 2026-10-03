@@ -64,11 +64,32 @@ const SYSTEM_PROMPT = [
 // mai mic: le-a ales el, iar o știre scurtă dar urgentă tot se scrie.
 const MIN_MATERIAL_CHARS = 1200;
 const MIN_MATERIAL_CHARS_MANUAL = 400;
+const MIN_MATERIAL_BRIEF = 250;
+
+// Trei formate: știre completă; „pe scurt” când povestea abia începe (puțin
+// material — se completează la rulările următoare, vezi run.ts); analiză,
+// comandată de editor din admin.
+export type ArticleMode = "full" | "brief" | "analysis";
+
+const MODE_RULES: Record<Exclude<ArticleMode, "full">, string> = {
+  brief: [
+    "MOD PE SCURT (are prioritate față de regulile de lungime și structură de mai sus): povestea abia începe și materialul e puțin.",
+    "Scrie o știre scurtă de 80-200 de cuvinte: lead-ul + 1-2 paragrafe <p>, FĂRĂ subtitluri <h2>, fără secțiuni de context, reacții sau ce urmează dacă nu sunt în material.",
+    "Doar faptele confirmate de sursă, atribuite. Nimic presupus. Titlul nu conține „pe scurt”.",
+  ].join("\n"),
+  analysis: [
+    "MOD ANALIZĂ (are prioritate față de regulile de lungime și structură de mai sus): editorul a cerut o analiză.",
+    "1.200-2.000 de cuvinte, cu subtitluri <h2>: Ce s-a întâmplat; Cum s-a ajuns aici; Pozițiile părților (fiecare atribuită — guverne, lideri, analiști numiți în material); Ce urmează (doar scenariile și termenele formulate în material, atribuite); Ce înseamnă pentru Moldova.",
+    "La „Ce înseamnă pentru Moldova”: consecințe concrete (securitate, energie și prețuri, comerț, diaspora, drumul spre UE), formulate prudent („ar putea”, „riscul este”), fără cifre sau fapte care nu sunt în material.",
+    "Neutru, fără adjective de valoare și fără a lua partea cuiva; propaganda se citează atribuit, ca poziție, nu ca fapt.",
+  ].join("\n"),
+};
 const MAX_SOURCES = 4;
 
 export async function generateArticle(
   group: CandidateGroup,
   classification: ClassificationResult,
+  mode: ArticleMode = group.analysis ? "analysis" : "full",
 ): Promise<GeneratedArticle | null> {
   // o relatare per redacție, cele mai noi întâi
   const items = [...new Map(group.items.map((i) => [i.sourceName, i])).values()].slice(0, MAX_SOURCES);
@@ -79,11 +100,13 @@ export async function generateArticle(
     return `### [${i.sourceName}] ${i.title}\n${body}`;
   });
   const digest = blocks.join("\n\n");
-  if (digest.length < (group.manual ? MIN_MATERIAL_CHARS_MANUAL : MIN_MATERIAL_CHARS)) return null;
+  const min =
+    mode === "brief" ? MIN_MATERIAL_BRIEF : group.manual ? MIN_MATERIAL_CHARS_MANUAL : MIN_MATERIAL_CHARS;
+  if (digest.length < min) return null;
 
   const article = await structured<GeneratedArticle>({
     model: OPUS_MODEL,
-    system: SYSTEM_PROMPT,
+    system: mode === "full" ? SYSTEM_PROMPT : `${SYSTEM_PROMPT}\n\n${MODE_RULES[mode]}`,
     prompt: `Secțiune: ${classification.section}. Subiecte: ${classification.topics.join(", ") || "—"}.\n\nRelatări despre același eveniment (text integral):\n\n${digest}`,
     schema: SCHEMA,
     maxBudgetUsd: 0.5,

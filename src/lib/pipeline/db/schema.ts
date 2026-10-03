@@ -64,6 +64,11 @@ export const articles = pgTable("articles", {
   facebookPostId: varchar("facebook_post_id", { length: 64 }),
   // playerul YouTube/Facebook al video-ului din sursă (src/lib/video.ts)
   videoUrl: text("video_url"),
+  // "stire" (normal), "pe-scurt" (puțin material — se actualizează când apar
+  // detalii), "analiza" (comandată de editor din admin)
+  kind: varchar("kind", { length: 20 }).notNull().default("stire"),
+  // ultima actualizare a conținutului (știre pe scurt extinsă) — afișată
+  updatedAt: timestamp("updated_at", { withTimezone: true }),
   // id-ul articolului din WordPress, doar pentru arhiva importată
   wpId: integer("wp_id").unique(),
   // articol de arhivă preluat de la altă redacție: doar rezumat + link spre
@@ -96,6 +101,8 @@ export const candidates = pgTable("candidates", {
   feedId: varchar("feed_id", { length: 50 }).notNull(),
   publishedAt: timestamp("published_at", { withTimezone: true }).notNull(),
   manual: boolean("manual").notNull().default(false),
+  // tipul cerut de editor pentru linkul manual: "stire" sau "analiza"
+  kind: varchar("kind", { length: 20 }).notNull().default("stire"),
   processedAt: timestamp("processed_at", { withTimezone: true }),
   // interesul public de pe canalul Telegram al sursei (telegram-signal.ts):
   // vizualizări, reacții și raportul față de media canalului (1 = obișnuit)

@@ -92,6 +92,16 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
             placeholder="Titlu (opțional; necesar la video Facebook)"
             className="w-64 rounded border border-line bg-white px-3 py-2 text-ink"
           />
+          <fieldset className="flex basis-full items-center gap-4 text-sm text-ink">
+            <span className="text-sub">Tip:</span>
+            <label className="flex items-center gap-1">
+              <input type="radio" name="kind" value="stire" defaultChecked /> Știre
+            </label>
+            <label className="flex items-center gap-1">
+              <input type="radio" name="kind" value="analiza" /> Analiză (1.200–2.000 de cuvinte, cu „Ce înseamnă pentru
+              Moldova” — lipește în câmpul de mai jos încă 2–3 linkuri de surse sau text)
+            </label>
+          </fieldset>
           <textarea
             name="extra"
             rows={3}

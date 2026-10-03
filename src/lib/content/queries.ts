@@ -25,6 +25,8 @@ const listColumns = {
   sources: t.sources,
   archived: t.archived,
   videoUrl: t.videoUrl,
+  kind: t.kind,
+  updatedAt: t.updatedAt,
 };
 
 type ListRow = { [K in keyof typeof listColumns]: (typeof t.$inferSelect)[K] };
@@ -45,6 +47,8 @@ function mapRow(row: ListRow & { bodyHtml?: string }): Article {
     imageUrl: youtubeThumb(row.videoUrl) ?? row.imageUrl ?? undefined,
     imageAlt: row.imageAltText ?? undefined,
     videoUrl: row.videoUrl ?? undefined,
+    kind: row.kind,
+    updatedAt: row.updatedAt?.toISOString(),
     sources: row.sources,
     archived: row.archived,
   };

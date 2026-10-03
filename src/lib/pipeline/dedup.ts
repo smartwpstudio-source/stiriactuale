@@ -1,6 +1,6 @@
 import type { RawCandidate, CandidateGroup } from "./types";
 
-export type StoredCandidate = RawCandidate & { id: number; manual: boolean };
+export type StoredCandidate = RawCandidate & { id: number; manual: boolean; kind?: string };
 import { stripDiacritics } from "./text-normalize";
 
 // Grupare pe similaritate de titlu (Jaccard pe tokeni, fără diacritice/majuscule).
@@ -88,6 +88,7 @@ export function groupCandidates(candidates: StoredCandidate[]): CandidateGroup[]
     items: g.items.sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime()),
     sourceNames: [...new Set(g.items.map((i) => i.sourceName))],
     manual: g.items.some((i) => i.manual),
+    analysis: g.items.some((i) => i.manual && i.kind === "analiza"),
     candidateIds: g.items.map((i) => i.id),
   }));
 }

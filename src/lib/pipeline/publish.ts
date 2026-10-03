@@ -1,5 +1,5 @@
 import crypto from "node:crypto";
-import { gte, isNotNull } from "drizzle-orm";
+import { eq, gte, isNotNull } from "drizzle-orm";
 import { getDb } from "./db/client";
 import { articles } from "./db/schema";
 import { normalizeTitle } from "./dedup";
@@ -51,6 +51,7 @@ export async function publishArticle(
   candidate: ScoredCandidate,
   generated: GeneratedArticle,
   image: ArticleImage | null,
+  kind: "stire" | "pe-scurt" | "analiza" = "stire",
 ): Promise<void> {
   const db = getDb();
   const sourceUrls = candidate.group.items.map((i) => i.sourceUrl).filter(Boolean);
@@ -89,6 +90,7 @@ export async function publishArticle(
         sourceUrls,
         sources,
         pushWorthy: candidate.classification.pushWorthy,
+        kind,
         status: draft ? "draft" : "published",
       })
       .onConflictDoNothing({ target: articles.slug })
@@ -105,4 +107,39 @@ export async function publishArticle(
     }
   }
   throw new Error(`slug ocupat: ${generated.slug}`);
+}
+
+// Știre „pe scurt” completată cu detalii noi: același articol (aceeași adresă,
+// fără o nouă postare pe Telegram/Facebook), textul extins, sursele adunate,
+// marcată „Actualizat la”.
+export async function updateBriefArticle(
+  articleId: number,
+  candidate: ScoredCandidate,
+  generated: GeneratedArticle,
+): Promise<void> {
+  const db = getDb();
+  const [old] = await db.select().from(articles).where(eq(articles.id, articleId));
+  if (!old) return;
+  const sources = [
+    ...new Map(
+      [...old.sources, ...candidate.group.items.map((i) => ({ name: i.sourceName, url: i.sourceUrl }))]
+        .filter((x) => x.url)
+        .map((x) => [x.name, x]),
+    ).values(),
+  ];
+  await db
+    .update(articles)
+    .set({
+      title: generated.titlu,
+      leadText: generated.lead,
+      bodyHtml: generated.corp_html,
+      metaDescription: generated.meta_description.slice(0, 200),
+      sources,
+      sourceUrls: [...new Set([...old.sourceUrls, ...candidate.group.items.map((i) => i.sourceUrl).filter(Boolean)])],
+      sourceCount: sources.length,
+      videoUrl: old.videoUrl ?? generated.video_url,
+      kind: "stire",
+      updatedAt: new Date(),
+    })
+    .where(eq(articles.id, articleId));
 }

@@ -17,6 +17,7 @@ export interface CandidateGroup {
   items: RawCandidate[];
   sourceNames: string[]; // unice
   manual: boolean; // adăugat de editor din /admin — sare peste scor și plafoane
+  analysis?: boolean; // editorul a cerut o analiză (admin → tip „Analiză”)
   candidateIds: number[];
 }
 
@@ -30,6 +31,7 @@ export interface ClassificationResult {
   confidence: number; // 0-100
   reject: boolean; // horoscop, publicitate, monden fără miză etc.
   sameAs?: number; // indexul unui grup anterior despre același eveniment
+  updateOf?: number; // id-ul unei știri „pe scurt” publicate despre același eveniment
   pushWorthy: boolean; // propunere de notificare push (criteriile redacției)
   sensitive: boolean; // impact emoțional puternic / risc juridic -> draft, așteaptă aprobarea
 }

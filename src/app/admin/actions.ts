@@ -205,12 +205,18 @@ export async function addLink(formData: FormData) {
     .join("\n")
     .trim()
     .slice(0, 12000);
+  // linkuri lipite în câmpul mare (ex. pentru o analiză): se citesc și ele
+  // (max 3), iar textul lor intră în materialul articolului
+  const extraLinks = [...new Set(extra.match(/https?:\/\/[^\s<>"]+/g) ?? [])].slice(0, 3);
+  const extraTexts = (await Promise.all(extraLinks.map((u) => fetchArticle(u))))
+    .filter((p) => p?.text)
+    .map((p) => `${p!.title}\n${p!.text}`);
   let title: string;
   let summary: string;
   let sourceName = url.hostname.replace(/^www\./, "");
   if (video) {
     title = manualTitle || video.title;
-    summary = [video.description, extra].filter(Boolean).join("\n\n").slice(0, 16000);
+    summary = [video.description, extra, ...extraTexts].filter(Boolean).join("\n\n").slice(0, 20000);
     sourceName = video.channel;
     if (!title) redirect("/admin/?link=videotitle");
   } else {
@@ -218,7 +224,7 @@ export async function addLink(formData: FormData) {
     // titlul și un rezumat pentru clasificare
     const page = await fetchArticle(url.toString());
     title = manualTitle || (page?.title ?? "");
-    summary = [page?.description, page?.text, extra].filter(Boolean).join("\n").slice(0, 14000);
+    summary = [page?.description, page?.text, extra, ...extraTexts].filter(Boolean).join("\n").slice(0, 20000);
     if (!title) redirect("/admin/?link=unreadable");
   }
 
@@ -232,8 +238,12 @@ export async function addLink(formData: FormData) {
       feedId: "manual",
       publishedAt: new Date(),
       manual: true,
+      kind: formData.get("kind") === "analiza" ? "analiza" : "stire",
     })
-    .onConflictDoUpdate({ target: candidates.url, set: { manual: true, processedAt: null } });
+    .onConflictDoUpdate({
+      target: candidates.url,
+      set: { manual: true, processedAt: null, kind: formData.get("kind") === "analiza" ? "analiza" : "stire" },
+    });
   if (formData.get("now")) {
     const { ok } = await dispatchPipeline();
     redirect(ok ? "/admin/?run=ok" : "/admin/?run=fail");

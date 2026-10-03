@@ -42,6 +42,10 @@ const SCHEMA = {
             type: "integer",
             description: "Id-ul unui grup ANTERIOR (număr mai mic) despre EXACT același eveniment, dacă există.",
           },
+          update_of: {
+            type: "integer",
+            description: "Numărul N al unei știri pe scurt deja publicate [PN] despre EXACT același eveniment, dacă există.",
+          },
         },
         required: ["id", "section", "topics", "impact", "factual_richness", "confidence", "reject", "push_alert", "sensitive"],
       },
@@ -77,6 +81,9 @@ const SYSTEM_PROMPT = [
   "",
   "push_alert=true — notificare pe telefonul cititorilor, prag FOARTE sus (maxim câteva pe zi din zeci de știri): DOAR știri de interes național sau internațional pentru oamenii din Moldova — cazuri de rezonanță, scumpiri și tarife noi, legi și reguli noi care îi afectează pe toți, scandaluri politice mari, accidente sau tragedii mari (morți multiple, catastrofe), cazuri sociale care au mișcat țara. NU: știri locale obișnuite, accidente cu un rănit, declarații politice de rutină, internațional fără efect asupra Moldovei. În caz de dubiu: false.",
   "",
+  "Secțiunea international (Lumea) — DOAR: geopolitică și politica marilor puteri, războaie și conflicte, crize economice și energetice cu efect regional, alegeri și scandaluri politice majore (SUA, UE, Rusia, Ucraina, România, Germania, Israel, Iran, China), incidente majore cu rezonanță mondială (catastrofe aviatice, atentate, dezastre), orice implică moldoveni sau români, orice afectează Moldova (prețuri, zboruri din/spre Chișinău, diaspora).",
+  "reject=true pentru internațional fără miză: crime, accidente, procese și fapte diverse locale din alte țări, fără moldoveni/români implicați și fără rezonanță internațională (ex. o crimă într-un oraș din Anglia).",
+  "update_of: dacă în lista „Știri pe scurt deja publicate” e o știre despre EXACT același eveniment, dă numărul ei — grupul o completează cu detalii noi, nu e o știre nouă.",
   "reject=true pentru: horoscop, publicitate/advertorial/promoții, monden și vedete fără interes public, rețete, sfaturi generale, sondaje de opinie online, rezultate sportive fără legătură cu Moldova, știri vechi reluate.",
 ].join("\n");
 
@@ -91,8 +98,16 @@ function interestLine(g: CandidateGroup): string {
 
 // Un singur apel pentru toți candidații rulării — instrucțiunile + schema se
 // plătesc o dată, nu per grup.
-export async function classifyGroups(groups: CandidateGroup[]): Promise<(ClassificationResult | null)[]> {
-  const prompt = groups
+export async function classifyGroups(
+  groups: CandidateGroup[],
+  briefs: { id: number; title: string }[] = [],
+): Promise<(ClassificationResult | null)[]> {
+  const briefList = briefs.length
+    ? `Știri pe scurt deja publicate (pot fi completate):\n${briefs.map((b, n) => `[P${n}] ${b.title}`).join("\n")}\n\n`
+    : "";
+  const prompt =
+    briefList +
+    groups
     .map(
       (g, i) =>
         `#${i} (${g.sourceNames.length} surse${interestLine(g)})\n` +
@@ -117,6 +132,7 @@ export async function classifyGroups(groups: CandidateGroup[]): Promise<(Classif
       push_alert?: boolean;
       sensitive?: boolean;
       same_as?: number;
+      update_of?: number;
     }[];
   }>({ model: HAIKU_MODEL, system: SYSTEM_PROMPT, prompt, schema: SCHEMA, maxBudgetUsd: 0.5 });
 
@@ -139,6 +155,7 @@ export async function classifyGroups(groups: CandidateGroup[]): Promise<(Classif
       pushWorthy: it.push_alert === true,
       sensitive: it.sensitive !== false, // lipsă = sensibil (prudență)
       sameAs: it.same_as !== undefined && it.same_as >= 0 && it.same_as < i ? it.same_as : undefined,
+      updateOf: it.update_of !== undefined ? briefs[it.update_of]?.id : undefined,
     };
   });
 }

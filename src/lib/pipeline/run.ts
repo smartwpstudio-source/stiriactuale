@@ -9,7 +9,7 @@ import { computeQualityScore } from "./scoring";
 import { findArticleImage } from "./image";
 import { youtubeThumb } from "@/lib/video";
 import { shortVideoArticle } from "./video-article";
-import { isDuplicate, loadRecentFingerprints, loadUsedImageIds, publishArticle } from "./publish";
+import { isDuplicate, loadRecentFingerprints, loadUsedImageIds, publishArticle, updateBriefArticle } from "./publish";
 import { mapWithConcurrency } from "./concurrency";
 import { spentUsd } from "./llm";
 import { alertEditor } from "@/lib/telegram";
@@ -30,6 +30,9 @@ const SECTION_CONFIG: Record<Section, { minScore: number; cap: number }> = {
 const WINDOW_HOURS = 6;
 const MAX_GROUPS_TO_CLASSIFY = 40;
 const PUBLISH_CONCURRENCY = 4;
+// scorul de la care o știre cu material puțin se publică „pe scurt” în loc să
+// fie sărită (povestea abia începe — o completăm la rulările următoare)
+const BRIEF_MIN_SCORE = 60;
 const FEED_ALERT_MIN = 3; // feed-uri căzute deodată, din 9
 // Fereastra de publicare automată, ora Chișinăului: 06:00-22:59 (rularea de
 // 22:00 poate întârzia puțin; după 23:00 nu mai publică).
@@ -51,6 +54,7 @@ export interface PipelineRunSummary {
   groupsFormed: number;
   candidatesClassified: number;
   articlesPublished: number;
+  articlesUpdated: number; // știri pe scurt completate
   bySection: Record<Section, number>;
   costUsd: number; // echivalent la prețuri API — doar pentru a urmări consumul din limite
   skipped?: string;
@@ -68,6 +72,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     groupsFormed: 0,
     candidatesClassified: 0,
     articlesPublished: 0,
+    articlesUpdated: 0,
     bySection: { regiuni: 0, national: 0, international: 0, diaspora: 0 },
     costUsd: 0,
   };
@@ -131,7 +136,13 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       )
       .slice(0, MAX_GROUPS_TO_CLASSIFY);
 
-    const classifications = fresh.length ? await classifyGroups(fresh) : [];
+    // știrile „pe scurt” din ultimele 48h: un grup nou despre același eveniment
+    // le completează (actualizare), nu creează o știre nouă
+    const briefs = await db
+      .select({ id: articles.id, title: articles.title })
+      .from(articles)
+      .where(and(eq(articles.kind, "pe-scurt"), eq(articles.status, "published"), gte(articles.publishedAt, new Date(Date.now() - 48 * 3600_000))));
+    const classifications = fresh.length ? await classifyGroups(fresh, briefs) : [];
     // Duplicatele semnalate de clasificator se contopesc în grupul anterior —
     // mai multe surse = scor mai bun și un singur articol.
     classifications.forEach((c, i) => {
@@ -141,11 +152,15 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       target.sourceNames = [...new Set([...target.sourceNames, ...fresh[i].sourceNames])];
       target.candidateIds.push(...fresh[i].candidateIds);
       target.manual ||= fresh[i].manual;
+      target.analysis ||= fresh[i].analysis;
     });
     const scored: ScoredCandidate[] = [];
+    const updates: (ScoredCandidate & { articleId: number })[] = [];
     classifications.forEach((classification, i) => {
       if (!classification || classification.sameAs !== undefined) return;
-      scored.push({ group: fresh[i], classification, qualityScore: computeQualityScore(fresh[i], classification) });
+      const c = { group: fresh[i], classification, qualityScore: computeQualityScore(fresh[i], classification) };
+      if (classification.updateOf !== undefined && !classification.reject) updates.push({ ...c, articleId: classification.updateOf });
+      else scored.push(c);
     });
     summary.candidatesClassified = scored.length;
 
@@ -164,9 +179,16 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     const usedImageIds = await loadUsedImageIds();
     const published = await mapWithConcurrency(toPublish, PUBLISH_CONCURRENCY, async (c): Promise<Section | null> => {
       try {
-        // link video al editorului cu descriere scurtă: știre video scurtă, fără AI
-        const generated =
-          (await generateArticle(c.group, c.classification)) ?? (c.group.manual ? shortVideoArticle(c.group) : null);
+        // material puțin: linkul video al editorului -> știre video scurtă (fără
+        // AI); altfel, la subiectele importante sau cerute de editor -> „pe scurt”,
+        // completată la rulările următoare când apar detalii
+        let kind: "stire" | "pe-scurt" | "analiza" = c.group.analysis ? "analiza" : "stire";
+        let generated = await generateArticle(c.group, c.classification);
+        if (!generated && c.group.manual) generated = shortVideoArticle(c.group);
+        if (!generated && (c.group.manual || c.qualityScore >= BRIEF_MIN_SCORE)) {
+          generated = await generateArticle(c.group, c.classification, "brief");
+          if (generated) kind = "pe-scurt";
+        }
         if (!generated) {
           summary.skippedThin.push(c.group.representativeTitle.slice(0, 80));
           // linkul editorului nu rămâne la coadă la nesfârșit — editorul e anunțat
@@ -180,7 +202,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
         const image = youtubeThumb(generated.video_url)
           ? null
           : await findArticleImage(generated.stock_query, generated.image_prompt, generated.slug, usedImageIds);
-        await publishArticle(c, generated, image);
+        await publishArticle(c, generated, image, kind);
         if (c.group.manual) {
           await db.update(candidates).set({ processedAt: new Date() }).where(inArray(candidates.id, c.group.candidateIds));
         }
@@ -192,6 +214,32 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
         return null;
       }
     });
+
+    // știri pe scurt completate: rescrise complet doar dacă acum e material
+    // destul; altfel rămân cum sunt (următoarea rulare mai încearcă)
+    for (const u of updates) {
+      try {
+        const [old] = await db.select({ sources: articles.sources, lead: articles.leadText, title: articles.title }).from(articles).where(eq(articles.id, u.articleId));
+        if (!old) continue;
+        const group = {
+          ...u.group,
+          items: [
+            ...u.group.items,
+            ...old.sources.map((s) => ({ sourceUrl: s.url, sourceName: s.name, title: old.title, summary: old.lead, publishedAt: new Date(), feedId: "update" })),
+          ],
+        };
+        const generated = await generateArticle(group, u.classification);
+        if (generated) {
+          await updateBriefArticle(u.articleId, u, generated);
+          summary.articlesUpdated++;
+        }
+        if (u.group.manual) {
+          await db.update(candidates).set({ processedAt: new Date() }).where(inArray(candidates.id, u.group.candidateIds));
+        }
+      } catch (err) {
+        summary.failedArticles.push(`actualizare ${u.articleId}: ${err instanceof Error ? err.message : String(err)}`);
+      }
+    }
 
     for (const section of published) {
       if (!section) continue;
