@@ -5,6 +5,7 @@ import { Breadcrumb } from "./breadcrumb";
 import { ArticleCard } from "./article-card";
 import { PlaceInfoBox } from "./place-info";
 import { getPlaceInfo, listPlaces } from "@/lib/content/places";
+import { getGuides } from "@/lib/content/guides";
 import { SectionFilterChips } from "./section-filter-chips";
 import { getHubCounts, listArticles } from "@/lib/content/queries";
 import { countryLabel, raionLabel } from "@/lib/content/geo";
@@ -30,11 +31,12 @@ export async function hubMetadata(hub: Hub | null, page: number): Promise<Metada
 
 export async function HubPage({ hub, page }: { hub: Hub | null; page: number | null }) {
   if (!hub || !page) notFound();
-  const [{ items, pages }, counts, place, placeSlugs] = await Promise.all([
+  const [{ items, pages }, counts, place, placeSlugs, pillars] = await Promise.all([
     listArticles(hub.filter, page),
     hub.chips ? getHubCounts() : null,
     hub.place && page === 1 ? getPlaceInfo(hub.place.kind, hub.place.slug) : null,
     hub.chips ? listPlaces(hub.chips.kind === "raion" ? "raioane" : "tari") : [],
+    hub.pillars && page === 1 ? getGuides().then((g) => g.filter((x) => x.category === hub.pillars)) : [],
   ]);
   if (page > pages) notFound();
 
@@ -66,6 +68,24 @@ export async function HubPage({ hub, page }: { hub: Hub | null; page: number | n
         <SectionFilterChips basePath={chips!.basePath} items={chipItems} active={chips!.active} />
       )}
       {place && hub.place && <PlaceInfoBox info={place} name={hub.place.name} />}
+      {pillars.length > 0 && (
+        <section className="mt-6">
+          <h2 className="font-mono text-xs uppercase tracking-wide text-sub">Dosare: marile subiecte, pe înțelesul tuturor</h2>
+          <ul className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {pillars.map((g) => (
+              <li key={g.slug}>
+                <Link
+                  href={`/ghiduri/${g.slug}/`}
+                  className="flex h-full flex-col rounded-lg border border-line bg-white p-4 hover:border-teal"
+                >
+                  <span className="font-serif text-lg leading-snug text-ink">{g.title.split(":")[0]}</span>
+                  <span className="mt-1 line-clamp-2 text-sm text-sub">{g.description}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
       {items.length === 0 && <p className="mt-6 font-mono text-sm text-sub">Niciun articol publicat încă.</p>}
       <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((a) => (

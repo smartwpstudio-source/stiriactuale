@@ -37,14 +37,14 @@ export default async function InternationalArticlePage({
 
   const breadcrumbItems = [
     { label: "Acasă", href: "/" },
-    { label: "Internațional", href: "/international" },
+    { label: "Lumea", href: "/international" },
     { label: article.title },
   ];
 
   const jsonLd = [
     breadcrumbJsonLd([
       { name: "Acasă", url: absoluteUrl("/") },
-      { name: "Internațional", url: absoluteUrl("/international/") },
+      { name: "Lumea", url: absoluteUrl("/international/") },
       { name: article.title, url: absoluteUrl(articleUrl(article)) },
     ]),
     newsArticleJsonLd(article),

@@ -3,7 +3,7 @@ import type { Section } from "./types";
 export const SECTION_LABELS: Record<Section, string> = {
   regiuni: "Regiuni",
   national: "Național",
-  international: "Internațional",
+  international: "Lumea",
   diaspora: "Diaspora",
 };
 

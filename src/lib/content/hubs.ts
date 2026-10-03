@@ -13,6 +13,7 @@ export interface Hub {
   filter: ArticleFilter;
   chips?: { kind: "raion" | "tara"; basePath: string; active?: string };
   place?: { kind: "raioane" | "tari"; slug: string; name: string }; // contacte utile (content/locuri/)
+  pillars?: "lumea"; // dosarele-pilon (content/ghiduri, categoria dată), afișate sus ca carduri
 }
 
 const home = { label: "Acasă", href: "/" };
@@ -22,7 +23,7 @@ export function sectionHub(section: Section): Hub {
   const descriptions: Record<Section, string> = {
     regiuni: "Ultimele știri din regiunile și raioanele Republicii Moldova.",
     national: "Ultimele știri naționale din Republica Moldova.",
-    international: "Știri internaționale cu impact pentru Republica Moldova.",
+    international: "Politica mondială, conflictele și marile crize — explicate pentru Moldova: ce înseamnă pentru noi.",
     diaspora: "Știri pentru moldovenii din diaspora.",
   };
   return {
@@ -31,6 +32,7 @@ export function sectionHub(section: Section): Hub {
     basePath: `/${section}/`,
     crumbs: [home, { label }],
     filter: { section },
+    pillars: section === "international" ? "lumea" : undefined,
     chips:
       section === "regiuni"
         ? { kind: "raion", basePath: "/regiuni" }

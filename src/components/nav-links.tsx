@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 export const NAV = [
   { href: "/regiuni/", label: "Regiuni" },
   { href: "/national/", label: "Național" },
-  { href: "/international/", label: "Internațional" },
+  { href: "/international/", label: "Lumea" },
   { href: "/diaspora/", label: "Diaspora" },
   { href: "/ghiduri/", label: "Ghiduri" },
   { href: "/calculatoare/", label: "Calculatoare" },
