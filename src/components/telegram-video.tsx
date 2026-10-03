@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 
 // Doar video-ul postării Telegram (fără textul ei), primul în articol. Dacă
-// Telegram schimbă ceva și video-ul nu se mai poate reda, rămâne poza
-// articolului (children) — știrea nu se strică.
+// Telegram nu-l dă pe web (fișier prea mare) sau schimbă ceva, rămâne playerul
+// lor oficial (children), cu tot cu text — video-ul e obligatoriu în articol.
 export function TelegramVideo({ post, channel, children }: { post: string; channel: string; children: React.ReactNode }) {
   const [failed, setFailed] = useState(false);
   const ref = useRef<HTMLVideoElement>(null);
@@ -23,7 +23,7 @@ export function TelegramVideo({ post, channel, children }: { post: string; chann
         controls
         playsInline
         // „metadata”: browserul încearcă imediat video-ul — dacă Telegram nu-l dă
-        // (fișier prea mare pentru web), apare eroarea și rămâne poza
+        // (fișier prea mare pentru web), apare eroarea și trecem pe playerul lor
         preload="metadata"
         onError={() => setFailed(true)}
         className="aspect-video w-full rounded bg-black object-contain"

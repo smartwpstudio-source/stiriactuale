@@ -113,17 +113,10 @@ export async function ArticlePage({
         ) : (
           <>
             {telegramPost(article.videoUrl) ? (
-              // video Telegram: doar video-ul, primul; fără el — poza
+              // video Telegram: doar video-ul, primul, în playerul nostru
               <TelegramVideo post={telegramPost(article.videoUrl)!} channel={article.sources?.[0]?.name ?? "Telegram"}>
-                <ArticleThumb
-                  topics={article.topics}
-                  imageUrl={article.imageUrl}
-                  imageAlt={article.imageAlt}
-                  className="mt-6 aspect-video w-full rounded"
-                  iconSize={64}
-                  sizes="(max-width: 768px) 100vw, 720px"
-                  priority
-                />
+                {/* Telegram nu dă video-ul pe web (fișier mare): playerul lor oficial, cu tot cu text */}
+                <VideoEmbed src={article.videoUrl!} title={article.title} />
               </TelegramVideo>
             ) : article.videoUrl ? (
               // video din sursă: playerul ia locul pozei, sus
