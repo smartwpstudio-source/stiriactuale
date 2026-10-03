@@ -51,7 +51,7 @@ export interface PipelineRunSummary {
   groupsFormed: number;
   candidatesClassified: number;
   articlesPublished: number;
-  articlesUpdated: number; // știri pe scurt completate
+  articlesUpdated: number; // știri în desfășurare completate
   bySection: Record<Section, number>;
   costUsd: number; // echivalent la prețuri API — doar pentru a urmări consumul din limite
   skipped?: string;
@@ -145,7 +145,8 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     const recentArticles = recentRows.map((r) => ({
       id: r.id,
       title: r.title,
-      brief: r.kind === "pe-scurt" && r.publishedAt.getTime() > Date.now() - 48 * 3600_000,
+      // se poate completa cât evenimentul e în desfășurare: „pe scurt” 48h, știrea 24h
+      open: r.kind !== "analiza" && r.publishedAt.getTime() > Date.now() - (r.kind === "pe-scurt" ? 48 : 24) * 3600_000,
     }));
     const classifications = fresh.length ? await classifyGroups(fresh, recentArticles) : [];
     // Duplicatele semnalate de clasificator se contopesc în grupul anterior —

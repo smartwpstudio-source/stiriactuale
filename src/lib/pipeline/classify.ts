@@ -44,7 +44,7 @@ const SCHEMA = {
           },
           update_of: {
             type: "integer",
-            description: "Numărul N al unui articol recent [RN] marcat (pe scurt), dacă grupul aduce detalii despre ACELAȘI eveniment încă în desfășurare.",
+            description: "Numărul N al unui articol recent [RN] marcat (în desfășurare), dacă grupul aduce detalii despre ACELAȘI eveniment încă în desfășurare.",
           },
           continues: {
             type: "integer",
@@ -88,7 +88,7 @@ const SYSTEM_PROMPT = [
   "Secțiunea international (Lumea) — DOAR: geopolitică și politica marilor puteri, războaie și conflicte, crize economice și energetice cu efect regional, alegeri și scandaluri politice majore (SUA, UE, Rusia, Ucraina, România, Germania, Israel, Iran, China), incidente majore cu rezonanță mondială (catastrofe aviatice, atentate, dezastre), orice implică moldoveni sau români, orice afectează Moldova (prețuri, zboruri din/spre Chișinău, diaspora).",
   "reject=true pentru internațional fără miză: crime, accidente, procese și fapte diverse locale din alte țări, fără moldoveni/români implicați și fără rezonanță internațională (ex. o crimă într-un oraș din Anglia).",
   "Articole recente [RN] (ultimele 7 zile) — pentru fiecare grup alege cel mult una dintre variante:",
-  "- update_of: articolul e marcat (pe scurt) și grupul aduce detalii despre ACELAȘI eveniment, încă în desfășurare (ex. avionul deturnat: atacul, aterizarea, ce s-a întâmplat la bord, primele declarații oficiale). Nu e o știre nouă, ci completarea ei.",
+  "- update_of: articolul e marcat (în desfășurare) și grupul aduce detalii despre ACELAȘI eveniment, încă în desfășurare (ex. avionul deturnat: atacul, aterizarea, ce s-a întâmplat la bord, primele declarații oficiale; dronele căzute azi: fragmentele găsite, reacția MAE, explicațiile Ministerului Apărării). Nu e o știre nouă, ci completarea ei — NU publica un al doilea articol despre același eveniment.",
   "- continues: evenimentul din articolul recent s-a încheiat, iar grupul e o dezvoltare ulterioară a aceleiași povești (declarații ulterioare, ancheta, descoperiri noi, consecințe). E o știre nouă, legată de cea veche.",
   "- niciuna: subiect diferit.",
   "reject=true dacă grupul relatează ACELAȘI fapt ca un articol recent [RN], fără nimic nou (altă formulare, altă sursă, alt titlu — ex. „contract de 23 mil. pentru drumul R13” și „23 mil. investiți în drumul R13”): e dublură, nu publicăm de două ori.",
@@ -108,10 +108,10 @@ function interestLine(g: CandidateGroup): string {
 // plătesc o dată, nu per grup.
 export async function classifyGroups(
   groups: CandidateGroup[],
-  recent: { id: number; title: string; brief: boolean }[] = [],
+  recent: { id: number; title: string; open: boolean }[] = [],
 ): Promise<(ClassificationResult | null)[]> {
   const briefList = recent.length
-    ? `Articole recente (ultimele 7 zile):\n${recent.map((r, n) => `[R${n}]${r.brief ? " (pe scurt)" : ""} ${r.title}`).join("\n")}\n\n`
+    ? `Articole recente (ultimele 7 zile):\n${recent.map((r, n) => `[R${n}]${r.open ? " (în desfășurare)" : ""} ${r.title}`).join("\n")}\n\n`
     : "";
   const prompt =
     briefList +
@@ -164,7 +164,7 @@ export async function classifyGroups(
       pushWorthy: it.push_alert === true,
       sensitive: it.sensitive !== false, // lipsă = sensibil (prudență)
       sameAs: it.same_as !== undefined && it.same_as >= 0 && it.same_as < i ? it.same_as : undefined,
-      updateOf: it.update_of !== undefined && recent[it.update_of]?.brief ? recent[it.update_of].id : undefined,
+      updateOf: it.update_of !== undefined && recent[it.update_of]?.open ? recent[it.update_of].id : undefined,
       continuesId: it.continues !== undefined ? recent[it.continues]?.id : undefined,
     };
   });
