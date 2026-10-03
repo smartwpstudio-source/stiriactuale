@@ -10,7 +10,7 @@ const SRC = "content/locuri/surse.json";
 const OUT = "content/locuri/locuri.json";
 
 type Photo = { url: string; credit: string; source: string };
-type Place = { id: string; name: string; keywords: string; photos: Photo[] };
+type Place = { id: string; name: string; keywords: string; locality?: string; photos: Photo[] };
 
 const plain = (html: string) => html.replace(/<[^>]+>/g, "").replace(/ +/g, " ").trim();
 
@@ -34,7 +34,7 @@ async function importFile(title: string, slug: string): Promise<Photo | null> {
   const found: Record<string, string[]> = Object.assign({}, ...process.argv.slice(2).map((f) => JSON.parse(readFileSync(f, "utf8"))));
   const prev: Place[] = existsSync(OUT) ? JSON.parse(readFileSync(OUT, "utf8")) : [];
   const out: Place[] = [];
-  for (const p of JSON.parse(readFileSync(SRC, "utf8")) as { id: string; name: string; keywords: string }[]) {
+  for (const p of JSON.parse(readFileSync(SRC, "utf8")) as { id: string; name: string; keywords: string; locality?: string }[]) {
     const old = prev.find((x) => x.id === p.id);
     const photos: Photo[] = old?.photos ?? [];
     for (const [i, title] of (found[p.id] ?? []).entries()) {
@@ -43,7 +43,7 @@ async function importFile(title: string, slug: string): Promise<Photo | null> {
       if (ph) photos.push(ph);
     }
     console.log(`${p.id}: ${photos.length}`);
-    if (photos.length) out.push({ id: p.id, name: p.name, keywords: p.keywords, photos });
+    if (photos.length) out.push({ id: p.id, name: p.name, keywords: p.keywords, ...(p.locality && { locality: p.locality }), photos });
   }
   writeFileSync(OUT, JSON.stringify(out, null, 1) + "\n");
   console.log(`locuri cu poze: ${out.length}`);

@@ -10,6 +10,7 @@ export interface Place {
   id: string;
   name: string;
   keywords: string;
+  locality?: string; // clădirile din raioane: doar la știrile din acel raion
   photos: { url: string; credit: string; source: string }[];
 }
 
@@ -21,13 +22,18 @@ export function loadPlaces(): Place[] {
   }
 }
 
-export async function matchPlacePhoto(subject: string, places: Place[]): Promise<{ url: string; credit: string } | null> {
+export async function matchPlacePhoto(
+  subject: string,
+  all: Place[],
+  locality?: string,
+): Promise<{ url: string; credit: string } | null> {
+  const places = all.filter((p) => !p.locality || p.locality === locality);
   if (!places.length) return null;
   try {
     const { match } = await structured<{ match: number }>({
       model: HAIKU_MODEL,
       system:
-        "Alegi poza unui loc real pentru o știre. Poza trebuie să arate SUBIECTUL PRINCIPAL al știrii. Răspunzi cu numărul locului doar dacă subiectul principal ESTE acel loc sau acea instituție (ex. zborurile de pe Aeroportul Chișinău, o decizie a Parlamentului, nivelul Nistrului, cozile la vama Leușeni). Dacă subiectul principal e un obiect sau o întâmplare (o dronă, un accident, un incendiu), locul unde s-a petrecut NU e subiectul: -1. Locurile generice (vie, lan, sat, școală) doar dacă știrea chiar e despre ele (recolta, viticultura, școala). În caz de dubiu: -1.",
+        "Alegi poza unui loc real pentru o știre. Poza trebuie să arate SUBIECTUL PRINCIPAL al știrii. Răspunzi cu numărul locului doar dacă subiectul principal ESTE acel loc sau acea instituție (ex. zborurile de pe Aeroportul Chișinău, o decizie a Parlamentului, nivelul Nistrului, cozile la vama Leușeni). Dacă subiectul principal e un obiect sau o întâmplare (o dronă, un accident, un incendiu), locul unde s-a petrecut NU e subiectul: -1. Locurile generice (vie, lan, sat, școală, vreme, poliție, pompieri) doar dacă știrea chiar e despre ele. Graficele de avertizare (cod galben/portocaliu/roșu) doar dacă știrea E acea avertizare, cu același cod și același fenomen. Clădirea unei instituții dintr-un raion (poliția, judecătoria, spitalul) doar dacă instituția aceea e în centrul știrii. În caz de dubiu: -1.",
       prompt: `Știrea: ${subject}\n\nLocuri:\n${places.map((p, i) => `${i}. ${p.name} (${p.keywords})`).join("\n")}`,
       schema: { type: "object", properties: { match: { type: "integer" } }, required: ["match"] },
       maxBudgetUsd: 0.05,

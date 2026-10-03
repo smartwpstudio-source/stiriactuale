@@ -213,7 +213,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
         // după subiect / generată
         const subject = `${generated.titlu}. ${generated.lead}`;
         const official = generated.source_photo ?? (await matchOfficialPhoto(subject, officialItems).then((m) => m && { url: m.photo, credit: m.credit }));
-        const place = official ? null : await matchPlacePhoto(subject, places);
+        const place = official ? null : await matchPlacePhoto(subject, places, c.classification.locality);
         const image = youtubeThumb(generated.video_url)
           ? null
           : (place && { url: place.url, resourceId: null, credit: place.credit }) ??

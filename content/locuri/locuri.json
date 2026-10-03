@@ -1430,5 +1430,353 @@
     "source": "https://commons.wikimedia.org/wiki/File:Biserica_de_lemn_din_Hiri%C8%99eni.jpg"
    }
   ]
+ },
+ {
+  "id": "cod-galben-canicula",
+  "name": "Grafică: COD GALBEN de caniculă (avertizare meteo)",
+  "keywords": "avertizare meteo cod galben, caniculă, arșiță, temperaturi de peste 35 de grade",
+  "photos": [
+   {
+    "url": "https://stiriactuale.info/grafic/?n=galben&t=Canicul%C4%83&s=Avertizare+meteorologic%C4%83",
+    "credit": "Grafică: Știri Actuale",
+    "source": "https://stiriactuale.info/grafic/?n=galben&t=Canicul%C4%83&s=Avertizare+meteorologic%C4%83"
+   }
+  ]
+ },
+ {
+  "id": "cod-galben-ploi",
+  "name": "Grafică: COD GALBEN de ploi puternice (avertizare meteo)",
+  "keywords": "avertizare meteo cod galben, ploi torențiale, averse, acumulări de apă",
+  "photos": [
+   {
+    "url": "https://stiriactuale.info/grafic/?n=galben&t=Ploi+puternice&s=Avertizare+meteorologic%C4%83",
+    "credit": "Grafică: Știri Actuale",
+    "source": "https://stiriactuale.info/grafic/?n=galben&t=Ploi+puternice&s=Avertizare+meteorologic%C4%83"
+   }
+  ]
+ },
+ {
+  "id": "cod-galben-vant",
+  "name": "Grafică: COD GALBEN de vânt puternic (avertizare meteo)",
+  "keywords": "avertizare meteo cod galben, vânt puternic, rafale",
+  "photos": [
+   {
+    "url": "https://stiriactuale.info/grafic/?n=galben&t=V%C3%A2nt+puternic&s=Avertizare+meteorologic%C4%83",
+    "credit": "Grafică: Știri Actuale",
+    "source": "https://stiriactuale.info/grafic/?n=galben&t=V%C3%A2nt+puternic&s=Avertizare+meteorologic%C4%83"
+   }
+  ]
+ },
+ {
+  "id": "cod-galben-furtuna",
+  "name": "Grafică: COD GALBEN de furtună (avertizare meteo)",
+  "keywords": "avertizare meteo cod galben, furtună, ploi, vânt, grindină, descărcări electrice",
+  "photos": [
+   {
+    "url": "https://stiriactuale.info/grafic/?n=galben&t=Furtun%C4%83&s=Avertizare+meteorologic%C4%83",
+    "credit": "Grafică: Știri Actuale",
+    "source": "https://stiriactuale.info/grafic/?n=galben&t=Furtun%C4%83&s=Avertizare+meteorologic%C4%83"
+   }
+  ]
+ },
+ {
+  "id": "cod-galben-ger",
+  "name": "Grafică: COD GALBEN de ger (avertizare meteo)",
+  "keywords": "avertizare meteo cod galben, ger, temperaturi foarte scăzute",
+  "photos": [
+   {
+    "url": "https://stiriactuale.info/grafic/?n=galben&t=Ger&s=Avertizare+meteorologic%C4%83",
+    "credit": "Grafică: Știri Actuale",
+    "source": "https://stiriactuale.info/grafic/?n=galben&t=Ger&s=Avertizare+meteorologic%C4%83"
+   }
+  ]
+ },
+ {
+  "id": "cod-galben-polei",
+  "name": "Grafică: COD GALBEN de polei (avertizare meteo)",
+  "keywords": "avertizare meteo cod galben, polei, ghețuș, drumuri alunecoase",
+  "photos": [
+   {
+    "url": "https://stiriactuale.info/grafic/?n=galben&t=Polei&s=Avertizare+meteorologic%C4%83",
+    "credit": "Grafică: Știri Actuale",
+    "source": "https://stiriactuale.info/grafic/?n=galben&t=Polei&s=Avertizare+meteorologic%C4%83"
+   }
+  ]
+ },
+ {
+  "id": "cod-galben-ninsori",
+  "name": "Grafică: COD GALBEN de ninsori abundente (avertizare meteo)",
+  "keywords": "avertizare meteo cod galben, ninsori, viscol, zăpadă",
+  "photos": [
+   {
+    "url": "https://stiriactuale.info/grafic/?n=galben&t=Ninsori+abundente&s=Avertizare+meteorologic%C4%83",
+    "credit": "Grafică: Știri Actuale",
+    "source": "https://stiriactuale.info/grafic/?n=galben&t=Ninsori+abundente&s=Avertizare+meteorologic%C4%83"
+   }
+  ]
+ },
+ {
+  "id": "cod-galben-ceata",
+  "name": "Grafică: COD GALBEN de ceață densă (avertizare meteo)",
+  "keywords": "avertizare meteo cod galben, ceață, vizibilitate redusă",
+  "photos": [
+   {
+    "url": "https://stiriactuale.info/grafic/?n=galben&t=Cea%C8%9B%C4%83+dens%C4%83&s=Avertizare+meteorologic%C4%83",
+    "credit": "Grafică: Știri Actuale",
+    "source": "https://stiriactuale.info/grafic/?n=galben&t=Cea%C8%9B%C4%83+dens%C4%83&s=Avertizare+meteorologic%C4%83"
+   }
+  ]
+ },
+ {
+  "id": "cod-portocaliu-canicula",
+  "name": "Grafică: COD PORTOCALIU de caniculă (avertizare meteo)",
+  "keywords": "avertizare meteo cod portocaliu, caniculă, arșiță, temperaturi de peste 35 de grade",
+  "photos": [
+   {
+    "url": "https://stiriactuale.info/grafic/?n=portocaliu&t=Canicul%C4%83&s=Avertizare+meteorologic%C4%83",
+    "credit": "Grafică: Știri Actuale",
+    "source": "https://stiriactuale.info/grafic/?n=portocaliu&t=Canicul%C4%83&s=Avertizare+meteorologic%C4%83"
+   }
+  ]
+ },
+ {
+  "id": "cod-portocaliu-ploi",
+  "name": "Grafică: COD PORTOCALIU de ploi puternice (avertizare meteo)",
+  "keywords": "avertizare meteo cod portocaliu, ploi torențiale, averse, acumulări de apă",
+  "photos": [
+   {
+    "url": "https://stiriactuale.info/grafic/?n=portocaliu&t=Ploi+puternice&s=Avertizare+meteorologic%C4%83",
+    "credit": "Grafică: Știri Actuale",
+    "source": "https://stiriactuale.info/grafic/?n=portocaliu&t=Ploi+puternice&s=Avertizare+meteorologic%C4%83"
+   }
+  ]
+ },
+ {
+  "id": "cod-portocaliu-vant",
+  "name": "Grafică: COD PORTOCALIU de vânt puternic (avertizare meteo)",
+  "keywords": "avertizare meteo cod portocaliu, vânt puternic, rafale",
+  "photos": [
+   {
+    "url": "https://stiriactuale.info/grafic/?n=portocaliu&t=V%C3%A2nt+puternic&s=Avertizare+meteorologic%C4%83",
+    "credit": "Grafică: Știri Actuale",
+    "source": "https://stiriactuale.info/grafic/?n=portocaliu&t=V%C3%A2nt+puternic&s=Avertizare+meteorologic%C4%83"
+   }
+  ]
+ },
+ {
+  "id": "cod-portocaliu-furtuna",
+  "name": "Grafică: COD PORTOCALIU de furtună (avertizare meteo)",
+  "keywords": "avertizare meteo cod portocaliu, furtună, ploi, vânt, grindină, descărcări electrice",
+  "photos": [
+   {
+    "url": "https://stiriactuale.info/grafic/?n=portocaliu&t=Furtun%C4%83&s=Avertizare+meteorologic%C4%83",
+    "credit": "Grafică: Știri Actuale",
+    "source": "https://stiriactuale.info/grafic/?n=portocaliu&t=Furtun%C4%83&s=Avertizare+meteorologic%C4%83"
+   }
+  ]
+ },
+ {
+  "id": "cod-portocaliu-ger",
+  "name": "Grafică: COD PORTOCALIU de ger (avertizare meteo)",
+  "keywords": "avertizare meteo cod portocaliu, ger, temperaturi foarte scăzute",
+  "photos": [
+   {
+    "url": "https://stiriactuale.info/grafic/?n=portocaliu&t=Ger&s=Avertizare+meteorologic%C4%83",
+    "credit": "Grafică: Știri Actuale",
+    "source": "https://stiriactuale.info/grafic/?n=portocaliu&t=Ger&s=Avertizare+meteorologic%C4%83"
+   }
+  ]
+ },
+ {
+  "id": "cod-portocaliu-polei",
+  "name": "Grafică: COD PORTOCALIU de polei (avertizare meteo)",
+  "keywords": "avertizare meteo cod portocaliu, polei, ghețuș, drumuri alunecoase",
+  "photos": [
+   {
+    "url": "https://stiriactuale.info/grafic/?n=portocaliu&t=Polei&s=Avertizare+meteorologic%C4%83",
+    "credit": "Grafică: Știri Actuale",
+    "source": "https://stiriactuale.info/grafic/?n=portocaliu&t=Polei&s=Avertizare+meteorologic%C4%83"
+   }
+  ]
+ },
+ {
+  "id": "cod-portocaliu-ninsori",
+  "name": "Grafică: COD PORTOCALIU de ninsori abundente (avertizare meteo)",
+  "keywords": "avertizare meteo cod portocaliu, ninsori, viscol, zăpadă",
+  "photos": [
+   {
+    "url": "https://stiriactuale.info/grafic/?n=portocaliu&t=Ninsori+abundente&s=Avertizare+meteorologic%C4%83",
+    "credit": "Grafică: Știri Actuale",
+    "source": "https://stiriactuale.info/grafic/?n=portocaliu&t=Ninsori+abundente&s=Avertizare+meteorologic%C4%83"
+   }
+  ]
+ },
+ {
+  "id": "cod-portocaliu-ceata",
+  "name": "Grafică: COD PORTOCALIU de ceață densă (avertizare meteo)",
+  "keywords": "avertizare meteo cod portocaliu, ceață, vizibilitate redusă",
+  "photos": [
+   {
+    "url": "https://stiriactuale.info/grafic/?n=portocaliu&t=Cea%C8%9B%C4%83+dens%C4%83&s=Avertizare+meteorologic%C4%83",
+    "credit": "Grafică: Știri Actuale",
+    "source": "https://stiriactuale.info/grafic/?n=portocaliu&t=Cea%C8%9B%C4%83+dens%C4%83&s=Avertizare+meteorologic%C4%83"
+   }
+  ]
+ },
+ {
+  "id": "cod-rosu-canicula",
+  "name": "Grafică: COD ROȘU de caniculă (avertizare meteo)",
+  "keywords": "avertizare meteo cod roșu, caniculă, arșiță, temperaturi de peste 35 de grade",
+  "photos": [
+   {
+    "url": "https://stiriactuale.info/grafic/?n=rosu&t=Canicul%C4%83&s=Avertizare+meteorologic%C4%83",
+    "credit": "Grafică: Știri Actuale",
+    "source": "https://stiriactuale.info/grafic/?n=rosu&t=Canicul%C4%83&s=Avertizare+meteorologic%C4%83"
+   }
+  ]
+ },
+ {
+  "id": "cod-rosu-ploi",
+  "name": "Grafică: COD ROȘU de ploi puternice (avertizare meteo)",
+  "keywords": "avertizare meteo cod roșu, ploi torențiale, averse, acumulări de apă",
+  "photos": [
+   {
+    "url": "https://stiriactuale.info/grafic/?n=rosu&t=Ploi+puternice&s=Avertizare+meteorologic%C4%83",
+    "credit": "Grafică: Știri Actuale",
+    "source": "https://stiriactuale.info/grafic/?n=rosu&t=Ploi+puternice&s=Avertizare+meteorologic%C4%83"
+   }
+  ]
+ },
+ {
+  "id": "cod-rosu-vant",
+  "name": "Grafică: COD ROȘU de vânt puternic (avertizare meteo)",
+  "keywords": "avertizare meteo cod roșu, vânt puternic, rafale",
+  "photos": [
+   {
+    "url": "https://stiriactuale.info/grafic/?n=rosu&t=V%C3%A2nt+puternic&s=Avertizare+meteorologic%C4%83",
+    "credit": "Grafică: Știri Actuale",
+    "source": "https://stiriactuale.info/grafic/?n=rosu&t=V%C3%A2nt+puternic&s=Avertizare+meteorologic%C4%83"
+   }
+  ]
+ },
+ {
+  "id": "cod-rosu-furtuna",
+  "name": "Grafică: COD ROȘU de furtună (avertizare meteo)",
+  "keywords": "avertizare meteo cod roșu, furtună, ploi, vânt, grindină, descărcări electrice",
+  "photos": [
+   {
+    "url": "https://stiriactuale.info/grafic/?n=rosu&t=Furtun%C4%83&s=Avertizare+meteorologic%C4%83",
+    "credit": "Grafică: Știri Actuale",
+    "source": "https://stiriactuale.info/grafic/?n=rosu&t=Furtun%C4%83&s=Avertizare+meteorologic%C4%83"
+   }
+  ]
+ },
+ {
+  "id": "cod-rosu-ger",
+  "name": "Grafică: COD ROȘU de ger (avertizare meteo)",
+  "keywords": "avertizare meteo cod roșu, ger, temperaturi foarte scăzute",
+  "photos": [
+   {
+    "url": "https://stiriactuale.info/grafic/?n=rosu&t=Ger&s=Avertizare+meteorologic%C4%83",
+    "credit": "Grafică: Știri Actuale",
+    "source": "https://stiriactuale.info/grafic/?n=rosu&t=Ger&s=Avertizare+meteorologic%C4%83"
+   }
+  ]
+ },
+ {
+  "id": "cod-rosu-polei",
+  "name": "Grafică: COD ROȘU de polei (avertizare meteo)",
+  "keywords": "avertizare meteo cod roșu, polei, ghețuș, drumuri alunecoase",
+  "photos": [
+   {
+    "url": "https://stiriactuale.info/grafic/?n=rosu&t=Polei&s=Avertizare+meteorologic%C4%83",
+    "credit": "Grafică: Știri Actuale",
+    "source": "https://stiriactuale.info/grafic/?n=rosu&t=Polei&s=Avertizare+meteorologic%C4%83"
+   }
+  ]
+ },
+ {
+  "id": "cod-rosu-ninsori",
+  "name": "Grafică: COD ROȘU de ninsori abundente (avertizare meteo)",
+  "keywords": "avertizare meteo cod roșu, ninsori, viscol, zăpadă",
+  "photos": [
+   {
+    "url": "https://stiriactuale.info/grafic/?n=rosu&t=Ninsori+abundente&s=Avertizare+meteorologic%C4%83",
+    "credit": "Grafică: Știri Actuale",
+    "source": "https://stiriactuale.info/grafic/?n=rosu&t=Ninsori+abundente&s=Avertizare+meteorologic%C4%83"
+   }
+  ]
+ },
+ {
+  "id": "cod-rosu-ceata",
+  "name": "Grafică: COD ROȘU de ceață densă (avertizare meteo)",
+  "keywords": "avertizare meteo cod roșu, ceață, vizibilitate redusă",
+  "photos": [
+   {
+    "url": "https://stiriactuale.info/grafic/?n=rosu&t=Cea%C8%9B%C4%83+dens%C4%83&s=Avertizare+meteorologic%C4%83",
+    "credit": "Grafică: Știri Actuale",
+    "source": "https://stiriactuale.info/grafic/?n=rosu&t=Cea%C8%9B%C4%83+dens%C4%83&s=Avertizare+meteorologic%C4%83"
+   }
+  ]
+ },
+ {
+  "id": "alerta-112",
+  "name": "Grafică: alertă 112 / mesaj de urgență pe telefon",
+  "keywords": "alertă 112, mesaj de urgență, alertă pe telefon, RO-Alert",
+  "photos": [
+   {
+    "url": "https://stiriactuale.info/grafic/?n=alerta&t=112&s=Mesaj+de+alert%C4%83+pentru+popula%C8%9Bie",
+    "credit": "Grafică: Știri Actuale",
+    "source": "https://stiriactuale.info/grafic/?n=alerta&t=112&s=Mesaj+de+alert%C4%83+pentru+popula%C8%9Bie"
+   }
+  ]
+ },
+ {
+  "id": "escrocherie",
+  "name": "Grafică: atenție, escrocherie / fraudă",
+  "keywords": "escrocherie, escroci, fraudă, înșelătorie, apeluri false, phishing, bani furați de pe card",
+  "photos": [
+   {
+    "url": "https://stiriactuale.info/grafic/?n=frauda&t=Escrocherie&s=Cum+s%C4%83+nu+cazi+%C3%AEn+plasa+escrocilor",
+    "credit": "Grafică: Știri Actuale",
+    "source": "https://stiriactuale.info/grafic/?n=frauda&t=Escrocherie&s=Cum+s%C4%83+nu+cazi+%C3%AEn+plasa+escrocilor"
+   }
+  ]
+ },
+ {
+  "id": "fals",
+  "name": "Grafică: FALS / dezinformare",
+  "keywords": "fals, dezinformare, fake news, propagandă, deepfake, informație falsă",
+  "photos": [
+   {
+    "url": "https://stiriactuale.info/grafic/?n=fals&t=Dezinformare&s=Verific%C4%83+sursa+%C3%AEnainte+s%C4%83+distribui",
+    "credit": "Grafică: Știri Actuale",
+    "source": "https://stiriactuale.info/grafic/?n=fals&t=Dezinformare&s=Verific%C4%83+sursa+%C3%AEnainte+s%C4%83+distribui"
+   }
+  ]
+ },
+ {
+  "id": "alerta-aeriana",
+  "name": "Grafică: spațiul aerian / drone / rachete",
+  "keywords": "spațiul aerian încălcat, drone, rachete, alertă aeriană",
+  "photos": [
+   {
+    "url": "https://stiriactuale.info/grafic/?n=aerian&t=Alert%C4%83+aerian%C4%83&s=Spa%C8%9Biul+aerian+al+Republicii+Moldova",
+    "credit": "Grafică: Știri Actuale",
+    "source": "https://stiriactuale.info/grafic/?n=aerian&t=Alert%C4%83+aerian%C4%83&s=Spa%C8%9Biul+aerian+al+Republicii+Moldova"
+   }
+  ]
+ },
+ {
+  "id": "cutremur-grafic",
+  "name": "Grafică: cutremur",
+  "keywords": "cutremur, seism, magnitudine, Vrancea",
+  "photos": [
+   {
+    "url": "https://stiriactuale.info/grafic/?n=cutremur&t=Cutremur&s=Seism+resim%C8%9Bit+%C3%AEn+Republica+Moldova",
+    "credit": "Grafică: Știri Actuale",
+    "source": "https://stiriactuale.info/grafic/?n=cutremur&t=Cutremur&s=Seism+resim%C8%9Bit+%C3%AEn+Republica+Moldova"
+   }
+  ]
  }
 ]

@@ -508,5 +508,1917 @@
   "name": "Biserici ortodoxe din Moldova",
   "keywords": "biserică, Mitropolia, preoți, Paște, slujbă",
   "files": []
+ },
+ {
+  "id": "politia-drochia",
+  "name": "Inspectoratul de poliție Drochia",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "drochia",
+  "files": []
+ },
+ {
+  "id": "judecatoria-drochia",
+  "name": "Judecătoria Drochia",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "drochia",
+  "files": []
+ },
+ {
+  "id": "consiliul-drochia",
+  "name": "Consiliul raional / municipal Drochia",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "drochia",
+  "files": []
+ },
+ {
+  "id": "primaria-drochia",
+  "name": "Primăria Drochia",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "drochia",
+  "files": []
+ },
+ {
+  "id": "spitalul-drochia",
+  "name": "Spitalul raional / municipal Drochia",
+  "keywords": "spitalul, internați, medici",
+  "locality": "drochia",
+  "files": []
+ },
+ {
+  "id": "asp-drochia",
+  "name": "Centrul multifuncțional ASP Drochia",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "drochia",
+  "files": []
+ },
+ {
+  "id": "politia-straseni",
+  "name": "Inspectoratul de poliție Strășeni",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "straseni",
+  "files": []
+ },
+ {
+  "id": "judecatoria-straseni",
+  "name": "Judecătoria Strășeni",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "straseni",
+  "files": []
+ },
+ {
+  "id": "consiliul-straseni",
+  "name": "Consiliul raional / municipal Strășeni",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "straseni",
+  "files": []
+ },
+ {
+  "id": "primaria-straseni",
+  "name": "Primăria Strășeni",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "straseni",
+  "files": []
+ },
+ {
+  "id": "spitalul-straseni",
+  "name": "Spitalul raional / municipal Strășeni",
+  "keywords": "spitalul, internați, medici",
+  "locality": "straseni",
+  "files": []
+ },
+ {
+  "id": "asp-straseni",
+  "name": "Centrul multifuncțional ASP Strășeni",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "straseni",
+  "files": []
+ },
+ {
+  "id": "politia-floresti",
+  "name": "Inspectoratul de poliție Florești",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "floresti",
+  "files": []
+ },
+ {
+  "id": "judecatoria-floresti",
+  "name": "Judecătoria Florești",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "floresti",
+  "files": []
+ },
+ {
+  "id": "consiliul-floresti",
+  "name": "Consiliul raional / municipal Florești",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "floresti",
+  "files": []
+ },
+ {
+  "id": "primaria-floresti",
+  "name": "Primăria Florești",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "floresti",
+  "files": []
+ },
+ {
+  "id": "spitalul-floresti",
+  "name": "Spitalul raional / municipal Florești",
+  "keywords": "spitalul, internați, medici",
+  "locality": "floresti",
+  "files": []
+ },
+ {
+  "id": "asp-floresti",
+  "name": "Centrul multifuncțional ASP Florești",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "floresti",
+  "files": []
+ },
+ {
+  "id": "politia-orhei",
+  "name": "Inspectoratul de poliție Orhei",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "orhei",
+  "files": []
+ },
+ {
+  "id": "judecatoria-orhei",
+  "name": "Judecătoria Orhei",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "orhei",
+  "files": []
+ },
+ {
+  "id": "consiliul-orhei",
+  "name": "Consiliul raional / municipal Orhei",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "orhei",
+  "files": []
+ },
+ {
+  "id": "primaria-orhei",
+  "name": "Primăria Orhei",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "orhei",
+  "files": []
+ },
+ {
+  "id": "spitalul-orhei",
+  "name": "Spitalul raional / municipal Orhei",
+  "keywords": "spitalul, internați, medici",
+  "locality": "orhei",
+  "files": []
+ },
+ {
+  "id": "asp-orhei",
+  "name": "Centrul multifuncțional ASP Orhei",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "orhei",
+  "files": []
+ },
+ {
+  "id": "politia-chisinau",
+  "name": "Inspectoratul de poliție Chișinău",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "chisinau",
+  "files": []
+ },
+ {
+  "id": "consiliul-chisinau",
+  "name": "Consiliul raional / municipal Chișinău",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "chisinau",
+  "files": []
+ },
+ {
+  "id": "spitalul-chisinau",
+  "name": "Spitalul raional / municipal Chișinău",
+  "keywords": "spitalul, internați, medici",
+  "locality": "chisinau",
+  "files": []
+ },
+ {
+  "id": "asp-chisinau",
+  "name": "Centrul multifuncțional ASP Chișinău",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "chisinau",
+  "files": []
+ },
+ {
+  "id": "politia-balti",
+  "name": "Inspectoratul de poliție Bălți",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "balti",
+  "files": []
+ },
+ {
+  "id": "judecatoria-balti",
+  "name": "Judecătoria Bălți",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "balti",
+  "files": []
+ },
+ {
+  "id": "consiliul-balti",
+  "name": "Consiliul raional / municipal Bălți",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "balti",
+  "files": []
+ },
+ {
+  "id": "primaria-balti",
+  "name": "Primăria Bălți",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "balti",
+  "files": []
+ },
+ {
+  "id": "spitalul-balti",
+  "name": "Spitalul raional / municipal Bălți",
+  "keywords": "spitalul, internați, medici",
+  "locality": "balti",
+  "files": []
+ },
+ {
+  "id": "asp-balti",
+  "name": "Centrul multifuncțional ASP Bălți",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "balti",
+  "files": []
+ },
+ {
+  "id": "politia-cahul",
+  "name": "Inspectoratul de poliție Cahul",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "cahul",
+  "files": []
+ },
+ {
+  "id": "judecatoria-cahul",
+  "name": "Judecătoria Cahul",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "cahul",
+  "files": []
+ },
+ {
+  "id": "consiliul-cahul",
+  "name": "Consiliul raional / municipal Cahul",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "cahul",
+  "files": []
+ },
+ {
+  "id": "primaria-cahul",
+  "name": "Primăria Cahul",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "cahul",
+  "files": []
+ },
+ {
+  "id": "spitalul-cahul",
+  "name": "Spitalul raional / municipal Cahul",
+  "keywords": "spitalul, internați, medici",
+  "locality": "cahul",
+  "files": []
+ },
+ {
+  "id": "asp-cahul",
+  "name": "Centrul multifuncțional ASP Cahul",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "cahul",
+  "files": []
+ },
+ {
+  "id": "politia-soroca",
+  "name": "Inspectoratul de poliție Soroca",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "soroca",
+  "files": []
+ },
+ {
+  "id": "judecatoria-soroca",
+  "name": "Judecătoria Soroca",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "soroca",
+  "files": []
+ },
+ {
+  "id": "consiliul-soroca",
+  "name": "Consiliul raional / municipal Soroca",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "soroca",
+  "files": []
+ },
+ {
+  "id": "primaria-soroca",
+  "name": "Primăria Soroca",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "soroca",
+  "files": []
+ },
+ {
+  "id": "spitalul-soroca",
+  "name": "Spitalul raional / municipal Soroca",
+  "keywords": "spitalul, internați, medici",
+  "locality": "soroca",
+  "files": []
+ },
+ {
+  "id": "asp-soroca",
+  "name": "Centrul multifuncțional ASP Soroca",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "soroca",
+  "files": []
+ },
+ {
+  "id": "politia-edinet",
+  "name": "Inspectoratul de poliție Edineț",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "edinet",
+  "files": []
+ },
+ {
+  "id": "judecatoria-edinet",
+  "name": "Judecătoria Edineț",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "edinet",
+  "files": []
+ },
+ {
+  "id": "consiliul-edinet",
+  "name": "Consiliul raional / municipal Edineț",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "edinet",
+  "files": []
+ },
+ {
+  "id": "primaria-edinet",
+  "name": "Primăria Edineț",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "edinet",
+  "files": []
+ },
+ {
+  "id": "spitalul-edinet",
+  "name": "Spitalul raional / municipal Edineț",
+  "keywords": "spitalul, internați, medici",
+  "locality": "edinet",
+  "files": []
+ },
+ {
+  "id": "asp-edinet",
+  "name": "Centrul multifuncțional ASP Edineț",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "edinet",
+  "files": []
+ },
+ {
+  "id": "politia-riscani",
+  "name": "Inspectoratul de poliție Rîșcani",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "riscani",
+  "files": []
+ },
+ {
+  "id": "judecatoria-riscani",
+  "name": "Judecătoria Rîșcani",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "riscani",
+  "files": []
+ },
+ {
+  "id": "consiliul-riscani",
+  "name": "Consiliul raional / municipal Rîșcani",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "riscani",
+  "files": []
+ },
+ {
+  "id": "primaria-riscani",
+  "name": "Primăria Rîșcani",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "riscani",
+  "files": []
+ },
+ {
+  "id": "spitalul-riscani",
+  "name": "Spitalul raional / municipal Rîșcani",
+  "keywords": "spitalul, internați, medici",
+  "locality": "riscani",
+  "files": []
+ },
+ {
+  "id": "asp-riscani",
+  "name": "Centrul multifuncțional ASP Rîșcani",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "riscani",
+  "files": []
+ },
+ {
+  "id": "politia-falesti",
+  "name": "Inspectoratul de poliție Fălești",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "falesti",
+  "files": []
+ },
+ {
+  "id": "judecatoria-falesti",
+  "name": "Judecătoria Fălești",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "falesti",
+  "files": []
+ },
+ {
+  "id": "consiliul-falesti",
+  "name": "Consiliul raional / municipal Fălești",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "falesti",
+  "files": []
+ },
+ {
+  "id": "primaria-falesti",
+  "name": "Primăria Fălești",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "falesti",
+  "files": []
+ },
+ {
+  "id": "spitalul-falesti",
+  "name": "Spitalul raional / municipal Fălești",
+  "keywords": "spitalul, internați, medici",
+  "locality": "falesti",
+  "files": []
+ },
+ {
+  "id": "asp-falesti",
+  "name": "Centrul multifuncțional ASP Fălești",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "falesti",
+  "files": []
+ },
+ {
+  "id": "politia-briceni",
+  "name": "Inspectoratul de poliție Briceni",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "briceni",
+  "files": []
+ },
+ {
+  "id": "judecatoria-briceni",
+  "name": "Judecătoria Briceni",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "briceni",
+  "files": []
+ },
+ {
+  "id": "consiliul-briceni",
+  "name": "Consiliul raional / municipal Briceni",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "briceni",
+  "files": []
+ },
+ {
+  "id": "primaria-briceni",
+  "name": "Primăria Briceni",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "briceni",
+  "files": []
+ },
+ {
+  "id": "spitalul-briceni",
+  "name": "Spitalul raional / municipal Briceni",
+  "keywords": "spitalul, internați, medici",
+  "locality": "briceni",
+  "files": []
+ },
+ {
+  "id": "asp-briceni",
+  "name": "Centrul multifuncțional ASP Briceni",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "briceni",
+  "files": []
+ },
+ {
+  "id": "politia-donduseni",
+  "name": "Inspectoratul de poliție Dondușeni",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "donduseni",
+  "files": []
+ },
+ {
+  "id": "judecatoria-donduseni",
+  "name": "Judecătoria Dondușeni",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "donduseni",
+  "files": []
+ },
+ {
+  "id": "consiliul-donduseni",
+  "name": "Consiliul raional / municipal Dondușeni",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "donduseni",
+  "files": []
+ },
+ {
+  "id": "primaria-donduseni",
+  "name": "Primăria Dondușeni",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "donduseni",
+  "files": []
+ },
+ {
+  "id": "spitalul-donduseni",
+  "name": "Spitalul raional / municipal Dondușeni",
+  "keywords": "spitalul, internați, medici",
+  "locality": "donduseni",
+  "files": []
+ },
+ {
+  "id": "asp-donduseni",
+  "name": "Centrul multifuncțional ASP Dondușeni",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "donduseni",
+  "files": []
+ },
+ {
+  "id": "politia-singerei",
+  "name": "Inspectoratul de poliție Sîngerei",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "singerei",
+  "files": []
+ },
+ {
+  "id": "judecatoria-singerei",
+  "name": "Judecătoria Sîngerei",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "singerei",
+  "files": []
+ },
+ {
+  "id": "consiliul-singerei",
+  "name": "Consiliul raional / municipal Sîngerei",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "singerei",
+  "files": []
+ },
+ {
+  "id": "primaria-singerei",
+  "name": "Primăria Sîngerei",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "singerei",
+  "files": []
+ },
+ {
+  "id": "spitalul-singerei",
+  "name": "Spitalul raional / municipal Sîngerei",
+  "keywords": "spitalul, internați, medici",
+  "locality": "singerei",
+  "files": []
+ },
+ {
+  "id": "asp-singerei",
+  "name": "Centrul multifuncțional ASP Sîngerei",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "singerei",
+  "files": []
+ },
+ {
+  "id": "politia-telenesti",
+  "name": "Inspectoratul de poliție Telenești",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "telenesti",
+  "files": []
+ },
+ {
+  "id": "judecatoria-telenesti",
+  "name": "Judecătoria Telenești",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "telenesti",
+  "files": []
+ },
+ {
+  "id": "consiliul-telenesti",
+  "name": "Consiliul raional / municipal Telenești",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "telenesti",
+  "files": []
+ },
+ {
+  "id": "primaria-telenesti",
+  "name": "Primăria Telenești",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "telenesti",
+  "files": []
+ },
+ {
+  "id": "spitalul-telenesti",
+  "name": "Spitalul raional / municipal Telenești",
+  "keywords": "spitalul, internați, medici",
+  "locality": "telenesti",
+  "files": []
+ },
+ {
+  "id": "asp-telenesti",
+  "name": "Centrul multifuncțional ASP Telenești",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "telenesti",
+  "files": []
+ },
+ {
+  "id": "politia-causeni",
+  "name": "Inspectoratul de poliție Căușeni",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "causeni",
+  "files": []
+ },
+ {
+  "id": "judecatoria-causeni",
+  "name": "Judecătoria Căușeni",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "causeni",
+  "files": []
+ },
+ {
+  "id": "consiliul-causeni",
+  "name": "Consiliul raional / municipal Căușeni",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "causeni",
+  "files": []
+ },
+ {
+  "id": "primaria-causeni",
+  "name": "Primăria Căușeni",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "causeni",
+  "files": []
+ },
+ {
+  "id": "spitalul-causeni",
+  "name": "Spitalul raional / municipal Căușeni",
+  "keywords": "spitalul, internați, medici",
+  "locality": "causeni",
+  "files": []
+ },
+ {
+  "id": "asp-causeni",
+  "name": "Centrul multifuncțional ASP Căușeni",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "causeni",
+  "files": []
+ },
+ {
+  "id": "politia-ocnita",
+  "name": "Inspectoratul de poliție Ocnița",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "ocnita",
+  "files": []
+ },
+ {
+  "id": "judecatoria-ocnita",
+  "name": "Judecătoria Ocnița",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "ocnita",
+  "files": []
+ },
+ {
+  "id": "consiliul-ocnita",
+  "name": "Consiliul raional / municipal Ocnița",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "ocnita",
+  "files": []
+ },
+ {
+  "id": "primaria-ocnita",
+  "name": "Primăria Ocnița",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "ocnita",
+  "files": []
+ },
+ {
+  "id": "spitalul-ocnita",
+  "name": "Spitalul raional / municipal Ocnița",
+  "keywords": "spitalul, internați, medici",
+  "locality": "ocnita",
+  "files": []
+ },
+ {
+  "id": "asp-ocnita",
+  "name": "Centrul multifuncțional ASP Ocnița",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "ocnita",
+  "files": []
+ },
+ {
+  "id": "politia-anenii-noi",
+  "name": "Inspectoratul de poliție Anenii Noi",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "anenii-noi",
+  "files": []
+ },
+ {
+  "id": "judecatoria-anenii-noi",
+  "name": "Judecătoria Anenii Noi",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "anenii-noi",
+  "files": []
+ },
+ {
+  "id": "consiliul-anenii-noi",
+  "name": "Consiliul raional / municipal Anenii Noi",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "anenii-noi",
+  "files": []
+ },
+ {
+  "id": "primaria-anenii-noi",
+  "name": "Primăria Anenii Noi",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "anenii-noi",
+  "files": []
+ },
+ {
+  "id": "spitalul-anenii-noi",
+  "name": "Spitalul raional / municipal Anenii Noi",
+  "keywords": "spitalul, internați, medici",
+  "locality": "anenii-noi",
+  "files": []
+ },
+ {
+  "id": "asp-anenii-noi",
+  "name": "Centrul multifuncțional ASP Anenii Noi",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "anenii-noi",
+  "files": []
+ },
+ {
+  "id": "politia-glodeni",
+  "name": "Inspectoratul de poliție Glodeni",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "glodeni",
+  "files": []
+ },
+ {
+  "id": "judecatoria-glodeni",
+  "name": "Judecătoria Glodeni",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "glodeni",
+  "files": []
+ },
+ {
+  "id": "consiliul-glodeni",
+  "name": "Consiliul raional / municipal Glodeni",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "glodeni",
+  "files": []
+ },
+ {
+  "id": "primaria-glodeni",
+  "name": "Primăria Glodeni",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "glodeni",
+  "files": []
+ },
+ {
+  "id": "spitalul-glodeni",
+  "name": "Spitalul raional / municipal Glodeni",
+  "keywords": "spitalul, internați, medici",
+  "locality": "glodeni",
+  "files": []
+ },
+ {
+  "id": "asp-glodeni",
+  "name": "Centrul multifuncțional ASP Glodeni",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "glodeni",
+  "files": []
+ },
+ {
+  "id": "politia-stefan-voda",
+  "name": "Inspectoratul de poliție Ștefan Vodă",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "stefan-voda",
+  "files": []
+ },
+ {
+  "id": "judecatoria-stefan-voda",
+  "name": "Judecătoria Ștefan Vodă",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "stefan-voda",
+  "files": []
+ },
+ {
+  "id": "consiliul-stefan-voda",
+  "name": "Consiliul raional / municipal Ștefan Vodă",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "stefan-voda",
+  "files": []
+ },
+ {
+  "id": "primaria-stefan-voda",
+  "name": "Primăria Ștefan Vodă",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "stefan-voda",
+  "files": []
+ },
+ {
+  "id": "spitalul-stefan-voda",
+  "name": "Spitalul raional / municipal Ștefan Vodă",
+  "keywords": "spitalul, internați, medici",
+  "locality": "stefan-voda",
+  "files": []
+ },
+ {
+  "id": "asp-stefan-voda",
+  "name": "Centrul multifuncțional ASP Ștefan Vodă",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "stefan-voda",
+  "files": []
+ },
+ {
+  "id": "politia-criuleni",
+  "name": "Inspectoratul de poliție Criuleni",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "criuleni",
+  "files": []
+ },
+ {
+  "id": "judecatoria-criuleni",
+  "name": "Judecătoria Criuleni",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "criuleni",
+  "files": []
+ },
+ {
+  "id": "consiliul-criuleni",
+  "name": "Consiliul raional / municipal Criuleni",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "criuleni",
+  "files": []
+ },
+ {
+  "id": "primaria-criuleni",
+  "name": "Primăria Criuleni",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "criuleni",
+  "files": []
+ },
+ {
+  "id": "spitalul-criuleni",
+  "name": "Spitalul raional / municipal Criuleni",
+  "keywords": "spitalul, internați, medici",
+  "locality": "criuleni",
+  "files": []
+ },
+ {
+  "id": "asp-criuleni",
+  "name": "Centrul multifuncțional ASP Criuleni",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "criuleni",
+  "files": []
+ },
+ {
+  "id": "politia-soldanesti",
+  "name": "Inspectoratul de poliție Șoldănești",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "soldanesti",
+  "files": []
+ },
+ {
+  "id": "judecatoria-soldanesti",
+  "name": "Judecătoria Șoldănești",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "soldanesti",
+  "files": []
+ },
+ {
+  "id": "consiliul-soldanesti",
+  "name": "Consiliul raional / municipal Șoldănești",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "soldanesti",
+  "files": []
+ },
+ {
+  "id": "primaria-soldanesti",
+  "name": "Primăria Șoldănești",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "soldanesti",
+  "files": []
+ },
+ {
+  "id": "spitalul-soldanesti",
+  "name": "Spitalul raional / municipal Șoldănești",
+  "keywords": "spitalul, internați, medici",
+  "locality": "soldanesti",
+  "files": []
+ },
+ {
+  "id": "asp-soldanesti",
+  "name": "Centrul multifuncțional ASP Șoldănești",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "soldanesti",
+  "files": []
+ },
+ {
+  "id": "politia-basarabeasca",
+  "name": "Inspectoratul de poliție Basarabeasca",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "basarabeasca",
+  "files": []
+ },
+ {
+  "id": "judecatoria-basarabeasca",
+  "name": "Judecătoria Basarabeasca",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "basarabeasca",
+  "files": []
+ },
+ {
+  "id": "consiliul-basarabeasca",
+  "name": "Consiliul raional / municipal Basarabeasca",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "basarabeasca",
+  "files": []
+ },
+ {
+  "id": "primaria-basarabeasca",
+  "name": "Primăria Basarabeasca",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "basarabeasca",
+  "files": []
+ },
+ {
+  "id": "spitalul-basarabeasca",
+  "name": "Spitalul raional / municipal Basarabeasca",
+  "keywords": "spitalul, internați, medici",
+  "locality": "basarabeasca",
+  "files": []
+ },
+ {
+  "id": "asp-basarabeasca",
+  "name": "Centrul multifuncțional ASP Basarabeasca",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "basarabeasca",
+  "files": []
+ },
+ {
+  "id": "politia-ialoveni",
+  "name": "Inspectoratul de poliție Ialoveni",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "ialoveni",
+  "files": []
+ },
+ {
+  "id": "judecatoria-ialoveni",
+  "name": "Judecătoria Ialoveni",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "ialoveni",
+  "files": []
+ },
+ {
+  "id": "consiliul-ialoveni",
+  "name": "Consiliul raional / municipal Ialoveni",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "ialoveni",
+  "files": []
+ },
+ {
+  "id": "primaria-ialoveni",
+  "name": "Primăria Ialoveni",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "ialoveni",
+  "files": []
+ },
+ {
+  "id": "spitalul-ialoveni",
+  "name": "Spitalul raional / municipal Ialoveni",
+  "keywords": "spitalul, internați, medici",
+  "locality": "ialoveni",
+  "files": []
+ },
+ {
+  "id": "asp-ialoveni",
+  "name": "Centrul multifuncțional ASP Ialoveni",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "ialoveni",
+  "files": []
+ },
+ {
+  "id": "politia-ungheni",
+  "name": "Inspectoratul de poliție Ungheni",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "ungheni",
+  "files": []
+ },
+ {
+  "id": "judecatoria-ungheni",
+  "name": "Judecătoria Ungheni",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "ungheni",
+  "files": []
+ },
+ {
+  "id": "consiliul-ungheni",
+  "name": "Consiliul raional / municipal Ungheni",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "ungheni",
+  "files": []
+ },
+ {
+  "id": "primaria-ungheni",
+  "name": "Primăria Ungheni",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "ungheni",
+  "files": []
+ },
+ {
+  "id": "spitalul-ungheni",
+  "name": "Spitalul raional / municipal Ungheni",
+  "keywords": "spitalul, internați, medici",
+  "locality": "ungheni",
+  "files": []
+ },
+ {
+  "id": "asp-ungheni",
+  "name": "Centrul multifuncțional ASP Ungheni",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "ungheni",
+  "files": []
+ },
+ {
+  "id": "politia-cimislia",
+  "name": "Inspectoratul de poliție Cimișlia",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "cimislia",
+  "files": []
+ },
+ {
+  "id": "judecatoria-cimislia",
+  "name": "Judecătoria Cimișlia",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "cimislia",
+  "files": []
+ },
+ {
+  "id": "consiliul-cimislia",
+  "name": "Consiliul raional / municipal Cimișlia",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "cimislia",
+  "files": []
+ },
+ {
+  "id": "primaria-cimislia",
+  "name": "Primăria Cimișlia",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "cimislia",
+  "files": []
+ },
+ {
+  "id": "spitalul-cimislia",
+  "name": "Spitalul raional / municipal Cimișlia",
+  "keywords": "spitalul, internați, medici",
+  "locality": "cimislia",
+  "files": []
+ },
+ {
+  "id": "asp-cimislia",
+  "name": "Centrul multifuncțional ASP Cimișlia",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "cimislia",
+  "files": []
+ },
+ {
+  "id": "politia-hincesti",
+  "name": "Inspectoratul de poliție Hîncești",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "hincesti",
+  "files": []
+ },
+ {
+  "id": "judecatoria-hincesti",
+  "name": "Judecătoria Hîncești",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "hincesti",
+  "files": []
+ },
+ {
+  "id": "consiliul-hincesti",
+  "name": "Consiliul raional / municipal Hîncești",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "hincesti",
+  "files": []
+ },
+ {
+  "id": "primaria-hincesti",
+  "name": "Primăria Hîncești",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "hincesti",
+  "files": []
+ },
+ {
+  "id": "spitalul-hincesti",
+  "name": "Spitalul raional / municipal Hîncești",
+  "keywords": "spitalul, internați, medici",
+  "locality": "hincesti",
+  "files": []
+ },
+ {
+  "id": "asp-hincesti",
+  "name": "Centrul multifuncțional ASP Hîncești",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "hincesti",
+  "files": []
+ },
+ {
+  "id": "politia-leova",
+  "name": "Inspectoratul de poliție Leova",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "leova",
+  "files": []
+ },
+ {
+  "id": "judecatoria-leova",
+  "name": "Judecătoria Leova",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "leova",
+  "files": []
+ },
+ {
+  "id": "consiliul-leova",
+  "name": "Consiliul raional / municipal Leova",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "leova",
+  "files": []
+ },
+ {
+  "id": "primaria-leova",
+  "name": "Primăria Leova",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "leova",
+  "files": []
+ },
+ {
+  "id": "spitalul-leova",
+  "name": "Spitalul raional / municipal Leova",
+  "keywords": "spitalul, internați, medici",
+  "locality": "leova",
+  "files": []
+ },
+ {
+  "id": "asp-leova",
+  "name": "Centrul multifuncțional ASP Leova",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "leova",
+  "files": []
+ },
+ {
+  "id": "politia-nisporeni",
+  "name": "Inspectoratul de poliție Nisporeni",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "nisporeni",
+  "files": []
+ },
+ {
+  "id": "judecatoria-nisporeni",
+  "name": "Judecătoria Nisporeni",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "nisporeni",
+  "files": []
+ },
+ {
+  "id": "consiliul-nisporeni",
+  "name": "Consiliul raional / municipal Nisporeni",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "nisporeni",
+  "files": []
+ },
+ {
+  "id": "primaria-nisporeni",
+  "name": "Primăria Nisporeni",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "nisporeni",
+  "files": []
+ },
+ {
+  "id": "spitalul-nisporeni",
+  "name": "Spitalul raional / municipal Nisporeni",
+  "keywords": "spitalul, internați, medici",
+  "locality": "nisporeni",
+  "files": []
+ },
+ {
+  "id": "asp-nisporeni",
+  "name": "Centrul multifuncțional ASP Nisporeni",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "nisporeni",
+  "files": []
+ },
+ {
+  "id": "politia-rezina",
+  "name": "Inspectoratul de poliție Rezina",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "rezina",
+  "files": []
+ },
+ {
+  "id": "judecatoria-rezina",
+  "name": "Judecătoria Rezina",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "rezina",
+  "files": []
+ },
+ {
+  "id": "consiliul-rezina",
+  "name": "Consiliul raional / municipal Rezina",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "rezina",
+  "files": []
+ },
+ {
+  "id": "primaria-rezina",
+  "name": "Primăria Rezina",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "rezina",
+  "files": []
+ },
+ {
+  "id": "spitalul-rezina",
+  "name": "Spitalul raional / municipal Rezina",
+  "keywords": "spitalul, internați, medici",
+  "locality": "rezina",
+  "files": []
+ },
+ {
+  "id": "asp-rezina",
+  "name": "Centrul multifuncțional ASP Rezina",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "rezina",
+  "files": []
+ },
+ {
+  "id": "politia-calarasi",
+  "name": "Inspectoratul de poliție Călărași",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "calarasi",
+  "files": []
+ },
+ {
+  "id": "judecatoria-calarasi",
+  "name": "Judecătoria Călărași",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "calarasi",
+  "files": []
+ },
+ {
+  "id": "consiliul-calarasi",
+  "name": "Consiliul raional / municipal Călărași",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "calarasi",
+  "files": []
+ },
+ {
+  "id": "primaria-calarasi",
+  "name": "Primăria Călărași",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "calarasi",
+  "files": []
+ },
+ {
+  "id": "spitalul-calarasi",
+  "name": "Spitalul raional / municipal Călărași",
+  "keywords": "spitalul, internați, medici",
+  "locality": "calarasi",
+  "files": []
+ },
+ {
+  "id": "asp-calarasi",
+  "name": "Centrul multifuncțional ASP Călărași",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "calarasi",
+  "files": []
+ },
+ {
+  "id": "politia-cantemir",
+  "name": "Inspectoratul de poliție Cantemir",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "cantemir",
+  "files": []
+ },
+ {
+  "id": "judecatoria-cantemir",
+  "name": "Judecătoria Cantemir",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "cantemir",
+  "files": []
+ },
+ {
+  "id": "consiliul-cantemir",
+  "name": "Consiliul raional / municipal Cantemir",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "cantemir",
+  "files": []
+ },
+ {
+  "id": "primaria-cantemir",
+  "name": "Primăria Cantemir",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "cantemir",
+  "files": []
+ },
+ {
+  "id": "spitalul-cantemir",
+  "name": "Spitalul raional / municipal Cantemir",
+  "keywords": "spitalul, internați, medici",
+  "locality": "cantemir",
+  "files": []
+ },
+ {
+  "id": "asp-cantemir",
+  "name": "Centrul multifuncțional ASP Cantemir",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "cantemir",
+  "files": []
+ },
+ {
+  "id": "politia-dubasari",
+  "name": "Inspectoratul de poliție Dubăsari",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "dubasari",
+  "files": []
+ },
+ {
+  "id": "judecatoria-dubasari",
+  "name": "Judecătoria Dubăsari",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "dubasari",
+  "files": []
+ },
+ {
+  "id": "consiliul-dubasari",
+  "name": "Consiliul raional / municipal Dubăsari",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "dubasari",
+  "files": []
+ },
+ {
+  "id": "primaria-dubasari",
+  "name": "Primăria Dubăsari",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "dubasari",
+  "files": []
+ },
+ {
+  "id": "spitalul-dubasari",
+  "name": "Spitalul raional / municipal Dubăsari",
+  "keywords": "spitalul, internați, medici",
+  "locality": "dubasari",
+  "files": []
+ },
+ {
+  "id": "asp-dubasari",
+  "name": "Centrul multifuncțional ASP Dubăsari",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "dubasari",
+  "files": []
+ },
+ {
+  "id": "politia-ceadir-lunga",
+  "name": "Inspectoratul de poliție Ceadîr-Lunga",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "ceadir-lunga",
+  "files": []
+ },
+ {
+  "id": "judecatoria-ceadir-lunga",
+  "name": "Judecătoria Ceadîr-Lunga",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "ceadir-lunga",
+  "files": []
+ },
+ {
+  "id": "consiliul-ceadir-lunga",
+  "name": "Consiliul raional / municipal Ceadîr-Lunga",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "ceadir-lunga",
+  "files": []
+ },
+ {
+  "id": "primaria-ceadir-lunga",
+  "name": "Primăria Ceadîr-Lunga",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "ceadir-lunga",
+  "files": []
+ },
+ {
+  "id": "spitalul-ceadir-lunga",
+  "name": "Spitalul raional / municipal Ceadîr-Lunga",
+  "keywords": "spitalul, internați, medici",
+  "locality": "ceadir-lunga",
+  "files": []
+ },
+ {
+  "id": "asp-ceadir-lunga",
+  "name": "Centrul multifuncțional ASP Ceadîr-Lunga",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "ceadir-lunga",
+  "files": []
+ },
+ {
+  "id": "politia-rabnita",
+  "name": "Inspectoratul de poliție Rîbnița",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "rabnita",
+  "files": []
+ },
+ {
+  "id": "judecatoria-rabnita",
+  "name": "Judecătoria Rîbnița",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "rabnita",
+  "files": []
+ },
+ {
+  "id": "consiliul-rabnita",
+  "name": "Consiliul raional / municipal Rîbnița",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "rabnita",
+  "files": []
+ },
+ {
+  "id": "primaria-rabnita",
+  "name": "Primăria Rîbnița",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "rabnita",
+  "files": []
+ },
+ {
+  "id": "spitalul-rabnita",
+  "name": "Spitalul raional / municipal Rîbnița",
+  "keywords": "spitalul, internați, medici",
+  "locality": "rabnita",
+  "files": []
+ },
+ {
+  "id": "asp-rabnita",
+  "name": "Centrul multifuncțional ASP Rîbnița",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "rabnita",
+  "files": []
+ },
+ {
+  "id": "politia-taraclia",
+  "name": "Inspectoratul de poliție Taraclia",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "taraclia",
+  "files": []
+ },
+ {
+  "id": "judecatoria-taraclia",
+  "name": "Judecătoria Taraclia",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "taraclia",
+  "files": []
+ },
+ {
+  "id": "consiliul-taraclia",
+  "name": "Consiliul raional / municipal Taraclia",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "taraclia",
+  "files": []
+ },
+ {
+  "id": "primaria-taraclia",
+  "name": "Primăria Taraclia",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "taraclia",
+  "files": []
+ },
+ {
+  "id": "spitalul-taraclia",
+  "name": "Spitalul raional / municipal Taraclia",
+  "keywords": "spitalul, internați, medici",
+  "locality": "taraclia",
+  "files": []
+ },
+ {
+  "id": "asp-taraclia",
+  "name": "Centrul multifuncțional ASP Taraclia",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "taraclia",
+  "files": []
+ },
+ {
+  "id": "politia-gagauzia",
+  "name": "Inspectoratul de poliție Găgăuzia",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "gagauzia",
+  "files": []
+ },
+ {
+  "id": "judecatoria-gagauzia",
+  "name": "Judecătoria Găgăuzia",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "gagauzia",
+  "files": []
+ },
+ {
+  "id": "consiliul-gagauzia",
+  "name": "Consiliul raional / municipal Găgăuzia",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "gagauzia",
+  "files": []
+ },
+ {
+  "id": "primaria-gagauzia",
+  "name": "Primăria Găgăuzia",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "gagauzia",
+  "files": []
+ },
+ {
+  "id": "spitalul-gagauzia",
+  "name": "Spitalul raional / municipal Găgăuzia",
+  "keywords": "spitalul, internați, medici",
+  "locality": "gagauzia",
+  "files": []
+ },
+ {
+  "id": "asp-gagauzia",
+  "name": "Centrul multifuncțional ASP Găgăuzia",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "gagauzia",
+  "files": []
+ },
+ {
+  "id": "politisti-spate",
+  "name": "Polițiști din spate, cu inscripția POLIȚIA (fără fețe)",
+  "keywords": "polițiști, poliția, patrulare, reținere",
+  "files": []
+ },
+ {
+  "id": "masina-politie",
+  "name": "Mașini de poliție din Moldova",
+  "keywords": "mașină de poliție, patrula, girofar, Poliția",
+  "files": []
+ },
+ {
+  "id": "politie-rutiera",
+  "name": "Inspectoratul Național de Patrulare / poliția rutieră",
+  "keywords": "patrula, poliția rutieră, control rutier, radar, amendă",
+  "files": []
+ },
+ {
+  "id": "cna-ofiteri",
+  "name": "Ofițeri CNA / mascați la percheziții (fără fețe)",
+  "keywords": "CNA, percheziții, mascați, descinderi, reținuți",
+  "files": []
+ },
+ {
+  "id": "mascati",
+  "name": "Forțe speciale „Fulger” / mascați",
+  "keywords": "mascați, Fulger, forțe speciale, operațiune",
+  "files": []
+ },
+ {
+  "id": "pompieri-actiune",
+  "name": "Pompieri în acțiune",
+  "keywords": "pompieri, incendiu, stingere, salvatori",
+  "files": []
+ },
+ {
+  "id": "masina-pompieri",
+  "name": "Autospeciale de pompieri IGSU",
+  "keywords": "mașină de pompieri, autospecială, IGSU",
+  "files": []
+ },
+ {
+  "id": "incendiu-casa",
+  "name": "Incendiu de locuință",
+  "keywords": "incendiu, casă arsă, flăcări",
+  "files": []
+ },
+ {
+  "id": "incendiu-vegetatie",
+  "name": "Incendiu de vegetație / miriște",
+  "keywords": "incendiu de vegetație, miriște, foc în câmp",
+  "files": []
+ },
+ {
+  "id": "salvatori-apa",
+  "name": "Salvatori / scafandri",
+  "keywords": "salvatori, scafandri, înecat, căutări",
+  "files": []
+ },
+ {
+  "id": "ambulanta-moldova",
+  "name": "Ambulanțe în Moldova",
+  "keywords": "ambulanță, SAMU, accident, răniți",
+  "files": []
+ },
+ {
+  "id": "accident-rutier",
+  "name": "Accident rutier (mașini avariate, fără victime vizibile)",
+  "keywords": "accident, tamponare, mașini avariate, traseu",
+  "files": []
+ },
+ {
+  "id": "canicula",
+  "name": "Arșiță / caniculă",
+  "keywords": "caniculă, arșiță, temperaturi ridicate, căldură",
+  "files": []
+ },
+ {
+  "id": "seceta",
+  "name": "Secetă, pământ crăpat",
+  "keywords": "secetă, lipsă de apă, culturi compromise",
+  "files": []
+ },
+ {
+  "id": "ninsoare",
+  "name": "Ninsoare / zăpadă",
+  "keywords": "ninsoare, zăpadă, nămeți, drumuri înzăpezite",
+  "files": []
+ },
+ {
+  "id": "ger",
+  "name": "Ger / iarnă",
+  "keywords": "ger, temperaturi negative, frig",
+  "files": []
+ },
+ {
+  "id": "polei",
+  "name": "Polei / gheață",
+  "keywords": "polei, gheață, drumuri alunecoase",
+  "files": []
+ },
+ {
+  "id": "furtuna",
+  "name": "Furtună, nori negri",
+  "keywords": "furtună, vânt puternic, rafale, copaci căzuți",
+  "files": []
+ },
+ {
+  "id": "ploi-torentiale",
+  "name": "Ploi torențiale / străzi inundate",
+  "keywords": "ploi torențiale, inundații, străzi inundate",
+  "files": []
+ },
+ {
+  "id": "inundatie",
+  "name": "Inundații",
+  "keywords": "inundații, ape mari, revărsare",
+  "files": []
+ },
+ {
+  "id": "grindina",
+  "name": "Grindină",
+  "keywords": "grindină, culturi distruse",
+  "files": []
+ },
+ {
+  "id": "ceata",
+  "name": "Ceață",
+  "keywords": "ceață densă, vizibilitate redusă",
+  "files": []
+ },
+ {
+  "id": "polen",
+  "name": "Ambrozie / polen",
+  "keywords": "ambrozie, polen, alergii",
+  "files": []
+ },
+ {
+  "id": "cutremur",
+  "name": "Cutremur / seismograf / pagube",
+  "keywords": "cutremur, seism, Vrancea, magnitudine",
+  "files": []
+ },
+ {
+  "id": "vreme-frumoasa",
+  "name": "Vreme însorită / primăvară",
+  "keywords": "vreme frumoasă, soare, temperaturi plăcute",
+  "files": []
+ },
+ {
+  "id": "toamna",
+  "name": "Toamnă",
+  "keywords": "toamnă, frunze, vreme rece",
+  "files": []
+ },
+ {
+  "id": "telefon-alerta",
+  "name": "Telefon cu mesaj de alertă",
+  "keywords": "alertă pe telefon, mesaj de urgență, 112",
+  "files": []
+ },
+ {
+  "id": "bani-lei",
+  "name": "Bancnote lei moldovenești",
+  "keywords": "lei, bani, salarii, pensii, prețuri",
+  "files": []
+ },
+ {
+  "id": "benzinarie",
+  "name": "Benzinărie / prețuri carburanți",
+  "keywords": "benzină, motorină, carburanți, prețuri la pompă",
+  "files": []
+ },
+ {
+  "id": "supermarket",
+  "name": "Prețuri în magazin / coș de consum",
+  "keywords": "prețuri, scumpiri, magazin, coșul de consum",
+  "files": []
+ },
+ {
+  "id": "pensionari",
+  "name": "Pensionari (fără fețe)",
+  "keywords": "pensii, pensionari, indexare",
+  "files": []
+ },
+ {
+  "id": "vot",
+  "name": "Secție de votare / urnă",
+  "keywords": "alegeri, vot, urnă, secție de votare, referendum",
+  "files": []
+ },
+ {
+  "id": "diaspora-aeroport",
+  "name": "Diaspora / plecări din aeroport",
+  "keywords": "diaspora, emigrare, plecare peste hotare",
+  "files": []
+ },
+ {
+  "id": "cod-galben-canicula",
+  "name": "Grafică: COD GALBEN de caniculă (avertizare meteo)",
+  "keywords": "avertizare meteo cod galben, caniculă, arșiță, temperaturi de peste 35 de grade",
+  "files": []
+ },
+ {
+  "id": "cod-galben-ploi",
+  "name": "Grafică: COD GALBEN de ploi puternice (avertizare meteo)",
+  "keywords": "avertizare meteo cod galben, ploi torențiale, averse, acumulări de apă",
+  "files": []
+ },
+ {
+  "id": "cod-galben-vant",
+  "name": "Grafică: COD GALBEN de vânt puternic (avertizare meteo)",
+  "keywords": "avertizare meteo cod galben, vânt puternic, rafale",
+  "files": []
+ },
+ {
+  "id": "cod-galben-furtuna",
+  "name": "Grafică: COD GALBEN de furtună (avertizare meteo)",
+  "keywords": "avertizare meteo cod galben, furtună, ploi, vânt, grindină, descărcări electrice",
+  "files": []
+ },
+ {
+  "id": "cod-galben-ger",
+  "name": "Grafică: COD GALBEN de ger (avertizare meteo)",
+  "keywords": "avertizare meteo cod galben, ger, temperaturi foarte scăzute",
+  "files": []
+ },
+ {
+  "id": "cod-galben-polei",
+  "name": "Grafică: COD GALBEN de polei (avertizare meteo)",
+  "keywords": "avertizare meteo cod galben, polei, ghețuș, drumuri alunecoase",
+  "files": []
+ },
+ {
+  "id": "cod-galben-ninsori",
+  "name": "Grafică: COD GALBEN de ninsori abundente (avertizare meteo)",
+  "keywords": "avertizare meteo cod galben, ninsori, viscol, zăpadă",
+  "files": []
+ },
+ {
+  "id": "cod-galben-ceata",
+  "name": "Grafică: COD GALBEN de ceață densă (avertizare meteo)",
+  "keywords": "avertizare meteo cod galben, ceață, vizibilitate redusă",
+  "files": []
+ },
+ {
+  "id": "cod-portocaliu-canicula",
+  "name": "Grafică: COD PORTOCALIU de caniculă (avertizare meteo)",
+  "keywords": "avertizare meteo cod portocaliu, caniculă, arșiță, temperaturi de peste 35 de grade",
+  "files": []
+ },
+ {
+  "id": "cod-portocaliu-ploi",
+  "name": "Grafică: COD PORTOCALIU de ploi puternice (avertizare meteo)",
+  "keywords": "avertizare meteo cod portocaliu, ploi torențiale, averse, acumulări de apă",
+  "files": []
+ },
+ {
+  "id": "cod-portocaliu-vant",
+  "name": "Grafică: COD PORTOCALIU de vânt puternic (avertizare meteo)",
+  "keywords": "avertizare meteo cod portocaliu, vânt puternic, rafale",
+  "files": []
+ },
+ {
+  "id": "cod-portocaliu-furtuna",
+  "name": "Grafică: COD PORTOCALIU de furtună (avertizare meteo)",
+  "keywords": "avertizare meteo cod portocaliu, furtună, ploi, vânt, grindină, descărcări electrice",
+  "files": []
+ },
+ {
+  "id": "cod-portocaliu-ger",
+  "name": "Grafică: COD PORTOCALIU de ger (avertizare meteo)",
+  "keywords": "avertizare meteo cod portocaliu, ger, temperaturi foarte scăzute",
+  "files": []
+ },
+ {
+  "id": "cod-portocaliu-polei",
+  "name": "Grafică: COD PORTOCALIU de polei (avertizare meteo)",
+  "keywords": "avertizare meteo cod portocaliu, polei, ghețuș, drumuri alunecoase",
+  "files": []
+ },
+ {
+  "id": "cod-portocaliu-ninsori",
+  "name": "Grafică: COD PORTOCALIU de ninsori abundente (avertizare meteo)",
+  "keywords": "avertizare meteo cod portocaliu, ninsori, viscol, zăpadă",
+  "files": []
+ },
+ {
+  "id": "cod-portocaliu-ceata",
+  "name": "Grafică: COD PORTOCALIU de ceață densă (avertizare meteo)",
+  "keywords": "avertizare meteo cod portocaliu, ceață, vizibilitate redusă",
+  "files": []
+ },
+ {
+  "id": "cod-rosu-canicula",
+  "name": "Grafică: COD ROȘU de caniculă (avertizare meteo)",
+  "keywords": "avertizare meteo cod roșu, caniculă, arșiță, temperaturi de peste 35 de grade",
+  "files": []
+ },
+ {
+  "id": "cod-rosu-ploi",
+  "name": "Grafică: COD ROȘU de ploi puternice (avertizare meteo)",
+  "keywords": "avertizare meteo cod roșu, ploi torențiale, averse, acumulări de apă",
+  "files": []
+ },
+ {
+  "id": "cod-rosu-vant",
+  "name": "Grafică: COD ROȘU de vânt puternic (avertizare meteo)",
+  "keywords": "avertizare meteo cod roșu, vânt puternic, rafale",
+  "files": []
+ },
+ {
+  "id": "cod-rosu-furtuna",
+  "name": "Grafică: COD ROȘU de furtună (avertizare meteo)",
+  "keywords": "avertizare meteo cod roșu, furtună, ploi, vânt, grindină, descărcări electrice",
+  "files": []
+ },
+ {
+  "id": "cod-rosu-ger",
+  "name": "Grafică: COD ROȘU de ger (avertizare meteo)",
+  "keywords": "avertizare meteo cod roșu, ger, temperaturi foarte scăzute",
+  "files": []
+ },
+ {
+  "id": "cod-rosu-polei",
+  "name": "Grafică: COD ROȘU de polei (avertizare meteo)",
+  "keywords": "avertizare meteo cod roșu, polei, ghețuș, drumuri alunecoase",
+  "files": []
+ },
+ {
+  "id": "cod-rosu-ninsori",
+  "name": "Grafică: COD ROȘU de ninsori abundente (avertizare meteo)",
+  "keywords": "avertizare meteo cod roșu, ninsori, viscol, zăpadă",
+  "files": []
+ },
+ {
+  "id": "cod-rosu-ceata",
+  "name": "Grafică: COD ROȘU de ceață densă (avertizare meteo)",
+  "keywords": "avertizare meteo cod roșu, ceață, vizibilitate redusă",
+  "files": []
+ },
+ {
+  "id": "alerta-112",
+  "name": "Grafică: alertă 112 / mesaj de urgență pe telefon",
+  "keywords": "alertă 112, mesaj de urgență, alertă pe telefon, RO-Alert",
+  "files": []
+ },
+ {
+  "id": "escrocherie",
+  "name": "Grafică: atenție, escrocherie / fraudă",
+  "keywords": "escrocherie, escroci, fraudă, înșelătorie, apeluri false, phishing, bani furați de pe card",
+  "files": []
+ },
+ {
+  "id": "fals",
+  "name": "Grafică: FALS / dezinformare",
+  "keywords": "fals, dezinformare, fake news, propagandă, deepfake, informație falsă",
+  "files": []
+ },
+ {
+  "id": "alerta-aeriana",
+  "name": "Grafică: spațiul aerian / drone / rachete",
+  "keywords": "spațiul aerian încălcat, drone, rachete, alertă aeriană",
+  "files": []
+ },
+ {
+  "id": "cutremur-grafic",
+  "name": "Grafică: cutremur",
+  "keywords": "cutremur, seism, magnitudine, Vrancea",
+  "files": []
  }
 ]
