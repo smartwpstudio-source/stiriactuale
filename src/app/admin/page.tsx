@@ -4,7 +4,8 @@ import { getDb } from "@/lib/pipeline/db/client";
 import { articles, candidates, pipelineRuns } from "@/lib/pipeline/db/schema";
 import { requireAdmin } from "@/lib/admin/auth";
 import { SECTION_LABELS } from "@/lib/content/geo";
-import { addLink, logoutAction, runPipelineNow } from "./actions";
+import { addLink, logoutAction, runPipelineNow, sendPushNow } from "./actions";
+import { ConfirmButton } from "./confirm-button";
 
 const LINK_MESSAGES: Record<string, string> = {
   ok: "Adăugat. Se scrie la următoarea rulare a pipeline-ului (max. 2 ore).",
@@ -34,6 +35,8 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
     image: articles.imageUrl,
     video: articles.videoUrl,
     push: articles.pushWorthy,
+    pushSentAt: articles.pushSentAt,
+    status: articles.status,
     views: articles.views,
     createdAt: articles.createdAt,
     publishedAt: articles.publishedAt,
@@ -51,17 +54,31 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
   const list = (rows: typeof drafts, dateOf: (r: (typeof drafts)[number]) => Date) => (
     <ul className="divide-y divide-line rounded border border-line bg-white">
       {rows.map((r) => (
-        <li key={r.id}>
-          <Link href={`/admin/articol/${r.id}/`} className="flex items-center gap-3 px-3 py-2 hover:bg-paper">
+        <li key={r.id} className="flex items-center">
+          <Link href={`/admin/articol/${r.id}/`} className="flex flex-1 items-center gap-3 px-3 py-2 hover:bg-paper">
             <span className="w-20 shrink-0 font-mono text-xs text-sub">{time(dateOf(r))}</span>
             <span className="w-24 shrink-0 font-mono text-xs text-teal">{SECTION_LABELS[r.section]}</span>
             <span className="flex-1 text-ink">{r.title}</span>
-            {r.push && <span title="propus pentru notificare push">🔔</span>}
             {r.video && <span title="are video din sursă">▶</span>}
             {!r.image && !r.video && <span className="font-mono text-xs text-alert">fără foto</span>}
             <span className="w-16 text-right font-mono text-xs text-sub" title="afișări pe site">{r.views} viz.</span>
             <span className="font-mono text-xs text-sub" title="scor pipeline">{Math.round(r.score)}</span>
           </Link>
+          {/* notificarea push se trimite doar manual: clopoțel la fiecare știre publicată */}
+          {r.status === "published" &&
+            (r.pushSentAt ? (
+              <span className="w-10 text-center text-xs text-teal" title="notificare trimisă">🔔✓</span>
+            ) : (
+              <form
+                action={sendPushNow.bind(null, r.id)}
+                className="w-10 text-center"
+                title={r.push ? "Trimite notificarea (AI o propune)" : "Trimite notificarea"}
+              >
+                <ConfirmButton message={`Trimiți notificarea tuturor abonaților? „${r.title}”`} className={r.push ? "" : "opacity-40 hover:opacity-100"}>
+                  🔔
+                </ConfirmButton>
+              </form>
+            ))}
         </li>
       ))}
       {rows.length === 0 && <li className="px-3 py-2 text-sm text-sub">Nimic.</li>}
