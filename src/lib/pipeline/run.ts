@@ -9,7 +9,7 @@ import { computeQualityScore } from "./scoring";
 import { findArticleImage, sourcePhoto } from "./image";
 import { loadOfficialItems, matchOfficialPhoto } from "./official-photos";
 import { loadPlaces, matchPlacePhoto } from "./places";
-import { youtubeThumb } from "@/lib/video";
+import { toEmbedUrl, youtubeThumb } from "@/lib/video";
 import { shortVideoArticle } from "./video-article";
 import { isDuplicate, loadRecentFingerprints, loadUsedImageIds, publishArticle, updateBriefArticle } from "./publish";
 import { mapWithConcurrency } from "./concurrency";
@@ -188,11 +188,14 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     const places = loadPlaces();
     const published = await mapWithConcurrency(toPublish, PUBLISH_CONCURRENCY, async (c): Promise<Section | null> => {
       try {
-        // material puțin: linkul video al editorului -> știre video scurtă (fără
-        // AI); altfel orice știre aleasă iese „pe scurt” (regula proprietarului),
-        // completată la rulările următoare când apar detalii
+        // material puțin: linkul video al editorului -> știre video scurtă, scrisă
+        // în română de AI din descriere (oricare ar fi limba ei); fără AI, doar
+        // varianta citată (video-article.ts). Altfel orice știre aleasă iese
+        // „pe scurt” (regula proprietarului), completată la rulările următoare.
         let kind: "stire" | "pe-scurt" | "analiza" = c.group.analysis ? "analiza" : "stire";
         let generated = await generateArticle(c.group, c.classification);
+        const isVideo = c.group.manual && c.group.items.some((i) => toEmbedUrl(i.sourceUrl));
+        if (!generated && isVideo) generated = await generateArticle(c.group, c.classification, "video");
         if (!generated && c.group.manual) generated = shortVideoArticle(c.group);
         if (!generated) {
           generated = await generateArticle(c.group, c.classification, "brief");

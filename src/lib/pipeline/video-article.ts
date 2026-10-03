@@ -27,6 +27,8 @@ export function shortVideoArticle(group: CandidateGroup): GeneratedArticle | nul
     .filter((l) => l && !/^#|https?:\/\//.test(l))
     .join(" ")
     .trim();
+  // ultima soluție, fără AI: citatul rămâne în limba sursei — doar dacă e română
+  if (/[а-яёіїєґ]/i.test(text + item.title)) return null;
   const sentences = (text.match(/[^.!?]+[.!?]+/g) ?? (text ? [text] : [])).map((x) => x.trim());
   const lead = (sentences.slice(0, 2).join(" ").trim() || `Video publicat de ${item.sourceName}.`).slice(0, 300);
   const quote = sentences.slice(0, 3).join(" ").trim().slice(0, 600);

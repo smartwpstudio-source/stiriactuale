@@ -66,17 +66,23 @@ const SYSTEM_PROMPT = [
 const MIN_MATERIAL_CHARS = 1200;
 const MIN_MATERIAL_CHARS_MANUAL = 400;
 const MIN_MATERIAL_BRIEF = 250;
+const MIN_MATERIAL_VIDEO = 40; // video-ul e subiectul: o frază de descriere ajunge
 
 // Trei formate: știre completă; „pe scurt” când povestea abia începe (puțin
 // material — se completează la rulările următoare, vezi run.ts); analiză,
 // comandată de editor din admin.
-export type ArticleMode = "full" | "brief" | "analysis";
+export type ArticleMode = "full" | "brief" | "analysis" | "video";
 
 const MODE_RULES: Record<Exclude<ArticleMode, "full">, string> = {
   brief: [
     "MOD PE SCURT (are prioritate față de regulile de lungime și structură de mai sus): povestea abia începe și materialul e puțin.",
     "Scrie o știre scurtă de 80-200 de cuvinte: lead-ul + 1-2 paragrafe <p>, FĂRĂ subtitluri <h2>, fără secțiuni de context, reacții sau ce urmează dacă nu sunt în material.",
     "Doar faptele confirmate de sursă, atribuite. Nimic presupus. Titlul nu conține „pe scurt”.",
+  ].join("\n"),
+  video: [
+    "MOD VIDEO (are prioritate față de regulile de lungime și structură de mai sus): video-ul e subiectul știrii, iar textul sursei e doar descrierea lui, scurtă.",
+    "STRICT: lead-ul + UN SINGUR paragraf <p> în corp, maximum 120 de cuvinte în total, ZERO subtitluri <h2>. Redai DOAR ce spune descrierea (cine, ce, unde), atribuit canalului sursă. Interzis: explicații despre instituții, locuri sau context general — cititorul vede video-ul.",
+    "Descrierea poate fi în rusă, engleză sau altă limbă: titlul, lead-ul și textul — exclusiv în română.",
   ].join("\n"),
   analysis: [
     "MOD ANALIZĂ (are prioritate față de regulile de lungime și structură de mai sus): editorul a cerut o analiză.",
@@ -85,6 +91,18 @@ const MODE_RULES: Record<Exclude<ArticleMode, "full">, string> = {
     "Neutru, fără adjective de valoare și fără a lua partea cuiva; propaganda se citează atribuit, ca poziție, nu ca fapt.",
   ].join("\n"),
 };
+// Lungimea cerută în schemă trebuie să urmeze modul — altfel „350-700 de
+// cuvinte cu 2-4 <h2>” din schemă bate regulile scurte ale modului.
+const BODY_RULE: Partial<Record<ArticleMode, string>> = {
+  brief: "HTML: <p>. 80-200 de cuvinte, FĂRĂ <h2>. Fără linkuri, fără imagini.",
+  video: "HTML: un singur <p>, maximum 120 de cuvinte, FĂRĂ <h2>. Doar ce spune descrierea video-ului.",
+};
+function schemaFor(mode: ArticleMode) {
+  const rule = BODY_RULE[mode];
+  if (!rule) return SCHEMA;
+  return { ...SCHEMA, properties: { ...SCHEMA.properties, corp_html: { type: "string", description: rule } } };
+}
+
 const MAX_SOURCES = 4;
 
 // Titlul după publicul știrii: cea regională circulă în grupurile locale
@@ -121,14 +139,14 @@ export async function generateArticle(
   });
   const digest = blocks.join("\n\n");
   const min =
-    mode === "brief" ? MIN_MATERIAL_BRIEF : group.manual ? MIN_MATERIAL_CHARS_MANUAL : MIN_MATERIAL_CHARS;
+    mode === "brief" ? MIN_MATERIAL_BRIEF : mode === "video" ? MIN_MATERIAL_VIDEO : group.manual ? MIN_MATERIAL_CHARS_MANUAL : MIN_MATERIAL_CHARS;
   if (digest.length < min) return null;
 
   const article = await structured<GeneratedArticle>({
     model: OPUS_MODEL,
     system: mode === "full" ? SYSTEM_PROMPT : `${SYSTEM_PROMPT}\n\n${MODE_RULES[mode]}`,
     prompt: `${titleRule(classification)}${continuationRule(classification)}\n\nSecțiune: ${classification.section}. Subiecte: ${classification.topics.join(", ") || "—"}.\n\nRelatări despre același eveniment (text integral):\n\n${digest}`,
-    schema: SCHEMA,
+    schema: schemaFor(mode),
     maxBudgetUsd: 0.5,
   });
   const video = items.map((i) => toEmbedUrl(i.sourceUrl)).find(Boolean) ?? texts.find((t) => t?.video)?.video;
