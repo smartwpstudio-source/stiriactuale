@@ -103,7 +103,7 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
             name="url"
             type="url"
             required
-            placeholder="https://… (linkul sursei originale, nu al agregatorului)"
+            placeholder="https://… (sursa originală; sau video YouTube / Facebook / postare Telegram t.me/canal/123)"
             className="flex-1 rounded border border-line bg-white px-3 py-2 text-ink"
           />
           <input

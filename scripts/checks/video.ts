@@ -28,4 +28,6 @@ assert.equal(
 );
 assert.equal(toPostEmbedUrl("https://www.facebook.com/army.md"), null);
 assert.equal(toPostEmbedUrl("https://example.com/x"), null);
+assert.equal(toEmbedUrl("https://t.me/tv8md/29756"), "https://t.me/tv8md/29756?embed=1");
+assert.equal(toEmbedUrl("https://t.me/tv8md"), null);
 console.log("video: OK");

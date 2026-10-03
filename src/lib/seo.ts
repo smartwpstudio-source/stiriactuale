@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { Article } from "./content/types";
 import { SECTION_LABELS } from "./content/geo";
 import { articleUrl } from "./content/url";
+import { youtubeThumb } from "./video";
 
 export const SITE_URL = "https://stiriactuale.info";
 
@@ -32,6 +33,23 @@ export function breadcrumbJsonLd(items: { name: string; url: string }[]) {
   };
 }
 
+// Video-ul YouTube al știrii, marcat pentru căutarea video Google (VideoObject).
+// Telegram/Facebook nu au o miniatură publică stabilă — fără marcaj.
+function videoJsonLd(article: Article) {
+  const thumb = youtubeThumb(article.videoUrl);
+  if (!thumb) return {};
+  return {
+    video: {
+      "@type": "VideoObject",
+      name: article.title,
+      description: article.lead,
+      thumbnailUrl: [thumb],
+      uploadDate: article.publishedAt,
+      embedUrl: article.videoUrl,
+    },
+  };
+}
+
 export function newsArticleJsonLd(article: Article) {
   const url = absoluteUrl(articleUrl(article));
   return {
@@ -44,6 +62,7 @@ export function newsArticleJsonLd(article: Article) {
     url,
     mainEntityOfPage: url,
     ...(article.imageUrl ? { image: [article.imageUrl] } : {}),
+    ...videoJsonLd(article),
     author: { "@type": "Organization", name: "Stiri actuale" },
     publisher: {
       "@type": "Organization",

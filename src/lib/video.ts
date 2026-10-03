@@ -24,6 +24,12 @@ export function toEmbedUrl(raw: string): string | null {
     return YT_ID.test(id) ? `https://www.youtube-nocookie.com/embed/${id}` : null;
   }
 
+  // postare Telegram (video scurt de pe un canal): playerul oficial al postării
+  if (host === "t.me") {
+    const m = u.pathname.match(/^[/]([A-Za-z0-9_]{4,})[/]([0-9]+)/);
+    return m ? `https://t.me/${m[1]}/${m[2]}?embed=1` : null;
+  }
+
   if (host === "facebook.com" || host === "fb.watch") {
     // playerul Facebook primește pagina video-ului ca parametru href
     if (u.pathname.startsWith("/plugins/video.php")) {

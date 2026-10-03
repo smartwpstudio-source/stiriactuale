@@ -82,6 +82,18 @@ export function topicHub(topic: string): Hub | null {
   };
 }
 
+// Rubrica Video: știrile al căror subiect principal e video-ul (YouTube,
+// Facebook, postări Telegram), din toate secțiunile.
+export function videoHub(): Hub {
+  return {
+    title: "Video",
+    description: "Știri video din Moldova: imaginile momentului, de la sursă — YouTube, Facebook și Telegram.",
+    basePath: "/video/",
+    crumbs: [home, { label: "Video" }],
+    filter: { video: true },
+  };
+}
+
 // /pagina/1/ nu există (pagina 1 e basePath) — orice altceva decât 2..N -> 404.
 export function parsePage(n: string): number | null {
   const page = Number(n);

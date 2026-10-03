@@ -32,6 +32,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...raionSlugs.map((r) => ({ url: `/regiuni/${r}/`, priority: 0.7 })),
     ...taraSlugs.map((t) => ({ url: `/diaspora/${t}/`, priority: 0.7 })),
     ...["despre", "contact", "politica-editoriala", "confidentialitate", "publicitate"].map((p) => ({ url: `/${p}/`, priority: 0.3 })),
+    { url: "/video/", priority: 0.7 },
     { url: "/ghiduri/", priority: 0.7 },
     { url: "/calculatoare/", priority: 0.7 },
     { url: "/calendar-crestin-ortodox/", priority: 0.8 },

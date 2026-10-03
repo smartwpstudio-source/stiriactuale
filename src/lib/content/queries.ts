@@ -1,4 +1,4 @@
-import { and, count, desc, eq, gt, gte, ne, or, sql, type SQL } from "drizzle-orm";
+import { and, count, desc, eq, gt, gte, isNotNull, ne, or, sql, type SQL } from "drizzle-orm";
 import { getDb } from "@/lib/pipeline/db/client";
 import { articles as t } from "@/lib/pipeline/db/schema";
 import type { Article, Section, Topic } from "./types";
@@ -65,6 +65,7 @@ export interface ArticleFilter {
   locality?: string;
   country?: string;
   topic?: Topic;
+  video?: boolean; // rubrica Video: articolele cu player (YouTube, Facebook, Telegram)
   q?: string;
   includeArchived?: boolean; // doar căutarea — arhiva preluată nu apare în liste
 }
@@ -76,6 +77,7 @@ function where(f: ArticleFilter): SQL {
   if (f.locality) c.push(eq(t.locality, f.locality));
   if (f.country) c.push(eq(t.country, f.country));
   if (f.topic) c.push(sql`${t.topics} @> ${JSON.stringify([f.topic])}::jsonb`);
+  if (f.video) c.push(isNotNull(t.videoUrl));
   if (f.q) {
     // unaccent: "chisinau" găsește "Chișinău". ponytail: scanare secvențială,
     // ok la câteva mii de rânduri; index trigram dacă arhiva crește mult.

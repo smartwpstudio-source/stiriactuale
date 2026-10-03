@@ -1,3 +1,4 @@
+import { decodeEntities } from "./html-entities";
 import { toEmbedUrl } from "./video";
 
 // Știre pornită direct de la un link video (admin → „Adaugă și publică acum”).
@@ -38,6 +39,7 @@ export function jsonStringField(html: string, key: string): string | null {
 export async function readVideoSource(url: string): Promise<VideoSource | null> {
   const embed = toEmbedUrl(url);
   if (!embed) return null;
+  if (embed.startsWith("https://t.me/")) return readTelegramPost(embed);
   if (!embed.includes("youtube")) return { embed, title: "", channel: "Facebook", description: "" };
   const id = embed.split("/embed/")[1];
   const watch = `https://www.youtube.com/watch?v=${id}`;
@@ -55,4 +57,18 @@ export async function readVideoSource(url: string): Promise<VideoSource | null> 
     channel: meta?.author_name ?? "YouTube",
     description: (jsonStringField(html, "shortDescription") ?? "").trim(),
   };
+}
+
+// Postarea Telegram: pagina de încorporare (?embed=1) e publică — textul
+// postării și numele canalului. Telegram nu are titlu: prima frază, scurtată.
+async function readTelegramPost(embed: string): Promise<VideoSource | null> {
+  const html = await fetch(embed, { headers: { "User-Agent": UA }, signal: AbortSignal.timeout(15_000) })
+    .then((r) => (r.ok ? r.text() : ""))
+    .catch(() => "");
+  const plain = (s: string) => decodeEntities(s.replace(/<br[ /]*>/gi, " ").replace(/<[^>]+>/g, "")).replace(/ +/g, " ").trim();
+  const description = plain(html.match(/<div class="tgme_widget_message_text[^"]*"[^>]*>([^]*?)<[/]div>/)?.[1] ?? "");
+  const channel = plain(html.match(/tgme_widget_message_owner_name"[^>]*><span[^>]*>([^<]*)/)?.[1] ?? "") || "Telegram";
+  if (!description) return null;
+  const first = description.split(/(?<=[.!?])[ ]/)[0].replace(/^[^A-Za-zĂÂÎȘȚăâîșț0-9„"]+/, "");
+  return { embed, title: first.length > 110 ? `${first.slice(0, 107)}…` : first, channel, description };
 }
