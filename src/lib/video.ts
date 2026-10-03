@@ -38,6 +38,26 @@ export function toEmbedUrl(raw: string): string | null {
   return null;
 }
 
+// Postarea unei instituții (Facebook sau Telegram) cu pozele de la fața locului:
+// încorporată prin pluginul oficial, nu copiată — pozele rămân la autor.
+export function toPostEmbedUrl(raw: string): string | null {
+  let u: URL;
+  try {
+    u = new URL(raw.trim());
+  } catch {
+    return null;
+  }
+  const host = u.hostname.replace(/^(www[.]|m[.]|mobile[.])/, "");
+  if (host === "t.me") {
+    const m = u.pathname.match(/^[/]([A-Za-z0-9_]{4,})[/]([0-9]+)/);
+    return m ? `https://t.me/${m[1]}/${m[2]}?embed=1` : null;
+  }
+  if (host === "facebook.com" && /[/](posts|photos|permalink|share)[/]|story_fbid|fbid=/.test(u.pathname + u.search)) {
+    return `https://www.facebook.com/plugins/post.php?href=${encodeURIComponent(`https://www.facebook.com${u.pathname}${u.search}`)}&show_text=true&width=500`;
+  }
+  return null;
+}
+
 // Primul video inserat în pagina sursei: iframe-uri, apoi og:video. Linkurile
 // simple din text nu contează — pot fi spre alte subiecte.
 export function findVideo(html: string): string | null {

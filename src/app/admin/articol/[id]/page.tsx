@@ -29,6 +29,7 @@ const ERRORS: Record<string, string> = {
   raion: "Alege raionul.",
   tara: "Alege țara.",
   video: "Linkul video nu e recunoscut — doar YouTube sau un video Facebook.",
+  post: "Postarea nu e recunoscută — doar o postare Facebook (posts/photos) sau Telegram (t.me/canal/123).",
   facebook: "Postarea pe Facebook a eșuat — verifică FACEBOOK_PAGE_ID / FACEBOOK_PAGE_TOKEN în Vercel.",
 };
 
@@ -185,6 +186,18 @@ export default async function EditArticlePage({ params, searchParams }: PageProp
               name="video"
               defaultValue={a.videoUrl ? decodeURIComponent(a.videoUrl.match(/href=([^&]+)/)?.[1] ?? "") || a.videoUrl.replace("youtube-nocookie.com/embed/", "youtube.com/watch?v=") : ""}
               placeholder="https://www.youtube.com/watch?v=… sau https://www.facebook.com/…/videos/…"
+              className={input}
+            />
+          </div>
+          <div>
+            <label className={label} htmlFor="post">
+              Postare cu poze de la fața locului (Facebook sau Telegram al unei instituții) — apare în articol; gol = fără
+            </label>
+            <input
+              id="post"
+              name="post"
+              defaultValue={a.postUrl ? decodeURIComponent(a.postUrl.match(/href=([^&]+)/)?.[1] ?? "") || a.postUrl.replace("?embed=1", "") : ""}
+              placeholder="https://www.facebook.com/…/posts/… sau https://t.me/canal/123"
               className={input}
             />
           </div>

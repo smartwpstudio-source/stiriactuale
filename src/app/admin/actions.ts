@@ -15,7 +15,7 @@ import { dispatchPipeline } from "@/lib/pipeline-dispatch";
 import { deleteFromChannel } from "@/lib/telegram";
 import { deleteFromPage, lastFacebookError, postToPage } from "@/lib/facebook";
 import { articleUrl } from "@/lib/content/url";
-import { toEmbedUrl } from "@/lib/video";
+import { toEmbedUrl, toPostEmbedUrl } from "@/lib/video";
 import { readVideoSource } from "@/lib/video-source";
 import { absoluteUrl } from "@/lib/seo";
 import { announcePublished, pushNow } from "@/lib/publish-effects";
@@ -49,6 +49,9 @@ export async function saveArticle(id: number, formData: FormData) {
   const videoLink = String(formData.get("video") ?? "").trim();
   const videoUrl = videoLink ? toEmbedUrl(videoLink) : null;
   if (videoLink && !videoUrl) redirect(`/admin/articol/${id}/?e=video`);
+  const postLink = String(formData.get("post") ?? "").trim();
+  const postUrl = postLink ? toPostEmbedUrl(postLink) : null;
+  if (postLink && !postUrl) redirect(`/admin/articol/${id}/?e=post`);
 
   await getDb()
     .update(articles)
@@ -59,6 +62,7 @@ export async function saveArticle(id: number, formData: FormData) {
       metaDescription: String(formData.get("meta")).trim().slice(0, 200),
       imageAltText: String(formData.get("alt") ?? "").trim() || null,
       videoUrl,
+      postUrl,
       section,
       locality: section === "regiuni" ? locality : null,
       country: section === "diaspora" ? country : null,

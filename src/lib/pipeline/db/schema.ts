@@ -66,6 +66,8 @@ export const articles = pgTable("articles", {
   facebookPostId: varchar("facebook_post_id", { length: 64 }),
   // playerul YouTube/Facebook al video-ului din sursă (src/lib/video.ts)
   videoUrl: text("video_url"),
+  // postarea unei instituții cu pozele de la fața locului (Facebook/Telegram), încorporată
+  postUrl: text("post_url"),
   // "stire" (normal), "pe-scurt" (puțin material — se actualizează când apar
   // detalii), "analiza" (comandată de editor din admin)
   kind: varchar("kind", { length: 20 }).notNull().default("stire"),

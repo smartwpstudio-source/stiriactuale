@@ -1,0 +1,512 @@
+[
+ {
+  "id": "parlament",
+  "name": "Parlamentul Republicii Moldova (clădirea)",
+  "keywords": "Parlament, deputați, ședința Parlamentului, legislativ",
+  "files": []
+ },
+ {
+  "id": "guvern",
+  "name": "Casa Guvernului, Chișinău",
+  "keywords": "Guvern, Cabinetul de miniștri, prim-ministru, ședința Guvernului",
+  "files": []
+ },
+ {
+  "id": "presedintie",
+  "name": "Președinția Republicii Moldova (clădirea)",
+  "keywords": "Președinție, președintele țării, Maia Sandu, decret",
+  "files": []
+ },
+ {
+  "id": "curtea-constitutionala",
+  "name": "Curtea Constituțională",
+  "keywords": "Curtea Constituțională, CC, constituționalitate",
+  "files": []
+ },
+ {
+  "id": "csj",
+  "name": "Curtea Supremă de Justiție",
+  "keywords": "CSJ, Curtea Supremă de Justiție, recurs",
+  "files": []
+ },
+ {
+  "id": "judecatoria-chisinau",
+  "name": "Judecătoria Chișinău / instanțe din Chișinău",
+  "keywords": "judecătorie, instanță, proces, sentință",
+  "files": []
+ },
+ {
+  "id": "procuratura-generala",
+  "name": "Procuratura Generală",
+  "keywords": "Procuratura Generală, procuror general, PCCOCS, Procuratura Anticorupție",
+  "files": []
+ },
+ {
+  "id": "cna",
+  "name": "Centrul Național Anticorupție",
+  "keywords": "CNA, anticorupție, percheziții CNA",
+  "files": []
+ },
+ {
+  "id": "bnm",
+  "name": "Banca Națională a Moldovei",
+  "keywords": "BNM, Banca Națională, rata de bază, curs valutar, inflație",
+  "files": []
+ },
+ {
+  "id": "cec",
+  "name": "Comisia Electorală Centrală",
+  "keywords": "CEC, alegeri, Comisia Electorală Centrală, vot",
+  "files": []
+ },
+ {
+  "id": "mai",
+  "name": "Ministerul Afacerilor Interne",
+  "keywords": "MAI, Ministerul Afacerilor Interne",
+  "files": []
+ },
+ {
+  "id": "igp",
+  "name": "Inspectoratul General al Poliției",
+  "keywords": "Poliția, IGP, polițiști, poliție",
+  "files": []
+ },
+ {
+  "id": "igsu",
+  "name": "Inspectoratul General pentru Situații de Urgență",
+  "keywords": "IGSU, pompieri, salvatori, incendiu",
+  "files": []
+ },
+ {
+  "id": "politia-frontiera",
+  "name": "Poliția de Frontieră",
+  "keywords": "Poliția de Frontieră, frontieră, grăniceri",
+  "files": []
+ },
+ {
+  "id": "mapn",
+  "name": "Ministerul Apărării / Armata Națională",
+  "keywords": "Ministerul Apărării, Armata Națională, militari, armată",
+  "files": []
+ },
+ {
+  "id": "mae",
+  "name": "Ministerul Afacerilor Externe",
+  "keywords": "MAE, diplomație, ambasador convocat",
+  "files": []
+ },
+ {
+  "id": "primaria-chisinau",
+  "name": "Primăria municipiului Chișinău",
+  "keywords": "Primăria Chișinău, primarul capitalei, Consiliul Municipal Chișinău",
+  "files": []
+ },
+ {
+  "id": "vama",
+  "name": "Serviciul Vamal",
+  "keywords": "Serviciul Vamal, vameși, contrabandă",
+  "files": []
+ },
+ {
+  "id": "aeroport-chisinau",
+  "name": "Aeroportul Internațional Chișinău",
+  "keywords": "aeroport Chișinău, zboruri, curse aeriene anulate, pasageri",
+  "files": []
+ },
+ {
+  "id": "gara-chisinau",
+  "name": "Gara feroviară Chișinău",
+  "keywords": "gara Chișinău, tren, CFM, Calea Ferată",
+  "files": []
+ },
+ {
+  "id": "tren-cfm",
+  "name": "Trenuri CFM / Calea Ferată a Moldovei",
+  "keywords": "tren, Calea Ferată a Moldovei, CFM, trenul Chișinău-București",
+  "files": []
+ },
+ {
+  "id": "autogara-centrala",
+  "name": "Gara auto centrală Chișinău",
+  "keywords": "autogară, microbuze, curse interurbane",
+  "files": []
+ },
+ {
+  "id": "leuseni",
+  "name": "Punctul de trecere Leușeni–Albița",
+  "keywords": "Leușeni, Albița, vamă, coadă la vamă, frontieră cu România",
+  "files": []
+ },
+ {
+  "id": "sculeni",
+  "name": "Punctul de trecere Sculeni",
+  "keywords": "Sculeni, frontieră, vamă",
+  "files": []
+ },
+ {
+  "id": "giurgiulesti",
+  "name": "Giurgiulești (vamă și port)",
+  "keywords": "Giurgiulești, portul Giurgiulești, vama Giurgiulești",
+  "files": []
+ },
+ {
+  "id": "palanca",
+  "name": "Punctul de trecere Palanca",
+  "keywords": "Palanca, frontiera cu Ucraina, refugiați, Odesa",
+  "files": []
+ },
+ {
+  "id": "otaci",
+  "name": "Otaci–Moghiliov-Podolski",
+  "keywords": "Otaci, Moghiliov-Podolski, frontieră cu Ucraina",
+  "files": []
+ },
+ {
+  "id": "pod-ungheni",
+  "name": "Podul de la Ungheni peste Prut",
+  "keywords": "Ungheni, pod, Iași, frontieră",
+  "files": []
+ },
+ {
+  "id": "trolebuz-chisinau",
+  "name": "Troleibuze în Chișinău",
+  "keywords": "troleibuz, transport public Chișinău, RTEC",
+  "files": []
+ },
+ {
+  "id": "autobuz-chisinau",
+  "name": "Autobuze în Chișinău",
+  "keywords": "autobuz, transport public, Parcul Urban de Autobuze",
+  "files": []
+ },
+ {
+  "id": "traseu-m1",
+  "name": "Drumuri naționale / autostrada",
+  "keywords": "drum național, traseu, reparație drum, autostradă, M1, M2, R13",
+  "files": []
+ },
+ {
+  "id": "cuciurgan",
+  "name": "Centrala termoelectrică de la Cuciurgan (MGRES)",
+  "keywords": "MGRES, Cuciurgan, energie electrică, criză energetică",
+  "files": []
+ },
+ {
+  "id": "cet-chisinau",
+  "name": "Termocentrala Chișinău (CET)",
+  "keywords": "Termoelectrica, CET, încălzire, agent termic, căldură",
+  "files": []
+ },
+ {
+  "id": "gaz",
+  "name": "Infrastructura de gaze naturale",
+  "keywords": "gaz, Moldovagaz, Energocom, gazoduct, tarif gaz",
+  "files": []
+ },
+ {
+  "id": "linie-electrica",
+  "name": "Rețele electrice / linii de înaltă tensiune",
+  "keywords": "energie electrică, Moldelectrica, rețele, pană de curent",
+  "files": []
+ },
+ {
+  "id": "apa-canal",
+  "name": "Apă-Canal Chișinău / apeduct",
+  "keywords": "Apă-Canal, apă potabilă, apeduct, apă la robinet",
+  "files": []
+ },
+ {
+  "id": "nistru",
+  "name": "Râul Nistru",
+  "keywords": "Nistru, nivelul Nistrului, secetă, apă, fluviu",
+  "files": []
+ },
+ {
+  "id": "prut",
+  "name": "Râul Prut",
+  "keywords": "Prut, râul Prut, inundații",
+  "files": []
+ },
+ {
+  "id": "costesti-stinca",
+  "name": "Barajul Costești–Stînca",
+  "keywords": "Costești, Stînca, baraj, lac de acumulare, hidrocentrala",
+  "files": []
+ },
+ {
+  "id": "dubasari-hidro",
+  "name": "Barajul și hidrocentrala de la Dubăsari",
+  "keywords": "barajul Dubăsari, hidrocentrala Dubăsari",
+  "files": []
+ },
+ {
+  "id": "spitalul-republican",
+  "name": "Spitalul Clinic Republican",
+  "keywords": "Spitalul Republican, spital, internare, pacienți",
+  "files": []
+ },
+ {
+  "id": "urgenta",
+  "name": "Institutul de Medicină Urgentă",
+  "keywords": "Medicina Urgentă, spital de urgență, Urgența",
+  "files": []
+ },
+ {
+  "id": "mama-copilul",
+  "name": "Institutul Mamei și Copilului",
+  "keywords": "Mama și Copilul, maternitate, copii bolnavi",
+  "files": []
+ },
+ {
+  "id": "ambulanta",
+  "name": "Ambulanțe în Moldova (AMU/SAMU)",
+  "keywords": "ambulanță, SAMU, 112, medici de urgență",
+  "files": []
+ },
+ {
+  "id": "usm",
+  "name": "Universitatea de Stat din Moldova",
+  "keywords": "USM, universitate, studenți",
+  "files": []
+ },
+ {
+  "id": "usmf",
+  "name": "Universitatea de Medicină Nicolae Testemițanu",
+  "keywords": "USMF, medicină, studenți la medicină",
+  "files": []
+ },
+ {
+  "id": "scoala",
+  "name": "Școli din Moldova",
+  "keywords": "școală, elevi, profesori, an de studii, bacalaureat",
+  "files": []
+ },
+ {
+  "id": "pman",
+  "name": "Piața Marii Adunări Naționale",
+  "keywords": "PMAN, protest, miting, Piața Marii Adunări Naționale",
+  "files": []
+ },
+ {
+  "id": "arcul-de-triumf",
+  "name": "Arcul de Triumf și Catedrala Mitropolitană",
+  "keywords": "Catedrala, Arcul de Triumf, centrul Chișinăului",
+  "files": []
+ },
+ {
+  "id": "stefan-cel-mare",
+  "name": "Monumentul lui Ștefan cel Mare, Chișinău",
+  "keywords": "Ștefan cel Mare, monument, Grădina Publică",
+  "files": []
+ },
+ {
+  "id": "bulevard",
+  "name": "Bulevardul Ștefan cel Mare, Chișinău",
+  "keywords": "centrul capitalei, bulevard, Chișinău",
+  "files": []
+ },
+ {
+  "id": "valea-morilor",
+  "name": "Parcul Valea Morilor",
+  "keywords": "Valea Morilor, parc, lac",
+  "files": []
+ },
+ {
+  "id": "piata-centrala",
+  "name": "Piața Centrală Chișinău",
+  "keywords": "Piața Centrală, piață, prețuri la piață, comercianți",
+  "files": []
+ },
+ {
+  "id": "palatul-republicii",
+  "name": "Palatul Republicii",
+  "keywords": "Palatul Republicii, eveniment oficial, summit",
+  "files": []
+ },
+ {
+  "id": "stadion-zimbru",
+  "name": "Stadionul Zimbru",
+  "keywords": "stadion, fotbal, naționala, Zimbru",
+  "files": []
+ },
+ {
+  "id": "teatrul-national",
+  "name": "Teatrul Național Mihai Eminescu",
+  "keywords": "teatru, spectacol, cultură",
+  "files": []
+ },
+ {
+  "id": "chisinau-panorama",
+  "name": "Chișinău, vedere generală",
+  "keywords": "Chișinău, capitala, oraș",
+  "files": []
+ },
+ {
+  "id": "balti",
+  "name": "Bălți",
+  "keywords": "Bălți, municipiul Bălți",
+  "files": []
+ },
+ {
+  "id": "cahul",
+  "name": "Cahul",
+  "keywords": "Cahul",
+  "files": []
+ },
+ {
+  "id": "comrat",
+  "name": "Comrat, Găgăuzia",
+  "keywords": "Comrat, Găgăuzia, bașcan, Adunarea Populară",
+  "files": []
+ },
+ {
+  "id": "tiraspol",
+  "name": "Tiraspol",
+  "keywords": "Tiraspol, Transnistria, regiunea transnistreană, separatiști",
+  "files": []
+ },
+ {
+  "id": "bender",
+  "name": "Tighina (Bender)",
+  "keywords": "Tighina, Bender, Cetatea Tighina",
+  "files": []
+ },
+ {
+  "id": "orhei",
+  "name": "Orhei",
+  "keywords": "Orhei",
+  "files": []
+ },
+ {
+  "id": "soroca",
+  "name": "Soroca și cetatea",
+  "keywords": "Soroca, cetatea Soroca",
+  "files": []
+ },
+ {
+  "id": "ungheni",
+  "name": "Ungheni",
+  "keywords": "Ungheni",
+  "files": []
+ },
+ {
+  "id": "edinet",
+  "name": "Edineț",
+  "keywords": "Edineț",
+  "files": []
+ },
+ {
+  "id": "hincesti",
+  "name": "Hîncești",
+  "keywords": "Hîncești, conacul Manuc Bei",
+  "files": []
+ },
+ {
+  "id": "straseni",
+  "name": "Strășeni",
+  "keywords": "Strășeni",
+  "files": []
+ },
+ {
+  "id": "causeni",
+  "name": "Căușeni",
+  "keywords": "Căușeni",
+  "files": []
+ },
+ {
+  "id": "ceadir-lunga",
+  "name": "Ceadîr-Lunga",
+  "keywords": "Ceadîr-Lunga",
+  "files": []
+ },
+ {
+  "id": "ialoveni",
+  "name": "Ialoveni",
+  "keywords": "Ialoveni",
+  "files": []
+ },
+ {
+  "id": "cricova",
+  "name": "Cricova (oraș și pivnițe)",
+  "keywords": "Cricova, vin, pivnițe",
+  "files": []
+ },
+ {
+  "id": "cobasna",
+  "name": "Depozitul de muniții de la Cobasna",
+  "keywords": "Cobasna, depozit de muniții, trupe ruse, GOTR",
+  "files": []
+ },
+ {
+  "id": "vie",
+  "name": "Vii în Moldova",
+  "keywords": "vie, struguri, recoltă, viticultori, vin",
+  "files": []
+ },
+ {
+  "id": "lan-grau",
+  "name": "Lanuri de grâu / câmpuri agricole",
+  "keywords": "grâu, recoltă, agricultori, secetă, câmp",
+  "files": []
+ },
+ {
+  "id": "livada",
+  "name": "Livezi de meri",
+  "keywords": "mere, livadă, fermieri, export fructe",
+  "files": []
+ },
+ {
+  "id": "floarea-soarelui",
+  "name": "Floarea-soarelui",
+  "keywords": "floarea-soarelui, recoltă, ulei",
+  "files": []
+ },
+ {
+  "id": "codrii",
+  "name": "Pădurile Codrilor",
+  "keywords": "Codrii, pădure, defrișare, rezervație",
+  "files": []
+ },
+ {
+  "id": "orheiul-vechi",
+  "name": "Orheiul Vechi",
+  "keywords": "Orheiul Vechi, turism, mănăstire rupestră",
+  "files": []
+ },
+ {
+  "id": "saharna-tipova",
+  "name": "Saharna și Țipova",
+  "keywords": "Saharna, Țipova, mănăstire, turism",
+  "files": []
+ },
+ {
+  "id": "capriana",
+  "name": "Mănăstirea Căpriana",
+  "keywords": "Căpriana, mănăstire",
+  "files": []
+ },
+ {
+  "id": "milestii-mici",
+  "name": "Mileștii Mici",
+  "keywords": "Mileștii Mici, vin, pivnițe",
+  "files": []
+ },
+ {
+  "id": "purcari",
+  "name": "Purcari",
+  "keywords": "Purcari, vin",
+  "files": []
+ },
+ {
+  "id": "sat-moldovenesc",
+  "name": "Sat moldovenesc",
+  "keywords": "sat, satul, mediul rural, localitate rurală",
+  "files": []
+ },
+ {
+  "id": "biserica",
+  "name": "Biserici ortodoxe din Moldova",
+  "keywords": "biserică, Mitropolia, preoți, Paște, slujbă",
+  "files": []
+ }
+]

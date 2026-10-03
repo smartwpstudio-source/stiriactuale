@@ -8,6 +8,7 @@ import { generateArticle } from "./generate";
 import { computeQualityScore } from "./scoring";
 import { findArticleImage, sourcePhoto } from "./image";
 import { loadOfficialItems, matchOfficialPhoto } from "./official-photos";
+import { loadPlaces, matchPlacePhoto } from "./places";
 import { youtubeThumb } from "@/lib/video";
 import { shortVideoArticle } from "./video-article";
 import { isDuplicate, loadRecentFingerprints, loadUsedImageIds, publishArticle, updateBriefArticle } from "./publish";
@@ -184,6 +185,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     toPublish.push(...auto.sort((a, b) => b.qualityScore - a.qualityScore).slice(0, autoSlots));
 
     const [usedImageIds, officialItems] = await Promise.all([loadUsedImageIds(), toPublish.length ? loadOfficialItems() : []]);
+    const places = loadPlaces();
     const published = await mapWithConcurrency(toPublish, PUBLISH_CONCURRENCY, async (c): Promise<Section | null> => {
       try {
         // material puțin: linkul video al editorului -> știre video scurtă (fără
@@ -207,12 +209,15 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
         }
         // cu video YouTube, captura din video ține loc de poză (youtubeThumb);
         // altfel poza reală a unei instituții (semnată în sursă sau din
-        // comunicatul ei), apoi stock ales după subiect / generată
+        // comunicatul ei), poza reală a locului din arhivă, apoi stock ales
+        // după subiect / generată
         const subject = `${generated.titlu}. ${generated.lead}`;
         const official = generated.source_photo ?? (await matchOfficialPhoto(subject, officialItems).then((m) => m && { url: m.photo, credit: m.credit }));
+        const place = official ? null : await matchPlacePhoto(subject, places);
         const image = youtubeThumb(generated.video_url)
           ? null
-          : ((official && (await sourcePhoto(official, generated.slug))) ??
+          : (place && { url: place.url, resourceId: null, credit: place.credit }) ??
+            ((official && (await sourcePhoto(official, generated.slug))) ??
             (await findArticleImage(generated.stock_query, generated.image_prompt, generated.slug, usedImageIds, subject)));
         await publishArticle(c, generated, image, kind);
         if (c.group.manual) {

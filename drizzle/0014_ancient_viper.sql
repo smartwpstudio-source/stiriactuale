@@ -1,0 +1,1 @@
+ALTER TABLE "articles" ADD COLUMN "post_url" text;

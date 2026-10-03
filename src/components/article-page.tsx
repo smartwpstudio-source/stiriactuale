@@ -20,6 +20,7 @@ import { ADSENSE_IN_ARTICLE_SLOT } from "@/lib/adsense";
 import { AdSlot } from "./ad-slot";
 import { RelatedGuide } from "./related-guide";
 import { VideoEmbed } from "./video-embed";
+import { PostEmbed } from "./post-embed";
 import { KindBadge } from "./kind-badge";
 import { getRelatedGuide } from "@/lib/content/related-guide";
 
@@ -137,6 +138,7 @@ export async function ArticlePage({
                   <div className="prose-article mt-4 text-ink" dangerouslySetInnerHTML={{ __html: head }} />
                   {ads && tail && <AdSlot slot={ADSENSE_IN_ARTICLE_SLOT} />}
                   {tail && <div className="prose-article text-ink" dangerouslySetInnerHTML={{ __html: tail }} />}
+                  {article.postUrl && <PostEmbed src={article.postUrl} />}
                   {ads && <AdSlot slot={ADSENSE_IN_ARTICLE_SLOT} />}
                 </>
               );

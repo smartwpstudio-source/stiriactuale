@@ -27,6 +27,7 @@ export interface Article {
   imageAlt?: string;
   imageCredit?: string; // „Foto: …” — poză reală, cu autorul ei
   videoUrl?: string;
+  postUrl?: string; // postare Facebook/Telegram încorporată (pozele instituției)
   kind?: string; // "stire" | "pe-scurt" | "analiza"
   updatedAt?: string; // știre pe scurt completată ulterior
   continuesId?: number; // articolul anterior din aceeași poveste

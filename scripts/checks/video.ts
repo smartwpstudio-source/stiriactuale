@@ -1,7 +1,7 @@
 // Recunoașterea video-urilor YouTube/Facebook (src/lib/video.ts).
 // npx tsx scripts/checks/video.ts
 import assert from "node:assert";
-import { findVideo, toEmbedUrl } from "../../src/lib/video";
+import { findVideo, toEmbedUrl, toPostEmbedUrl } from "../../src/lib/video";
 
 const yt = "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ";
 for (const u of [
@@ -21,4 +21,11 @@ assert.equal(toEmbedUrl("nu e link"), null);
 assert.equal(findVideo('<p>x</p><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>'), yt);
 assert.equal(findVideo('<iframe src="https://ads.example.com/x"></iframe><iframe src="//www.youtube.com/embed/dQw4w9WgXcQ"></iframe>'), yt);
 assert.equal(findVideo('<a href="https://youtu.be/dQw4w9WgXcQ">link</a>'), null);
+assert.equal(toPostEmbedUrl("https://t.me/igsumoldova/4521"), "https://t.me/igsumoldova/4521?embed=1");
+assert.equal(
+  toPostEmbedUrl("https://www.facebook.com/army.md/posts/pfbid02abc"),
+  "https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Farmy.md%2Fposts%2Fpfbid02abc&show_text=true&width=500",
+);
+assert.equal(toPostEmbedUrl("https://www.facebook.com/army.md"), null);
+assert.equal(toPostEmbedUrl("https://example.com/x"), null);
 console.log("video: OK");
