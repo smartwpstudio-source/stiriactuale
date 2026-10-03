@@ -1432,6 +1432,1331 @@
   ]
  },
  {
+  "id": "consiliul-drochia",
+  "name": "Consiliul raional / municipal Drochia",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "drochia",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/consiliul-drochia-1-R8SUVMcVRhtwgIMcjsLAeRPiMi5Pp9.jpg",
+    "credit": "Lilikanici at English Wikipedia / Wikimedia Commons, Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Consiliu_Raional_Drochia_si_Bustul_lui_St.cel_Mare.JPG"
+   }
+  ]
+ },
+ {
+  "id": "primaria-drochia",
+  "name": "Primăria Drochia",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "drochia",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/primaria-drochia-1-pHmjYCmAM34YUvbjtmcCxCEVv7mEs0.jpg",
+    "credit": "Lilikanici at English Wikipedia / Wikimedia Commons, Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Primaria_orasului_Drochia_-_Wiki.JPG"
+   }
+  ]
+ },
+ {
+  "id": "primaria-straseni",
+  "name": "Primăria Strășeni",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "straseni",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/primaria-straseni-1-Wr4EHd75beDCGiSvEbZ2jDOSrvAZlD.jpg",
+    "credit": "Vladikh / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Prim%C4%83ria_ora%C8%99ului_Str%C4%83%C8%99eni_02.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/primaria-straseni-2-WGgkOE0BDpQStl3pj7aOyvvZSz73IO.jpg",
+    "credit": "Vladikh / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Prim%C4%83ria_ora%C8%99ului_Str%C4%83%C8%99eni_01.jpg"
+   }
+  ]
+ },
+ {
+  "id": "spitalul-straseni",
+  "name": "Spitalul raional / municipal Strășeni",
+  "keywords": "spitalul, internați, medici",
+  "locality": "straseni",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/spitalul-straseni-1-blatgUM42z84rOk1nxXPRn3ldNLosO.jpg",
+    "credit": "Vladikh / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Spitalul_Raional_din_or._Str%C4%83%C8%99eni_01.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/spitalul-straseni-2-PSSvhu3JlgiB8Rj9s189f0twfrRfSN.jpg",
+    "credit": "Vladikh / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Spitalul_Raional_din_or._Str%C4%83%C8%99eni_02.jpg"
+   }
+  ]
+ },
+ {
+  "id": "consiliul-floresti",
+  "name": "Consiliul raional / municipal Florești",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "floresti",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/consiliul-floresti-1-TWvm1eomEBKM5JQYAcWqcjm14JvhKq.jpg",
+    "credit": "Gganebnyi / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Flore%C5%9Fti_07.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/consiliul-floresti-2-hTM6BwAvM3cnAYMkwBAGtOX1x0f8wg.jpg",
+    "credit": "photobankmd / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Region_Council,_Floresti,_Moldova_-_49353928688.jpg"
+   }
+  ]
+ },
+ {
+  "id": "primaria-floresti",
+  "name": "Primăria Florești",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "floresti",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/primaria-floresti-1-Pi4UzgGcWR7HlENiyMi4Yh5bJvptr6.jpg",
+    "credit": "photobankmd / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Floresti_City_Hall_-_46911684145.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/primaria-floresti-2-3bwrVWRjCiW3qM957TOIsqvYXzs3Uj.jpg",
+    "credit": "Avereanu / Wikimedia Commons, CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Prim%C4%83ria_Flore%C8%99ti.JPG"
+   }
+  ]
+ },
+ {
+  "id": "spitalul-floresti",
+  "name": "Spitalul raional / municipal Florești",
+  "keywords": "spitalul, internați, medici",
+  "locality": "floresti",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/spitalul-floresti-1-3Sy18nDPYD9Qu5rPko1SynWFPKaWji.jpg",
+    "credit": "Avereanu / Wikimedia Commons, CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Spital_raional_Flore%C8%99ti.JPG"
+   }
+  ]
+ },
+ {
+  "id": "judecatoria-orhei",
+  "name": "Judecătoria Orhei",
+  "keywords": "judecătoria, instanța, proces, sentință",
+  "locality": "orhei",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/judecatoria-orhei-1-wjYO8vTsv4pIqOxvNyYGoVdi7WD4zJ.jpg",
+    "credit": "Tatiana Bazatin / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Judec%C4%83toria_Orhei.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/judecatoria-orhei-2-8qDYwrIOqD0RfIaId3tIF6pOuzEblk.jpg",
+    "credit": "photobankmd / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Orhei_Courthouse,_Orhei,_Republic_of_Moldova.jpg"
+   }
+  ]
+ },
+ {
+  "id": "primaria-orhei",
+  "name": "Primăria Orhei",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "orhei",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/primaria-orhei-1-vbNwmZSiIOs1AvK0E2KCP1yxrqQniA.jpg",
+    "credit": "TotalAnarchy / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Cl%C4%83direa_prim%C4%83riei_Orhei_pe_str._Vasile_Mahu_160_(3).jpg"
+   }
+  ]
+ },
+ {
+  "id": "spitalul-orhei",
+  "name": "Spitalul raional / municipal Orhei",
+  "keywords": "spitalul, internați, medici",
+  "locality": "orhei",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/spitalul-orhei-1-h4CEq4Tt200azxRdSGXAmJsixF0Zll.jpg",
+    "credit": "TotalAnarchy / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Complexul_de_cl%C4%83diri_ale_spitalului_raional_din_Orhei._Sec%C8%9Bia_de_boli_infec%C8%9Bioase_dinspre_nord-vest.jpg"
+   }
+  ]
+ },
+ {
+  "id": "consiliul-chisinau",
+  "name": "Consiliul raional / municipal Chișinău",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "chisinau",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/consiliul-chisinau-1-n9Jmr9OTjCkgIYHVi9YVFYVeyEtmh5.jpg",
+    "credit": "Rodion Gavriloi / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Cl%C4%83direa_fostei_Dume_Or%C4%83%C8%99ene%C8%99ti._Ast%C4%83zi_Prim%C4%83ria_%C8%99i_Consiliul_Municipal_Chi%C8%99in%C4%83u._Foto_2.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/consiliul-chisinau-2-LLqQveMKuuCpmaP4lUjtlSa90plfTu.jpg",
+    "credit": "Rodion Gavriloi / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Cl%C4%83direa_fostei_Dume_Or%C4%83%C8%99ene%C8%99ti._Ast%C4%83zi_Prim%C4%83ria_%C8%99i_Consiliul_Municipal_Chi%C8%99in%C4%83u._Foto_3.jpg"
+   }
+  ]
+ },
+ {
+  "id": "asp-chisinau",
+  "name": "Centrul multifuncțional ASP Chișinău",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "chisinau",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/asp-chisinau-1-QPU4aYwlBcwPsUzWeoIjBwqxuHAHOI.jpg",
+    "credit": "Gikü / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:MD.C.C_-_Agen%C8%9Bia_Servicii_Publice_-_dec_2019.jpg"
+   }
+  ]
+ },
+ {
+  "id": "politia-balti",
+  "name": "Inspectoratul de poliție Bălți",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "balti",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/politia-balti-1-dvrY3DrPdmzPieviNxZHShTJFSBuK5.jpg",
+    "credit": "Sandhu / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Comisariatul_de_poli%C8%9Bie_din_B%C4%83l%C8%9Bi.JPG"
+   }
+  ]
+ },
+ {
+  "id": "consiliul-balti",
+  "name": "Consiliul raional / municipal Bălți",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "balti",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/consiliul-balti-1-gfGz4CamP6IfTCVxq8ecZu4WAwnae2.jpg",
+    "credit": "Avereanu / Wikimedia Commons, CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Prim%C4%83ria_B%C4%83l%C8%9Bi_4.JPG"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/consiliul-balti-2-la8HC4MzJ3XcP5grKVnXDOSxrxduRo.jpg",
+    "credit": "Avereanu / Wikimedia Commons, CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Prim%C4%83ria_B%C4%83l%C8%9Bi_6.JPG"
+   }
+  ]
+ },
+ {
+  "id": "primaria-balti",
+  "name": "Primăria Bălți",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "balti",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/primaria-balti-1-ei7tf1lPGJ1wte61MRiVvegpNEojuo.jpg",
+    "credit": "Avereanu / Wikimedia Commons, CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Prim%C4%83ria_B%C4%83l%C8%9Bi_2.JPG"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/primaria-balti-2-9vVBYSicYHFpBxg48nmQ67bX1lEcgR.jpg",
+    "credit": "Sandhu / Wikimedia Commons, CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Prim%C4%83ria_mun._B%C4%83l%C8%9Bi.JPG"
+   }
+  ]
+ },
+ {
+  "id": "spitalul-balti",
+  "name": "Spitalul raional / municipal Bălți",
+  "keywords": "spitalul, internați, medici",
+  "locality": "balti",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/spitalul-balti-1-6ll55rQ0LURZSAAcnXKIO4cMCKGWf0.jpg",
+    "credit": "Avereanu / Wikimedia Commons, CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Spitalul_Clinic_Municipal_B%C4%83l%C8%9Bi_01.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/spitalul-balti-2-J6P212uE49QHFOAbLg0zoJQ1c2lZNM.jpg",
+    "credit": "Avereanu / Wikimedia Commons, CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Spitalul_Clinic_Municipal_B%C4%83l%C8%9Bi_04.jpg"
+   }
+  ]
+ },
+ {
+  "id": "consiliul-soroca",
+  "name": "Consiliul raional / municipal Soroca",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "soroca",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/consiliul-soroca-1-LcxDUtv1EuIbnFQQF7jlZ31xbL4DGE.jpg",
+    "credit": "Gikü (talk) / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:MD.SR.SR_-_Consiliul_Raional_Soroca_-_sep_2020_-_03.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/consiliul-soroca-2-BhmXSjo0LcJDoiXkVJOxoAo5T2IFse.jpg",
+    "credit": "Gikü (talk) / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:MD.SR.SR_-_Consiliul_Raional_Soroca_-_sep_2020_-_01.jpg"
+   }
+  ]
+ },
+ {
+  "id": "consiliul-edinet",
+  "name": "Consiliul raional / municipal Edineț",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "edinet",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/consiliul-edinet-1-fYG0RhvLNr8JYcDC7wqUllewSInTZj.jpg",
+    "credit": "Photobank MD from Chisinau, Moldova / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:%D0%A0%D0%B0%D0%BE%D0%BD%D0%BD%D1%8B%D0%B9_%D1%81%D0%BE%D0%B2%D0%B5%D1%82,_%D0%95%D0%B4%D0%B8%D0%BD%D1%86%D1%8B,_%D0%A0%D0%B5%D1%81%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D0%B0_%D0%9C%D0%BE%D0%BB%D0%B4%D0%BE%D0%B2%D0%B0_Consiliul_Raional,_Edinet,_Republica_Moldova_District_Council,_Edinet,_Republic_of_Moldova_(50272065948).jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/consiliul-edinet-2-UCfa22awM4PyQhXNhmjoNWfyzQ8lux.jpg",
+    "credit": "Photobank MD from Chisinau, Moldova / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:%D0%A0%D0%B0%D0%BE%D0%BD%D0%BD%D1%8B%D0%B9_%D1%81%D0%BE%D0%B2%D0%B5%D1%82,_%D0%95%D0%B4%D0%B8%D0%BD%D1%86%D1%8B,_%D0%A0%D0%B5%D1%81%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D0%B0_%D0%9C%D0%BE%D0%BB%D0%B4%D0%BE%D0%B2%D0%B0_Consiliul_Raional,_Edinet,_Republica_Moldova_District_Council,_Edinet,_Republic_of_Moldova_(50272737381).jpg"
+   }
+  ]
+ },
+ {
+  "id": "primaria-edinet",
+  "name": "Primăria Edineț",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "edinet",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/primaria-edinet-1-XzcgM78VZKw1AC2lea4Lr1BYxOlPVr.jpg",
+    "credit": "photobankmd / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Edinet_City_Hall_-_43525767162.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/primaria-edinet-2-uDE7LpmEJeTerumwVWiovebf9uuHeF.jpg",
+    "credit": "Photobank MD from Chisinau, Moldova / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:%D0%9C%D1%8D%D1%80%D0%B8%D1%8F_%D0%95%D0%B4%D0%B8%D0%BD%D0%B5%D1%86_Primaria_Edinet_Edinet_City_Hall_(42667215735).jpg"
+   }
+  ]
+ },
+ {
+  "id": "spitalul-riscani",
+  "name": "Spitalul raional / municipal Rîșcani",
+  "keywords": "spitalul, internați, medici",
+  "locality": "riscani",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/spitalul-riscani-1-Hm9ihUueQXnXFx7Oj55qLdoliwtnsZ.jpg",
+    "credit": "Nicolai_Chirnev / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:R%C3%AE%C8%99cani_-_Spitalul_din_R%C3%AE%C8%99cani_-_2025-09-22_22-24-20_005.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/spitalul-riscani-2-vZo2sr5ZzJtMydrjJSpEYa8FTCA09d.jpg",
+    "credit": "Nicolai_Chirnev / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:R%C3%AE%C8%99cani_-_Spitalul_din_R%C3%AE%C8%99cani_-_2025-09-22_22-24-20_003.jpg"
+   }
+  ]
+ },
+ {
+  "id": "politia-falesti",
+  "name": "Inspectoratul de poliție Fălești",
+  "keywords": "poliția, polițiștii, inspectoratul de poliție",
+  "locality": "falesti",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/politia-falesti-1-cW7yDZd9xiRPAO0Y7jWtCXR0eY3Rnu.jpg",
+    "credit": "Avereanu / Wikimedia Commons, CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Sec%C8%9Bia_de_Poli%C8%9Bie_din_F%C4%83le%C8%99ti.JPG"
+   }
+  ]
+ },
+ {
+  "id": "consiliul-falesti",
+  "name": "Consiliul raional / municipal Fălești",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "falesti",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/consiliul-falesti-1-Yq2jTg2ogFGdJzgCgV48X1lR6ZivfO.jpg",
+    "credit": "photobankmd / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Consiliul_raional_Falesti.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/consiliul-falesti-2-0770jQFKOStPjltFTYakpyH1h1KAPI.jpg",
+    "credit": "TotalAnarchy / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:F%C4%83le%C8%99ti_District_Council_Building_1.jpg"
+   }
+  ]
+ },
+ {
+  "id": "primaria-falesti",
+  "name": "Primăria Fălești",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "falesti",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/primaria-falesti-1-u1LTCY4cXkzZamlPmVaUrW0ZGI97d8.jpg",
+    "credit": "Avereanu / Wikimedia Commons, CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Prim%C4%83ria_F%C4%83le%C8%99ti.JPG"
+   }
+  ]
+ },
+ {
+  "id": "spitalul-falesti",
+  "name": "Spitalul raional / municipal Fălești",
+  "keywords": "spitalul, internați, medici",
+  "locality": "falesti",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/spitalul-falesti-1-MqggGCOmlcBuwL5XzRhbNkQsXEq7l6.jpg",
+    "credit": "Avereanu / Wikimedia Commons, CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Spitalul_raional_F%C4%83le%C8%99ti_4.JPG"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/spitalul-falesti-2-t1DqucIUPtybh5BHdRlJoFqOWYrjOB.jpg",
+    "credit": "Avereanu / Wikimedia Commons, CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Spitalul_raional_F%C4%83le%C8%99ti_6.JPG"
+   }
+  ]
+ },
+ {
+  "id": "consiliul-briceni",
+  "name": "Consiliul raional / municipal Briceni",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "briceni",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/consiliul-briceni-1-1Irilm3EC3tyIgCq26J4l17nT1goC2.jpg",
+    "credit": "photobankmd / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:District_Council,_Briceni,_Republic_of_Moldova.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/consiliul-briceni-2-9xJ9KPrMJlEcaSM0AbXpchTftMz7Fg.jpg",
+    "credit": "photobankmd / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:District_Council,_Briceni,_Republic_of_Moldova_-_49861501653.jpg"
+   }
+  ]
+ },
+ {
+  "id": "primaria-briceni",
+  "name": "Primăria Briceni",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "briceni",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/primaria-briceni-1-T1AUcTK27bhmBdMLQ92DgGHKZyefC2.jpg",
+    "credit": "photobankmd / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:City_Hall,_Briceni,_Moldova.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/primaria-briceni-2-tPGLqkkru1iRPsU7xY7tRv8mjodNgC.jpg",
+    "credit": "photobankmd / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:City_Hall,_Briceni,_Moldova_-_49844182721.jpg"
+   }
+  ]
+ },
+ {
+  "id": "primaria-singerei",
+  "name": "Primăria Sîngerei",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "singerei",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/primaria-singerei-1-9q1zUVURglb4IZFxwrIvmXTLH4ijJW.jpg",
+    "credit": "Gikü / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:MD.SG.SG_-_Prim%C4%83ria_%C8%99i_statuia_lui_%C8%98tefan_cel_Mare_-_mar_2026.jpg"
+   }
+  ]
+ },
+ {
+  "id": "spitalul-telenesti",
+  "name": "Spitalul raional / municipal Telenești",
+  "keywords": "spitalul, internați, medici",
+  "locality": "telenesti",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/spitalul-telenesti-1-ceXVubVlGMXt1QRG2QLAyu1SFYegte.jpg",
+    "credit": "Gganebnyi / Wikimedia Commons, CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Spital_Telenesti_IMG_8109.jpg"
+   }
+  ]
+ },
+ {
+  "id": "asp-telenesti",
+  "name": "Centrul multifuncțional ASP Telenești",
+  "keywords": "ASP, buletin, acte, pașaport",
+  "locality": "telenesti",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/asp-telenesti-1-qdglpgYsPRl7xa5DYiw0XSsk4rUtYz.jpg",
+    "credit": "Gganebnyi / Wikimedia Commons, CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:ASP_Telenesti_IMG_8099.jpg"
+   }
+  ]
+ },
+ {
+  "id": "consiliul-causeni",
+  "name": "Consiliul raional / municipal Căușeni",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "causeni",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/consiliul-causeni-1-WxMv5VPCUEvLFiRSikX07hZMwab5fy.jpg",
+    "credit": "Gikü / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:MD.CS.CS_-_Consiliul_raional_1_-_jul_2013.JPG"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/consiliul-causeni-2-V78wbIB3ugP8uyh3us6nTbzjH4iS6e.jpg",
+    "credit": "Gikü / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:MD.CS.CS_-_Consiliul_raional_2_-_jul_2013.JPG"
+   }
+  ]
+ },
+ {
+  "id": "primaria-causeni",
+  "name": "Primăria Căușeni",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "causeni",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/primaria-causeni-1-iF15wMnWxyy0g0rQ18mNjVG94tNLYZ.jpg",
+    "credit": "Vladikh / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Prim%C4%83ria_din_or._C%C4%83u%C8%99eni_02.jpg"
+   }
+  ]
+ },
+ {
+  "id": "spitalul-causeni",
+  "name": "Spitalul raional / municipal Căușeni",
+  "keywords": "spitalul, internați, medici",
+  "locality": "causeni",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/spitalul-causeni-1-CAqWUdcSeNlsJEM0s9vvwqCO4FeSpe.jpg",
+    "credit": "Vladikh / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Spitalul_Raional_C%C4%83u%C8%99eni.jpg"
+   }
+  ]
+ },
+ {
+  "id": "consiliul-anenii-noi",
+  "name": "Consiliul raional / municipal Anenii Noi",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "anenii-noi",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/consiliul-anenii-noi-1-c1rASgW672Abbx0iuIrwkLgulNnvAn.jpg",
+    "credit": "Gikü / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:MD.AN.AN_-_Consiliul_raional_-_nov_2012.JPG"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/consiliul-anenii-noi-2-2vq5Gc8MfI9vTL4tYXpsEZapYg1Aoq.jpg",
+    "credit": "Донор / Wikimedia Commons, CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D1%8F_%D0%9D%D0%BE%D0%B2%D1%8B%D1%85_%D0%90%D0%BD%D0%B5%D0%BD_-_%D0%94%D0%BE%D0%BD%D0%BE%D1%80.jpg"
+   }
+  ]
+ },
+ {
+  "id": "primaria-anenii-noi",
+  "name": "Primăria Anenii Noi",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "anenii-noi",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/primaria-anenii-noi-1-5AGY8tWeCKQnwWKRtl4G7CUz2rYV0I.jpg",
+    "credit": "Vladikh / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Prim%C4%83ria_din_or._Anenii_Noi_02.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/primaria-anenii-noi-2-wbgwGtnKO8gKjxE2ZE06jKdQjhDtCq.jpg",
+    "credit": "Gikü / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:MD.AN.AN_-_town_hall_-_nov_2012.JPG"
+   }
+  ]
+ },
+ {
+  "id": "primaria-glodeni",
+  "name": "Primăria Glodeni",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "glodeni",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/primaria-glodeni-1-7KjCs9ABf46alc4Bhu6PZBvIN3Fae8.jpg",
+    "credit": "Gikü / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:MD.GL.GL_-_Prim%C4%83ria_-_aug_2026.jpg"
+   }
+  ]
+ },
+ {
+  "id": "consiliul-criuleni",
+  "name": "Consiliul raional / municipal Criuleni",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "criuleni",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/consiliul-criuleni-1-zp7VCi9GtmTmKRlfXffuZCTYQZFrE2.jpg",
+    "credit": "Gikü (talk) / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:MD.CR.CR_-_Consiliul_Raional_-_aug_2020.jpg"
+   }
+  ]
+ },
+ {
+  "id": "primaria-criuleni",
+  "name": "Primăria Criuleni",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "criuleni",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/primaria-criuleni-1-iYvWd4PBm6pXjXvbs6bSPzXHwtPdMK.jpg",
+    "credit": "Vladikh / Wikimedia Commons, CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Prim%C4%83ria_ora%C8%99ului_Criuleni.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/primaria-criuleni-2-slhRzifLlSSKR7A47rFWHDzPakw6JE.jpg",
+    "credit": "Vladikh / Wikimedia Commons, CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Prim%C4%83ria_ora%C8%99ului_Criuleni_02.jpg"
+   }
+  ]
+ },
+ {
+  "id": "consiliul-ialoveni",
+  "name": "Consiliul raional / municipal Ialoveni",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "ialoveni",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/consiliul-ialoveni-1-MJwnfWZ15SqCTC325eNqvl2eshjlw8.jpg",
+    "credit": "Gikü (talk) / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:MD.IL.IL_-_Consiliul_Raional_Ialoveni_-_jul_2022.jpg"
+   }
+  ]
+ },
+ {
+  "id": "primaria-ialoveni",
+  "name": "Primăria Ialoveni",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "ialoveni",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/primaria-ialoveni-1-7yJ6C6A9h9YGO7Sv4X0iiaCMKyrGSz.jpg",
+    "credit": "Vladikh / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Prim%C4%83ria_ora%C8%99ului_Ialoveni.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/primaria-ialoveni-2-ClMwzmDHXHDaHD78Yn6UDHuOnGNXCu.jpg",
+    "credit": "Gikü (talk) / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:MD.IL.IL_-_prim%C4%83ria_-_jul_2022.jpg"
+   }
+  ]
+ },
+ {
+  "id": "spitalul-ialoveni",
+  "name": "Spitalul raional / municipal Ialoveni",
+  "keywords": "spitalul, internați, medici",
+  "locality": "ialoveni",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/spitalul-ialoveni-1-YLoduPI0tLTW0oEz3RBH9lNmLkhMN6.jpg",
+    "credit": "Vladikh / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Maternitatea_Spitalului_Raional_Ialoveni.jpg"
+   }
+  ]
+ },
+ {
+  "id": "consiliul-cimislia",
+  "name": "Consiliul raional / municipal Cimișlia",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "cimislia",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/consiliul-cimislia-1-IDbZNhPBUtA1OvrtHNlXRDwih3xiXu.jpg",
+    "credit": "Gikü (talk) / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:MD.CM.CM_-_Consiliul_Raional_-_jun_2023.jpg"
+   }
+  ]
+ },
+ {
+  "id": "primaria-cimislia",
+  "name": "Primăria Cimișlia",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "cimislia",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/primaria-cimislia-1-OMZTe1jv3LaevSOWj1YF305XiIFa2D.jpg",
+    "credit": "Gikü (talk) / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:MD.CM.CM_-_Prim%C4%83ria_-_jun_2023.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/primaria-cimislia-2-de1G5CVFqBSAGrTFL2OoyQMmBbNs5N.jpg",
+    "credit": "Vladikh / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Prim%C4%83ria_ora%C8%99ului_Cimi%C8%99lia.jpg"
+   }
+  ]
+ },
+ {
+  "id": "primaria-hincesti",
+  "name": "Primăria Hîncești",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "hincesti",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/primaria-hincesti-1-JVdjXHsTdo6n7DvoWPsjXpvCZyy80I.jpg",
+    "credit": "Vladikh / Wikimedia Commons, CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Prim%C4%83ria_ora%C8%99ului_H%C3%AEnce%C8%99ti_02.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/primaria-hincesti-2-19s50z0lOGn2mAjXLmQYXq4fppoqEj.jpg",
+    "credit": "Gikü (talk) / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:MD.HN.HN_-_prim%C4%83ria_-_aug_2022.jpg"
+   }
+  ]
+ },
+ {
+  "id": "consiliul-nisporeni",
+  "name": "Consiliul raional / municipal Nisporeni",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "nisporeni",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/consiliul-nisporeni-1-PyugvlnHYSU0kGCmZ8Rr6XV7vMlTyC.jpg",
+    "credit": "Parlamentul Republicii Moldova | Pagina oficială / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:14.02.2025_-_Vizita_de_lucru_a_Pre%C8%99edintelui_Parlamentului,_Igor_Grosu,_%C3%AEn_raionul_Nisporeni_IMG_4765.jpg"
+   }
+  ]
+ },
+ {
+  "id": "spitalul-nisporeni",
+  "name": "Spitalul raional / municipal Nisporeni",
+  "keywords": "spitalul, internați, medici",
+  "locality": "nisporeni",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/spitalul-nisporeni-1-wi8QC1qoBnA12KMfuDpm2L5mY70zE4.jpg",
+    "credit": "Parlamentul Republicii Moldova | Pagina oficială / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:14.02.2025_-_Vizita_de_lucru_a_Pre%C8%99edintelui_Parlamentului,_Igor_Grosu,_%C3%AEn_raionul_Nisporeni_479543297_1097840485688184_4716722685869087091_n.jpg"
+   }
+  ]
+ },
+ {
+  "id": "consiliul-calarasi",
+  "name": "Consiliul raional / municipal Călărași",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "calarasi",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/consiliul-calarasi-1-G0Gr2hlcDIHh3sibDWVHXtZPlIbQkR.jpg",
+    "credit": "Government of Moldova / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Vizita_de_lucru_a_prim-ministrului_Dorin_Recean_%C3%AEn_raionul_C%C4%83l%C4%83ra%C8%99i_11.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/consiliul-calarasi-2-jI2YzuDbtNso0WuzpFqF6KidP0m4s9.jpg",
+    "credit": "MaryStratan / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Cl%C4%83direa_Consiliului_Raional_or.C%C4%83l%C4%83ra%C8%99i.jpg"
+   }
+  ]
+ },
+ {
+  "id": "primaria-calarasi",
+  "name": "Primăria Călărași",
+  "keywords": "primăria, primarul, consiliul local",
+  "locality": "calarasi",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/primaria-calarasi-1-GRsuqHxkPEUi0CIBq0mADCYAobZcI5.jpg",
+    "credit": "Vladikh / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Prim%C4%83ria_ora%C8%99ului_C%C4%83l%C4%83ra%C8%99i_01.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/primaria-calarasi-2-u5zwkAlvqtgTfXM6GNRm0nUWqKnmpZ.jpg",
+    "credit": "Vladikh / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Prim%C4%83ria_ora%C8%99ului_C%C4%83l%C4%83ra%C8%99i_02.jpg"
+   }
+  ]
+ },
+ {
+  "id": "consiliul-gagauzia",
+  "name": "Consiliul raional / municipal Găgăuzia",
+  "keywords": "consiliul raional, președintele raionului, consilieri",
+  "locality": "gagauzia",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/consiliul-gagauzia-1-g4XuHJnWgrDejC5YgfkGoTXantVX1x.jpg",
+    "credit": "Gikü / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:MD.GE.Comrat_-_Adunarea_Popular%C4%83_a_G%C4%83g%C4%83uziei_-_apr_2025_-_01.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/consiliul-gagauzia-2-ox6JJojZ4lo10LyBOlUnp6krJCsInB.jpg",
+    "credit": "Gikü / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:MD.GE.Comrat_-_Adunarea_Popular%C4%83_a_G%C4%83g%C4%83uziei_-_apr_2025_-_02.jpg"
+   }
+  ]
+ },
+ {
+  "id": "politisti-spate",
+  "name": "Polițiști din spate, cu inscripția POLIȚIA (fără fețe)",
+  "keywords": "polițiști, poliția, patrulare, reținere",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/politisti-spate-1-dPgkNZf0tMEmEaHdOu4LRi03RIHBHR.jpg",
+    "credit": "User:VargaA / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Chisinau_riot_2009-04-07_33.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/politisti-spate-2-gRS4oSPCmNLk2aGg27gU52wIxnKdZK.jpg",
+    "credit": "Dickelbers / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Police_car_of_Moldova_04.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/politisti-spate-3-h6H9lPpANf9GFz4pEImvBRFtMSownA.jpg",
+    "credit": "User:VargaA / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Chisinau_riot_2009-04-07_14.jpg"
+   }
+  ]
+ },
+ {
+  "id": "masina-politie",
+  "name": "Mașini de poliție din Moldova",
+  "keywords": "mașină de poliție, patrula, girofar, Poliția",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/masina-politie-1-d4dAA8rQGUsyIQ9z8j9iuVa8usu0no.jpg",
+    "credit": "Tohaomg / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Moldovan_police_car_at_the_Stefan_cel_Mare_boulevard_(front_view).jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/masina-politie-2-JjzPTn8LVZ4cBllzsPQcHbNrqXSjEF.jpg",
+    "credit": "Tohaomg / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Moldovan_police_car_at_the_Stefan_cel_Mare_boulevard_(rear_view).jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/masina-politie-3-nOJiXwDXCLBZZWH5KoKvumA19jR1y0.jpg",
+    "credit": "Tohaomg / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Moldovan_police_cars_near_the_parliament.jpg"
+   }
+  ]
+ },
+ {
+  "id": "politie-rutiera",
+  "name": "Inspectoratul Național de Patrulare / poliția rutieră",
+  "keywords": "patrula, poliția rutieră, control rutier, radar, amendă",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/politie-rutiera-1-eLd9fcijktYstffyFF972v7VsSGJGH.jpg",
+    "credit": "Dickelbers / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Police_car_of_Moldova_08.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/politie-rutiera-2-HqqT6R4mv2gjaTwuDqTjeNO7NhYeS4.jpg",
+    "credit": "Jekader / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Rapid_Politia_01.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/politie-rutiera-3-IAmw83TFNZpaTys0DPAEEHzTGIrY6h.jpg",
+    "credit": "Tohaomg / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Moldovan_white-yellow_patrol_police_car_near_Chisinau_airport.jpg"
+   }
+  ]
+ },
+ {
+  "id": "mascati",
+  "name": "Forțe speciale „Fulger” / mascați",
+  "keywords": "mascați, Fulger, forțe speciale, operațiune",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/mascati-1-kS54UFLQna8NcwbBbib1zRYqOvWjdN.jpg",
+    "credit": "U.S. Marine Corps photo by Cpl. Cameron Ross / Wikimedia Commons, Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:FASTEUR_Trains_with_Moldovan_Police_Forces_(8211804).jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/mascati-2-kWVyX2bBXQeqwXxtnEfcHic6BOykI1.jpg",
+    "credit": "U.S. Marine Corps photo by Cpl. Cameron Ross / Wikimedia Commons, Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:FASTEUR_Trains_with_Moldovan_Police_Forces_(8211823).jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/mascati-3-Irz81Uw8NXrWYtPLyzPwhEQHyrBaQT.jpg",
+    "credit": "U.S. Marine Corps photo by Cpl. Cameron Ross / Wikimedia Commons, Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:FASTEUR_Trains_with_Moldovan_Police_Forces_(8211803).jpg"
+   }
+  ]
+ },
+ {
+  "id": "pompieri-actiune",
+  "name": "Pompieri în acțiune",
+  "keywords": "pompieri, incendiu, stingere, salvatori",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/pompieri-actiune-1-Ibt1zY3OCXpsEMx5hf1NM1nX6wSCpS.jpg",
+    "credit": "Gikü (talk) / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:MD.C.C_-_autospecial%C4%83_de_pompieri_la_Pia%C8%9Ba_Central%C4%83_-_oct_2021_-_02.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/pompieri-actiune-2-je8LQ63jVrPwCXcdYAJJGuJJuMnSjt.jpg",
+    "credit": "Gikü (talk) / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:MD.C.C_-_autospecial%C4%83_de_pompieri_la_Pia%C8%9Ba_Central%C4%83_-_oct_2021_-_01.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/pompieri-actiune-3-FoScyEkIkpgZ3ALAWFCplG2Mwl81U4.jpg",
+    "credit": "Parlamentul Republicii Moldova | Pagina oficială / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:14.07.2025_-_22_de_pompieri_au_pornit_%C3%AEn_misiune_interna%C8%9Bional%C4%83_%C3%AEn_Grecia_-_54653884975.jpg"
+   }
+  ]
+ },
+ {
+  "id": "masina-pompieri",
+  "name": "Autospeciale de pompieri IGSU",
+  "keywords": "mașină de pompieri, autospecială, IGSU",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/masina-pompieri-1-GulM17qU6oQ8Jw1AS2mQiS6FamMIVZ.jpg",
+    "credit": "Parlamentul Republicii Moldova | Pagina oficială / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:14.07.2025_-_22_de_pompieri_au_pornit_%C3%AEn_misiune_interna%C8%9Bional%C4%83_%C3%AEn_Grecia_-_54653797744.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/masina-pompieri-2-rfaSQhA5KDaZ7Zqt04mPHLBdUsEpKR.jpg",
+    "credit": "photobankmd / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Serviciul_pompieri_din_Floresti.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/masina-pompieri-3-6vWExyCdIAeWVR6OR7wD2YSL7sv1MH.jpg",
+    "credit": "Gikü (talk) / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:MD.ST.Scoreni_-_autospecial%C4%83_pompieri_-_sep_2022.jpg"
+   }
+  ]
+ },
+ {
+  "id": "incendiu-casa",
+  "name": "Incendiu de locuință",
+  "keywords": "incendiu, casă arsă, flăcări",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/incendiu-casa-1-TLD3eB9B2K2LMKi9k1VFTZjOMeQvpu.jpg",
+    "credit": "Gikü / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:MD.C.C_-_str._Veronica_Micle,_5_-_Cas%C4%83_de_raport_(dup%C4%83_incendiu)_-_sep_2023_-_01.jpg"
+   }
+  ]
+ },
+ {
+  "id": "incendiu-vegetatie",
+  "name": "Incendiu de vegetație / miriște",
+  "keywords": "incendiu de vegetație, miriște, foc în câmp",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/incendiu-vegetatie-1-xuOuaRyx0VWIJMngI48tXHPSsWblSy.jpg",
+    "credit": "U.S. Fish and Wildlife Service / Wikimedia Commons, Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Summer_fire_low_field_vegetation_in_flames.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/incendiu-vegetatie-2-uZKBw0X253DNesWoubmOFR45iVAezL.jpg",
+    "credit": "David Brown / Wikimedia Commons, CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Stubble_burning_near_Begin_Hill_-_geograph.org.uk_-_1744767.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/incendiu-vegetatie-3-CnaQUGHmTom5DPJGZAcRI6Lh0l2VhT.jpg",
+    "credit": "Buli / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:%D0%97%D0%B0%D0%BF%D0%B0%D0%BB%D0%B5%D0%BD%D0%B8_%D1%81%D1%82%D1%80%D0%BD%D0%B8%D1%88%D1%82%D0%B0_%D0%BA%D0%B0%D1%98_%D0%9F%D1%80%D0%B8%D0%BB%D0%B5%D0%BF.jpg"
+   }
+  ]
+ },
+ {
+  "id": "ambulanta-moldova",
+  "name": "Ambulanțe în Moldova",
+  "keywords": "ambulanță, SAMU, accident, răniți",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/ambulanta-moldova-1-HtK6AoKCpm3GRyQqF9GdSBcvwAviBC.jpg",
+    "credit": "Tohaomg / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Moldovan_ambulance_at_the_Stefan_cel_Mare_boulevard.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/ambulanta-moldova-2-24FfIY9yuXn49lrSrq7mXrJT5iKzw2.jpg",
+    "credit": "Government of Moldova / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Ambulan%C8%9Be_CNAMUP_Bd5966a6-d41b-4485-b0f2-1863b1714851-12986-00003477bd8b1daa.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/ambulanta-moldova-3-ttr1LNs5uBg517WIgHVWOaM3IdTu6u.jpg",
+    "credit": "Government of Moldova / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Ambulan%C8%9B%C4%83_CNAMUP_1119e336-3125-43b3-9d4a-fdcc8ead073c-12986-00003477d93849d5.jpg"
+   }
+  ]
+ },
+ {
+  "id": "canicula",
+  "name": "Arșiță / caniculă",
+  "keywords": "caniculă, arșiță, temperaturi ridicate, căldură",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/canicula-1-qFbOuRB5LltWChEwDk4WiGpwZmxElF.jpg",
+    "credit": "Guttorm Flatabø from Sogndal, Norway / Wikimedia Commons, CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Sunflower_field,_Moldova_(193874852).jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/canicula-2-t5fscSkSHLiGypA2op4DGaZovrFISO.jpg",
+    "credit": "dittaeva / Wikimedia Commons, CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Dniester_near_Vadul_lui_Vod%C4%83.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/canicula-3-xbNEEMiXCMYbsLDFsOWp0cyjgNmLwD.jpg",
+    "credit": "Alisdare Hickson / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Finding_refuge_from_the_scorching_summer_sun_(55497189804).jpg"
+   }
+  ]
+ },
+ {
+  "id": "seceta",
+  "name": "Secetă, pământ crăpat",
+  "keywords": "secetă, lipsă de apă, culturi compromise",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/seceta-1-vHF9P8zWwaDkedQyDJswqRZVYCMGgY.jpg",
+    "credit": "Friedrich Haag / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Klimawandel_003_2016_06_06.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/seceta-2-Kxl3EJuN0ATbf9Loj8QX4YIzhQjQr9.jpg",
+    "credit": "Atmospheric Research, CSIRO / Wikimedia Commons, CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:CSIRO_ScienceImage_607_Effects_of_Drought_on_the_Soil.jpg"
+   }
+  ]
+ },
+ {
+  "id": "ninsoare",
+  "name": "Ninsoare / zăpadă",
+  "keywords": "ninsoare, zăpadă, nămeți, drumuri înzăpezite",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/ninsoare-1-mLyDhGyfA0Ygkw3bDzk1pIkdP4YPYN.jpg",
+    "credit": "Tolea93 / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:21_aprilie_2017_Chi%C8%99in%C4%83u.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/ninsoare-2-U8MrGtH7DgJ5M4oQyHWTp0ax8UzNd0.jpg",
+    "credit": "Alexander Murvanidze / Wikimedia Commons, CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Streets_in_snow_-_panoramio.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/ninsoare-3-dq3nJl2u0jXc06MmSX46EOid9YkdL1.jpg",
+    "credit": "Iurieph / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Winter_in_Drumitru_Rascanu_Park.jpg"
+   }
+  ]
+ },
+ {
+  "id": "ger",
+  "name": "Ger / iarnă",
+  "keywords": "ger, temperaturi negative, frig",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/ger-1-DeGMMfj9mYqtmJ5R0bdVSMKkmvbOjP.jpg",
+    "credit": "Casa.lunca / Wikimedia Commons, CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Iarna_friig.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/ger-2-6hma7L8M81gEPR8PVGFm6hAAV5uOmV.jpg",
+    "credit": "iurie.ph / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Frozen_Lake_1.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/ger-3-dvO7KohWzWxoiax90Do98nkdthFb4z.jpg",
+    "credit": "Iurieph / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Frozen_Lake_Nr1_of_Dumitru_Rascanu_park.jpg"
+   }
+  ]
+ },
+ {
+  "id": "polei",
+  "name": "Polei / gheață",
+  "keywords": "polei, gheață, drumuri alunecoase",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/polei-1-H33eJ7yToUE5V9TW65y4TkrJG6aI8d.jpg",
+    "credit": "Simon A. Eugster / Wikimedia Commons, CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Black_ice_on_footway.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/polei-2-IKLFCANnSrDP8fDUSMAMl3GbrIe4s5.jpg",
+    "credit": "Hugh Lunnon / Wikimedia Commons, CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Icy_road.jpg"
+   }
+  ]
+ },
+ {
+  "id": "furtuna",
+  "name": "Furtună, nori negri",
+  "keywords": "furtună, vânt puternic, rafale, copaci căzuți",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/furtuna-1-fUpgQsdfyWW2aKTS0Z3AjCCBdEK6Q0.jpg",
+    "credit": "Superbe777 / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Ploaie.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/furtuna-2-eH6lpSt0uZkbxbIthYQdIQPDNejmQe.jpg",
+    "credit": "Ervin Boer / Wikimedia Commons, CC BY-SA 3.0 ro",
+    "source": "https://commons.wikimedia.org/wiki/File:Bastion_Maria_Theresa_Timisoara.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/furtuna-3-Sm5d19ptuammM4kuVzFwZXzws5EnA7.jpg",
+    "credit": "Pad199207 / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Naas_thunderstorm_May_19_2009.jpg"
+   }
+  ]
+ },
+ {
+  "id": "ploi-torentiale",
+  "name": "Ploi torențiale / străzi inundate",
+  "keywords": "ploi torențiale, inundații, străzi inundate",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/ploi-torentiale-1-9vrS2zdlfrRIRHM2OSFKWWtbzw61Rw.jpg",
+    "credit": "István Szőllősi / Wikimedia Commons, CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Heavy_Rain_-_panoramio.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/ploi-torentiale-2-p1c5rJAkFpdCkw1nsOwH6w6w9yiAfl.jpg",
+    "credit": "István Szőllősi / Wikimedia Commons, CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Heavy_Rain_-_panoramio_(1).jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/ploi-torentiale-3-VnfYG5bebactDobG4CiMc67QZvDyxu.jpg",
+    "credit": "Annatsach / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Flooded_street_in_town.jpg"
+   }
+  ]
+ },
+ {
+  "id": "inundatie",
+  "name": "Inundații",
+  "keywords": "inundații, ape mari, revărsare",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/inundatie-1-Md6WjekvoMY6MlQ0LjK8nL5zWlbMJ0.jpg",
+    "credit": "Self made picture by user:CristianChirita / Wikimedia Commons, Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Comanesti_Trotus_flood_2004.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/inundatie-2-AowKGyaOKMJwa6TMOOS7F6xiQLCbv1.jpg",
+    "credit": "Gabriel from Bucharest, Romania / Wikimedia Commons, CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Flooded_street_near_the_river_Danube,_Braila,_Romania,_2006_(1096709718).jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/inundatie-3-72ybLwqLmhFclzEALOFM1cWhZCS6OX.jpg",
+    "credit": "Bogdan Giuşcă / Wikimedia Commons, CC BY 2.5",
+    "source": "https://commons.wikimedia.org/wiki/File:Balta_Ialomi%C5%A3ei_flooded_02_bgiu.jpg"
+   }
+  ]
+ },
+ {
+  "id": "grindina",
+  "name": "Grindină",
+  "keywords": "grindină, culturi distruse",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/grindina-1-8I6ZMpVxJMm8PMi7ufp0jY3p37CLLb.jpg",
+    "credit": "Karel Štípek / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Kroupy.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/grindina-2-vzW7xGHOGrwxOdA8z18eaDivjTye13.jpg",
+    "credit": "MaxFrear (talk) / Wikimedia Commons, CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Handful_of_hailstones_(10_June_2008).jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/grindina-3-bXXJpBjn6ubzmR5tWbvIEmxeJoIECU.jpg",
+    "credit": "Szeder László / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Abafalva08.JPG"
+   }
+  ]
+ },
+ {
+  "id": "ceata",
+  "name": "Ceață",
+  "keywords": "ceață densă, vizibilitate redusă",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/ceata-1-AtLoOfrDQTtDkOK2upcMU12hKfCYFM.jpg",
+    "credit": "Balan Anton / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:O_diminea%C8%9B%C4%83_cu_cea%C8%9B%C4%83_de-asupra_satului_Socola.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/ceata-2-MeB4KqT09YptSKksqbSGvBHeAg2wiH.jpg",
+    "credit": "Petras Gagilas from Bexleyheath, Kent, UK / Wikimedia Commons, CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Misty_Tuesday_Morning_-_Flickr_-_gagilas.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/ceata-3-TGOj4S9NZQ6q17ffNQzUdntz0YQjBs.jpg",
+    "credit": "Ron Shawley / Wikimedia Commons, CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Foggy_Morning_Fall_Morning_with_snow_on_the_ground_-_panoramio_(6).jpg"
+   }
+  ]
+ },
+ {
+  "id": "polen",
+  "name": "Ambrozie / polen",
+  "keywords": "ambrozie, polen, alergii",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/polen-1-cCswEtMt6QX8Wsqznhu9ORUhT510gB.jpg",
+    "credit": "Gilles San Martin from Namur, Belgium / Wikimedia Commons, CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Ambrosia_artemisiifolia_(50743154448).jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/polen-2-9NMgkyJTiEW5gUeuhvc30DEqRw3ch1.jpg",
+    "credit": "Ayotte, Gilles, 1948- / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Ambrosia_artemisiifolia_15-p.bot-ambro.arte-31.jpg"
+   }
+  ]
+ },
+ {
+  "id": "cutremur",
+  "name": "Cutremur / seismograf / pagube",
+  "keywords": "cutremur, seism, Vrancea, magnitudine",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/cutremur-1-cyGzTCa1v5p5BGEWIpCCUmgXgJ5xk4.jpg",
+    "credit": "Z22 / Wikimedia Commons, CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Seismogram_at_Weston_Observatory.JPG"
+   }
+  ]
+ },
+ {
+  "id": "vreme-frumoasa",
+  "name": "Vreme însorită / primăvară",
+  "keywords": "vreme frumoasă, soare, temperaturi plăcute",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/vreme-frumoasa-1-3hljdR9i6IlEDmfO0UP8yAGxnwnNL3.jpg",
+    "credit": "Myrabella / Wikimedia Commons, CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Chisinau_lac_Valea_Morilor.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/vreme-frumoasa-2-ZyysMZ8hshv7OzJSXFZ6oH3no46yAn.jpg",
+    "credit": "Myrabella / Wikimedia Commons, CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Chisinau_Stefan_cel_Mare_park_fountain.jpg"
+   }
+  ]
+ },
+ {
+  "id": "toamna",
+  "name": "Toamnă",
+  "keywords": "toamnă, frunze, vreme rece",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/toamna-1-x0NCfwrdrFZXNvb1S39JTilmSKgQPn.jpg",
+    "credit": "Iurie Nistor / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Autumn_path,_Dumitru_Rascanu_park.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/toamna-2-NDI9o7QRnTN0FjA9eIrKfjmFgBD7pY.jpg",
+    "credit": "Iurie Nistor / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Autumn_leaves,_Valea_Morilor_park.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/toamna-3-6WFFrqShCvpDWKBqpM9xBoWoXlDHHO.jpg",
+    "credit": "Iurie Nistor / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Autumn_Sky_at_Ciocana.jpg"
+   }
+  ]
+ },
+ {
+  "id": "bani-lei",
+  "name": "Bancnote lei moldovenești",
+  "keywords": "lei, bani, salarii, pensii, prețuri",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/bani-lei-1-qDk7fQOlTXBhWryheO1Hn94xXxTvj1.jpg",
+    "credit": "Ralf Roletschek / Wikimedia Commons, Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:19-01-19-Banknoten-Moldawien.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/bani-lei-2-BNtr3gqtO28eFB8A8rlmJxmy0wvY5G.jpg",
+    "credit": "National Bank of Moldova / Wikimedia Commons, Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:100_lei_1.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/bani-lei-3-XHHtOoT2U2WZuqwfWpw4wzIxdT5E3C.jpg",
+    "credit": "Scan User:Zenwort\n\n\n\nPublic domainPublic domainfalsefalse\n\n\n / Wikimedia Commons, Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:200-Lei_Moldawien_2015_obv_6400px-1200dpi.jpg"
+   }
+  ]
+ },
+ {
+  "id": "benzinarie",
+  "name": "Benzinărie / prețuri carburanți",
+  "keywords": "benzină, motorină, carburanți, prețuri la pompă",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/benzinarie-1-hzbCnlEHx9VyIZEAOlJ1dtqVAjtgJE.jpg",
+    "credit": "photobankmd / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Petrom_Gas_Station,_Floresti,_Moldova.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/benzinarie-2-xPm6oseeD6ILq4VSi6OEa91dISG8N1.jpg",
+    "credit": "Photobank MD from Chisinau, Moldova / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:%D0%9A%D0%BE%D1%80%D0%BB%D0%B0%D1%82%D0%B5%D0%BD%D1%8B,_%D0%B0%D0%B2%D1%82%D0%BE%D0%B7%D0%B0%D0%BF%D1%80%D0%B0%D0%B2%D0%BA%D0%B0_%22%D0%91%D0%B5%D0%BC%D0%BE%D0%BB%22_Benzinarie_Bemol,_Corlateni_Bemol_Gas_Station,_Corlateni_(43747775335).jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/benzinarie-3-NeaXrp8Kz01M1fywxOrCPJKgF5zyFd.jpg",
+    "credit": "Alexander Murvanidze / Wikimedia Commons, CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Gas_station_at_Milescu-Spataru_st,_looking_NE_-_panoramio.jpg"
+   }
+  ]
+ },
+ {
+  "id": "supermarket",
+  "name": "Prețuri în magazin / coș de consum",
+  "keywords": "prețuri, scumpiri, magazin, coșul de consum",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/supermarket-1-DU2lNz35yKO0aHtGnAR8m9ZzPJW3kN.jpg",
+    "credit": "PaulCalcii / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:3_Interiorul_Magazinului_Linella.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/supermarket-2-e0lp6bR4agna8csAUk7amG0eDmfzkx.jpg",
+    "credit": "PaulCalcii / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Mega_Oferta_Linella.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/supermarket-3-Zyz9EYotnvZG22QtUqzPChMLq70ft0.jpg",
+    "credit": "Avereanu / Wikimedia Commons, CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Market_Linella,_DC,_BL.jpg"
+   }
+  ]
+ },
+ {
+  "id": "vot",
+  "name": "Secție de votare / urnă",
+  "keywords": "alegeri, vot, urnă, secție de votare, referendum",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/vot-1-E3iVqE9ZFhnqOveSjWRNkcLjTgQhAl.jpg",
+    "credit": "Duesseljan / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Polling_station_in_Bulhac,_Moldova.jpg"
+   }
+  ]
+ },
+ {
+  "id": "diaspora-aeroport",
+  "name": "Diaspora / plecări din aeroport",
+  "keywords": "diaspora, emigrare, plecare peste hotare",
+  "photos": [
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/diaspora-aeroport-1-jlLuflXeQQM53OT5na88WrAd01dqh8.jpg",
+    "credit": "Rakoon / Wikimedia Commons, CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:20260105_112653_January_2026_at_Chi%C8%99in%C4%83u_International_Airport.jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/diaspora-aeroport-2-cvN3AX05rv9cNP3xkVmiSdsENsYRut.jpg",
+    "credit": "Harold / Wikimedia Commons, CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Ki%C5%A1in%C4%9Bv,_leti%C5%A1t%C4%9B_(2019-03-17;_03).jpg"
+   },
+   {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/locuri/diaspora-aeroport-3-uf2fhGBm3mu4jGhV52nVIqME78U2ZR.jpg",
+    "credit": "Ciscoman1965 / Wikimedia Commons, CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Chisinau_Airport_1.JPG"
+   }
+  ]
+ },
+ {
   "id": "cod-galben-canicula",
   "name": "Grafică: COD GALBEN de caniculă (avertizare meteo)",
   "keywords": "avertizare meteo cod galben, caniculă, arșiță, temperaturi de peste 35 de grade",
