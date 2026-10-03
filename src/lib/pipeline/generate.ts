@@ -1,6 +1,7 @@
 import { structured, OPUS_MODEL } from "./llm";
 import { fetchArticle } from "./fulltext";
 import { toEmbedUrl } from "@/lib/video";
+import { countryLabel, raionLabel } from "@/lib/content/geo";
 import type { CandidateGroup, ClassificationResult, GeneratedArticle } from "./types";
 
 const SCHEMA = {
@@ -86,6 +87,18 @@ const MODE_RULES: Record<Exclude<ArticleMode, "full">, string> = {
 };
 const MAX_SOURCES = 4;
 
+// Titlul după publicul știrii: cea regională circulă în grupurile locale
+// (localitatea la început, ca omul de acolo să se recunoască), cea din
+// diaspora la comunitatea din țara respectivă, cea națională / din Lumea se
+// caută pe Google (cuvintele de căutare la început, fără clickbait).
+function titleRule(c: ClassificationResult): string {
+  if (c.section === "regiuni" && c.locality)
+    return `Titlul începe cu localitatea, urmată de două puncte: cea mai precisă din material (satul sau orașul), altfel raionul „${raionLabel(c.locality)}” (ex. „Telenești: un șofer de 29 de ani a murit pe traseu”).`;
+  if (c.section === "diaspora" && c.country)
+    return `Titlul începe cu țara sau orașul din ${countryLabel(c.country)} unde s-a întâmplat (ex. „Italia: …”, „Londra: …”), ca moldovenii de acolo să se recunoască.`;
+  return "Titlul începe cu cuvintele pe care oamenii le-ar căuta pe Google despre acest subiect (ex. „RCA se scumpește din 4 octombrie: …”), concret, fără clickbait.";
+}
+
 export async function generateArticle(
   group: CandidateGroup,
   classification: ClassificationResult,
@@ -107,7 +120,7 @@ export async function generateArticle(
   const article = await structured<GeneratedArticle>({
     model: OPUS_MODEL,
     system: mode === "full" ? SYSTEM_PROMPT : `${SYSTEM_PROMPT}\n\n${MODE_RULES[mode]}`,
-    prompt: `Secțiune: ${classification.section}. Subiecte: ${classification.topics.join(", ") || "—"}.\n\nRelatări despre același eveniment (text integral):\n\n${digest}`,
+    prompt: `${titleRule(classification)}\n\nSecțiune: ${classification.section}. Subiecte: ${classification.topics.join(", ") || "—"}.\n\nRelatări despre același eveniment (text integral):\n\n${digest}`,
     schema: SCHEMA,
     maxBudgetUsd: 0.5,
   });

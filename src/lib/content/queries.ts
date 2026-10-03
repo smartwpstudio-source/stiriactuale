@@ -27,6 +27,7 @@ const listColumns = {
   videoUrl: t.videoUrl,
   kind: t.kind,
   updatedAt: t.updatedAt,
+  continuesId: t.continuesId,
 };
 
 type ListRow = { [K in keyof typeof listColumns]: (typeof t.$inferSelect)[K] };
@@ -49,6 +50,7 @@ function mapRow(row: ListRow & { bodyHtml?: string }): Article {
     videoUrl: row.videoUrl ?? undefined,
     kind: row.kind,
     updatedAt: row.updatedAt?.toISOString(),
+    continuesId: row.continuesId ?? undefined,
     sources: row.sources,
     archived: row.archived,
   };
@@ -190,4 +192,14 @@ export async function getSitemapArticles() {
     .from(t)
     .where(where({}))
     .orderBy(desc(t.publishedAt));
+}
+
+// Titlul și adresa unui articol publicat — pentru caseta „Context” a continuărilor.
+export async function getArticleLink(id: number) {
+  const [row] = await getDb()
+    .select({ title: t.title, slug: t.slug, section: t.section, locality: t.locality, country: t.country, publishedAt: t.publishedAt })
+    .from(t)
+    .where(and(eq(t.id, id), eq(t.status, "published")))
+    .limit(1);
+  return row ?? null;
 }

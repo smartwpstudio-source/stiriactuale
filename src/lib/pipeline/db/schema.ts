@@ -69,6 +69,8 @@ export const articles = pgTable("articles", {
   kind: varchar("kind", { length: 20 }).notNull().default("stire"),
   // ultima actualizare a conținutului (știre pe scurt extinsă) — afișată
   updatedAt: timestamp("updated_at", { withTimezone: true }),
+  // articolul anterior din aceeași poveste (continuare) — caseta „Context”
+  continuesId: integer("continues_id"),
   // id-ul articolului din WordPress, doar pentru arhiva importată
   wpId: integer("wp_id").unique(),
   // articol de arhivă preluat de la altă redacție: doar rezumat + link spre

@@ -1,4 +1,4 @@
-import { and, count, eq, gte, inArray, isNull, or } from "drizzle-orm";
+import { and, count, desc, eq, gte, inArray, isNull, or } from "drizzle-orm";
 import { getDb } from "./db/client";
 import { articles, candidates, pipelineRuns } from "./db/schema";
 import { collectCandidates } from "./collect";
@@ -136,13 +136,21 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       )
       .slice(0, MAX_GROUPS_TO_CLASSIFY);
 
-    // știrile „pe scurt” din ultimele 48h: un grup nou despre același eveniment
-    // le completează (actualizare), nu creează o știre nouă
-    const briefs = await db
-      .select({ id: articles.id, title: articles.title })
+    // articolele din ultimele 7 zile: un grup nou poate completa o știre „pe
+    // scurt” (același eveniment, încă în desfășurare — doar în primele 48h) sau
+    // poate fi continuarea unei povești (articol nou, cu link spre cel vechi)
+    const recentRows = await db
+      .select({ id: articles.id, title: articles.title, kind: articles.kind, publishedAt: articles.publishedAt })
       .from(articles)
-      .where(and(eq(articles.kind, "pe-scurt"), eq(articles.status, "published"), gte(articles.publishedAt, new Date(Date.now() - 48 * 3600_000))));
-    const classifications = fresh.length ? await classifyGroups(fresh, briefs) : [];
+      .where(and(isNull(articles.wpId), eq(articles.status, "published"), gte(articles.publishedAt, new Date(Date.now() - 7 * 86400_000))))
+      .orderBy(desc(articles.publishedAt))
+      .limit(80);
+    const recentArticles = recentRows.map((r) => ({
+      id: r.id,
+      title: r.title,
+      brief: r.kind === "pe-scurt" && r.publishedAt.getTime() > Date.now() - 48 * 3600_000,
+    }));
+    const classifications = fresh.length ? await classifyGroups(fresh, recentArticles) : [];
     // Duplicatele semnalate de clasificator se contopesc în grupul anterior —
     // mai multe surse = scor mai bun și un singur articol.
     classifications.forEach((c, i) => {

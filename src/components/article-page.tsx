@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Breadcrumb, type BreadcrumbItem } from "./breadcrumb";
 import { TopicLabel } from "./topic-label";
 import { ArticleThumb } from "./article-thumb";
@@ -6,7 +7,7 @@ import { TelegramCta } from "./telegram-cta";
 import { PushOptIn } from "./push-opt-in";
 import { SimilarArticles } from "./similar-articles";
 import { formatTimeAgo } from "@/lib/format-time-ago";
-import { getSimilarArticles, listArticles } from "@/lib/content/queries";
+import { getArticleLink, getSimilarArticles, listArticles } from "@/lib/content/queries";
 import { ArticleRow } from "./article-row";
 import { SectionHeading } from "./section-heading";
 import { ViewBeacon } from "./view-beacon";
@@ -50,10 +51,11 @@ export async function ArticlePage({
   article: Article;
   breadcrumbItems: BreadcrumbItem[];
 }) {
-  const [similar, { items: latest }, guide] = await Promise.all([
+  const [similar, { items: latest }, guide, previous] = await Promise.all([
     getSimilarArticles(article),
     listArticles({}, 1, 9),
     article.archived ? undefined : getRelatedGuide(article.title, article.lead),
+    article.continuesId ? getArticleLink(article.continuesId) : null,
   ]);
 
   return (
@@ -70,6 +72,15 @@ export async function ArticlePage({
         <h1 className="mt-2 font-serif text-3xl leading-tight text-ink sm:text-4xl lg:text-[2.75rem]">
           {article.title}
         </h1>
+        {previous && (
+          <Link
+            href={articleUrl({ ...previous, locality: previous.locality ?? undefined, country: previous.country ?? undefined })}
+            className="mt-4 block rounded border-l-4 border-teal bg-white px-4 py-2 text-sm hover:bg-paper"
+          >
+            <span className="font-mono text-xs uppercase tracking-wide text-teal">Context · {formatTimeAgo(previous.publishedAt.toISOString())}</span>
+            <span className="block text-ink">{previous.title}</span>
+          </Link>
+        )}
         <p className="mt-4 font-mono text-sm text-sub">
           {article.archived
             ? `arhivă · ${new Date(article.publishedAt).toLocaleDateString("ro-MD", ARCHIVE_DATE)}`

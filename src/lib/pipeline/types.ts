@@ -32,6 +32,7 @@ export interface ClassificationResult {
   reject: boolean; // horoscop, publicitate, monden fără miză etc.
   sameAs?: number; // indexul unui grup anterior despre același eveniment
   updateOf?: number; // id-ul unei știri „pe scurt” publicate despre același eveniment
+  continuesId?: number; // id-ul articolului anterior din aceeași poveste (continuare)
   pushWorthy: boolean; // propunere de notificare push (criteriile redacției)
   sensitive: boolean; // impact emoțional puternic / risc juridic -> draft, așteaptă aprobarea
 }

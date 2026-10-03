@@ -28,6 +28,7 @@ export interface Article {
   videoUrl?: string;
   kind?: string; // "stire" | "pe-scurt" | "analiza"
   updatedAt?: string; // știre pe scurt completată ulterior
+  continuesId?: number; // articolul anterior din aceeași poveste
   sources?: { name: string; url: string }[];
   archived?: boolean; // arhivă preluată de la altă redacție: rezumat + link, noindex, fără reclame
 }
