@@ -92,6 +92,12 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
             placeholder="Titlu (opțional; necesar la video Facebook)"
             className="w-64 rounded border border-line bg-white px-3 py-2 text-ink"
           />
+          <textarea
+            name="extra"
+            rows={3}
+            placeholder="Transcriptul video-ului (YouTube: ⋯ sub video → Afișează transcrierea → copiază) sau alt text al sursei — opțional; din el AI-ul scrie articolul complet"
+            className="basis-full rounded border border-line bg-white px-3 py-2 text-sm text-ink"
+          />
           <button className="rounded border border-ink px-4 py-2 text-ink">Adaugă</button>
           <button name="now" value="1" className="rounded bg-alert px-4 py-2 font-medium text-white">
             Adaugă și publică acum

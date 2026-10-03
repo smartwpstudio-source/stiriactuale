@@ -196,12 +196,21 @@ export async function addLink(formData: FormData) {
   // la Facebook titlul îl scrie editorul (câmpul opțional din formular)
   const video = await readVideoSource(url.toString());
   const manualTitle = String(formData.get("title") ?? "").trim();
+  // transcriptul video-ului sau alt text al sursei, lipit de editor: materialul
+  // din care AI-ul scrie articolul complet (descrierea singură e de obicei scurtă)
+  // fără marcajele de timp ale transcriptului YouTube (rânduri „0:00”, „12:34”)
+  const extra = String(formData.get("extra") ?? "")
+    .split("\n")
+    .filter((l) => !/^\s*\d{1,2}:\d{2}(:\d{2})?\s*$/.test(l))
+    .join("\n")
+    .trim()
+    .slice(0, 12000);
   let title: string;
   let summary: string;
   let sourceName = url.hostname.replace(/^www\./, "");
   if (video) {
     title = manualTitle || video.title;
-    summary = video.description.slice(0, 4000);
+    summary = [video.description, extra].filter(Boolean).join("\n\n").slice(0, 16000);
     sourceName = video.channel;
     if (!title) redirect("/admin/?link=videotitle");
   } else {
@@ -209,7 +218,7 @@ export async function addLink(formData: FormData) {
     // titlul și un rezumat pentru clasificare
     const page = await fetchArticle(url.toString());
     title = manualTitle || (page?.title ?? "");
-    summary = [page?.description, page?.text].filter(Boolean).join("\n").slice(0, 2000);
+    summary = [page?.description, page?.text, extra].filter(Boolean).join("\n").slice(0, 14000);
     if (!title) redirect("/admin/?link=unreadable");
   }
 
