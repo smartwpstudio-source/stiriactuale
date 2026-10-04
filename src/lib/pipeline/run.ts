@@ -213,6 +213,10 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
 
     const [usedImageIds, officialItems] = await Promise.all([loadUsedImageIds(), toPublish.length ? loadOfficialItems() : []]);
     const places = loadPlaces();
+    // pozele ultimelor articole, pentru rotația pozelor din arhivă (places.ts)
+    const recentImages = (
+      await db.select({ url: articles.imageUrl }).from(articles).orderBy(desc(articles.publishedAt)).limit(80)
+    ).flatMap((r) => (r.url ? [r.url] : []));
     const published = await mapWithConcurrency(toPublish, PUBLISH_CONCURRENCY, async (c): Promise<Section | null> => {
       try {
         // material puțin: linkul video al editorului -> știre video scurtă, scrisă
@@ -245,7 +249,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
         // poza încărcată de editor bate orice altceva
         const editor = c.group.photo && { url: c.group.photo.url, resourceId: null, credit: c.group.photo.credit ?? undefined };
         const official = editor ? null : await matchOfficialPhoto(subject, officialItems).then((m) => m && { url: m.photo, credit: m.credit });
-        const place = editor || official ? null : await matchPlacePhoto(subject, places, c.classification.locality);
+        const place = editor || official ? null : await matchPlacePhoto(subject, places, c.classification.locality, recentImages);
         const image = editor
           ? editor
           : youtubeThumb(generated.video_url)

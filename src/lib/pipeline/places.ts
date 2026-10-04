@@ -22,10 +22,29 @@ export function loadPlaces(): Place[] {
   }
 }
 
+// Rotație: `recent` = pozele ultimelor articole, cele mai noi primele. Se
+// alege poza locului folosită cel mai demult (sau niciodată); dacă toate au
+// apărut în ultimele NEIGHBOURS articole, nu se folosește locul — altfel două
+// știri diferite stau alăturate cu aceeași poză (2026-10-04). Lista se
+// actualizează pe loc, ca rulările paralele să nu aleagă aceeași poză.
+const NEIGHBOURS = 12;
+
+export function pickRotated(photos: { url: string; credit: string }[], recent: string[]) {
+  const age = (url: string) => {
+    const i = recent.indexOf(url);
+    return i < 0 ? Infinity : i;
+  };
+  const best = [...photos].sort((a, b) => age(b.url) - age(a.url))[0];
+  if (!best || age(best.url) < NEIGHBOURS) return null;
+  recent.unshift(best.url);
+  return best;
+}
+
 export async function matchPlacePhoto(
   subject: string,
   all: Place[],
-  locality?: string,
+  locality: string | undefined,
+  recent: string[],
 ): Promise<{ url: string; credit: string } | null> {
   const places = all.filter((p) => !p.locality || p.locality === locality);
   if (!places.length) return null;
@@ -38,10 +57,8 @@ export async function matchPlacePhoto(
       schema: { type: "object", properties: { match: { type: "integer" } }, required: ["match"] },
       maxBudgetUsd: 0.05,
     });
-    const photos = places[match]?.photos;
-    if (!photos?.length) return null;
-    const p = photos[Math.floor(Math.random() * photos.length)]; // mai multe poze per loc: nu mereu aceeași
-    return { url: p.url, credit: p.credit };
+    const p = pickRotated(places[match]?.photos ?? [], recent);
+    return p && { url: p.url, credit: p.credit };
   } catch {
     return null;
   }
