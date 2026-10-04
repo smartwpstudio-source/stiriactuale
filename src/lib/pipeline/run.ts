@@ -9,6 +9,7 @@ import { computeQualityScore } from "./scoring";
 import { findArticleImage, sourcePhoto } from "./image";
 import { loadOfficialItems, matchOfficialPhoto } from "./official-photos";
 import { loadPlaces, matchPlacePhoto } from "./places";
+import { checkRecent } from "./recent-duplicate";
 import { toEmbedUrl, youtubeThumb } from "@/lib/video";
 import { shortVideoArticle } from "./video-article";
 import { isDuplicate, loadRecentFingerprints, loadUsedImageIds, publishArticle, updateBriefArticle } from "./publish";
@@ -139,7 +140,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     // scurt” (același eveniment, încă în desfășurare — doar în primele 48h) sau
     // poate fi continuarea unei povești (articol nou, cu link spre cel vechi)
     const recentRows = await db
-      .select({ id: articles.id, title: articles.title, kind: articles.kind, publishedAt: articles.publishedAt })
+      .select({ id: articles.id, title: articles.title, lead: articles.leadText, kind: articles.kind, publishedAt: articles.publishedAt })
       .from(articles)
       .where(and(isNull(articles.wpId), eq(articles.status, "published"), gte(articles.publishedAt, new Date(Date.now() - 7 * 86400_000))))
       .orderBy(desc(articles.publishedAt))
@@ -182,7 +183,26 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     const auto = [...bySection].flatMap(([section, list]) =>
       list.sort((a, b) => b.qualityScore - a.qualityScore).slice(0, SECTION_CONFIG[section].cap),
     );
-    toPublish.push(...auto.sort((a, b) => b.qualityScore - a.qualityScore).slice(0, autoSlots));
+    // a doua verificare de dubluri, per știre, față de articolele din ultimele
+    // 48h (recent-duplicate.ts) — locul unei dubluri îl ia următoarea știre
+    const recent48 = recentRows
+      .filter((r) => r.publishedAt.getTime() > Date.now() - 48 * 3600_000)
+      .map((r) => ({ id: r.id, title: r.title, lead: r.lead }));
+    let autoTaken = 0;
+    for (const c of auto.sort((a, b) => b.qualityScore - a.qualityScore)) {
+      if (autoTaken >= autoSlots) break;
+      const v = await checkRecent(c.group, recent48);
+      if (v.duplicateOf) {
+        console.log(`Dublură a articolului ${v.duplicateOf}, nescrisă: ${c.group.representativeTitle.slice(0, 80)}`);
+        continue;
+      }
+      if (v.continuesId && c.classification.continuesId === undefined) {
+        c.classification.continuesId = v.continuesId;
+        c.classification.continuesTitle = recent48.find((r) => r.id === v.continuesId)?.title;
+      }
+      toPublish.push(c);
+      autoTaken++;
+    }
 
     const [usedImageIds, officialItems] = await Promise.all([loadUsedImageIds(), toPublish.length ? loadOfficialItems() : []]);
     const places = loadPlaces();
