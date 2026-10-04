@@ -71,7 +71,7 @@ async function readTelegramPost(embed: string): Promise<VideoSource | null> {
   const description = plain(html.match(/<div class="tgme_widget_message_text[^"]*"[^>]*>([^]*?)<[/]div>/)?.[1] ?? "");
   const channel = plain(html.match(/tgme_widget_message_owner_name"[^>]*><span[^>]*>([^<]*)/)?.[1] ?? "") || "Telegram";
   if (!description) return null;
-  const first = description.split(/(?<=[.!?])[ ]/)[0].replace(/^[^A-Za-zĂÂÎȘȚăâîșț0-9„"]+/, "");
+  const first = description.split(/(?<=[.!?])[ ]/)[0].replace(/^[^\p{L}\p{N}„"]+/u, "");
   const hasVideo = /tgme_widget_message_(video|roundvideo)|<video/.test(html);
   return { embed, title: first.length > 110 ? `${first.slice(0, 107)}…` : first, channel, description, hasVideo };
 }

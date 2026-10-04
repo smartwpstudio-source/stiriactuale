@@ -13,7 +13,7 @@ const LINK_MESSAGES: Record<string, string> = {
   ok: "Adăugat. Se scrie la următoarea rulare a pipeline-ului (max. 2 ore) sau imediat, cu „Publică acum” — și când știrile automate sunt oprite.",
   invalid: "Link invalid.",
   unreadable: "Pagina nu a putut fi citită — încearcă linkul sursei originale.",
-  videotitle: "Video Facebook: scrie titlul știrii în câmpul „Titlu” (Facebook nu permite citirea lui automată).",
+  videotitle: "Titlul nu a putut fi citit automat (video Facebook sau postare fără text) — scrie-l în câmpul „Titlu”.",
   post: "Postarea nu e recunoscută — doar o postare Facebook (posts/photos) sau Telegram (t.me/canal/123).",
 };
 
