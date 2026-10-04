@@ -4,12 +4,13 @@ import { getDb } from "@/lib/pipeline/db/client";
 import { articles, candidates, pipelineRuns } from "@/lib/pipeline/db/schema";
 import { requireAdmin } from "@/lib/admin/auth";
 import { SECTION_LABELS } from "@/lib/content/geo";
-import { addLink, logoutAction, runPipelineNow, sendPushNow } from "./actions";
+import { addLink, logoutAction, runPipelineNow, sendPushNow, togglePipeline } from "./actions";
+import { pipelineEnabled } from "@/lib/pipeline/settings";
 import { ConfirmButton } from "./confirm-button";
 import { PhotoField } from "./photo-field";
 
 const LINK_MESSAGES: Record<string, string> = {
-  ok: "Adăugat. Se scrie la următoarea rulare a pipeline-ului (max. 2 ore).",
+  ok: "Adăugat. Se scrie la următoarea rulare a pipeline-ului (max. 2 ore) sau imediat, cu „Publică acum” — și când știrile automate sunt oprite.",
   invalid: "Link invalid.",
   unreadable: "Pagina nu a putut fi citită — încearcă linkul sursei originale.",
   videotitle: "Video Facebook: scrie titlul știrii în câmpul „Titlu” (Facebook nu permite citirea lui automată).",
@@ -43,7 +44,7 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
     createdAt: articles.createdAt,
     publishedAt: articles.publishedAt,
   };
-  const [drafts, published, pending, runs] = await Promise.all([
+  const [drafts, published, pending, runs, autoOn] = await Promise.all([
     db.select(cols).from(articles).where(eq(articles.status, "draft")).orderBy(desc(articles.createdAt)),
     db.select(cols).from(articles).where(eq(articles.status, "published")).orderBy(desc(articles.publishedAt)).limit(30),
     db
@@ -51,6 +52,7 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
       .from(candidates)
       .where(and(eq(candidates.manual, true), isNull(candidates.processedAt))),
     db.select().from(pipelineRuns).orderBy(desc(pipelineRuns.startedAt)).limit(9),
+    pipelineEnabled(),
   ]);
 
   const list = (rows: typeof drafts, dateOf: (r: (typeof drafts)[number]) => Date) => (
@@ -95,6 +97,24 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
           <button className="text-sm text-sub underline">Ieșire</button>
         </form>
       </header>
+
+      <section
+        className={`flex flex-wrap items-center gap-3 rounded border px-4 py-3 ${autoOn ? "border-teal bg-white" : "border-alert bg-white"}`}
+      >
+        <span className="font-medium text-ink">Știri automate:</span>
+        <span className={`font-mono text-sm ${autoOn ? "text-teal" : "text-alert"}`}>
+          {autoOn ? "● PORNIT — colectare la 30 min, publicare 06–23, max 30/zi" : "● OPRIT — nu se colectează și nu se scrie nimic automat"}
+        </span>
+        <form action={togglePipeline.bind(null, !autoOn)} className="ml-auto">
+          <button className={`rounded px-4 py-2 font-medium text-white ${autoOn ? "bg-alert" : "bg-teal"}`}>
+            {autoOn ? "Oprește" : "Pornește"}
+          </button>
+        </form>
+        <p className="basis-full text-xs text-sub">
+          Oprit: linkurile tale se scriu în continuare cu „Adaugă și publică acum” / „Publică acum”. La pornire se iau știrile
+          din ultimele 6 ore.
+        </p>
+      </section>
 
       <section>
         <h2 className="mb-2 font-medium text-ink">Adaugă știre după link</h2>

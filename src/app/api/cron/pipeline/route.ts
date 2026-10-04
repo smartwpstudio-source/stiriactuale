@@ -1,5 +1,6 @@
 import crypto from "node:crypto";
 import { dispatchPipeline } from "@/lib/pipeline-dispatch";
+import { pipelineEnabled } from "@/lib/pipeline/settings";
 
 // Pornește pipeline-ul exact la oră. Orarul propriu al GitHub ("schedule")
 // întârzia cu ore — rularea de 22:00 a pornit la 00:30; cron-ul Vercel e
@@ -11,6 +12,8 @@ export async function GET(request: Request) {
   if (!secret || auth.length !== expected.length || !crypto.timingSafeEqual(Buffer.from(auth), Buffer.from(expected))) {
     return new Response("Unauthorized", { status: 401 });
   }
+  // oprit din admin: nicio rulare programată (butoanele editorului merg direct)
+  if (!(await pipelineEnabled())) return new Response("oprit din admin");
   const { ok, status } = await dispatchPipeline();
   // eșecurile apar în logurile Vercel (fără token în mesaj)
   return new Response(ok ? "pornit" : `GitHub: HTTP ${status}`, { status: ok ? 200 : 502 });

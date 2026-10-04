@@ -12,6 +12,7 @@ import { fetchArticle } from "@/lib/pipeline/fulltext";
 import { COUNTRY_NAMES, RAION_NAMES } from "@/lib/content/geo";
 import { logIn, logOut, requireAdmin } from "@/lib/admin/auth";
 import { dispatchPipeline } from "@/lib/pipeline-dispatch";
+import { setPipelineEnabled } from "@/lib/pipeline/settings";
 import { deleteFromChannel } from "@/lib/telegram";
 import { deleteFromPage, lastFacebookError, postToPage } from "@/lib/facebook";
 import { articleUrl } from "@/lib/content/url";
@@ -171,6 +172,13 @@ export async function removeImage(id: number) {
 
 // Butonul "Publică acum": rularea pornește în ~1 minut, nu la următoarea
 // rulare programată. Scrie linkurile adăugate și, ziua, știrile noi din fluxuri.
+// Pornit/Oprit: colectarea și știrile automate (linkurile editorului merg oricum)
+export async function togglePipeline(on: boolean) {
+  await requireAdmin();
+  await setPipelineEnabled(on);
+  redirect("/admin/");
+}
+
 export async function runPipelineNow() {
   await requireAdmin();
   const { ok } = await dispatchPipeline();

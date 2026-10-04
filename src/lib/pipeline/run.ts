@@ -10,6 +10,7 @@ import { findArticleImage, sourcePhoto } from "./image";
 import { loadOfficialItems, matchOfficialPhoto } from "./official-photos";
 import { loadPlaces, matchPlacePhoto } from "./places";
 import { checkRecent } from "./recent-duplicate";
+import { pipelineEnabled } from "./settings";
 import { toEmbedUrl, youtubeThumb } from "@/lib/video";
 import { shortVideoArticle } from "./video-article";
 import { isDuplicate, loadRecentFingerprints, loadUsedImageIds, publishArticle, updateBriefArticle } from "./publish";
@@ -22,9 +23,9 @@ import type { ScoredCandidate } from "./types";
 // Prag minim + plafon per rulare, independente pe secțiuni. Regiunile și
 // diaspora au prag mai mic — prioritatea redacției.
 const SECTION_CONFIG: Record<Section, { minScore: number; cap: number }> = {
-  regiuni: { minScore: 45, cap: 3 },
-  national: { minScore: 55, cap: 3 },
-  international: { minScore: 65, cap: 1 },
+  regiuni: { minScore: 45, cap: 4 },
+  national: { minScore: 55, cap: 4 },
+  international: { minScore: 65, cap: 2 },
   diaspora: { minScore: 45, cap: 2 },
 };
 
@@ -40,11 +41,12 @@ const PUBLISH_FROM_HOUR = 6;
 const PUBLISH_UNTIL_HOUR = 23;
 
 // Apelurile Claude consumă din limitele abonamentului Max, comune cu munca
-// editorului — plafonul e în articole, nu în bani. 10/zi, max 3 pe rulare, ca
-// să rămână articole și pentru știrile de seară. Linkurile manuale nu intră
-// în plafon: editorul a decis explicit.
-const DAILY_ARTICLE_LIMIT = 10;
-const MAX_ARTICLES_PER_RUN = 3;
+// editorului — plafonul e în articole, nu în bani. 30/zi, max 4 pe rulare (9
+// rulări între 06 și 22), ca să rămână articole și pentru știrile de seară.
+// Consumul îl controlează editorul cu butonul Pornit/Oprit din admin.
+// Linkurile manuale nu intră în plafon: editorul a decis explicit.
+const DAILY_ARTICLE_LIMIT = 30;
+const MAX_ARTICLES_PER_RUN = 4;
 
 export interface PipelineRunSummary {
   collected: number;
@@ -78,14 +80,19 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
   };
 
   try {
+    // Butonul Pornit/Oprit din admin: oprit = doar linkurile editorului
+    // („Publică acum”), fără colectare și fără știri automate.
+    const autoOn = await pipelineEnabled();
     // Rezervă pentru colectarea la 30 min: dacă cron-ul Vercel a căzut, nu
     // lucrăm pe date vechi.
-    try {
-      const c = await collectCandidates();
-      summary.collected = c.inserted;
-      summary.failedFeeds = c.failedFeeds;
-    } catch (err) {
-      summary.failedFeeds.push(`colectare: ${err instanceof Error ? err.message : String(err)}`);
+    if (autoOn) {
+      try {
+        const c = await collectCandidates();
+        summary.collected = c.inserted;
+        summary.failedFeeds = c.failedFeeds;
+      } catch (err) {
+        summary.failedFeeds.push(`colectare: ${err instanceof Error ? err.message : String(err)}`);
+      }
     }
 
     // Noaptea nu se publică automat (decizia proprietarului: postările de
@@ -93,7 +100,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     // de 6h prinde tot. Linkurile adăugate de editor se publică și noaptea —
     // butonul "Publică acum" e pentru știri urgente.
     const hour = Number(new Date().toLocaleString("en-GB", { hour: "2-digit", hour12: false, timeZone: "Europe/Chisinau" }));
-    const night = hour < PUBLISH_FROM_HOUR || hour >= PUBLISH_UNTIL_HOUR;
+    const night = hour < PUBLISH_FROM_HOUR || hour >= PUBLISH_UNTIL_HOUR || !autoOn;
 
     const rows = await db
       .select()
@@ -105,7 +112,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
         ),
       );
     if (night && !rows.some((r) => r.manual && !r.processedAt)) {
-      summary.skipped = `în afara orelor de publicare (${hour}:00 la Chișinău) — doar colectare`;
+      summary.skipped = autoOn ? `în afara orelor de publicare (${hour}:00 la Chișinău) — doar colectare` : "pipeline oprit din admin";
       await finish(run.id, summary);
       return summary;
     }

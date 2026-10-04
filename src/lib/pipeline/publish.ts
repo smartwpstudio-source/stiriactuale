@@ -4,7 +4,6 @@ import { getDb } from "./db/client";
 import { articles } from "./db/schema";
 import { normalizeTitle } from "./dedup";
 import type { ArticleImage } from "./image";
-import { notifyEditor } from "@/lib/telegram";
 import { announcePublished } from "@/lib/publish-effects";
 import type { CandidateGroup, GeneratedArticle, ScoredCandidate } from "./types";
 
@@ -44,9 +43,8 @@ export async function loadUsedImageIds(): Promise<Set<number>> {
   return new Set(rows.map((r) => r.id!));
 }
 
-// Subiectele sensibile (impact emoțional puternic, acuzații la adresa unor
-// persoane) rămân draft până le aprobă editorul; restul se publică imediat și
-// editorul le verifică după, din notificarea Telegram (decizia proprietarului).
+// Totul se publică imediat; editorul verifică în admin și retrage sau șterge
+// ce nu corespunde (decizia proprietarului, 2026-10-04 — fără drafturi).
 export async function publishArticle(
   candidate: ScoredCandidate,
   generated: GeneratedArticle,
@@ -59,10 +57,6 @@ export async function publishArticle(
   const sources = [...new Map(candidate.group.items.map((i) => [i.sourceName, i.sourceUrl])).entries()]
     .filter(([, url]) => url)
     .map(([name, url]) => ({ name, url }));
-
-  // Știrile sensibile rămân draft până la aprobare — cu excepția linkurilor
-  // adăugate de editor: le-a ales el, se publică direct.
-  const draft = candidate.classification.sensitive && !candidate.group.manual;
 
   // Slug-ul poate coincide cu un articol mai vechi (subiect recurent) ->
   // sufix -2, -3... Unicitatea o garantează constrângerea din DB.
@@ -94,18 +88,13 @@ export async function publishArticle(
         kind,
         continuesId: candidate.classification.continuesId,
         postUrl: candidate.group.postUrl,
-        status: draft ? "draft" : "published",
+        status: "published",
       })
       .onConflictDoNothing({ target: articles.slug })
       .returning({ id: articles.id });
     if (inserted.length) {
       const id = inserted[0].id;
-      if (draft) {
-        const kind = candidate.classification.pushWorthy ? "draft-alerta" : "draft";
-        await notifyEditor(kind, { id, title: generated.titlu, lead: generated.lead });
-      } else {
-        await announcePublished(id, "auto");
-      }
+      await announcePublished(id, "auto");
       return;
     }
   }

@@ -145,3 +145,9 @@ export const pipelineRuns = pgTable("pipeline_runs", {
   costUsd: real("cost_usd").notNull().default(0),
   errorMessage: text("error_message"),
 });
+
+// Setări schimbate din /admin (ex. pipeline_enabled = "0" / "1").
+export const appSettings = pgTable("app_settings", {
+  key: varchar("key", { length: 50 }).primaryKey(),
+  value: text("value").notNull(),
+});

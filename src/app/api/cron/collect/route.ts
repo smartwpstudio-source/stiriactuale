@@ -1,5 +1,6 @@
 import crypto from "node:crypto";
 import { collectCandidates } from "@/lib/pipeline/collect";
+import { pipelineEnabled } from "@/lib/pipeline/settings";
 
 // Colectare RSS la 30 de minute (vercel.json) — fără AI, doar fetch + insert.
 // Cron-ul mai des decât zilnic cere Vercel Pro. Vercel trimite automat
@@ -17,5 +18,6 @@ export async function GET(request: Request) {
   ) {
     return new Response("Unauthorized", { status: 401 });
   }
+  if (!(await pipelineEnabled())) return Response.json({ skipped: "pipeline oprit din admin" });
   return Response.json(await collectCandidates());
 }
