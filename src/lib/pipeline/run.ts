@@ -35,7 +35,7 @@ const SECTION_CONFIG: Record<Section, { minScore: number; cap: number }> = {
 const WINDOW_HOURS = 6;
 const MAX_GROUPS_TO_CLASSIFY = 40;
 const PUBLISH_CONCURRENCY = 4;
-const FEED_ALERT_MIN = 3; // feed-uri căzute deodată, din 9
+const FEED_ALERT_MIN = 3; // feed-uri căzute deodată, din 12
 // Fereastra de publicare automată, ora Chișinăului: 06:00-22:59 (rularea de
 // 22:00 poate întârzia puțin; după 23:00 nu mai publică).
 const PUBLISH_FROM_HOUR = 6;
@@ -192,7 +192,8 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       bySection.set(section, [...(bySection.get(section) ?? []), c]);
     }
     const auto = [...bySection].flatMap(([section, list]) =>
-      list.sort((a, b) => b.qualityScore - a.qualityScore).slice(0, SECTION_CONFIG[section].cap),
+      // dimineața (06:00), Lumea are prioritate: noaptea Moldova doarme, știrile vin din lume
+      list.sort((a, b) => b.qualityScore - a.qualityScore).slice(0, section === "international" && hour === PUBLISH_FROM_HOUR ? 4 : SECTION_CONFIG[section].cap),
     );
     // a doua verificare de dubluri, per știre, față de articolele din ultimele
     // 48h (recent-duplicate.ts) — locul unei dubluri îl ia următoarea știre

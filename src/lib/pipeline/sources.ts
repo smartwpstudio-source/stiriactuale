@@ -21,6 +21,11 @@ export const FEEDS: { id: string; name: string; url: string; trusted: boolean; t
   { id: "tv8", name: "TV8", url: "https://tv8.md/feed", trusted: false, telegram: "tv8md" },
   { id: "diez", name: "Diez", url: "https://www.diez.md/feed/", trusted: false, telegram: "diezmd" },
   { id: "pulsmedia", name: "Puls Media", url: "https://pulsmedia.md/rss/all/", trusted: false, telegram: "pulsmedia" },
+  // surse internaționale în română, care publică și noaptea — pentru Lumea
+  // (aceleași criterii stricte din classify.ts); decizia proprietarului, 2026-10-05
+  { id: "europalibera", name: "Europa Liberă", url: "https://moldova.europalibera.org/api/", trusted: true },
+  { id: "digi24", name: "Digi24", url: "https://www.digi24.ro/rss/stiri/externe", trusted: false },
+  { id: "hotnews", name: "HotNews", url: "https://hotnews.ro/c/actualitate/international/feed", trusted: false },
 ];
 
 export const TRUSTED_SOURCES = new Set(FEEDS.filter((f) => f.trusted).map((f) => f.name));
