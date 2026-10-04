@@ -240,7 +240,8 @@ export async function addLink(formData: FormData) {
     if (!title) redirect("/admin/?link=videotitle");
     // postare Telegram fără video (text + poze): știre obișnuită, nu video —
     // adresa t.me/s/canal/N nu e recunoscută ca player (video.ts)
-    if (!video.hasVideo) sourceUrl = video.embed.replace("https://t.me/", "https://t.me/s/").replace("?embed=1", "");
+    if (!video.hasVideo)
+      sourceUrl = video.embed.replace("https://t.me/", "https://t.me/s/").replace("?embed=1", video.hasPhoto ? "?foto=1" : "");
   } else {
     // textul integral se descarcă din nou la scriere (generate.ts); aici doar
     // titlul și un rezumat pentru clasificare

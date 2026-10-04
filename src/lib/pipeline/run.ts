@@ -10,6 +10,7 @@ import { findArticleImage, sourcePhoto } from "./image";
 import { loadOfficialItems, matchOfficialPhoto } from "./official-photos";
 import { loadPlaces, matchPlacePhoto } from "./places";
 import { checkRecent } from "./recent-duplicate";
+import { mediaTag } from "./media-tag";
 import { pipelineEnabled } from "./settings";
 import { toEmbedUrl, youtubeThumb } from "@/lib/video";
 import { shortVideoArticle } from "./video-article";
@@ -225,8 +226,10 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
         // „pe scurt” (regula proprietarului), completată la rulările următoare.
         let kind: "stire" | "pe-scurt" | "analiza" = c.group.analysis ? "analiza" : "stire";
         let generated = await generateArticle(c.group, c.classification);
-        const isVideo = c.group.manual && c.group.items.some((i) => toEmbedUrl(i.sourceUrl));
-        if (!generated && isVideo) generated = await generateArticle(c.group, c.classification, "video");
+        // link video sau postare Telegram (și fără video): textul postării e tot
+        // materialul — știre scurtă din el, nu „prea puțin text”
+        const isShortPost = c.group.manual && c.group.items.some((i) => toEmbedUrl(i.sourceUrl) || i.sourceUrl.startsWith("https://t.me/"));
+        if (!generated && isShortPost) generated = await generateArticle(c.group, c.classification, "video");
         if (!generated && c.group.manual) generated = shortVideoArticle(c.group);
         if (!generated) {
           generated = await generateArticle(c.group, c.classification, "brief");
@@ -257,6 +260,8 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
           : (place && { url: place.url, resourceId: null, credit: place.credit }) ??
             ((official && (await sourcePhoto(official, generated.slug))) ??
             (await findArticleImage(generated.stock_query, generated.image_prompt, generated.slug, usedImageIds, subject)));
+        // (VIDEO) / (FOTO) la sfârșitul titlului: cititorul știe din listă ce găsește
+        generated.titlu = mediaTag(generated.titlu, !!generated.video_url, c.group.items.some((i) => i.sourceUrl.includes("?foto=1")));
         await publishArticle(c, generated, image, kind);
         if (c.group.manual) {
           await db.update(candidates).set({ processedAt: new Date() }).where(inArray(candidates.id, c.group.candidateIds));

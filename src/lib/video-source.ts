@@ -11,6 +11,7 @@ export interface VideoSource {
   channel: string;
   description: string;
   hasVideo: boolean; // postarea Telegram poate fi doar text + poze: atunci e știre obișnuită
+  hasPhoto?: boolean; // postarea Telegram fără video, dar cu poze: titlul primește (FOTO)
 }
 
 const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36";
@@ -73,5 +74,6 @@ async function readTelegramPost(embed: string): Promise<VideoSource | null> {
   if (!description) return null;
   const first = description.split(/(?<=[.!?])[ ]/)[0].replace(/^[^\p{L}\p{N}„"]+/u, "");
   const hasVideo = /tgme_widget_message_(video|roundvideo)|<video/.test(html);
-  return { embed, title: first.length > 110 ? `${first.slice(0, 107)}…` : first, channel, description, hasVideo };
+  const hasPhoto = /tgme_widget_message_photo/.test(html);
+  return { embed, title: first.length > 110 ? `${first.slice(0, 107)}…` : first, channel, description, hasVideo, hasPhoto };
 }

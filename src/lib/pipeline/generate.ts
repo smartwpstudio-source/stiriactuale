@@ -80,8 +80,8 @@ const MODE_RULES: Record<Exclude<ArticleMode, "full">, string> = {
     "Doar faptele confirmate de sursă, atribuite. Nimic presupus. Titlul nu conține „pe scurt”.",
   ].join("\n"),
   video: [
-    "MOD VIDEO (are prioritate față de regulile de lungime și structură de mai sus): video-ul e subiectul știrii, iar textul sursei e doar descrierea lui, scurtă.",
-    "STRICT: lead-ul + UN SINGUR paragraf <p> în corp, maximum 120 de cuvinte în total, ZERO subtitluri <h2>. Redai DOAR ce spune descrierea (cine, ce, unde), atribuit canalului sursă. Interzis: explicații despre instituții, locuri sau context general — cititorul vede video-ul.",
+    "MOD POSTARE SCURTĂ (are prioritate față de regulile de lungime și structură de mai sus): sursa e o postare scurtă (video, poze sau doar text de pe un canal), iar textul ei e tot materialul.",
+    "STRICT: lead-ul + UN SINGUR paragraf <p> în corp, maximum 120 de cuvinte în total, ZERO subtitluri <h2>. Redai DOAR ce spune descrierea (cine, ce, unde), atribuit canalului sursă. Interzis: explicații despre instituții, locuri sau context general.",
     "Descrierea poate fi în rusă, engleză sau altă limbă: titlul, lead-ul și textul — exclusiv în română.",
   ].join("\n"),
   analysis: [
@@ -95,7 +95,7 @@ const MODE_RULES: Record<Exclude<ArticleMode, "full">, string> = {
 // cuvinte cu 2-4 <h2>” din schemă bate regulile scurte ale modului.
 const BODY_RULE: Partial<Record<ArticleMode, string>> = {
   brief: "HTML: <p>. 80-200 de cuvinte, FĂRĂ <h2>. Fără linkuri, fără imagini.",
-  video: "HTML: un singur <p>, maximum 120 de cuvinte, FĂRĂ <h2>. Doar ce spune descrierea video-ului.",
+  video: "HTML: un singur <p>, maximum 120 de cuvinte, FĂRĂ <h2>. Doar ce spune postarea / descrierea video-ului.",
 };
 function schemaFor(mode: ArticleMode) {
   const rule = BODY_RULE[mode];
