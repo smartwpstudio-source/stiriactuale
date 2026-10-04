@@ -69,3 +69,19 @@ export async function getWeather() {
   const days = [...byDay.entries()].slice(1, 4).map(([date, d]) => ({ date, min: Math.round(d.min), max: Math.round(d.max), symbol: d.symbol }));
   return { now, days };
 }
+
+// Azi, per oraș: minima și maxima până la miezul nopții + simbolul zilei —
+// pentru rezumatul de dimineață din Telegram (digest.ts).
+export async function getTodayWeather() {
+  const today = dayKey(new Date().toISOString());
+  const all = await Promise.all(CITIES.map((c) => series(c.lat, c.lon)));
+  return CITIES.flatMap((c, i) => {
+    const points = (all[i] ?? []).filter((t) => dayKey(t.time) === today);
+    if (!points.length) return [];
+    const temps = points.map((t) => t.data.instant.details.air_temperature);
+    // simbolul de la prânz (ora Chișinăului), nu de la miezul nopții
+    const localHour = (iso: string) => Number(new Date(iso).toLocaleString("en-GB", { hour: "2-digit", hour12: false, timeZone: "Europe/Chisinau" }));
+    const noon = points.find((t) => localHour(t.time) >= 12) ?? points[points.length - 1];
+    return [{ city: c.name, min: Math.round(Math.min(...temps)), max: Math.round(Math.max(...temps)), symbol: noon.data.next_1_hours?.summary.symbol_code ?? noon.data.next_6_hours?.summary.symbol_code }];
+  });
+}

@@ -7,6 +7,14 @@
     {
       "path": "/api/cron/pipeline/",
       "schedule": "0 3-19/2 * * *"
+    },
+    {
+      "path": "/api/cron/digest/?tip=dimineata",
+      "schedule": "0 5,6 * * *"
+    },
+    {
+      "path": "/api/cron/digest/?tip=seara",
+      "schedule": "0 19,20 * * *"
     }
   ],
   "ignoreCommand": "bash scripts/vercel-ignore.sh"

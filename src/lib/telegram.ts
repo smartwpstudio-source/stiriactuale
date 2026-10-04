@@ -70,3 +70,17 @@ export async function deleteFromChannel(messageId: number) {
   const chatId = process.env.TELEGRAM_CHANNEL_ID;
   if (chatId) await call("deleteMessage", { chat_id: chatId, message_id: messageId });
 }
+
+// Rezumatul de dimineață / de seară (digest.ts) — fără previzualizare de link:
+// mesajul are 5-7 linkuri, iar previzualizarea ar lua doar primul.
+export async function postDigestToChannel(html: string): Promise<boolean> {
+  const chatId = process.env.TELEGRAM_CHANNEL_ID;
+  if (!chatId) return false;
+  const msg = await call<{ message_id: number }>("sendMessage", {
+    chat_id: chatId,
+    parse_mode: "HTML",
+    text: html,
+    link_preview_options: { is_disabled: true },
+  });
+  return msg !== null;
+}

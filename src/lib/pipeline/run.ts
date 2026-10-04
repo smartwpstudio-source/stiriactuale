@@ -108,7 +108,8 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       .from(candidates)
       .where(
         or(
-          gte(candidates.publishedAt, new Date(Date.now() - WINDOW_HOURS * 3600_000)),
+          // prima rulare a dimineții (06:00) ia toată noaptea, de la 22:00
+          gte(candidates.publishedAt, new Date(Date.now() - (hour === PUBLISH_FROM_HOUR ? 8 : WINDOW_HOURS) * 3600_000)),
           and(eq(candidates.manual, true), isNull(candidates.processedAt)),
         ),
       );
@@ -131,7 +132,9 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       .select({ today: count() })
       .from(articles)
       .where(and(gte(articles.createdAt, dayStart), isNull(articles.wpId)));
-    const autoSlots = night ? 0 : Math.max(0, Math.min(MAX_ARTICLES_PER_RUN, DAILY_ARTICLE_LIMIT - today));
+    // dimineața (06:00) se strâng știrile nopții: până la 6, pentru rezumatul de la 08:00
+    const perRun = hour === PUBLISH_FROM_HOUR ? 6 : MAX_ARTICLES_PER_RUN;
+    const autoSlots = night ? 0 : Math.max(0, Math.min(perRun, DAILY_ARTICLE_LIMIT - today));
 
     const recent = await loadRecentFingerprints();
     const fresh = groups
