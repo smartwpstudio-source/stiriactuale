@@ -70,6 +70,7 @@ export default async function GuidePage({ params }: PageProps<"/ghiduri/[slug]">
       <Breadcrumb items={[{ label: "Acasă", href: "/" }, { label: "Ghiduri", href: "/ghiduri/" }, { label: GUIDE_CATEGORIES[g.category] }]} />
       <h1 className="mt-3 font-serif text-3xl leading-tight text-ink sm:text-4xl lg:text-[2.75rem]">{g.title}</h1>
       <p className="mt-4 font-mono text-sm text-sub">Ghid · actualizat la {updated}</p>
+      <ShareButtons url={url} title={g.title} />
       <p className="mt-6 text-xl font-medium leading-relaxed text-ink">{g.description}</p>
 
       {(() => {
@@ -117,7 +118,6 @@ export default async function GuidePage({ params }: PageProps<"/ghiduri/[slug]">
         </p>
       </aside>
 
-      <ShareButtons url={url} title={g.title} />
       <TelegramCta />
     </article>
   );

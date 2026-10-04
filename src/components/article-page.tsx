@@ -95,6 +95,7 @@ export async function ArticlePage({
           {article.updatedAt &&
             ` · actualizat la ${new Date(article.updatedAt).toLocaleString("ro-MD", { timeZone: "Europe/Chisinau", hour: "2-digit", minute: "2-digit", day: "numeric", month: "long" })}`}
         </p>
+        <ShareButtons url={absoluteUrl(articleUrl(article))} title={article.title} />
         {article.archived && article.sources?.[0] ? (
           <>
             <p className="mt-6 text-xl leading-relaxed text-ink">{article.lead}</p>
@@ -178,7 +179,6 @@ export async function ArticlePage({
           </div>
         )}
         {guide && <RelatedGuide guide={guide} />}
-        <ShareButtons url={absoluteUrl(articleUrl(article))} title={article.title} />
         <TelegramCta />
         <PushOptIn />
         <SimilarArticles articles={similar} />
