@@ -103,7 +103,7 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
       >
         <span className="font-medium text-ink">Știri automate:</span>
         <span className={`font-mono text-sm ${autoOn ? "text-teal" : "text-alert"}`}>
-          {autoOn ? "● PORNIT — colectare la 30 min, publicare 06–23, max 30/zi" : "● OPRIT — nu se colectează și nu se scrie nimic automat"}
+          {autoOn ? "● PORNIT — colectare din oră în oră, publicare 06–23, max 30/zi" : "● OPRIT — nu se colectează și nu se scrie nimic automat"}
         </span>
         <form action={togglePipeline.bind(null, !autoOn)} className="ml-auto">
           <button className={`rounded px-4 py-2 font-medium text-white ${autoOn ? "bg-alert" : "bg-teal"}`}>

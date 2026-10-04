@@ -84,7 +84,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     // Butonul Pornit/Oprit din admin: oprit = doar linkurile editorului
     // („Publică acum”), fără colectare și fără știri automate.
     const autoOn = await pipelineEnabled();
-    // Rezervă pentru colectarea la 30 min: dacă cron-ul Vercel a căzut, nu
+    // Rezervă pentru colectarea orară: dacă cron-ul Vercel a căzut, nu
     // lucrăm pe date vechi.
     if (autoOn) {
       try {
