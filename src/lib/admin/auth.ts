@@ -8,6 +8,7 @@ import { redirect } from "next/navigation";
 // ponytail: fără rate-limit la login, doar o întârziere la parolă greșită;
 // adaugă blocare pe IP dacă apar încercări în log-uri.
 const COOKIE = "sa_admin";
+export const EDITOR_MARK = "sa_editor";
 const SESSION_DAYS = 30;
 
 function key(): Buffer | null {
@@ -53,9 +54,18 @@ export async function logIn(password: string): Promise<boolean> {
     path: "/admin",
     maxAge: SESSION_DAYS * 86400,
   });
+  // marcaj (nu autentificare): vizitele editorului nu se numără în afișări
+  (await cookies()).set(EDITOR_MARK, "1", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    path: "/api/view",
+    maxAge: SESSION_DAYS * 86400,
+  });
   return true;
 }
 
 export async function logOut(): Promise<void> {
   (await cookies()).delete({ name: COOKIE, path: "/admin" });
+  (await cookies()).delete({ name: EDITOR_MARK, path: "/api/view" });
 }
