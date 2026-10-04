@@ -191,6 +191,8 @@ export async function runPipelineNow() {
 // "Adaugă și publică acum" pornește și rularea.
 export async function addLink(formData: FormData) {
   await requireAdmin();
+  // „Publică acum” cu câmpul gol: doar rularea, pentru linkurile deja adăugate
+  if (!String(formData.get("url") ?? "").trim() && formData.get("now")) return runPipelineNow();
   let url: URL;
   try {
     url = new URL(String(formData.get("url")).trim());

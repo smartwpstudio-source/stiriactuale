@@ -4,7 +4,7 @@ import { getDb } from "@/lib/pipeline/db/client";
 import { articles, candidates, pipelineRuns } from "@/lib/pipeline/db/schema";
 import { requireAdmin } from "@/lib/admin/auth";
 import { SECTION_LABELS } from "@/lib/content/geo";
-import { addLink, logoutAction, runPipelineNow, sendPushNow, togglePipeline } from "./actions";
+import { addLink, logoutAction, sendPushNow, togglePipeline } from "./actions";
 import { pipelineEnabled } from "@/lib/pipeline/settings";
 import { ConfirmButton } from "./confirm-button";
 import { PhotoField } from "./photo-field";
@@ -166,12 +166,17 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
           <button name="now" value="1" className="rounded bg-alert px-4 py-2 font-medium text-white">
             Adaugă și publică acum
           </button>
-        </form>
-        <form action={runPipelineNow} className="mt-3 flex flex-wrap items-center gap-3">
-          <button className="rounded bg-ink px-4 py-2 font-medium text-white">Publică acum</button>
-          <span className="text-sm text-sub">
-            scrie imediat toate linkurile în așteptare{pending.length > 0 && ` (${pending.length})`}, fără să aștepte rularea programată
-          </span>
+          {/* în același formular: dacă în câmp e un link, îl adaugă și pe el
+              (înainte era un formular separat și linkul din câmp se pierdea) */}
+          <div className="flex basis-full flex-wrap items-center gap-3">
+            <button name="now" value="1" formNoValidate className="rounded bg-ink px-4 py-2 font-medium text-white">
+              Publică acum
+            </button>
+            <span className="text-sm text-sub">
+              scrie imediat toate linkurile în așteptare{pending.length > 0 && ` (${pending.length})`} — și pe cel din câmp, dacă e
+              completat — fără să aștepte rularea programată
+            </span>
+          </div>
         </form>
         {typeof run === "string" && RUN_MESSAGES[run] && (
           <p className={`mt-2 text-sm ${run === "ok" ? "text-teal" : "text-alert"}`}>{RUN_MESSAGES[run]}</p>
