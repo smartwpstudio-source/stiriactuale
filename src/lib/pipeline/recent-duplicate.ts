@@ -45,7 +45,7 @@ export async function checkRecent(group: CandidateGroup, recent: RecentArticle[]
     const { verdict, index } = await structured<{ verdict: "dublura" | "continuare" | "diferit"; index: number }>({
       model: HAIKU_MODEL,
       system:
-        "Compari o știre nouă cu articole deja publicate pe site. dublura = același fapt, fără nimic nou important (altă formulare, altă sursă, alte detalii mărunte). continuare = același subiect, dar cu informații noi importante (reacții oficiale, cifre noi, decizii, consecințe). diferit = alt eveniment. index = numărul articolului publicat la care se referă verdictul (-1 la diferit).",
+        "Compari o știre nouă cu articole deja publicate pe site. dublura = același fapt, fără nimic nou important (altă formulare, altă sursă, alte detalii mărunte, actualizări de stare fără schimbare reală: „rămâne închis”, „starea victimei e stabilă”, „ancheta continuă”). continuare = același subiect, dar cu informații noi importante (reacții oficiale, cifre noi, decizii, consecințe). diferit = alt eveniment. index = numărul articolului publicat la care se referă verdictul (-1 la diferit).",
       prompt: `Știrea nouă:\n${group.items.slice(0, 3).map((i) => `- ${i.title}: ${i.summary.slice(0, 400)}`).join("\n")}\n\nArticole publicate:\n${similar.map((r, i) => `${i}. ${r.title} — ${r.lead}`).join("\n")}`,
       schema: {
         type: "object",
@@ -57,7 +57,8 @@ export async function checkRecent(group: CandidateGroup, recent: RecentArticle[]
     const hit = similar[index];
     if (!hit) return {};
     return verdict === "dublura" ? { duplicateOf: hit.id } : verdict === "continuare" ? { continuesId: hit.id } : {};
-  } catch {
+  } catch (err) {
+    console.error(`Verificare dubluri eșuată: ${err instanceof Error ? err.message : String(err)}`);
     return {}; // fără verdict: rămâne decizia clasificatorului
   }
 }

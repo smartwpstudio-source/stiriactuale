@@ -1,4 +1,4 @@
-import { and, count, desc, eq, gte, inArray, isNull, or } from "drizzle-orm";
+import { and, count, desc, eq, gte, inArray, isNotNull, isNull, or } from "drizzle-orm";
 import { getDb } from "./db/client";
 import { articles, candidates, pipelineRuns } from "./db/schema";
 import { collectCandidates } from "./collect";
@@ -214,10 +214,17 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       }
       toPublish.push(c);
       autoTaken++;
+      // și știrile alese în aceeași rulare intră în comparație (2026-10-05:
+      // două articole despre aceeași tranșă UE, scrise în aceeași rulare)
+      recent48.unshift({ id: -autoTaken, title: c.group.representativeTitle, lead: c.group.items[0]?.summary.slice(0, 300) ?? "" });
     }
 
     const [usedImageIds, officialItems] = await Promise.all([loadUsedImageIds(), toPublish.length ? loadOfficialItems() : []]);
     const places = loadPlaces();
+    // pozele comunicatelor deja folosite în ultimele zile (image_source)
+    const usedOfficial = new Set(
+      (await db.select({ src: articles.imageSource }).from(articles).where(isNotNull(articles.imageSource)).orderBy(desc(articles.publishedAt)).limit(200)).map((r) => r.src!),
+    );
     // pozele ultimelor articole, pentru rotația pozelor din arhivă (places.ts)
     const recentImages = (
       await db.select({ url: articles.imageUrl }).from(articles).orderBy(desc(articles.publishedAt)).limit(80)
@@ -255,7 +262,12 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
         const subject = `${generated.titlu}. ${generated.lead}`;
         // poza încărcată de editor bate orice altceva
         const editor = c.group.photo && { url: c.group.photo.url, resourceId: null, credit: c.group.photo.credit ?? undefined };
-        const official = editor ? null : await matchOfficialPhoto(subject, officialItems).then((m) => m && { url: m.photo, credit: m.credit });
+        // poza unui comunicat se folosește o singură dată (altfel două știri despre
+        // același subiect stau alăturate cu aceeași poză)
+        const official = editor
+          ? null
+          : await matchOfficialPhoto(subject, officialItems.filter((o) => !usedOfficial.has(o.photo))).then((m) => m && { url: m.photo, credit: m.credit });
+        if (official) usedOfficial.add(official.url);
         const place = editor || official ? null : await matchPlacePhoto(subject, places, c.classification.locality, recentImages);
         const image = editor
           ? editor

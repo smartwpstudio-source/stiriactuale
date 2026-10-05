@@ -13,6 +13,7 @@ export interface ArticleImage {
   url: string;
   resourceId: number | null; // null = generată sau poză reală
   credit?: string; // poza reală a unei instituții: „Foto: IGSU”
+  source?: string; // adresa originală a pozei comunicatului
 }
 
 // 1. Stock Magnific: gratuit pe Premium+ (max 100/zi), primul din top 5
@@ -85,7 +86,7 @@ async function pickStock(subject: string, results: { id: number; title: string }
 // Poza reală (a unei instituții) copiată în Blob, cu semnătura ei.
 export async function sourcePhoto(photo: { url: string; credit: string }, slug: string): Promise<ArticleImage | null> {
   try {
-    return { url: await copyToBlob(photo.url, `articole/${slug}.jpg`), resourceId: null, credit: photo.credit };
+    return { url: await copyToBlob(photo.url, `articole/${slug}.jpg`), resourceId: null, credit: photo.credit, source: photo.url };
   } catch (err) {
     logImageError(err);
     return null;

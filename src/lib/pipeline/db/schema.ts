@@ -50,6 +50,8 @@ export const articles = pgTable("articles", {
   imageAltText: text("image_alt_text"),
   // autorul pozei reale (ex. „IGSU”), afișat „Foto: …”; gol = poză ilustrativă
   imageCredit: text("image_credit"),
+  // adresa originală a pozei unui comunicat (nu se refolosește la alt articol)
+  imageSource: text("image_source"),
 
   // sursele originale (nu yam.md ca și canal) care au raportat evenimentul —
   // pentru atribuire în articol, cf. plan-implementare-agregator-stiri-ai.md 3.1

@@ -80,6 +80,7 @@ export async function publishArticle(
         imageUrl: image?.url,
         imageResourceId: image?.resourceId,
         imageCredit: image?.credit,
+        imageSource: image?.source,
         imageAltText: generated.alt_text_imagine,
         videoUrl: generated.video_url,
         sourceUrls,

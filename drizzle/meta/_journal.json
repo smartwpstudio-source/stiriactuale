@@ -127,6 +127,13 @@
       "when": 1791186950593,
       "tag": "0017_tricky_marvel_apes",
       "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "7",
+      "when": 1791207238990,
+      "tag": "0018_special_firebird",
+      "breakpoints": true
     }
   ]
 }
