@@ -23,7 +23,7 @@ export function ArticleCard({ article, size = "md" }: { article: Article; size?:
         sizes={lg ? "(max-width: 1024px) 100vw, 640px" : "(max-width: 640px) 100vw, 400px"}
       />
       <div className={`flex flex-1 flex-col ${sm ? "p-3" : "p-4"}`}>
-        <KindBadge kind={article.kind} className="mb-1 self-start" />
+        <KindBadge kind={article.kind} continues={!!article.continuesId} className="mb-1 self-start" />
         {!sm && article.topics[0] && <TopicLabel topic={article.topics[0]} />}
         <h3
           className={`font-serif leading-snug text-ink group-hover:text-teal ${lg ? "mt-1.5 text-2xl sm:text-[1.75rem]" : sm ? "line-clamp-4 text-base sm:text-lg" : "mt-1.5 text-lg sm:text-xl"}`}

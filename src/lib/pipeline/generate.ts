@@ -7,7 +7,11 @@ import type { CandidateGroup, ClassificationResult, GeneratedArticle } from "./t
 const SCHEMA = {
   type: "object",
   properties: {
-    titlu: { type: "string", description: "Max 60 de caractere (Google taie titlurile mai lungi), informativ, cuvântul cheie la început. Fără clickbait." },
+    titlu: {
+      type: "string",
+      description:
+        "50-75 de caractere. Concret și viu: cine/ce + faptul cel mai important sau surprinzător (o cifră, o consecință pentru oameni, o decizie). Stârnește interesul fără clickbait. Interzis titlul-etichetă vag („Situația la Palanca”, „Declarații despre drone”) și formulele de tabloid („Șoc”, „Incredibil”, întrebări retorice goale).",
+    },
     slug: { type: "string", description: "Slug URL, minuscule, fără diacritice, cuvinte separate prin cratimă, max 8 cuvinte." },
     meta_description: { type: "string", description: "140-160 caractere." },
     lead: { type: "string", description: "1-2 propoziții: cine, ce, unde, când." },
@@ -48,6 +52,14 @@ const SYSTEM_PROMPT = [
   '3b. Nu comenta sursele și nici ce lipsește din ele ("relatarea nu spune...", "sursele nu precizează deocamdată..."). Nu promite continuări ("știrea va fi actualizată", "revenim cu detalii") — nimeni nu actualizează articolul.',
   '4. Atribuie informația: "potrivit Poliției", "conform ZdG", "a declarat ministrul". Menționează nominal redacția sursă când informația e a ei.',
   "5. Relatările pot fi în rusă sau altă limbă — scrii exclusiv în română.",
+  "",
+  "Titlul — prima și uneori singura frază pe care o citește omul (în listă, pe Telegram, pe Facebook):",
+  "- spune faptul concret și miza lui: cine, ce s-a întâmplat, cifra sau consecința care contează pentru cititor;",
+  "- alege detaliul cel mai neobișnuit sau mai important din material, nu rezumatul general;",
+  "- verbe active, cuvinte simple; fără etichete vagi și fără senzaționalism.",
+  "  Slab: „Situația la vama Palanca” → Bun: „Vama Palanca, închisă după ce un proiectil a lovit un autobuz”.",
+  "  Slab: „Noi tarife la gaz” → Bun: „Gazul se scumpește cu 18% din noiembrie: cât va costa metrul cub”.",
+  "  Slab: „Declarațiile lui Grosu despre Nistru” → Bun: „Grosu: nordul nu rămâne fără apă, deși Nistrul a scăzut la minim record”.",
   "",
   'Secțiunea "Ce înseamnă pentru tine": DOAR pentru prețuri, tarife, impozite, salarii, pensii, legi și reguli noi (educație, sănătate, economie, transport). Un <h2>Ce înseamnă pentru tine</h2> cu 2-4 puncte concrete (<ul>): cine e afectat, de când, ce trebuie să facă. Doar din fapte prezente în surse. La alte știri, omite-o.',
   "",
@@ -121,7 +133,7 @@ function titleRule(c: ClassificationResult): string {
 // că e altă știre (ce e nou), nu aceeași spusă altfel.
 function continuationRule(c: ClassificationResult): string {
   if (!c.continuesTitle) return "";
-  return `\n\nE CONTINUAREA unui articol deja publicat: „${c.continuesTitle}”. Titlul spune ce e NOU, nu repetă evenimentul (ex. „Dronele căzute în Moldova: ce spune Ministerul Apărării”, „Accidentul de la Telenești: ce a stabilit ancheta”). Primul paragraf spune în una-două fraze ce s-a schimbat față de ce se știa, apoi detaliile noi; evenimentul inițial doar pe scurt, la final.`;
+  return `\n\nE CONTINUAREA articolului deja publicat „${c.continuesTitle}”. Titlul trebuie să se deosebească clar de el: începe cu NOUTATEA (faptul nou), nu cu subiectul deja cunoscut, și nu repeta cuvintele principale ale titlului vechi (ex. publicat „Palanca: proiectil căzut lângă vamă” → continuare „Autobuz lovit de schijele de la Palanca, vama rămâne închisă”; publicat „Dronele explodate în Moldova” → continuare „Ministerul Apărării: dronele căzute erau de tip Gerbera”). Lead-ul începe cu ce s-a schimbat față de ce se știa, apoi detaliile noi; evenimentul inițial doar pe scurt, la final.`;
 }
 
 export async function generateArticle(

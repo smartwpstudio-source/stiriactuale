@@ -20,7 +20,9 @@ export async function announcePublished(id: number, how: "manual" | "auto"): Pro
 
   await notifyEditor(how === "auto" ? "publicat-auto" : "publicat", { id, title: a.title, lead: a.leadText });
   if (!a.telegramMessageId) {
-    const telegramMessageId = await postToChannel({ title: a.title, lead: a.leadText, url: absoluteUrl(path) });
+    // continuarea unei știri deja postate: marcată, să nu pară aceeași știre de două ori
+    const title = a.continuesId ? `🔄 Continuare: ${a.title}` : a.title;
+    const telegramMessageId = await postToChannel({ title, lead: a.leadText, url: absoluteUrl(path) });
     if (telegramMessageId) await db.update(articles).set({ telegramMessageId }).where(eq(articles.id, id));
   }
   if (!a.facebookPostId) {

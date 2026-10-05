@@ -72,9 +72,9 @@ export async function ArticlePage({
       {/* data-no-ads: AdSense nu se încarcă pe arhiva preluată (vezi adsense-script.tsx) */}
       <article className="min-w-0 max-w-[720px]" data-no-ads={article.archived || undefined}>
         <Breadcrumb items={breadcrumbItems} />
-        {(article.topics[0] || article.kind === "pe-scurt" || article.kind === "analiza") && (
+        {(article.topics[0] || article.kind === "pe-scurt" || article.kind === "analiza" || article.continuesId) && (
           <div className="mt-3 flex items-center gap-2">
-            <KindBadge kind={article.kind} />
+            <KindBadge kind={article.kind} continues={!!article.continuesId} />
             {article.topics[0] && <TopicLabel topic={article.topics[0]} />}
           </div>
         )}
