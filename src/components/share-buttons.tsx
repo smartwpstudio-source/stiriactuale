@@ -1,10 +1,11 @@
-import { IconBrandFacebook, IconBrandWhatsapp } from "@tabler/icons-react";
+import { IconBrandFacebook, IconBrandTelegram, IconBrandWhatsapp } from "@tabler/icons-react";
 
-// Sus, sub titlu și dată: două butoane pline, în culorile rețelelor —
-// Facebook și WhatsApp sunt canalele pe care cititorii din Moldova trimit
-// știrile mai departe (cererea proprietarului, 2026-10-04).
+// Sus, sub titlu și dată: butoane pline, în culorile rețelelor — Facebook,
+// WhatsApp și Telegram sunt canalele pe care cititorii din Moldova trimit
+// știrile mai departe (cererea proprietarului, 2026-10-04 / 10-05).
 export function ShareButtons({ url, title }: { url: string; title: string }) {
-  const button = "inline-flex items-center gap-2 rounded px-3 py-1.5 text-sm font-medium text-white";
+  // pe telefon: trei butoane egale pe un rând; de la `sm` — lățimea textului
+  const button = "inline-flex flex-1 items-center justify-center gap-1.5 rounded px-2 py-1.5 text-sm font-medium text-white sm:flex-none sm:gap-2 sm:px-3";
   return (
     // pe telefon textul scurt, ca butoanele să încapă pe un rând
     <div className="mt-4 flex flex-wrap items-center gap-2">
@@ -29,6 +30,17 @@ export function ShareButtons({ url, title }: { url: string; title: string }) {
         <IconBrandWhatsapp size={18} stroke={1.75} />
         <span className="sm:hidden">WhatsApp</span>
         <span className="hidden sm:inline">Trimite pe WhatsApp</span>
+      </a>
+      <a
+        href={`https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Trimite pe Telegram"
+        className={`${button} bg-[#229ed9] hover:bg-[#1e8bc0]`}
+      >
+        <IconBrandTelegram size={18} stroke={1.75} />
+        <span className="sm:hidden">Telegram</span>
+        <span className="hidden sm:inline">Trimite pe Telegram</span>
       </a>
     </div>
   );
