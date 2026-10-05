@@ -151,3 +151,13 @@ export const appSettings = pgTable("app_settings", {
   key: varchar("key", { length: 50 }).primaryKey(),
   value: text("value").notNull(),
 });
+
+// Postări programate în canalul Telegram (ex. prezentarea calculatoarelor, câte
+// una pe zi) — trimise de /api/cron/scheduled; textul e aprobat de editor.
+export const scheduledPosts = pgTable("scheduled_posts", {
+  id: serial("id").primaryKey(),
+  runAt: timestamp("run_at", { withTimezone: true }).notNull(),
+  text: text("text").notNull(), // HTML Telegram
+  pin: boolean("pin").notNull().default(false),
+  sentAt: timestamp("sent_at", { withTimezone: true }),
+});

@@ -46,6 +46,35 @@ export interface CalcParams {
     categorii: RoadTaxCategory[];
     surse: Source[];
   };
+  concediu_odihna?: { zile_minime: number; zile_medii_luna: number; nota: string; surse: Source[] };
+  somaj?: {
+    procent: number;
+    stagiu_minim_luni: number;
+    durate: { stagiu_min_luni: number; luni: number }[];
+    nota: string;
+    surse: Source[];
+  };
+  vamuire_auto?: {
+    varste: string[]; // coloanele anexei: "0-2", "3-4", "5-6", "7" … "19", "20+"
+    benzina: { max: number | null; cote: number[] }[];
+    diesel: { max: number | null; cote: number[] }[];
+    reducere_hibrid_pct: number;
+    reducere_plugin_pct: number;
+    lux: { de_la: number; pct: number }[];
+    nota: string;
+    surse: Source[];
+  };
+  impozit_imobil?: { cota_minima_pct: number; nota: string; surse: Source[] };
+  crestere_copil?: {
+    minim_lunar_lei: number;
+    plafon_baza_lei: number;
+    indemnizatie_unica_lei: number;
+    suplimentar_lunar_lei: number;
+    suplimentar_luni: number;
+    optiuni: { id: string; nume: string; etape: { procent: number; luni: number; minim: number }[] }[];
+    nota: string;
+    surse: Source[];
+  };
 }
 
 // Taxa pentru folosirea drumurilor (Codul fiscal, Anexa nr. 1 la Titlul IX):
@@ -66,6 +95,11 @@ export const CALCULATORS = [
   { slug: "salariu-net", title: "Salariul net", description: "Cât primești „în mână” din salariul brut: impozit, CNAM și CNAS, pas cu pas.", needs: "salariu" },
   { slug: "concediu-medical", title: "Indemnizația de concediu medical", description: "Cât primești pentru zilele de boală, după venit și stagiul de cotizare.", needs: "concediu_medical" },
   { slug: "concediu-maternitate", title: "Indemnizația de maternitate", description: "Suma estimată pentru concediul de maternitate, după venitul asigurat.", needs: "maternitate" },
+  { slug: "concediu-odihna", title: "Indemnizația de concediu de odihnă", description: "Cât primești pentru concediul anual, după salariul mediu din ultimele 3 luni.", needs: "concediu_odihna" },
+  { slug: "indemnizatie-somaj", title: "Indemnizația de șomaj", description: "Cât primești lunar și câte luni, după venitul asigurat și stagiul de cotizare.", needs: "somaj" },
+  { slug: "indemnizatie-crestere-copil", title: "Indemnizația pentru creșterea copilului", description: "Cele trei opțiuni (30%, 60%, 90%): cât primești lunar și în total, plus indemnizația unică la naștere.", needs: "crestere_copil" },
+  { slug: "vamuire-auto", title: "Vămuirea mașinii (acciza)", description: "Cât plătești la vamă pentru o mașină adusă din străinătate: acciza după motor, capacitate și anul fabricației.", needs: "vamuire_auto" },
+  { slug: "impozit-imobil", title: "Impozitul pe casă și teren", description: "Impozitul anual pe bunurile imobiliare, din valoarea estimată și cota primăriei.", needs: "impozit_imobil" },
   { slug: "taxa-drum", title: "Taxa pentru folosirea drumurilor", description: "Cât plătești pe an pentru mașină, motocicletă, remorcă sau autobuz, după cotele din Codul fiscal.", needs: "taxa_drum", guide: "taxa-pentru-folosirea-drumurilor-cat-platesti-si-cand" },
 ] as const;
 
@@ -122,4 +156,57 @@ export function roadTax(value: number, c: RoadTaxCategory) {
   const step = c.trepte.find((t) => t.max === null || value <= t.max) ?? c.trepte[c.trepte.length - 1];
   const tax = step.suma ?? round((step.rata ?? 0) * value);
   return { tax, step };
+}
+
+// Concediul de odihnă: estimare din salariul mediu lunar (zi calendaristică medie).
+export function vacationPay(avgMonthly: number, days: number, v: NonNullable<CalcParams["concediu_odihna"]>) {
+  const daily = round(avgMonthly / v.zile_medii_luna);
+  return { daily, total: round(daily * days) };
+}
+
+// Șomaj: procent din venitul mediu asigurat; durata după stagiul total (luni).
+export function unemployment(avgMonthly: number, stagiuLuni: number, s: NonNullable<CalcParams["somaj"]>) {
+  if (stagiuLuni < s.stagiu_minim_luni) return null;
+  const monthly = round((avgMonthly * s.procent) / 100);
+  const luni = [...s.durate].reverse().find((d) => stagiuLuni >= d.stagiu_min_luni)?.luni ?? 0;
+  return { monthly, luni, total: round(monthly * luni) };
+}
+
+// Creșterea copilului: fiecare opțiune, cu baza plafonată și minimul pe etapă.
+export function childcare(avgMonthly: number, c: NonNullable<CalcParams["crestere_copil"]>) {
+  const base = Math.min(avgMonthly, c.plafon_baza_lei);
+  return c.optiuni.map((o) => {
+    const etape = o.etape.map((e) => ({ ...e, lunar: Math.max(e.minim, round((base * e.procent) / 100)) }));
+    return { id: o.id, nume: o.nume, etape, total: round(etape.reduce((t, e) => t + e.lunar * e.luni, 0)) };
+  });
+}
+
+export type Engine = "benzina" | "diesel" | "hibrid-benzina" | "hibrid-diesel" | "plugin-benzina" | "plugin-diesel" | "electric";
+
+// coloana de vârstă din anexa accizelor pentru o mașină de `age` ani
+function ageColumn(age: number, cols: string[]): number {
+  const a = Math.max(0, Math.floor(age));
+  const i = cols.findIndex((c) => {
+    if (c.endsWith("+")) return a >= Number(c.slice(0, -1));
+    const [from, to = from] = c.split("-").map(Number);
+    return a >= from && a <= to;
+  });
+  return i < 0 ? cols.length - 1 : i;
+}
+
+// Vămuirea: taxa vamală 0, TVA scutit — doar acciza (+ acciza de lux peste prag).
+export function customsExcise(engine: Engine, cm3: number, age: number, customsValue: number, v: NonNullable<CalcParams["vamuire_auto"]>) {
+  const luxPct = [...v.lux].reverse().find((t) => customsValue >= t.de_la)?.pct ?? 0;
+  const lux = round((customsValue * luxPct) / 100);
+  if (engine === "electric") return { rate: 0, reduction: 0, excise: 0, lux, luxPct, total: lux };
+  const fuel = engine.endsWith("diesel") ? v.diesel : v.benzina;
+  const row = fuel.find((t) => t.max === null || cm3 <= t.max) ?? fuel[fuel.length - 1];
+  const rate = row.cote[ageColumn(age, v.varste)];
+  const reduction = engine.startsWith("hibrid") ? v.reducere_hibrid_pct : engine.startsWith("plugin") ? v.reducere_plugin_pct : 0;
+  const excise = round(rate * cm3 * (1 - reduction / 100));
+  return { rate, reduction, excise, lux, luxPct, total: round(excise + lux) };
+}
+
+export function propertyTax(value: number, ratePct: number) {
+  return round((value * ratePct) / 100);
 }

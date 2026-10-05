@@ -331,5 +331,377 @@
         "url": "https://monitorul.fisc.md/8.2.6.13-cand-se-achita-taxa-pentru-folosirea-drumurilor-de-catre-autovehiculele-inmatriculate-in-moldova-in-cazul-vehiculelor-care-incepand-cu-01.06.2025-sunt-supuse-inspeciei-tehnice-periodice-la-fiecare-2-ani"
       }
     ]
+  },
+  "concediu_odihna": {
+    "zile_minime": 28,
+    "zile_medii_luna": 30.4,
+    "nota": "Concediul anual minim e de 28 de zile calendaristice, fără sărbătorile nelucrătoare (Codul muncii, art. 113). Indemnizația se calculează din salariul mediu din ultimele 3 luni calendaristice (HG nr. 426/2004): câștigul pe 3 luni împărțit la zilele efectiv lucrate și adus la zi calendaristică. Calculatorul estimează cu o lună medie de 30,4 zile; suma exactă depinde de zilele lucrate și de sărbătorile din cele 3 luni. Se plătește cu cel puțin 3 zile înainte de concediu (art. 117).",
+    "surse": [
+      {
+        "name": "Codul muncii nr. 154/2003, art. 113–117 (legis.md)",
+        "url": "https://www.legis.md/cautare/getResults?doc_id=156323&lang=ro"
+      },
+      {
+        "name": "HG nr. 426/2004 privind modul de calculare a salariului mediu (legis.md)",
+        "url": "https://www.legis.md/cautare/getResults?doc_id=119783&lang=ro"
+      }
+    ]
+  },
+  "somaj": {
+    "procent": 40,
+    "stagiu_minim_luni": 12,
+    "durate": [
+      {
+        "stagiu_min_luni": 12,
+        "luni": 5
+      },
+      {
+        "stagiu_min_luni": 120,
+        "luni": 7
+      },
+      {
+        "stagiu_min_luni": 180,
+        "luni": 9
+      }
+    ],
+    "nota": "Indemnizația de șomaj e 40% din venitul mediu lunar asigurat din ultimele 12 luni (din ultimele 24), cu condiția unui stagiu de cotizare de cel puțin 12 luni în ultimele 24 de luni (Legea nr. 105/2018, art. 43, 45). Durata depinde de stagiul total: 5 luni (sub 10 ani), 7 luni (10–15 ani), 9 luni (peste 15 ani) — art. 46. Legea plafonează indemnizația la salariul mediu lunar pe economie din anul precedent; suma în lei a plafonului o comunică CNAS. Statutul de șomer se obține la ANOFM, plata o face CNAS.",
+    "surse": [
+      {
+        "name": "Legea nr. 105/2018 cu privire la promovarea ocupării forței de muncă și asigurarea de șomaj, art. 43–46 (legis.md)",
+        "url": "https://www.legis.md/cautare/getResults?doc_id=156343&lang=ro"
+      }
+    ]
+  },
+  "crestere_copil": {
+    "minim_lunar_lei": 740,
+    "plafon_baza_lei": 87000,
+    "indemnizatie_unica_lei": 21886,
+    "suplimentar_lunar_lei": 1000,
+    "suplimentar_luni": 24,
+    "optiuni": [
+      {
+        "id": "A",
+        "nume": "30% până la 3 ani",
+        "etape": [
+          {
+            "procent": 30,
+            "luni": 36,
+            "minim": 740
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "nume": "60% în primul an, 30% în al doilea",
+        "etape": [
+          {
+            "procent": 60,
+            "luni": 12,
+            "minim": 1480
+          },
+          {
+            "procent": 30,
+            "luni": 12,
+            "minim": 740
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "nume": "90% timp de 12 luni",
+        "etape": [
+          {
+            "procent": 90,
+            "luni": 12,
+            "minim": 2220
+          }
+        ]
+      }
+    ],
+    "nota": "Pentru părintele asigurat (stagiu de cel puțin 3 ani sau 9 luni în ultimele 24): baza e venitul asigurat din cele 12 luni dinaintea nașterii, împărțit la 12, plafonat la 5 salarii medii prognozate (87.000 lei pe lună pentru 2026). CNAS stabilește din oficiu opțiunea de 30% până la 3 ani; se poate schimba o singură dată, până când copilul împlinește 1 an (Legea nr. 289/2004, art. 18). În plus, indemnizația unică la naștere de 21.886 lei (2026, pentru fiecare copil) și 1.000 lei pe lună până la 2 ani (HG nr. 1478/2002). Persoanele neasigurate primesc indemnizația unică și cei 1.000 lei pe lună.",
+    "surse": [
+      {
+        "name": "Legea nr. 289/2004 privind indemnizațiile pentru incapacitate temporară de muncă și alte prestații, art. 18 (legis.md)",
+        "url": "https://www.legis.md/cautare/getResults?doc_id=151180&lang=ro"
+      },
+      {
+        "name": "HG nr. 1478/2002 privind indemnizațiile adresate familiilor cu copii (legis.md)",
+        "url": "https://www.legis.md/cautare/getResults?doc_id=152805&lang=ro"
+      },
+      {
+        "name": "HG nr. 773/2025 — salariul mediu lunar prognozat pentru 2026: 17.400 lei (legis.md)",
+        "url": "https://www.legis.md/cautare/getResults?doc_id=152066&lang=ro"
+      }
+    ]
+  },
+  "vamuire_auto": {
+    "varste": [
+      "0-2",
+      "3-4",
+      "5-6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20+"
+    ],
+    "benzina": [
+      {
+        "max": 1000,
+        "cote": [
+          9.56,
+          10.0,
+          10.23,
+          11.25,
+          12.38,
+          13.62,
+          16.34,
+          21.24,
+          26.24,
+          31.24,
+          36.24,
+          41.24,
+          46.24,
+          51.24,
+          56.24,
+          61.24,
+          66.24
+        ]
+      },
+      {
+        "max": 1500,
+        "cote": [
+          12.23,
+          12.67,
+          12.9,
+          14.19,
+          15.61,
+          17.17,
+          20.6,
+          26.79,
+          31.79,
+          36.79,
+          41.79,
+          46.79,
+          51.79,
+          56.79,
+          61.79,
+          66.79,
+          71.79
+        ]
+      },
+      {
+        "max": 2000,
+        "cote": [
+          18.9,
+          19.34,
+          19.57,
+          21.53,
+          23.68,
+          26.05,
+          31.26,
+          40.63,
+          45.63,
+          50.63,
+          55.63,
+          60.63,
+          65.63,
+          70.63,
+          75.63,
+          80.63,
+          85.63
+        ]
+      },
+      {
+        "max": 3000,
+        "cote": [
+          31.14,
+          31.58,
+          31.81,
+          34.99,
+          38.49,
+          42.34,
+          50.81,
+          66.05,
+          71.05,
+          76.05,
+          81.05,
+          86.05,
+          91.05,
+          96.05,
+          101.05,
+          106.05,
+          111.05
+        ]
+      },
+      {
+        "max": null,
+        "cote": [
+          55.6,
+          56.04,
+          56.27,
+          61.9,
+          68.09,
+          74.9,
+          89.87,
+          116.84,
+          121.84,
+          126.84,
+          131.84,
+          136.84,
+          141.84,
+          146.84,
+          151.84,
+          156.84,
+          161.84
+        ]
+      }
+    ],
+    "diesel": [
+      {
+        "max": 1500,
+        "cote": [
+          12.23,
+          12.67,
+          12.9,
+          14.19,
+          15.61,
+          17.17,
+          20.6,
+          26.79,
+          31.79,
+          36.79,
+          41.79,
+          46.79,
+          51.79,
+          56.79,
+          61.79,
+          66.79,
+          71.79
+        ]
+      },
+      {
+        "max": 2500,
+        "cote": [
+          31.14,
+          31.58,
+          31.81,
+          34.99,
+          38.49,
+          42.34,
+          50.81,
+          66.05,
+          71.05,
+          76.05,
+          81.05,
+          86.05,
+          91.05,
+          96.05,
+          101.05,
+          106.05,
+          111.05
+        ]
+      },
+      {
+        "max": null,
+        "cote": [
+          55.6,
+          56.04,
+          56.27,
+          61.9,
+          68.09,
+          74.9,
+          89.87,
+          116.84,
+          121.84,
+          126.84,
+          131.84,
+          136.84,
+          141.84,
+          146.84,
+          151.84,
+          156.84,
+          161.84
+        ]
+      }
+    ],
+    "reducere_hibrid_pct": 25,
+    "reducere_plugin_pct": 50,
+    "lux": [
+      {
+        "de_la": 600000,
+        "pct": 2
+      },
+      {
+        "de_la": 700001,
+        "pct": 3
+      },
+      {
+        "de_la": 800001,
+        "pct": 4
+      },
+      {
+        "de_la": 900001,
+        "pct": 5
+      },
+      {
+        "de_la": 1000001,
+        "pct": 6
+      },
+      {
+        "de_la": 1200001,
+        "pct": 7
+      },
+      {
+        "de_la": 1400001,
+        "pct": 8
+      },
+      {
+        "de_la": 1600001,
+        "pct": 9
+      },
+      {
+        "de_la": 1800001,
+        "pct": 10
+      }
+    ],
+    "nota": "Pentru autoturisme (poziția 8703), taxa vamală e 0% indiferent de țara de origine, iar importul e scutit de TVA (Codul fiscal, art. 103). Rămâne acciza: cota în lei pe cm³ din Anexa nr. 2 la Titlul IV, după tipul motorului, capacitate și vechime (socotită după anul de fabricație), înmulțită cu capacitatea. Hibridele obișnuite au cota redusă cu 25% (nu micro sau mild hybrid), plug-in cu 50% (art. 124 alin. 18). La valoarea în vamă de peste 600.000 lei se adaugă acciza de lux, 2–10% din valoare. Mașinile complet electrice nu figurează în anexa accizelor, deci nu plătesc acciză (dedus din lege). Nu există limită de vechime la import.",
+    "surse": [
+      {
+        "name": "Codul fiscal, Titlul IV, art. 123–124 și Anexa nr. 2 — accizele (legis.md)",
+        "url": "https://www.legis.md/UserFiles/Image/RO/2025/mo659-661ro/an_%202_IV_1163_ro.docx"
+      },
+      {
+        "name": "Codul fiscal, art. 103 — scutirea de TVA (legis.md)",
+        "url": "https://www.legis.md/cautare/getResults?doc_id=155071&lang=ro"
+      },
+      {
+        "name": "Nomenclatura combinată a mărfurilor, poziția 8703 — taxa vamală 0% (legis.md)",
+        "url": "https://www.legis.md/UserFiles/Image/RO/2026/mo277-279ro/nomenclator_172md.docx"
+      },
+      {
+        "name": "Serviciul Vamal — importul mijloacelor de transport: cerințe și documente",
+        "url": "https://customs.gov.md/ro/articles/importul-mijloacelor-de-transport-cerinte-si-documente-2466-ro"
+      }
+    ]
+  },
+  "impozit_imobil": {
+    "cota_minima_pct": 0.05,
+    "nota": "Impozitul pe bunurile imobiliare = valoarea estimată (cadastrală) × cota stabilită de consiliul local (Codul fiscal, art. 280–282). Pentru locuințe legea fixează doar minimul, 0,05%; cota concretă și valoarea estimată sunt pe avizul de plată de la primărie, care vine până la 15 iunie. Persoanele fizice plătesc integral până la 30 iunie. Pensionarii, persoanele cu dizabilități și alte categorii sunt scutite pentru locuința de domiciliu, până la o limită de valoare stabilită de primărie (art. 283).",
+    "surse": [
+      {
+        "name": "Codul fiscal, Titlul VI, art. 278–283 (legis.md)",
+        "url": "https://www.legis.md/cautare/getResults?doc_id=155071&lang=ro"
+      }
+    ]
   }
 }

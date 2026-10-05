@@ -15,6 +15,10 @@
     {
       "path": "/api/cron/digest/?tip=seara",
       "schedule": "0 19,20 * * *"
+    },
+    {
+      "path": "/api/cron/scheduled/",
+      "schedule": "0 * * * *"
     }
   ],
   "ignoreCommand": "bash scripts/vercel-ignore.sh"

@@ -84,3 +84,13 @@ export async function postDigestToChannel(html: string): Promise<boolean> {
   });
   return msg !== null;
 }
+
+// Postare programată (scheduled_posts): cu previzualizarea linkului (o
+// singură trimitere, spre calculator / articol) și, la nevoie, fixată sus.
+export async function postScheduledToChannel(html: string, pin: boolean): Promise<boolean> {
+  const chatId = process.env.TELEGRAM_CHANNEL_ID;
+  if (!chatId) return false;
+  const msg = await call<{ message_id: number }>("sendMessage", { chat_id: chatId, parse_mode: "HTML", text: html });
+  if (msg && pin) await call("pinChatMessage", { chat_id: chatId, message_id: msg.message_id, disable_notification: true });
+  return msg !== null;
+}

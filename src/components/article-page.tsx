@@ -19,6 +19,8 @@ import { sanitizeBody, splitAfterParagraph } from "@/lib/content/sanitize";
 import { ADSENSE_IN_ARTICLE_SLOT } from "@/lib/adsense";
 import { AdSlot } from "./ad-slot";
 import { RelatedGuide } from "./related-guide";
+import { RelatedCalculator } from "./related-calculator";
+import { getRelatedCalculator } from "@/lib/content/related-calculator";
 import { VideoEmbed } from "./video-embed";
 import { TelegramVideo } from "./telegram-video";
 import { PostEmbed } from "./post-embed";
@@ -57,11 +59,12 @@ export async function ArticlePage({
   article: Article;
   breadcrumbItems: BreadcrumbItem[];
 }) {
-  const [similar, { items: latest }, guide, previous] = await Promise.all([
+  const [similar, { items: latest }, guide, previous, calculator] = await Promise.all([
     getSimilarArticles(article),
     listArticles({}, 1, 9),
     article.archived ? undefined : getRelatedGuide(article.title, article.lead, article.locality),
     article.continuesId ? getArticleLink(article.continuesId) : null,
+    article.archived ? undefined : getRelatedCalculator(article.title, article.lead),
   ]);
 
   return (
@@ -178,6 +181,7 @@ export async function ArticlePage({
             ))}
           </div>
         )}
+        {calculator && <RelatedCalculator calc={calculator} />}
         {guide && <RelatedGuide guide={guide} />}
         <TelegramCta />
         <PushOptIn />

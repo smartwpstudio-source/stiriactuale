@@ -2,7 +2,7 @@
 // (nu reale — cele reale sunt în content/calculatoare/parametri.json).
 // npx tsx scripts/checks/calculators.ts
 import assert from "node:assert";
-import { grossForNet, maternityPay, netSalary, roadTax, sickPay } from "../../src/lib/calculators";
+import { childcare, customsExcise, grossForNet, maternityPay, netSalary, propertyTax, roadTax, sickPay, unemployment, vacationPay } from "../../src/lib/calculators";
 
 const s = {
   impozit_venit_pct: 10, scutire_personala_anuala_lei: 12000, cnam_angajat_pct: 5, cnas_angajat_pct: 5,
@@ -43,3 +43,28 @@ assert.equal(roadTax(3.5, cat("camion")).tax, 2250);
 assert.equal(roadTax(18, cat("autobuz")).tax, 4275);
 assert.equal(roadTax(0, cat("tractor")).tax, 2250);
 console.log("taxa-drum: OK");
+
+// calculatoarele noi, pe valorile reale din parametri.json
+const P = params as unknown as Required<import("../../src/lib/calculators").CalcParams>;
+assert.equal(vacationPay(15200, 28, P.concediu_odihna).total, 14000); // 15200/30,4 = 500 × 28
+assert.equal(unemployment(10000, 11, P.somaj), null); // sub 12 luni stagiu
+assert.deepEqual(unemployment(10000, 60, P.somaj), { monthly: 4000, luni: 5, total: 20000 }); // 40%, 5 luni
+assert.equal(unemployment(10000, 130, P.somaj)!.luni, 7); // 10-15 ani
+assert.equal(unemployment(10000, 200, P.somaj)!.luni, 9); // peste 15 ani
+const cc = childcare(10000, P.crestere_copil);
+assert.equal(cc[0].total, 3000 * 36); // A: 30% × 36 luni
+assert.equal(cc[1].total, 6000 * 12 + 3000 * 12); // B
+assert.equal(cc[2].total, 9000 * 12); // C
+assert.equal(childcare(1000, P.crestere_copil)[0].etape[0].lunar, 740); // minimul
+assert.equal(childcare(200000, P.crestere_copil)[2].etape[0].lunar, 78300); // plafon 87000 × 90%
+console.log("calculatoare noi: OK");
+
+// vămuirea (exemplele din Anexa nr. 2) și impozitul pe imobil
+assert.equal(customsExcise("diesel", 2000, 10, 0, P.vamuire_auto).excise, 101620); // 50,81 × 2000
+assert.equal(customsExcise("benzina", 1600, 8, 0, P.vamuire_auto).excise, 37888); // 23,68 × 1600
+assert.equal(customsExcise("benzina", 1400, 1, 0, P.vamuire_auto).excise, 17122); // 0-2 ani: 12,23
+assert.equal(customsExcise("hibrid-benzina", 1800, 5, 0, P.vamuire_auto).excise, 26419.5); // −25%
+assert.equal(customsExcise("benzina", 1600, 25, 0, P.vamuire_auto).rate, 85.63); // 20+ ani
+assert.equal(customsExcise("electric", 0, 3, 650000, P.vamuire_auto).total, 13000); // doar lux 2%
+assert.equal(propertyTax(1000000, 0.185), 1850);
+console.log("vamuire, imobil: OK");
