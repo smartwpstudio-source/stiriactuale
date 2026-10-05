@@ -41,6 +41,23 @@ export interface CalcParams {
     plafon_lei: number | null;
     surse: Source[];
   };
+  taxa_drum?: {
+    nota: string;
+    categorii: RoadTaxCategory[];
+    surse: Source[];
+  };
+}
+
+// Taxa pentru folosirea drumurilor (Codul fiscal, Anexa nr. 1 la Titlul IX):
+// treapta = primul prag `max` (inclusiv) în care intră valoarea; suma =
+// `suma` fixă sau `rata` × valoarea întreagă (nu doar partea din treaptă).
+export interface RoadTaxCategory {
+  id: string;
+  nume: string;
+  unitate: string | null; // null = sumă fixă, fără câmp
+  camp?: string;
+  implicit?: number;
+  trepte: { max: number | null; rata?: number; suma?: number }[];
 }
 
 
@@ -49,6 +66,7 @@ export const CALCULATORS = [
   { slug: "salariu-net", title: "Salariul net", description: "Cât primești „în mână” din salariul brut: impozit, CNAM și CNAS, pas cu pas.", needs: "salariu" },
   { slug: "concediu-medical", title: "Indemnizația de concediu medical", description: "Cât primești pentru zilele de boală, după venit și stagiul de cotizare.", needs: "concediu_medical" },
   { slug: "concediu-maternitate", title: "Indemnizația de maternitate", description: "Suma estimată pentru concediul de maternitate, după venitul asigurat.", needs: "maternitate" },
+  { slug: "taxa-drum", title: "Taxa pentru folosirea drumurilor", description: "Cât plătești pe an pentru mașină, motocicletă, remorcă sau autobuz, după cotele din Codul fiscal.", needs: "taxa_drum", guide: "taxa-pentru-folosirea-drumurilor-cat-platesti-si-cand" },
 ] as const;
 
 export type CalculatorSlug = (typeof CALCULATORS)[number]["slug"];
@@ -98,4 +116,10 @@ export function maternityPay(avgMonthly: number, m: NonNullable<CalcParams["mate
   const base = m.plafon_lei ? Math.min(avgMonthly, m.plafon_lei) : avgMonthly;
   const daily = round(((base / m.zile_medii_luna) * m.procent) / 100);
   return { daily, total: round(daily * days), days };
+}
+
+export function roadTax(value: number, c: RoadTaxCategory) {
+  const step = c.trepte.find((t) => t.max === null || value <= t.max) ?? c.trepte[c.trepte.length - 1];
+  const tax = step.suma ?? round((step.rata ?? 0) * value);
+  return { tax, step };
 }

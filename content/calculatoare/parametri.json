@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-02",
+  "updated": "2026-10-05",
   "an": 2026,
   "salariu": {
     "impozit_venit_pct": 12,
@@ -114,6 +114,221 @@
       {
         "zile": 182,
         "caz": "trei sau mai mulți copii"
+      }
+    ]
+  },
+  "taxa_drum": {
+    "nota": "Cotele din Anexa nr. 1 la Titlul IX din Codul fiscal (versiunea în vigoare din 25.06.2026; neschimbate și în versiunea de la 01.01.2027). La autoturisme cota se aplică întregii capacități cilindrice (sau întregii mase, la cele electrice), nu doar tranșei. Taxa se plătește o dată pe an, înainte de inspecția tehnică; la mașinile cu inspecție la 2 ani, taxa rămâne anuală. Scutite: persoanele cu dizabilități ale aparatului locomotor (art. 343).",
+    "categorii": [
+      {
+        "id": "autoturism",
+        "nume": "Autoturism (benzină, motorină, hibrid)",
+        "unitate": "cm³",
+        "camp": "Capacitatea cilindrică a motorului",
+        "implicit": 1598,
+        "trepte": [
+          {
+            "max": 2000,
+            "rata": 0.6
+          },
+          {
+            "max": 3000,
+            "rata": 0.9
+          },
+          {
+            "max": 4000,
+            "rata": 1.2
+          },
+          {
+            "max": 5000,
+            "rata": 1.5
+          },
+          {
+            "max": null,
+            "rata": 1.8
+          }
+        ]
+      },
+      {
+        "id": "autoturism-electric",
+        "nume": "Autoturism complet electric",
+        "unitate": "kg",
+        "camp": "Masa totală (din certificatul de înmatriculare)",
+        "implicit": 1800,
+        "trepte": [
+          {
+            "max": 1500,
+            "rata": 0.6
+          },
+          {
+            "max": 2500,
+            "rata": 0.9
+          },
+          {
+            "max": 3500,
+            "rata": 1.2
+          },
+          {
+            "max": 4500,
+            "rata": 1.5
+          },
+          {
+            "max": null,
+            "rata": 1.8
+          }
+        ]
+      },
+      {
+        "id": "motocicleta",
+        "nume": "Motocicletă, moped, scuter, motoretă",
+        "unitate": "cm³",
+        "camp": "Capacitatea cilindrică",
+        "implicit": 125,
+        "trepte": [
+          {
+            "max": 500,
+            "suma": 300
+          },
+          {
+            "max": null,
+            "suma": 600
+          }
+        ]
+      },
+      {
+        "id": "moped-electric",
+        "nume": "Moped, scuter, motoretă cu motor electric",
+        "unitate": null,
+        "trepte": [
+          {
+            "max": null,
+            "suma": 300
+          }
+        ]
+      },
+      {
+        "id": "motocicleta-electrica",
+        "nume": "Motocicletă cu motor electric",
+        "unitate": null,
+        "trepte": [
+          {
+            "max": null,
+            "suma": 600
+          }
+        ]
+      },
+      {
+        "id": "remorca",
+        "nume": "Remorcă",
+        "unitate": "t",
+        "camp": "Capacitatea de ridicare",
+        "implicit": 0.75,
+        "trepte": [
+          {
+            "max": null,
+            "rata": 270
+          }
+        ]
+      },
+      {
+        "id": "semiremorca",
+        "nume": "Semiremorcă",
+        "unitate": "t",
+        "camp": "Capacitatea de ridicare",
+        "implicit": 20,
+        "trepte": [
+          {
+            "max": 20,
+            "rata": 225
+          },
+          {
+            "max": null,
+            "suma": 4500
+          }
+        ]
+      },
+      {
+        "id": "tractor",
+        "nume": "Autoremorcher, tractor (neagricol)",
+        "unitate": null,
+        "trepte": [
+          {
+            "max": null,
+            "suma": 2250
+          }
+        ]
+      },
+      {
+        "id": "camion",
+        "nume": "Autocamion și alte autovehicule cu autopropulsie",
+        "unitate": "t",
+        "camp": "Masa totală",
+        "implicit": 3.5,
+        "trepte": [
+          {
+            "max": 1.6,
+            "suma": 1200
+          },
+          {
+            "max": 5,
+            "suma": 2250
+          },
+          {
+            "max": 10,
+            "suma": 3000
+          },
+          {
+            "max": null,
+            "suma": 4500
+          }
+        ]
+      },
+      {
+        "id": "autobuz",
+        "nume": "Autobuz, microbuz",
+        "unitate": "locuri",
+        "camp": "Numărul de locuri (fără locul șoferului)",
+        "implicit": 18,
+        "trepte": [
+          {
+            "max": 11,
+            "suma": 2925
+          },
+          {
+            "max": 17,
+            "suma": 3600
+          },
+          {
+            "max": 24,
+            "suma": 4275
+          },
+          {
+            "max": 40,
+            "suma": 4725
+          },
+          {
+            "max": null,
+            "suma": 5400
+          }
+        ]
+      }
+    ],
+    "surse": [
+      {
+        "name": "Codul fiscal, Titlul IX, art. 337–343 și Anexa nr. 1 (legis.md, versiunea din 25.06.2026)",
+        "url": "https://www.legis.md/cautare/getResults?doc_id=155071&lang=ro"
+      },
+      {
+        "name": "Serviciul Fiscal de Stat — calculatorul taxei pentru folosirea drumurilor",
+        "url": "https://sfs.md/ro/services-online/route.calculator_auto"
+      },
+      {
+        "name": "Cotele taxelor rutiere aferente perioadei fiscale 2026 (dataset.gov.md)",
+        "url": "https://dataset.gov.md/dataset/1fbfb0fa-c342-4f0c-ae63-4a5f7560d75a/resource/c54e31b2-1c55-4d76-8633-3c4f0dc5b4f7/download/anul-2026.pdf"
+      },
+      {
+        "name": "Monitorul Fiscal FISC.md — electrice de la 01.01.2026 și taxa anuală la inspecția la 2 ani",
+        "url": "https://monitorul.fisc.md/8.2.6.13-cand-se-achita-taxa-pentru-folosirea-drumurilor-de-catre-autovehiculele-inmatriculate-in-moldova-in-cazul-vehiculelor-care-incepand-cu-01.06.2025-sunt-supuse-inspeciei-tehnice-periodice-la-fiecare-2-ani"
       }
     ]
   }

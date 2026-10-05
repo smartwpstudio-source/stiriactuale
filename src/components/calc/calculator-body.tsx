@@ -2,6 +2,7 @@ import { CurrencyConverter } from "./currency";
 import { MaternityCalculator } from "./maternity";
 import { SalaryCalculator } from "./salary";
 import { SickPayCalculator } from "./sick-pay";
+import { RoadTaxCalculator } from "./road-tax";
 import { getBnmRates } from "@/lib/bnm";
 import { availableCalculators } from "@/lib/calculators";
 import { getCalcParams } from "@/lib/calculators-data";
@@ -28,10 +29,15 @@ export async function loadCalculator(slug: string) {
   } else if (slug === "concediu-maternitate" && p?.maternitate) {
     body = <MaternityCalculator p={p.maternitate} />;
     sources = p.maternitate.surse;
+  } else if (slug === "taxa-drum" && p?.taxa_drum) {
+    body = <RoadTaxCalculator p={p.taxa_drum} />;
+    sources = p.taxa_drum.surse;
   }
   const note =
     slug === "convertor-valutar" || !p
       ? ""
-      : `Estimare orientativă, cu valorile oficiale pentru ${p.an} (verificate la ${p.updated}). Suma exactă o stabilește angajatorul sau instituția care plătește.`;
+      : slug === "taxa-drum" && p.taxa_drum
+        ? `${p.taxa_drum.nota} Suma exactă o confirmă Serviciul Fiscal de Stat.`
+        : `Estimare orientativă, cu valorile oficiale pentru ${p.an} (verificate la ${p.updated}). Suma exactă o stabilește angajatorul sau instituția care plătește.`;
   return { calc: c, body, sources, note };
 }

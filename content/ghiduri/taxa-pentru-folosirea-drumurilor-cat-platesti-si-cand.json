@@ -1,0 +1,56 @@
+{
+  "slug": "taxa-pentru-folosirea-drumurilor-cat-platesti-si-cand",
+  "title": "Taxa pentru folosirea drumurilor 2026: cât plătești și până când",
+  "description": "Cotele taxei de drum pentru 2026: autoturisme după cm³, electrice după masă, camioane, autobuze. Când o plătești, cu ITP la 2 ani, și cine e scutit.",
+  "category": "auto",
+  "updated": "2026-10-05",
+  "sources": [
+    {
+      "name": "Codul fiscal, Titlul IX, art. 337–343 și Anexa nr. 1 (legis.md)",
+      "url": "https://www.legis.md/cautare/getResults?doc_id=155071&lang=ro"
+    },
+    {
+      "name": "Serviciul Fiscal de Stat — calculatorul taxelor rutiere",
+      "url": "https://sfs.md/ro/services-online/route.calculator_auto"
+    },
+    {
+      "name": "Cotele taxelor rutiere pentru perioada fiscală 2026 (dataset.gov.md)",
+      "url": "https://dataset.gov.md/dataset/1fbfb0fa-c342-4f0c-ae63-4a5f7560d75a/resource/c54e31b2-1c55-4d76-8633-3c4f0dc5b4f7/download/anul-2026.pdf"
+    },
+    {
+      "name": "Monitorul Fiscal FISC.md — cotele pentru vehiculele electrice",
+      "url": "https://monitorul.fisc.md/8.2.4.4-care-cota-urmeaza-a-fi-aplicata-pentru-calcularea-taxei-pentru-folosirea-drumurilor-de-catre-autovehiculele-inmatriculate-in-republica-moldova-in-cazul-motocicletelor-mopedelor-scuterelor-motoretelor-cu-motor-electric-si-autoturismelor-comp"
+    },
+    {
+      "name": "Monitorul Fiscal FISC.md — taxa pentru vehiculele cu inspecție tehnică la 2 ani",
+      "url": "https://monitorul.fisc.md/8.2.6.13-cand-se-achita-taxa-pentru-folosirea-drumurilor-de-catre-autovehiculele-inmatriculate-in-moldova-in-cazul-vehiculelor-care-incepand-cu-01.06.2025-sunt-supuse-inspeciei-tehnice-periodice-la-fiecare-2-ani"
+    }
+  ],
+  "bodyHtml": "<p>Dacă mașina ta e înmatriculată în Republica Moldova, plătești în fiecare an taxa pentru folosirea drumurilor. Suma depinde de tipul vehiculului: la autoturismele pe benzină sau motorină contează capacitatea motorului, la cele complet electrice contează masa totală, iar la motociclete, camioane și autobuze se plătește o sumă fixă. Taxa se achită cel târziu la inspecția tehnică periodică. Ca să afli rapid suma pentru mașina ta, folosește <a href=\"/calculatoare/taxa-drum/\">calculatorul taxei pentru folosirea drumurilor</a>.</p>\n<p>Nu confunda această taxă cu vinieta. Vinieta o plătesc mașinile înmatriculate în străinătate care circulă pe drumurile din Moldova. Detalii găsești în ghidul despre <a href=\"/ghiduri/vinieta-taxa-de-drum-pentru-masini/\">vinieta pentru mașinile cu număr străin</a>.</p>\n\n<h2>Cine plătește</h2>\n<p>Potrivit Codului fiscal (art. 337), taxa o plătesc persoanele fizice și juridice care au în posesie autovehicule înmatriculate în Republica Moldova. Câteva situații frecvente:</p>\n<ul>\n<li><strong>Mașina e în leasing, închiriată sau o conduci cu procură.</strong> Taxa o achită posesorul, dacă proprietarul sau posesorul anterior nu a achitat-o deja pentru anul în curs (art. 341 alin. 7).</li>\n<li><strong>Ai cumpărat o mașină la mâna a doua.</strong> Dacă taxa pe anul curent a fost deja achitată, nu o mai plătești încă o dată. Fostul proprietar nu primește banii înapoi (art. 341 alin. 6).</li>\n<li><strong>Ai o firmă sau ești întreprinzător.</strong> Pe lângă plată, depui anual darea de seamă (raportul fiscal), în format electronic, până la 25 ianuarie a anului următor. Întreprinderile individuale și gospodăriile țărănești cu cel mult 3 salariați, care nu plătesc TVA, o includ în darea de seamă unificată, până la 25 martie (art. 342). Persoanele fizice obișnuite nu depun dare de seamă.</li>\n</ul>\n\n<h2>Cât costă în 2026</h2>\n<p>Cotele sunt cele din Anexa nr. 1 la Titlul IX al Codului fiscal și sunt aceleași în calculatorul Serviciului Fiscal de Stat și în lista publicată pe dataset.gov.md. Datele se iau din certificatul de înmatriculare al vehiculului. Vechimea mașinii nu contează: nu există coeficienți de vârstă.</p>\n\n<h3>Autoturisme pe benzină sau motorină</h3>\n<p>Se înmulțește cota cu <strong>întreaga</strong> capacitate cilindrică a motorului, în cm³ (centimetri cubi). Cota nu se aplică pe trepte: dacă motorul are 2.500 cm³, toți cei 2.500 cm³ se taxează cu 0,90 lei.</p>\n<table>\n<thead><tr><th>Capacitatea motorului</th><th>Cota, lei pentru fiecare cm³</th></tr></thead>\n<tbody>\n<tr><td>până la 2.000 cm³ inclusiv</td><td>0,60</td></tr>\n<tr><td>de la 2.001 la 3.000 cm³ inclusiv</td><td>0,90</td></tr>\n<tr><td>de la 3.001 la 4.000 cm³ inclusiv</td><td>1,20</td></tr>\n<tr><td>de la 4.001 la 5.000 cm³ inclusiv</td><td>1,50</td></tr>\n<tr><td>peste 5.000 cm³</td><td>1,80</td></tr>\n</tbody>\n</table>\n<p><strong>Exemplu:</strong> un autoturism cu motor de 1.998 cm³ intră în prima categorie. Taxa este 1.998 × 0,60 = <strong>1.198,80 lei</strong> pe an. Pentru un motor de 2.500 cm³: 2.500 × 0,90 = <strong>2.250 de lei</strong>.</p>\n<p>Aceleași cote se aplică și autovehiculelor pentru utilizări speciale construite pe șasiu de autoturism.</p>\n\n<h3>Autoturisme complet electrice</h3>\n<p>De la 1 ianuarie 2026, autoturismele complet electrice plătesc și ele taxa. Aici contează masa totală din certificatul de înmatriculare, în kilograme, și cota se aplică tot pe întreaga masă.</p>\n<table>\n<thead><tr><th>Masa totală</th><th>Cota, lei pentru fiecare kg</th></tr></thead>\n<tbody>\n<tr><td>până la 1.500 kg inclusiv</td><td>0,60</td></tr>\n<tr><td>de la 1.501 la 2.500 kg inclusiv</td><td>0,90</td></tr>\n<tr><td>de la 2.501 la 3.500 kg inclusiv</td><td>1,20</td></tr>\n<tr><td>de la 3.501 la 4.500 kg inclusiv</td><td>1,50</td></tr>\n<tr><td>peste 4.500 kg</td><td>1,80</td></tr>\n</tbody>\n</table>\n<p><strong>Exemplu</strong> (dat și de Serviciul Fiscal de Stat): o mașină electrică cu masa totală de 1.800 kg plătește 1.800 × 0,90 = <strong>1.620 de lei</strong>.</p>\n\n<h3>Alte vehicule</h3>\n<ul>\n<li><strong>Motociclete, mopede, scutere, motorete:</strong> până la 500 cm³ inclusiv — 300 de lei; peste 500 cm³ — 600 de lei.</li>\n<li><strong>Cu motor electric</strong> (de la 1 ianuarie 2026): moped, scuter sau motoretă — 300 de lei; motocicletă — 600 de lei.</li>\n<li><strong>Remorci:</strong> 270 de lei pentru fiecare tonă de capacitate de ridicare.</li>\n<li><strong>Semiremorci:</strong> până la 20 t inclusiv — 225 de lei pe tonă; peste 20 t — 4.500 de lei pe unitate.</li>\n<li><strong>Autoremorchere și tractoare:</strong> 2.250 de lei pe unitate.</li>\n<li><strong>Camioane și alte autovehicule, după masa totală:</strong> până la 1,6 t inclusiv — 1.200 de lei; de la 1,6 la 5 t — 2.250 de lei; de la 5 la 10 t — 3.000 de lei; peste 10 t — 4.500 de lei.</li>\n<li><strong>Microbuze și autobuze, după numărul de locuri (fără locul șoferului):</strong> până la 11 — 2.925 de lei; 12–17 — 3.600 de lei; 18–24 — 4.275 de lei; 25–40 — 4.725 de lei; peste 40 — 5.400 de lei.</li>\n</ul>\n<p>Pentru autovehiculele mixte, potrivit Codului fiscal se calculează taxa după fiecare categorie potrivită — autoturism, camion, autobuz — și se plătește cea mai mare sumă (art. 341 alin. 8). La vehiculele reutilate se aplică cota categoriei în care au fost trecute după reutilare.</p>\n\n<h2>Când și cum se plătește</h2>\n<p>Perioada fiscală este anul calendaristic. Taxa se plătește o dată pe an, integral (art. 340). Termenul-limită este data inspecției tehnice periodice (ITP) anuale, dacă nu ai plătit mai devreme. Fără taxa achitată pentru anul în curs, mașina nu trece inspecția tehnică.</p>\n<ol>\n<li><strong>Calculezi suma singur,</strong> după datele din certificatul de înmatriculare. Te ajută calculatorul nostru sau cel de pe sfs.md.</li>\n<li><strong>Completezi documentul de plată</strong> cu codul VIN (seria de șasiu), tipul și marca vehiculului.</li>\n<li><strong>Păstrezi confirmarea plății</strong> și o prezinți la inspecția tehnică.</li>\n</ol>\n<p>Alte reguli utile, potrivit Codului fiscal:</p>\n<ul>\n<li>Taxa se plătește indiferent dacă mașina trece sau nu inspecția. Dacă revii în același an după o respingere, nu mai plătești încă o dată.</li>\n<li>Dacă vehiculul trece inspecția tehnică de două ori pe an, taxa se achită în rate egale, la fiecare inspecție.</li>\n<li>Dacă ai plătit mai mult, suma în plus se trece în contul anului următor sau ți se restituie.</li>\n<li>Pentru vehiculele cu înmatriculare provizorie pentru probe, taxa este 25% din cotă pentru 90 de zile de la plată; apoi, pentru restul anului, se achită taxa deplină.</li>\n</ul>\n\n<h3>Mașinile cu inspecție tehnică la 2 ani</h3>\n<p>Din 1 iunie 2025, autoturismele și utilitarele ușoare de până la 10 ani, motocicletele și mopedele, precum și remorcile ușoare trec inspecția tehnică o dată la 2 ani. <strong>Taxa rămâne însă anuală:</strong> Serviciul Fiscal de Stat a precizat că ea se achită în fiecare an calendaristic, inclusiv în anul în care nu ai inspecție. Legea nu fixează explicit o dată-limită pentru acest an, așa că e mai sigur să plătești în cursul anului, nu să aștepți următoarea inspecție.</p>\n\n<h2>Cine e scutit</h2>\n<p>Potrivit Codului fiscal (art. 343), singura scutire din acest capitol este pentru <strong>persoanele cu dizabilități ale aparatului locomotor</strong> care au în posesie autovehicule.</p>\n<p>Separat, taxa nu se achită pentru vehiculele rebutate, neexploatate provizoriu, scoase din circulație sau radiate (art. 341 alin. 5). Atenție: taxa plătită deja pentru acel an nu se restituie. Rezidenții parcurilor IT nu plătesc separat, pentru că taxa e inclusă în impozitul unic.</p>\n\n<h2>Ce nu se impozitează</h2>\n<p>Unele vehicule nu sunt deloc obiect al taxei (art. 338 alin. 2):</p>\n<ul>\n<li>tractoarele și remorcile folosite în activitatea agricolă;</li>\n<li>transportul public pe fir electric (troleibuzele);</li>\n<li>autovehiculele forțelor militare străine.</li>\n</ul>\n<p>Un tractor folosit în afara agriculturii plătește însă 2.250 de lei pe an, ca autoremorcherele.</p>\n",
+  "faq": [
+    {
+      "q": "Cât costă taxa de drum pentru o mașină de 1.6 litri în 2026?",
+      "a": "Un motor de 1.600 cm³ intră în categoria de până la 2.000 cm³, cu 0,60 lei pe cm³. Taxa este 1.600 × 0,60 = 960 de lei pe an."
+    },
+    {
+      "q": "Cota se aplică pe trepte sau pe toată capacitatea motorului?",
+      "a": "Pe toată capacitatea. Pentru un motor de 2.500 cm³ se plătește 2.500 × 0,90 = 2.250 de lei, nu o sumă combinată din mai multe trepte."
+    },
+    {
+      "q": "Plătesc taxa de drum pentru o mașină electrică?",
+      "a": "Da, de la 1 ianuarie 2026. Taxa se calculează după masa totală, între 0,60 și 1,80 lei pe kilogram. De exemplu, la 1.800 kg plătești 1.620 de lei."
+    },
+    {
+      "q": "Dacă am inspecția tehnică la 2 ani, plătesc taxa tot la 2 ani?",
+      "a": "Nu. Taxa rămâne anuală și se achită în fiecare an calendaristic, inclusiv în anul fără inspecție, potrivit Serviciului Fiscal de Stat."
+    },
+    {
+      "q": "Am cumpărat o mașină la care taxa e deja plătită. Trebuie să o plătesc din nou?",
+      "a": "Nu. Dacă taxa pentru anul curent a fost achitată, noul posesor nu o mai plătește. Fostul proprietar nu primește banii înapoi."
+    },
+    {
+      "q": "Cine este scutit de taxa pentru folosirea drumurilor?",
+      "a": "Potrivit Codului fiscal, persoanele cu dizabilități ale aparatului locomotor care au în posesie autovehicule. Tractoarele și remorcile agricole nu sunt deloc impozitate."
+    }
+  ]
+}
