@@ -250,6 +250,10 @@ export async function addLink(formData: FormData) {
     const page = await fetchArticle(url.toString());
     title = manualTitle || (page?.title ?? "");
     summary = [page?.description, page?.text, extra, ...extraTexts].filter(Boolean).join("\n").slice(0, 20000);
+    // Unele site-uri (Cloudflare) blochează serverul Vercel, dar nu și GitHub,
+    // de unde scrie pipeline-ul: linkul se salvează oricum, cu un titlu
+    // provizoriu din adresă; textul se citește din nou la scriere.
+    if (!title) title = decodeURIComponent(url.pathname.split("/").filter(Boolean).pop() ?? "").replace(/[.]html?$/, "").replace(/[-_]+/g, " ").trim();
     if (!title) redirect("/admin/?link=unreadable");
   }
 
