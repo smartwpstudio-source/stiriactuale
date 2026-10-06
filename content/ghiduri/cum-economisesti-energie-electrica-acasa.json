@@ -1,0 +1,52 @@
+{
+  "slug": "cum-economisesti-energie-electrica-acasa",
+  "title": "Cum economisești energie electrică acasă: tariful zi/noapte, aparate, standby",
+  "description": "Cum plătești mai puțin la curent: tariful diferențiat zi/noapte de la ANRE, cât consumă aparatele, standby, becuri LED, eticheta energetică, boilerul și mașina de spălat.",
+  "category": "bani",
+  "updated": "2026-10-06",
+  "sources": [
+    {
+      "name": "ANRE — prețurile diferențiate pentru energia electrică și modul de aplicare",
+      "url": "https://anre.md/preturile-diferentiate-pentru-energia-electrica-sunt-aplicabile-din-ianuarie-2025-anre-explica-modul-de-aplicare-3-1378"
+    },
+    {
+      "name": "ANRE — tarife în vigoare: energie electrică",
+      "url": "https://anre.md/energie-electrica-3-290"
+    },
+    {
+      "name": "Comisia Europeană — cum înțelegi eticheta energetică (scara A–G, codul QR, EPREL)",
+      "url": "https://energy-efficient-products.ec.europa.eu/ecodesign-and-energy-label/understanding-energy-label_en"
+    },
+    {
+      "name": "Virginia Cooperative Extension (Virginia Tech) — Estimating Appliance and Home Electronic Energy Use",
+      "url": "https://www.pubs.ext.vt.edu/2901/2901-9014/2901-9014.html"
+    },
+    {
+      "name": "Centrul Național pentru Energie Durabilă — programul EcoVoucher",
+      "url": "https://cned.gov.md/ro/ecovoucher"
+    }
+  ],
+  "bodyHtml": "<p><strong>Pe scurt:</strong> factura la curent scade în trei feluri: consumi mai puțin (aparate eficiente, fără standby, becuri LED), muți o parte din consum noaptea, dacă ai tariful diferențiat, și știi exact ce aparat „mănâncă” cel mai mult. Prețurile în vigoare nu le repetăm aici: le găsești în <a href=\"/ghiduri/tarifele-la-gaz-energie-electrica-si-termoficare\">ghidul despre tarifele la gaz, curent și căldură</a>, actualizat după hotărârile ANRE.</p><h2>Tariful diferențiat zi/noapte: cum îl ceri și când merită</h2><p>În Moldova, consumatorii casnici pot plăti curentul la preț diferit în funcție de oră. Potrivit Agenției Naționale pentru Reglementare în Energetică (ANRE), intervalele sunt:</p><ul><li><strong>07:00–23:00</strong> – intervalul de zi, cu preț mai mare;</li><li><strong>23:00–07:00</strong> – intervalul de noapte, cu preț mai mic.</li></ul><p>Cum treci la acest tarif, după explicațiile ANRE:</p><ol><li><strong>Verifică contorul.</strong> Ai nevoie de un contor care înregistrează consumul pe intervale orare. ANRE spune că multe contoare electronice au deja această funcție, iar operatorul de distribuție le poate reprograma gratuit. Întreabă operatorul rețelei din zona ta (datele lui sunt pe factură) dacă al tău poate fi programat sau trebuie schimbat.</li><li><strong>Cere furnizorului modificarea contractului.</strong> După ce contorul e pregătit, depui cererea la furnizorul tău (Premier Energy sau FEE Nord, după zonă). ANRE precizează că furnizorul nu poate cere bani pentru modificarea contractului.</li><li><strong>Fă calculul înainte.</strong> ANRE recomandă să treci la tariful diferențiat doar dacă poți consuma noaptea cel puțin 25% din energia lunară. Altfel, prețul mai mare de zi îți poate mânca economia.</li></ol><p>Ce poți muta realist noaptea: mașina de spălat rufe sau vase cu pornire întârziată, boilerul electric (cu un temporizator sau releu), încărcarea mașinii ori a bicicletei electrice. Frigiderul, iluminatul și televizorul rămân oricum în mare parte pe tariful de zi.</p><h2>Cât consumă de fapt un aparat</h2><p>Consumul îl calculezi singur cu o formulă simplă, folosită și în materialele de educație energetică ale Virginia Cooperative Extension (Virginia Tech):</p><p><strong>putere (W) × ore de funcționare pe zi ÷ 1.000 = kWh pe zi</strong></p><p>Puterea o găsești pe eticheta de pe spatele sau de sub aparat. Același material atrage atenția că frigiderul nu merge tot timpul la putere maximă, ci pornește și se oprește singur, așa că pentru el calculul după putere dă o cifră exagerată. Mai jos sunt exemple <strong>ipotetice</strong>, doar ca să vezi cum se face calculul; înlocuiește cu puterea de pe aparatul tău.</p><table><thead><tr><th>Aparat (exemplu)</th><th>Putere de pe etichetă</th><th>Folosire</th><th>Consum calculat</th></tr></thead><tbody><tr><td>Fierbător electric</td><td>2.000 W</td><td>15 minute pe zi</td><td>0,5 kWh/zi, circa 15 kWh/lună</td></tr><tr><td>Boiler electric</td><td>1.500 W</td><td>3 ore de încălzire pe zi</td><td>4,5 kWh/zi, circa 135 kWh/lună</td></tr><tr><td>Radiator electric</td><td>2.000 W</td><td>4 ore pe zi</td><td>8 kWh/zi, circa 240 kWh/lună</td></tr><tr><td>Bec incandescent</td><td>60 W</td><td>5 ore pe zi</td><td>0,3 kWh/zi, circa 9 kWh/lună</td></tr><tr><td>Bec LED</td><td>9 W</td><td>5 ore pe zi</td><td>0,045 kWh/zi, circa 1,4 kWh/lună</td></tr></tbody></table><p>Ca să afli costul, înmulțești kWh cu prețul din factura ta. Concluzia exemplelor: aparatele care <strong>încălzesc</strong> (boiler, radiator, uscător de rufe, cuptor, fierbător) consumă cel mai mult. Acolo merită să cauți economii întâi.</p><h2>Standby, becuri și eticheta energetică</h2><ul><li><strong>Standby.</strong> Materialul Virginia Tech explică faptul că multe aparate trag curent și când sunt „oprite”: televizorul, receptorul TV, calculatorul, boxele, aparatele de bucătărie. Scoate-le din priză sau folosește un prelungitor cu întrerupător și oprește-l noaptea. Nu face asta cu frigiderul și congelatorul.</li><li><strong>Becurile LED.</strong> Pentru aceeași lumină, un LED are o putere de câteva ori mai mică decât un bec incandescent. Pe ambalaj uită-te la lumeni (cât de mult luminează) și la wați (cât consumă).</li><li><strong>Eticheta energetică.</strong> Comisia Europeană explică faptul că scara actuală merge de la A (cel mai eficient) la G. Vechile clase A+, A++ și A+++ au fost înlocuite treptat, din 2021, așa că un aparat care era A+++ poate apărea acum în altă clasă, fără să consume mai mult. Pe etichetă vezi și consumul estimat (de exemplu kWh pe an), iar codul QR duce la baza de date europeană EPREL, cu fișa produsului. Când compari două aparate, compară consumul în kWh, nu doar litera.</li></ul><p>Dacă familia ta e înscrisă pe compensatii.gov.md, urmărește pe cned.gov.md programul <strong>EcoVoucher</strong>, prin care statul a dat vouchere pentru schimbarea frigiderului sau a mașinii de spălat vechi. La data verificării (6 octombrie 2026), sesiunile anunțate pentru 2026 erau închise.</p><h2>Boilerul și mașina de spălat</h2><p><strong>Boilerul electric</strong> e, în multe case, cel mai mare consumator de curent după încălzire.</p><ul><li>Setează o temperatură moderată. Cu cât apa e mai fierbinte, cu atât pierderile sunt mai mari. Ce temperatură minimă recomandă producătorul, inclusiv din motive de igienă, scrie în manual.</li><li>Dacă ai tarif zi/noapte, pune un temporizator, ca boilerul să încălzească apa după ora 23:00.</li><li>Nu-l lăsa pornit când pleci câteva zile.</li><li>Calcarul scade eficiența. Cât de des se curăță boilerul și se schimbă anodul îți spune manualul sau un instalator.</li></ul><p><strong>Mașina de spălat</strong> consumă cea mai mare parte din curent ca să încălzească apa:</p><ul><li>Spală la temperaturi mai joase atunci când hainele nu sunt foarte murdare și folosește programul „eco”.</li><li>Pornește-o încărcată, nu cu câteva haine.</li><li>Dacă ai tarif diferențiat, folosește pornirea întârziată ca să ruleze noaptea.</li><li>Uscătorul de rufe consumă mult: când poți, usucă rufele afară sau pe uscător.</li></ul><h2>Greșeli frecvente</h2><ul><li>Treci la tariful zi/noapte fără să poți muta noaptea măcar un sfert din consum.</li><li>Compari prețul de pe factură, cu TVA, cu prețul publicat de ANRE, care e fără TVA.</li><li>Încălzești o cameră întreagă cu un radiator electric pornit toată ziua, fără să știi cât consumă.</li><li>Cumperi un aparat doar după litera de pe etichetă, fără să te uiți la kWh pe an.</li><li>Lași încărcătoarele și televizorul în priză permanent.</li></ul><p>Ca să vezi efectul, notează indexul contorului la început de lună și compară cu factura: <a href=\"/ghiduri/cum-citesti-factura-de-gaz-sau-de-energie-electrica\">cum citești factura de gaz sau de energie electrică</a>. Pentru încălzire, vezi și <a href=\"/ghiduri/cum-reduci-factura-la-incalzire-sfaturi-practice\">cum reduci factura la încălzire</a>, iar dacă te gândești la propria sursă de curent, <a href=\"/ghiduri/panourile-solare-pentru-casa-prosumator-costuri-pasi\">panourile solare pentru casă și statutul de prosumator</a>.</p>",
+  "faq": [
+    {
+      "q": "Cum trec la tariful de zi și de noapte la curent?",
+      "a": "Ai nevoie de un contor care înregistrează consumul pe intervale orare (operatorul îl poate reprograma gratuit, dacă e compatibil), apoi ceri furnizorului modificarea contractului. ANRE spune că furnizorul nu poate cere bani pentru asta."
+    },
+    {
+      "q": "Care sunt orele de noapte la tariful diferențiat?",
+      "a": "Potrivit ANRE, intervalul de noapte este 23:00–07:00, iar cel de zi 07:00–23:00."
+    },
+    {
+      "q": "Merită tariful zi/noapte?",
+      "a": "ANRE recomandă să treci la el doar dacă poți consuma noaptea cel puțin 25% din energia lunară, de exemplu cu boilerul sau mașina de spălat pornite după ora 23:00."
+    },
+    {
+      "q": "Cum calculez cât consumă un aparat?",
+      "a": "Înmulțește puterea de pe etichetă (W) cu orele de funcționare pe zi și împarte la 1.000: rezultatul e consumul în kWh pe zi. Înmulțit cu prețul din factură, afli costul."
+    },
+    {
+      "q": "De ce frigiderele noi au clasa C sau D, nu A+++?",
+      "a": "Eticheta europeană a revenit la scara A–G, iar vechile clase A+++ au fost reîncadrate. Un aparat dintr-o clasă mai joasă pe noua etichetă poate fi la fel de eficient ca unul A+++ pe cea veche; compară consumul în kWh pe an."
+    }
+  ]
+}
