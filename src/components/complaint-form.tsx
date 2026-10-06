@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useSyncExternalStore } from "react";
+import { IconLock } from "@tabler/icons-react";
 import type { Part, Template } from "@/lib/complaint-models";
 
 // Formularul modelului de reclamație: completezi câmpurile, vezi scrisoarea,
@@ -36,6 +37,14 @@ export function ComplaintForm({ template, title }: { template: Template; title: 
 
   return (
     <div>
+      <p className="mb-5 flex gap-3 rounded-lg border-2 border-teal/50 bg-white p-4 text-sm leading-relaxed text-ink print:hidden">
+        <IconLock size={22} stroke={1.75} className="mt-0.5 shrink-0 text-teal" aria-hidden />
+        <span>
+          <strong>Datele tale nu pleacă nicăieri.</strong> Tot ce scrii aici, inclusiv IDNP-ul, rămâne doar în
+          telefonul sau calculatorul tău: nu se trimite pe internet și nu se salvează pe site. Când închizi pagina,
+          datele dispar.
+        </span>
+      </p>
       <form className="space-y-3 print:hidden" onSubmit={(e) => e.preventDefault()}>
         {template.fields.map((f, i) => (
           <label key={i} className="block">
@@ -58,9 +67,6 @@ export function ComplaintForm({ template, title }: { template: Template; title: 
             )}
           </label>
         ))}
-        <p className="text-xs text-sub">
-          Datele rămân doar pe dispozitivul tău: nu se trimit și nu se salvează nicăieri.
-        </p>
       </form>
 
       <h2 className="mt-8 font-serif text-xl text-ink print:hidden">Scrisoarea ta</h2>
