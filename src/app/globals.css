@@ -87,3 +87,10 @@ body {
   padding-left: 1rem;
   color: var(--color-sub);
 }
+
+/* „Salvează PDF / Printează” la modelele de reclamații: doar scrisoarea */
+@media print {
+  body:has(#complaint-letter) * { visibility: hidden; }
+  #complaint-letter, #complaint-letter * { visibility: visible; }
+  #complaint-letter { position: absolute; inset: 0 auto auto 0; width: 100%; }
+}

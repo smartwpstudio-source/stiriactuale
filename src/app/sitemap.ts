@@ -1,3 +1,4 @@
+import { COMPLAINT_MODELS } from "@/lib/complaint-models";
 import type { MetadataRoute } from "next";
 import { getHubCounts, getSitemapArticles } from "@/lib/content/queries";
 import { getGuides } from "@/lib/content/guides";
@@ -35,6 +36,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: "/video/", priority: 0.7 },
     { url: "/ghiduri/", priority: 0.7 },
     { url: "/calculatoare/", priority: 0.7 },
+    { url: "/modele-reclamatii/", priority: 0.7 },
+    ...COMPLAINT_MODELS.map((m) => ({ url: `/modele-reclamatii/${m.slug}/`, priority: 0.7 })),
     { url: "/calendar-crestin-ortodox/", priority: 0.8 },
     ...[0, 1].map((d) => ({ url: `/calendar-crestin-ortodox/${new Date().getFullYear() + d}/`, priority: 0.6 })),
     ...availableCalculators(calcParams).map((c) => ({ url: `/calculatoare/${c.slug}/`, priority: 0.7 })),

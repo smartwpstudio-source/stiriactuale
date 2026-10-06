@@ -8,6 +8,8 @@ import { ADSENSE_IN_ARTICLE_SLOT } from "@/lib/adsense";
 import { AdSlot } from "@/components/ad-slot";
 import { GUIDE_CATEGORIES, getGuide, getGuides } from "@/lib/content/guides";
 import { absoluteUrl } from "@/lib/seo";
+import Link from "next/link";
+import { modelForGuide } from "@/lib/complaint-models";
 
 // Ghidurile sunt statice: generate la build din content/ghiduri/*.json.
 export const dynamicParams = false;
@@ -72,6 +74,20 @@ export default async function GuidePage({ params }: PageProps<"/ghiduri/[slug]">
       <p className="mt-4 font-mono text-sm text-sub">Ghid · actualizat la {updated}</p>
       <ShareButtons url={url} title={g.title} />
       <p className="mt-6 text-xl font-medium leading-relaxed text-ink">{g.description}</p>
+      {(() => {
+        const model = modelForGuide(g.slug);
+        return (
+          model && (
+            <Link
+              href={`/modele-reclamatii/${model.slug}/`}
+              className="mt-5 block rounded-lg border-2 border-teal/50 bg-white p-4 hover:border-teal"
+            >
+              <span className="block font-mono text-xs uppercase tracking-wide text-teal">Model gata de completat</span>
+              <span className="mt-1 block font-medium text-ink">Completează modelul de reclamație și descarcă-l în Word sau PDF →</span>
+            </Link>
+          )
+        );
+      })()}
 
       {(() => {
         // ghidurile sunt lungi și citite atent: un bloc după paragraful 3, unul la final

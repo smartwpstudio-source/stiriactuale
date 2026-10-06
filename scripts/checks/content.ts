@@ -6,6 +6,7 @@ import path from "node:path";
 import { GUIDE_CATEGORIES } from "../../src/lib/content/guides";
 import { COUNTRY_NAMES, RAION_NAMES } from "../../src/lib/content/geo";
 import { sanitizeBody } from "../../src/lib/content/sanitize";
+import { COMPLAINT_MODELS, loadComplaintModel } from "../../src/lib/complaint-models";
 
 const ROOT = path.join(import.meta.dirname, "..", "..", "content");
 // surse oficiale: instituții de stat MD (*.gov.md) + câteva cu alt domeniu
@@ -116,6 +117,12 @@ async function main() {
       if (z.sarbatoare !== null && typeof z.sarbatoare !== "string") fail(file, `ziua ${d}: sarbatoare`);
       if (![null, "rosie", "neagra"].includes(z.cruce)) fail(file, `ziua ${d}: cruce`);
     }
+  }
+
+  // modelele de reclamații (/modele-reclamatii/) vin din secțiunea „Model” a ghidului
+  for (const m of COMPLAINT_MODELS) {
+    const r = await loadComplaintModel(m.slug);
+    if (!r || r.template.fields.length < 3) fail(`ghiduri/${m.guide}.json`, `modelul „${m.slug}” nu se citește (Către … Semnătura, cu [câmpuri])`);
   }
 
   if (errors.length) {

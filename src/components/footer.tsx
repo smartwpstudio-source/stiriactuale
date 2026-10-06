@@ -35,6 +35,9 @@ export function Footer() {
           <Link href="/calculatoare/" className="hover:text-amber">
             Calculatoare
           </Link>
+          <Link href="/modele-reclamatii/" className="hover:text-amber">
+            Modele de reclamații
+          </Link>
           <Link href="/calendar-crestin-ortodox/" className="hover:text-amber">
             Calendar ortodox
           </Link>
