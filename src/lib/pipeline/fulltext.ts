@@ -37,15 +37,31 @@ function paragraphsOf(html: string): string[] {
 // pagină. Se decodează stringurile; corpul e o bucată de HTML curat (începe
 // cu "<", după prefixul de rând „39:T438,”), nu JSON-ul paginii, care are
 // și descrieri de rubrici, meniuri.
-function nextFlightChunks(html: string): string[] {
-  return [...html.matchAll(/self\.__next_f\.push\(\[1,("(?:[^"\\]|\\.)*")\]\)/g)]
-    .map((m) => {
+const decodedFlight = (html: string) =>
+  [...html.matchAll(/self\.__next_f\.push\(\[1,("(?:[^"\\]|\\.)*")\]\)/g)].map((m) => {
+    try {
+      return JSON.parse(m[1]) as string;
+    } catch {
+      return "";
+    }
+  });
+
+// Uneori corpul vine în datele Apollo din același push, ca valoare JSON
+// („description":{"long":"<p>…") — stringurile JSON care încep cu <p.
+function flightJsonHtml(html: string): string[] {
+  return decodedFlight(html).flatMap((c) =>
+    [...c.matchAll(/"(<p[\s>](?:[^"\\]|\\.)*)"/g)].map((m) => {
       try {
-        return JSON.parse(m[1]) as string;
+        return JSON.parse(`"${m[1]}"`) as string;
       } catch {
         return "";
       }
-    })
+    }),
+  );
+}
+
+function nextFlightChunks(html: string): string[] {
+  return decodedFlight(html)
     .map((c) => {
       // rândul de text poate veni după alte rânduri în același push („29:C … 39:T438,<p…”)
       const row = c.match(/[0-9a-f]+:T[0-9a-f]+,(?=<)/);
@@ -72,7 +88,7 @@ export function extractArticle(html: string) {
   const body = clean.match(/<article\b[\s\S]*<\/article>/i)?.[0] ?? clean;
   let paragraphs = paragraphsOf(body);
   if (paragraphs.join("").length < 500) {
-    const flight = nextFlightChunks(html)
+    const flight = [...nextFlightChunks(html), ...flightJsonHtml(html)]
       .map(paragraphsOf)
       .reduce((a, b) => (b.join("").length > a.join("").length ? b : a), []);
     if (flight.join("").length > paragraphs.join("").length) paragraphs = flight;
