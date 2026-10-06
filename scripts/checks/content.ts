@@ -10,7 +10,7 @@ import { sanitizeBody } from "../../src/lib/content/sanitize";
 const ROOT = path.join(import.meta.dirname, "..", "..", "content");
 // surse oficiale: instituții de stat MD (*.gov.md) + câteva cu alt domeniu
 const OFFICIAL =
-  /(\.gov\.md|^gov\.md|cnas\.md|cnam\.md|legis\.md|anre\.md|bnm\.md|cec\.md|politia\.md|presedinte\.md|parlament\.md|anofm\.md|sfs\.md|odimm\.md|ombudsman\.md)$/;
+  /(\.gov\.md|^gov\.md|cnas\.md|cnam\.md|legis\.md|anre\.md|bnm\.md|cec\.md|politia\.md|presedinte\.md|parlament\.md|anofm\.md|sfs\.md|odimm\.md|ombudsman\.md|ansp\.md|ambulanta\.md)$/;
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 const errors: string[] = [];
 const fail = (file: string, msg: string) => errors.push(`${file}: ${msg}`);
