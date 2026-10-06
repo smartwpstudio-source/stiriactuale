@@ -41,6 +41,9 @@ export function Footer() {
           <Link href="/calendar-crestin-ortodox/" className="hover:text-amber">
             Calendar ortodox
           </Link>
+          <Link href="/azi-in-istorie/" className="hover:text-amber">
+            Azi în istorie
+          </Link>
           <Link href="/publicitate/" className="hover:text-amber">
             Publicitate
           </Link>

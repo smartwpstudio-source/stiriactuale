@@ -119,6 +119,27 @@ async function main() {
     }
   }
 
+  // „Azi în istorie”: evenimentele pe zile, un fișier pe lună (docs/cloud/istorie.md)
+  for (const { f, data: c } of await readJson(path.join(ROOT, "istorie"))) {
+    if (!c) continue;
+    const file = `istorie/${f}`;
+    const m = Number(f.slice(0, 2));
+    if (!/^(0[1-9]|1[0-2])\.json$/.test(f) || c.luna !== m) { fail(file, "nume de fișier / luna greșite"); continue; }
+    checkDate(file, c.updated);
+    for (let d = 1; d <= DAYS[m - 1]; d++) {
+      const ev = c.zile?.[String(d)];
+      if (!Array.isArray(ev) || ev.length < 3 || ev.length > 5) { fail(file, `ziua ${d}: 3–5 evenimente`); continue; }
+      ev.forEach((e: { an?: unknown; text?: unknown; moldova?: unknown; sursa?: unknown }, i: number) => {
+        if (!Number.isInteger(e.an) || (e.an as number) > new Date().getFullYear()) fail(file, `ziua ${d} #${i + 1}: an`);
+        if (typeof e.text !== "string" || e.text.length < 40 || e.text.length > 260) fail(file, `ziua ${d} #${i + 1}: text 40–260 caractere`);
+        else if (/[şţŞŢ]/.test(e.text)) fail(file, `ziua ${d} #${i + 1}: ş/ţ cu sedilă`);
+        if (typeof e.moldova !== "boolean") fail(file, `ziua ${d} #${i + 1}: moldova`);
+        if (typeof e.sursa !== "string" || !e.sursa.startsWith("https://")) fail(file, `ziua ${d} #${i + 1}: sursa`);
+        if (i > 0 && (e.an as number) < (ev[i - 1].an as number)) fail(file, `ziua ${d}: ani necrescători`);
+      });
+    }
+  }
+
   // modelele de reclamații (/modele-reclamatii/) vin din secțiunea „Model” a ghidului
   for (const m of COMPLAINT_MODELS) {
     const r = await loadComplaintModel(m.slug);

@@ -8,6 +8,7 @@ import { getBnmRates } from "@/lib/bnm";
 import { getSaintDay } from "@/lib/calendar-data";
 import { churchDay, civilDays, formatDay, weekday, yearFeasts } from "@/lib/orthodox";
 import { todayChisinau } from "@/components/orthodox-calendar";
+import { dayPath, getHistoryDay, yearLabel } from "@/lib/history";
 
 // Rezumatele din canalul Telegram (decizia proprietarului, 2026-10-05):
 //  - 08:00 „Bună dimineața”: știrile publicate de la 22:00 încoace (noaptea
@@ -65,6 +66,13 @@ export async function morningDigest(): Promise<string> {
     if (civil) lines.push(civil.guide ? `<a href="${SITE_URL}/ghiduri/${civil.guide}/">${esc(civil.name)}</a>` : esc(civil.name));
     if (title) lines.push(feast?.guide ? `<a href="${SITE_URL}/ghiduri/${feast.guide}/">${esc(title)}</a>` : esc(title));
     else if (saint) lines.push(esc(saint.sfinti.slice(0, 2).join("; ")));
+  }
+  const month = today.getUTCMonth() + 1;
+  const history = await getHistoryDay(month, today.getUTCDate());
+  if (history.length) {
+    const picked = [...history.filter((e) => e.moldova), ...history.filter((e) => !e.moldova)].slice(0, 3).sort((a, b) => a.an - b.an);
+    lines.push("", "📜 <b>Azi în istorie</b>", ...picked.map((e) => `<b>${yearLabel(e.an)}</b> – ${esc(e.text)}`));
+    lines.push(`<a href="${SITE_URL}${dayPath(month, today.getUTCDate())}">Mai mult despre această zi</a>`);
   }
   lines.push("", `👉 <a href="${SITE_URL}/">Toate știrile, pe stiriactuale.info</a>`);
   return lines.join(NL);

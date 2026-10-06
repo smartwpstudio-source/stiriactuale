@@ -1,0 +1,942 @@
+{
+  "luna": 4,
+  "updated": "2026-10-06",
+  "zile": {
+    "1": [
+      {
+        "an": 1815,
+        "text": "S-a născut Otto von Bismarck, cancelarul prusac care a condus unificarea Germaniei și a devenit primul cancelar al Imperiului German.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Otto_von_Bismarck"
+      },
+      {
+        "an": 1873,
+        "text": "S-a născut Serghei Rahmaninov, compozitor și pianist rus, autorul unor concerte pentru pian intrate în repertoriul clasic.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Sergei_Rachmaninoff"
+      },
+      {
+        "an": 1918,
+        "text": "Prin unirea aviației armatei și a marinei britanice a fost creată Royal Air Force, prima forță aeriană independentă din lume.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Royal_Air_Force"
+      },
+      {
+        "an": 1941,
+        "text": "Grănicerii sovietici au deschis focul la Fântâna Albă asupra a mii de români din nordul Bucovinei care încercau să treacă în România.",
+        "moldova": true,
+        "sursa": "https://ro.wikipedia.org/wiki/Masacrul_de_la_F%C3%A2nt%C3%A2na_Alb%C4%83"
+      }
+    ],
+    "2": [
+      {
+        "an": 1711,
+        "text": "Dimitrie Cantemir și țarul Petru I au încheiat la Luțk un tratat de alianță antiotomană între Moldova și Rusia.",
+        "moldova": true,
+        "sursa": "https://ro.wikipedia.org/wiki/Tratatul_de_la_Lu%C8%9Bk"
+      },
+      {
+        "an": 1805,
+        "text": "S-a născut Hans Christian Andersen, scriitor danez cunoscut în întreaga lume pentru basmele sale.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Hans_Christian_Andersen"
+      },
+      {
+        "an": 1840,
+        "text": "S-a născut Émile Zola, romancier francez, autorul ciclului „Les Rougon-Macquart” și al articolului „J’accuse”.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/%C3%89mile_Zola"
+      },
+      {
+        "an": 1982,
+        "text": "Trupele argentiniene au debarcat în Insulele Falkland, declanșând războiul cu Regatul Unit pentru controlul arhipelagului.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Falklands_War"
+      },
+      {
+        "an": 2005,
+        "text": "A murit papa Ioan Paul al II-lea, primul papă de origine poloneză, după un pontificat de peste 26 de ani.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Pope_John_Paul_II"
+      }
+    ],
+    "3": [
+      {
+        "an": 1897,
+        "text": "A murit la Viena Johannes Brahms, compozitor german, autorul a patru simfonii și al „Dansurilor ungare”.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Johannes_Brahms"
+      },
+      {
+        "an": 1924,
+        "text": "S-a născut Marlon Brando, actor american, laureat al Premiului Oscar pentru rolurile din „On the Waterfront” și „Nașul”.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Marlon_Brando"
+      },
+      {
+        "an": 1944,
+        "text": "A murit la Iași pictorul Octav Băncilă, născut la Botoșani, cunoscut pentru tabloul dedicat răscoalei țărănești din Moldova.",
+        "moldova": true,
+        "sursa": "https://ro.wikipedia.org/wiki/Octav_B%C4%83ncil%C4%83"
+      },
+      {
+        "an": 1948,
+        "text": "Președintele american Harry Truman a semnat legea prin care a fost lansat Planul Marshall pentru refacerea Europei de Vest.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Marshall_Plan"
+      },
+      {
+        "an": 1966,
+        "text": "Sonda sovietică Luna 10 a intrat pe orbită în jurul Lunii, devenind primul satelit artificial al acesteia.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Luna_10"
+      }
+    ],
+    "4": [
+      {
+        "an": 1929,
+        "text": "A murit Carl Benz, inginerul german care a construit primul automobil practic cu motor cu ardere internă.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Carl_Benz"
+      },
+      {
+        "an": 1949,
+        "text": "Doisprezece state au semnat la Washington Tratatul Atlanticului de Nord, actul de naștere al NATO.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/North_Atlantic_Treaty"
+      },
+      {
+        "an": 1953,
+        "text": "A murit în exil, la Estoril, fostul rege Carol al II-lea al României, care abdicase în favoarea fiului său Mihai.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Carol_II_of_Romania"
+      },
+      {
+        "an": 1968,
+        "text": "Martin Luther King Jr., liderul mișcării pentru drepturile civile din SUA, a fost asasinat la Memphis.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Assassination_of_Martin_Luther_King_Jr."
+      }
+    ],
+    "5": [
+      {
+        "an": 1588,
+        "text": "S-a născut Thomas Hobbes, filosof englez, autorul lucrării „Leviathan” despre natura statului.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Thomas_Hobbes"
+      },
+      {
+        "an": 1794,
+        "text": "Georges Danton, unul dintre liderii Revoluției Franceze, a fost ghilotinat la Paris în timpul Terorii.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Georges_Danton"
+      },
+      {
+        "an": 1884,
+        "text": "S-a născut Ion Inculeț, om politic basarabean, președintele Sfatului Țării care a votat Unirea Basarabiei cu România.",
+        "moldova": true,
+        "sursa": "https://ro.wikipedia.org/wiki/Ion_C._Incule%C8%9B"
+      },
+      {
+        "an": 1955,
+        "text": "Winston Churchill a demisionat din funcția de prim-ministru al Regatului Unit, din motive de vârstă și de sănătate.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Winston_Churchill"
+      },
+      {
+        "an": 1964,
+        "text": "A murit Douglas MacArthur, general american care a condus forțele aliate din Pacific în Al Doilea Război Mondial.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Douglas_MacArthur"
+      }
+    ],
+    "6": [
+      {
+        "an": 1453,
+        "text": "Sultanul Mahomed al II-lea a început asediul Constantinopolului, care avea să cadă în mâinile otomanilor după aproape două luni.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Fall_of_Constantinople"
+      },
+      {
+        "an": 1520,
+        "text": "A murit la Roma pictorul Rafael, unul dintre marii maeștri ai Renașterii italiene.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Raphael"
+      },
+      {
+        "an": 1896,
+        "text": "La Atena s-au deschis primele Jocuri Olimpice moderne, organizate la inițiativa lui Pierre de Coubertin.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/1896_Summer_Olympics"
+      },
+      {
+        "an": 1917,
+        "text": "Statele Unite au declarat război Germaniei, intrând în Primul Război Mondial de partea Antantei.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/American_entry_into_World_War_I"
+      },
+      {
+        "an": 1971,
+        "text": "A murit la New York Igor Stravinski, compozitor de origine rusă, autorul baletului „Ritualul primăverii”.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Igor_Stravinsky"
+      }
+    ],
+    "7": [
+      {
+        "an": 1947,
+        "text": "A murit Henry Ford, industriașul american care a introdus producția de automobile pe bandă rulantă.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Henry_Ford"
+      },
+      {
+        "an": 1948,
+        "text": "A intrat în vigoare constituția Organizației Mondiale a Sănătății, agenția ONU dedicată sănătății publice.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/World_Health_Organization"
+      },
+      {
+        "an": 1954,
+        "text": "S-a născut Ion Aldea-Teodorovici, compozitor și interpret din Moldova, autorul unor cântece dedicate limbii române.",
+        "moldova": true,
+        "sursa": "https://ro.wikipedia.org/wiki/Ion_Aldea-Teodorovici"
+      },
+      {
+        "an": 1994,
+        "text": "În Rwanda a început genocidul în care extremiști hutu au ucis, în aproximativ o sută de zile, sute de mii de tutsi.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Rwandan_genocide"
+      },
+      {
+        "an": 2009,
+        "text": "La Chișinău, protestele față de rezultatele alegerilor parlamentare au degenerat în violențe la clădirile Parlamentului și Președinției.",
+        "moldova": true,
+        "sursa": "https://ro.wikipedia.org/wiki/Protestele_de_la_Chi%C8%99in%C4%83u_din_2009"
+      }
+    ],
+    "8": [
+      {
+        "an": 1820,
+        "text": "Pe insula greacă Milos a fost descoperită statuia antică numită Venus din Milo, expusă astăzi la Luvru.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Venus_de_Milo"
+      },
+      {
+        "an": 1904,
+        "text": "Franța și Regatul Unit au semnat Antanta Cordială, o serie de acorduri care au pus capăt rivalităților lor coloniale.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Entente_Cordiale"
+      },
+      {
+        "an": 1973,
+        "text": "A murit în Franța Pablo Picasso, pictor și sculptor spaniol, unul dintre fondatorii cubismului.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Pablo_Picasso"
+      },
+      {
+        "an": 2003,
+        "text": "A murit Nicolae Sulac, interpret de muzică populară din Republica Moldova, supranumit „privighetoarea neamului”.",
+        "moldova": true,
+        "sursa": "https://ro.wikipedia.org/wiki/Nicolae_Sulac"
+      },
+      {
+        "an": 2013,
+        "text": "A murit Margaret Thatcher, prima femeie prim-ministru a Regatului Unit, aflată la putere timp de 11 ani.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Margaret_Thatcher"
+      }
+    ],
+    "9": [
+      {
+        "an": 1626,
+        "text": "A murit Francis Bacon, filosof și om de stat englez, considerat un părinte al metodei științifice empirice.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Francis_Bacon"
+      },
+      {
+        "an": 1850,
+        "text": "La Teatrul Național din Iași a avut loc premiera comediei lui Vasile Alecsandri în care apare pentru prima oară personajul Chirița.",
+        "moldova": true,
+        "sursa": "https://ro.wikipedia.org/wiki/Chiri%C8%9Ba_%C3%AEn_Ia%C8%99i"
+      },
+      {
+        "an": 1865,
+        "text": "Generalul confederat Robert E. Lee s-a predat lui Ulysses Grant la Appomattox, ceea ce a dus la sfârșitul Războiului Civil American.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Battle_of_Appomattox_Court_House"
+      },
+      {
+        "an": 1940,
+        "text": "Germania a invadat Danemarca și Norvegia; Danemarca a fost ocupată în doar câteva ore.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Operation_Weser%C3%BCbung"
+      },
+      {
+        "an": 1991,
+        "text": "Georgia și-a proclamat independența față de Uniunea Sovietică, după un referendum desfășurat cu câteva zile înainte.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Georgia_(country)"
+      }
+    ],
+    "10": [
+      {
+        "an": 1813,
+        "text": "A murit la Paris Joseph-Louis Lagrange, matematician și astronom cunoscut pentru lucrările sale de mecanică analitică.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Joseph-Louis_Lagrange"
+      },
+      {
+        "an": 1847,
+        "text": "S-a născut Joseph Pulitzer, editor american de presă, în memoria căruia se acordă astăzi Premiile Pulitzer.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Joseph_Pulitzer"
+      },
+      {
+        "an": 1912,
+        "text": "Transatlanticul Titanic a pornit din Southampton în prima și singura sa călătorie, spre New York.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Titanic"
+      },
+      {
+        "an": 1998,
+        "text": "A fost semnat Acordul din Vinerea Mare, care a pus bazele încetării conflictului din Irlanda de Nord.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Good_Friday_Agreement"
+      },
+      {
+        "an": 2010,
+        "text": "Avionul care îl transporta pe președintele Poloniei, Lech Kaczyński, s-a prăbușit lângă Smolensk; toți cei 96 de oameni de la bord au murit.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Smolensk_air_disaster"
+      }
+    ],
+    "11": [
+      {
+        "an": 1744,
+        "text": "A murit la Paris Antioh Cantemir, fiul domnitorului Dimitrie Cantemir, poet și diplomat în serviciul Rusiei.",
+        "moldova": true,
+        "sursa": "https://ro.wikipedia.org/wiki/Antioh_Dimitrievici_Cantemir"
+      },
+      {
+        "an": 1814,
+        "text": "Prin Tratatul de la Fontainebleau, Napoleon a renunțat la tron și a primit în schimb suveranitatea asupra insulei Elba.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Treaty_of_Fontainebleau_(1814)"
+      },
+      {
+        "an": 1945,
+        "text": "Trupele americane au eliberat lagărul de concentrare nazist de la Buchenwald, din Germania.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Buchenwald_concentration_camp"
+      },
+      {
+        "an": 1961,
+        "text": "La Ierusalim a început procesul lui Adolf Eichmann, unul dintre principalii organizatori ai Holocaustului.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Eichmann_trial"
+      },
+      {
+        "an": 2007,
+        "text": "A murit Kurt Vonnegut, scriitor american, autorul romanului „Abatorul cinci”.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Kurt_Vonnegut"
+      }
+    ],
+    "12": [
+      {
+        "an": 1457,
+        "text": "Ștefan cel Mare l-a învins pe Petru Aron în lupta de la Doljești și a ocupat apoi tronul Moldovei.",
+        "moldova": true,
+        "sursa": "https://ro.wikipedia.org/wiki/%C8%98tefan_cel_Mare"
+      },
+      {
+        "an": 1861,
+        "text": "Atacul confederaților asupra Fortului Sumter, din Carolina de Sud, a declanșat Războiul Civil American.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Battle_of_Fort_Sumter"
+      },
+      {
+        "an": 1945,
+        "text": "A murit Franklin D. Roosevelt, singurul președinte american ales de patru ori, fiind urmat în funcție de Harry Truman.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Franklin_D._Roosevelt"
+      },
+      {
+        "an": 1961,
+        "text": "Cosmonautul sovietic Iuri Gagarin a devenit primul om care a zburat în spațiu, efectuând o orbită completă în jurul Pământului.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Vostok_1"
+      },
+      {
+        "an": 1981,
+        "text": "NASA a lansat naveta spațială Columbia în prima misiune a programului Space Shuttle.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/STS-1"
+      }
+    ],
+    "13": [
+      {
+        "an": 1742,
+        "text": "La Dublin a avut loc premiera oratoriului „Mesia” de Georg Friedrich Händel.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Messiah_(Handel)"
+      },
+      {
+        "an": 1743,
+        "text": "S-a născut Thomas Jefferson, principalul autor al Declarației de Independență și al treilea președinte al SUA.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Thomas_Jefferson"
+      },
+      {
+        "an": 1886,
+        "text": "S-a născut la Bârlad, în Moldova, Nicolae Tonitza, pictor român cunoscut pentru portretele sale de copii.",
+        "moldova": true,
+        "sursa": "https://ro.wikipedia.org/wiki/Nicolae_Tonitza"
+      },
+      {
+        "an": 1906,
+        "text": "S-a născut Samuel Beckett, dramaturg irlandez, autorul piesei „Așteptându-l pe Godot” și laureat al Premiului Nobel.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Samuel_Beckett"
+      },
+      {
+        "an": 1919,
+        "text": "La Amritsar, în India, trupe britanice au deschis focul asupra unei mulțimi neînarmate, ucigând sute de oameni.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Jallianwala_Bagh_massacre"
+      }
+    ],
+    "14": [
+      {
+        "an": 1629,
+        "text": "S-a născut Christiaan Huygens, fizician și astronom olandez, care a descoperit inelele lui Saturn și a construit primul ceas cu pendul.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Christiaan_Huygens"
+      },
+      {
+        "an": 1759,
+        "text": "A murit la Londra Georg Friedrich Händel, compozitor de origine germană, autorul oratoriului „Mesia”.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/George_Frideric_Handel"
+      },
+      {
+        "an": 1865,
+        "text": "Președintele american Abraham Lincoln a fost împușcat de actorul John Wilkes Booth în Teatrul Ford din Washington.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Assassination_of_Abraham_Lincoln"
+      },
+      {
+        "an": 1912,
+        "text": "Transatlanticul Titanic a lovit un aisberg în Atlanticul de Nord, cu puțin înainte de miezul nopții.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Sinking_of_the_Titanic"
+      }
+    ],
+    "15": [
+      {
+        "an": 1452,
+        "text": "S-a născut Leonardo da Vinci, pictor, inventator și om de știință al Renașterii, autorul tabloului „Mona Lisa”.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Leonardo_da_Vinci"
+      },
+      {
+        "an": 1707,
+        "text": "S-a născut Leonhard Euler, matematician elvețian cu contribuții fundamentale în analiză și teoria numerelor.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Leonhard_Euler"
+      },
+      {
+        "an": 1912,
+        "text": "Titanicul s-a scufundat în Atlanticul de Nord, iar peste 1.500 de pasageri și membri ai echipajului și-au pierdut viața.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Sinking_of_the_Titanic"
+      },
+      {
+        "an": 1918,
+        "text": "Bojdeuca din Iași în care a trăit Ion Creangă a fost deschisă ca muzeu, devenind prima casă memorială din România.",
+        "moldova": true,
+        "sursa": "https://ro.wikipedia.org/wiki/Bojdeuca_lui_Ion_Creang%C4%83"
+      },
+      {
+        "an": 2019,
+        "text": "Un incendiu a distrus acoperișul și turla catedralei Notre-Dame din Paris.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Notre-Dame_fire"
+      }
+    ],
+    "16": [
+      {
+        "an": 1746,
+        "text": "Armata britanică i-a învins pe iacobiți în bătălia de la Culloden, ultima bătălie campală purtată pe pământ britanic.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Battle_of_Culloden"
+      },
+      {
+        "an": 1828,
+        "text": "A murit la Bordeaux Francisco Goya, pictor și gravor spaniol, autorul seriei „Dezastrele războiului”.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Francisco_Goya"
+      },
+      {
+        "an": 1889,
+        "text": "S-a născut Charlie Chaplin, actor și regizor britanic, creatorul personajului vagabondului Charlot.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Charlie_Chaplin"
+      },
+      {
+        "an": 1896,
+        "text": "S-a născut la Moinești, în Moldova, Tristan Tzara, poet și unul dintre fondatorii mișcării dadaiste.",
+        "moldova": true,
+        "sursa": "https://ro.wikipedia.org/wiki/Tristan_Tzara"
+      },
+      {
+        "an": 1943,
+        "text": "Chimistul elvețian Albert Hofmann a descoperit accidental efectele halucinogene ale LSD-ului.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Albert_Hofmann"
+      }
+    ],
+    "17": [
+      {
+        "an": 1790,
+        "text": "A murit la Philadelphia Benjamin Franklin, om de stat, scriitor și inventator american, creatorul paratrăsnetului.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Benjamin_Franklin"
+      },
+      {
+        "an": 1946,
+        "text": "Ultimele trupe franceze s-au retras din Siria, care și-a câștigat astfel independența deplină.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Independence_Day_(Syria)"
+      },
+      {
+        "an": 1961,
+        "text": "Exilați cubanezi sprijiniți de CIA au debarcat în Golful Porcilor, încercând fără succes să-l răstoarne pe Fidel Castro.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Bay_of_Pigs_Invasion"
+      },
+      {
+        "an": 1975,
+        "text": "Khmerii Roșii au cucerit capitala Cambodgiei, Phnom Penh, punând capăt războiului civil din această țară.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Fall_of_Phnom_Penh"
+      },
+      {
+        "an": 2014,
+        "text": "A murit Gabriel García Márquez, scriitor columbian, autorul romanului „Un veac de singurătate” și laureat al Premiului Nobel.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Gabriel_Garc%C3%ADa_M%C3%A1rquez"
+      }
+    ],
+    "18": [
+      {
+        "an": 1506,
+        "text": "A fost pusă piatra de temelie a noii bazilici Sfântul Petru din Roma, în timpul papei Iulius al II-lea.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/St._Peter's_Basilica"
+      },
+      {
+        "an": 1906,
+        "text": "Un cutremur puternic și incendiile care au urmat au distrus o mare parte din orașul San Francisco.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/1906_San_Francisco_earthquake"
+      },
+      {
+        "an": 1955,
+        "text": "A murit la Princeton Albert Einstein, fizicianul care a formulat teoria relativității.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Albert_Einstein"
+      },
+      {
+        "an": 2003,
+        "text": "A murit Emil Loteanu, regizor și poet născut în nordul Basarabiei, autorul filmului „Șatra”.",
+        "moldova": true,
+        "sursa": "https://ro.wikipedia.org/wiki/Emil_Loteanu"
+      }
+    ],
+    "19": [
+      {
+        "an": 1824,
+        "text": "A murit la Missolonghi lordul Byron, poet romantic englez care sprijinea lupta grecilor pentru independență.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Lord_Byron"
+      },
+      {
+        "an": 1847,
+        "text": "S-a născut la Tecuci Calistrat Hogaș, scriitor român cunoscut pentru „Pe drumuri de munte”, despre munții Moldovei.",
+        "moldova": true,
+        "sursa": "https://ro.wikipedia.org/wiki/Calistrat_Hoga%C8%99"
+      },
+      {
+        "an": 1882,
+        "text": "A murit Charles Darwin, naturalist britanic, autorul teoriei evoluției prin selecție naturală.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Charles_Darwin"
+      },
+      {
+        "an": 1971,
+        "text": "Uniunea Sovietică a lansat Saliut 1, prima stație spațială din istorie.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Salyut_1"
+      },
+      {
+        "an": 1995,
+        "text": "Un atentat cu bombă a distrus clădirea federală Murrah din Oklahoma City, ucigând 168 de oameni.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Oklahoma_City_bombing"
+      }
+    ],
+    "20": [
+      {
+        "an": 1517,
+        "text": "A murit Bogdan al III-lea, fiul lui Ștefan cel Mare, iar tronul Moldovei a fost preluat de fiul său minor, Ștefăniță.",
+        "moldova": true,
+        "sursa": "https://ro.wikipedia.org/wiki/Bogdan_al_III-lea"
+      },
+      {
+        "an": 1808,
+        "text": "S-a născut Ludovic Napoleon, viitorul împărat Napoleon al III-lea al Franței, susținător al Unirii Principatelor Române.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Napoleon_III"
+      },
+      {
+        "an": 1912,
+        "text": "A murit Bram Stoker, scriitor irlandez, autorul romanului „Dracula”.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Bram_Stoker"
+      },
+      {
+        "an": 1970,
+        "text": "A murit la Paris Paul Celan, poet de limbă germană născut la Cernăuți, autorul poemului „Fuga morții”.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Paul_Celan"
+      },
+      {
+        "an": 1999,
+        "text": "Doi elevi au ucis 12 colegi și un profesor la liceul Columbine din Colorado, apoi s-au sinucis.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Columbine_High_School_massacre"
+      }
+    ],
+    "21": [
+      {
+        "an": 1836,
+        "text": "Armata texană condusă de Sam Houston a învins forțele mexicane la San Jacinto, asigurând independența Texasului.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Battle_of_San_Jacinto"
+      },
+      {
+        "an": 1910,
+        "text": "A murit Mark Twain, scriitor american, autorul romanelor „Aventurile lui Tom Sawyer” și „Aventurile lui Huckleberry Finn”.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Mark_Twain"
+      },
+      {
+        "an": 1918,
+        "text": "Pilotul german Manfred von Richthofen, supranumit „Baronul Roșu”, a fost doborât și ucis deasupra Franței.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Manfred_von_Richthofen"
+      },
+      {
+        "an": 1926,
+        "text": "S-a născut la Londra Elisabeta a II-a, monarhul care a domnit cel mai mult în istoria Regatului Unit.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Elizabeth_II"
+      },
+      {
+        "an": 1960,
+        "text": "A fost inaugurat orașul Brasília, construit de la zero pentru a deveni noua capitală a Braziliei.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Bras%C3%ADlia"
+      }
+    ],
+    "22": [
+      {
+        "an": 1500,
+        "text": "Navigatorul portughez Pedro Álvares Cabral a ajuns pe coasta Braziliei, pe care a revendicat-o pentru Portugalia.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Pedro_%C3%81lvares_Cabral"
+      },
+      {
+        "an": 1724,
+        "text": "S-a născut Immanuel Kant, filosof german, autorul „Criticii rațiunii pure”.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Immanuel_Kant"
+      },
+      {
+        "an": 1904,
+        "text": "S-a născut Robert Oppenheimer, fizician american care a condus laboratorul în care a fost creată prima bombă atomică.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/J._Robert_Oppenheimer"
+      },
+      {
+        "an": 1915,
+        "text": "La Ypres, armata germană a folosit pentru prima oară pe scară largă gazul clor ca armă pe Frontul de Vest.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Second_Battle_of_Ypres"
+      },
+      {
+        "an": 1994,
+        "text": "A murit Richard Nixon, singurul președinte american care a demisionat din funcție, în urma scandalului Watergate.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Richard_Nixon"
+      }
+    ],
+    "23": [
+      {
+        "an": 1400,
+        "text": "A început domnia lui Alexandru cel Bun în Moldova, una dintre cele mai lungi și mai liniștite din istoria țării.",
+        "moldova": true,
+        "sursa": "https://ro.wikipedia.org/wiki/Alexandru_cel_Bun"
+      },
+      {
+        "an": 1616,
+        "text": "A murit William Shakespeare, dramaturg și poet englez, autorul pieselor „Hamlet”, „Romeo și Julieta” și „Regele Lear”.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/William_Shakespeare"
+      },
+      {
+        "an": 1858,
+        "text": "S-a născut Max Planck, fizician german, fondatorul teoriei cuantice și laureat al Premiului Nobel.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Max_Planck"
+      },
+      {
+        "an": 1887,
+        "text": "A fost sfințită Catedrala Mitropolitană din Iași, în care se păstrează astăzi moaștele Sfintei Parascheva.",
+        "moldova": true,
+        "sursa": "https://ro.wikipedia.org/wiki/Catedrala_Mitropolitan%C4%83_din_Ia%C8%99i"
+      },
+      {
+        "an": 2005,
+        "text": "Pe YouTube a fost încărcat primul videoclip, „Me at the zoo”, de către unul dintre fondatorii platformei.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Me_at_the_zoo"
+      }
+    ],
+    "24": [
+      {
+        "an": 1574,
+        "text": "Ioan Vodă cel Viteaz, domnul Moldovei, a învins oastea Țării Românești, sprijinită de turci, în bătălia de la Jiliște.",
+        "moldova": true,
+        "sursa": "https://ro.wikipedia.org/wiki/B%C4%83t%C4%83lia_de_la_Jili%C8%99te"
+      },
+      {
+        "an": 1794,
+        "text": "S-a născut Mihail Sturdza, domn al Moldovei, în timpul căruia a fost fondată Academia Mihăileană din Iași.",
+        "moldova": true,
+        "sursa": "https://ro.wikipedia.org/wiki/Mihail_Sturdza"
+      },
+      {
+        "an": 1915,
+        "text": "Autoritățile otomane au arestat sute de intelectuali armeni la Constantinopol, moment considerat începutul genocidului armean.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Armenian_genocide"
+      },
+      {
+        "an": 1916,
+        "text": "La Dublin a izbucnit Revolta de Paști, o insurecție a naționaliștilor irlandezi împotriva stăpânirii britanice.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Easter_Rising"
+      },
+      {
+        "an": 1990,
+        "text": "Naveta Discovery a lansat telescopul spațial Hubble, care a transformat observațiile astronomice.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Hubble_Space_Telescope"
+      }
+    ],
+    "25": [
+      {
+        "an": 1859,
+        "text": "Au început lucrările de construcție a Canalului Suez, care leagă Marea Mediterană de Marea Roșie.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Suez_Canal"
+      },
+      {
+        "an": 1873,
+        "text": "A murit Alexandru Moruzi, om politic moldovean, prim-ministru al Moldovei în primii ani ai Principatelor Unite.",
+        "moldova": true,
+        "sursa": "https://ro.wikipedia.org/wiki/Alexandru_C._Moruzi"
+      },
+      {
+        "an": 1874,
+        "text": "S-a născut Guglielmo Marconi, inventator italian, pionier al transmisiilor radio și laureat al Premiului Nobel.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Guglielmo_Marconi"
+      },
+      {
+        "an": 1945,
+        "text": "Trupele americane și sovietice s-au întâlnit pentru prima oară pe râul Elba, tăind în două Germania nazistă.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Elbe_Day"
+      },
+      {
+        "an": 1974,
+        "text": "În Portugalia, Revoluția Garoafelor a înlăturat aproape fără vărsare de sânge regimul dictatorial Estado Novo.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Carnation_Revolution"
+      }
+    ],
+    "26": [
+      {
+        "an": 121,
+        "text": "S-a născut Marcus Aurelius, împărat roman și filosof stoic, autorul „Gândurilor către sine însuși”.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Marcus_Aurelius"
+      },
+      {
+        "an": 1798,
+        "text": "S-a născut Eugène Delacroix, pictor francez, autorul tabloului „Libertatea conducând poporul”.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Eug%C3%A8ne_Delacroix"
+      },
+      {
+        "an": 1889,
+        "text": "S-a născut la Viena Ludwig Wittgenstein, filosof austriac, autorul lucrării „Tractatus Logico-Philosophicus”.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Ludwig_Wittgenstein"
+      },
+      {
+        "an": 1937,
+        "text": "Aviația germană și cea italiană au bombardat orașul basc Guernica, în timpul Războiului Civil Spaniol.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Bombing_of_Guernica"
+      },
+      {
+        "an": 1986,
+        "text": "La centrala nucleară de la Cernobîl, în Ucraina sovietică, a avut loc cel mai grav accident nuclear din istorie.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Chernobyl_disaster"
+      }
+    ],
+    "27": [
+      {
+        "an": 1521,
+        "text": "Navigatorul Ferdinand Magellan a fost ucis în Filipine, în lupta de la Mactan, în timpul primei călătorii în jurul lumii.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Ferdinand_Magellan"
+      },
+      {
+        "an": 1791,
+        "text": "S-a născut Samuel Morse, inventator american, creatorul telegrafului electric și al codului care îi poartă numele.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Samuel_Morse"
+      },
+      {
+        "an": 1822,
+        "text": "S-a născut Ulysses Grant, comandantul armatei Uniunii în Războiul Civil și al 18-lea președinte al SUA.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Ulysses_S._Grant"
+      },
+      {
+        "an": 1990,
+        "text": "Parlamentul RSS Moldovenești a adoptat tricolorul albastru-galben-roșu drept drapel de stat.",
+        "moldova": true,
+        "sursa": "https://en.wikipedia.org/wiki/Flag_of_Moldova"
+      },
+      {
+        "an": 1994,
+        "text": "În Africa de Sud au avut loc primele alegeri generale la care au putut vota cetățeni de toate rasele.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/1994_South_African_general_election"
+      }
+    ],
+    "28": [
+      {
+        "an": 1789,
+        "text": "Marinarii de pe nava britanică Bounty s-au revoltat și l-au abandonat pe căpitanul William Bligh într-o barcă.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Mutiny_on_the_Bounty"
+      },
+      {
+        "an": 1906,
+        "text": "S-a născut Kurt Gödel, logician austriac, autorul teoremelor de incompletitudine.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Kurt_G%C3%B6del"
+      },
+      {
+        "an": 1945,
+        "text": "Benito Mussolini a fost executat de partizanii italieni lângă lacul Como, în timp ce încerca să fugă din țară.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Death_of_Benito_Mussolini"
+      },
+      {
+        "an": 1969,
+        "text": "Charles de Gaulle a demisionat din funcția de președinte al Franței, după ce a pierdut un referendum.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Charles_de_Gaulle"
+      },
+      {
+        "an": 2014,
+        "text": "Cetățenii Republicii Moldova cu pașapoarte biometrice au putut călători pentru prima dată fără vize în spațiul Schengen.",
+        "moldova": true,
+        "sursa": "https://en.wikipedia.org/wiki/Moldova%E2%80%93European_Union_relations"
+      }
+    ],
+    "29": [
+      {
+        "an": 1854,
+        "text": "S-a născut Henri Poincaré, matematician și fizician francez, unul dintre fondatorii topologiei.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Henri_Poincar%C3%A9"
+      },
+      {
+        "an": 1899,
+        "text": "S-a născut Duke Ellington, pianist și compozitor american, una dintre figurile centrale ale jazzului.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Duke_Ellington"
+      },
+      {
+        "an": 1901,
+        "text": "S-a născut Hirohito, împăratul Japoniei în timpul celui de-Al Doilea Război Mondial.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Hirohito"
+      },
+      {
+        "an": 1945,
+        "text": "Trupele americane au eliberat lagărul de concentrare de la Dachau, primul lagăr deschis de naziști.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Dachau_concentration_camp"
+      },
+      {
+        "an": 1954,
+        "text": "S-a născut Andrei Mudrea, pictor și artist plastic din Republica Moldova.",
+        "moldova": true,
+        "sursa": "https://ro.wikipedia.org/wiki/Andrei_Mudrea"
+      }
+    ],
+    "30": [
+      {
+        "an": 1777,
+        "text": "S-a născut Carl Friedrich Gauss, matematician german supranumit „prințul matematicienilor”.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss"
+      },
+      {
+        "an": 1789,
+        "text": "George Washington a depus jurământul la New York ca primul președinte al Statelor Unite.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/First_inauguration_of_George_Washington"
+      },
+      {
+        "an": 1945,
+        "text": "Adolf Hitler s-a sinucis în buncărul său din Berlin, în timp ce trupele sovietice cucereau orașul.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Death_of_Adolf_Hitler"
+      },
+      {
+        "an": 1975,
+        "text": "Trupele nord-vietnameze au cucerit Saigonul, punând capăt Războiului din Vietnam.",
+        "moldova": false,
+        "sursa": "https://en.wikipedia.org/wiki/Fall_of_Saigon"
+      },
+      {
+        "an": 1979,
+        "text": "A murit la București Pantelimon Halippa, unul dintre fruntașii mișcării pentru Unirea Basarabiei cu România.",
+        "moldova": true,
+        "sursa": "https://ro.wikipedia.org/wiki/Pantelimon_Halippa"
+      }
+    ]
+  }
+}
