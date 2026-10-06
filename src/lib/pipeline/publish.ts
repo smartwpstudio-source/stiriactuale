@@ -4,6 +4,7 @@ import { getDb } from "./db/client";
 import { articles } from "./db/schema";
 import { normalizeTitle } from "./dedup";
 import type { ArticleImage } from "./image";
+import { mediaTag } from "./media-tag";
 import { announcePublished } from "@/lib/publish-effects";
 import type { CandidateGroup, GeneratedArticle, ScoredCandidate } from "./types";
 
@@ -123,7 +124,8 @@ export async function updateBriefArticle(
   await db
     .update(articles)
     .set({
-      title: generated.titlu,
+      // rescrierea nu pierde „(VIDEO)” / „(FOTO)” din titlul vechi
+      title: mediaTag(generated.titlu, !!(old.videoUrl ?? generated.video_url), /[(]FOTO[)]/.test(old.title)),
       leadText: generated.lead,
       bodyHtml: generated.corp_html,
       metaDescription: generated.meta_description.slice(0, 200),
