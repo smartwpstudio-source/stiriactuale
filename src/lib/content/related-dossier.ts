@@ -22,6 +22,8 @@ const RULES: [slug: string, re: RegExp][] = [
   ["aeroportul-international-chisinau-concesionare-procese", /aeroport\w* (international )?(din )?chisinau|avia invest/],
   ["reforma-administrativ-teritoriala-raioane-primarii", /reforma administrativ|comasar\w* (a )?primarii|lichidar\w* raioan|amalgamar/],
   ["pensii-si-salarii-indexari-si-calcul", /indexar\w* (a )?pensii|pensiile (se )?indexeaza/],
+  // pilonul pensiilor („pensiune” = casă de oaspeți, nu intră)
+  ["pensiile-in-moldova-tot-ce-trebuie-sa-stii", /\bpensi(a|e|i|ii|ile|ilor|onar\w*)\b|varsta de pensionare|stagiu\w* de cotizare/],
   ["preturile-la-alimente-si-inflatia-date-bns-bnm", /inflati/],
   ["migratia-si-depopularea-moldovei-cifre-oficiale", /depopular|recensamant|exodul|emigrar\w* in masa/],
 ];

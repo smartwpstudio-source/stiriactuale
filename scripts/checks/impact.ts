@@ -24,6 +24,8 @@ import("../../src/lib/content/guide-country").then(({ guideCountry }) => {
     assert.equal(matchDossier("Aderarea la UE fără drept de veto: cum reacționează partidele"), "aderarea-moldovei-la-ue-etape-si-calendar");
     assert.equal(matchDossier("Trupele ruse din Transnistria: Ambasada Rusiei susține că UE le-a acceptat"), "transnistria-situatia-regiunii-si-impactul");
     assert.equal(matchDossier("Ignăței, Rezina: un fermier vinde roșii la 5 lei"), undefined);
+    assert.equal(matchDossier("Pensionarii vor primi un supliment în decembrie"), "pensiile-in-moldova-tot-ce-trebuie-sa-stii");
+    assert.equal(matchDossier("Pensiunile din Bucovina, pline de turiști"), undefined);
     console.log("impact: OK");
   });
 });
