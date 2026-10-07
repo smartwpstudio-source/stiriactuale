@@ -94,3 +94,55 @@ body {
   #complaint-letter, #complaint-letter * { visibility: visible; }
   #complaint-letter { position: absolute; inset: 0 auto auto 0; width: 100%; }
 }
+
+/* Tabelele din ghiduri: pe telefon fiecare rând devine un card (prima coloană
+   = titlul cardului), pe ecran mare tabel cu antet și rânduri alternante. */
+.prose-article table {
+  width: 100%;
+  margin-top: 1.25rem;
+  border-collapse: collapse;
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+.prose-article th,
+.prose-article td {
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+.prose-article thead th {
+  background: var(--color-ink);
+  color: #fff;
+  font-weight: 600;
+}
+.prose-article tbody tr {
+  border-bottom: 1px solid var(--color-line);
+  background: #fff;
+}
+.prose-article tbody tr:nth-child(even) {
+  background: #f6f8f5;
+}
+.prose-article tbody td:first-child {
+  font-weight: 600;
+}
+@media (max-width: 639px) {
+  .prose-article thead {
+    display: none;
+  }
+  .prose-article table,
+  .prose-article tbody,
+  .prose-article tr,
+  .prose-article td {
+    display: block;
+    width: 100%;
+  }
+  .prose-article tbody tr {
+    margin-top: 0.75rem;
+    border: 1px solid var(--color-line);
+    border-radius: 0.5rem;
+    padding: 0.5rem 0;
+  }
+  .prose-article td {
+    padding: 0.2rem 0.9rem;
+  }
+}

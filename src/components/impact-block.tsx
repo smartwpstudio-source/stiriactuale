@@ -4,6 +4,7 @@ import { IMPACT_TYPES, type Impact, type Tool } from "@/lib/impact";
 
 const ICONS = { ghid: IconBook2, calc: IconCalculator, model: IconFileText };
 const CTA = { ghid: "Citește ghidul", calc: "Calculează", model: "Completează modelul" };
+const BADGE = { bani: "bg-alert", reguli: "bg-teal", alerta: "bg-amber-ink", urgent: "bg-alert" };
 
 // „Ce înseamnă pentru tine” — sub lead, înaintea textului; randat pe server.
 export function ImpactBlock({ impact, tools, source }: { impact: Impact; tools: Tool[]; source?: string }) {
@@ -13,7 +14,7 @@ export function ImpactBlock({ impact, tools, source }: { impact: Impact; tools: 
     <section className={`mt-6 rounded-lg border-2 bg-white p-4 sm:p-5 ${urgent ? "border-alert/50" : "border-teal/50"}`}>
       <p className="flex items-center gap-2 font-mono text-xs uppercase tracking-wide">
         <span className={urgent ? "text-alert" : "text-teal"}>Ce înseamnă pentru tine</span>
-        <span className="rounded bg-paper px-1.5 py-0.5 text-sub">{IMPACT_TYPES[impact.tip]}</span>
+        <span className={`rounded px-2 py-0.5 font-semibold text-white ${BADGE[impact.tip]}`}>{IMPACT_TYPES[impact.tip]}</span>
       </p>
       <dl className="mt-3 space-y-2 text-ink">
         <div>
