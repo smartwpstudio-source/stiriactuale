@@ -12,6 +12,7 @@ import { NewsFeed } from "@/components/news-feed";
 import { CurrencyBox } from "@/components/currency-box";
 import { SaintOfDay } from "@/components/saint-of-day";
 import { WeatherBox } from "@/components/weather-box";
+import { ToolsBox } from "@/components/tools-box";
 import { getHeroArticle, getMostRead, listArticles } from "@/lib/content/queries";
 import { articleUrl } from "@/lib/content/url";
 
@@ -100,8 +101,9 @@ export default async function HomePage() {
           </div>
         </section>
 
+        {/* nu sticky: bara e mai înaltă decât ecranul și partea de jos (calculatoarele) nu se mai vedea */}
         <aside className="hidden lg:block">
-          <div className="sticky top-6 space-y-6">
+          <div className="space-y-6">
             {mostRead.length >= 3 && (
               <section>
                 <SectionHeading title="Cele mai citite" />
@@ -117,9 +119,10 @@ export default async function HomePage() {
                 </ol>
               </section>
             )}
-            <CurrencyBox />
-            <SaintOfDay />
             <WeatherBox />
+            <CurrencyBox />
+            <ToolsBox />
+            <SaintOfDay />
           </div>
         </aside>
       </div>
