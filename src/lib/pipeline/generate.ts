@@ -165,7 +165,7 @@ export async function generateArticle(
   // linkurile video (YouTube/Facebook) nu au text de citit — materialul e descrierea din summary
   // (postările Telegram, cu sau fără video: textul postării e în summary)
   const texts = await Promise.all(
-    items.map((i) => (toEmbedUrl(i.sourceUrl) || i.sourceUrl.startsWith("https://t.me/") ? null : fetchArticle(i.sourceUrl))),
+    items.map((i) => (toEmbedUrl(i.sourceUrl) || i.sourceUrl.startsWith("https://t.me/") ? null : fetchArticle(i.sourceUrl, 60_000))),
   );
   const blocks = items.map((i, k) => {
     const body = texts[k]?.text && texts[k]!.text.length > i.summary.length ? texts[k]!.text : i.summary;

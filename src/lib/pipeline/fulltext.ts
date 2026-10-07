@@ -101,7 +101,10 @@ export function extractArticle(html: string) {
   };
 }
 
-export async function fetchArticle(url: string) {
+// Simpals (stiri.md, point.md) trimit pagina foarte încet serverelor din
+// străinătate (test 2026-10-08: ~16 KB în 15 s). Pipeline-ul (GitHub) așteaptă
+// mai mult; admin-ul (Vercel) rămâne la 15 s — acolo timpul se plătește.
+export async function fetchArticle(url: string, timeoutMs = 15_000) {
   try {
     const res = await fetch(url, {
       headers: {
@@ -109,7 +112,7 @@ export async function fetchArticle(url: string) {
           "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36",
         "Accept-Language": "ro,ru;q=0.8",
       },
-      signal: AbortSignal.timeout(15_000),
+      signal: AbortSignal.timeout(timeoutMs),
     });
     if (!res.ok) return null;
     return extractArticle(await res.text());
