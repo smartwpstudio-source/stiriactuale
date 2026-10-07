@@ -20,5 +20,10 @@ import("../../src/lib/content/guide-country").then(({ guideCountry }) => {
   assert.equal(guideCountry("viza-de-turist-pentru-rudele-din-moldova-sua-canada-regatul-unit"), null);
   assert.equal(guideCountry("permis-conducere-moldovenesc-in-italia-germania-si-ue"), null);
   assert.equal(guideCountry("apostila-acte-moldovenesti"), null);
-  console.log("impact: OK");
+  return import("../../src/lib/content/related-dossier").then(({ matchDossier }) => {
+    assert.equal(matchDossier("Aderarea la UE fără drept de veto: cum reacționează partidele"), "aderarea-moldovei-la-ue-etape-si-calendar");
+    assert.equal(matchDossier("Trupele ruse din Transnistria: Ambasada Rusiei susține că UE le-a acceptat"), "transnistria-situatia-regiunii-si-impactul");
+    assert.equal(matchDossier("Ignăței, Rezina: un fermier vinde roșii la 5 lei"), undefined);
+    console.log("impact: OK");
+  });
 });

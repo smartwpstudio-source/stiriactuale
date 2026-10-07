@@ -26,6 +26,8 @@ import { TelegramVideo } from "./telegram-video";
 import { PostEmbed } from "./post-embed";
 import { KindBadge } from "./kind-badge";
 import { getRelatedGuide } from "@/lib/content/related-guide";
+import { getRelatedDossier } from "@/lib/content/related-dossier";
+import { IconFolder } from "@tabler/icons-react";
 import { ImpactBlock } from "./impact-block";
 import { resolveTools } from "@/lib/impact";
 
@@ -61,16 +63,17 @@ export async function ArticlePage({
   article: Article;
   breadcrumbItems: BreadcrumbItem[];
 }) {
-  const [similar, { items: latest }, guide, previous, calculator, tools] = await Promise.all([
+  const [similar, { items: latest }, guide, previous, calculator, tools, dossier] = await Promise.all([
     getSimilarArticles(article),
     listArticles({}, 1, 9),
     article.archived ? undefined : getRelatedGuide(article.title, article.lead, article.locality),
     article.continuesId ? getArticleLink(article.continuesId) : null,
     article.archived ? undefined : getRelatedCalculator(article.title, article.lead),
     resolveTools(article.impact?.unelte ?? []),
+    article.archived ? undefined : getRelatedDossier(article.title, article.lead),
   ]);
   // casetele de jos nu repetă unealta deja recomandată în blocul de impact
-  const shown = new Set(tools.map((t) => t.href));
+  const shown = new Set([...tools.map((t) => t.href), ...(dossier ? [`/ghiduri/${dossier.slug}/`] : [])]);
 
   return (
     <div className="mx-auto grid w-full max-w-7xl gap-12 px-4 py-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:px-8">
@@ -148,6 +151,19 @@ export async function ArticlePage({
             )}
             <p className="mt-6 text-xl font-medium leading-relaxed text-ink">{article.lead}</p>
             {article.impact && <ImpactBlock slug={article.slug} impact={article.impact} tools={tools} source={article.sources?.[0]?.name} />}
+            {dossier && (
+              // dosarul-pilon al subiectului, mereu la vedere: contextul pe care știrea nu-l repetă
+              <Link
+                href={`/ghiduri/${dossier.slug}/`}
+                className="mt-5 flex items-start gap-3 rounded-lg border-l-4 border-teal bg-white p-3 hover:bg-paper"
+              >
+                <IconFolder size={22} stroke={1.75} className="mt-0.5 shrink-0 text-teal" aria-hidden />
+                <span>
+                  <span className="block font-mono text-xs uppercase tracking-wide text-teal">Context: dosarul subiectului</span>
+                  <span className="mt-0.5 block font-medium leading-snug text-ink">{dossier.title}</span>
+                </span>
+              </Link>
+            )}
             {(() => {
               const body = sanitizeBody(article.bodyHtml, article.imageAlt ?? article.title);
               const ads = !article.archived && ADSENSE_IN_ARTICLE_SLOT;

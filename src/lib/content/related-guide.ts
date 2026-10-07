@@ -12,7 +12,7 @@ const STOP = new Set(
   "pentru care este sunt fost după despre între către până când unde cine cum ceea acest aceasta această acestea acum doar care spune spun anul anii lunii luni astăzi ieri mâine moldova moldovei republica republicii chișinău chisinau poate pot trebuie foarte mult multe mai noua noul nouă noile ghid cele celor dintre prin într printre fără ziua lei euro milioane miliarde".split(" "),
 );
 
-const isAcronym = (w: string) => w.length >= 3 && w === w.toUpperCase();
+const isAcronym = (w: string) => (w.length >= 3 || w === "UE") && w === w.toUpperCase();
 
 // rădăcină -> pondere; acronimele (RCA, ANRE, CNAS) contează dublu, chiar
 // dacă sunt scurte — sunt cel mai precis semnal de subiect
