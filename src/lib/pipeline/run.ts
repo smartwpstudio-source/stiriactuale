@@ -8,7 +8,7 @@ import { generateArticle } from "./generate";
 import { computeQualityScore } from "./scoring";
 import { findArticleImage, sourcePhoto } from "./image";
 import { loadOfficialItems, matchOfficialPhoto } from "./official-photos";
-import { loadPlaces, matchPlacePhoto } from "./places";
+import { loadPlaces, loadSymbolPhotos, matchPlacePhoto } from "./places";
 import { checkRecent } from "./recent-duplicate";
 import { mediaTag } from "./media-tag";
 import { pipelineEnabled } from "./settings";
@@ -220,7 +220,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     }
 
     const [usedImageIds, officialItems] = await Promise.all([loadUsedImageIds(), toPublish.length ? loadOfficialItems() : []]);
-    const places = loadPlaces();
+    const places = [...loadPlaces(), ...(await loadSymbolPhotos().catch(() => []))];
     // pozele comunicatelor deja folosite în ultimele zile (image_source)
     const usedOfficial = new Set(
       (await db.select({ src: articles.imageSource }).from(articles).where(isNotNull(articles.imageSource)).orderBy(desc(articles.publishedAt)).limit(200)).map((r) => r.src!),

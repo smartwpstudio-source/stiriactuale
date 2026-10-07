@@ -1,6 +1,9 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { HAIKU_MODEL, structured } from "./llm";
+import { and, desc, ilike, like } from "drizzle-orm";
+import { getDb } from "./db/client";
+import { articles } from "./db/schema";
 
 // Arhiva de locuri reale din Moldova (Aeroportul Chișinău, vama Leușeni,
 // Parlamentul, Nistrul…): poze Wikimedia Commons cu licență liberă, semnate cu
@@ -20,6 +23,25 @@ export function loadPlaces(): Place[] {
   } catch {
     return [];
   }
+}
+
+// Pozele încărcate de editor cu eticheta „imagine simbol” (regula
+// proprietarului, 2026-10-07): intră în arhivă ca teme ilustrative și se
+// refolosesc la alte știri pe același subiect, cu aceeași rotație.
+// ponytail: ultimele 150; o arhivă separată pe teme dacă devin sute.
+export async function loadSymbolPhotos(): Promise<Place[]> {
+  const rows = await getDb()
+    .select({ id: articles.id, title: articles.title, alt: articles.imageAltText, url: articles.imageUrl })
+    .from(articles)
+    .where(and(ilike(articles.imageCredit, "%simbol%"), like(articles.imageUrl, "%/articole/manual-%")))
+    .orderBy(desc(articles.publishedAt))
+    .limit(150);
+  const seen = new Set<string>();
+  return rows.flatMap((r) =>
+    !r.url || seen.has(r.url) || !seen.add(r.url)
+      ? []
+      : [{ id: `simbol-${r.id}`, name: `TEMĂ (poză simbol): ${r.alt ?? r.title}`, keywords: r.title, photos: [{ url: r.url, credit: "Imagine simbol", source: "" }] }],
+  );
 }
 
 // Rotație: `recent` = pozele ultimelor articole, cele mai noi primele. Se
