@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArticleThumb } from "./article-thumb";
 import { TopicLabel } from "./topic-label";
+import { ImpactBadge } from "./impact-badge";
 import { formatTimeAgo, sourcesLabel } from "@/lib/format-time-ago";
 import { articleUrl } from "@/lib/content/url";
 import type { Article } from "@/lib/content/types";
@@ -38,6 +39,7 @@ export function ArticleRow({
         sizes={small ? "96px" : "160px"}
       />
       <div className="min-w-0">
+        <ImpactBadge impact={article.impact} className="mb-1" />
         {!small && article.topics[0] && <TopicLabel topic={article.topics[0]} />}
         <h3
           className={`font-serif leading-snug text-ink group-hover:text-teal ${small ? "line-clamp-3 text-base" : "mt-1 text-lg"}`}

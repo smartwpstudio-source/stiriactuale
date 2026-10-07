@@ -1,5 +1,6 @@
 "use client";
 
+import { ImpactBadge } from "./impact-badge";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArticleThumb } from "./article-thumb";
@@ -97,6 +98,7 @@ export function NewsFeed({
                   {a.topics[0] && <span className="mx-1.5">·</span>}
                   {a.topics[0] && <TopicLabel topic={a.topics[0]} />}
                 </p>
+                <ImpactBadge impact={a.impact} className="mt-1.5" />
                 <h4 className="mt-1 font-serif text-lg leading-snug text-ink group-hover:text-teal sm:text-xl">{a.title}</h4>
                 {a.lead && <p className="mt-1.5 hidden text-[0.95rem] text-sub sm:line-clamp-2">{a.lead}</p>}
               </div>

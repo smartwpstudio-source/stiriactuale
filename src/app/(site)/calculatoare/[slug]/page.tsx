@@ -6,6 +6,7 @@ import { EmbedCode } from "@/components/calc/embed-code";
 import { loadCalculator } from "@/components/calc/calculator-body";
 import { CALCULATORS } from "@/lib/calculators";
 import { SITE_URL } from "@/lib/seo";
+import { ToolNews } from "@/components/tool-news";
 
 // cursul BNM se schimbă zilnic; parametrii doar la deploy
 export const revalidate = 3600;
@@ -49,6 +50,7 @@ export default async function CalculatorPage({ params }: PageProps<"/calculatoar
           ))}
         </p>
       )}
+      <ToolNews tool={`calc:${slug}`} />
       <EmbedCode slug={slug} title={r.calc.title} siteUrl={SITE_URL} />
     </div>
   );

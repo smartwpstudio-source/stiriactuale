@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { KindBadge } from "./kind-badge";
+import { ImpactBadge } from "./impact-badge";
 import { ArticleThumb } from "./article-thumb";
 import { TopicLabel } from "./topic-label";
 import { formatTimeAgo, sourcesLabel } from "@/lib/format-time-ago";
@@ -24,6 +25,7 @@ export function ArticleCard({ article, size = "md" }: { article: Article; size?:
       />
       <div className={`flex flex-1 flex-col ${sm ? "p-3" : "p-4"}`}>
         <KindBadge kind={article.kind} continues={!!article.continuesId} className="mb-1 self-start" />
+        <ImpactBadge impact={article.impact} className="mb-1.5" />
         {!sm && article.topics[0] && <TopicLabel topic={article.topics[0]} />}
         <h3
           className={`font-serif leading-snug text-ink group-hover:text-teal ${lg ? "mt-1.5 text-2xl sm:text-[1.75rem]" : sm ? "line-clamp-4 text-base sm:text-lg" : "mt-1.5 text-lg sm:text-xl"}`}

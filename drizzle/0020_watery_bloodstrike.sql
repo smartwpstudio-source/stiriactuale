@@ -1,0 +1,1 @@
+ALTER TABLE "articles" ADD COLUMN "impact_clicks" integer DEFAULT 0 NOT NULL;

@@ -141,6 +141,13 @@
       "when": 1791340461077,
       "tag": "0019_daily_malcolm_colcord",
       "breakpoints": true
+    },
+    {
+      "idx": 20,
+      "version": "7",
+      "when": 1791342644497,
+      "tag": "0020_watery_bloodstrike",
+      "breakpoints": true
     }
   ]
 }

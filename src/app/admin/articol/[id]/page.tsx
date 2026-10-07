@@ -220,7 +220,10 @@ export default async function EditArticlePage({ params, searchParams }: PageProp
 
         <div className="flex flex-col gap-4">
           <form action={saveImpact.bind(null, id)} className="flex flex-col gap-2 rounded border border-teal/40 bg-white p-4">
-            <h2 className="font-medium text-ink">„Ce înseamnă pentru tine”</h2>
+            <h2 className="font-medium text-ink">
+              „Ce înseamnă pentru tine”
+              {a.impact && <span className="ml-2 font-mono text-xs text-sub">{a.impactClicks} click-uri spre unelte</span>}
+            </h2>
             <p className="text-xs text-sub">
               Doar la știrile cu consecință reală (bani, reguli, alerte). Tip gol = fără bloc. Cifrele — exact ca în sursă.
             </p>

@@ -8,6 +8,7 @@ import { addLink, logoutAction, sendPushNow, togglePipeline } from "./actions";
 import { pipelineEnabled } from "@/lib/pipeline/settings";
 import { ConfirmButton } from "./confirm-button";
 import { PhotoField } from "./photo-field";
+import { staleTools } from "@/lib/impact";
 
 const LINK_MESSAGES: Record<string, string> = {
   ok: "Adăugat. Se scrie la următoarea rulare a pipeline-ului (max. 2 ore) sau imediat, cu „Publică acum” — și când știrile automate sunt oprite.",
@@ -54,6 +55,7 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
     db.select().from(pipelineRuns).orderBy(desc(pipelineRuns.startedAt)).limit(9),
     pipelineEnabled(),
   ]);
+  const stale = await staleTools();
 
   const list = (rows: typeof drafts, dateOf: (r: (typeof drafts)[number]) => Date) => (
     <ul className="divide-y divide-line rounded border border-line bg-white">
@@ -115,6 +117,22 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
           din ultimele 6 ore.
         </p>
       </section>
+
+      {stale.length > 0 && (
+        <section className="rounded border border-amber bg-white px-4 py-3">
+          <h2 className="font-medium text-ink">De verificat ({stale.length})</h2>
+          <p className="text-xs text-sub">Ghiduri și calculatoare recomandate de știri recente cu cifre sau reguli noi — verifică dacă valorile sunt la zi.</p>
+          <ul className="mt-2 divide-y divide-line text-sm">
+            {stale.map((s) => (
+              <li key={s.tool.id} className="flex flex-wrap items-baseline gap-x-3 py-1.5">
+                <a href={s.tool.href} target="_blank" rel="noopener" className="font-medium text-teal underline">{s.tool.title}</a>
+                <span className="font-mono text-xs text-sub">verificat {s.updated ?? "—"}</span>
+                <Link href={`/admin/articol/${s.news.id}/`} className="text-sub underline">știrea din {s.news.date}: {s.news.title}</Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       <section>
         <h2 className="mb-2 font-medium text-ink">Adaugă știre după link</h2>

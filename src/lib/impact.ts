@@ -3,24 +3,16 @@ import { rankGuides } from "./content/related-guide";
 import { availableCalculators } from "./calculators";
 import { getCalcParams } from "./calculators-data";
 import { COMPLAINT_MODELS } from "./complaint-models";
+import { and, desc, gte, isNotNull } from "drizzle-orm";
+import { getDb } from "./pipeline/db/client";
+import { articles } from "./pipeline/db/schema";
 
 // Blocul „Ce înseamnă pentru tine” (concept editorial 2026-10-07): la știrile
 // cu consecință reală, cine e afectat, ce se schimbă, de când, ce faci acum și
 // 0-2 unelte de pe site (ghid, calculator, model de reclamație). Scris de
 // pipeline în același apel cu știrea, editabil / dezactivabil în /admin.
-export const IMPACT_TYPES = { bani: "Bani", reguli: "Reguli", alerta: "Alertă", urgent: "Urgent" } as const;
-export type ImpactType = keyof typeof IMPACT_TYPES;
-
-export interface Impact {
-  tip: ImpactType;
-  cine: string;
-  ce: string;
-  cand?: string;
-  pasi: string[];
-  unelte: string[]; // "ghid:<slug>", "calc:<slug>", "model:<slug>"
-  verificat: string; // ISO — ultima scriere / editare a blocului
-  editat?: boolean; // corectat în /admin — completările pipeline-ului nu-l suprascriu
-}
+import { IMPACT_TYPES, type Impact, type ImpactType } from "./impact-types";
+export { IMPACT_TYPES, type Impact, type ImpactType };
 
 export interface Tool {
   id: string;
@@ -89,4 +81,33 @@ export function validateImpact(raw: unknown, source: string, allowedTools: strin
   if (!(tip in IMPACT_TYPES) || !impact.cine || !impact.ce || !impact.pasi.length) return null;
   const all = [impact.cine, impact.ce, impact.cand ?? "", ...impact.pasi].join(" ");
   return numbersInSource(all, source) ? impact : null;
+}
+
+// „De verificat” (admin): ghidurile / calculatoarele recomandate de o știre
+// recentă de tip bani sau reguli, verificate ultima dată ÎNAINTE de știre —
+// știrea anunță poate cifre noi, iar unealta le arată pe cele vechi.
+export async function staleTools(days = 21) {
+  const since = new Date(Date.now() - days * 86400_000);
+  const rows = await getDb()
+    .select({ id: articles.id, title: articles.title, publishedAt: articles.publishedAt, impact: articles.impact })
+    .from(articles)
+    .where(and(isNotNull(articles.impact), gte(articles.publishedAt, since)))
+    .orderBy(desc(articles.publishedAt));
+  const [guides, params] = await Promise.all([getGuides(), getCalcParams()]);
+  const updatedOf = (id: string) => {
+    const [kind, slug] = id.split(":");
+    if (kind === "calc") return params?.updated;
+    const guide = kind === "model" ? COMPLAINT_MODELS.find((m) => m.slug === slug)?.guide : slug;
+    return guides.find((g) => g.slug === guide)?.updated;
+  };
+  const seen = new Map<string, { tool: Tool; updated?: string; news: { id: number; title: string; date: string } }>();
+  for (const r of rows) {
+    if (!r.impact || (r.impact.tip !== "bani" && r.impact.tip !== "reguli")) continue;
+    const date = r.publishedAt.toISOString().slice(0, 10);
+    for (const tool of await resolveTools(r.impact.unelte)) {
+      const updated = updatedOf(tool.id);
+      if (!seen.has(tool.id) && (!updated || updated < date)) seen.set(tool.id, { tool, updated, news: { id: r.id, title: r.title, date } });
+    }
+  }
+  return [...seen.values()];
 }

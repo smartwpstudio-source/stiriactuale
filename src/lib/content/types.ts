@@ -1,4 +1,4 @@
-import type { Impact } from "@/lib/impact";
+import type { Impact } from "@/lib/impact-types";
 export type Section = "regiuni" | "national" | "international" | "diaspora";
 
 export type Topic =

@@ -1,4 +1,4 @@
-import type { Impact } from "../../impact";
+import type { Impact } from "../../impact-types";
 import {
   pgTable,
   serial,
@@ -80,6 +80,8 @@ export const articles = pgTable("articles", {
   continuesId: integer("continues_id"),
   // blocul „Ce înseamnă pentru tine” (src/lib/impact.ts); null = fără bloc
   impact: jsonb("impact").$type<Impact>(),
+  // click-uri din blocul de impact spre unelte (ghid, calculator, model)
+  impactClicks: integer("impact_clicks").notNull().default(0),
   // id-ul articolului din WordPress, doar pentru arhiva importată
   wpId: integer("wp_id").unique(),
   // articol de arhivă preluat de la altă redacție: doar rezumat + link spre

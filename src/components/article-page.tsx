@@ -147,7 +147,7 @@ export async function ArticlePage({
               </>
             )}
             <p className="mt-6 text-xl font-medium leading-relaxed text-ink">{article.lead}</p>
-            {article.impact && <ImpactBlock impact={article.impact} tools={tools} source={article.sources?.[0]?.name} />}
+            {article.impact && <ImpactBlock slug={article.slug} impact={article.impact} tools={tools} source={article.sources?.[0]?.name} />}
             {(() => {
               const body = sanitizeBody(article.bodyHtml, article.imageAlt ?? article.title);
               const ads = !article.archived && ADSENSE_IN_ARTICLE_SLOT;

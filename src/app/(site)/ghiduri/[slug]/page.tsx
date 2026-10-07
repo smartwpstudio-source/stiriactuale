@@ -10,9 +10,12 @@ import { GUIDE_CATEGORIES, getGuide, getGuides } from "@/lib/content/guides";
 import { absoluteUrl } from "@/lib/seo";
 import Link from "next/link";
 import { modelForGuide } from "@/lib/complaint-models";
+import { ToolNews } from "@/components/tool-news";
 
 // Ghidurile sunt statice: generate la build din content/ghiduri/*.json.
 export const dynamicParams = false;
+// „Ultimele știri care schimbă asta” se schimbă odată cu știrile
+export const revalidate = 3600;
 
 export async function generateStaticParams() {
   return (await getGuides()).map((g) => ({ slug: g.slug }));
@@ -115,6 +118,8 @@ export default async function GuidePage({ params }: PageProps<"/ghiduri/[slug]">
           </div>
         </section>
       )}
+
+      <ToolNews tool={`ghid:${g.slug}`} />
 
       <aside className="mt-8 rounded border border-line bg-white p-4 text-sm text-sub">
         <p>

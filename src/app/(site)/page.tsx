@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Hero } from "@/components/hero";
 import { ArticleCard } from "@/components/article-card";
+import { ArticleRow } from "@/components/article-row";
 import { SectionHeading } from "@/components/section-heading";
 import { PushOptIn } from "@/components/push-opt-in";
 import { NewsFeed } from "@/components/news-feed";
@@ -31,10 +32,11 @@ export default async function HomePage() {
     );
   }
 
-  const [{ items: latest }, { items: feedFirst, pages }, mostRead] = await Promise.all([
+  const [{ items: latest }, { items: feedFirst, pages }, mostRead, { items: impact }] = await Promise.all([
     listArticles({}, 1, 9),
     listArticles({}, 1, 20),
     getMostRead(6),
+    listArticles({ impact: true }, 1, 4),
   ]);
   const fresh = latest.filter((a) => a.slug !== hero.slug).slice(0, 8);
   const exclude = [hero.slug, ...fresh.map((a) => a.slug)];
@@ -52,6 +54,22 @@ export default async function HomePage() {
           ))}
         </div>
       </section>
+
+      {impact.length >= 3 && (
+        <section className="mt-8 rounded-lg border-2 border-teal/40 bg-white p-4 sm:p-5">
+          <div className="flex items-baseline justify-between gap-3">
+            <h2 className="font-serif text-2xl text-ink">Ce te afectează acum</h2>
+            <Link href="/impact/" className="shrink-0 text-sm text-teal hover:underline">
+              Toate →
+            </Link>
+          </div>
+          <div className="mt-2 grid gap-x-8 md:grid-cols-2">
+            {impact.map((a) => (
+              <ArticleRow key={a.slug} article={a} variant="small" />
+            ))}
+          </div>
+        </section>
+      )}
 
       <PushOptIn />
 

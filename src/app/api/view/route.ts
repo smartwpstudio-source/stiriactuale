@@ -12,8 +12,11 @@ const BOTS =
 // corp text/plain). Fără date personale: doar slug-ul articolului.
 export async function POST(request: Request) {
   let slug: unknown;
+  let impact = false; // click din blocul de impact spre o unealtă
   try {
-    slug = JSON.parse(await request.text()).slug;
+    const body = JSON.parse(await request.text());
+    slug = body.slug;
+    impact = body.impact === true;
   } catch {
     return new Response(null, { status: 400 });
   }
@@ -24,7 +27,7 @@ export async function POST(request: Request) {
 
   await getDb()
     .update(articles)
-    .set({ views: sql`${articles.views} + 1` })
+    .set(impact ? { impactClicks: sql`${articles.impactClicks} + 1` } : { views: sql`${articles.views} + 1` })
     .where(and(eq(articles.slug, slug), eq(articles.status, "published")));
   return new Response(null, { status: 204 });
 }

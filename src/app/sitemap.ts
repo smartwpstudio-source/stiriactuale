@@ -38,6 +38,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: "/ghiduri/", priority: 0.7 },
     { url: "/calculatoare/", priority: 0.7 },
     { url: "/modele-reclamatii/", priority: 0.7 },
+    { url: "/impact/", priority: 0.7 },
     { url: HISTORY_PATH, priority: 0.7 },
     ...(await historyDays()).map((d) => ({ url: dayPath(d.month, d.day), priority: 0.6 })),
     ...COMPLAINT_MODELS.map((m) => ({ url: `/modele-reclamatii/${m.slug}/`, priority: 0.7 })),

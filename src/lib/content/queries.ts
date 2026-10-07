@@ -2,6 +2,7 @@ import { and, count, desc, eq, gt, gte, isNotNull, ne, or, sql, type SQL } from 
 import { getDb } from "@/lib/pipeline/db/client";
 import { articles as t } from "@/lib/pipeline/db/schema";
 import type { Article, Section, Topic } from "./types";
+import type { ImpactType } from "@/lib/impact-types";
 import { youtubeThumb } from "@/lib/video";
 
 // Doar articole "published" — draft-urile stau în /admin. Listele nu citesc
@@ -70,6 +71,7 @@ export interface ArticleFilter {
   video?: boolean; // rubrica Video: articolele cu player (YouTube, Facebook, Telegram)
   q?: string;
   includeArchived?: boolean; // doar căutarea — arhiva preluată nu apare în liste
+  impact?: true | ImpactType; // știrile cu blocul „Ce înseamnă pentru tine” (de un tip)
 }
 
 function where(f: ArticleFilter): SQL {
@@ -80,6 +82,8 @@ function where(f: ArticleFilter): SQL {
   if (f.country) c.push(eq(t.country, f.country));
   if (f.topic) c.push(sql`${t.topics} @> ${JSON.stringify([f.topic])}::jsonb`);
   if (f.video) c.push(isNotNull(t.videoUrl));
+  if (f.impact === true) c.push(isNotNull(t.impact));
+  else if (f.impact) c.push(sql`${t.impact}->>'tip' = ${f.impact}`);
   if (f.q) {
     // unaccent: "chisinau" găsește "Chișinău". ponytail: scanare secvențială,
     // ok la câteva mii de rânduri; index trigram dacă arhiva crește mult.
@@ -210,4 +214,16 @@ export async function getArticleLink(id: number) {
     .where(and(eq(t.id, id), eq(t.status, "published")))
     .limit(1);
   return row ?? null;
+}
+
+// Știrile care au recomandat unealta (id „ghid:<slug>”, „calc:<slug>”) în
+// blocul de impact — „Ultimele știri care schimbă asta” pe ghid / calculator.
+export async function getToolNews(tool: string, n: number): Promise<Article[]> {
+  const rows = await getDb()
+    .select(listColumns)
+    .from(t)
+    .where(and(where({}), sql`${t.impact}->'unelte' ? ${tool}`))
+    .orderBy(desc(t.publishedAt))
+    .limit(n);
+  return rows.map(mapRow);
 }
