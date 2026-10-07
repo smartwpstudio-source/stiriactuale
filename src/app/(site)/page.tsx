@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Hero } from "@/components/hero";
 import { ActiveAlerts } from "@/components/active-alerts";
+import { AnalysisCard } from "@/components/analysis-card";
+import { recentAnalysis } from "@/lib/content/analyses";
 import { ArticleCard } from "@/components/article-card";
 import { ArticleRow } from "@/components/article-row";
 import { SectionHeading } from "@/components/section-heading";
@@ -39,6 +41,7 @@ export default async function HomePage() {
     getMostRead(6),
     listArticles({ impact: true }, 1, 4),
   ]);
+  const analysis = await recentAnalysis();
   const fresh = latest.filter((a) => a.slug !== hero.slug).slice(0, 8);
   const exclude = [hero.slug, ...fresh.map((a) => a.slug)];
   const feed = feedFirst.filter((a) => !exclude.includes(a.slug));
@@ -69,6 +72,15 @@ export default async function HomePage() {
             {impact.map((a) => (
               <ArticleRow key={a.slug} article={a} variant="small" />
             ))}
+          </div>
+        </section>
+      )}
+
+      {analysis && (
+        <section className="mt-8">
+          <SectionHeading title="Analiza autorului" />
+          <div className="mt-3">
+            <AnalysisCard a={analysis} />
           </div>
         </section>
       )}

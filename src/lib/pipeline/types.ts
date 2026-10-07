@@ -17,7 +17,6 @@ export interface CandidateGroup {
   items: RawCandidate[];
   sourceNames: string[]; // unice
   manual: boolean; // adăugat de editor din /admin — sare peste scor și plafoane
-  analysis?: boolean; // editorul a cerut o analiză (admin → tip „Analiză”)
   photo?: { url: string; credit: string | null }; // poza încărcată de editor la adăugarea linkului
   postUrl?: string; // postarea cu poze lipită de editor la adăugarea linkului
   candidateIds: number[];

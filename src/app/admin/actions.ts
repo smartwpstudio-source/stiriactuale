@@ -268,12 +268,12 @@ export async function addLink(formData: FormData) {
       feedId: "manual",
       publishedAt: new Date(),
       manual: true,
-      kind: formData.get("kind") === "analiza" ? "analiza" : "stire",
+      kind: "stire",
       ...attached,
     })
     .onConflictDoUpdate({
       target: candidates.url,
-      set: { manual: true, processedAt: null, kind: formData.get("kind") === "analiza" ? "analiza" : "stire", ...attached },
+      set: { manual: true, processedAt: null, kind: "stire", ...attached },
     });
   if (formData.get("now")) {
     const { ok } = await dispatchPipeline();

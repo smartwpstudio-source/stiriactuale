@@ -27,6 +27,7 @@ import { PostEmbed } from "./post-embed";
 import { KindBadge } from "./kind-badge";
 import { getRelatedGuide } from "@/lib/content/related-guide";
 import { getRelatedDossier } from "@/lib/content/related-dossier";
+import { analysesForArticle, analysisPath } from "@/lib/content/analyses";
 import { IconFolder } from "@tabler/icons-react";
 import { ImpactBlock } from "./impact-block";
 import { resolveTools } from "@/lib/impact";
@@ -63,7 +64,7 @@ export async function ArticlePage({
   article: Article;
   breadcrumbItems: BreadcrumbItem[];
 }) {
-  const [similar, { items: latest }, guide, previous, calculator, tools, dossier] = await Promise.all([
+  const [similar, { items: latest }, guide, previous, calculator, tools, dossier, analyses] = await Promise.all([
     getSimilarArticles(article),
     listArticles({}, 1, 9),
     article.archived ? undefined : getRelatedGuide(article.title, article.lead, article.locality),
@@ -71,6 +72,7 @@ export async function ArticlePage({
     article.archived ? undefined : getRelatedCalculator(article.title, article.lead),
     resolveTools(article.impact?.unelte ?? []),
     article.archived ? undefined : getRelatedDossier(article.title, article.lead, article.topics),
+    analysesForArticle(articleUrl(article)),
   ]);
   // casetele de jos nu repetă unealta deja recomandată în blocul de impact
   const shown = new Set([...tools.map((t) => t.href), ...(dossier ? [`/ghiduri/${dossier.slug}/`] : [])]);
@@ -151,6 +153,13 @@ export async function ArticlePage({
             )}
             <p className="mt-6 text-xl font-medium leading-relaxed text-ink">{article.lead}</p>
             {article.impact && <ImpactBlock slug={article.slug} impact={article.impact} tools={tools} source={article.sources?.[0]?.name} />}
+            {analyses.map((an) => (
+              <Link key={an.slug} href={analysisPath(an)} className="mt-5 block rounded-lg border-l-4 border-ink bg-white p-3 hover:bg-paper">
+                <span className="block font-mono text-xs uppercase tracking-wide text-ink">Analiza pe acest subiect</span>
+                <span className="mt-0.5 block font-medium leading-snug text-ink">{an.title}</span>
+                <span className="mt-0.5 block text-sm italic text-sub">{an.thesis}</span>
+              </Link>
+            ))}
             {dossier && (
               // dosarul-pilon al subiectului, mereu la vedere: contextul pe care știrea nu-l repetă
               <Link

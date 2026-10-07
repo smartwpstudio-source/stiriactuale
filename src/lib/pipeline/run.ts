@@ -172,7 +172,6 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       target.sourceNames = [...new Set([...target.sourceNames, ...fresh[i].sourceNames])];
       target.candidateIds.push(...fresh[i].candidateIds);
       target.manual ||= fresh[i].manual;
-      target.analysis ||= fresh[i].analysis;
     });
     const scored: ScoredCandidate[] = [];
     const updates: (ScoredCandidate & { articleId: number })[] = [];
@@ -235,7 +234,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
         // în română de AI din descriere (oricare ar fi limba ei); fără AI, doar
         // varianta citată (video-article.ts). Altfel orice știre aleasă iese
         // „pe scurt” (regula proprietarului), completată la rulările următoare.
-        let kind: "stire" | "pe-scurt" | "analiza" = c.group.analysis ? "analiza" : "stire";
+        let kind: "stire" | "pe-scurt" = "stire";
         let generated = await generateArticle(c.group, c.classification);
         // link video sau postare Telegram (și fără video): textul postării e tot
         // materialul — știre scurtă din el, nu „prea puțin text”

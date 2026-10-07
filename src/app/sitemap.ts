@@ -1,3 +1,4 @@
+import { AUTHORS, analysisPath, authorPath, getAnalyses } from "@/lib/content/analyses";
 import { HISTORY_PATH, dayPath, historyDays } from "@/lib/history";
 import { COMPLAINT_MODELS } from "@/lib/complaint-models";
 import type { MetadataRoute } from "next";
@@ -39,6 +40,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: "/calculatoare/", priority: 0.7 },
     { url: "/modele-reclamatii/", priority: 0.7 },
     { url: "/impact/", priority: 0.7 },
+    { url: "/analiza/", priority: 0.7 },
+    ...(await getAnalyses()).map((a) => ({ url: analysisPath(a), priority: 0.8 })),
+    ...Object.keys(AUTHORS).map((slug) => ({ url: authorPath(slug), priority: 0.5 })),
     { url: HISTORY_PATH, priority: 0.7 },
     ...(await historyDays()).map((d) => ({ url: dayPath(d.month, d.day), priority: 0.6 })),
     ...COMPLAINT_MODELS.map((m) => ({ url: `/modele-reclamatii/${m.slug}/`, priority: 0.7 })),

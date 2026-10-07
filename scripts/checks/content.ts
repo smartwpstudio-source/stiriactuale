@@ -7,6 +7,7 @@ import { GUIDE_CATEGORIES } from "../../src/lib/content/guides";
 import { COUNTRY_NAMES, RAION_NAMES } from "../../src/lib/content/geo";
 import { sanitizeBody } from "../../src/lib/content/sanitize";
 import { COMPLAINT_MODELS, loadComplaintModel } from "../../src/lib/complaint-models";
+import { AUTHORS } from "../../src/lib/content/analyses";
 
 const ROOT = path.join(import.meta.dirname, "..", "..", "content");
 // surse oficiale: instituții de stat MD (*.gov.md) + câteva cu alt domeniu
@@ -138,6 +139,22 @@ async function main() {
         if (i > 0 && (e.an as number) < (ev[i - 1].an as number)) fail(file, `ziua ${d}: ani necrescători`);
       });
     }
+  }
+
+  // analizele semnate (docs/analiza.md)
+  for (const { f, data: a } of await readJson(path.join(ROOT, "analize"))) {
+    if (!a) continue;
+    const file = `analize/${f}`;
+    if (a.slug !== f.replace(/\.json$/, "")) fail(file, "slug diferit de numele fișierului");
+    if (!(a.author in AUTHORS)) fail(file, `autor necunoscut: ${a.author}`);
+    checkDate(file, a.published);
+    if (!a.title || !a.thesis || !a.bodyHtml || !a.counterHtml) fail(file, "titlu, teză, corp și contraargument obligatorii");
+    if (!Array.isArray(a.facts) || a.facts.length < 3 || a.facts.some((x: { text?: string; source?: { url?: string } }) => !x.text || !x.source?.url?.startsWith("https://")))
+      fail(file, "„Ce știm”: minim 3 fapte, fiecare cu sursă https");
+    if (!Array.isArray(a.questions) || a.questions.length < 1 || a.questions.some((q: { q?: string; to?: string }) => !q.q || !q.to)) fail(file, "întrebări cu adresant");
+    if (!Array.isArray(a.trigger) || a.trigger.length < 1) fail(file, "știrea de la care pornește");
+    checkSources(file, a.sources, 2, false);
+    if (/[şţŞŢ]/.test(JSON.stringify(a))) fail(file, "ş/ţ cu sedilă");
   }
 
   // modelele de reclamații (/modele-reclamatii/) vin din secțiunea „Model” a ghidului

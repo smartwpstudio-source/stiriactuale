@@ -105,7 +105,6 @@ export function groupCandidates(candidates: StoredCandidate[]): CandidateGroup[]
     items: g.items.sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime()),
     sourceNames: [...new Set(g.items.map((i) => i.sourceName))],
     manual: g.items.some((i) => i.manual),
-    analysis: g.items.some((i) => i.manual && i.kind === "analiza"),
     ...photoOf(g.items),
     candidateIds: g.items.map((i) => i.id),
   }));

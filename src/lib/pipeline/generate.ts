@@ -108,7 +108,7 @@ const MIN_MATERIAL_VIDEO = 40; // video-ul e subiectul: o frază de descriere aj
 // Trei formate: știre completă; „pe scurt” când povestea abia începe (puțin
 // material — se completează la rulările următoare, vezi run.ts); analiză,
 // comandată de editor din admin.
-export type ArticleMode = "full" | "brief" | "analysis" | "video";
+export type ArticleMode = "full" | "brief" | "video";
 
 const MODE_RULES: Record<Exclude<ArticleMode, "full">, string> = {
   brief: [
@@ -120,12 +120,6 @@ const MODE_RULES: Record<Exclude<ArticleMode, "full">, string> = {
     "MOD POSTARE SCURTĂ (are prioritate față de regulile de lungime și structură de mai sus): sursa e o postare scurtă (video, poze sau doar text de pe un canal), iar textul ei e tot materialul.",
     "STRICT: lead-ul + UN SINGUR paragraf <p> în corp, maximum 120 de cuvinte în total, ZERO subtitluri <h2>. Redai DOAR ce spune descrierea (cine, ce, unde), atribuit canalului sursă. Interzis: explicații despre instituții, locuri sau context general.",
     "Descrierea poate fi în rusă, engleză sau altă limbă: titlul, lead-ul și textul — exclusiv în română.",
-  ].join("\n"),
-  analysis: [
-    "MOD ANALIZĂ (are prioritate față de regulile de lungime și structură de mai sus): editorul a cerut o analiză.",
-    "1.200-2.000 de cuvinte, cu subtitluri <h2>: Ce s-a întâmplat; Cum s-a ajuns aici; Pozițiile părților (fiecare atribuită — guverne, lideri, analiști numiți în material); Ce urmează (doar scenariile și termenele formulate în material, atribuite); Ce înseamnă pentru Moldova.",
-    "La „Ce înseamnă pentru Moldova”: consecințe concrete (securitate, energie și prețuri, comerț, diaspora, drumul spre UE), formulate prudent („ar putea”, „riscul este”), fără cifre sau fapte care nu sunt în material.",
-    "Neutru, fără adjective de valoare și fără a lua partea cuiva; propaganda se citează atribuit, ca poziție, nu ca fapt.",
   ].join("\n"),
 };
 // Lungimea cerută în schemă trebuie să urmeze modul — altfel „350-700 de
@@ -164,7 +158,7 @@ function continuationRule(c: ClassificationResult): string {
 export async function generateArticle(
   group: CandidateGroup,
   classification: ClassificationResult,
-  mode: ArticleMode = group.analysis ? "analysis" : "full",
+  mode: ArticleMode = "full",
 ): Promise<GeneratedArticle | null> {
   // o relatare per redacție, cele mai noi întâi
   const items = [...new Map(group.items.map((i) => [i.sourceName, i])).values()].slice(0, MAX_SOURCES);
