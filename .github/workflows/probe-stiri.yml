@@ -1,0 +1,20 @@
+# Test temporar: stiri.md răspunde serverelor GitHub? (se șterge după test)
+name: Probe stiri.md
+on: workflow_dispatch
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          curl -s https://ipinfo.io/json | grep -E '"(ip|country|org)"' || true
+          UA_CHROME="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36"
+          for url in \
+            "https://stiri.md/article/politica/noua-structura-si-efectivul-armatei-nationale-examinate-in-secret-de-deputati" \
+            "https://stiri.md/article/economic/ieftinirile-continua-cu-cat-scade-pretul-la-benzina-si-motorina-miercuri" \
+            "https://stiri.md/"; do
+            for ua in "$UA_CHROME" "curl/8"; do
+              out=$(curl -s -L -m 20 -A "$ua" -H "Accept-Language: ro,ru;q=0.8" -o body.html -w "%{http_code} %{size_download}" "$url")
+              hasbody=$(grep -c 'description' body.html || true); hastext=$(grep -o 'long[^,]\{0,20\}u003cp' body.html | head -1)
+              echo "$out | desc:$hasbody | text:${hastext:-NU} | ${ua:0:12} | $url"
+            done
+          done
