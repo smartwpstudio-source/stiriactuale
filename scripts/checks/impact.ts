@@ -26,6 +26,10 @@ import("../../src/lib/content/guide-country").then(({ guideCountry }) => {
     assert.equal(matchDossier("Ignăței, Rezina: un fermier vinde roșii la 5 lei"), undefined);
     assert.equal(matchDossier("Pensionarii vor primi un supliment în decembrie"), "pensiile-in-moldova-tot-ce-trebuie-sa-stii");
     assert.equal(matchDossier("Pensiunile din Bucovina, pline de turiști"), undefined);
+    assert.equal(matchDossier("Șofer prins beat la volan pe traseul Chișinău–Orhei"), "alcoolul-la-volan-limite-si-sanctiuni");
+    assert.equal(matchDossier("Poliția amendează șoferii care vorbesc cu telefonul la volan"), "reguli-de-circulatie-incalcate-des-si-amenzile");
+    assert.equal(matchDossier("ANSA a aplicat amenzi de 50.000 de lei la piața centrală"), "amenzile-in-moldova-cine-te-poate-amenda-si-cum-contesti");
+    assert.equal(matchDossier("Examenul teoretic auto se schimbă de la 1 ianuarie"), "cum-obtii-permisul-de-conducere-in-moldova-pas-cu-pas");
     console.log("impact: OK");
   });
 });

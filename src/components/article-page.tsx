@@ -71,7 +71,7 @@ export async function ArticlePage({
     article.continuesId ? getArticleLink(article.continuesId) : null,
     article.archived ? undefined : getRelatedCalculator(article.title, article.lead),
     resolveTools(article.impact?.unelte ?? []),
-    article.archived ? undefined : getRelatedDossier(article.title, article.lead, article.topics),
+    article.archived ? undefined : getRelatedDossier(article.title, article.lead, article.topics, article.section),
     analysesForArticle(articleUrl(article)),
   ]);
   // casetele de jos nu repetă unealta deja recomandată în blocul de impact
@@ -168,7 +168,9 @@ export async function ArticlePage({
               >
                 <IconFolder size={22} stroke={1.75} className="mt-0.5 shrink-0 text-teal" aria-hidden />
                 <span>
-                  <span className="block font-mono text-xs uppercase tracking-wide text-teal">Context: dosarul subiectului</span>
+                  <span className="block font-mono text-xs uppercase tracking-wide text-teal">
+                    {dossier.category === "dosare" || dossier.category === "lumea" ? "Context: dosarul subiectului" : "Ghid pe acest subiect"}
+                  </span>
                   <span className="mt-0.5 block font-medium leading-snug text-ink">{dossier.title}</span>
                 </span>
               </Link>

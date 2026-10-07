@@ -26,6 +26,11 @@ const RULES: [slug: string, re: RegExp][] = [
   ["pensiile-in-moldova-tot-ce-trebuie-sa-stii", /\bpensi(a|e|i|ii|ile|ilor|onar\w*)\b|varsta de pensionare|stagiu\w* de cotizare/],
   ["preturile-la-alimente-si-inflatia-date-bns-bnm", /inflati/],
   ["migratia-si-depopularea-moldovei-cifre-oficiale", /depopular|recensamant|exodul|emigrar\w* in masa/],
+  // ghidurile-pilon pentru șoferi și amenzi (după dosare: o știre despre UE rămâne la UE)
+  ["alcoolul-la-volan-limite-si-sanctiuni", /(beat|baut|ebrietate|alcool\w*|alcoolemi\w*) (la volan|in trafic)|sub influenta alcoolului|alcooltest/],
+  ["cum-obtii-permisul-de-conducere-in-moldova-pas-cu-pas", /scoal\w* auto|examen\w* (auto|de conducere|teoretic|practic)|obtiner\w* (a )?permisului|permis\w* de conducere (nou|pentru tineri)/],
+  ["reguli-de-circulatie-incalcate-des-si-amenzile", /regulament\w* (circulatiei|de circulatie)|reguli\w* de circulatie|puncte de penalizare|telefonul la volan|centur\w* de siguranta|depasir\w* (neregulamentar|pe linia continua)|exces de viteza|limita de viteza|\bradar\w*/],
+  ["amenzile-in-moldova-cine-te-poate-amenda-si-cum-contesti", /\bamend\w*|\bamenz\w*|proces\w*-verbal\w* (de contraventie)?|contraventi\w*/],
 ];
 
 export function matchDossier(text: string): string | undefined {
@@ -33,8 +38,18 @@ export function matchDossier(text: string): string | undefined {
   return RULES.find(([, re]) => re.test(t))?.[0];
 }
 
-export async function getRelatedDossier(title: string, lead: string, topics: string[] = []) {
+// ghidurile cu reguli și amenzi din Moldova: nu la știrile din străinătate
+// („Germania: amenda pentru parcare” nu ține de Codul contravențional)
+const MOLDOVA_ONLY = new Set([
+  "alcoolul-la-volan-limite-si-sanctiuni",
+  "cum-obtii-permisul-de-conducere-in-moldova-pas-cu-pas",
+  "reguli-de-circulatie-incalcate-des-si-amenzile",
+  "amenzile-in-moldova-cine-te-poate-amenda-si-cum-contesti",
+]);
+
+export async function getRelatedDossier(title: string, lead: string, topics: string[] = [], section?: string) {
   // subiectul „criză energetică” fără o regulă mai precisă -> pilonul crizei
-  const slug = matchDossier(`${title} ${lead}`) ?? (topics.includes("criza-energetica") ? "criza-energetica-din-moldova-cauze-cronologie-facturi" : undefined);
+  let slug = matchDossier(`${title} ${lead}`) ?? (topics.includes("criza-energetica") ? "criza-energetica-din-moldova-cauze-cronologie-facturi" : undefined);
+  if (slug && MOLDOVA_ONLY.has(slug) && (section === "diaspora" || section === "international")) slug = undefined;
   return slug ? getGuide(slug) : undefined;
 }
