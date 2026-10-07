@@ -11,6 +11,8 @@ import { absoluteUrl } from "@/lib/seo";
 import Link from "next/link";
 import { modelForGuide } from "@/lib/complaint-models";
 import { ToolNews } from "@/components/tool-news";
+import { RelatedCalculator } from "@/components/related-calculator";
+import { getGuideCalculators } from "@/lib/content/related-calculator";
 
 // Ghidurile sunt statice: generate la build din content/ghiduri/*.json.
 export const dynamicParams = false;
@@ -77,6 +79,9 @@ export default async function GuidePage({ params }: PageProps<"/ghiduri/[slug]">
       <p className="mt-4 font-mono text-sm text-sub">Ghid · actualizat la {updated}</p>
       <ShareButtons url={url} title={g.title} />
       <p className="mt-6 text-xl font-medium leading-relaxed text-ink">{g.description}</p>
+      {(await getGuideCalculators(g.slug, g.title, g.description)).map((c) => (
+        <RelatedCalculator key={c.slug} calc={c} />
+      ))}
       {(() => {
         const model = modelForGuide(g.slug);
         return (
@@ -91,6 +96,7 @@ export default async function GuidePage({ params }: PageProps<"/ghiduri/[slug]">
           )
         );
       })()}
+      <ToolNews tool={`ghid:${g.slug}`} />
 
       {(() => {
         // ghidurile sunt lungi și citite atent: un bloc după paragraful 3, unul la final
@@ -118,8 +124,6 @@ export default async function GuidePage({ params }: PageProps<"/ghiduri/[slug]">
           </div>
         </section>
       )}
-
-      <ToolNews tool={`ghid:${g.slug}`} />
 
       <aside className="mt-8 rounded border border-line bg-white p-4 text-sm text-sub">
         <p>

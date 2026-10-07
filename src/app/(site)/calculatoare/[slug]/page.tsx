@@ -31,6 +31,7 @@ export default async function CalculatorPage({ params }: PageProps<"/calculatoar
       <Breadcrumb items={[{ label: "Acasă", href: "/" }, { label: "Calculatoare", href: "/calculatoare/" }, { label: r.calc.title }]} />
       <h1 className="mt-2 font-serif text-3xl text-ink sm:text-4xl">{r.calc.title}</h1>
       <p className="mt-3 text-lg text-sub">{r.calc.description}</p>
+      <ToolNews tool={`calc:${slug}`} />
       <div className="mt-6">{r.body}</div>
       {"guide" in r.calc && (
         <Link href={`/ghiduri/${r.calc.guide}/`} className="mt-6 block rounded border border-line bg-white p-4 text-ink hover:border-teal">
@@ -50,7 +51,6 @@ export default async function CalculatorPage({ params }: PageProps<"/calculatoar
           ))}
         </p>
       )}
-      <ToolNews tool={`calc:${slug}`} />
       <EmbedCode slug={slug} title={r.calc.title} siteUrl={SITE_URL} />
     </div>
   );
