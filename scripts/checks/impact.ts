@@ -1,0 +1,15 @@
+// Verificarea cifrelor din blocul „Ce înseamnă pentru tine”: npx tsx scripts/checks/impact.ts
+import assert from "node:assert/strict";
+import { numbersInSource, validateImpact } from "../../src/lib/impact";
+
+const src = "ANRE: benzina A95 nu va depăși 34,22 lei, motorina 35,42 lei, din 8 octombrie. Plafonul de 1 500 lei rămâne.";
+assert.ok(numbersInSource("Benzina: maximum 34,22 lei din 8 octombrie", src));
+assert.ok(numbersInSource("plafon 1500 lei", src)); // spațiul de mii nu contează
+assert.ok(numbersInSource("34.22 lei", src)); // virgulă sau punct
+assert.ok(!numbersInSource("scade cu 16 bani", src)); // cifră care nu e în sursă
+const ok = { tip: "bani", cine: "șoferii", ce: "Benzina A95 costă cel mult 34,22 lei", pasi: ["Compară prețurile"], unelte: ["calc:x", "ghid:inventat"] };
+assert.deepEqual(validateImpact(ok, src, ["calc:x"])?.unelte, ["calc:x"]); // doar unelte din listă
+assert.equal(validateImpact({ ...ok, ce: "costă 40 lei" }, src, []), null);
+assert.equal(validateImpact({ ...ok, tip: "altceva" }, src, []), null);
+assert.equal(validateImpact({ ...ok, pasi: [] }, src, []), null);
+console.log("impact: OK");

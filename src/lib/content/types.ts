@@ -1,3 +1,4 @@
+import type { Impact } from "@/lib/impact";
 export type Section = "regiuni" | "national" | "international" | "diaspora";
 
 export type Topic =
@@ -31,6 +32,7 @@ export interface Article {
   kind?: string; // "stire" | "pe-scurt" | "analiza"
   updatedAt?: string; // știre pe scurt completată ulterior
   continuesId?: number; // articolul anterior din aceeași poveste
+  impact?: Impact; // blocul „Ce înseamnă pentru tine”
   sources?: { name: string; url: string }[];
   archived?: boolean; // arhivă preluată de la altă redacție: rezumat + link, noindex, fără reclame
 }

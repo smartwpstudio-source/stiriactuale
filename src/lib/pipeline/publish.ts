@@ -5,6 +5,7 @@ import { articles } from "./db/schema";
 import { normalizeTitle } from "./dedup";
 import type { ArticleImage } from "./image";
 import { mediaTag } from "./media-tag";
+import type { Impact } from "@/lib/impact";
 import { announcePublished } from "@/lib/publish-effects";
 import type { CandidateGroup, GeneratedArticle, ScoredCandidate } from "./types";
 
@@ -89,6 +90,7 @@ export async function publishArticle(
         pushWorthy: candidate.classification.pushWorthy,
         kind,
         continuesId: candidate.classification.continuesId,
+        impact: (generated.impact as Impact | undefined) ?? null,
         postUrl: candidate.group.postUrl,
         status: "published",
       })
@@ -133,6 +135,8 @@ export async function updateBriefArticle(
       sourceUrls: [...new Set([...old.sourceUrls, ...candidate.group.items.map((i) => i.sourceUrl).filter(Boolean)])],
       sourceCount: sources.length,
       videoUrl: old.videoUrl ?? generated.video_url,
+      // blocul editat manual nu se suprascrie; altfel cel nou (sau cel vechi, dacă nu e altul)
+      impact: old.impact?.editat ? old.impact : ((generated.impact as Impact | undefined) ?? old.impact),
       kind: "stire",
       updatedAt: new Date(),
     })

@@ -3,6 +3,7 @@ import { fetchArticle } from "./fulltext";
 import { toEmbedUrl } from "@/lib/video";
 import { countryLabel, raionLabel } from "@/lib/content/geo";
 import type { CandidateGroup, ClassificationResult, GeneratedArticle } from "./types";
+import { toolCandidates, validateImpact, IMPACT_TYPES } from "@/lib/impact";
 
 const SCHEMA = {
   type: "object",
@@ -30,6 +31,19 @@ const SCHEMA = {
       type: "string",
       description:
         "O propoziție în ENGLEZĂ pentru generarea unei fotografii editoriale realiste a SUBIECTULUI PRINCIPAL al știrii, folosită doar dacă stock-ul nu are nimic. Aceleași reguli: fără persoane identificabile, fără text, fără logo-uri, fără steaguri.",
+    },
+    impact: {
+      type: "object",
+      description: "Blocul „Ce înseamnă pentru tine” — DOAR la știrile cu consecință reală (vezi regulile). Altfel omite câmpul.",
+      properties: {
+        tip: { type: "string", enum: Object.keys(IMPACT_TYPES) },
+        cine: { type: "string", description: "Cine e afectat, concret (max 100 de caractere)." },
+        ce: { type: "string", description: "Ce se schimbă, cu cifrele din material (max 200 de caractere)." },
+        cand: { type: "string", description: "De când / până când — doar dacă apare în material." },
+        pasi: { type: "array", items: { type: "string" }, description: "1-3 pași scurți: ce poate face omul acum." },
+        unelte: { type: "array", items: { type: "string" }, description: "0-2 id-uri din UNELTE DISPONIBILE." },
+      },
+      required: ["tip", "cine", "ce", "pasi", "unelte"],
     },
   },
   required: ["titlu", "slug", "meta_description", "lead", "corp_html", "tag_uri", "alt_text_imagine", "stock_query", "image_prompt"],
@@ -61,7 +75,16 @@ const SYSTEM_PROMPT = [
   "  Slab: „Noi tarife la gaz” → Bun: „Gazul se scumpește cu 18% din noiembrie: cât va costa metrul cub”.",
   "  Slab: „Declarațiile lui Grosu despre Nistru” → Bun: „Grosu: nordul nu rămâne fără apă, deși Nistrul a scăzut la minim record”.",
   "",
-  'Secțiunea "Ce înseamnă pentru tine": DOAR pentru prețuri, tarife, impozite, salarii, pensii, legi și reguli noi (educație, sănătate, economie, transport). Un <h2>Ce înseamnă pentru tine</h2> cu 2-4 puncte concrete (<ul>): cine e afectat, de când, ce trebuie să facă. Doar din fapte prezente în surse. La alte știri, omite-o.',
+  'Blocul "Ce înseamnă pentru tine" (câmpul impact, afișat separat, sus): DOAR când știrea schimbă concret ceva pentru o categorie de oameni:',
+  '- tip "bani": un preț, tarif, impozit, taxă, amendă, salariu, pensie, ajutor, compensație;',
+  '- tip "reguli": o regulă, un termen, o procedură, acte, o lege nouă (educație, sănătate, transport, vamă, muncă);',
+  '- tip "alerta": un risc concret de care omul se poate feri (vreme severă, fraude, produse retrase, alerte de călătorie); "urgent" DOAR pentru pericol imediat (cod roșu, evacuare, graniță închisă).',
+  'NU la accidente, crime, fapt divers, declarații politice fără efect practic, știri externe fără legătură cu Moldova sau diaspora. La dubiu, omite câmpul.',
+  '- cine: concret ("pensionarii cu stagiu complet", "șoferii de autoturisme"; la diaspora cu țara: "moldovenii din Italia care…");',
+  '- ce: ce se schimbă, cu cifrele EXACT ca în material — nicio sumă, procent sau dată calculată sau presupusă (blocul se verifică automat și se aruncă dacă are o cifră care nu e în surse);',
+  '- pasi: 1-3 acțiuni scurte și sigure (ex. „verifică suma pe factura din noiembrie”, „depune cererea la CNAS până la …”); fără sfaturi medicale sau juridice individuale — la subiecte medicale/juridice: „urmează indicațiile oficiale ale <instituția>”;',
+  '- unelte: 0-2 id-uri din lista UNELTE DISPONIBILE, doar dacă unealta chiar ajută la această știre (calculatorul cu care omul își face socoteala, ghidul care explică pașii, modelul de reclamație). Fără unealtă potrivită: listă goală.',
+  'Când există blocul, titlul pornește de la consecința pentru cititor („Gazul se scumpește de luni: cât plătești în plus la factură”), tot fără clickbait. NU mai scrie în corp o secțiune „Ce înseamnă pentru tine” — blocul o înlocuiește.',
   "",
   "Reguli juridice (obligatorii):",
   '- Prezumția de nevinovăție: până la o sentință definitivă, persoana e "bănuită", "învinuită", "acuzată" — niciodată "criminalul", "hoțul", "corupătorul".',
@@ -157,13 +180,19 @@ export async function generateArticle(
     mode === "brief" ? MIN_MATERIAL_BRIEF : mode === "video" ? MIN_MATERIAL_VIDEO : group.manual ? MIN_MATERIAL_CHARS_MANUAL : MIN_MATERIAL_CHARS;
   if (digest.length < min) return null;
 
+  // uneltele site-ului pe care blocul de impact le poate recomanda
+  const tools = await toolCandidates(`${group.representativeTitle} ${items.map((i) => i.summary).join(" ")}`);
+  const toolList = tools.map((t) => `${t.id} — ${t.title}`).join("\n");
   const article = await structured<GeneratedArticle>({
     model: OPUS_MODEL,
     system: mode === "full" ? SYSTEM_PROMPT : `${SYSTEM_PROMPT}\n\n${MODE_RULES[mode]}`,
-    prompt: `${titleRule(classification)}${continuationRule(classification)}\n\nSecțiune: ${classification.section}. Subiecte: ${classification.topics.join(", ") || "—"}.\n\nRelatări despre același eveniment (text integral):\n\n${digest}`,
+    prompt: `${titleRule(classification)}${continuationRule(classification)}\n\nSecțiune: ${classification.section}. Subiecte: ${classification.topics.join(", ") || "—"}.\n\nUNELTE DISPONIBILE pe site (id — titlu):\n${toolList}\n\nRelatări despre același eveniment (text integral):\n\n${digest}`,
     schema: schemaFor(mode),
     maxBudgetUsd: 0.5,
   });
   const video = items.map((i) => toEmbedUrl(i.sourceUrl)).find(Boolean) ?? texts.find((t) => t?.video)?.video;
-  return video ? { ...article, video_url: video } : article;
+  // blocul rămâne doar dacă e complet și fiecare cifră din el e în surse
+  const impact = validateImpact(article.impact, `${digest} ${group.representativeTitle}`, tools.map((t) => t.id)) ?? undefined;
+  if (article.impact && !impact) console.log(`Bloc de impact respins (incomplet sau cifre care nu sunt în surse): ${article.titlu}`);
+  return { ...article, impact, ...(video ? { video_url: video } : {}) };
 }

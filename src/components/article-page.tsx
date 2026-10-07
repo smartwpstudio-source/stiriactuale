@@ -26,6 +26,8 @@ import { TelegramVideo } from "./telegram-video";
 import { PostEmbed } from "./post-embed";
 import { KindBadge } from "./kind-badge";
 import { getRelatedGuide } from "@/lib/content/related-guide";
+import { ImpactBlock } from "./impact-block";
+import { resolveTools } from "@/lib/impact";
 
 import type { Article } from "@/lib/content/types";
 
@@ -59,13 +61,16 @@ export async function ArticlePage({
   article: Article;
   breadcrumbItems: BreadcrumbItem[];
 }) {
-  const [similar, { items: latest }, guide, previous, calculator] = await Promise.all([
+  const [similar, { items: latest }, guide, previous, calculator, tools] = await Promise.all([
     getSimilarArticles(article),
     listArticles({}, 1, 9),
     article.archived ? undefined : getRelatedGuide(article.title, article.lead, article.locality),
     article.continuesId ? getArticleLink(article.continuesId) : null,
     article.archived ? undefined : getRelatedCalculator(article.title, article.lead),
+    resolveTools(article.impact?.unelte ?? []),
   ]);
+  // casetele de jos nu repetă unealta deja recomandată în blocul de impact
+  const shown = new Set(tools.map((t) => t.href));
 
   return (
     <div className="mx-auto grid w-full max-w-7xl gap-12 px-4 py-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:px-8">
@@ -142,6 +147,7 @@ export async function ArticlePage({
               </>
             )}
             <p className="mt-6 text-xl font-medium leading-relaxed text-ink">{article.lead}</p>
+            {article.impact && <ImpactBlock impact={article.impact} tools={tools} source={article.sources?.[0]?.name} />}
             {(() => {
               const body = sanitizeBody(article.bodyHtml, article.imageAlt ?? article.title);
               const ads = !article.archived && ADSENSE_IN_ARTICLE_SLOT;
@@ -181,8 +187,8 @@ export async function ArticlePage({
             ))}
           </div>
         )}
-        {calculator && <RelatedCalculator calc={calculator} />}
-        {guide && <RelatedGuide guide={guide} />}
+        {calculator && !shown.has(`/calculatoare/${calculator.slug}/`) && <RelatedCalculator calc={calculator} />}
+        {guide && !shown.has(`/ghiduri/${guide.slug}/`) && <RelatedGuide guide={guide} />}
         <TelegramCta />
         <PushOptIn />
         <SimilarArticles articles={similar} />

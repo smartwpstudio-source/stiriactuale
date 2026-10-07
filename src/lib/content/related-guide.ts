@@ -27,15 +27,29 @@ function stems(text: string): Map<string, number> {
   return out;
 }
 
-export function bestGuide(text: string, guides: Guide[]): Guide | undefined {
+function scored(text: string, guides: Guide[]) {
   const target = stems(text);
-  let best: { g: Guide; score: number } | undefined;
-  for (const g of guides) {
+  return guides.map((g) => {
     let score = 0;
     for (const [s, w] of stems(`${g.title} ${g.description}`)) if (target.has(s)) score += Math.max(w, target.get(s)!);
-    if (score >= MIN_SHARED && (!best || score > best.score)) best = { g, score };
-  }
+    return { g, score };
+  });
+}
+
+export function bestGuide(text: string, guides: Guide[]): Guide | undefined {
+  let best: { g: Guide; score: number } | undefined;
+  for (const x of scored(text, guides)) if (x.score >= MIN_SHARED && (!best || x.score > best.score)) best = x;
   return best?.g;
+}
+
+// primele n ghiduri cu cuvinte comune (minim unul) — candidații din care
+// modelul alege unealta potrivită pentru blocul „Ce înseamnă pentru tine”
+export function rankGuides(text: string, guides: Guide[], n: number): Guide[] {
+  return scored(text, guides)
+    .filter((x) => x.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, n)
+    .map((x) => x.g);
 }
 
 // Ghidurile de oraș („Cahul: primăria, spitalul…”) au cuvinte comune cu orice

@@ -21,6 +21,7 @@ import { readVideoSource } from "@/lib/video-source";
 import { absoluteUrl } from "@/lib/seo";
 import { announcePublished, pushNow } from "@/lib/publish-effects";
 import type { Section } from "@/lib/content/types";
+import { IMPACT_TYPES, resolveTools, type Impact, type ImpactType } from "@/lib/impact";
 
 // Fiecare action verifică sesiunea — sunt endpoint-uri POST publice.
 
@@ -279,4 +280,29 @@ export async function addLink(formData: FormData) {
     redirect(ok ? "/admin/?run=ok" : "/admin/?run=fail");
   }
   redirect("/admin/?link=ok");
+}
+
+// Blocul „Ce înseamnă pentru tine”: tip gol = fără bloc. Uneltele: id-uri
+// („calc:salariu-net”, „ghid:<slug>”, „model:<slug>”), câte unul pe rând.
+export async function saveImpact(id: number, formData: FormData) {
+  await requireAdmin();
+  const field = (k: string) => String(formData.get(k) ?? "").trim();
+  const lines = (k: string) => field(k).split("\n").map((x) => x.trim()).filter(Boolean);
+  const tip = field("tip") as ImpactType;
+  const impact: Impact | null =
+    tip in IMPACT_TYPES && field("cine") && field("ce") && lines("pasi").length
+      ? {
+          tip,
+          cine: field("cine"),
+          ce: field("ce"),
+          cand: field("cand") || undefined,
+          pasi: lines("pasi").slice(0, 3),
+          unelte: (await resolveTools(lines("unelte"))).map((t) => t.id).slice(0, 2),
+          verificat: new Date().toISOString(),
+          editat: true,
+        }
+      : null;
+  await getDb().update(articles).set({ impact }).where(eq(articles.id, id));
+  refreshSite();
+  redirect(`/admin/articol/${id}/?ok=1`);
 }

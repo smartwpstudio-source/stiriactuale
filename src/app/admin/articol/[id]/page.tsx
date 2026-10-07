@@ -14,6 +14,7 @@ import {
   removeImage,
   replaceImage,
   saveArticle,
+  saveImpact,
   postToFacebookNow,
   sendPushNow,
   setFeatured,
@@ -22,6 +23,7 @@ import {
 } from "../../actions";
 import { ConfirmButton } from "../../confirm-button";
 import { UploadImage } from "../../upload-image";
+import { IMPACT_TYPES } from "@/lib/impact";
 
 const input = "w-full rounded border border-line bg-white px-3 py-2 text-ink";
 const label = "mb-1 block text-sm text-sub";
@@ -217,6 +219,30 @@ export default async function EditArticlePage({ params, searchParams }: PageProp
         </form>
 
         <div className="flex flex-col gap-4">
+          <form action={saveImpact.bind(null, id)} className="flex flex-col gap-2 rounded border border-teal/40 bg-white p-4">
+            <h2 className="font-medium text-ink">„Ce înseamnă pentru tine”</h2>
+            <p className="text-xs text-sub">
+              Doar la știrile cu consecință reală (bani, reguli, alerte). Tip gol = fără bloc. Cifrele — exact ca în sursă.
+            </p>
+            <select name="tip" defaultValue={a.impact?.tip ?? ""} className={input}>
+              <option value="">— fără bloc —</option>
+              {Object.entries(IMPACT_TYPES).map(([k, v]) => (
+                <option key={k} value={k}>{v}</option>
+              ))}
+            </select>
+            <input name="cine" defaultValue={a.impact?.cine ?? ""} placeholder="Cine e afectat" className={input} />
+            <textarea name="ce" defaultValue={a.impact?.ce ?? ""} rows={2} placeholder="Ce se schimbă" className={input} />
+            <input name="cand" defaultValue={a.impact?.cand ?? ""} placeholder="De când (opțional)" className={input} />
+            <textarea name="pasi" defaultValue={a.impact?.pasi.join("\n") ?? ""} rows={3} placeholder="Ce faci acum — un pas pe rând (max 3)" className={input} />
+            <textarea
+              name="unelte"
+              defaultValue={a.impact?.unelte.join("\n") ?? ""}
+              rows={2}
+              placeholder="Unelte, una pe rând: calc:salariu-net, ghid:<slug>, model:<slug>"
+              className={`${input} font-mono text-xs`}
+            />
+            <button className="self-start rounded bg-teal px-4 py-2 text-sm text-white">Salvează blocul</button>
+          </form>
           <section>
             <h2 className="mb-2 font-medium text-ink">Imagine</h2>
             {a.imageUrl ? (

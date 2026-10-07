@@ -57,4 +57,5 @@ export interface GeneratedArticle {
   stock_query: string;
   image_prompt: string;
   video_url?: string; // nu vine de la model: primul video găsit în surse
+  impact?: unknown; // brut de la model; validat în generate.ts -> Impact | undefined
 }

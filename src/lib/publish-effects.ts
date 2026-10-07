@@ -6,6 +6,9 @@ import { absoluteUrl } from "@/lib/seo";
 import { notifyEditor, postToChannel } from "@/lib/telegram";
 import { postToPage } from "@/lib/facebook";
 import { pushBlockedReason, sendPush } from "@/lib/push";
+import { resolveTools } from "@/lib/impact";
+
+const TOOL_LINE = { calc: "🧮 Calculează", ghid: "📘 Ghid", model: "📝 Model de reclamație" };
 
 // Tot ce se întâmplă când un articol devine public — același lucru indiferent
 // dacă l-a publicat editorul din /admin sau pipeline-ul automat:
@@ -22,7 +25,10 @@ export async function announcePublished(id: number, how: "manual" | "auto"): Pro
   if (!a.telegramMessageId) {
     // continuarea unei știri deja postate: marcată, să nu pară aceeași știre de două ori
     const title = a.continuesId ? `🔄 Continuare: ${a.title}` : a.title;
-    const telegramMessageId = await postToChannel({ title, lead: a.leadText, url: absoluteUrl(path) });
+    // unealta din blocul de impact, direct în postare: omul ajunge la calculator fără ocol
+    const [tool] = await resolveTools(a.impact?.unelte ?? []);
+    const toolLine = tool && `${TOOL_LINE[tool.kind]}: <a href="${absoluteUrl(tool.href)}">${tool.title.replace(/&/g, "&amp;").replace(/</g, "&lt;")}</a>`;
+    const telegramMessageId = await postToChannel({ title, lead: a.leadText, url: absoluteUrl(path), tool: toolLine });
     if (telegramMessageId) await db.update(articles).set({ telegramMessageId }).where(eq(articles.id, id));
   }
   if (!a.facebookPostId) {

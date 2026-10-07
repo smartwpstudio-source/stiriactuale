@@ -55,13 +55,13 @@ export async function alertEditor(text: string) {
 }
 
 // Returnează message_id — se salvează ca retragerea să poată șterge postarea.
-export async function postToChannel(a: { title: string; lead: string; url: string }): Promise<number | null> {
+export async function postToChannel(a: { title: string; lead: string; url: string; tool?: string }): Promise<number | null> {
   const chatId = process.env.TELEGRAM_CHANNEL_ID;
   if (!chatId) return null;
   const msg = await call<{ message_id: number }>("sendMessage", {
     chat_id: chatId,
     parse_mode: "HTML",
-    text: `<b>${esc(a.title)}</b>\n\n${esc(a.lead)}\n\n${a.url}`,
+    text: `<b>${esc(a.title)}</b>\n\n${esc(a.lead)}${a.tool ? `\n\n${a.tool}` : ""}\n\n${a.url}`,
   });
   return msg?.message_id ?? null;
 }
