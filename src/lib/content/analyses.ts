@@ -33,6 +33,7 @@ export const AUTHORS: Record<string, { name: string; role: string; bio: string; 
   "radu-druta": {
     name: "Radu Druță",
     role: "Fondator, redactor și autor",
+    photo: "/autori/radu-druta.jpg",
     bio: "Fondator, redactor și autor al ziarului Drochia Reporter și al portalului Știri Actuale Info. Are o experiență de 10 ani în jurnalism.",
     disclosure:
       "Declarație de interese: membru al Partidului Schimbării, fără funcții în partid. Analizele exprimă opinia personală a autorului; faptele din ele sunt verificate și au sursă, iar critica se aplică tuturor, indiferent de tabără.",
