@@ -7,6 +7,7 @@ import { notifyEditor, postToChannel } from "@/lib/telegram";
 import { postToPage } from "@/lib/facebook";
 import { pushBlockedReason, sendPush } from "@/lib/push";
 import { resolveTools } from "@/lib/impact";
+import { countryLabel } from "@/lib/content/geo";
 
 const TOOL_LINE = { calc: "🧮 Calculează", ghid: "📘 Ghid", model: "📝 Model de reclamație" };
 
@@ -28,7 +29,9 @@ export async function announcePublished(id: number, how: "manual" | "auto"): Pro
     // unealta din blocul de impact, direct în postare: omul ajunge la calculator fără ocol
     const [tool] = await resolveTools(a.impact?.unelte ?? []);
     const toolLine = tool && `${TOOL_LINE[tool.kind]}: <a href="${absoluteUrl(tool.href)}">${tool.title.replace(/&/g, "&amp;").replace(/</g, "&lt;")}</a>`;
-    const telegramMessageId = await postToChannel({ title, lead: a.leadText, url: absoluteUrl(path), tool: toolLine });
+    // diaspora: #Italia, #RegatulUnit — în Telegram se caută după hashtag
+    const tag = a.section === "diaspora" && a.country ? `#${countryLabel(a.country).normalize("NFD").replace(/[^A-Za-z]/g, "")}` : "";
+    const telegramMessageId = await postToChannel({ title, lead: a.leadText, url: absoluteUrl(path), tool: [toolLine, tag].filter(Boolean).join("\n") || undefined });
     if (telegramMessageId) await db.update(articles).set({ telegramMessageId }).where(eq(articles.id, id));
   }
   if (!a.facebookPostId) {

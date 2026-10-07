@@ -12,6 +12,7 @@ export interface Impact {
   cand?: string;
   pasi: string[];
   unelte: string[]; // "ghid:<slug>", "calc:<slug>", "model:<slug>"
+  pana?: string; // AAAA-LL-ZZ — alertă / urgent: valabilă până la (fără = 3 zile de la publicare)
   verificat: string; // ISO — ultima scriere / editare a blocului
   editat?: boolean; // corectat în /admin — completările pipeline-ului nu-l suprascriu
 }

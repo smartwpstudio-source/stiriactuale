@@ -298,6 +298,7 @@ export async function saveImpact(id: number, formData: FormData) {
           cand: field("cand") || undefined,
           pasi: lines("pasi").slice(0, 3),
           unelte: (await resolveTools(lines("unelte"))).map((t) => t.id).slice(0, 2),
+          pana: /^\d{4}-\d{2}-\d{2}$/.test(field("pana")) && (tip === "alerta" || tip === "urgent") ? field("pana") : undefined,
           verificat: new Date().toISOString(),
           editat: true,
         }

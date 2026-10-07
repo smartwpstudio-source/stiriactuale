@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Hero } from "@/components/hero";
+import { ActiveAlerts } from "@/components/active-alerts";
 import { ArticleCard } from "@/components/article-card";
 import { ArticleRow } from "@/components/article-row";
 import { SectionHeading } from "@/components/section-heading";
@@ -44,6 +45,7 @@ export default async function HomePage() {
 
   return (
     <div className="mx-auto w-full max-w-7xl px-4 py-6 lg:px-8">
+      <ActiveAlerts urgentOnly />
       <Hero article={hero} />
 
       <section className="mt-8">

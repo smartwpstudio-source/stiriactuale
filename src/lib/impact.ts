@@ -79,6 +79,10 @@ export function validateImpact(raw: unknown, source: string, allowedTools: strin
     verificat: new Date().toISOString(),
   };
   if (!(tip in IMPACT_TYPES) || !impact.cine || !impact.ce || !impact.pasi.length) return null;
+  // alertele: data de expirare, dacă e plauzibilă (azi … +60 de zile)
+  const pana = typeof r.pana === "string" && /^\d{4}-\d{2}-\d{2}$/.test(r.pana) ? r.pana : "";
+  const today = new Date().toISOString().slice(0, 10);
+  if ((tip === "alerta" || tip === "urgent") && pana >= today && pana <= new Date(Date.now() + 60 * 86400_000).toISOString().slice(0, 10)) impact.pana = pana;
   const all = [impact.cine, impact.ce, impact.cand ?? "", ...impact.pasi].join(" ");
   return numbersInSource(all, source) ? impact : null;
 }

@@ -236,6 +236,10 @@ export default async function EditArticlePage({ params, searchParams }: PageProp
             <input name="cine" defaultValue={a.impact?.cine ?? ""} placeholder="Cine e afectat" className={input} />
             <textarea name="ce" defaultValue={a.impact?.ce ?? ""} rows={2} placeholder="Ce se schimbă" className={input} />
             <input name="cand" defaultValue={a.impact?.cand ?? ""} placeholder="De când (opțional)" className={input} />
+            <label className="text-xs text-sub">
+              Alertă / urgent valabilă până la (gol = 3 zile de la publicare):
+              <input type="date" name="pana" defaultValue={a.impact?.pana ?? ""} className={`${input} mt-1`} />
+            </label>
             <textarea name="pasi" defaultValue={a.impact?.pasi.join("\n") ?? ""} rows={3} placeholder="Ce faci acum — un pas pe rând (max 3)" className={input} />
             <textarea
               name="unelte"

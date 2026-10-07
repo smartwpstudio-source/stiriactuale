@@ -227,3 +227,23 @@ export async function getToolNews(tool: string, n: number): Promise<Article[]> {
     .limit(n);
   return rows.map(mapRow);
 }
+
+// Alertele încă în vigoare: blocul de impact de tip alertă / urgent, până la
+// data „pana” sau, fără ea, 3 zile de la publicare.
+export async function getActiveAlerts(o: { country?: string; urgentOnly?: boolean; diaspora?: boolean }): Promise<Article[]> {
+  const today = new Date().toISOString().slice(0, 10);
+  const since = new Date(Date.now() - 3 * 86400_000);
+  const rows = await getDb()
+    .select(listColumns)
+    .from(t)
+    .where(
+      and(
+        where({ ...(o.diaspora && { section: "diaspora" as const }), ...(o.country && { country: o.country }) }),
+        o.urgentOnly ? sql`${t.impact}->>'tip' = 'urgent'` : sql`${t.impact}->>'tip' in ('alerta', 'urgent')`,
+        sql`coalesce(${t.impact}->>'pana' >= ${today}, ${t.publishedAt} >= ${since.toISOString()})`,
+      ),
+    )
+    .orderBy(desc(t.publishedAt))
+    .limit(4);
+  return rows.map(mapRow);
+}

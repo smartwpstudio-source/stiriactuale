@@ -2,7 +2,28 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { SectionHeading } from "@/components/section-heading";
-import { GUIDE_CATEGORIES, getGuides, type GuideCategory } from "@/lib/content/guides";
+import { GUIDE_CATEGORIES, getGuides, type Guide, type GuideCategory } from "@/lib/content/guides";
+import { guideCountry } from "@/lib/content/guide-country";
+import { COUNTRY_NAMES } from "@/lib/content/geo";
+
+// Diaspora: ghidurile grupate pe țări (în ordinea listei de țări), apoi cele
+// valabile pentru toate țările
+function byCountry(items: Guide[]) {
+  const groups = Object.entries(COUNTRY_NAMES)
+    .map(([slug, name]) => ({ name, items: items.filter((g) => guideCountry(g.slug) === slug) }))
+    .filter((x) => x.items.length);
+  const general = items.filter((g) => !guideCountry(g.slug));
+  return general.length ? [...groups, { name: "Pentru toate țările", items: general }] : groups;
+}
+
+const GuideLink = ({ g }: { g: Guide }) => (
+  <li className="border-b border-line py-3 last:border-b-0">
+    <Link href={`/ghiduri/${g.slug}/`} className="group block">
+      <h3 className="font-serif text-lg leading-snug text-ink group-hover:text-teal">{g.title}</h3>
+      <p className="mt-1 line-clamp-2 text-[0.95rem] text-sub">{g.description}</p>
+    </Link>
+  </li>
+);
 
 export const metadata: Metadata = {
   title: "Ghiduri practice",
@@ -39,21 +60,34 @@ export default async function GuidesPage() {
         ))}
       </ul>
       <div className="mt-10 grid gap-x-10 gap-y-12 lg:grid-cols-2">
-        {byCategory.map(({ c, items }) => (
+        {byCategory.map(({ c, items }) =>
+          c === "diaspora" ? (
+            <section key={c} id={c} className="scroll-mt-6 lg:col-span-2">
+              <SectionHeading title={GUIDE_CATEGORIES[c]} />
+              <div className="mt-2 grid gap-x-10 gap-y-6 lg:grid-cols-2">
+                {byCountry(items).map((grp) => (
+                  <div key={grp.name}>
+                    <h3 className="mt-4 rounded bg-ink px-3 py-1.5 font-serif text-lg text-white">{grp.name}</h3>
+                    <ul className="mt-1">
+                      {grp.items.map((g) => (
+                        <GuideLink key={g.slug} g={g} />
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </section>
+          ) : (
           <section key={c} id={c} className="scroll-mt-6">
             <SectionHeading title={GUIDE_CATEGORIES[c]} />
             <ul className="mt-2">
               {items.map((g) => (
-                <li key={g.slug} className="border-b border-line py-3 last:border-b-0">
-                  <Link href={`/ghiduri/${g.slug}/`} className="group block">
-                    <h3 className="font-serif text-lg leading-snug text-ink group-hover:text-teal">{g.title}</h3>
-                    <p className="mt-1 line-clamp-2 text-[0.95rem] text-sub">{g.description}</p>
-                  </Link>
-                </li>
+                <GuideLink key={g.slug} g={g} />
               ))}
             </ul>
           </section>
-        ))}
+          ),
+        )}
       </div>
     </div>
   );

@@ -10,6 +10,8 @@ import { SectionFilterChips } from "./section-filter-chips";
 import { getHubCounts, listArticles } from "@/lib/content/queries";
 import { countryLabel, raionLabel } from "@/lib/content/geo";
 import { pagePath, type Hub } from "@/lib/content/hubs";
+import { ActiveAlerts } from "./active-alerts";
+import { guideCountry } from "@/lib/content/guide-country";
 import { absoluteUrl, breadcrumbJsonLd } from "@/lib/seo";
 
 // Hub gol -> noindex: zeci de pagini de raion fără conținut arată pentru
@@ -38,6 +40,9 @@ export async function HubPage({ hub, page }: { hub: Hub | null; page: number | n
     hub.chips ? listPlaces(hub.chips.kind === "raion" ? "raioane" : "tari") : [],
     hub.pillars && page === 1 ? getGuides().then((g) => g.filter((x) => x.category === hub.pillars)) : [],
   ]);
+  // pagina unei țări din Diaspora: ghidurile pentru moldovenii de acolo
+  const country = hub.filter.section === "diaspora" ? hub.filter.country : undefined;
+  const countryGuides = country && page === 1 ? (await getGuides()).filter((g) => g.category === "diaspora" && guideCountry(g.slug) === country) : [];
   if (page > pages) notFound();
 
   // filtre pentru raioanele/țările cu articole sau cu informații utile (+ cel curent)
@@ -67,7 +72,26 @@ export async function HubPage({ hub, page }: { hub: Hub | null; page: number | n
       {chipItems && chipItems.length > 0 && (
         <SectionFilterChips basePath={chips!.basePath} items={chipItems} active={chips!.active} />
       )}
+      {hub.filter.section === "diaspora" && page === 1 && <ActiveAlerts diaspora country={country} />}
       {place && hub.place && <PlaceInfoBox info={place} name={hub.place.name} />}
+      {countryGuides.length > 0 && (
+        <section className="mt-6">
+          <h2 className="font-serif text-xl text-ink">Ghiduri pentru moldovenii din {hub.place?.name}</h2>
+          <ul className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {countryGuides.map((g) => (
+              <li key={g.slug}>
+                <Link href={`/ghiduri/${g.slug}/`} className="flex h-full flex-col rounded-lg border border-line bg-white p-4 hover:border-teal">
+                  <span className="font-serif text-lg leading-snug text-ink">{g.title}</span>
+                  <span className="mt-1 line-clamp-2 text-sm text-sub">{g.description}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <Link href="/ghiduri/#diaspora" className="mt-3 inline-block text-sm text-teal hover:underline">
+            Toate ghidurile pentru diaspora →
+          </Link>
+        </section>
+      )}
       {pillars.length > 0 && (
         <section className="mt-6">
           <h2 className="font-mono text-xs uppercase tracking-wide text-sub">Dosare: marile subiecte, pe înțelesul tuturor</h2>

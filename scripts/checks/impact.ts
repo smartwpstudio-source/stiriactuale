@@ -12,4 +12,13 @@ assert.deepEqual(validateImpact(ok, src, ["calc:x"])?.unelte, ["calc:x"]); // do
 assert.equal(validateImpact({ ...ok, ce: "costă 40 lei" }, src, []), null);
 assert.equal(validateImpact({ ...ok, tip: "altceva" }, src, []), null);
 assert.equal(validateImpact({ ...ok, pasi: [] }, src, []), null);
-console.log("impact: OK");
+import("../../src/lib/content/guide-country").then(({ guideCountry }) => {
+  assert.equal(guideCountry("permesso-di-soggiorno-pentru-moldoveni-italia"), "italia");
+  assert.equal(guideCountry("munca-si-sederea-in-regatul-unit-pentru-moldovenii-cu-cetatenie-romana"), "regatul-unit");
+  assert.equal(guideCountry("cetatenia-romana-pentru-moldoveni-dosar-juramant-pasaport"), "romania");
+  assert.equal(guideCountry("moldovenii-in-sua-ambasada-washington-pasaport-procura"), "sua");
+  assert.equal(guideCountry("viza-de-turist-pentru-rudele-din-moldova-sua-canada-regatul-unit"), null);
+  assert.equal(guideCountry("permis-conducere-moldovenesc-in-italia-germania-si-ue"), null);
+  assert.equal(guideCountry("apostila-acte-moldovenesti"), null);
+  console.log("impact: OK");
+});
