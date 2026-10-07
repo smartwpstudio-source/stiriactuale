@@ -16,6 +16,7 @@ export const COMPLAINT_MODELS = [
   { slug: "medic-spital", guide: "plangere-medic-sau-spital-plati-ilegale-cnam", title: "Plângere împotriva medicului sau spitalului", description: "Plăți cerute ilegal, refuz de asistență, atitudine necorespunzătoare: plângerea la instituție și la CNAM." },
   { slug: "magazin-online", guide: "cumparaturi-online-colet-nelivrat-cum-reclami", title: "Reclamație la magazinul online: comandă nelivrată", description: "Ai plătit și produsul nu a venit: ceri livrarea sau banii înapoi, cu temeiul din Codul civil și Legea protecției consumatorilor." },
   { slug: "garantie-chirie", guide: "garantia-de-la-chirie-nereturnata-ce-faci", title: "Somație pentru returnarea garanției de la chirie", description: "Proprietarul nu-ți dă înapoi garanția: somația scrisă înainte de instanță." },
+  { slug: "contestatie-amenda", guide: "amenzile-in-moldova-cine-te-poate-amenda-si-cum-contesti", title: "Contestație la procesul-verbal de amendă", description: "Contești amenda de la Poliție, primărie, ANSA sau alt agent constatator: contestația în 15 zile, cu probele și cererea de anulare." },
   { slug: "apartament-constructie-intarziat", guide: "apartament-in-constructie-intarziat-drepturile-cumparatorului", title: "Somație către dezvoltator: apartament predat cu întârziere", description: "Dezvoltatorul a depășit termenul din contract: somația cu penalitățile și termenul final." },
 ] as const;
 
