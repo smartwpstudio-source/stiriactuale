@@ -608,7 +608,7 @@
       {
         "an": 1970,
         "text": "A murit la Paris Paul Celan, poet de limbă germană născut la Cernăuți, autorul poemului „Fuga morții”.",
-        "moldova": false,
+        "moldova": true,
         "sursa": "https://en.wikipedia.org/wiki/Paul_Celan"
       },
       {

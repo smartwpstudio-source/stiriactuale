@@ -554,7 +554,7 @@
       {
         "an": 1920,
         "text": "S-a născut la Cernăuți poetul Paul Celan, unul dintre cei mai importanți poeți de limbă germană de după război.",
-        "moldova": false,
+        "moldova": true,
         "sursa": "https://ro.wikipedia.org/wiki/Paul_Celan"
       },
       {
