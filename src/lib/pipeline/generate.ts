@@ -148,7 +148,7 @@ const MAX_SOURCES = 4;
 // caută pe Google (cuvintele de căutare la început, fără clickbait).
 function titleRule(c: ClassificationResult): string {
   if (c.section === "regiuni" && c.locality)
-    return `Titlul începe cu localitatea, urmată de două puncte: cea mai precisă din material (satul sau orașul), altfel raionul „${raionLabel(c.locality)}” (ex. „Telenești: un șofer de 29 de ani a murit pe traseu”).`;
+    return `Titlul începe cu localitatea, urmată de două puncte: cea mai precisă din material (satul sau orașul), altfel raionul „${raionLabel(c.locality)}” (ex. „Telenești: un șofer de 29 de ani a murit pe traseu”). Dacă e un sat sau alt oraș decât centrul raional, în titlu pune și raionul, după virgulă: „Ignăței, Rezina: …”. În acest caz, prima propoziție din lead și meta_description numesc satul și raionul („în satul Ignăței, raionul Rezina”), ca omul să știe unde e.`;
   if (c.section === "diaspora" && c.country)
     return `Titlul începe cu țara sau orașul din ${countryLabel(c.country)} unde s-a întâmplat (ex. „Italia: …”, „Londra: …”), ca moldovenii de acolo să se recunoască.`;
   return "Titlul începe cu cuvintele pe care oamenii le-ar căuta pe Google despre acest subiect (ex. „RCA se scumpește din 4 octombrie: …”), concret, fără clickbait.";
