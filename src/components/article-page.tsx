@@ -70,7 +70,7 @@ export async function ArticlePage({
     article.continuesId ? getArticleLink(article.continuesId) : null,
     article.archived ? undefined : getRelatedCalculator(article.title, article.lead),
     resolveTools(article.impact?.unelte ?? []),
-    article.archived ? undefined : getRelatedDossier(article.title, article.lead),
+    article.archived ? undefined : getRelatedDossier(article.title, article.lead, article.topics),
   ]);
   // casetele de jos nu repetă unealta deja recomandată în blocul de impact
   const shown = new Set([...tools.map((t) => t.href), ...(dossier ? [`/ghiduri/${dossier.slug}/`] : [])]);

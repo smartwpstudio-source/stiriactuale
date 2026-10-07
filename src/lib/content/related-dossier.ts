@@ -12,6 +12,8 @@ const RULES: [slug: string, re: RegExp][] = [
   ["razboiul-din-ucraina-dosar", /razboi\w* din ucraina|invazi\w* rus|frontul? din ucraina|zelenski/],
   // „UE” singură apare și în știri străine (Letonia, ciuma): doar împreună cu Moldova
   ["aderarea-moldovei-la-ue-etape-si-calendar", /^(?=.*(\bue\b|uniun\w* europe))(?=.*(moldov|chisinau))/],
+  // pilonul crizei: când știrea e despre criză în ansamblu, nu doar despre tarif / datorii
+  ["criza-energetica-din-moldova-cauze-cronologie-facturi", /criz\w* energetic|criza gazelor|stare\w* de urgenta (in|pe|din) energetic|mgres|cuciurgan|sistar\w* (a )?livrar\w* de gaz/],
   ["moldovagaz-si-datoriile-la-gaz", /moldovagaz|gazprom/],
   ["pretul-gazului-in-moldova-tarif-si-schimbari", /pretul (la )?gaz|tarif\w* (la|pentru) gaz|gazul (se )?scump|metrul cub de gaz/],
   ["independenta-energetica-gaz-si-curent-moldova", /energocom|independent\w* energetic|interconect|linia (electrica|de inalta tensiune)|vulcanesti|securitat\w* energetic/],
@@ -29,7 +31,8 @@ export function matchDossier(text: string): string | undefined {
   return RULES.find(([, re]) => re.test(t))?.[0];
 }
 
-export async function getRelatedDossier(title: string, lead: string) {
-  const slug = matchDossier(`${title} ${lead}`);
+export async function getRelatedDossier(title: string, lead: string, topics: string[] = []) {
+  // subiectul „criză energetică” fără o regulă mai precisă -> pilonul crizei
+  const slug = matchDossier(`${title} ${lead}`) ?? (topics.includes("criza-energetica") ? "criza-energetica-din-moldova-cauze-cronologie-facturi" : undefined);
   return slug ? getGuide(slug) : undefined;
 }
