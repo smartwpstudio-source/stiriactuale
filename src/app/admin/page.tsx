@@ -45,8 +45,7 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
     createdAt: articles.createdAt,
     publishedAt: articles.publishedAt,
   };
-  const [drafts, published, pending, runs, autoOn] = await Promise.all([
-    db.select(cols).from(articles).where(eq(articles.status, "draft")).orderBy(desc(articles.createdAt)),
+  const [published, pending, runs, autoOn] = await Promise.all([
     db.select(cols).from(articles).where(eq(articles.status, "published")).orderBy(desc(articles.publishedAt)).limit(30),
     db
       .select({ id: candidates.id, title: candidates.title, url: candidates.url })
@@ -57,7 +56,7 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
   ]);
   const stale = await staleTools();
 
-  const list = (rows: typeof drafts, dateOf: (r: (typeof drafts)[number]) => Date) => (
+  const list = (rows: typeof published, dateOf: (r: (typeof published)[number]) => Date) => (
     <ul className="divide-y divide-line rounded border border-line bg-white">
       {rows.map((r) => (
         <li key={r.id} className="flex items-center">
@@ -118,21 +117,20 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
         </p>
       </section>
 
-      {stale.length > 0 && (
-        <section className="rounded border border-amber bg-white px-4 py-3">
-          <h2 className="font-medium text-ink">De verificat ({stale.length})</h2>
-          <p className="text-xs text-sub">Ghiduri și calculatoare recomandate de știri recente cu cifre sau reguli noi — verifică dacă valorile sunt la zi.</p>
-          <ul className="mt-2 divide-y divide-line text-sm">
-            {stale.map((s) => (
-              <li key={s.tool.id} className="flex flex-wrap items-baseline gap-x-3 py-1.5">
-                <a href={s.tool.href} target="_blank" rel="noopener" className="font-medium text-teal underline">{s.tool.title}</a>
-                <span className="font-mono text-xs text-sub">verificat {s.updated ?? "—"}</span>
-                <Link href={`/admin/articol/${s.news.id}/`} className="text-sub underline">știrea din {s.news.date}: {s.news.title}</Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
+      <section className="rounded border border-amber bg-white px-4 py-3">
+        <h2 className="font-medium text-ink">De verificat ({stale.length})</h2>
+        {stale.length === 0 && <p className="text-sm text-teal">Nimic de verificat acum — ghidurile și calculatoarele recomandate de știrile recente sunt la zi.</p>}
+        <p className="text-xs text-sub">Ghiduri și calculatoare recomandate de știri recente cu cifre sau reguli noi — verifică dacă valorile sunt la zi.</p>
+        <ul className="mt-2 divide-y divide-line text-sm">
+          {stale.map((s) => (
+            <li key={s.tool.id} className="flex flex-wrap items-baseline gap-x-3 py-1.5">
+              <a href={s.tool.href} target="_blank" rel="noopener" className="font-medium text-teal underline">{s.tool.title}</a>
+              <span className="font-mono text-xs text-sub">verificat {s.updated ?? "—"}</span>
+              <Link href={`/admin/articol/${s.news.id}/`} className="text-sub underline">știrea din {s.news.date}: {s.news.title}</Link>
+            </li>
+          ))}
+        </ul>
+      </section>
 
       <section>
         <h2 className="mb-2 font-medium text-ink">Adaugă știre după link</h2>
@@ -211,11 +209,6 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
             ))}
           </ul>
         )}
-      </section>
-
-      <section>
-        <h2 className="mb-2 font-medium text-ink">Drafturi ({drafts.length})</h2>
-        {list(drafts, (r) => r.createdAt)}
       </section>
 
       <section>

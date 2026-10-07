@@ -5,7 +5,7 @@ import { countryLabel, raionLabel } from "@/lib/content/geo";
 import type { CandidateGroup, ClassificationResult, GeneratedArticle } from "./types";
 import { toolCandidates, validateImpact, IMPACT_TYPES } from "@/lib/impact";
 
-const SCHEMA = {
+export const SCHEMA = {
   type: "object",
   properties: {
     titlu: {
@@ -50,7 +50,7 @@ const SCHEMA = {
   required: ["titlu", "slug", "meta_description", "lead", "corp_html", "tag_uri", "alt_text_imagine", "stock_query", "image_prompt"],
 };
 
-const SYSTEM_PROMPT = [
+export const SYSTEM_PROMPT = [
   "Ești jurnalist la stiriactuale.info, site de știri din Republica Moldova. Scrii pentru oameni obișnuiți: clar, concret, fără limbaj de lemn.",
   "",
   "Conținut:",
