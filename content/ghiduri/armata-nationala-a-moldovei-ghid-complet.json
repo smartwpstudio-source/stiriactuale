@@ -1,0 +1,124 @@
+{
+  "slug": "armata-nationala-a-moldovei-ghid-complet",
+  "title": "Armata Națională a Moldovei: serviciul militar, contractul, evidența și mobilizarea",
+  "description": "Cine face armata în Moldova și cât durează, amânări și scutiri, serviciul civil, armata prin contract, livretul militar, mobilizarea, amenzile și bugetul apărării 2026.",
+  "category": "siguranta",
+  "updated": "2026-10-08",
+  "sources": [
+    {
+      "name": "Legea nr. 1245/2002 cu privire la pregătirea cetățenilor pentru apărarea Patriei, versiunea în vigoare din 27.05.2026 — legis.md",
+      "url": "https://www.legis.md/cautare/getResults?doc_id=154595&lang=ro"
+    },
+    {
+      "name": "Legea nr. 162/2005 cu privire la statutul militarilor, versiunea în vigoare din 01.07.2025 — legis.md",
+      "url": "https://www.legis.md/cautare/getResults?doc_id=147978&lang=ro"
+    },
+    {
+      "name": "Legea nr. 156/2007 cu privire la organizarea serviciului civil (de alternativă), versiunea din 01.09.2025 — legis.md",
+      "url": "https://www.legis.md/cautare/getResults?doc_id=150040&lang=ro"
+    },
+    {
+      "name": "Legea nr. 345/2003 cu privire la apărarea națională, versiunea în vigoare din 25.08.2025 — legis.md",
+      "url": "https://www.legis.md/cautare/getResults?doc_id=149935&lang=ro"
+    },
+    {
+      "name": "Constituția Republicii Moldova (art. 11, 57, 87) — presedinte.md",
+      "url": "https://presedinte.md/app/webroot/Constitutia_RM/Constitutia_2024_ro.pdf"
+    },
+    {
+      "name": "Codul contravențional nr. 218/2008, versiunea în vigoare din 13.09.2026 (art. 34, 366–3733) — legis.md",
+      "url": "https://www.legis.md/cautare/getResults?doc_id=155852&lang=ro"
+    },
+    {
+      "name": "Codul penal nr. 985/2002, versiunea în vigoare din 28.08.2026 (art. 354, 371) — legis.md",
+      "url": "https://www.legis.md/cautare/getResults?doc_id=151140&lang=ro"
+    },
+    {
+      "name": "HG nr. 864/2005 — Regulamentul cu privire la încorporarea cetățenilor în serviciul militar în termen sau cu termen redus, versiunea din 21.05.2026 — legis.md",
+      "url": "https://www.legis.md/cautare/getResults?doc_id=154524&lang=ro"
+    },
+    {
+      "name": "HG nr. 174/2026 cu privire la încorporarea în perioada aprilie – iulie 2026 — legis.md",
+      "url": "https://www.legis.md/cautare/getResults?doc_id=153902&lang=ro"
+    },
+    {
+      "name": "Decretul Președintelui nr. 734/2026 privind încorporarea în perioada octombrie 2026 – ianuarie 2027 — legis.md",
+      "url": "https://www.legis.md/cautare/getResults?doc_id=155910&lang=ro"
+    },
+    {
+      "name": "Hotărârea Parlamentului nr. 679/2001 pentru aprobarea structurii generale și a efectivului Armatei Naționale — legis.md",
+      "url": "https://www.legis.md/cautare/getResults?doc_id=60833&lang=ro"
+    },
+    {
+      "name": "Hotărârea Parlamentului nr. 319/2024 — Strategia națională de apărare 2024–2034 — legis.md",
+      "url": "https://www.legis.md/cautare/getResults?doc_id=146655&lang=ro"
+    },
+    {
+      "name": "HG nr. 420/2026 — Programul de implementare 2026–2030 a Strategiei naționale de apărare — legis.md",
+      "url": "https://www.legis.md/cautare/getResults?doc_id=155735&lang=ro"
+    },
+    {
+      "name": "HG nr. 33/2025 — Programul individual al Parteneriatului Republica Moldova – NATO pentru anii 2025–2028 — legis.md",
+      "url": "https://www.legis.md/cautare/getResults?doc_id=146940&lang=ro"
+    },
+    {
+      "name": "Legea bugetului de stat pe anul 2026 nr. 322/2025, versiunea din 24.09.2026 (anexa nr. 3) — legis.md",
+      "url": "https://www.legis.md/cautare/getResults?doc_id=156546&lang=ro"
+    },
+    {
+      "name": "Ministerul Apărării — Misiunea Statului Major al Apărării",
+      "url": "https://www.army.md/ro/misiunea-statului-major-al-apararii"
+    },
+    {
+      "name": "Ministerul Apărării — Contactele centrelor militare și secțiilor administrativ-militare",
+      "url": "https://www.army.md/ro/contacte-organelor-administrativ-militare"
+    },
+    {
+      "name": "Ministerul Apărării — Misiuni de pacificare și misiuni UE de instruire",
+      "url": "https://www.army.md/ro/misiuni-de-pacificare-misiuni-ue-de-instruire"
+    },
+    {
+      "name": "Ministerul Apărării — cariera.army.md (încadrarea prin contract: condiții și acte)",
+      "url": "https://cariera.army.md/ro"
+    },
+    {
+      "name": "MAE — pachetul de 120 de milioane de euro prin Instrumentul European pentru Pace (13.07.2026)",
+      "url": "https://www.mfa.gov.md/en/node/6211"
+    },
+    {
+      "name": "Delegația UE în Moldova — Parteneriatul pentru securitate și apărare",
+      "url": "https://eeas.europa.eu/delegations/moldova/security-and-defence-partnership_en"
+    },
+    {
+      "name": "Moldpres — Moldova a semnat Parteneriatul pentru securitate și apărare cu UE (21.05.2024)",
+      "url": "https://moldpres.md/en/news/2024/05/21/24003751"
+    }
+  ],
+  "bodyHtml": "<p><strong>Pe scurt:</strong> Armata Națională este componenta de bază a Forțelor Armate ale Republicii Moldova, un stat neutru prin Constituție. Serviciul militar este obligatoriu pentru bărbați: la 16 ani ești luat în evidența militară, iar de la 18 până la 27 de ani poți fi încorporat pentru 12 luni, dacă nu ai drept de amânare sau scutire. Poți alege serviciul civil în locul celui militar sau poți intra în armată prin contract, până la 45 de ani. Informații verificate la 8 octombrie 2026 în legile publicate pe legis.md și pe site-urile Ministerului Apărării. Ghidul e informativ; decizia în cazul tău o ia centrul militar.</p><h2>Ce este Armata Națională</h2><p>Potrivit <a href=\"https://www.legis.md/cautare/getResults?doc_id=149935&amp;lang=ro\">Legii nr. 345/2003 cu privire la apărarea națională</a>, Forțele Armate sunt formate din Armata Națională și Inspectoratul General de Carabinieri și sunt construite pe principiul „suficienței defensive”. Armata Națională este componenta lor de bază, iar misiunea ei principală este apărarea țării și securitatea militară.</p><ul><li><strong>Comandantul suprem</strong> este Președintele Republicii Moldova (art. 87 din <a href=\"https://presedinte.md/app/webroot/Constitutia_RM/Constitutia_2024_ro.pdf\">Constituție</a>). Mobilizarea parțială sau generală o declară Președintele, cu aprobarea prealabilă a Parlamentului.</li><li><strong>Conducerea militară:</strong> Statul Major al Apărării este organul central de conducere militară al Ministerului Apărării, potrivit art. 34 din Legea nr. 345/2003, în redacția în vigoare din 25 august 2025. El a preluat rolul fostului Mare Stat Major.</li><li><strong>Structura generală</strong> aprobată de Parlament (<a href=\"https://www.legis.md/cautare/getResults?doc_id=60833&amp;lang=ro\">Hotărârea nr. 679/2001</a>): forțele terestre (brigăzi de infanterie motorizată, un batalion cu destinație specială, un batalion de menținere a păcii, un divizion de artilerie, o bază militară de instruire), forțele aeriene (o bază de aviație și un regiment de rachete antiaeriene), unități de asigurare de luptă și logistică, unități de rezervă și instituțiile Ministerului Apărării, printre care Academia Militară.</li><li><strong>Efectivul</strong> aprobat este de 6 500 de militari și 2 000 de persoane civile. Strategia națională de apărare 2024–2034 notează că această cifră este în vigoare din 2007.</li></ul><h2>Neutralitatea și cooperarea cu UE și NATO</h2><p>Articolul 11 din Constituție spune că Republica Moldova își proclamă neutralitatea permanentă și nu admite dislocarea pe teritoriul său a trupelor militare ale altor state. Neutralitatea nu exclude parteneriatele:</p><ul><li><strong>NATO:</strong> Guvernul a aprobat, prin <a href=\"https://www.legis.md/cautare/getResults?doc_id=146940&amp;lang=ro\">HG nr. 33/2025</a>, Programul individual al Parteneriatului Republica Moldova – NATO pentru anii 2025–2028.</li><li><strong>Uniunea Europeană:</strong> Moldova este prima țară care a semnat cu UE un Parteneriat pentru securitate și apărare, la 21 mai 2024. Prin Instrumentul European pentru Pace, UE a aprobat la 13 iulie 2026 un pachet de 120 de milioane de euro pentru apărarea antiaeriană a Armatei Naționale; sprijinul total pe acest instrument a ajuns la 317 milioane de euro din 2021, potrivit <a href=\"https://www.mfa.gov.md/en/node/6211\">Ministerului Afacerilor Externe</a>.</li><li><strong>Misiuni internaționale:</strong> din martie 2014, militari moldoveni servesc în misiunea KFOR din Kosovo, aprobată de Parlament la 1 noiembrie 2013. În septembrie 2024, primul contingent, de 19 militari, a plecat în operațiunea UE EUFOR Althea din Bosnia și Herțegovina, iar în februarie 2023 un contingent de 32 de militari a plecat în misiunea ONU UNIFIL din Liban (<a href=\"https://www.army.md/ro/misiuni-de-pacificare-misiuni-ue-de-instruire\">Ministerul Apărării</a>).</li></ul><h2>Bugetul apărării în 2026</h2><p>Potrivit <a href=\"https://www.legis.md/cautare/getResults?doc_id=156546&amp;lang=ro\">Legii bugetului de stat pe anul 2026 nr. 322/2025</a>, în redacția în vigoare din 24 septembrie 2026, Ministerul Apărării are alocate 2 204 049,2 mii lei.</p><table><thead><tr><th>Linia din buget (anexa nr. 3)</th><th>Suma, mii lei</th></tr></thead><tbody><tr><td>Ministerul Apărării, total</td><td>2 204 049,2</td></tr><tr><td>din care grupa „Apărare națională”</td><td>1 973 963,8</td></tr><tr><td>— Servicii de suport în domeniul apărării naționale</td><td>1 362 168,1</td></tr><tr><td>— Forțele Armatei Naționale</td><td>578 375,3</td></tr><tr><td>— Politici și management în domeniul apărării</td><td>33 420,4</td></tr></tbody></table><p><a href=\"https://www.legis.md/cautare/getResults?doc_id=146655&amp;lang=ro\">Strategia națională de apărare 2024–2034</a> stabilește ținta ca bugetul apărării să ajungă la 1% din PIB până în 2030. Același document arată o creștere de la 0,39% din PIB în 2022 la 0,55% în 2023.</p><h2>Serviciul militar în termen: cine, când, cât durează</h2><p>Regulile vin din <a href=\"https://www.legis.md/cautare/getResults?doc_id=154595&amp;lang=ro\">Legea nr. 1245/2002 cu privire la pregătirea cetățenilor pentru apărarea Patriei</a>.</p><ul><li><strong>Cine:</strong> serviciul militar este obligatoriu pentru bărbații cetățeni ai Republicii Moldova. Femeile pot face doar serviciul prin contract.</li><li><strong>Vârsta:</strong> se încorporează bărbații care au împlinit 18 ani. Vârsta-limită este 27 de ani; cine nu a fost încorporat până atunci trece în rezerva Forțelor Armate.</li><li><strong>Durata:</strong> 12 luni. Absolvenții de facultate sub 27 de ani fac serviciul cu termen redus, de 3 luni.</li><li><strong>Când:</strong> încorporarea are loc de două ori pe an, în aprilie–iulie și în octombrie–ianuarie. Pentru aprilie–iulie 2026, <a href=\"https://www.legis.md/cautare/getResults?doc_id=153902&amp;lang=ro\">HG nr. 174/2026</a> a stabilit până la 1 200 de recruți pentru serviciul în termen și până la 10 pentru cel cu termen redus. Încorporarea din octombrie 2026 – ianuarie 2027 a fost decisă prin <a href=\"https://www.legis.md/cautare/getResults?doc_id=155910&amp;lang=ro\">Decretul nr. 734/2026</a>; numărul de recruți îl stabilește Guvernul.</li><li><strong>Locul de muncă</strong> se păstrează pe durata serviciului, iar angajatorul îți dă, la cerere, un concediu plătit de 5 zile înainte de încorporare.</li></ul><h3>Pașii încorporării</h3><ol><li>Primești ordinul de chemare de la centrul militar, de obicei prin primărie.</li><li>Te prezinți la comisia de recrutare-încorporare a raionului: examen medical (plătit din bugetul local), testare psihologică, verificarea studiilor și a situației familiale.</li><li>Comisia decide: încorporare, amânare, scutire sau excludere din evidență.</li><li>Dacă nu ești de acord, contești hotărârea în 10 zile la Comisia de Stat pentru Încorporare sau în instanță; executarea ei se suspendă până atunci.</li><li>Ești considerat încorporat din momentul în care te prezinți la centrul militar pentru a fi trimis în unitate.</li></ol><h2>Amânări, scutiri și serviciul civil</h2><p><strong>Amânarea</strong> se acordă de comisie pentru studii (la gimnaziu, liceu, școală profesională, colegiu sau universitate, pe durata programului), din motive de sănătate (inaptitudine temporară), din motive familiale (de exemplu, ai la întreținere un copil sub 8 ani sau părinți cu dizabilitate de gradul I sau II), pentru deputați și consilieri raionali, precum și pe durata unui dosar penal. <strong>Scutit</strong> este cel inapt pe timp de pace, cel care a absolvit catedra militară, cel eliberat din motive de conștiință, cel al cărui părinte sau frate a decedat în serviciul militar și cel cu antecedente penale nestinse. Actele și pașii sunt în ghidul <a href=\"/ghiduri/amanarea-si-scutirea-de-serviciul-militar-acte-si-pasi/\">Amânarea și scutirea de serviciul militar</a>.</p><p><strong>Serviciul civil (de alternativă)</strong>, după <a href=\"https://www.legis.md/cautare/getResults?doc_id=150040&amp;lang=ro\">Legea nr. 156/2007</a>, e pentru cei care, din convingeri religioase, pacifiste sau morale, nu pot face armata. Ceri personal, cu cel puțin 2 luni înainte de încorporare, la reprezentantul serviciului civil din raion. Durează 12 luni (6 luni cu studii superioare), lucrezi într-o instituție sau firmă repartizată și primești 75% din venitul net. Pe durata lui nu ai voie să pleci în străinătate.</p><h2>Armata prin contract</h2><p>Poți semna un contract dacă ești cetățean al Moldovei, ai între 18 și 45 de ani, ești apt medical, ai cel puțin studii gimnaziale și nu ai antecedente penale nestinse sau un dosar penal deschis. Femeile sunt primite în aceleași condiții. Contractul se semnează pe 3 sau 5 ani pentru soldați și sergenți și pe 5 sau 10 ani pentru ofițeri. Salariul se stabilește după legea salarizării în sectorul bugetar (art. 18 din <a href=\"https://www.legis.md/cautare/getResults?doc_id=147978&amp;lang=ro\">Legea nr. 162/2005 cu privire la statutul militarilor</a>), iar printre beneficii sunt concediul de 35–45 de zile, asistența medicală gratuită și locuința de serviciu sau compensația pentru chirie. Detalii în ghidul <a href=\"/ghiduri/cum-te-angajezi-in-armata-prin-contract/\">Cum te angajezi în armată prin contract</a>.</p><h2>Evidența militară: adeverință, livret, plecarea peste hotare</h2><p>Bărbații sunt luați în evidență la 16 ani și primesc <strong>adeverința de recrutare</strong>. După serviciu ești rezervist și ai <strong>livretul militar</strong>. Evidența o țin cele 11 centre militare teritoriale și 31 de secții administrativ-militare (<a href=\"https://www.army.md/ro/contacte-organelor-administrativ-militare\">lista oficială</a>), împreună cu primăriile. Din 27 mai 2026, luarea în evidență se face doar pe baza actului de identitate sau a datelor din Registrul de stat al populației.</p><ul><li>Anunți la primărie (punctul de recrutare) în 5 zile schimbarea domiciliului, a locului de muncă sau de studii, a stării civile și pierderea documentelor militare.</li><li>Înainte să pleci peste hotare pentru mai mult de 30 de zile, predai adeverința sau livretul și le ridici la întoarcere.</li><li>Centrul militar te poate chema pentru clarificarea situației militare de cel mult 3 ori pe an; angajatorul îți dă pentru asta până la 3 zile de concediu plătit.</li></ul><p>Ce se întâmplă cu cei plecați la muncă sau cu traiul în altă țară explicăm în <a href=\"/ghiduri/evidenta-militara-pentru-moldovenii-din-strainatate/\">Evidența militară pentru moldovenii din străinătate</a>.</p><h2>Rezerviști, concentrări și mobilizare</h2><p>Rezerviști sunt cei care au făcut serviciul, cei care au absolvit catedra militară și cei apți care nu au fost încorporați până la 27 de ani. Ei pot fi chemați la <strong>concentrări</strong> (instrucție), la data și pe durata stabilite de Guvern, prin ordin de chemare de la centrul militar. La <strong>mobilizare</strong>, rezerviștii trebuie să se afle acasă sau la serviciu, ca să poată primi ordinul de chemare, și nu au voie să plece din localitate fără permisiunea comandantului centrului militar. Amânare la mobilizare primesc, între alții, cei temporar inapți (pe 6 luni) și cei care au la întreținere o rudă apropiată ce are nevoie de îngrijire permanentă sau are dizabilitate de gradul I, dacă nu există altă persoană obligată prin lege să o întrețină.</p><p>Dacă nu poți veni la data din ordinul de chemare, anunți imediat centrul militar și aduci actele în 3 zile. Motive întemeiate sunt boala gravă (cu certificat medical), decesul unei rude apropiate și forța majoră confirmată de primărie.</p><h2>Amenzi și răspundere</h2><p>Sancțiunile sunt în <a href=\"https://www.legis.md/cautare/getResults?doc_id=155852&amp;lang=ro\">Codul contravențional</a>; o unitate convențională (u.c.) este egală cu 50 de lei.</p><table><thead><tr><th>Fapta</th><th>Amenda</th></tr></thead><tbody><tr><td>Neprezentarea la citația centrului militar fără motiv, plecarea peste hotare pe mai mult de 30 de zile fără scoatere din evidență, anunțarea tardivă a schimbărilor (art. 366)</td><td>12–30 u.c. (600–1 500 lei)</td></tr><tr><td>Pierderea din neglijență sau deteriorarea livretului, adeverinței de recrutare sau ordinului de mobilizare (art. 367)</td><td>3–6 u.c. (150–300 lei)</td></tr><tr><td>Eschivarea de la examenul medical (art. 368)</td><td>12–24 u.c. (600–1 200 lei)</td></tr><tr><td>Eschivarea de la încorporarea în serviciul civil (art. 370)</td><td>12–30 u.c. (600–1 500 lei)</td></tr><tr><td>Refuzul militarului sau rezervistului de a participa la concentrare ori mobilizare (art. 373³ alin. 1)</td><td>200–300 u.c. (10 000–15 000 lei) sau 30–50 de ore de muncă neremunerată</td></tr><tr><td>Aceeași eschivare prin simularea unei boli, acte false sau altă înșelăciune (art. 373³ alin. 2)</td><td>300–500 u.c. (15 000–25 000 lei) sau 50–60 de ore</td></tr></tbody></table><p>Pe timp de război, eschivarea de la mobilizare este infracțiune și se pedepsește cu închisoare de la 2 la 5 ani (art. 354 din <a href=\"https://www.legis.md/cautare/getResults?doc_id=151140&amp;lang=ro\">Codul penal</a>). Cum contești un proces-verbal afli în ghidul <a href=\"/ghiduri/amenzile-in-moldova-cine-te-poate-amenda-si-cum-contesti/\">Amenzile în Moldova</a>.</p><h2>Cronologie: decizii recente</h2><ul><li><strong>21 mai 2024</strong> — Moldova semnează Parteneriatul pentru securitate și apărare cu UE, prima țară care face acest pas.</li><li><strong>26 decembrie 2024</strong> — Parlamentul aprobă Strategia națională de apărare 2024–2034, cu ținta de 1% din PIB pentru apărare până în 2030.</li><li><strong>29 ianuarie 2025</strong> — Guvernul aprobă Programul individual de parteneriat cu NATO pentru 2025–2028.</li><li><strong>25 august 2025</strong> — intră în vigoare modificările la Legea apărării naționale: Statul Major al Apărării devine organul central de conducere militară.</li><li><strong>8 aprilie 2026</strong> — Guvernul stabilește până la 1 200 de recruți pentru încorporarea din aprilie–iulie 2026.</li><li><strong>27 mai 2026</strong> — luarea în evidența militară se face doar pe baza actului de identitate sau a Registrului de stat al populației (Legea nr. 84/2026).</li><li><strong>13 iulie 2026</strong> — UE aprobă 120 de milioane de euro pentru apărarea antiaeriană a Moldovei.</li><li><strong>5 august 2026</strong> — Guvernul aprobă <a href=\"https://www.legis.md/cautare/getResults?doc_id=155735&amp;lang=ro\">Programul de implementare 2026–2030</a> al Strategiei naționale de apărare.</li><li><strong>17 august 2026</strong> — decretul prezidențial pentru încorporarea din octombrie 2026 – ianuarie 2027.</li><li><strong>24 septembrie 2026</strong> — intră în vigoare modificarea bugetului de stat pe 2026; Ministerului Apărării îi revin 2 204 049,2 mii lei.</li></ul><h2>Ce înseamnă pentru tine</h2><ul><li>Ai un fiu de 16 ani? Trebuie să se prezinte la centrul militar pentru luarea în evidență, în anul în care împlinește vârsta.</li><li>Ești student? Adu la comisie certificatul de la instituția de învățământ ca să primești amânare.</li><li>Pleci la muncă peste hotare? Scoate-te din evidență înainte de plecare, altfel riști o amendă de până la 1 500 de lei.</li><li>Vrei o carieră în armată? Mergi la centrul militar sau la secția administrativ-militară din raionul tău.</li></ul>",
+  "faq": [
+    {
+      "q": "Este obligatorie armata în Moldova?",
+      "a": "Da, pentru bărbații cetățeni ai Republicii Moldova. Serviciul militar în termen durează 12 luni, iar încorporarea se face între 18 și 27 de ani, dacă nu ai drept de amânare sau scutire."
+    },
+    {
+      "q": "Câte luni se face armata în Moldova?",
+      "a": "Serviciul militar în termen durează 12 luni. Absolvenții de facultate fac serviciul cu termen redus de 3 luni, iar serviciul civil durează 12 luni sau 6 luni pentru cei cu studii superioare."
+    },
+    {
+      "q": "Pot face serviciul civil în loc de armată?",
+      "a": "Da, dacă armata contravine convingerilor tale religioase, pacifiste, etice sau morale. Depui personal o cerere motivată la reprezentantul serviciului civil din raion, cu cel puțin 2 luni înainte de încorporare."
+    },
+    {
+      "q": "Ce se întâmplă dacă împlinesc 27 de ani fără să fac armata?",
+      "a": "Nu mai poți fi încorporat în serviciul în termen și treci în rezerva Forțelor Armate. Te prezinți la centrul militar, unde primești gradul de soldat clasa III în rezervă."
+    },
+    {
+      "q": "Ce amendă primesc dacă nu mă prezint la centrul militar?",
+      "a": "Neprezentarea la citație fără motiv întemeiat se sancționează cu amendă de 12–30 de unități convenționale, adică 600–1 500 de lei (art. 366 din Codul contravențional)."
+    },
+    {
+      "q": "Moldova poate intra în NATO dacă e neutră?",
+      "a": "Constituția (art. 11) proclamă neutralitatea permanentă și interzice trupe străine pe teritoriul țării. Moldova cooperează cu NATO printr-un program de parteneriat pentru 2025–2028 și cu UE printr-un Parteneriat pentru securitate și apărare."
+    }
+  ]
+}

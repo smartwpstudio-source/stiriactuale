@@ -10,6 +10,10 @@ const RULES: [slug: string, re: RegExp][] = [
   ["transnistria-situatia-regiunii-si-impactul", /transnistri|tiraspol|stanga nistrului|krasnoselski/],
   ["ue-rusia-sanctiuni-dosar", /sanctiun\w* (ue |ale ue |europene )?(impotriva |pentru )?(rusi|moscov)|pachet\w* de sanctiuni/],
   ["razboiul-din-ucraina-dosar", /razboi\w* din ucraina|invazi\w* rus|frontul? din ucraina|zelenski/],
+  // pilonul armatei: doar termeni moldovenești („militar”, „mobilizare”, „rezerviști”
+  // singure apar în știrile despre Rusia, Ucraina, Israel); MApN e ministerul român
+  ["armata-nationala-a-moldovei-ghid-complet", /armat\w* national\w*\b(?! (libian|afgan|sirian|congolez|a ucrainei))|statul major al apararii|ministerul apararii(?! (nationale|al (?!republicii moldova)|din |de la (moscova|kiev|bucuresti)|rus|ucrainean|israelian|american|britanic|francez|german))|centr\w* militar\w* teritorial|sectii\w* administrativ-militar|livret\w* militar|adeverint\w* de recrutare|comisi\w* de recrutare|militar\w* moldoveni|contingent\w* (moldovenesc|al armatei nationale)|serviciu\w* civil \(?de alternativ/],
+  ["armata-nationala-a-moldovei-ghid-complet", /^(?=.*(moldov|chisinau))(?!.*(rusi[ae]|ucrain|israel|kiev|moscov|putin))(?=.*(serviciu\w* militar|incorpor\w* (in|a|de) |recrut\w*|evidenta militara|mobilizar\w* (generala|partiala|militara|a rezervistilor)|rezervist\w*|exercit\w* militar\w*|bugetul apararii|militar\w* prin contract))/],
   // „UE” singură apare și în știri străine (Letonia, ciuma): doar împreună cu Moldova
   ["aderarea-moldovei-la-ue-etape-si-calendar", /^(?=.*(\bue\b|uniun\w* europe))(?=.*(moldov|chisinau))/],
   // pilonul crizei: când știrea e despre criză în ansamblu, nu doar despre tarif / datorii
@@ -40,6 +44,12 @@ const RULES: [slug: string, re: RegExp][] = [
   // pilonul șoferilor: orice altă știre despre mașini și șoferi (nu accidentele —
   // acolo „șoferul” e la singular și nu e o temă pentru șoferi)
   ["masina-in-moldova-ghidul-complet-al-soferului", /parc\w* auto|inmatricul\w*|vamuir\w*|\bsoferi(i|lor)?\b|automobilist\w*|piata auto|masini(le)? (noi|second|electrice|la mana a doua)|autovehicul\w*|girofar\w*|vinieta|taxa (de|pentru) drum/],
+  // companiile statului: Poșta, trenurile, apoi pilonul (după Moldovagaz, Energocom
+  // și Aeroport, care au dosarele lor; „Poșta Română” nu intră)
+  ["posta-moldovei-servicii-tarife-urmarire-colete", /posta moldovei/],
+  ["calea-ferata-din-moldova-trenuri-rute-bilete", /calea ferata (din|a) moldovei|\bcfm\b|tren\w* (de calatori )?(pe ruta |spre )?(chisinau|ungheni|balti|bucuresti|odesa|iasi|kiev)/],
+  // „IS”/„APP” doar cu ghilimele sau context; privatizarea apartamentului nu intră
+  ["intreprinderile-de-stat-din-moldova", /intreprinder\w* (de stat|municipal\w*)|\bi\.?s\.? ?["„“«]|agenti\w* proprietatii publice|^(?=.*\bapp\b)(?=.*(privatiz|licitati|intreprinder|director|concurs|proprietat))|privatiz\w*\b(?! (a |al )?(apartament|locuint|cas))|deetatizar\w*|capital\w* (integral |majoritar )?de stat|metalferos|moldelectrica|moldtelecom|(?<!centrala )\btermoelectrica\b/],
 ];
 
 export function matchDossier(text: string): string | undefined {
@@ -50,6 +60,7 @@ export function matchDossier(text: string): string | undefined {
 // ghidurile cu reguli și amenzi din Moldova: nu la știrile din străinătate
 // („Germania: amenda pentru parcare” nu ține de Codul contravențional)
 const MOLDOVA_ONLY = new Set([
+  "armata-nationala-a-moldovei-ghid-complet",
   "instanta-de-judecata-in-moldova-ghid-practic",
   "masina-in-moldova-ghidul-complet-al-soferului",
   "inspectia-tehnica-periodica-a-masinii-in-moldova",
@@ -58,6 +69,9 @@ const MOLDOVA_ONLY = new Set([
   "cum-obtii-permisul-de-conducere-in-moldova-pas-cu-pas",
   "reguli-de-circulatie-incalcate-des-si-amenzile",
   "amenzile-in-moldova-cine-te-poate-amenda-si-cum-contesti",
+  "intreprinderile-de-stat-din-moldova",
+  "calea-ferata-din-moldova-trenuri-rute-bilete",
+  "posta-moldovei-servicii-tarife-urmarire-colete",
 ]);
 
 export async function getRelatedDossier(title: string, lead: string, topics: string[] = [], section?: string) {
