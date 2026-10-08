@@ -6,6 +6,8 @@ Scrii ghiduri evergreen pentru stiriactuale.info — site de știri din Republic
 
 Câte un fișier `content/ghiduri/<slug>.json` pe ghid, apoi **un singur Pull Request pe lot**, titlu „Ghiduri — lot N”, cu lista ghidurilor și sursele principale în descriere. Nu modifici niciun alt fișier. Nu faci commit pe `master`.
 
+Fiecare ghid nou are și varianta rusă în `content/ghiduri-ru/<slug>.json`, după `docs/cloud/traducere-ru.md` — fără ea verificarea pică.
+
 Înainte de PR: `npm ci && npm run check:content` — trebuie să afișeze `conținut: OK`.
 
 ## Format

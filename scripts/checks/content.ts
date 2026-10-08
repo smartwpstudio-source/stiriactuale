@@ -100,6 +100,9 @@ async function main() {
     if (/<h1|<script|<style|<iframe|style=|onclick|<img/i.test(body)) fail(file, "HTML nepermis");
     if (sanitizeBody(body).length < body.length * 0.97) fail(file, "HTML-ul pierde conținut la sanitizare");
   }
+  // fiecare ghid românesc are și varianta rusă — un ghid nou nu intră fără traducere
+  const ruSlugs = new Set((await readdir(path.join(ROOT, "ghiduri-ru"))).map((f) => f.replace(/\.json$/, "")));
+  for (const slug of roSlugs) if (!ruSlugs.has(slug)) fail(`ghiduri/${slug}.json`, "lipsește varianta rusă în content/ghiduri-ru/ (docs/cloud/traducere-ru.md)");
 
   for (const kind of ["raioane", "tari"] as const) {
     const known: Record<string, string> = kind === "raioane" ? RAION_NAMES : COUNTRY_NAMES;
