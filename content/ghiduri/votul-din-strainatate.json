@@ -3,7 +3,7 @@
   "title": "Votul din străinătate: cum votezi, unde și cu ce acte (diaspora)",
   "description": "Cum votezi în afara țării: actele acceptate, înregistrarea pe ip.cec.md, programul secțiilor, votul prin corespondență și cum afli unde e cea mai apropiată secție.",
   "category": "diaspora",
-  "updated": "2026-10-02",
+  "updated": "2026-10-08",
   "sources": [
     {
       "name": "Comisia Electorală Centrală — Diaspora votează",
@@ -34,7 +34,7 @@
     },
     {
       "q": "Cum votez prin corespondență?",
-      "a": "Dacă locuiești în SUA, Canada, Norvegia, Suedia, Finlanda, Islanda, Japonia, Coreea, Australia sau Noua Zeelandă, te înregistrezi pe pagina CEC pentru votul prin corespondență, în termen."
+      "a": "Dacă locuiești în SUA, Canada, Norvegia, Suedia, Finlanda, Islanda, Japonia, Coreea de Sud, Australia sau Noua Zeelandă, te înregistrezi pe pagina CEC pentru votul prin corespondență, în termen."
     },
     {
       "q": "Până la ce oră sunt deschise secțiile din străinătate?",

@@ -3,7 +3,7 @@
   "title": "Numărul de urgență 112 în Moldova: când suni și ce spui operatorului",
   "description": "Când apelezi 112 în Moldova, ce informații dai operatorului (urgență, adresă, nume, telefon), de ce nu închizi și ce face aplicația 112MD.",
   "category": "siguranta",
-  "updated": "2026-10-02",
+  "updated": "2026-10-08",
   "sources": [
     {
       "name": "Serviciul 112 — când trebuie să apelez 112",
@@ -29,7 +29,7 @@
       "a": "Da, apelurile către numărul unic de urgență 112 sunt gratuite."
     },
     {
-      "q": "Ce spun când sună operatorul 112?",
+      "q": "Ce spun când răspunde operatorul 112?",
       "a": "Ce urgență ai, unde este urgența, unde te afli, de la ce număr suni și cum te numești. Dacă poți, descrie și drumul cel mai rapid până la locul incidentului."
     },
     {
