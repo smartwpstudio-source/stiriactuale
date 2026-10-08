@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { StaticPage } from "@/components/static-page";
-import { OWNER, TELEGRAM_URL } from "@/lib/site-info";
+import { ADDRESS, OWNER, PHONE, TELEGRAM_URL } from "@/lib/site-info";
 
 export const metadata: Metadata = {
   title: "Despre noi",
@@ -34,7 +34,13 @@ export default function AboutPage() {
       </p>
 
       <h2>Cine răspunde de site</h2>
-      <p>{OWNER ?? <strong>[proprietarul site-ului — de completat]</strong>}</p>
+      <p>
+        Fondator: {OWNER}
+        <br />
+        Adresa redacției: {ADDRESS}
+        <br />
+        Telefon: {PHONE}
+      </p>
       <p>
         Pentru sesizări, corecturi sau propuneri de subiecte, vezi pagina <Link href="/contact/">Contact</Link>. Știrile
         noi apar și pe canalul nostru de <a href={TELEGRAM_URL}>Telegram</a>.

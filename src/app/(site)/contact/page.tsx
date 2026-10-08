@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ContactEmail, StaticPage } from "@/components/static-page";
-import { CONTACT_EMAIL, TELEGRAM_URL } from "@/lib/site-info";
+import { ADDRESS, CONTACT_EMAIL, OWNER, PHONE, TELEGRAM_URL } from "@/lib/site-info";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -12,6 +12,15 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <StaticPage title="Contact">
+      <p>
+        <strong>Redacția Știri Actuale</strong>
+        <br />
+        Fondator: {OWNER}
+        <br />
+        Adresa: {ADDRESS}
+        <br />
+        Telefon: <a href={`tel:${PHONE.replace(/\s/g, "")}`}>{PHONE}</a>
+      </p>
       <p>
         Email: <ContactEmail email={CONTACT_EMAIL} />
       </p>
