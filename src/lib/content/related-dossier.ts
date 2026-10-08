@@ -31,6 +31,12 @@ const RULES: [slug: string, re: RegExp][] = [
   ["cum-obtii-permisul-de-conducere-in-moldova-pas-cu-pas", /scoal\w* auto|examen\w* (auto|de conducere|teoretic|practic)|obtiner\w* (a )?permisului|permis\w* de conducere (nou|pentru tineri)/],
   ["reguli-de-circulatie-incalcate-des-si-amenzile", /regulament\w* (circulatiei|de circulatie)|reguli\w* de circulatie|puncte de penalizare|telefonul la volan|centur\w* de siguranta|depasir\w* (neregulamentar|pe linia continua)|exces de viteza|limita de viteza|\bradar\w*/],
   ["amenzile-in-moldova-cine-te-poate-amenda-si-cum-contesti", /\bamend\w*|\bamenz\w*|proces\w*-verbal\w* (de contraventie)?|contraventi\w*/],
+  ["inspectia-tehnica-periodica-a-masinii-in-moldova", /inspecti\w* tehnic\w*|revizi\w* tehnic\w*/],
+  // accident cu mașini, FĂRĂ morți: ce faci cu asigurarea; lângă o tragedie, nimic
+  ["accidentul-usor-constatare-amiabila-si-rca", /^(?!.*(a murit|au murit|deced\w*|mortal\w*|\bmorti\b|si-?a pierdut viata|fara viata|fara suflare|cadavr\w*|tragedi\w*|spulberat\w*|\bgrav\w*|\bars\w*|ucis\w*|victim\w*|teribil\w*))(?=.*(accident\w* (rutier|de circulatie|in lant)|s-au ciocnit|tamponat\w*|coliziun\w*|s-a rasturnat|a lovit (o|un) (masina|automobil)))/],
+  // pilonul șoferilor: orice altă știre despre mașini și șoferi (nu accidentele —
+  // acolo „șoferul” e la singular și nu e o temă pentru șoferi)
+  ["masina-in-moldova-ghidul-complet-al-soferului", /parc\w* auto|inmatricul\w*|vamuir\w*|\bsoferi(i|lor)?\b|automobilist\w*|piata auto|masini(le)? (noi|second|electrice|la mana a doua)|autovehicul\w*|girofar\w*|vinieta|taxa (de|pentru) drum/],
 ];
 
 export function matchDossier(text: string): string | undefined {
@@ -41,7 +47,10 @@ export function matchDossier(text: string): string | undefined {
 // ghidurile cu reguli și amenzi din Moldova: nu la știrile din străinătate
 // („Germania: amenda pentru parcare” nu ține de Codul contravențional)
 const MOLDOVA_ONLY = new Set([
+  "masina-in-moldova-ghidul-complet-al-soferului",
+  "inspectia-tehnica-periodica-a-masinii-in-moldova",
   "alcoolul-la-volan-limite-si-sanctiuni",
+  "accidentul-usor-constatare-amiabila-si-rca",
   "cum-obtii-permisul-de-conducere-in-moldova-pas-cu-pas",
   "reguli-de-circulatie-incalcate-des-si-amenzile",
   "amenzile-in-moldova-cine-te-poate-amenda-si-cum-contesti",

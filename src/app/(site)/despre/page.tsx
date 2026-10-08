@@ -13,6 +13,11 @@ export default function AboutPage() {
   return (
     <StaticPage title="Despre noi">
       <p>
+        <strong>Știri Actuale — știri cu soluții.</strong> Pe lângă ce s-a întâmplat, îți spunem ce înseamnă pentru
+        tine și ce faci acum: fiecare știre cu impact trimite la un ghid verificat, la un calculator sau la un model de
+        act gata de completat.
+      </p>
+      <p>
         Stiri actuale este un site de știri din Republica Moldova, pentru cititorii din raioane, din Chișinău și din
         diaspora. Urmărim în primul rând ce îi afectează direct pe oameni: evenimentele din raioane, accidentele și
         cazurile penale, corupția, prețurile și tarifele, legile noi din educație, sănătate și economie, și viața

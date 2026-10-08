@@ -30,6 +30,11 @@ import("../../src/lib/content/guide-country").then(({ guideCountry }) => {
     assert.equal(matchDossier("Poliția amendează șoferii care vorbesc cu telefonul la volan"), "reguli-de-circulatie-incalcate-des-si-amenzile");
     assert.equal(matchDossier("ANSA a aplicat amenzi de 50.000 de lei la piața centrală"), "amenzile-in-moldova-cine-te-poate-amenda-si-cum-contesti");
     assert.equal(matchDossier("Examenul teoretic auto se schimbă de la 1 ianuarie"), "cum-obtii-permisul-de-conducere-in-moldova-pas-cu-pas");
+    assert.equal(matchDossier("Parcul auto în Moldova, peste 1,35 milioane: lege nouă pentru trafic"), "masina-in-moldova-ghidul-complet-al-soferului");
+    assert.equal(matchDossier("Inspecția tehnică se va face doar la stații digitalizate"), "inspectia-tehnica-periodica-a-masinii-in-moldova");
+    assert.equal(matchDossier("Accident la Orhei: șoferul a pierdut controlul"), undefined);
+    assert.equal(matchDossier("Accident rutier în lanț pe strada Calea Ieșilor: trei mașini avariate"), "accidentul-usor-constatare-amiabila-si-rca");
+    assert.equal(matchDossier("Accident rutier mortal la Strășeni: un tânăr a murit"), undefined);
     console.log("impact: OK");
   });
 });

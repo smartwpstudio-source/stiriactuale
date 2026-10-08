@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     default: "Știri din Moldova — ultima oră | Știri Actuale",
     template: "%s | Știri Actuale",
   },
-  description: "Știri din Moldova actualizate toată ziua: raioane, național, internațional și diaspora. Scumpiri, legi, accidente și scandaluri, din surse verificate.",
+  description: "Știri cu soluții din Moldova: ce s-a întâmplat și ce faci acum, cu ghiduri, calculatoare și modele de acte. Raioane, național, lume și diaspora.",
   manifest: "/manifest.webmanifest",
   // aceeași proprietate Search Console ca site-ul WordPress — istoricul se păstrează
   verification: { google: "D3-OLYwLDh37LyoQPynKaPN_EGe62ztq7rB_SXMJNow" },
