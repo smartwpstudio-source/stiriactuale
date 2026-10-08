@@ -38,6 +38,8 @@ export const metadata: Metadata = {
   },
   description: "Știri cu soluții din Moldova: ce s-a întâmplat și ce faci acum, cu ghiduri, calculatoare și modele de acte. Raioane, național, lume și diaspora.",
   manifest: "/manifest.webmanifest",
+  // Google Discover arată pozele mari doar cu max-image-preview:large
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } },
   // aceeași proprietate Search Console ca site-ul WordPress — istoricul se păstrează
   verification: { google: "D3-OLYwLDh37LyoQPynKaPN_EGe62ztq7rB_SXMJNow" },
   alternates: { types: { "application/rss+xml": "/feed/" } },

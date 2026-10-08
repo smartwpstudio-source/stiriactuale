@@ -164,3 +164,19 @@ const WEEKDAYS = ["duminică", "luni", "marți", "miercuri", "joi", "vineri", "s
 export const formatDay = (d: Date) => `${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]}`;
 export const weekday = (d: Date) => WEEKDAYS[d.getUTCDay()];
 export const monthName = (m: number) => MONTHS[m - 1];
+
+// Zilele de sărbătoare nelucrătoare la nivel național (Codul muncii, art. 111;
+// lista din ghidul „Sărbătorile legale”). Fără hramurile locale.
+export function isPublicHoliday(day: Date): boolean {
+  const y = day.getUTCFullYear();
+  const easter = orthodoxEaster(y);
+  const days = [
+    utc(y, 1, 1), utc(y, 1, 7), utc(y, 1, 8), utc(y, 3, 8), utc(y, 5, 1), utc(y, 5, 9), utc(y, 6, 1),
+    utc(y, 8, 27), utc(y, 8, 31), utc(y, 12, 25),
+    easter, addDays(easter, 1), addDays(easter, 8), // Paștele, a doua zi, Paștele Blajinilor (luni)
+  ];
+  return days.some((d) => d.getTime() === day.getTime());
+}
+
+// Zi liberă: sâmbătă, duminică sau sărbătoare legală
+export const isDayOff = (day: Date) => day.getUTCDay() === 0 || day.getUTCDay() === 6 || isPublicHoliday(day);
