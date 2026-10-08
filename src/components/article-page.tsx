@@ -47,6 +47,20 @@ function imageLabel(url?: string, credit?: string): string | null {
   return url.includes("/articole/") ? "Foto ilustrativă" : null;
 }
 
+// Legenda sub poză: ce se vede (textul alternativ) + sursa. Pozele care nu sunt
+// de la eveniment (stoc, arhiva de locuri, imagini simbol, AI) poartă mențiunea
+// „ilustrativă”, ca descrierea să nu pară locul faptei.
+function imageCaption(url?: string, credit?: string, alt?: string): string | null {
+  const label = imageLabel(url, credit);
+  if (!alt || !url) return label;
+  const what = alt.replace(/[.\s]+$/, "");
+  if (url.includes(`/${AI_IMAGE_PREFIX}`)) return `Imagine generată AI: ${what}`;
+  if (credit && /simbol/i.test(credit)) return `Imagine simbol: ${what}`;
+  if (url.includes("/locuri/")) return `Imagine ilustrativă: ${what}${credit ? `. Foto: ${credit}` : ""}`;
+  if (!credit) return url.includes("/articole/") ? `Imagine ilustrativă: ${what}` : label;
+  return `${what}. Foto: ${credit}`;
+}
+
 // „canal/123” din adresa playerului Telegram (video.ts: t.me/canal/123?embed=1)
 const telegramPost = (url?: string) => url?.match(/^https:[/][/]t[.]me[/]([A-Za-z0-9_]{4,}[/][0-9]+)/)?.[1];
 
@@ -146,8 +160,8 @@ export async function ArticlePage({
                 sizes="(max-width: 768px) 100vw, 720px"
               priority
               />
-              {imageLabel(article.imageUrl, article.imageCredit) && (
-                <p className="mt-1 font-mono text-xs text-sub">{imageLabel(article.imageUrl, article.imageCredit)}</p>
+              {imageCaption(article.imageUrl, article.imageCredit, article.imageAlt) && (
+                <p className="mt-1.5 text-sm text-sub">{imageCaption(article.imageUrl, article.imageCredit, article.imageAlt)}</p>
               )}
               </>
             )}
