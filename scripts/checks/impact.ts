@@ -35,6 +35,7 @@ import("../../src/lib/content/guide-country").then(({ guideCountry }) => {
     assert.equal(matchDossier("Accident la Orhei: șoferul a pierdut controlul"), undefined);
     assert.equal(matchDossier("Accident rutier în lanț pe strada Calea Ieșilor: trei mașini avariate"), "accidentul-usor-constatare-amiabila-si-rca");
     assert.equal(matchDossier("Accident rutier mortal la Strășeni: un tânăr a murit"), undefined);
+    assert.equal(matchDossier("Judecătoria Chișinău a amânat ședința de judecată în dosarul fostului primar"), "instanta-de-judecata-in-moldova-ghid-practic");
     console.log("impact: OK");
   });
 });

@@ -32,6 +32,9 @@ const RULES: [slug: string, re: RegExp][] = [
   ["reguli-de-circulatie-incalcate-des-si-amenzile", /regulament\w* (circulatiei|de circulatie)|reguli\w* de circulatie|puncte de penalizare|telefonul la volan|centur\w* de siguranta|depasir\w* (neregulamentar|pe linia continua)|exces de viteza|limita de viteza|\bradar\w*/],
   ["amenzile-in-moldova-cine-te-poate-amenda-si-cum-contesti", /\bamend\w*|\bamenz\w*|proces\w*-verbal\w* (de contraventie)?|contraventi\w*/],
   ["inspectia-tehnica-periodica-a-masinii-in-moldova", /inspecti\w* tehnic\w*|revizi\w* tehnic\w*/],
+  // pilonul instanțelor: procese, judecătorii, chemări în judecată (după dosarele
+  // mari — reforma justiției, furtul miliardului — care au prioritate)
+  ["instanta-de-judecata-in-moldova-ghid-practic", /judecatori(a|ei|ile)\b|instant\w* de judecata|chemat\w* in judecata|actiun\w* in instanta|proces\w* (civil|de judecata)|sedint\w* de judecata|curtea de apel|curtea suprema de justitie|\bcsj\b/],
   // accident cu mașini, FĂRĂ morți: ce faci cu asigurarea; lângă o tragedie, nimic
   ["accidentul-usor-constatare-amiabila-si-rca", /^(?!.*(a murit|au murit|deced\w*|mortal\w*|\bmorti\b|si-?a pierdut viata|fara viata|fara suflare|cadavr\w*|tragedi\w*|spulberat\w*|\bgrav\w*|\bars\w*|ucis\w*|victim\w*|teribil\w*))(?=.*(accident\w* (rutier|de circulatie|in lant)|s-au ciocnit|tamponat\w*|coliziun\w*|s-a rasturnat|a lovit (o|un) (masina|automobil)))/],
   // pilonul șoferilor: orice altă știre despre mașini și șoferi (nu accidentele —
@@ -47,6 +50,7 @@ export function matchDossier(text: string): string | undefined {
 // ghidurile cu reguli și amenzi din Moldova: nu la știrile din străinătate
 // („Germania: amenda pentru parcare” nu ține de Codul contravențional)
 const MOLDOVA_ONLY = new Set([
+  "instanta-de-judecata-in-moldova-ghid-practic",
   "masina-in-moldova-ghidul-complet-al-soferului",
   "inspectia-tehnica-periodica-a-masinii-in-moldova",
   "alcoolul-la-volan-limite-si-sanctiuni",

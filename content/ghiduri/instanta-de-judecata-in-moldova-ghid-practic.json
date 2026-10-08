@@ -1,0 +1,112 @@
+{
+  "slug": "instanta-de-judecata-in-moldova-ghid-practic",
+  "title": "Instanța de judecată în Moldova: cum depui cererea, cât costă, avocat și reguli la ședință",
+  "description": "Cum depui cererea la judecătorie, cât costă procesul (taxa de stat), ce faci cu citația, când ai avocat gratuit, regulile la ședință și termenele de apel.",
+  "category": "siguranta",
+  "updated": "2026-10-08",
+  "sources": [
+    {
+      "name": "Portalul Național al Instanțelor de Judecată — instanțe, agenda ședințelor, hotărâri, citații",
+      "url": "https://instante.justice.md/ro"
+    },
+    {
+      "name": "PNIJ — e-Dosar judiciar (pilotare, avocați)",
+      "url": "https://instante.justice.md/ro/content/judicial-electronic-file"
+    },
+    {
+      "name": "PNIJ — Modele acte (amânare, examinare în lipsă, copia înregistrării audio)",
+      "url": "https://instante.justice.md/ro/modele-acte"
+    },
+    {
+      "name": "CSM — Hotărârea nr. 717/44 din 23.12.2024 (Legea nr. 135/2024, revizuirea hărții judiciare)",
+      "url": "https://jdr.instante.justice.md/sites/jdr.instante.justice.md/files/717-44.pdf"
+    },
+    {
+      "name": "Judecătoria Chișinău — Raportul de performanță, semestrul I 2026 (istoric și specializarea sediilor)",
+      "url": "https://jc.instante.justice.md/sites/jc.instante.justice.md/files/Raportul%20anual%20de%20performan%C8%9B%C4%83%20semestrul%20I%202026.pdf"
+    },
+    {
+      "name": "Guvernul RM — Proiectul de lege privind facilitarea soluției informatice a ședințelor de judecată (mai 2026), cu textul în vigoare al art. 166 CPC",
+      "url": "https://gov.md/sites/default/files/media/documents/sedinte-de-guvern/2026-05/406%20MJ.pdf"
+    },
+    {
+      "name": "CSJ — Încheierea din 18.05.2026 privind competența teritorială (art. 38 CPC)",
+      "url": "https://jurisprudenta.csj.md/search_col_civil.php?id=81611"
+    },
+    {
+      "name": "CSJ — Decizie privind termenul de apel (art. 362 CPC)",
+      "url": "https://jurisprudenta.csj.md/search_col_civil.php?id=79255"
+    },
+    {
+      "name": "CSJ — Încheiere privind termenul de recurs (art. 434 CPC)",
+      "url": "https://jurisprudenta.csj.md/search_col_civil.php?id=77081"
+    },
+    {
+      "name": "CSJ — Încheiere privind reprezentarea și mandatul avocatului (art. 75 CPC)",
+      "url": "https://jurisprudenta.csj.md/search_col_civil.php?id=79883"
+    },
+    {
+      "name": "Curtea de Apel Nord — Generalizarea practicii privind restituirea cererilor de chemare în judecată (art. 170 CPC)",
+      "url": "https://cab.instante.justice.md/sites/cab.instante.justice.md/files/Generalizare%20%20%C3%AEncheiere%20refuz-restit%20cererii.pdf"
+    },
+    {
+      "name": "Curtea de Apel Bălți — Generalizarea practicii privind cererile cu valoare redusă (art. 276²–276⁴ CPC)",
+      "url": "https://cab.instante.justice.md/sites/cab.instante.justice.md/files/GENERALIZ%20FINAL%C4%82%20VALOAREA%20REDUS%C4%82_0.pdf"
+    },
+    {
+      "name": "Judecătoria Bălți — Citație publică cu consecințele neprezentării (art. 206 CPC)",
+      "url": "https://instante.justice.md/ro/pigd_integration/pdf/0927B1A8-7947-4873-8329-AC765BB883F4"
+    },
+    {
+      "name": "CSM — Regulamentul-cadru privind accesul în sediile instanțelor judecătorești (Hotărârea nr. 164/14 din 08.04.2025)",
+      "url": "https://jed.instante.justice.md/sites/jed.instante.justice.md/files/164-14-regulament.pdf"
+    },
+    {
+      "name": "CSM — Regulile de conduită a justițiabililor în instanța judecătorească (Hotărârea nr. 504/17 din 03.06.2014)",
+      "url": "https://cac.instante.justice.md/sites/cac.instante.justice.md/files/Regului%20de%20conduit%C4%83.pdf"
+    },
+    {
+      "name": "Agenția de Administrare a Instanțelor Judecătorești — Raport privind înregistrarea audio a ședințelor (noiembrie 2024)",
+      "url": "https://adjaj.justice.md/wp-content/uploads/2024/12/Raport-inregistrari-audio-Noiembrie-2024.semnat.pdf"
+    },
+    {
+      "name": "Constituția Republicii Moldova, art. 115 și 117 (text publicat de SIS)",
+      "url": "https://www.antiteror.sis.md/sites/default/files/document/attachments/constitutia.pdf"
+    },
+    {
+      "name": "Consiliul de Mediere — Raportul de activitate pentru 2024",
+      "url": "https://mediere.gov.md/sites/default/files/document/attachments/raport_2024_narativ.pdf"
+    },
+    {
+      "name": "Consiliul Național pentru Asistența Juridică Garantată de Stat",
+      "url": "https://cnajgs.md"
+    }
+  ],
+  "bodyHtml": "<p><strong>Pe scurt:</strong> procesul începe la judecătorie, poate continua la curtea de apel și se poate încheia la Curtea Supremă de Justiție. Într-un proces civil depui o cerere scrisă la judecătoria de la domiciliul pârâtului, plătești taxa de stat și taxa de timbru și primești citații pentru fiecare ședință. Avocatul nu e obligatoriu în procesul civil, iar cine are dreptul primește unul gratuit. Informații verificate la 8 octombrie 2026. Ghidul e informativ și nu înlocuiește sfatul unui jurist.</p><h2>Sistemul pe scurt: judecătorii, curți de apel, CSJ</h2><p>Harta instanțelor a fost refăcută prin Legea nr. 76 din 21 aprilie 2016: judecătoriile mici au fost unite, iar fostele clădiri au rămas <strong>sedii</strong> ale noii instanțe. Judecătoria Chișinău, de exemplu, funcționează din 1 ianuarie 2017, prin comasarea a cinci judecătorii de sector.</p><p>Prin Legea nr. 135/2024, în vigoare din 27 decembrie 2024, judecătoriile au scăzut de la 15 la 14, iar curțile de apel de la 4 la 3 (Consiliul Superior al Magistraturii).</p><ul><li><strong>Judecătoriile</strong> (prima instanță): 14, fiecare cu mai multe sedii. Lista e pe <a href=\"https://instante.justice.md/ro\">Portalul Național al Instanțelor de Judecată</a>.</li><li><strong>Curțile de apel</strong>: Curtea de Apel Centru (fosta Chișinău), Curtea de Apel Nord (fosta Bălți) și Curtea de Apel Sud (formată din curțile Cahul și Comrat).</li><li><strong>Curtea Supremă de Justiție (CSJ)</strong>: judecă recursurile și unifică practica judiciară.</li></ul><p>Atenție: nu orice sediu judecă orice. La Judecătoria Chișinău, din 1 februarie 2024, dosarele civile și de contencios administrativ merg la sediile Centru, Rîșcani și Central, iar cele penale și contravenționale la Buiucani și Ciocana.</p><ul><li><strong>Procedura civilă</strong>: conflicte între persoane sau firme (datorii, chirie, moștenire, muncă), pornite printr-o cerere de chemare în judecată.</li><li><strong>Procedura penală</strong>: infracțiuni, cercetate de poliție și procuratură; vezi <a href=\"/ghiduri/cum-depui-o-plangere-la-politie-inclusiv-online/\">Cum depui o plângere la Poliție</a>.</li><li><strong>Procedura contravențională</strong>: amenzi pentru fapte mai ușoare, contestate la judecătorie; vezi <a href=\"/ghiduri/amenzile-in-moldova-cine-te-poate-amenda-si-cum-contesti/\">Amenzile în Moldova</a>.</li><li><strong>Contenciosul administrativ</strong>: litigii cu o autoritate publică, după Codul administrativ; vezi <a href=\"/ghiduri/petitia-la-primarie-sau-minister-termen-de-raspuns/\">Petiția la primărie sau minister</a>.</li></ul><h2>Cum depui o cerere de chemare în judecată</h2><h3>Ce trebuie să conțină</h3><p>Codul de procedură civilă (art. 166) cere să indici, între altele: instanța căreia îi adresezi cererea; numele tău, domiciliul și IDNP-ul (numărul personal de pe buletin); telefonul și alte date de contact; dacă locuiești în străinătate, o adresă din Moldova unde ți se trimit actele. În practică, instanțele cer și faptele, temeiul juridic, pretențiile clare și probele. Cererea trebuie <strong>semnată</strong>: una nesemnată se restituie (art. 170).</p><h3>Unde o depui: competența</h3><ul><li><strong>Regula generală:</strong> poți depune cererea în oricare dintre sediile instanței în a cărei rază se află domiciliul pârâtului (art. 38 alin. (1)). Domiciliul se prezumă la adresa din Registrul de stat al populației, până la proba contrară.</li><li><strong>Pârâtul e o firmă:</strong> la instanța de la sediul persoanei juridice (art. 38 alin. (2)).</li><li><strong>Mai mulți pârâți</strong> cu domicilii diferite: la domiciliul unuia dintre ei, la alegerea ta (art. 42 alin. (1)).</li><li><strong>Excepții:</strong> unele acțiuni (de exemplu, restabilirea în dreptul la muncă, la pensie sau la locuință) pot fi depuse și la instanța de la domiciliul tău (art. 39 alin. (7)).</li></ul><h3>Copii și anexe</h3><ul><li>copia cererii și copiile tuturor înscrisurilor, câte un set pentru fiecare pârât sau persoană interesată, plus un set pentru instanță;</li><li>dovada plății taxei de stat și a taxei de timbru (sau cererea de scutire, amânare ori eșalonare);</li><li>dacă te reprezintă un avocat, originalul mandatului (CSJ a restituit un recurs depus doar cu copia mandatului).</li></ul><h3>La grefă, prin poștă sau electronic</h3><p>Cererile se depun la secția evidență și documentare procesuală a instanței, personal (cu actul de identitate) sau prin poștă. Electronic:</p><ul><li>Persoanele fizice <strong>asistate de avocat</strong> și persoanele juridice depun cererea prin Programul integrat de gestionare a dosarelor (PIGD), cu semnătură electronică avansată calificată (art. 166 alin. (7), forma în vigoare citată de Guvern în 2026).</li><li><strong>e-Dosar judiciar</strong> este, potrivit portalului instanțelor, în pilotare. Pot participa avocații; cetățenii fără avocat nu sunt menționați.</li><li>Un proiect de lege publicat de Guvern în mai 2026 propune reguli generale pentru depunerea electronică a cererii. Fără avocat, calea sigură rămâne grefa sau poșta. Despre semnătura electronică, vezi <a href=\"/ghiduri/mpass-msign-e-servicii-online/\">MPass, MSign și e-servicii</a>.</li></ul><h2>Cât costă un proces</h2><p>Sumele detaliate sunt în ghidul <a href=\"/ghiduri/taxa-de-stat-in-instanta-cat-costa-un-proces-civil/\">Cât costă un proces civil: taxa de stat și taxa de timbru</a>. Pe scurt:</p><table><thead><tr><th>Ce plătești</th><th>Cât</th><th>Observații</th></tr></thead><tbody><tr><td>Taxa de timbru</td><td>200 de lei</td><td>în contul instanței; se cere și la apel</td></tr><tr><td>Taxa de stat, cerere patrimonială</td><td>procent din valoarea acțiunii, pe tranșe</td><td>minim 150 de lei pentru persoane fizice</td></tr><tr><td>Taxa de stat, cerere nepatrimonială</td><td>250 de lei</td><td>de exemplu, apărarea onoarei</td></tr><tr><td>Apel / recurs</td><td>85% / 70% din taxa de stat</td><td>calculată din suma contestată</td></tr><tr><td>Copia înregistrării audio a ședinței</td><td>50 de lei</td><td>cerere la grefă</td></tr><tr><td>Avocatul</td><td>onorariu stabilit prin contract</td><td>gratuit prin CNAJGS, dacă ai dreptul</td></tr></tbody></table><p><strong>Scutiri:</strong> unele cereri sunt scutite prin lege (anexa nr. 2 la Legea taxei de stat nr. 213/2023), iar beneficiarii de asistență juridică garantată de stat sunt scutiți de taxa de timbru. Dacă nu ai bani, poți cere judecătorului scutirea, amânarea sau plata în rate.</p><p><strong>Cheltuielile de judecată:</strong> dacă câștigi, poți cere ca partea care a pierdut să-ți întoarcă taxele și alte cheltuieli. <strong>Onorariul avocatului</strong> se stabilește prin acord; vezi <a href=\"/ghiduri/plangere-impotriva-avocatului-contract-onorariu/\">Plângere împotriva avocatului: contractul și onorariul</a>.</p><h2>Ești chemat în judecată: citația, răspunsul și absența</h2><p>Citația îți spune instanța, sediul, data, ora, sala, judecătorul și obiectul dosarului. Când adresa unei persoane nu e cunoscută, instanțele publică citații pe portal, la rubrica <a href=\"https://instante.justice.md/ro/citatii-publice\">Citații publice</a>.</p><p><strong>Referința</strong> este răspunsul tău scris la cererea reclamantului: ce recunoști, ce contești, cu ce probe. Termenul ți-l indică instanța în actele primite. La cererile cu valoare redusă, termenul este de 30 de zile de la comunicarea cererii.</p><p><strong>Ce se întâmplă dacă nu vii</strong> (Codul de procedură civilă, art. 206, reprodus în citațiile instanțelor):</p><ul><li>dacă pârâtul a fost citat legal, nu vine, nu anunță motivul (sau motivul nu e considerat întemeiat) și nu a cerut judecarea în lipsă, instanța judecă dosarul <strong>în lipsa lui</strong>;</li><li>dacă reclamantul lipsește fără motiv și pârâtul nu cere judecarea pe fond, cererea poate fi scoasă de pe rol;</li><li>dacă lipsesc ambii fără motiv, procesul se amână; a doua absență duce la scoaterea cererii de pe rol.</li></ul><p><strong>Amânarea:</strong> dacă nu poți veni, trimite din timp o cerere de amânare cu motivul și dovada (certificat medical, bilet de călătorie). Modelul pentru dosare civile, penale și contravenționale e pe portal, la <a href=\"https://instante.justice.md/ro/modele-acte\">Modele acte</a>. Tot acolo e și modelul pentru examinarea în lipsă. Pentru absența motivată a avocatului, amânarea se acordă o singură dată.</p><h2>Trebuie avocat?</h2><ul><li><strong>În procesul civil, nu este obligatoriu.</strong> Codul (art. 75 alin. (1)) spune că persoanele fizice își pot apăra interesele personal, prin avocat sau prin avocat stagiar.</li><li><strong>În procesul penal</strong>, legea prevede situații de apărare obligatorie. Dacă ești reținut, cel care te-a reținut trebuie să ceară în cel mult o oră un avocat de serviciu, gratuit, indiferent de venit.</li><li><strong>La recursul la CSJ</strong> nu am găsit o regulă care să oblige persoana fizică să aibă avocat, dar recursul are cerințe stricte de formă și un termen care nu poate fi restabilit.</li></ul><p><strong>Avocatul gratuit</strong> îl acordă Consiliul Național pentru Asistența Juridică Garantată de Stat (CNAJGS), prin oficiile teritoriale Chișinău, Bălți și Cahul. Consultația primară e pentru oricine; reprezentarea în instanță e gratuită pentru anumite categorii sau sub un prag de venit. Formularele sunt pe <a href=\"https://cnajgs.md\">cnajgs.md</a>, iar condițiile, în ghidul <a href=\"/ghiduri/asistenta-juridica-garantata-de-stat/\">Asistența juridică garantată de stat</a>. În cauzele civile, cererea se face până la începerea procesului.</p><h2>Reguli la judecătorie și în sala de ședință</h2><p>Regulile vin din Regulamentul-cadru privind accesul (Hotărârea CSM nr. 164/14 din 8 aprilie 2025) și din Regulile de conduită (Hotărârea CSM nr. 504/17 din 3 iunie 2014).</p><ul><li><strong>Intrarea:</strong> ai nevoie de buletin. Accesul ți se poate refuza dacă nu prezinți actul, refuzi controlul cu detectorul de metale sau ești vizibil în stare de ebrietate.</li><li><strong>Ținuta:</strong> nu se admit hainele de plajă, pantalonii scurți, inscripțiile vulgare sau hainele care nu permit identificarea (pălărie, ochelari, mască).</li><li><strong>În sală:</strong> te ridici în picioare când intră și iese completul și la pronunțarea hotărârii; vorbești stând în picioare și te adresezi cu „Onorată instanță”; celeilalte părți te adresezi doar prin instanță.</li><li><strong>Telefonul:</strong> îl poți aduce, dar îl închizi sau îl pui pe silențios la intrarea în sală. Nu ai voie să înregistrezi audio sau video și să fotografiezi fără acordul președintelui ședinței.</li><li><strong>Judecătorul:</strong> nu discuți cu el despre dosar în afara procedurii, de exemplu pe hol sau la telefon.</li></ul><p><strong>Înregistrarea oficială:</strong> ședința se înregistrează audio ori de câte ori se întocmește proces-verbal. Participanții pot cere o copie, contra plată.</p><p><strong>Ședințe publice și închise:</strong> potrivit Constituției (art. 117), ședințele sunt publice, iar judecarea în ședință închisă se admite doar în cazurile prevăzute de lege. Dosarele judecate în ședință secretă pot fi consultate doar de participanți și de reprezentanții lor.</p><p><strong>Unde vezi ședințele și hotărârile:</strong> pe <a href=\"https://instante.justice.md/ro\">instante.justice.md</a> găsești Agenda ședințelor, Hotărârile instanței, Încheierile instanței și Citațiile publice. Deciziile CSJ sunt pe jurisprudenta.csj.md.</p><h2>După hotărâre: apel, recurs, executare</h2><ul><li><strong>Apelul</strong> se depune în <strong>30 de zile de la pronunțarea dispozitivului</strong> hotărârii (art. 362 alin. (1)), nu de la data la care ai primit-o. Dacă ultima zi e nelucrătoare, termenul expiră în următoarea zi lucrătoare.</li><li><strong>Recursul</strong> la CSJ se declară în <strong>2 luni de la comunicarea hotărârii sau a deciziei integrale</strong>, iar termenul nu poate fi restabilit (art. 434).</li><li><strong>Încheierile</strong> care se pot ataca separat au termen de recurs de 15 zile de la comunicare (art. 425).</li><li>Dacă ai ratat un termen din motive întemeiate, poți cere repunerea în termen, cu dovezi (art. 116), dar nu la recursul la CSJ.</li></ul><p>Hotărârea neexecutată de bunăvoie ajunge la executorul judecătoresc; vezi <a href=\"/ghiduri/executorul-judecatoresc-drepturile-debitorului-si-plangerea/\">Executorul judecătoresc</a>.</p><h2>Procedura simplificată pentru sume mici și medierea</h2><p><strong>Cererea cu valoare redusă:</strong> dacă ceri o sumă de bani care nu depășește 10 salarii medii pe economie prognozate, fără dobânzi, penalități și cheltuieli de judecată, dosarul se judecă după procedura cererilor cu valoare redusă (art. 276²–276⁴). Potrivit unei generalizări a practicii făcute de Curtea de Apel Bălți, procedura e de regulă scrisă, judecătorul poate chema părțile la ședință, iar examinarea nu trebuie să depășească 6 luni. Hotărârea poate fi atacată doar cu apel, iar decizia instanței de apel e definitivă. Nu se aplică, între altele, în materie fiscală, vamală și la pensia de întreținere. Exemplu: <a href=\"/ghiduri/garantia-de-la-chirie-nereturnata-ce-faci/\">Garanția de la chirie nereturnată</a>.</p><p><strong>Medierea:</strong> un mediator ajută părțile să ajungă la o înțelegere, înainte de proces sau în timpul lui. Potrivit Consiliului de Mediere, în 2024 circa 20% dintre adresări au venit în timpul unui proces. Registrul mediatorilor e pe <a href=\"https://mediere.gov.md\">mediere.gov.md</a>. Atenție: dacă legea sau contractul vostru prevede o procedură prealabilă, inclusiv mediere, și nu o respecți, judecătorul îți poate restitui cererea (art. 170 alin. (1) lit. a)).</p><h2>Pașii unui proces civil</h2><table><thead><tr><th>Pasul</th><th>Ce faci</th><th>Ce trebuie să știi</th></tr></thead><tbody><tr><td>1. Încercarea amiabilă</td><td>somație scrisă, eventual mediere</td><td>obligatorie doar unde o cere legea sau contractul</td></tr><tr><td>2. Cererea</td><td>scrii cererea, aduni probele și copiile</td><td>semnată, cu un set de copii pentru fiecare parte</td></tr><tr><td>3. Taxele</td><td>plătești taxa de stat și taxa de timbru sau ceri scutire</td><td>fără ele, cererea poate fi restituită</td></tr><tr><td>4. Depunerea</td><td>la judecătoria de la domiciliul pârâtului</td><td>grefă, poștă sau PIGD (cu avocat)</td></tr><tr><td>5. Primirea cererii</td><td>instanța o primește, îți cere să corectezi lipsurile sau o restituie</td><td>restituirea nu te împiedică să depui din nou</td></tr><tr><td>6. Referința și ședințele</td><td>pârâtul răspunde în scris; părțile sunt citate</td><td>absența nemotivată poate duce la judecarea în lipsă</td></tr><tr><td>7. Hotărârea</td><td>se pronunță dispozitivul</td><td>de aici curg 30 de zile pentru apel</td></tr><tr><td>8. Apel, recurs, executare</td><td>contești sau ceri executarea</td><td>recurs: 2 luni de la comunicarea deciziei integrale</td></tr></tbody></table><h2>Greșeli frecvente</h2><ul><li><strong>Numeri termenul de apel de la data primirii hotărârii.</strong> Se numără de la pronunțarea dispozitivului.</li><li><strong>Depui la sediul greșit.</strong> Verifică pe portal ce sediu judecă cauzele civile în judecătoria ta.</li><li><strong>Uiți copiile pentru pârâți</strong> sau dovada taxei de timbru. Instanța nu dă curs cererii până le aduci.</li><li><strong>Ignori citația.</strong> Dosarul se poate judeca fără tine.</li><li><strong>Ceri avocat gratuit prea târziu.</strong> În civil, cererea la CNAJGS se face până la începerea procesului.</li><li><strong>Filmezi ședința cu telefonul.</strong> Fără acordul judecătorului e interzis și poți fi scos din sală.</li></ul>",
+  "faq": [
+    {
+      "q": "La ce judecătorie depun cererea de chemare în judecată?",
+      "a": "Regula generală este instanța în a cărei rază se află domiciliul pârâtului, în oricare dintre sediile ei; pentru o firmă, instanța de la sediul ei. Există excepții: de exemplu, acțiunile pentru restabilirea în dreptul la muncă, la pensie sau la locuință pot fi depuse și la instanța de la domiciliul tău."
+    },
+    {
+      "q": "Pot depune cererea în instanță online?",
+      "a": "Persoanele asistate de avocat și firmele depun prin Programul integrat de gestionare a dosarelor, cu semnătură electronică. e-Dosar judiciar este în pilotare pentru avocați. Fără avocat, calea sigură este grefa instanței sau poșta."
+    },
+    {
+      "q": "Ce se întâmplă dacă nu mă prezint la ședință?",
+      "a": "Dacă ești pârât și ai fost citat legal, iar absența nu e motivată, instanța poate judeca dosarul în lipsa ta. Dacă nu poți veni, trimite din timp o cerere de amânare, cu dovezi."
+    },
+    {
+      "q": "Am nevoie obligatoriu de avocat într-un proces civil?",
+      "a": "Nu. Persoanele fizice își pot apăra interesele personal, prin avocat sau prin avocat stagiar. Dacă ai venituri mici sau ești într-o categorie protejată, poți cere avocat gratuit la CNAJGS."
+    },
+    {
+      "q": "Cât timp am să fac apel?",
+      "a": "30 de zile de la pronunțarea dispozitivului hotărârii, nu de la data la care ai primit-o. Recursul la CSJ se declară în 2 luni de la comunicarea hotărârii sau a deciziei integrale."
+    },
+    {
+      "q": "Am voie să înregistrez ședința de judecată cu telefonul?",
+      "a": "Nu, fără acordul președintelui ședinței. Telefonul se închide sau se pune pe silențios în sală. Ședința se înregistrează oficial, iar participanții pot cere o copie, contra plată."
+    }
+  ]
+}
