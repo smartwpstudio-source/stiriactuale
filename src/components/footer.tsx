@@ -1,13 +1,12 @@
 import Link from "next/link";
 import { SECTION_LABELS } from "@/lib/content/geo";
-import { TELEGRAM_URL } from "@/lib/site-info";
 import { PrivacySettingsLink } from "./privacy-settings-link";
 
-const INFO = [
-  { href: "/despre/", label: "Despre noi" },
-  { href: "/politica-editoriala/", label: "Politica editorială" },
-  { href: "/confidentialitate/", label: "Confidențialitate" },
-  { href: "/contact/", label: "Contact" },
+// secțiunile din meniu care nu sunt în SECTION_LABELS
+const MORE = [
+  { href: "/video/", label: "Video" },
+  { href: "/analiza/", label: "Analiză" },
+  { href: "/impact/", label: "Ce te afectează" },
 ];
 
 export function Footer() {
@@ -20,13 +19,33 @@ export function Footer() {
               {label}
             </Link>
           ))}
-        </nav>
-        <nav aria-label="Informații" className="flex flex-col gap-2">
-          {INFO.map((i) => (
+          {MORE.map((i) => (
             <Link key={i.href} href={i.href} className="hover:text-amber">
               {i.label}
             </Link>
           ))}
+        </nav>
+        <nav aria-label="Informații" className="flex flex-col gap-2">
+          <Link href="/despre/" className="hover:text-amber">
+            Despre noi
+          </Link>
+          <Link href="/politica-editoriala/" className="hover:text-amber">
+            Politica editorială
+          </Link>
+          <Link href="/confidentialitate/" className="hover:text-amber">
+            Confidențialitate
+          </Link>
+          {/* butonul de consimțământ AdSense (GDPR) — trebuie să existe permanent */}
+          <PrivacySettingsLink />
+          <Link href="/contact/" className="hover:text-amber">
+            Contact
+          </Link>
+          <Link href="/publicitate/" className="hover:text-amber">
+            Publicitate
+          </Link>
+          <Link href="/cautare/" className="hover:text-amber">
+            Căutare
+          </Link>
         </nav>
         <div className="flex flex-col gap-2">
           <Link href="/ghiduri/" className="hover:text-amber">
@@ -44,16 +63,6 @@ export function Footer() {
           <Link href="/azi-in-istorie/" className="hover:text-amber">
             Azi în istorie
           </Link>
-          <Link href="/publicitate/" className="hover:text-amber">
-            Publicitate
-          </Link>
-          <a href={TELEGRAM_URL} className="hover:text-amber">
-            Telegram
-          </a>
-          <Link href="/cautare/" className="hover:text-amber">
-            Căutare
-          </Link>
-          <PrivacySettingsLink />
         </div>
       </div>
       <p className="mx-auto max-w-7xl px-4 pb-6 font-mono text-xs text-paper/70 lg:px-8">
