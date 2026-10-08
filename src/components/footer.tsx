@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { SECTION_LABELS } from "@/lib/content/geo";
+import { IconBrandFacebook, IconBrandTelegram } from "@tabler/icons-react";
+import { FACEBOOK_URL, TELEGRAM_URL } from "@/lib/site-info";
 import { PrivacySettingsLink } from "./privacy-settings-link";
 
 // secțiunile din meniu care nu sunt în SECTION_LABELS
@@ -63,6 +65,14 @@ export function Footer() {
           <Link href="/azi-in-istorie/" className="hover:text-amber">
             Azi în istorie
           </Link>
+          <div className="mt-2 flex gap-3">
+            <a href={TELEGRAM_URL} target="_blank" rel="noopener" aria-label="Telegram" className="flex h-11 w-11 items-center justify-center rounded-full bg-[#229ED9] text-white hover:opacity-85">
+              <IconBrandTelegram size={24} stroke={1.75} aria-hidden />
+            </a>
+            <a href={FACEBOOK_URL} target="_blank" rel="noopener" aria-label="Facebook" className="flex h-11 w-11 items-center justify-center rounded-full bg-[#1877F2] text-white hover:opacity-85">
+              <IconBrandFacebook size={24} stroke={1.75} aria-hidden />
+            </a>
+          </div>
         </div>
       </div>
       <p className="mx-auto max-w-7xl px-4 pb-6 font-mono text-xs text-paper/70 lg:px-8">
