@@ -1,3 +1,4 @@
+import { getGuidesRu, ruPath } from "@/lib/content/guides-ru";
 import { AUTHORS, analysisPath, authorPath, getAnalyses } from "@/lib/content/analyses";
 import { HISTORY_PATH, dayPath, historyDays } from "@/lib/history";
 import { COMPLAINT_MODELS } from "@/lib/complaint-models";
@@ -53,6 +54,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     ...guides.map((g) => ({ url: `${SITE_URL}/ghiduri/${g.slug}/`, lastModified: g.updated, priority: 0.7 })),
+    ...(await getGuidesRu()).map((g) => ({ url: `${SITE_URL}${ruPath(g.slug)}`, lastModified: g.updated, priority: 0.7 })),
     ...hubs.map((h) => ({ url: `${SITE_URL}${h.url}`, changeFrequency: "hourly" as const, priority: h.priority })),
     // slug-uri cu "%" (emoji codat la migrare) dau 404 — nu le punem în sitemap
     ...articles.filter((a) => !a.slug.includes("%")).map((a) => ({

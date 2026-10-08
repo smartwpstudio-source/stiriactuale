@@ -13,6 +13,7 @@ import { modelForGuide } from "@/lib/complaint-models";
 import { ToolNews } from "@/components/tool-news";
 import { RelatedCalculator } from "@/components/related-calculator";
 import { getGuideCalculators } from "@/lib/content/related-calculator";
+import { ruPath, ruSlugs } from "@/lib/content/guides-ru";
 
 // Ghidurile sunt statice: generate la build din content/ghiduri/*.json.
 export const dynamicParams = false;
@@ -28,10 +29,11 @@ export async function generateMetadata({ params }: PageProps<"/ghiduri/[slug]">)
   if (!g) return {};
   const url = `/ghiduri/${g.slug}/`;
   const image = `/og/?${new URLSearchParams({ t: g.title, s: "Ghid" })}`;
+  const ru = (await ruSlugs()).has(g.slug);
   return {
     title: g.title,
     description: g.description,
-    alternates: { canonical: url },
+    alternates: { canonical: url, ...(ru && { languages: { ro: url, ru: ruPath(g.slug) } }) },
     openGraph: { title: g.title, description: g.description, type: "article", url, images: [{ url: image, width: 1200, height: 630 }] },
   };
 }
@@ -76,7 +78,17 @@ export default async function GuidePage({ params }: PageProps<"/ghiduri/[slug]">
       ))}
       <Breadcrumb items={[{ label: "Acasă", href: "/" }, { label: "Ghiduri", href: "/ghiduri/" }, { label: GUIDE_CATEGORIES[g.category] }]} />
       <h1 className="mt-3 font-serif text-3xl leading-tight text-ink sm:text-4xl lg:text-[2.75rem]">{g.title}</h1>
-      <p className="mt-4 font-mono text-sm text-sub">Ghid · actualizat la {updated}</p>
+      <p className="mt-4 font-mono text-sm text-sub">
+        Ghid · actualizat la {updated}
+        {(await ruSlugs()).has(g.slug) && (
+          <>
+            {" · "}
+            <Link href={ruPath(g.slug)} lang="ru" className="text-teal underline">
+              Читать на русском
+            </Link>
+          </>
+        )}
+      </p>
       <ShareButtons url={url} title={g.title} />
       <p className="mt-6 text-xl font-medium leading-relaxed text-ink">{g.description}</p>
       {(await getGuideCalculators(g.slug, g.title, g.description)).map((c) => (

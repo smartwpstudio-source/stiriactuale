@@ -82,6 +82,25 @@ async function main() {
     if (faq !== undefined && (!Array.isArray(faq) || faq.some((x) => !x.q || !x.a))) fail(file, "faq invalid");
   }
 
+  // ghidurile în rusă (docs/cloud/traducere-ru.md): aceeași structură, același slug
+  const roSlugs = new Set((await readdir(path.join(ROOT, "ghiduri"))).map((f) => f.replace(/\.json$/, "")));
+  for (const { f, data: g } of await readJson(path.join(ROOT, "ghiduri-ru"))) {
+    if (!g) continue;
+    const file = `ghiduri-ru/${f}`;
+    if (g.slug !== f.slice(0, -5)) fail(file, "slug diferit de numele fișierului");
+    if (!g.ruOnly && !roSlugs.has(g.slug)) fail(file, "nu există ghidul românesc cu același slug (sau marchează ruOnly)");
+    if (typeof g.title !== "string" || g.title.length < 20 || g.title.length > 110) fail(file, "titlu 20-110 caractere");
+    if (typeof g.description !== "string" || g.description.length < 110 || g.description.length > 175) fail(file, "description 110-175 caractere");
+    if (!(g.category in GUIDE_CATEGORIES)) fail(file, `categorie necunoscută: ${g.category}`);
+    if (!/[а-яё]/i.test(String(g.bodyHtml))) fail(file, "textul nu e în rusă");
+    checkDate(file, g.updated);
+    checkSources(file, g.sources, 2, true);
+    const body = String(g.bodyHtml ?? "");
+    if ((body.match(/<h2>/g) ?? []).length < 3) fail(file, "minim 3 subtitluri <h2>");
+    if (/<h1|<script|<style|<iframe|style=|onclick|<img/i.test(body)) fail(file, "HTML nepermis");
+    if (sanitizeBody(body).length < body.length * 0.97) fail(file, "HTML-ul pierde conținut la sanitizare");
+  }
+
   for (const kind of ["raioane", "tari"] as const) {
     const known: Record<string, string> = kind === "raioane" ? RAION_NAMES : COUNTRY_NAMES;
     for (const { f, data: p } of await readJson(path.join(ROOT, "locuri", kind))) {
