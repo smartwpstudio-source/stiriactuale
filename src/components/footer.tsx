@@ -3,6 +3,7 @@ import { SECTION_LABELS } from "@/lib/content/geo";
 import { IconBrandFacebook, IconBrandTelegram } from "@tabler/icons-react";
 import { FACEBOOK_URL, TELEGRAM_URL } from "@/lib/site-info";
 import { PrivacySettingsLink } from "./privacy-settings-link";
+import { GooglePreferred } from "./google-preferred";
 
 // secțiunile din meniu care nu sunt în SECTION_LABELS
 const MORE = [
@@ -74,6 +75,9 @@ export function Footer() {
             </a>
           </div>
         </div>
+      </div>
+      <div className="mx-auto max-w-7xl px-4 pb-6 lg:px-8">
+        <GooglePreferred />
       </div>
       <p className="mx-auto max-w-7xl px-4 pb-6 font-mono text-xs text-paper/70 lg:px-8">
         © {new Date().getFullYear()} Stiri actuale · Știri reale, din surse publice indicate la fiecare articol.

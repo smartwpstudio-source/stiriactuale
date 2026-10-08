@@ -30,6 +30,7 @@ import { getRelatedDossier } from "@/lib/content/related-dossier";
 import { analysesForArticle, analysisPath } from "@/lib/content/analyses";
 import { IconFolder } from "@tabler/icons-react";
 import { ImpactBlock } from "./impact-block";
+import { GooglePreferred } from "./google-preferred";
 import { resolveTools } from "@/lib/impact";
 
 import type { Article } from "@/lib/content/types";
@@ -230,6 +231,7 @@ export async function ArticlePage({
         )}
         {calculator && !shown.has(`/calculatoare/${calculator.slug}/`) && <RelatedCalculator calc={calculator} />}
         {guide && !shown.has(`/ghiduri/${guide.slug}/`) && <RelatedGuide guide={guide} />}
+        <GooglePreferred className="mt-6" />
         <TelegramCta />
         <PushOptIn />
         <SimilarArticles articles={similar} />
