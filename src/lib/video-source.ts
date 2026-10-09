@@ -69,10 +69,12 @@ async function readTelegramPost(embed: string): Promise<VideoSource | null> {
     .then((r) => (r.ok ? r.text() : ""))
     .catch(() => "");
   const plain = (s: string) => decodeEntities(s.replace(/<br[ /]*>/gi, " ").replace(/<[^>]+>/g, "")).replace(/ +/g, " ").trim();
-  const description = plain(html.match(/<div class="tgme_widget_message_text[^"]*"[^>]*>([^]*?)<[/]div>/)?.[1] ?? "");
+  // textul postării, nu citatul la care răspunde („js-message_reply_text” vine
+  // primul în pagină — o știre veche ajungea drept cea nouă, 2026-10-09)
+  const description = plain(html.match(/<div class="tgme_widget_message_text[^"]*\bjs-message_text\b[^"]*"[^>]*>([^]*?)<[/]div>/)?.[1] ?? "");
   const channel = plain(html.match(/tgme_widget_message_owner_name"[^>]*><span[^>]*>([^<]*)/)?.[1] ?? "") || "Telegram";
   if (!description) return null;
-  const first = description.split(/(?<=[.!?])[ ]/)[0].replace(/^[^\p{L}\p{N}„"]+/u, "");
+  const first = description.split(/(?<=[.!?])[ ]/)[0].replace(/^[^\p{L}\p{N}„"«]+/u, "");
   const hasVideo = /tgme_widget_message_(video|roundvideo)|<video/.test(html);
   const hasPhoto = /tgme_widget_message_photo/.test(html);
   return { embed, title: first.length > 110 ? `${first.slice(0, 107)}…` : first, channel, description, hasVideo, hasPhoto };
