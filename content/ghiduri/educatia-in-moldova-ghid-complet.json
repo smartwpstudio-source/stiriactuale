@@ -1,0 +1,136 @@
+{
+  "slug": "educatia-in-moldova-ghid-complet",
+  "title": "Educația în Moldova: sistemul de învățământ de la grădiniță la doctorat",
+  "description": "Cum funcționează educația în Moldova: niveluri, ce e obligatoriu, examene, cine răspunde, cifrele BNS, bugetul 2026, comasarea școlilor, PISA și reformele.",
+  "category": "educatie",
+  "updated": "2026-10-09",
+  "sources": [
+    {
+      "name": "Codul educației nr. 152/2014, versiunea în vigoare din 14.09.2026 — legis.md",
+      "url": "https://www.legis.md/cautare/getResults?doc_id=156377&lang=ro"
+    },
+    {
+      "name": "Codul educației nr. 152/2014, versiunea de la 01.01.2027 — legis.md",
+      "url": "https://www.legis.md/cautare/getResults?doc_id=153379&lang=ro"
+    },
+    {
+      "name": "Legea nr. 21/2026 pentru modificarea Codului educației — legis.md",
+      "url": "https://www.legis.md/cautare/getResults?doc_id=154034&lang=ro"
+    },
+    {
+      "name": "Legea nr. 200/2026 (reforma „Restart în educație”) — legis.md",
+      "url": "https://www.legis.md/cautare/getResults?doc_id=156370&lang=ro"
+    },
+    {
+      "name": "Legea bugetului de stat pe anul 2026 nr. 322/2025, versiunea din 24.09.2026 (anexele nr. 3 și 4, art. 10) — legis.md",
+      "url": "https://www.legis.md/cautare/getResults?doc_id=156546&lang=ro"
+    },
+    {
+      "name": "HG nr. 80/2025 cu privire la alimentarea copiilor și elevilor — legis.md",
+      "url": "https://www.legis.md/cautare/getResults?doc_id=147306&lang=ro"
+    },
+    {
+      "name": "HG nr. 362/2026 privind bursele — legis.md",
+      "url": "https://www.legis.md/cautare/getResults?doc_id=155307&lang=ro"
+    },
+    {
+      "name": "BNS — Activitatea instituțiilor de învățământ primar și secundar general în anul de studii 2025/26",
+      "url": "https://statistica.gov.md/ro/activitatea-institutiilor-de-invatamant-primar-si-secundar-general-in-anul-de-st-9454_62185.html"
+    },
+    {
+      "name": "BNS — Activitatea instituțiilor de educație timpurie în anul 2025",
+      "url": "https://statistica.gov.md/ro/activitatea-institutiilor-de-educatie-timpurie-in-anul-2025-9454_62402.html"
+    },
+    {
+      "name": "BNS — Activitatea instituțiilor de învățământ profesional tehnic în anul de studii 2025/26",
+      "url": "https://statistica.gov.md/ro/activitatea-institutiilor-de-invatamant-profesional-tehnic-in-anul-de-studii-202-9454_62145.html"
+    },
+    {
+      "name": "BNS — Activitatea instituțiilor de învățământ superior în anul de studii 2025/26",
+      "url": "https://statistica.gov.md/ro/activitatea-institutiilor-de-invatamant-superior-in-anul-de-studii-202526-9454_62181.html"
+    },
+    {
+      "name": "BNS — Activitatea de doctorat și postdoctorat în anul 2025",
+      "url": "https://statistica.gov.md/ro/activitatea-de-doctorat-si-postdoctorat-in-anul-2025-9454_62412.html"
+    },
+    {
+      "name": "ANCE — Raportul privind rezultatele elevilor din Republica Moldova în PISA 2022",
+      "url": "https://ance.gov.md/content/fost-publicat-raportul-privind-rezultatele-ob%C8%9Binute-de-elevii-din-republica-moldova-%C3%AEn"
+    },
+    {
+      "name": "MEC — PISA 2025: elevii din Republica Moldova au făcut progrese la științe (08.09.2026)",
+      "url": "https://mec.gov.md/ro/content/pisa-2025-elevii-din-republica-moldova-au-facut-progrese-la-stiinte-iar-decalajul-la"
+    },
+    {
+      "name": "MEC — Ordinul nr. 447/2026 privind lista instituțiilor care cad sub incidența art. 145¹",
+      "url": "https://mecc.gov.md/sites/default/files/ordinul_mec_cu_privire_la_aprobarea_listei_institutiilor_publice_de_invatamant_general.pdf"
+    },
+    {
+      "name": "MEC — Parlamentul a adoptat modificările la Codul educației în lectura a doua (26.02.2026)",
+      "url": "https://mec.gov.md/ro/content/parlamentul-adoptat-modificarile-la-codul-educatiei-lectura-doua"
+    },
+    {
+      "name": "MEC — Reforma „Restart în educație” a fost votată în a doua lectură (03.09.2026)",
+      "url": "https://mec.gov.md/ro/content/reforma-restart-educatie-fost-votata-doua-lectura-de-parlament"
+    },
+    {
+      "name": "Guvernul RM — Școlile vor trece în subordinea MEC (22.07.2026)",
+      "url": "https://www.gov.md/ro/node/10174"
+    },
+    {
+      "name": "MEC — 57 de microbuze școlare noi (21.08.2026)",
+      "url": "https://mec.gov.md/ro/content/57-de-microbuze-scolare-noi-vor-asigura-transport-mai-sigur-si-acces-la-o-educatie-mai-buna"
+    },
+    {
+      "name": "MEC — Ministrul Dan Perciun despre „Restart în educație” și salarizare (06.10.2026)",
+      "url": "https://www.edu.gov.md/ro/content/ministrul-dan-perciun-discutat-cu-directorii-de-scoli-din-hincesti-despre-restart-educatie"
+    },
+    {
+      "name": "Guvernul RM — Indemnizații mai mari pentru tinerii profesori (20.05.2026)",
+      "url": "https://gov.md/ro/comunicate-de-presa/indemnizatii-mai-mari-pentru-tinerii-profesori-sprijinul-acordat-la-angajare-la"
+    },
+    {
+      "name": "MEC — Ordinul nr. 1782/2025 privind examenele naționale de absolvire, sesiunea 2026 (ance.gov.md)",
+      "url": "https://ance.gov.md/sites/default/files/ordinul_mec_1782_din_17.10.2025_orar_examene_sesiunea_26.pdf"
+    },
+    {
+      "name": "MEC — Admiterea în învățământul profesional tehnic 2026: 12 282 de locuri bugetare",
+      "url": "https://www.edu.gov.md/ro/content/inceput-admiterea-la-invatamantul-profesional-tehnic-12282-de-locuri-bugetare-79-de"
+    },
+    {
+      "name": "Guvernul RM — Peste 9 mii de locuri bugetare pentru viitorii studenți (2026)",
+      "url": "https://www.gov.md/ro/comunicate-de-presa/peste-9-mii-de-locuri-bugetare-pentru-viitorii-studenti-aprobate-de-guvern"
+    },
+    {
+      "name": "ANACEC — Despre agenție",
+      "url": "https://anacec.md/ro/content/despre"
+    }
+  ],
+  "bodyHtml": "<p><strong>Pe scurt:</strong> în Republica Moldova, educația merge de la creșă până la doctorat și e organizată după <a href=\"https://www.legis.md/cautare/getResults?doc_id=156377&amp;lang=ro\">Codul educației (Legea nr. 152/2014)</a>. Obligatorie este perioada de la grupa pregătitoare a grădiniței până la sfârșitul clasei a IX-a, iar obligația de a frecventa școala încetează la 16 ani. În anul de studii 2025/26 au funcționat 1 173 de școli, licee și gimnazii, cu circa 334,6 mii de elevi, potrivit Biroului Național de Statistică. Sistemul trece acum prin două reforme mari: reorganizarea școlilor mici și, de la 1 ianuarie 2027, trecerea școlilor de la raioane la agenții teritoriale ale Ministerului Educației. Pe pagina asta afli cum funcționează fiecare nivel, cine răspunde de ce, cifrele oficiale și ce se schimbă. Informații verificate la 9 octombrie 2026.</p><h2>Cum e organizat sistemul de învățământ</h2><p>Codul educației (art. 12 și 20) împarte învățământul pe niveluri, după clasificarea internațională ISCED:</p><table><thead><tr><th>Nivel</th><th>Vârstă sau clase</th><th>Unde</th><th>Ce act primești</th></tr></thead><tbody><tr><td>Educație timpurie: antepreșcolară</td><td>0–2 ani</td><td>creșă, centru comunitar</td><td>—</td></tr><tr><td>Educație timpurie: preșcolară</td><td>2–6 (7) ani, inclusiv grupa pregătitoare</td><td>grădiniță</td><td>—</td></tr><tr><td>Primar</td><td>clasele I–IV</td><td>școală primară, gimnaziu, liceu</td><td>—</td></tr><tr><td>Gimnazial</td><td>clasele V–IX</td><td>gimnaziu, liceu</td><td>certificat de studii gimnaziale</td></tr><tr><td>Liceal</td><td>clasele X–XII (XIII la frecvență redusă)</td><td>liceu</td><td>diplomă de bacalaureat</td></tr><tr><td>Profesional tehnic secundar</td><td>după gimnaziu sau liceu</td><td>școală profesională, centru de excelență</td><td>certificat de calificare</td></tr><tr><td>Profesional tehnic postsecundar</td><td>după gimnaziu (program integrat) sau liceu</td><td>colegiu, centru de excelență</td><td>diplomă de studii profesionale</td></tr><tr><td>Superior: licență, master, doctorat</td><td>după bacalaureat sau colegiu</td><td>universitate, academie, institut</td><td>diplomă de licență, master, doctor</td></tr></tbody></table><h2>Ce este obligatoriu</h2><ul><li>Învățământul obligatoriu începe cu <strong>grupa pregătitoare</strong> de la grădiniță și se termină cu <strong>clasa a IX-a</strong> (art. 13). Obligația de a frecventa încetează la 16 ani.</li><li>Școlarizarea devine obligatorie după împlinirea vârstei de <strong>7 ani</strong>. Copilul mai mic poate merge în clasa I la cererea părinților, dacă e pregătit (art. 27).</li><li>De școlarizare răspund <strong>părinții</strong> și autoritățile locale (primăria și raionul).</li><li>În grădiniță, clasa I și gimnaziu, copiii din <strong>districtul școlar</strong> (zona arondată) se înscriu fără concurs. La liceu, admiterea se face prin concurs.</li><li>Actele de studii din învățământul obligatoriu se eliberează gratuit.</li></ul><h2>Cine răspunde de ce</h2><ul><li><strong>Ministerul Educației și Cercetării (MEC)</strong>, condus de ministrul Dan Perciun, face politica educațională, aprobă planurile-cadru, regulamentele și calendarul examenelor.</li><li><strong>Agenția Națională pentru Curriculum și Evaluare (ANCE)</strong> organizează examenele naționale (testarea de la clasa a IV-a, examenele de absolvire a gimnaziului, bacalaureatul), olimpiadele și evaluările internaționale, ca PISA.</li><li><strong>Agenția Națională de Asigurare a Calității în Educație și Cercetare (<a href=\"https://anacec.md/ro/content/despre\">ANACEC</a>)</strong> evaluează calitatea în învățământul profesional tehnic și superior și organizațiile de cercetare.</li><li><strong>Primăriile</strong> înființează și administrează grădinițele și le stabilesc districtele. Autoritățile locale asigură și transportul gratuit al elevilor și profesorilor din sate, pe distanțe de peste 2 km.</li><li><strong>Consiliile raionale și municipale</strong>, prin direcțiile de învățământ, sunt acum fondatorii școlilor primare, gimnaziilor și liceelor. Asta se schimbă din 2027 (vezi reformele de mai jos).</li><li><strong>Universitățile</strong> își organizează admiterea după regulamentul-cadru aprobat anual de MEC, iar forma de evaluare finală la licență o stabilește senatul fiecărei universități.</li></ul><h2>Grădinița (educația timpurie)</h2><p>Grădinița publică din districtul tău trebuie să primească copilul fără concurs. Statul plătește educația și îngrijirea, iar părinții plătesc 50% din norma zilnică de hrană, pentru zilele frecventate (<a href=\"https://www.legis.md/cautare/getResults?doc_id=147306&amp;lang=ro\">HG nr. 80/2025</a>). Primăria poate scuti unele familii de plată. În Chișinău, înscrierea se face online, pe egradinita.md. În 2025 au funcționat 1 465 de instituții de educație timpurie, cu 122,9 mii de copii — cu 3,4% mai puțini decât în 2024. La 100 de locuri reveneau în medie 70 de copii: 89 în orașe și 57 la sate (<a href=\"https://statistica.gov.md/ro/activitatea-institutiilor-de-educatie-timpurie-in-anul-2025-9454_62402.html\">BNS</a>). Pașii, actele și plata: <a href=\"/ghiduri/inscrierea-la-gradinita-acte-termene-plata\">Înscrierea la grădiniță: acte, termene, plata</a>.</p><h2>Școala primară (clasele I–IV)</h2><p>În clasa I merg copiii care împlinesc 7 ani până la 1 septembrie. Înscrierea are două etape, primăvara: întâi copiii din district, apoi ceilalți, pe locurile libere. Școala nu are voie să ceară bani la înscriere. Elevii din clasele I–IV primesc gratuit micul dejun, iar HG nr. 80/2025 a extins micul dejun gratuit și la clasele V–IX. La sfârșitul clasei a IV-a, elevii dau testarea națională; în 2026 probele au fost pe 12, 14, 19 și 21 mai (<a href=\"https://ance.gov.md/sites/default/files/ordinul_mec_1782_din_17.10.2025_orar_examene_sesiunea_26.pdf\">Ordinul MEC nr. 1782/2025</a>). Detalii: <a href=\"/ghiduri/inscrierea-copilului-in-clasa-i-acte-calendar-district\">Înscrierea copilului în clasa I</a>. Dacă revii din străinătate: <a href=\"/ghiduri/inscriere-copil-la-scoala-in-moldova-dupa-ani-peste-hotare\">înscrierea la școală după anii petrecuți peste hotare</a>.</p><h2>Gimnaziul (clasele V–IX) și examenele de absolvire</h2><p>Gimnaziul se încheie cu <strong>examenele naționale de absolvire</strong>, iar la promovare primești certificatul de studii gimnaziale (art. 29). În 2026, examenele au fost: istoria românilor și universală (4 iunie), matematica (8 iunie), limba de instruire (11 iunie) și limba română pentru elevii alolingvi (15 iunie). Cu certificatul poți merge la liceu (prin concurs), la o școală profesională sau la un colegiu.</p><h2>Liceul și bacalaureatul</h2><p>Liceul are filiera teoretică (profil umanist sau real) și filiera vocațională (arte, sport, teologic, militar). Se termină cu <strong>bacalaureatul</strong>: dacă iei cel puțin 5 la fiecare probă, primești diploma de bacalaureat, fără de care nu poți intra la facultate. Cine nu promovează primește certificat de studii liceale și poate merge la colegiu. În 2025, din 12,1 mii de absolvenți de liceu, 11,2 mii au obținut diploma de bacalaureat (<a href=\"https://statistica.gov.md/ro/activitatea-institutiilor-de-invatamant-primar-si-secundar-general-in-anul-de-st-9454_62185.html\">BNS</a>). Calendarul, probele și contestațiile: <a href=\"/ghiduri/bacalaureatul-2027-calendar-probe-contestatii\">Bacalaureatul 2027</a>.</p><h2>Școlile profesionale și colegiile</h2><p>Învățământul profesional tehnic are două niveluri: <strong>secundar</strong> (școli profesionale, unde înveți o meserie) și <strong>postsecundar</strong> (colegii, unde obții o specialitate). Centrele de excelență oferă ambele. Pentru unele meserii există <strong>învățământul dual</strong>: înveți în paralel la școală și la o întreprindere. În anul de studii 2025/26 au funcționat 81 de instituții (32 de școli profesionale, 35 de colegii și 14 centre de excelență), cu 15 649 de elevi la nivelul secundar și 34 597 la nivelul postsecundar (<a href=\"https://statistica.gov.md/ro/activitatea-institutiilor-de-invatamant-profesional-tehnic-in-anul-de-studii-202-9454_62145.html\">BNS</a>). La admiterea din 2026, MEC a anunțat 12 282 de locuri bugetare în 79 de instituții, dintre care 2 866 în învățământul dual (<a href=\"https://www.edu.gov.md/ro/content/inceput-admiterea-la-invatamantul-profesional-tehnic-12282-de-locuri-bugetare-79-de\">MEC</a>). Cum intri: <a href=\"/ghiduri/admiterea-2027-la-colegii-si-facultati\">Admiterea 2027 la colegii și facultăți</a>.</p><h2>Universitățile: licență, master, doctorat</h2><ul><li><strong>Licența</strong> (ciclul I) are 180–240 de credite de studiu, câte 30 pe semestru, adică 3–4 ani, și se încheie cu teza de licență. Admiterea se face pe baza diplomei de bacalaureat sau a diplomei de studii profesionale (art. 89).</li><li><strong>Masterul</strong> (ciclul II) are 90–120 de credite. Licența și masterul împreună trebuie să totalizeze cel puțin 300 de credite (art. 90).</li><li><strong>Doctoratul</strong> (ciclul III) are 180 de credite și se face în școli doctorale (art. 94).</li><li><strong>Buget sau contract:</strong> locurile finanțate de stat (comanda de stat) le aprobă Guvernul anual. Pentru 2026–2027 au fost 9 013 locuri, dintre care 5 380 la licență și studii integrate (<a href=\"https://www.gov.md/ro/comunicate-de-presa/peste-9-mii-de-locuri-bugetare-pentru-viitorii-studenti-aprobate-de-guvern\">Guvernul</a>). Ceilalți studenți plătesc taxă, stabilită de fiecare universitate.</li><li><strong>Burse:</strong> din 1 septembrie 2026, bursa de studii la licență începe de la 1 490 de lei, iar bursa socială este de 1 000 de lei (<a href=\"https://www.legis.md/cautare/getResults?doc_id=155307&amp;lang=ro\">HG nr. 362/2026</a>). Toate tipurile și sumele: <a href=\"/ghiduri/bursele-pentru-elevi-si-studenti-tipuri-sume\">Bursele pentru elevi și studenți</a>.</li></ul><p>În 2025/26 au funcționat 16 instituții de învățământ superior (11 publice și 5 private), cu 62 923 de studenți: 46 666 la licență, 10 633 la master și 5 624 la studii integrate (<a href=\"https://statistica.gov.md/ro/activitatea-institutiilor-de-invatamant-superior-in-anul-de-studii-202526-9454_62181.html\">BNS</a>). La doctorat erau 1 450 de doctoranzi în 2025 (<a href=\"https://statistica.gov.md/ro/activitatea-de-doctorat-si-postdoctorat-in-anul-2025-9454_62412.html\">BNS</a>). Pașii pentru admitere: <a href=\"/ghiduri/admiterea-la-facultate-in-moldova-calendar-si-acte\">Admiterea la facultate: calendar și acte</a>.</p><h2>Cifrele oficiale (BNS)</h2><p>Datele Biroului Național de Statistică nu includ, în general, raioanele din stânga Nistrului și municipiul Bender.</p><table><thead><tr><th>Nivel</th><th>Instituții</th><th>Elevi / copii / studenți</th><th>Cadre didactice</th></tr></thead><tbody><tr><td>Educație timpurie (2025)</td><td>1 465</td><td>122,9 mii</td><td>12,5 mii</td></tr><tr><td>Primar și secundar general (2025/26)</td><td>1 173</td><td>334,6 mii</td><td>25,8 mii</td></tr><tr><td>Profesional tehnic (2025/26)</td><td>81</td><td>15 649 + 34 597</td><td>3,5 mii</td></tr><tr><td>Superior (2025/26)</td><td>16</td><td>62 923</td><td>3 601</td></tr></tbody></table><p>Tendința: în școli, numărul instituțiilor a scăzut de la 1 185 în 2024/25 la 1 173 în 2025/26, iar numărul elevilor s-a redus ușor. În grădinițe sunt mai puțini copii decât în 2024, pe când la colegii, școli profesionale și universități numărul celor care învață a crescut față de anul precedent.</p><h2>Bani pentru educație: bugetul 2026</h2><p>Potrivit <a href=\"https://www.legis.md/cautare/getResults?doc_id=156546&amp;lang=ro\">Legii bugetului de stat pe 2026 nr. 322/2025</a>, în versiunea în vigoare din 24 septembrie 2026, bugetul de stat prevede pentru grupa „Învățământ” 22 092 121,9 mii lei (circa 22,1 miliarde de lei). Cea mai mare parte nu trece prin bugetul ministerului, ci ajunge la școli prin transferuri către bugetele locale. Ministerul Educației și Cercetării are în total 4 751 131,7 mii lei (circa 4,75 miliarde de lei), din care cei mai mulți bani merg la universități și la învățământul profesional tehnic. Legea stabilește pentru 2026 o valoare de referință de 2 500 de lei la salarizarea cadrelor didactice (art. 10), față de 2 400 de lei valoarea generală.</p><h2>Reformele în curs</h2><h3>Reorganizarea școlilor mici</h3><p><a href=\"https://www.legis.md/cautare/getResults?doc_id=154034&amp;lang=ro\">Legea nr. 21/2026</a> a introdus în Codul educației articolul 145¹ (în vigoare din 6 martie 2026). O școală publică se reorganizează dacă la 1 octombrie are:</p><ul><li>sub 30 de elevi în clasele X–XII — nu mai face admitere în clasa a X-a și devine gimnaziu;</li><li>sub 35 de elevi în clasele V–IX — devine școală primară;</li><li>sub 30 de elevi în total — devine școală primară-grădiniță;</li><li>sub 10 elevi în total — devine grădiniță.</li></ul><p>Regula se aplică doar dacă, la cel mult 20 km, există altă școală publică de același nivel, cu aceeași limbă de predare. Elevii care se mută primesc, timp de doi ani, o alocație lunară de cel puțin 1 000 de lei, iar copiii cu cerințe educaționale speciale au garantat transport adaptat. Lista se aprobă anual de MEC până la 31 decembrie. Prin <a href=\"https://mecc.gov.md/sites/default/files/ordinul_mec_cu_privire_la_aprobarea_listei_institutiilor_publice_de_invatamant_general.pdf\">Ordinul nr. 447 din 13 martie 2026</a>, ministerul a aprobat lista de 73 de instituții și filiale; MEC a estimat că sunt afectați circa 1 328 de elevi (<a href=\"https://mec.gov.md/ro/content/parlamentul-adoptat-modificarile-la-codul-educatiei-lectura-doua\">MEC</a>).</p><h3>„Restart în educație”: școlile trec la agenții teritoriale</h3><p><a href=\"https://www.legis.md/cautare/getResults?doc_id=156370&amp;lang=ro\">Legea nr. 200/2026</a>, votată pe 3 septembrie 2026, creează <strong>agențiile teritoriale pentru educație</strong>, în subordinea MEC. Ele vor înlocui direcțiile raionale de învățământ și vor deveni fondatorii școlilor primare, gimnaziilor, liceelor și școlilor speciale; grădinițele rămân la primării. Finanțarea vine direct de la bugetul de stat, pe baza costului standard per elev. Legea intră în vigoare la 1 ianuarie 2027; potrivit <a href=\"https://mec.gov.md/ro/content/reforma-restart-educatie-fost-votata-doua-lectura-de-parlament\">MEC</a>, în Chișinău, Bălți și UTA Găgăuzia — de la 1 ianuarie 2028. Guvernul a anunțat crearea a 35 de agenții (<a href=\"https://www.gov.md/ro/node/10174\">gov.md</a>).</p><h3>Transportul elevilor</h3><p>Pe 21 august 2026, MEC a început să predea raioanelor 57 de microbuze școlare noi, de 67,22 milioane de lei. Potrivit ministerului, circa 16 000 de elevi folosesc zilnic transportul școlar (<a href=\"https://mec.gov.md/ro/content/57-de-microbuze-scolare-noi-vor-asigura-transport-mai-sigur-si-acces-la-o-educatie-mai-buna\">MEC</a>).</p><h3>Salariile profesorilor</h3><p>Ministrul Dan Perciun a declarat pe 6 octombrie 2026 că obiectivul este ca salariul mediu al cadrelor didactice să ajungă la cel puțin 120% din salariul mediu pe economie și că o nouă formulă de salarizare va fi pusă în consultare publică după discuțiile cu sindicatele (<a href=\"https://www.edu.gov.md/ro/content/ministrul-dan-perciun-discutat-cu-directorii-de-scoli-din-hincesti-despre-restart-educatie\">MEC</a>). Termenul și sumele nu sunt anunțate. Pentru tinerii profesori angajați după 1 iulie 2026, Guvernul a mărit indemnizațiile la angajare, mai ales pentru profesorii de discipline STEM care merg în afara Chișinăului și Bălțiului (<a href=\"https://gov.md/ro/comunicate-de-presa/indemnizatii-mai-mari-pentru-tinerii-profesori-sprijinul-acordat-la-angajare-la\">gov.md</a>).</p><h3>PISA: unde suntem</h3><p>PISA este testarea internațională a elevilor de 15 ani, organizată de OCDE. Moldova a participat a cincea oară în 2025.</p><table><thead><tr><th>Domeniu</th><th>PISA 2022</th><th>Media OCDE 2022</th><th>PISA 2025</th></tr></thead><tbody><tr><td>Științe</td><td>417</td><td>485</td><td>422</td></tr><tr><td>Matematică</td><td>414</td><td>472</td><td>410</td></tr><tr><td>Citire</td><td>411</td><td>476</td><td>404</td></tr></tbody></table><p>Surse: <a href=\"https://ance.gov.md/content/fost-publicat-raportul-privind-rezultatele-ob%C8%9Binute-de-elevii-din-republica-moldova-%C3%AEn\">ANCE, raportul PISA 2022</a>; <a href=\"https://mec.gov.md/ro/content/pisa-2025-elevii-din-republica-moldova-au-facut-progrese-la-stiinte-iar-decalajul-la\">MEC, rezultatele PISA 2025 (8 septembrie 2026)</a>. Potrivit MEC, în 2025 distanța față de media OCDE a fost de 60 de puncte la științe (88 în 2009), 53 la matematică (99 în 2009) și 57 la citire (105 în 2009). Diferența mare rămâne între școlile mici și cele mari: la științe, sub nivelul de bază erau 58,6% dintre elevii din școlile mici, față de 28% în școlile mari.</p><h2>Cronologie</h2><ul><li><strong>2009</strong> — prima participare a Moldovei la PISA.</li><li><strong>17 iulie 2014</strong> — Parlamentul adoptă Codul educației (publicat pe 24 octombrie 2014).</li><li><strong>26 februarie 2025</strong> — Guvernul adoptă HG nr. 80/2025 privind alimentarea copiilor și elevilor, cu mic dejun gratuit și pentru clasele V–IX.</li><li><strong>26 februarie 2026</strong> — Parlamentul adoptă Legea nr. 21/2026 privind reorganizarea școlilor mici (în vigoare din 6 martie 2026).</li><li><strong>13 martie 2026</strong> — MEC aprobă lista celor 73 de instituții care se reorganizează.</li><li><strong>1 iulie 2026</strong> — Guvernul aprobă HG nr. 362/2026; bursele cresc din 1 septembrie 2026.</li><li><strong>21 august 2026</strong> — încep livrările celor 57 de microbuze școlare.</li><li><strong>3 septembrie 2026</strong> — Parlamentul adoptă Legea nr. 200/2026, reforma „Restart în educație”.</li><li><strong>8 septembrie 2026</strong> — MEC prezintă rezultatele PISA 2025.</li><li><strong>1 ianuarie 2027</strong> — intră în vigoare Legea nr. 200/2026 (Chișinău, Bălți și UTA Găgăuzia — din 2028).</li></ul><h2>Ce înseamnă pentru tine</h2><ul><li><strong>Ai un copil mic:</strong> depune din timp cererea la grădinița din district; grupa pregătitoare e obligatorie.</li><li><strong>Copilul merge în clasa I:</strong> urmărește în martie ordinul MEC cu calendarul și depune actele în prima etapă, la școala din district.</li><li><strong>Școala din satul tău e pe lista de reorganizare:</strong> copilul are dreptul la transport gratuit (peste 2 km) și la alocația de cel puțin 1 000 de lei pe lună timp de doi ani, dacă se mută la altă școală.</li><li><strong>Ești în clasa a IX-a sau a XII-a:</strong> ordinul cu orarul examenelor pentru 2026 a apărut în octombrie 2025; urmărește-l pe ance.gov.md.</li><li><strong>Ai studii din străinătate sau pleci la studii:</strong> vezi <a href=\"/ghiduri/recunoasterea-diplomelor-moldovenesti-si-straine\">recunoașterea diplomelor</a>.</li></ul>",
+  "faq": [
+    {
+      "q": "Câte clase sunt obligatorii în Moldova?",
+      "a": "Învățământul obligatoriu începe cu grupa pregătitoare de la grădiniță și se termină cu clasa a IX-a. Obligația de a frecventa școala încetează la 16 ani (art. 13 din Codul educației)."
+    },
+    {
+      "q": "La ce vârstă merge copilul la școală în Moldova?",
+      "a": "Școlarizarea devine obligatorie după împlinirea vârstei de 7 ani. Copilul mai mic poate fi înscris în clasa I la cererea părinților, dacă școala are locuri și copilul e pregătit."
+    },
+    {
+      "q": "Câți elevi și câte școli sunt în Moldova?",
+      "a": "În anul de studii 2025/26 au funcționat 1 173 de școli primare, gimnazii și licee, cu circa 334,6 mii de elevi și 25,8 mii de cadre didactice și de conducere, potrivit BNS (fără stânga Nistrului)."
+    },
+    {
+      "q": "Ce școli se închid sau se comasează?",
+      "a": "După art. 145¹ din Codul educației, școlile cu prea puțini elevi se reorganizează într-o treaptă inferioară, dacă la cel mult 20 km există altă școală cu aceeași limbă de predare. Pentru 2026, MEC a aprobat lista a 73 de instituții și filiale."
+    },
+    {
+      "q": "Ce sunt agențiile teritoriale pentru educație?",
+      "a": "Autorități ale MEC create prin Legea nr. 200/2026, care din 1 ianuarie 2027 preiau de la raioane școlile primare, gimnaziile și liceele. În Chișinău, Bălți și UTA Găgăuzia, potrivit MEC, de la 1 ianuarie 2028."
+    },
+    {
+      "q": "Cum a ieșit Moldova la PISA 2025?",
+      "a": "Potrivit MEC, 422 de puncte la științe (cu 5 mai mult decât în 2022), 410 la matematică și 404 la citire."
+    }
+  ]
+}

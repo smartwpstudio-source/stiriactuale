@@ -52,6 +52,18 @@ import("../../src/lib/content/guide-country").then(({ guideCountry }) => {
     assert.equal(matchDossier("Rusia a mobilizat încă 300.000 de rezerviști"), undefined);
     assert.equal(matchDossier("Israelul cheamă rezerviști, militarii intră în Gaza"), undefined);
     assert.equal(matchDossier("Ministerul Apărării Naționale de la București cumpără avioane"), undefined);
+    const edu = "educatia-in-moldova-ghid-complet";
+    assert.equal(matchDossier("Ministerul Educației a aprobat lista școlilor care vor fi reorganizate"), edu);
+    assert.equal(matchDossier("Optimizarea rețelei școlare: 73 de instituții, comasate până în septembrie"), edu);
+    assert.equal(matchDossier("Cadrele didactice vor primi salarii mai mari de la 1 septembrie"), edu);
+    assert.equal(matchDossier("Grădinițele din Chișinău nu au locuri pentru toți copiii"), edu);
+    assert.equal(matchDossier("Bacalaureat 2027: MEC a publicat calendarul probelor"), "bacalaureatul-2027-calendar-probe-contestatii");
+    assert.equal(matchDossier("Admiterea la facultate: câte locuri bugetare oferă universitățile"), "admiterea-la-facultate-in-moldova-calendar-si-acte");
+    assert.equal(matchDossier("Școala auto din Bălți: elevii nu mai pot susține examenul"), "cum-obtii-permisul-de-conducere-in-moldova-pas-cu-pas");
+    assert.equal(matchDossier("Elevii din Franța vor purta uniformă școlară"), undefined);
+    assert.equal(matchDossier("Universitatea Harvard pierde finanțarea federală"), undefined);
+    assert.equal(matchDossier("Bacalaureatul în România: rezultatele de anul acesta"), undefined);
+    assert.equal(matchDossier("Liftul nu funcționează: elevatorul a fost oprit"), undefined);
     console.log("impact: OK");
   });
 });

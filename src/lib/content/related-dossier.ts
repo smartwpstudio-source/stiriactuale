@@ -1,6 +1,11 @@
 import { getGuide } from "./guides";
 import { stripDiacritics } from "@/lib/pipeline/text-normalize";
 
+// știri despre școli și universități din alte țări (text fără diacritice, litere mici)
+// lângă o tragedie (elev lovit, copil dispărut) nu punem un ghid de educație
+const NO_TRAGEDY = String.raw`(?!.*(a murit|au murit|deced\w*|mortal\w*|morti|si-?a pierdut viata|fara viata|cadavr\w*|tragedi\w*|ucis\w*|omor\w*|violat\w*|agres\w*|accident\w*|lovit\w* de|disparut\w*|spitaliz\w*|intoxica\w*|ars\w*|inec\w*))`;
+const NOT_ABROAD = String.raw`(?!.*(romani(a|ei)\b|bucuresti|\biasi\b|franta|frantei|germania|germaniei|italia|italiei|spania|spaniei|rusia|rusiei|moscova|ucraina|ucrainei|\bkiev|\bsua\b|statele unite|american|marea britanie|regatul unit|londra|harvard|oxford|cambridge|sorbona|polonia|israel|turcia|china))`;
+
 // Dosarul-pilon al subiectului („Context”), sus în știre: o știre despre UE
 // trimite mereu la dosarul aderării, una despre Tiraspol la Transnistria etc.
 // Expresii precise (fără diacritice), în ordinea priorității — Transnistria și
@@ -50,6 +55,13 @@ const RULES: [slug: string, re: RegExp][] = [
   ["calea-ferata-din-moldova-trenuri-rute-bilete", /calea ferata (din|a) moldovei|\bcfm\b|tren\w* (de calatori )?(pe ruta |spre )?(chisinau|ungheni|balti|bucuresti|odesa|iasi|kiev)/],
   // „IS”/„APP” doar cu ghilimele sau context; privatizarea apartamentului nu intră
   ["intreprinderile-de-stat-din-moldova", /intreprinder\w* (de stat|municipal\w*)|\bi\.?s\.? ?["„“«]|agenti\w* proprietatii publice|^(?=.*\bapp\b)(?=.*(privatiz|licitati|intreprinder|director|concurs|proprietat))|privatiz\w*\b(?! (a |al )?(apartament|locuint|cas))|deetatizar\w*|capital\w* (integral |majoritar )?de stat|metalferos|moldelectrica|moldtelecom|(?<!centrala )\btermoelectrica\b/],
+  // educația, la final: „elev”, „școală”, „ministerul educației” apar și în știrile
+  // din România, Franța etc. (NOT_ABROAD); „școala auto” e prinsă mai sus de permis
+  ["bacalaureatul-2027-calendar-probe-contestatii", new RegExp(String.raw`^${NOT_ABROAD}(?=.*(bacalaureat|\bbac-?ul(ui)?\b|\bbac 20\d\d))`)],
+  ["admiterea-2027-la-colegii-si-facultati", new RegExp(String.raw`^${NOT_ABROAD}(?=.*(admiter\w* (la |in )?(colegi|scoli\w* profesional|invatamantul profesional|centr\w* de excelenta)|eadmitere\.sime))`)],
+  ["admiterea-la-facultate-in-moldova-calendar-si-acte", new RegExp(String.raw`^${NOT_ABROAD}(?=.*(admiter\w* (la |in )?(facultat|universitat|studii superioare|licenta|master|doctorat)|eadmitere|locur\w* bugetare))`)],
+  // pilonul: „MEC” doar lângă un termen școlar; „elevator”/„elevat” nu intră
+  ["educatia-in-moldova-ghid-complet", new RegExp(String.raw`^${NOT_ABROAD}${NO_TRAGEDY}(?=.*(ministerul educatiei|\bmec\b.*(scoal|elev|profesor|educati|invatamant|student|gradinit)|(scoal|elev|profesor|educati|invatamant|student|gradinit)\w*.*\bmec\b|cadre(le|lor)? didactic\w*|profesor\w* (din|de la) scoal|\belev(ul|ului|a|ei|i|ii|ilor|e|ele|elor)?\b|gradinit\w*|\bscoal(a|ii|ile|ilor)\b|institut\w* de invatamant|\binvatamant\w*|universitat\w* (de stat|din moldova|din chisinau|din balti|tehnica|pedagogic\w*|de medicina)|comasar\w* (a )?scolilor|(optimizar|reorganizar)\w* (a )?(retelei scolare|scolilor)|(testar\w*|evaluar\w*|rezultat\w*|testul) pisa\b|\bpisa 20\d\d|examen\w* de absolvire|anul de studii|anul scolar))`)],
 ];
 
 export function matchDossier(text: string): string | undefined {
@@ -72,6 +84,10 @@ const MOLDOVA_ONLY = new Set([
   "intreprinderile-de-stat-din-moldova",
   "calea-ferata-din-moldova-trenuri-rute-bilete",
   "posta-moldovei-servicii-tarife-urmarire-colete",
+  "educatia-in-moldova-ghid-complet",
+  "bacalaureatul-2027-calendar-probe-contestatii",
+  "admiterea-2027-la-colegii-si-facultati",
+  "admiterea-la-facultate-in-moldova-calendar-si-acte",
 ]);
 
 export async function getRelatedDossier(title: string, lead: string, topics: string[] = [], section?: string) {
