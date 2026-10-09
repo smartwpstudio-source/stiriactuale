@@ -39,11 +39,20 @@ export interface Guide {
 
 const DIR = path.join(process.cwd(), "content", "ghiduri");
 
-export async function getGuides(): Promise<Guide[]> {
+// Citite o dată pe proces în producție (fișierele nu se schimbă între deploy-uri):
+// sute de ghiduri deschise în paralel, de mai multe ori pe pagină, depășeau
+// limita de fișiere deschise pe Vercel (EMFILE → 500, 2026-10-09).
+let cache: Promise<Guide[]> | undefined;
+
+export function getGuides(): Promise<Guide[]> {
+  if (process.env.NODE_ENV !== "production") return loadGuides();
+  return (cache ??= loadGuides().catch((e) => ((cache = undefined), Promise.reject(e))));
+}
+
+async function loadGuides(): Promise<Guide[]> {
   const files = (await readdir(DIR).catch(() => [])).filter((f) => f.endsWith(".json"));
-  const guides = await Promise.all(
-    files.map(async (f) => JSON.parse(await readFile(path.join(DIR, f), "utf8")) as Guide),
-  );
+  const guides: Guide[] = [];
+  for (const f of files) guides.push(JSON.parse(await readFile(path.join(DIR, f), "utf8")) as Guide);
   return guides.sort((a, b) => a.title.localeCompare(b.title, "ro"));
 }
 

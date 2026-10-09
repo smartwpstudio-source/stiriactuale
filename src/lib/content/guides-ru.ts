@@ -11,9 +11,19 @@ export type GuideRu = Guide & { ruOnly?: boolean };
 
 const DIR = path.join(process.cwd(), "content", "ghiduri-ru");
 
-export async function getGuidesRu(): Promise<GuideRu[]> {
+// o dată pe proces în producție, citite pe rând (EMFILE — vezi guides.ts)
+let cache: Promise<GuideRu[]> | undefined;
+
+export function getGuidesRu(): Promise<GuideRu[]> {
+  if (process.env.NODE_ENV !== "production") return loadGuidesRu();
+  return (cache ??= loadGuidesRu().catch((e) => ((cache = undefined), Promise.reject(e))));
+}
+
+async function loadGuidesRu(): Promise<GuideRu[]> {
   const files = (await readdir(DIR).catch(() => [])).filter((f) => f.endsWith(".json"));
-  return Promise.all(files.map(async (f) => JSON.parse(await readFile(path.join(DIR, f), "utf8")) as GuideRu));
+  const guides: GuideRu[] = [];
+  for (const f of files) guides.push(JSON.parse(await readFile(path.join(DIR, f), "utf8")) as GuideRu);
+  return guides;
 }
 
 export async function getGuideRu(slug: string): Promise<GuideRu | undefined> {
