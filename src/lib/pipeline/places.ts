@@ -31,7 +31,7 @@ export function loadPlaces(): Place[] {
 // ponytail: ultimele 150; o arhivă separată pe teme dacă devin sute.
 export async function loadSymbolPhotos(): Promise<Place[]> {
   const rows = await getDb()
-    .select({ id: articles.id, title: articles.title, alt: articles.imageAltText, url: articles.imageUrl })
+    .select({ id: articles.id, title: articles.title, url: articles.imageUrl })
     .from(articles)
     .where(and(ilike(articles.imageCredit, "%simbol%"), like(articles.imageUrl, "%/articole/manual-%")))
     .orderBy(desc(articles.publishedAt))
@@ -40,7 +40,7 @@ export async function loadSymbolPhotos(): Promise<Place[]> {
   return rows.flatMap((r) =>
     !r.url || seen.has(r.url) || !seen.add(r.url)
       ? []
-      : [{ id: `simbol-${r.id}`, name: `TEMĂ (poză simbol): ${r.alt ?? r.title}`, keywords: r.title, photos: [{ url: r.url, credit: "Imagine simbol", source: "" }] }],
+      : [{ id: `simbol-${r.id}`, name: `TEMĂ (poză simbol): ${r.title}`, keywords: r.title, photos: [{ url: r.url, credit: "Imagine simbol", source: "" }] }],
   );
 }
 
