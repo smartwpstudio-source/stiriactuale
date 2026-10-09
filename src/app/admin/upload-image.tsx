@@ -35,6 +35,10 @@ export function UploadImage({ action }: { action: (formData: FormData) => Promis
         <input name="credit" placeholder="ex. IGSU, Poliția, Ion Popescu" className="rounded border border-line px-2 py-1" />
       </label>
       <label className="text-sub">
+        Descrierea pozei (opțional, tot ÎNAINTE de fișier; apare sub poză):{" "}
+        <input name="alt" placeholder="ex. Igor Grosu la tribuna Parlamentului" className="rounded border border-line px-2 py-1" />
+      </label>
+      <label className="text-sub">
         Încarcă imagine (ex. generată cu Nano Banana):{" "}
         <input type="file" name="file" accept="image/*" onChange={onChange} disabled={busy} />
       </label>

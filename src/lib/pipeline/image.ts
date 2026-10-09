@@ -14,6 +14,7 @@ export interface ArticleImage {
   resourceId: number | null; // null = generată sau poză reală
   credit?: string; // poza reală a unei instituții: „Foto: IGSU”
   source?: string; // adresa originală a pozei comunicatului
+  alt?: string; // descrierea pozei scrisă de editor — singura descriere sigură
 }
 
 // 1. Stock Magnific: gratuit pe Premium+ (max 100/zi), primul din top 5

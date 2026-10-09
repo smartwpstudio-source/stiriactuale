@@ -50,8 +50,9 @@ function mapRow(row: ListRow & { bodyHtml?: string }): Article {
     sourceCount: row.sourceCount,
     // cu video YouTube în sursă: captura din video, nu poza de stock
     imageUrl: youtubeThumb(row.videoUrl) ?? row.imageUrl ?? undefined,
-    // textul alternativ generat de AI e scris fără să vadă poza — titlul e sigur (2026-10-09)
-    imageAlt: row.title,
+    // descrierea pozei e doar a editorului (AI-ul nu vede poza); altfel titlul
+    imageAlt: row.imageAltText ?? row.title,
+    imageDescription: row.imageAltText ?? undefined,
     imageCredit: row.imageCredit ?? undefined,
     videoUrl: row.videoUrl ?? undefined,
     postUrl: row.postUrl ?? undefined,

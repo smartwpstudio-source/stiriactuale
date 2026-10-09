@@ -146,6 +146,11 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
               className="w-72 rounded border border-line px-2 py-1 text-ink"
             />
             <input
+              name="photo_alt"
+              placeholder="Ce se vede în poză (opțional; apare sub poză)"
+              className="w-80 rounded border border-line px-2 py-1 text-ink"
+            />
+            <input
               name="post"
               placeholder="Postare cu poze: https://www.facebook.com/…/posts/… sau https://t.me/canal/123"
               className="min-w-72 flex-1 rounded border border-line px-2 py-1 text-ink"

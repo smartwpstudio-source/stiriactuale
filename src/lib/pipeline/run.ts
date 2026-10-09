@@ -260,7 +260,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
         // după subiect / generată
         const subject = `${generated.titlu}. ${generated.lead}`;
         // poza încărcată de editor bate orice altceva
-        const editor = c.group.photo && { url: c.group.photo.url, resourceId: null, credit: c.group.photo.credit ?? undefined };
+        const editor = c.group.photo && { url: c.group.photo.url, resourceId: null, credit: c.group.photo.credit ?? undefined, alt: c.group.photo.alt ?? undefined };
         // poza unui comunicat se folosește o singură dată (altfel două știri despre
         // același subiect stau alăturate cu aceeași poză)
         const official = editor
@@ -272,7 +272,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
           ? editor
           : youtubeThumb(generated.video_url)
           ? null
-          : (place && { url: place.url, resourceId: null, credit: place.credit }) ??
+          : (place && { url: place.url, resourceId: null, credit: place.credit, alt: place.alt }) ??
             ((official && (await sourcePhoto(official, generated.slug))) ??
             (await findArticleImage(generated.stock_query, generated.image_prompt, generated.slug, usedImageIds, subject)));
         // (VIDEO) / (FOTO) la sfârșitul titlului: cititorul știe din listă ce găsește

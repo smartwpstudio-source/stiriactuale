@@ -119,6 +119,7 @@ export const candidates = pgTable("candidates", {
   // poza și postarea atașate de editor la adăugarea linkului (intră în articol)
   imageUrl: text("image_url"),
   imageCredit: text("image_credit"),
+  imageAlt: text("image_alt"), // descrierea pozei scrisă de editor (opțional)
   postUrl: text("post_url"),
   processedAt: timestamp("processed_at", { withTimezone: true }),
   // interesul public de pe canalul Telegram al sursei (telegram-signal.ts):

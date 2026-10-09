@@ -140,7 +140,7 @@ export async function replaceImage(id: number, resourceId: number) {
   const [row] = await db.select({ slug: articles.slug }).from(articles).where(eq(articles.id, id));
   if (!row) redirect("/admin/");
   const url = await stockToBlob(resourceId, row.slug);
-  await db.update(articles).set({ imageUrl: url, imageResourceId: resourceId, imageCredit: null }).where(eq(articles.id, id));
+  await db.update(articles).set({ imageUrl: url, imageResourceId: resourceId, imageCredit: null, imageAltText: null }).where(eq(articles.id, id));
   refreshSite();
   redirect(`/admin/articol/${id}/`);
 }
@@ -159,14 +159,15 @@ export async function uploadImage(id: number, formData: FormData) {
     contentType: file.type,
     addRandomSuffix: true,
   });
-  await db.update(articles).set({ imageUrl: blob.url, imageResourceId: null, imageCredit: credit }).where(eq(articles.id, id));
+  const alt = String(formData.get("alt") ?? "").trim().slice(0, 200) || null;
+  await db.update(articles).set({ imageUrl: blob.url, imageResourceId: null, imageCredit: credit, imageAltText: alt }).where(eq(articles.id, id));
   refreshSite();
   redirect(`/admin/articol/${id}/`);
 }
 
 export async function removeImage(id: number) {
   await requireAdmin();
-  await getDb().update(articles).set({ imageUrl: null, imageResourceId: null, imageCredit: null }).where(eq(articles.id, id));
+  await getDb().update(articles).set({ imageUrl: null, imageResourceId: null, imageCredit: null, imageAltText: null }).where(eq(articles.id, id));
   refreshSite();
   redirect(`/admin/articol/${id}/`);
 }
@@ -211,7 +212,8 @@ export async function addLink(formData: FormData) {
       ? (await put(`articole/manual-${Date.now()}.jpg`, photo, { access: "public", contentType: photo.type, addRandomSuffix: true })).url
       : null;
   const imageCredit = String(formData.get("credit") ?? "").trim().slice(0, 80) || null;
-  const attached = { postUrl, ...(imageUrl && { imageUrl, imageCredit }) };
+  const imageAlt = String(formData.get("photo_alt") ?? "").trim().slice(0, 200) || null;
+  const attached = { postUrl, ...(imageUrl && { imageUrl, imageCredit, imageAlt }) };
 
   // link video (YouTube/Facebook): titlul, canalul și descrierea video-ului;
   // la Facebook titlul îl scrie editorul (câmpul opțional din formular)

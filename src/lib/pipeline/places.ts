@@ -14,7 +14,7 @@ export interface Place {
   name: string;
   keywords: string;
   locality?: string; // clădirile din raioane: doar la știrile din acel raion
-  photos: { url: string; credit: string; source: string }[];
+  photos: { url: string; credit: string; source: string; alt?: string }[];
 }
 
 export function loadPlaces(): Place[] {
@@ -31,7 +31,7 @@ export function loadPlaces(): Place[] {
 // ponytail: ultimele 150; o arhivă separată pe teme dacă devin sute.
 export async function loadSymbolPhotos(): Promise<Place[]> {
   const rows = await getDb()
-    .select({ id: articles.id, title: articles.title, url: articles.imageUrl })
+    .select({ id: articles.id, title: articles.title, alt: articles.imageAltText, url: articles.imageUrl })
     .from(articles)
     .where(and(ilike(articles.imageCredit, "%simbol%"), like(articles.imageUrl, "%/articole/manual-%")))
     .orderBy(desc(articles.publishedAt))
@@ -40,7 +40,7 @@ export async function loadSymbolPhotos(): Promise<Place[]> {
   return rows.flatMap((r) =>
     !r.url || seen.has(r.url) || !seen.add(r.url)
       ? []
-      : [{ id: `simbol-${r.id}`, name: `TEMĂ (poză simbol): ${r.title}`, keywords: r.title, photos: [{ url: r.url, credit: "Imagine simbol", source: "" }] }],
+      : [{ id: `simbol-${r.id}`, name: `TEMĂ (poză simbol): ${r.alt ?? r.title}`, keywords: r.title, photos: [{ url: r.url, credit: "Imagine simbol", source: "", alt: r.alt ?? undefined }] }],
   );
 }
 
@@ -51,7 +51,7 @@ export async function loadSymbolPhotos(): Promise<Place[]> {
 // actualizează pe loc, ca rulările paralele să nu aleagă aceeași poză.
 const NEIGHBOURS = 12;
 
-export function pickRotated(photos: { url: string; credit: string }[], recent: string[]) {
+export function pickRotated<P extends { url: string }>(photos: P[], recent: string[]): P | null {
   const age = (url: string) => {
     const i = recent.indexOf(url);
     return i < 0 ? Infinity : i;
@@ -67,7 +67,7 @@ export async function matchPlacePhoto(
   all: Place[],
   locality: string | undefined,
   recent: string[],
-): Promise<{ url: string; credit: string } | null> {
+): Promise<{ url: string; credit: string; alt?: string } | null> {
   const places = all.filter((p) => !p.locality || p.locality === locality);
   if (!places.length) return null;
   try {
@@ -80,7 +80,7 @@ export async function matchPlacePhoto(
       maxBudgetUsd: 0.05,
     });
     const p = pickRotated(places[match]?.photos ?? [], recent);
-    return p && { url: p.url, credit: p.credit };
+    return p && { url: p.url, credit: p.credit, alt: p.alt };
   } catch {
     return null;
   }

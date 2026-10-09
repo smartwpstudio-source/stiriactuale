@@ -83,7 +83,8 @@ export async function publishArticle(
         imageResourceId: image?.resourceId,
         imageCredit: image?.credit,
         imageSource: image?.source,
-        imageAltText: generated.alt_text_imagine,
+        // doar descrierea editorului; AI-ul nu vede poza (2026-10-09)
+        imageAltText: image?.alt ?? null,
         videoUrl: generated.video_url,
         sourceUrls,
         sources,

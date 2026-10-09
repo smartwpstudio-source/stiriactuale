@@ -26,6 +26,7 @@ export interface Article {
   sourceCount: number;
   imageUrl?: string; // stock Magnific sau generată — absentă pe fixtures/articole fără imagine
   imageAlt?: string;
+  imageDescription?: string; // descrierea pozei scrisă de editor (legenda)
   imageCredit?: string; // „Foto: …” — poză reală, cu autorul ei
   videoUrl?: string;
   postUrl?: string; // postare Facebook/Telegram încorporată (pozele instituției)

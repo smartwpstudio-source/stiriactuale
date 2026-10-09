@@ -48,14 +48,16 @@ function imageLabel(url?: string, credit?: string): string | null {
   return url.includes("/articole/") ? "Foto ilustrativă" : null;
 }
 
-// Legenda sub poză: doar eticheta (sursa, simbol, AI, ilustrativă). Textul
-// alternativ e scris de AI din știre, fără să vadă poza — sub poze ajungeau
-// descrieri care n-aveau legătură cu imaginea (2026-10-09), deci nu-l afișăm.
-function imageCaption(url?: string, credit?: string): string | null {
+// Legenda sub poză: eticheta (sursa, simbol, AI, ilustrativă) și, dacă editorul
+// a scris-o, descrierea pozei. AI-ul nu mai descrie pozele: nu le vede, iar sub
+// poze ajungeau descrieri care n-aveau legătură cu imaginea (2026-10-09).
+function imageCaption(url?: string, credit?: string, description?: string): string | null {
   if (!url) return null;
-  if (credit && /simbol/i.test(credit)) return "Imagine simbol";
-  if (url.includes("/locuri/")) return `Imagine ilustrativă${credit ? `. Foto: ${credit}` : ""}`;
-  return imageLabel(url, credit);
+  const what = description?.replace(/[.\s]+$/, "");
+  if (credit && /simbol/i.test(credit)) return what ? `Imagine simbol: ${what}` : "Imagine simbol";
+  if (url.includes("/locuri/")) return `Imagine ilustrativă${what ? `: ${what}` : ""}${credit ? `. Foto: ${credit}` : ""}`;
+  const label = imageLabel(url, credit);
+  return what ? (label ? `${what}. ${label}` : what) : label;
 }
 
 // „canal/123” din adresa playerului Telegram (video.ts: t.me/canal/123?embed=1)
@@ -157,8 +159,8 @@ export async function ArticlePage({
                 sizes="(max-width: 768px) 100vw, 720px"
               priority
               />
-              {imageCaption(article.imageUrl, article.imageCredit) && (
-                <p className="mt-1.5 text-sm text-sub">{imageCaption(article.imageUrl, article.imageCredit)}</p>
+              {imageCaption(article.imageUrl, article.imageCredit, article.imageDescription) && (
+                <p className="mt-1.5 text-sm text-sub">{imageCaption(article.imageUrl, article.imageCredit, article.imageDescription)}</p>
               )}
               </>
             )}

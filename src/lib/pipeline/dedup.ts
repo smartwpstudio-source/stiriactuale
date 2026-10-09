@@ -6,6 +6,7 @@ export type StoredCandidate = RawCandidate & {
   kind?: string;
   imageUrl?: string | null;
   imageCredit?: string | null;
+  imageAlt?: string | null;
   postUrl?: string | null;
 };
 import { stripDiacritics } from "./text-normalize";
@@ -73,7 +74,7 @@ function photoOf(items: StoredCandidate[]): Pick<CandidateGroup, "photo" | "post
   const withPhoto = items.find((i) => i.manual && i.imageUrl);
   const withPost = items.find((i) => i.manual && i.postUrl);
   return {
-    ...(withPhoto && { photo: { url: withPhoto.imageUrl!, credit: withPhoto.imageCredit ?? null } }),
+    ...(withPhoto && { photo: { url: withPhoto.imageUrl!, credit: withPhoto.imageCredit ?? null, alt: withPhoto.imageAlt ?? null } }),
     ...(withPost && { postUrl: withPost.postUrl! }),
   };
 }

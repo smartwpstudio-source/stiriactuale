@@ -178,7 +178,7 @@ export default async function EditArticlePage({ params, searchParams }: PageProp
             </div>
           </div>
           <div>
-            <label className={label} htmlFor="alt">Text alternativ imagine</label>
+            <label className={label} htmlFor="alt">Descrierea pozei (opțional; apare sub poză și ca text alternativ — gol = titlul)</label>
             <input id="alt" name="alt" defaultValue={a.imageAltText ?? ""} className={input} />
           </div>
           <div>
