@@ -3,7 +3,8 @@ import { KindBadge } from "./kind-badge";
 import { ImpactBadge } from "./impact-badge";
 import { ArticleThumb } from "./article-thumb";
 import { TopicLabel } from "./topic-label";
-import { formatTimeAgo, sourcesLabel } from "@/lib/format-time-ago";
+import { sourcesLabel } from "@/lib/format-time-ago";
+import { TimeAgo } from "./time-ago";
 import { articleUrl } from "@/lib/content/url";
 import type { Article } from "@/lib/content/types";
 
@@ -36,7 +37,7 @@ export function ArticleCard({ article, size = "md" }: { article: Article; size?:
           <p className={`mt-2 text-sub ${lg ? "line-clamp-3 text-base" : "line-clamp-2 text-[0.95rem]"}`}>{article.lead}</p>
         )}
         <p className="mt-auto pt-3 font-mono text-xs text-sub">
-          {formatTimeAgo(article.publishedAt)}
+          <TimeAgo iso={article.publishedAt} />
           {sourcesLabel(article.sourceCount)}
         </p>
       </div>

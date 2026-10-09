@@ -6,10 +6,14 @@ import path from "node:path";
 config({ path: path.join(import.meta.dirname, "..", "..", ".env.local"), quiet: true });
 
 import { runPipeline } from "../../src/lib/pipeline/run";
+import { requestRevalidate } from "../../src/lib/revalidate";
 
+const since = new Date().toISOString();
 runPipeline()
-  .then((summary) => {
+  .then(async (summary) => {
     console.log(JSON.stringify(summary, null, 2));
+    // paginile nu se mai refac după ceas: site-ul arată acum știrile noi
+    console.log((await requestRevalidate({ since })) ? "site reîmprospătat" : "reîmprospătarea site-ului a eșuat (se reface în max. o oră)");
     process.exit(0);
   })
   .catch((err) => {

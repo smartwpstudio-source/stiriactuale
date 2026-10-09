@@ -3,7 +3,7 @@ import { topicHub } from "@/lib/content/hubs";
 import { TOPIC_LABELS } from "@/lib/content/topic-meta";
 
 // Listă ISR, randată de HubPage — vezi src/lib/content/hubs.ts.
-export const revalidate = 60;
+export const revalidate = 3600; // la cerere din pipeline (/api/revalidate/), ceasul e doar plasă
 
 export function generateStaticParams() {
   return Object.keys(TOPIC_LABELS).map((topic) => ({ topic }));

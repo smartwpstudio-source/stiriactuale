@@ -7,6 +7,7 @@ import { getDb } from "../../src/lib/pipeline/db/client";
 import { articles } from "../../src/lib/pipeline/db/schema";
 import { deleteFromChannel } from "../../src/lib/telegram";
 import { deleteFromPage } from "../../src/lib/facebook";
+import { requestRevalidate } from "../../src/lib/revalidate";
 
 (async () => {
   const ids = process.argv.slice(2).map(Number).filter(Number.isInteger);
@@ -21,5 +22,7 @@ import { deleteFromPage } from "../../src/lib/facebook";
     console.log(`șters: ${r.id} ${r.title.slice(0, 60)} (tg: ${r.tg ? "da" : "-"}, fb: ${r.fb ? "da" : "-"})`);
   }
   console.log(`total: ${rows.length}`);
+  // paginile șterse dispar imediat de pe site, nu după o zi
+  if (rows.length) console.log((await requestRevalidate({ all: true })) ? "site reîmprospătat" : "reîmprospătarea site-ului a eșuat");
   process.exit(0);
 })();

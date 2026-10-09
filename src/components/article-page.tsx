@@ -6,7 +6,7 @@ import { ShareButtons } from "./share-buttons";
 import { TelegramCta } from "./telegram-cta";
 import { PushOptIn } from "./push-opt-in";
 import { SimilarArticles } from "./similar-articles";
-import { formatTimeAgo } from "@/lib/format-time-ago";
+import { TimeAgo } from "./time-ago";
 import { getArticleLink, getSimilarArticles, listArticles } from "@/lib/content/queries";
 import { ArticleRow } from "./article-row";
 import { SectionHeading } from "./section-heading";
@@ -109,14 +109,14 @@ export async function ArticlePage({
             href={articleUrl({ ...previous, locality: previous.locality ?? undefined, country: previous.country ?? undefined })}
             className="mt-4 block rounded border-l-4 border-teal bg-white px-4 py-2 text-sm hover:bg-paper"
           >
-            <span className="font-mono text-xs uppercase tracking-wide text-teal">Context · {formatTimeAgo(previous.publishedAt.toISOString())}</span>
+            <span className="font-mono text-xs uppercase tracking-wide text-teal">Context · <TimeAgo iso={previous.publishedAt.toISOString()} /></span>
             <span className="block text-ink">{previous.title}</span>
           </Link>
         )}
         <p className="mt-4 font-mono text-sm text-sub">
           {article.archived
             ? `arhivă · ${new Date(article.publishedAt).toLocaleDateString("ro-MD", ARCHIVE_DATE)}`
-            : `echipă editorială · ${formatTimeAgo(article.publishedAt)}`}
+            : <>echipă editorială · <TimeAgo iso={article.publishedAt} /></>}
           {article.sourceCount > 1 && ` · din ${article.sourceCount} surse`}
           {article.updatedAt &&
             ` · actualizat la ${new Date(article.updatedAt).toLocaleString("ro-MD", { timeZone: "Europe/Chisinau", hour: "2-digit", minute: "2-digit", day: "numeric", month: "long" })}`}

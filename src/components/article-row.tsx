@@ -2,7 +2,8 @@ import Link from "next/link";
 import { ArticleThumb } from "./article-thumb";
 import { TopicLabel } from "./topic-label";
 import { ImpactBadge } from "./impact-badge";
-import { formatTimeAgo, sourcesLabel } from "@/lib/format-time-ago";
+import { sourcesLabel } from "@/lib/format-time-ago";
+import { TimeAgo } from "./time-ago";
 import { articleUrl } from "@/lib/content/url";
 import type { Article } from "@/lib/content/types";
 
@@ -20,7 +21,7 @@ export function ArticleRow({
   if (variant === "compact") {
     return (
       <Link href={articleUrl(article)} className="group block border-b border-line py-3 last:border-b-0">
-        <p className="font-mono text-xs text-sub">{formatTimeAgo(article.publishedAt)}</p>
+        <p className="font-mono text-xs text-sub"><TimeAgo iso={article.publishedAt} /></p>
         <h3 className="mt-1 font-serif text-[1.05rem] leading-snug text-ink group-hover:text-teal">{article.title}</h3>
       </Link>
     );
@@ -48,7 +49,7 @@ export function ArticleRow({
         </h3>
         {!small && article.lead && <p className="mt-1 hidden text-[0.95rem] text-sub sm:line-clamp-2">{article.lead}</p>}
         <p className="mt-1.5 font-mono text-xs text-sub">
-          {formatTimeAgo(article.publishedAt)}
+          <TimeAgo iso={article.publishedAt} />
           {!small && sourcesLabel(article.sourceCount)}
         </p>
       </div>

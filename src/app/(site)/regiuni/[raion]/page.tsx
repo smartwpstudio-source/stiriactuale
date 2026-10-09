@@ -3,7 +3,7 @@ import { raionHub } from "@/lib/content/hubs";
 import { RAION_NAMES } from "@/lib/content/geo";
 
 // Listă ISR, randată de HubPage — vezi src/lib/content/hubs.ts.
-export const revalidate = 60;
+export const revalidate = 3600; // la cerere din pipeline (/api/revalidate/), ceasul e doar plasă
 
 export function generateStaticParams() {
   return Object.keys(RAION_NAMES).map((raion) => ({ raion }));

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getToolNews } from "@/lib/content/queries";
 import { articleUrl } from "@/lib/content/url";
-import { formatTimeAgo } from "@/lib/format-time-ago";
+import { TimeAgo } from "./time-ago";
 
 // Sus pe ghid / calculator: știrile care l-au recomandat în blocul de impact —
 // legătura în sens invers (știre -> ghid -> știre) și semnul că subiectul e actual.
@@ -17,7 +17,7 @@ export async function ToolNews({ tool }: { tool: string }) {
             <Link href={articleUrl(a)} className="font-medium leading-snug text-ink hover:text-teal">
               {a.title}
             </Link>
-            <span className="ml-2 font-mono text-xs text-sub">{formatTimeAgo(a.publishedAt)}</span>
+            <span className="ml-2 font-mono text-xs text-sub"><TimeAgo iso={a.publishedAt} /></span>
           </li>
         ))}
       </ul>

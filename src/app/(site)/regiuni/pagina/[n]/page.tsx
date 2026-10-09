@@ -2,7 +2,7 @@ import { HubPage, hubMetadata } from "@/components/hub-page";
 import { sectionHub, parsePage } from "@/lib/content/hubs";
 
 // Listă ISR, randată de HubPage — vezi src/lib/content/hubs.ts.
-export const revalidate = 60;
+export const revalidate = 3600; // la cerere din pipeline (/api/revalidate/), ceasul e doar plasă
 
 // Listă goală = nimic la build, fiecare URL se generează la prima vizită și
 // apoi se servește din cache (ISR). Fără ea, ruta ar fi randată la FIECARE

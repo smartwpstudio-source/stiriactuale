@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArticleThumb } from "./article-thumb";
-import { formatTimeAgo, sourcesLabel } from "@/lib/format-time-ago";
+import { sourcesLabel } from "@/lib/format-time-ago";
+import { TimeAgo } from "./time-ago";
 import { articleUrl } from "@/lib/content/url";
 import { SECTION_LABELS, raionLabel, countryLabel } from "@/lib/content/geo";
 import type { Article } from "@/lib/content/types";
@@ -40,7 +41,7 @@ export function Hero({ article }: { article: Article }) {
         </h1>
         <p className="mt-3 text-lg leading-relaxed text-ink/80">{article.lead}</p>
         <p className="mt-3 font-mono text-xs text-sub">
-          {formatTimeAgo(article.publishedAt)}
+          <TimeAgo iso={article.publishedAt} />
           {sourcesLabel(article.sourceCount)}
         </p>
       </div>

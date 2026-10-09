@@ -20,7 +20,7 @@ import { articleUrl } from "@/lib/content/url";
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 // Randare ISR, revalidată la un minut — conținutul vine din pipeline.
-export const revalidate = 60;
+export const revalidate = 3600; // la cerere din pipeline (/api/revalidate/), ceasul e doar plasă
 
 // Structura de portal: știrea principală, grila "Știri noi", apoi lenta
 // "Ultima oră" care se derulează la nesfârșit (oamenii derulează, nu caută în
