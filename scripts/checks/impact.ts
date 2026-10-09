@@ -64,6 +64,8 @@ import("../../src/lib/content/guide-country").then(({ guideCountry }) => {
     assert.equal(matchDossier("Universitatea Harvard pierde finanțarea federală"), undefined);
     assert.equal(matchDossier("Bacalaureatul în România: rezultatele de anul acesta"), undefined);
     assert.equal(matchDossier("Liftul nu funcționează: elevatorul a fost oprit"), undefined);
+    assert.equal(matchDossier("Trei morți după un incendiu la o școală din Cahul"), undefined);
+    assert.equal(matchDossier("Un elev a murit lovit de o mașină în Ialoveni"), undefined);
     console.log("impact: OK");
   });
 });

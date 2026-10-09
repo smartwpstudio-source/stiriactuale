@@ -3,7 +3,7 @@ import { stripDiacritics } from "@/lib/pipeline/text-normalize";
 
 // știri despre școli și universități din alte țări (text fără diacritice, litere mici)
 // lângă o tragedie (elev lovit, copil dispărut) nu punem un ghid de educație
-const NO_TRAGEDY = String.raw`(?!.*(a murit|au murit|deced\w*|mortal\w*|morti|si-?a pierdut viata|fara viata|cadavr\w*|tragedi\w*|ucis\w*|omor\w*|violat\w*|agres\w*|accident\w*|lovit\w* de|disparut\w*|spitaliz\w*|intoxica\w*|ars\w*|inec\w*))`;
+const NO_TRAGEDY = String.raw`(?!.*(a murit|au murit|deced\w*|mortal\w*|\bmorti\b|si-?a pierdut viata|fara viata|cadavr\w*|tragedi\w*|ucis\w*|omor\w*|violat\w*|agres\w*|accident\w*|lovit\w* de|disparut\w*|spitaliz\w*|intoxica\w*|\bars\w*|inec\w*))`;
 const NOT_ABROAD = String.raw`(?!.*(romani(a|ei)\b|bucuresti|\biasi\b|franta|frantei|germania|germaniei|italia|italiei|spania|spaniei|rusia|rusiei|moscova|ucraina|ucrainei|\bkiev|\bsua\b|statele unite|american|marea britanie|regatul unit|londra|harvard|oxford|cambridge|sorbona|polonia|israel|turcia|china))`;
 
 // Dosarul-pilon al subiectului („Context”), sus în știre: o știre despre UE
