@@ -1,0 +1,75 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Poliția Moldovei – IP Bălți",
+      "url": "https://politia.md/inspectoratul-de-politie-balti"
+    },
+    {
+      "name": "IGSU – contactele instituției",
+      "url": "https://dse.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "CNAS – CTAS Bălți",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/balti"
+    },
+    {
+      "name": "ASP – subdiviziuni teritoriale",
+      "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/balt"
+    },
+    {
+      "name": "ANOFM – subdiviziuni",
+      "url": "https://anofm.md/ro/subdiviziuni"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Инспекторат полиции Бельцы (дежурная часть)",
+          "phone": "+373 231 23 476",
+          "address": "ул. Ștefan cel Mare 50, мун. Bălți",
+          "url": "https://politia.md/inspectoratul-de-politie-balti"
+        },
+        {
+          "name": "Управление по чрезвычайным ситуациям мун. Бельцы (IGSU)",
+          "phone": "+373 231 21 010",
+          "address": "ул. Păcii 38, мун. Bălți",
+          "url": "https://dse.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Органы власти",
+      "items": [
+        {
+          "name": "Примэрия муниципия Бельцы",
+          "url": "https://balti.md"
+        }
+      ]
+    },
+    {
+      "title": "Государственные услуги",
+      "items": [
+        {
+          "name": "Территориальная касса социального страхования (CTAS) Бельцы",
+          "address": "ул. 31 August 47, мун. Bălți",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/balti"
+        },
+        {
+          "name": "Агентство государственных услуг (ASP) — офис Бельцы",
+          "phone": "+373 231 52 974",
+          "address": "пл. Vasile Alecsandri 8, мун. Bălți",
+          "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/balt"
+        },
+        {
+          "name": "Территориальное подразделение занятости Бельцы (ANOFM)",
+          "phone": "+373 231 21 254",
+          "address": "ул. A. Pușkin 16, мун. Bălți",
+          "url": "https://anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}

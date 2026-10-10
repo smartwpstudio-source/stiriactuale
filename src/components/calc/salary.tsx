@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import { grossForNet, netSalary, type CalcParams } from "@/lib/calculators";
-import { NumberField, ResultRows, lei } from "./fields";
+import { NumberField, ResultRows } from "./fields";
+import { T, money, type Lang } from "./i18n";
 
-export function SalaryCalculator({ p }: { p: NonNullable<CalcParams["salariu"]> }) {
+export function SalaryCalculator({ p, lang = "ro" }: { p: NonNullable<CalcParams["salariu"]>; lang?: Lang }) {
+  const t = T[lang];
   const [mode, setMode] = useState<"brut" | "net">("brut");
   const [amount, setAmount] = useState(10000);
   const r = netSalary(mode === "brut" ? amount : grossForNet(amount, p), p);
@@ -19,19 +21,19 @@ export function SalaryCalculator({ p }: { p: NonNullable<CalcParams["salariu"]> 
   );
   return (
     <div>
-      <div className="mb-4 flex gap-2">
-        {tab("brut", "Știu salariul brut")}
-        {tab("net", "Știu cât vreau „în mână”")}
+      <div className="mb-4 flex flex-wrap gap-2">
+        {tab("brut", t.salary.knowGross)}
+        {tab("net", t.salary.knowNet)}
       </div>
-      <NumberField label={mode === "brut" ? "Salariul brut lunar" : "Salariul net dorit"} value={amount} onChange={setAmount} suffix="lei" step={100} />
+      <NumberField label={mode === "brut" ? t.salary.grossInput : t.salary.netInput} value={amount} onChange={setAmount} suffix={t.lei} step={100} />
       <ResultRows
         rows={[
-          ["Salariul brut", lei(r.gross)],
-          [`Asigurare medicală CNAM (${p.cnam_angajat_pct}%)`, `− ${lei(r.cnam)}`],
-          [`Contribuții sociale CNAS (${p.cnas_angajat_pct}%)`, `− ${lei(r.cnas)}`],
-          [`Impozit pe venit (${p.impozit_venit_pct}%)`, `− ${lei(r.tax)}`],
+          [t.salary.gross, money(r.gross, lang)],
+          [t.salary.cnam(p.cnam_angajat_pct), `− ${money(r.cnam, lang)}`],
+          [t.salary.cnas(p.cnas_angajat_pct), `− ${money(r.cnas, lang)}`],
+          [t.salary.tax(p.impozit_venit_pct), `− ${money(r.tax, lang)}`],
         ]}
-        total={["Salariul net („în mână”)", lei(r.net)]}
+        total={[t.salary.net, money(r.net, lang)]}
       />
     </div>
   );

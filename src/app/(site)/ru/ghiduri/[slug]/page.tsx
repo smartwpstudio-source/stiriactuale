@@ -7,6 +7,13 @@ import { ADSENSE_IN_ARTICLE_SLOT } from "@/lib/adsense";
 import { AdSlot } from "@/components/ad-slot";
 import { getGuideRu, localizeLinks, ruPath, ruSlugs } from "@/lib/content/guides-ru";
 import { absoluteUrl } from "@/lib/seo";
+import { PlaceInfoBox } from "@/components/place-info";
+import { getPlaceInfo, guidePlace } from "@/lib/content/places";
+import { getGuide } from "@/lib/content/guides";
+import { getGuideCalculators } from "@/lib/content/related-calculator";
+import { RelatedCalculator } from "@/components/related-calculator";
+import { calcText } from "@/components/calc/i18n";
+import { modelForGuide, modelPath } from "@/lib/complaint-models";
 
 // Ghidurile în rusă: fără generateStaticParams — nu se construiesc la fiecare
 // push (minute de build plătite pe Vercel). Pagina se generează la prima
@@ -42,6 +49,9 @@ export default async function RuGuidePage({ params }: PageProps<"/ru/ghiduri/[sl
   const updated = new Date(`${g.updated}T12:00:00Z`).toLocaleDateString("ru-RU", DATE);
   const body = localizeLinks(sanitizeBody(g.bodyHtml, g.title), await ruSlugs());
   const [head, tail] = ADSENSE_IN_ARTICLE_SLOT ? splitAfterParagraph(body, 3) : [body, ""];
+  // contactele utile ale raionului / țării ghidului, în rusă (content/locuri-ru/)
+  const placeRef = guidePlace(g.slug, g.category);
+  const place = placeRef && (await getPlaceInfo(placeRef.kind, placeRef.slug, "ru"));
 
   const jsonLd = [
     {
@@ -67,7 +77,8 @@ export default async function RuGuidePage({ params }: PageProps<"/ru/ghiduri/[sl
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(d).replace(/</g, "\\u003c") }} />
       ))}
       <nav className="font-mono text-xs uppercase tracking-wide text-sub">
-        <Link href="/" className="hover:text-ink">Știri Actuale</Link> › Справочник
+        <Link href="/" className="hover:text-ink">Știri Actuale</Link> ›{" "}
+        <Link href="/ru/ghiduri/" className="hover:text-ink">Справочник</Link>
       </nav>
       <h1 className="mt-3 font-serif text-3xl leading-tight text-ink sm:text-4xl lg:text-[2.75rem]">{g.title}</h1>
       <p className="mt-4 font-mono text-sm text-sub">
@@ -83,6 +94,28 @@ export default async function RuGuidePage({ params }: PageProps<"/ru/ghiduri/[sl
       </p>
       <ShareButtons url={url} title={g.title} />
       <p className="mt-6 text-xl font-medium leading-relaxed text-ink">{g.description}</p>
+      {/* calculatorul și modelul de reclamație, ca la ghidul românesc (potrivirea după textul RO) */}
+      {await (async () => {
+        const ro = g.ruOnly ? undefined : await getGuide(g.slug);
+        const calcs = ro ? await getGuideCalculators(ro.slug, ro.title, ro.description) : [];
+        const model = modelForGuide(g.slug);
+        return (
+          <>
+            {calcs.map((c) => (
+              <RelatedCalculator key={c.slug} calc={calcText(c, "ru")} lang="ru" />
+            ))}
+            {model && (
+              <Link
+                href={modelPath("ru", model.slug)}
+                className="mt-5 block rounded-lg border-2 border-teal/50 bg-white p-4 hover:border-teal"
+              >
+                <span className="block font-mono text-xs uppercase tracking-wide text-teal">Готовый образец</span>
+                <span className="mt-1 block font-medium text-ink">Заполните образец жалобы и скачайте его в Word или PDF →</span>
+              </Link>
+            )}
+          </>
+        );
+      })()}
 
       <div className="prose-article mt-4 text-ink" dangerouslySetInnerHTML={{ __html: head }} />
       {tail && <AdSlot slot={ADSENSE_IN_ARTICLE_SLOT} />}
@@ -101,6 +134,8 @@ export default async function RuGuidePage({ params }: PageProps<"/ru/ghiduri/[sl
           </div>
         </section>
       )}
+
+      {place && <PlaceInfoBox info={place} lang="ru" />}
 
       <aside className="mt-8 rounded border border-line bg-white p-4 text-sm text-sub">
         <p>

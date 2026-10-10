@@ -1,0 +1,74 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Primăria Ceadîr-Lunga",
+      "url": "https://www.ceadir-lunga.md/"
+    },
+    {
+      "name": "Inspectoratul de Poliție Ceadîr-Lunga",
+      "url": "https://igp.gov.md/ro/inspectoratul-de-politie-ceadir-lunga"
+    },
+    {
+      "name": "Agenția Servicii Publice — Ceadîr-Lunga",
+      "url": "https://asp.gov.md/en/contacte/subdiviziuni-teritoriale/ceadir-lunga"
+    },
+    {
+      "name": "CNAS — CTAS Ceadîr-Lunga",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/сeadîr-lunga"
+    },
+    {
+      "name": "Inspectoratul General pentru Situații de Urgență",
+      "url": "https://igsu.gov.md/"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Единый номер экстренных служб 112",
+          "url": "https://igsu.gov.md/",
+          "note": "Звонок бесплатный, 24 часа в сутки"
+        },
+        {
+          "name": "Инспекторат полиции Чадыр-Лунга — секретариат",
+          "phone": "+373 291 2 99 06",
+          "address": "мун. Ceadîr-Lunga, ул. Ломоносова 7",
+          "url": "https://igp.gov.md/ro/inspectoratul-de-politie-ceadir-lunga"
+        },
+        {
+          "name": "Инспекторат полиции Чадыр-Лунга — дежурная часть",
+          "phone": "+373 291 2 99 02"
+        }
+      ]
+    },
+    {
+      "title": "Органы власти",
+      "items": [
+        {
+          "name": "Примэрия Чадыр-Лунга",
+          "phone": "+373 291 8 14 75",
+          "address": "мун. Ceadîr-Lunga, ул. Ленина 91",
+          "url": "https://www.ceadir-lunga.md/"
+        }
+      ]
+    },
+    {
+      "title": "Государственные услуги",
+      "items": [
+        {
+          "name": "Агентство государственных услуг (ASP) — Чадыр-Лунга",
+          "phone": "+373 291 2 90 30",
+          "url": "https://asp.gov.md/en/contacte/subdiviziuni-teritoriale/ceadir-lunga"
+        },
+        {
+          "name": "Территориальная касса социального страхования (CTAS) Чадыр-Лунга",
+          "phone": "+373 291 2 09 80",
+          "address": "ул. Ленина 38A, Ceadîr-Lunga",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/сeadîr-lunga"
+        }
+      ]
+    }
+  ]
+}

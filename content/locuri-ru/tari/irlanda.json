@@ -1,0 +1,56 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Ambasada Republicii Moldova — contacte",
+      "url": "https://irlanda.mfa.gov.md/content/contacte"
+    },
+    {
+      "name": "Ambasada Republicii Moldova — program de lucru și informații de contact",
+      "url": "https://irlanda.mfa.gov.md/content/programul-de-lucru-%C8%99i-informa%C8%9Bii-de-contact"
+    },
+    {
+      "name": "Your Europe — Single emergency number",
+      "url": "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Посольство и консульства",
+      "items": [
+        {
+          "name": "Посольство Республики Молдова в Дублине",
+          "phone": "+353 1 555 4365",
+          "address": "2 Mount Street Upper, Dublin, D02 E006",
+          "url": "https://irlanda.mfa.gov.md/"
+        },
+        {
+          "name": "Консульский офис — консультации (пн–чт, 14:00–16:00)",
+          "phone": "+353 1 515 3444"
+        }
+      ]
+    },
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Экстренный телефон (без записи и консульских консультаций)",
+          "phone": "+353 89 977 1081"
+        },
+        {
+          "name": "Единый европейский номер экстренных служб (полиция, скорая помощь, пожарные): 112",
+          "url": "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+        }
+      ]
+    },
+    {
+      "title": "Запись в консульство",
+      "items": [
+        {
+          "name": "Онлайн-запись на консульские услуги",
+          "url": "https://programari.gov.md/ro/mae/appointments/4fac1c2c-be45-493b-9268-8d0e8715d888"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Ambasada Republicii Moldova — contacte",
+      "url": "https://franta.mfa.gov.md/content/contacte"
+    },
+    {
+      "name": "Ambasada Republicii Moldova — program de lucru și informații de contact",
+      "url": "https://franta.mfa.gov.md/content/programul-de-lucru-%C5%9Fi-informa%C5%A3ii-de-contact"
+    },
+    {
+      "name": "Your Europe — Single emergency number",
+      "url": "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Посольство и консульства",
+      "items": [
+        {
+          "name": "Посольство Республики Молдова в Париже — консульские консультации (пн–пт, 14:00–17:00)",
+          "phone": "+33 1 42 94 04 57",
+          "address": "19 rue Henri Rochefort, 75017 Paris",
+          "url": "https://franta.mfa.gov.md/"
+        },
+        {
+          "name": "Генеральное консульство Республики Молдова в Ницце",
+          "phone": "+33 4 93 92 35 77",
+          "url": "https://nisa.mfa.gov.md/"
+        }
+      ]
+    },
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Экстренная линия посольства (без консульской информации)",
+          "phone": "+33 6 38 34 47 86"
+        },
+        {
+          "name": "Единый европейский номер экстренных служб (полиция, скорая помощь, пожарные): 112",
+          "url": "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+        }
+      ]
+    },
+    {
+      "title": "Запись в консульство",
+      "items": [
+        {
+          "name": "Онлайн-запись (все консульские услуги оказываются только по записи)",
+          "url": "https://book.timify.com/services?accountId=6887826b30230511b4fe9335&hideCloseButton=true"
+        }
+      ]
+    }
+  ]
+}

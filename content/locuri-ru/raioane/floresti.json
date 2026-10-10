@@ -1,0 +1,100 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Poliția Moldovei – IP Florești",
+      "url": "https://politia.md/inspectoratul-de-politie-floresti"
+    },
+    {
+      "name": "IGSU – contactele instituției",
+      "url": "https://dse.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "Spitalul Raional Florești",
+      "url": "https://srfloresti.md/contacte/"
+    },
+    {
+      "name": "Consiliul Raional Florești",
+      "url": "https://floresti.md/contacte/"
+    },
+    {
+      "name": "Primăria Florești",
+      "url": "https://primariafloresti.md"
+    },
+    {
+      "name": "CNAS – CTAS Florești",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/flore%C5%9Fti"
+    },
+    {
+      "name": "ASP – subdiviziuni teritoriale",
+      "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/floresti"
+    },
+    {
+      "name": "ANOFM – subdiviziuni",
+      "url": "https://anofm.md/ro/subdiviziuni"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Инспекторат полиции Флорешты (дежурная часть)",
+          "phone": "+373 250 25 302",
+          "address": "ул. Mihai Eminescu 68, г. Florești",
+          "url": "https://politia.md/inspectoratul-de-politie-floresti"
+        },
+        {
+          "name": "Районная больница Флорешты (отделение неотложной помощи, UPU)",
+          "phone": "+373 250 22 030",
+          "address": "ул. Ștefan cel Mare 77, г. Florești",
+          "url": "https://srfloresti.md/contacte/"
+        },
+        {
+          "name": "Отдел по чрезвычайным ситуациям Флорешты (IGSU)",
+          "phone": "+373 250 26 334",
+          "address": "бул. Victoriei 55, г. Florești",
+          "url": "https://dse.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Органы власти",
+      "items": [
+        {
+          "name": "Районный совет Флорешты",
+          "phone": "+373 250 22 058",
+          "address": "бул. Victoriei 2, г. Florești",
+          "url": "https://floresti.md"
+        },
+        {
+          "name": "Примэрия Флорешты",
+          "address": "ул. Ștefan cel Mare 30A, г. Florești",
+          "url": "https://primariafloresti.md"
+        }
+      ]
+    },
+    {
+      "title": "Государственные услуги",
+      "items": [
+        {
+          "name": "Территориальная касса социального страхования (CTAS) Флорешты",
+          "address": "ул. Victoriei 2, г. Florești",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/flore%C5%9Fti"
+        },
+        {
+          "name": "Агентство государственных услуг (ASP) — офис Флорешты",
+          "phone": "+373 250 20 281",
+          "address": "бул. Victoriei 1/58, г. Florești",
+          "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/floresti"
+        },
+        {
+          "name": "Территориальное подразделение занятости Флорешты (ANOFM)",
+          "phone": "+373 250 22 666",
+          "address": "ул. Ștefan cel Mare 63, г. Florești",
+          "url": "https://anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}

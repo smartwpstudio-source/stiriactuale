@@ -1,0 +1,88 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Inspectoratul General al Poliției (politia.md)",
+      "url": "https://politia.md/inspectoratul-de-politie-ialoveni"
+    },
+    {
+      "name": "Inspectoratul General pentru Situații de Urgență",
+      "url": "https://igsu.gov.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "Casa Națională de Asigurări Sociale – subdiviziuni teritoriale",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+    },
+    {
+      "name": "Agenția Servicii Publice – subdiviziuni teritoriale",
+      "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/ialoveni"
+    },
+    {
+      "name": "Agenția Națională pentru Ocuparea Forței de Muncă – subdiviziuni",
+      "url": "https://anofm.md/ro/subdiviziuni"
+    },
+    {
+      "name": "Consiliul Raional Ialoveni",
+      "url": "https://il.md/contacte/"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Инспекторат полиции Яловены",
+          "phone": "+373 68 244 443",
+          "address": "ул. Grigore Vieru 24, Ialoveni",
+          "url": "https://politia.md/inspectoratul-de-politie-ialoveni",
+          "note": "Номер дежурной части"
+        },
+        {
+          "name": "Отдел по чрезвычайным ситуациям Яловены (IGSU)",
+          "phone": "+373 79 706 531",
+          "address": "ул. Grigore Vieru 26, Ialoveni",
+          "url": "https://igsu.gov.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Органы власти",
+      "items": [
+        {
+          "name": "Районный совет Яловены",
+          "phone": "+373 268 20 007",
+          "address": "ул. Alexandru cel Bun 33, Ialoveni",
+          "url": "https://il.md/contacte/"
+        },
+        {
+          "name": "Примэрия города Яловены",
+          "address": "ул. Alexandru cel Bun 45, Ialoveni",
+          "url": "https://ialoveni.md/"
+        }
+      ]
+    },
+    {
+      "title": "Государственные услуги",
+      "items": [
+        {
+          "name": "Территориальная касса социального страхования (CTAS) Яловены",
+          "phone": "+373 268 21 505",
+          "address": "ул. Alexandru cel Bun 18, Ialoveni",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+        },
+        {
+          "name": "Агентство государственных услуг (ASP) — многофункциональный центр Яловены",
+          "phone": "+373 268 27 200",
+          "address": "ул. Alexandru cel Bun 31, Ialoveni",
+          "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/ialoveni"
+        },
+        {
+          "name": "Отдел занятости Яловены (ANOFM)",
+          "phone": "+373 268 23 452",
+          "address": "ул. A. cel Bun 49, Ialoveni",
+          "url": "https://anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}

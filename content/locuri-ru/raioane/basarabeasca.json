@@ -1,0 +1,81 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Consiliul Raional Basarabeasca",
+      "url": "https://basarabeasca.md/ro/contacte/"
+    },
+    {
+      "name": "Primăria Basarabeasca",
+      "url": "https://primariabessarabka.md"
+    },
+    {
+      "name": "Poliția Republicii Moldova — IP Basarabeasca",
+      "url": "https://politia.md/ro/inspectoratul-de-politie-basarabeasca"
+    },
+    {
+      "name": "Agenția Servicii Publice — Basarabeasca",
+      "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/basarabeasca"
+    },
+    {
+      "name": "CNAS — CTAS Basarabeasca",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/basarabeasca"
+    },
+    {
+      "name": "ANOFM — lista subdiviziunilor teritoriale",
+      "url": "https://www.anofm.md/files/elfinder/+Lista%20STOFM%20email%20contacte.pdf"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Инспекторат полиции Бессарабка — дежурная часть",
+          "phone": "+373 297 64061",
+          "address": "ул. Școlii 38, Basarabeasca",
+          "url": "https://politia.md/ro/inspectoratul-de-politie-basarabeasca"
+        }
+      ]
+    },
+    {
+      "title": "Органы власти",
+      "items": [
+        {
+          "name": "Районный совет Бессарабка",
+          "phone": "+373 297 22058",
+          "address": "ул. Карла Маркса 55, Basarabeasca",
+          "url": "https://basarabeasca.md/ro/contacte/"
+        },
+        {
+          "name": "Примэрия Бессарабка",
+          "phone": "+373 297 22760",
+          "address": "ул. Карла Маркса 57, Basarabeasca",
+          "url": "https://primariabessarabka.md"
+        }
+      ]
+    },
+    {
+      "title": "Государственные услуги",
+      "items": [
+        {
+          "name": "Территориальная касса социального страхования (CTAS) Бессарабка",
+          "address": "ул. Карла Маркса 57, Basarabeasca",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/basarabeasca"
+        },
+        {
+          "name": "Агентство государственных услуг (ASP) — многофункциональный центр Бессарабка",
+          "phone": "+373 297 20454",
+          "address": "ул. Набережная 9, Basarabeasca",
+          "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/basarabeasca"
+        },
+        {
+          "name": "Отдел занятости Бессарабка (ANOFM)",
+          "phone": "+373 297 22505",
+          "address": "ул. Карла Маркса 55, Basarabeasca",
+          "url": "https://www.anofm.md/files/elfinder/+Lista%20STOFM%20email%20contacte.pdf"
+        }
+      ]
+    }
+  ]
+}

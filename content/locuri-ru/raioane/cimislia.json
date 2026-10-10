@@ -1,0 +1,72 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Consiliul Raional Cimișlia",
+      "url": "https://raioncimislia.md"
+    },
+    {
+      "name": "Poliția — IP Cimișlia",
+      "url": "https://politia.md/ro/inspectoratul-de-politie-cimislia"
+    },
+    {
+      "name": "Spitalul Raional Cimișlia",
+      "url": "https://srcimislia.md"
+    },
+    {
+      "name": "Primăria Cimișlia",
+      "url": "https://cimislia.md"
+    },
+    {
+      "name": "ASP — oficiul Cimișlia",
+      "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/cimislia"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Инспекторат полиции Чимишлия (дежурная часть)",
+          "phone": "+373 241 92229",
+          "address": "бул. Mihai Viteazu 42, Cimișlia",
+          "url": "https://politia.md/ro/inspectoratul-de-politie-cimislia"
+        },
+        {
+          "name": "Районная больница Чимишлия — приёмная",
+          "phone": "+373 241 22391",
+          "address": "ул. Alexandru cel Bun 135, Cimișlia",
+          "url": "https://srcimislia.md"
+        }
+      ]
+    },
+    {
+      "title": "Органы власти",
+      "items": [
+        {
+          "name": "Районный совет Чимишлия",
+          "phone": "+373 241 22058",
+          "address": "бул. Ștefan cel Mare 12, Cimișlia",
+          "url": "https://raioncimislia.md"
+        },
+        {
+          "name": "Примэрия Чимишлия",
+          "phone": "+373 241 22187",
+          "address": "ул. Ștefan cel Mare 14, Cimișlia",
+          "url": "https://cimislia.md"
+        }
+      ]
+    },
+    {
+      "title": "Государственные услуги",
+      "items": [
+        {
+          "name": "Агентство государственных услуг (ASP) — офис Чимишлия",
+          "phone": "+373 241 22388",
+          "address": "ул. Alexandru cel Bun 133, Cimișlia",
+          "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/cimislia"
+        }
+      ]
+    }
+  ]
+}

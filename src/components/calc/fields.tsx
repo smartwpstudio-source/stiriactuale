@@ -1,8 +1,6 @@
 "use client";
 
-// Câmpuri și rânduri de rezultat comune calculatoarelor.
-export const lei = (n: number) =>
-  `${n.toLocaleString("ro-MD", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} lei`;
+// Câmpuri și rânduri de rezultat comune calculatoarelor (sumele: money() din i18n.ts).
 
 export function NumberField({
   label,
@@ -43,7 +41,8 @@ export function ResultRows({ rows, total }: { rows: [string, string][]; total: [
         {rows.map(([k, v]) => (
           <div key={k} className="flex justify-between gap-4 px-4 py-2.5 text-[0.95rem]">
             <dt className="text-sub">{k}</dt>
-            <dd className="shrink-0 whitespace-nowrap font-mono text-ink">{v}</dd>
+            {/* sumele nu se rup pe rânduri; textele lungi (regula de calcul) da — altfel ies din ecran pe mobil */}
+            <dd className={`font-mono text-ink ${v.length > 24 ? "min-w-0 text-right" : "shrink-0 whitespace-nowrap"}`}>{v}</dd>
           </div>
         ))}
       </dl>

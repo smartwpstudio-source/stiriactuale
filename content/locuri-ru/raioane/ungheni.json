@@ -1,0 +1,102 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Inspectoratul General al Poliției (politia.md)",
+      "url": "https://politia.md/inspectoratul-de-politie-ungheni"
+    },
+    {
+      "name": "Inspectoratul General pentru Situații de Urgență",
+      "url": "https://igsu.gov.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "Casa Națională de Asigurări Sociale – subdiviziuni teritoriale",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+    },
+    {
+      "name": "Agenția Servicii Publice – subdiviziuni teritoriale",
+      "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/ungheni"
+    },
+    {
+      "name": "Agenția Națională pentru Ocuparea Forței de Muncă – subdiviziuni",
+      "url": "https://anofm.md/ro/subdiviziuni"
+    },
+    {
+      "name": "Consiliul Raional Ungheni",
+      "url": "https://www.crungheni.md/contacte/"
+    },
+    {
+      "name": "Spitalul raional Ungheni",
+      "url": "https://srungheni.md/ro/contacte"
+    },
+    {
+      "name": "Primăria Ungheni",
+      "url": "https://ungheni.md/contacte/"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Инспекторат полиции Унгены",
+          "phone": "+373 236 20 913",
+          "address": "ул. Națională 20, Ungheni",
+          "url": "https://politia.md/inspectoratul-de-politie-ungheni",
+          "note": "Дежурная часть: +373 236 20 902"
+        },
+        {
+          "name": "Районная больница Унгены — приёмная",
+          "phone": "+373 236 25 149",
+          "address": "ул. Națională 37, Ungheni",
+          "url": "https://srungheni.md/ro/contacte",
+          "note": "Отделение неотложной помощи (UPU): +373 236 22 342"
+        },
+        {
+          "name": "Управление по чрезвычайным ситуациям Унгены (IGSU)",
+          "phone": "+373 236 22 101",
+          "address": "ул. Alexandru Plămădeală 96, Ungheni",
+          "url": "https://igsu.gov.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Органы власти",
+      "items": [
+        {
+          "name": "Районный совет Унгены",
+          "phone": "+373 236 22 058",
+          "url": "https://www.crungheni.md/contacte/"
+        },
+        {
+          "name": "Примэрия Унгены",
+          "phone": "+373 236 22 577",
+          "url": "https://ungheni.md/contacte/"
+        }
+      ]
+    },
+    {
+      "title": "Государственные услуги",
+      "items": [
+        {
+          "name": "Территориальная касса социального страхования (CTAS) Унгены",
+          "phone": "+373 236 26 992",
+          "address": "ул. George Meniuc 8, Ungheni",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+        },
+        {
+          "name": "Агентство государственных услуг (ASP) — многофункциональный центр Унгены",
+          "phone": "+373 236 29 727",
+          "address": "ул. Națională 21, Ungheni",
+          "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/ungheni"
+        },
+        {
+          "name": "Отдел занятости Унгены (ANOFM)",
+          "phone": "+373 236 23 280",
+          "address": "ул. Decebal 21, Ungheni",
+          "url": "https://anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}

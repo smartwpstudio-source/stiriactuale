@@ -1,0 +1,98 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Inspectoratul General al Poliției (politia.md)",
+      "url": "https://politia.md/inspectoratul-de-politie-orhei"
+    },
+    {
+      "name": "Inspectoratul General pentru Situații de Urgență",
+      "url": "https://igsu.gov.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "Casa Națională de Asigurări Sociale – subdiviziuni teritoriale",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+    },
+    {
+      "name": "Agenția Servicii Publice – subdiviziuni teritoriale",
+      "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/orhei"
+    },
+    {
+      "name": "Agenția Națională pentru Ocuparea Forței de Muncă – subdiviziuni",
+      "url": "https://anofm.md/ro/subdiviziuni"
+    },
+    {
+      "name": "Consiliul Raional Orhei",
+      "url": "https://or.md/ro/contacte/119"
+    },
+    {
+      "name": "Primăria Orhei",
+      "url": "https://orhei.md"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Инспекторат полиции Оргеев",
+          "phone": "+373 235 78 105",
+          "address": "ул. Vasile Mahu 144, мун. Orhei",
+          "url": "https://politia.md/inspectoratul-de-politie-orhei",
+          "note": "Дежурная часть: +373 235 78 101"
+        },
+        {
+          "name": "Районная больница Оргеев — приёмная",
+          "phone": "+373 235 22 448",
+          "address": "ул. Constantin Negruzzi 85, Orhei"
+        },
+        {
+          "name": "Управление по чрезвычайным ситуациям Оргеев (IGSU)",
+          "phone": "+373 79 604 271",
+          "address": "ул. Eliberării 172 A, мун. Orhei",
+          "url": "https://igsu.gov.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Органы власти",
+      "items": [
+        {
+          "name": "Районный совет Оргеев",
+          "phone": "+373 235 22 650",
+          "address": "бул. M. Eminescu 2, Orhei",
+          "url": "https://or.md/ro/contacte/119"
+        },
+        {
+          "name": "Примэрия муниципия Оргеев — Центр информирования и предоставления услуг",
+          "phone": "+373 235 22 767",
+          "address": "ул. Vasile Mahu 160, мун. Orhei",
+          "url": "https://orhei.md/index.php?pag=feedback&id=561&l=ro"
+        }
+      ]
+    },
+    {
+      "title": "Государственные услуги",
+      "items": [
+        {
+          "name": "Территориальная касса социального страхования (CTAS) Оргеев",
+          "phone": "+373 235 22 548",
+          "address": "ул. Vasile Lupu 113, Orhei",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+        },
+        {
+          "name": "Агентство государственных услуг (ASP) — многофункциональный центр Оргеев",
+          "phone": "+373 235 20 042",
+          "address": "ул. Vasile Lupu 47, мун. Orhei",
+          "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/orhei"
+        },
+        {
+          "name": "Отдел занятости Оргеев (ANOFM)",
+          "phone": "+373 235 21 490",
+          "address": "ул. V. Lupu 24, Orhei",
+          "url": "https://anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}

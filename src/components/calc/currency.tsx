@@ -3,10 +3,10 @@
 import { useState } from "react";
 import type { Rate } from "@/lib/bnm";
 import { NumberField } from "./fields";
+import { T, num, type Lang } from "./i18n";
 
-const fmt = (n: number) => n.toLocaleString("ro-MD", { maximumFractionDigits: 2 });
-
-export function CurrencyConverter({ rates }: { rates: Rate[] }) {
+export function CurrencyConverter({ rates, lang = "ro" }: { rates: Rate[]; lang?: Lang }) {
+  const t = T[lang];
   const [amount, setAmount] = useState(100);
   const [code, setCode] = useState(rates[0]?.code ?? "EUR");
   const [toLei, setToLei] = useState(true);
@@ -27,19 +27,17 @@ export function CurrencyConverter({ rates }: { rates: Rate[] }) {
           </button>
         ))}
       </div>
-      <NumberField label={toLei ? `Suma în ${code}` : "Suma în lei"} value={amount} onChange={setAmount} suffix={toLei ? code : "MDL"} />
+      <NumberField label={toLei ? t.currency.amountIn(code) : t.currency.amountLei} value={amount} onChange={setAmount} suffix={toLei ? code : "MDL"} />
       <button type="button" onClick={() => setToLei((v) => !v)} className="mt-3 text-sm text-teal underline">
-        ⇅ inversează ({toLei ? `${code} → lei` : `lei → ${code}`})
+        {toLei ? t.currency.swap(code, t.lei) : t.currency.swap(t.lei, code)}
       </button>
       <div className="mt-6 flex justify-between gap-4 rounded-lg bg-teal px-4 py-4 text-white">
-        <span className="font-medium">{toLei ? "În lei" : `În ${code}`}</span>
+        <span className="font-medium">{toLei ? t.currency.inLei : t.currency.inCode(code)}</span>
         <span className="font-mono text-xl font-semibold">
-          {fmt(result)} {toLei ? "lei" : code}
+          {num(result, lang)} {toLei ? t.lei : code}
         </span>
       </div>
-      <p className="mt-2 font-mono text-xs text-sub">
-        1 {code} = {fmt(perUnit)} lei (curs oficial BNM)
-      </p>
+      <p className="mt-2 font-mono text-xs text-sub">{t.currency.rate(code, num(perUnit, lang))}</p>
     </div>
   );
 }

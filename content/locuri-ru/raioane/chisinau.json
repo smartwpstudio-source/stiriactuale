@@ -1,0 +1,111 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Direcția de Poliție mun. Chișinău",
+      "url": "https://igp.gov.md/ro/directia-de-politie-mun-chisinau"
+    },
+    {
+      "name": "Primăria Chișinău",
+      "url": "https://chisinau.md/"
+    },
+    {
+      "name": "IMSP Institutul de Medicină Urgentă",
+      "url": "https://urgenta.md/"
+    },
+    {
+      "name": "Inspectoratul General pentru Situații de Urgență",
+      "url": "https://igsu.gov.md/"
+    },
+    {
+      "name": "Casa Națională de Asigurări Sociale — subdiviziuni Chișinău",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/chisinau"
+    },
+    {
+      "name": "Agenția Servicii Publice",
+      "url": "https://asp.gov.md/"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Единый номер экстренных служб 112",
+          "url": "https://igsu.gov.md/",
+          "note": "Звонок бесплатный, 24 часа в сутки"
+        },
+        {
+          "name": "Управление полиции мун. Кишинёв — секретариат",
+          "phone": "+373 22 25 47 88",
+          "address": "ул. Tighina 6, мун. Chișinău",
+          "url": "https://igp.gov.md/ro/directia-de-politie-mun-chisinau"
+        },
+        {
+          "name": "Управление полиции мун. Кишинёв — дежурная часть",
+          "phone": "+373 22 25 47 05"
+        },
+        {
+          "name": "Институт неотложной медицины (IMSP Institutul de Medicină Urgentă)",
+          "phone": "+373 22 25 07 61",
+          "address": "ул. Toma Ciorbă 1, мун. Chișinău",
+          "url": "https://urgenta.md/"
+        },
+        {
+          "name": "Республиканский оперативный диспетчерский центр (IGSU)",
+          "phone": "+373 22 785 031",
+          "address": "ул. Gh. Asachi 69, мун. Chișinău",
+          "url": "https://igsu.gov.md/"
+        }
+      ]
+    },
+    {
+      "title": "Органы власти",
+      "items": [
+        {
+          "name": "Примэрия муниципия Кишинёв",
+          "phone": "+373 22 20 15 05",
+          "address": "бул. Ștefan cel Mare și Sfânt 83, мун. Chișinău",
+          "url": "https://chisinau.md/"
+        }
+      ]
+    },
+    {
+      "title": "Государственные услуги",
+      "items": [
+        {
+          "name": "Территориальная касса социального страхования (CTAS) Ботаника",
+          "phone": "+373 22 55 30 03",
+          "address": "ул. Burebista 108",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/chisinau"
+        },
+        {
+          "name": "Территориальная касса социального страхования (CTAS) Буюканы",
+          "phone": "+373 22 75 78 00",
+          "address": "ул. George Enescu 21"
+        },
+        {
+          "name": "Территориальная касса социального страхования (CTAS) Центр",
+          "phone": "+373 22 54 85 00",
+          "address": "ул. 31 August 1989 87"
+        },
+        {
+          "name": "Территориальная касса социального страхования (CTAS) Чеканы",
+          "phone": "+373 22 40 72 20",
+          "address": "ул. Meșterul Manole 12A"
+        },
+        {
+          "name": "Территориальная касса социального страхования (CTAS) Рышкановка",
+          "phone": "+373 22 24 02 77",
+          "address": "ул. Grigore Vieru 22/1"
+        },
+        {
+          "name": "Агентство государственных услуг (ASP) — центральный офис",
+          "phone": "+373 22 25 70 70",
+          "address": "ул. Alexandr Pușkin 42, мун. Chișinău",
+          "url": "https://asp.gov.md/"
+        }
+      ]
+    }
+  ]
+}

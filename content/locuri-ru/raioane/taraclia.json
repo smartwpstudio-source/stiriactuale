@@ -1,0 +1,91 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Consiliul Raional Taraclia",
+      "url": "https://raiontaraclia.md"
+    },
+    {
+      "name": "Primăria Taraclia",
+      "url": "https://www.taraclia.md/ro/topage/contactsView"
+    },
+    {
+      "name": "Poliția Republicii Moldova — IP Taraclia",
+      "url": "https://igp.gov.md/inspectoratul-de-politie-taraclia"
+    },
+    {
+      "name": "IGSU — contacte subdiviziuni",
+      "url": "https://igsu.gov.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "Agenția Servicii Publice — Taraclia",
+      "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/taraclia"
+    },
+    {
+      "name": "CNAS — CTAS Taraclia",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/taraclia"
+    },
+    {
+      "name": "ANOFM — lista subdiviziunilor teritoriale",
+      "url": "https://anofm.md/files/elfinder/+Lista%20contacte%20STOFM.pdf"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Инспекторат полиции Тараклия",
+          "phone": "+373 294 23089",
+          "address": "ул. Первомайская 69, г. Taraclia",
+          "url": "https://igp.gov.md/inspectoratul-de-politie-taraclia"
+        },
+        {
+          "name": "Отдел по чрезвычайным ситуациям Тараклия (IGSU)",
+          "phone": "+373 294 23201",
+          "address": "ул. Ленина 130, г. Taraclia",
+          "url": "https://igsu.gov.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Органы власти",
+      "items": [
+        {
+          "name": "Районный совет Тараклия",
+          "phone": "+373 294 24650",
+          "address": "ул. Ștefan cel Mare 59, г. Taraclia",
+          "url": "https://raiontaraclia.md"
+        },
+        {
+          "name": "Примэрия Тараклия",
+          "address": "ул. Ленина 128, г. Taraclia",
+          "url": "https://www.taraclia.md/ro/topage/contactsView"
+        }
+      ]
+    },
+    {
+      "title": "Государственные услуги",
+      "items": [
+        {
+          "name": "Территориальная касса социального страхования (CTAS) Тараклия",
+          "phone": "+373 294 23028",
+          "address": "ул. Ștefan cel Mare 36, г. Taraclia",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/taraclia"
+        },
+        {
+          "name": "Агентство государственных услуг (ASP) — многофункциональный центр Тараклия",
+          "phone": "+373 294 24850",
+          "address": "ул. Ștefan cel Mare 32, г. Taraclia",
+          "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/taraclia"
+        },
+        {
+          "name": "Отдел занятости Тараклия (ANOFM)",
+          "phone": "+373 294 25998",
+          "address": "ул. Ștefan cel Mare 9B, г. Taraclia",
+          "url": "https://anofm.md/files/elfinder/+Lista%20contacte%20STOFM.pdf"
+        }
+      ]
+    }
+  ]
+}

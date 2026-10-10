@@ -1,0 +1,52 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Ambasada Republicii Moldova — contacte",
+      "url": "https://sua.mfa.gov.md/content/contacte"
+    },
+    {
+      "name": "Ambasada Republicii Moldova — program de lucru și informații de contact",
+      "url": "https://sua.mfa.gov.md/content/programul-de-lucru-%C5%9Fi-informa%C5%A3ii-de-contact"
+    },
+    {
+      "name": "911.gov — Calling 911",
+      "url": "https://www.911.gov/calling-911/"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Посольство и консульства",
+      "items": [
+        {
+          "name": "Посольство Республики Молдова в Вашингтоне — консульские консультации (пн–чт, 14:00–16:00 по вашингтонскому времени)",
+          "phone": "+1 202 390 0392",
+          "address": "2101 S Street NW, Washington, DC 20008",
+          "url": "https://sua.mfa.gov.md/"
+        }
+      ]
+    },
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Экстренный номер посольства (без общей консульской информации)",
+          "phone": "+1 202 390 0392"
+        },
+        {
+          "name": "Местный экстренный номер (США): 911",
+          "url": "https://www.911.gov/calling-911/"
+        }
+      ]
+    },
+    {
+      "title": "Запись в консульство",
+      "items": [
+        {
+          "name": "Онлайн-запись на консульские услуги",
+          "url": "https://programari.gov.md/ro/mae/appointments/217127eb-beb4-4226-95af-0f384ded41d1"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Consiliul Raional Căușeni",
+      "url": "https://causeni.md/contacte/"
+    },
+    {
+      "name": "Primăria Căușeni",
+      "url": "https://primaria.causeni.org/"
+    },
+    {
+      "name": "Poliția Republicii Moldova — IP Căușeni",
+      "url": "https://igp.gov.md/inspectoratul-de-politie-causeni"
+    },
+    {
+      "name": "IGSU — contacte subdiviziuni",
+      "url": "https://igsu.gov.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "Agenția Servicii Publice — Căușeni",
+      "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/causeni"
+    },
+    {
+      "name": "CNAS — CTAS Căușeni",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/%D1%81%C4%83u%C5%9Feni"
+    },
+    {
+      "name": "ANOFM — lista subdiviziunilor teritoriale",
+      "url": "https://anofm.md/files/elfinder/+Lista%20contacte%20STOFM.pdf"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Инспекторат полиции Каушаны",
+          "phone": "+373 243 20221",
+          "address": "ул. Meșteru Stanciu 4, г. Căușeni",
+          "url": "https://igp.gov.md/inspectoratul-de-politie-causeni"
+        },
+        {
+          "name": "Региональное управление по чрезвычайным ситуациям Каушаны (IGSU)",
+          "phone": "+373 243 29060",
+          "address": "ул. Kogălniceanu 1/1, Căușeni",
+          "url": "https://igsu.gov.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Органы власти",
+      "items": [
+        {
+          "name": "Районный совет Каушаны",
+          "address": "бул. Mihai Eminescu 31, г. Căușeni",
+          "url": "https://causeni.md/contacte/"
+        },
+        {
+          "name": "Примэрия Каушаны",
+          "phone": "+373 243 22233",
+          "address": "ул. Meșterul Radu 3, г. Căușeni",
+          "url": "https://primaria.causeni.org/"
+        }
+      ]
+    },
+    {
+      "title": "Государственные услуги",
+      "items": [
+        {
+          "name": "Территориальная касса социального страхования (CTAS) Каушаны",
+          "phone": "+373 243 22071",
+          "address": "ул. Alexei Mateevici 9, г. Căușeni",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/%D1%81%C4%83u%C5%9Feni"
+        },
+        {
+          "name": "Агентство государственных услуг (ASP) — многофункциональный центр Каушаны",
+          "phone": "+373 243 26883",
+          "address": "ул. Mihai Eminescu 4, г. Căușeni",
+          "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/causeni"
+        },
+        {
+          "name": "Управление занятости Каушаны (ANOFM)",
+          "phone": "+373 243 23055",
+          "address": "ул. Mateevici 9, г. Căușeni",
+          "url": "https://anofm.md/files/elfinder/+Lista%20contacte%20STOFM.pdf"
+        }
+      ]
+    }
+  ]
+}

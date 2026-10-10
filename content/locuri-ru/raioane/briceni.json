@@ -1,0 +1,95 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Consiliul Raional Briceni",
+      "url": "https://briceni.md/contacte/"
+    },
+    {
+      "name": "Poliția Republicii Moldova",
+      "url": "https://politia.md/inspectoratul-de-politie-briceni"
+    },
+    {
+      "name": "IGSU — contactele instituției",
+      "url": "https://igsu.gov.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "IMSP Spitalul Raional Briceni",
+      "url": "https://imspsrbriceni.md/?page_id=58"
+    },
+    {
+      "name": "Agenția Servicii Publice",
+      "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/briceni"
+    },
+    {
+      "name": "CNAS — subdiviziuni teritoriale",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/briceni"
+    },
+    {
+      "name": "ANOFM — subdiviziuni teritoriale",
+      "url": "https://www.anofm.md/ro/subdiviziuni"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Инспекторат полиции Бричаны — дежурная часть",
+          "phone": "+373 247 20 201",
+          "address": "ул. Independenței 46, г. Briceni",
+          "url": "https://politia.md/inspectoratul-de-politie-briceni"
+        },
+        {
+          "name": "Районная больница Бричаны (IMSP) — приёмное отделение",
+          "phone": "+373 247 22 205",
+          "url": "https://imspsrbriceni.md/?page_id=58"
+        },
+        {
+          "name": "Отдел по чрезвычайным ситуациям Бричаны (IGSU)",
+          "phone": "+373 79 183 800",
+          "address": "ул. D. Cantemir 25 B, г. Briceni",
+          "url": "https://igsu.gov.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Органы власти",
+      "items": [
+        {
+          "name": "Районный совет Бричаны",
+          "phone": "+373 247 22 058",
+          "address": "ул. Independenței 48, г. Briceni",
+          "url": "https://briceni.md/contacte/"
+        },
+        {
+          "name": "Примэрия города Бричаны — приёмная",
+          "phone": "+373 247 22 440",
+          "url": "https://briceni.md/primarii/"
+        }
+      ]
+    },
+    {
+      "title": "Государственные услуги",
+      "items": [
+        {
+          "name": "Территориальная касса социального страхования (CTAS) Бричаны",
+          "address": "ул. Independenței 44, г. Briceni",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/briceni"
+        },
+        {
+          "name": "Агентство государственных услуг (ASP) — многофункциональный центр Бричаны",
+          "phone": "+373 247 22 607",
+          "address": "ул. Independenței 21, г. Briceni",
+          "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/briceni"
+        },
+        {
+          "name": "Территориальное подразделение занятости Бричаны (ANOFM)",
+          "phone": "+373 247 22 653",
+          "address": "ул. Independenței 28, г. Briceni",
+          "url": "https://www.anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}

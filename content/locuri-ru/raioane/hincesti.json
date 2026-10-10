@@ -1,0 +1,72 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Consiliul Raional Hîncești",
+      "url": "https://hincesti.md"
+    },
+    {
+      "name": "Poliția — IP Hîncești",
+      "url": "https://politia.md/ro/inspectoratul-de-politie-hincesti"
+    },
+    {
+      "name": "Spitalul Raional Hîncești",
+      "url": "https://srhincesti.md"
+    },
+    {
+      "name": "Primăria Hîncești",
+      "url": "https://primariahincesti.md"
+    },
+    {
+      "name": "ASP — oficiul Hîncești",
+      "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/hincesti"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Инспекторат полиции Хынчешты (дежурная часть)",
+          "phone": "+373 269 20701",
+          "address": "ул. Mihai Moraru 93, Hîncești",
+          "url": "https://politia.md/ro/inspectoratul-de-politie-hincesti"
+        },
+        {
+          "name": "Районная больница Хынчешты — регистратура",
+          "phone": "+373 269 23235",
+          "address": "ул. Mihalcea Hîncu 238, Hîncești",
+          "url": "https://srhincesti.md"
+        }
+      ]
+    },
+    {
+      "title": "Органы власти",
+      "items": [
+        {
+          "name": "Районный совет Хынчешты",
+          "phone": "+373 269 22058",
+          "address": "ул. Mihalcea Hîncu 126, эт. III, Hîncești",
+          "url": "https://hincesti.md"
+        },
+        {
+          "name": "Примэрия Хынчешты",
+          "phone": "+373 269 23286",
+          "address": "ул. Mihalcea Hîncu 132, Hîncești",
+          "url": "https://primariahincesti.md"
+        }
+      ]
+    },
+    {
+      "title": "Государственные услуги",
+      "items": [
+        {
+          "name": "Агентство государственных услуг (ASP) — многофункциональный центр Хынчешты",
+          "phone": "+373 269 20102",
+          "address": "ул. Chișinău 12A, Hîncești",
+          "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/hincesti"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Consiliul Raional Ștefan Vodă (particip.gov.md)",
+      "url": "https://particip.gov.md/ro/authorities/1086"
+    },
+    {
+      "name": "Primăria Ștefan Vodă",
+      "url": "https://www.primariastefanvoda.md/contacte/"
+    },
+    {
+      "name": "Poliția Republicii Moldova — IP Ștefan Vodă",
+      "url": "https://igp.gov.md/inspectoratul-de-politie-stefan-voda"
+    },
+    {
+      "name": "IGSU — contacte subdiviziuni",
+      "url": "https://igsu.gov.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "Agenția Servicii Publice — Ștefan Vodă",
+      "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/stefan-voda"
+    },
+    {
+      "name": "CNAS — CTAS Ștefan Vodă",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/stefan-vod%C4%83"
+    },
+    {
+      "name": "ANOFM — lista subdiviziunilor teritoriale",
+      "url": "https://anofm.md/files/elfinder/+Lista%20contacte%20STOFM.pdf"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Инспекторат полиции Штефан-Водэ",
+          "phone": "+373 242 22914",
+          "address": "ул. Grigore Vieru 6/1, г. Ștefan Vodă",
+          "url": "https://igp.gov.md/inspectoratul-de-politie-stefan-voda"
+        },
+        {
+          "name": "Отдел по чрезвычайным ситуациям Штефан-Водэ (IGSU)",
+          "phone": "+373 242 22832",
+          "address": "ул. Chișinăului 23, г. Ștefan Vodă",
+          "url": "https://igsu.gov.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Органы власти",
+      "items": [
+        {
+          "name": "Районный совет Штефан-Водэ",
+          "phone": "+373 242 22058",
+          "url": "https://particip.gov.md/ro/authorities/1086"
+        },
+        {
+          "name": "Примэрия Штефан-Водэ",
+          "phone": "+373 242 23053",
+          "address": "ул. Ștefan cel Mare 31, г. Ștefan Vodă",
+          "url": "https://www.primariastefanvoda.md/contacte/"
+        }
+      ]
+    },
+    {
+      "title": "Государственные услуги",
+      "items": [
+        {
+          "name": "Территориальная касса социального страхования (CTAS) Штефан-Водэ",
+          "address": "ул. Grigore Vieru 8, г. Ștefan Vodă",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/stefan-vod%C4%83"
+        },
+        {
+          "name": "Агентство государственных услуг (ASP) — многофункциональный центр Штефан-Водэ",
+          "phone": "+373 242 22666",
+          "address": "ул. Nicolae Testemițanu 4, г. Ștefan Vodă",
+          "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/stefan-voda"
+        },
+        {
+          "name": "Управление занятости Штефан-Водэ (ANOFM)",
+          "phone": "+373 242 23670",
+          "address": "ул. Libertății 1, г. Ștefan Vodă",
+          "url": "https://anofm.md/files/elfinder/+Lista%20contacte%20STOFM.pdf"
+        }
+      ]
+    }
+  ]
+}

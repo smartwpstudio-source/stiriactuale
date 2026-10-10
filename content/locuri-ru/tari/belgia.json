@@ -1,0 +1,56 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Ambasada Republicii Moldova — contacte",
+      "url": "https://belgia.mfa.gov.md/content/contacte"
+    },
+    {
+      "name": "Ambasada Republicii Moldova — program de lucru și informații de contact",
+      "url": "https://belgia.mfa.gov.md/content/programul-de-lucru-%C5%9Fi-informa%C5%A3ii-de-contact"
+    },
+    {
+      "name": "Your Europe — Single emergency number",
+      "url": "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Посольство и консульства",
+      "items": [
+        {
+          "name": "Посольство Республики Молдова в Брюсселе",
+          "phone": "+32 2 626 0080",
+          "address": "Avenue Franklin Roosevelt 57, 1050 Bruxelles",
+          "url": "https://belgia.mfa.gov.md/"
+        },
+        {
+          "name": "Консульский отдел — консультации по телефону (пн–чт, 15:00–17:00)",
+          "phone": "+32 2 626 0083"
+        }
+      ]
+    },
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Экстренный телефон, 24/7 (без записи и консульской информации)",
+          "phone": "+32 484 465 444"
+        },
+        {
+          "name": "Единый европейский номер экстренных служб (полиция, скорая помощь, пожарные): 112",
+          "url": "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+        }
+      ]
+    },
+    {
+      "title": "Запись в консульство",
+      "items": [
+        {
+          "name": "Онлайн-запись на консульские услуги",
+          "url": "https://programareambasada.setmore.com/"
+        }
+      ]
+    }
+  ]
+}

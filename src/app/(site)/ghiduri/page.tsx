@@ -28,7 +28,7 @@ const GuideLink = ({ g }: { g: Guide }) => (
 export const metadata: Metadata = {
   title: "Ghiduri practice",
   description: "Ghiduri pas cu pas pentru moldovenii de acasă și din diaspora: acte, pensii, ajutoare, sănătate, auto.",
-  alternates: { canonical: "/ghiduri/" },
+  alternates: { canonical: "/ghiduri/", languages: { ro: "/ghiduri/", ru: "/ru/ghiduri/" } },
 };
 
 export default async function GuidesPage() {
@@ -44,6 +44,11 @@ export default async function GuidesPage() {
       <p className="mt-3 max-w-2xl text-lg text-sub">
         Pași clari pentru acte, pensii, ajutoare și alte situații de zi cu zi — acasă și în diaspora. Verificate pe
         sursele oficiale, cu data ultimei actualizări.
+      </p>
+      <p className="mt-2 font-mono text-sm">
+        <Link href="/ru/ghiduri/" lang="ru" className="text-teal underline hover:text-amber-ink">
+          Справочники на русском
+        </Link>
       </p>
       {byCategory.length === 0 && <p className="mt-8 font-mono text-sm text-sub">Primele ghiduri apar în curând.</p>}
       {/* teme: salt direct la secțiune — ghidurile sunt multe */}

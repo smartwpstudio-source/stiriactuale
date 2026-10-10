@@ -1,0 +1,56 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Ambasada Republicii Moldova — contacte",
+      "url": "https://polonia.mfa.gov.md/content/contacte"
+    },
+    {
+      "name": "Ambasada Republicii Moldova — program de lucru și informații de contact",
+      "url": "https://polonia.mfa.gov.md/content/programul-de-lucru-%C5%9Fi-informa%C5%A3ii-de-contact"
+    },
+    {
+      "name": "Your Europe — Single emergency number",
+      "url": "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Посольство и консульства",
+      "items": [
+        {
+          "name": "Посольство Республики Молдова в Варшаве — консульские консультации (пн–пт, 14:00–16:00)",
+          "phone": "+48 22 646 55 07",
+          "address": "ul. Imielińska 1, 02-710 Варшава",
+          "url": "https://polonia.mfa.gov.md/"
+        },
+        {
+          "name": "Секретариат посольства (без консульских консультаций)",
+          "phone": "+48 22 114 28 85"
+        }
+      ]
+    },
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Экстренная линия посольства (без консульской информации)",
+          "phone": "+48 517 666 387"
+        },
+        {
+          "name": "Единый европейский номер экстренных служб (полиция, скорая помощь, пожарные): 112",
+          "url": "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+        }
+      ]
+    },
+    {
+      "title": "Запись в консульство",
+      "items": [
+        {
+          "name": "Онлайн-запись на консульские услуги",
+          "url": "https://programari.gov.md/ro/mae/appointments/3d5c73db-4d1b-4293-a0aa-d5e614a260b3"
+        }
+      ]
+    }
+  ]
+}

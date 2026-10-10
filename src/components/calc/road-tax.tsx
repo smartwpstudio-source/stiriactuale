@@ -2,24 +2,25 @@
 
 import { useState } from "react";
 import { roadTax, type CalcParams } from "@/lib/calculators";
-import { NumberField, ResultRows, lei } from "./fields";
+import { NumberField, ResultRows } from "./fields";
+import { T, money, num, roadCategory, roadField, unit, type Lang } from "./i18n";
 
-const num = (n: number) => n.toLocaleString("ro-MD", { maximumFractionDigits: 2 });
-
-export function RoadTaxCalculator({ p }: { p: NonNullable<CalcParams["taxa_drum"]> }) {
+export function RoadTaxCalculator({ p, lang = "ro" }: { p: NonNullable<CalcParams["taxa_drum"]>; lang?: Lang }) {
+  const t = T[lang];
   const [id, setId] = useState(p.categorii[0].id);
   const c = p.categorii.find((x) => x.id === id) ?? p.categorii[0];
   const [values, setValues] = useState<Record<string, number>>({});
   const value = values[c.id] ?? c.implicit ?? 0;
   const { tax, step } = roadTax(value, c);
+  const u = c.unitate ? unit(c.unitate, lang) : "";
   const rule =
     step.suma !== undefined
-      ? `sumă fixă pe an${c.unitate ? ` (${step.max === null ? "peste pragul anterior" : `până la ${num(step.max)} ${c.unitate}`})` : ""}`
-      : `${num(step.rata ?? 0)} lei × ${num(value)} ${c.unitate}`;
+      ? `${t.road.fixed}${c.unitate ? ` (${step.max === null ? t.road.above : t.road.upTo(num(step.max, lang), u)})` : ""}`
+      : `${num(step.rata ?? 0, lang)} ${t.lei} × ${num(value, lang)} ${u}`;
   return (
     <div className="grid gap-4">
-      <label className="block">
-        <span className="block text-sm font-medium text-ink">Tipul vehiculului</span>
+      <label className="block min-w-0">
+        <span className="block text-sm font-medium text-ink">{t.road.type}</span>
         <select
           value={c.id}
           onChange={(e) => setId(e.target.value)}
@@ -27,21 +28,21 @@ export function RoadTaxCalculator({ p }: { p: NonNullable<CalcParams["taxa_drum"
         >
           {p.categorii.map((x) => (
             <option key={x.id} value={x.id}>
-              {x.nume}
+              {roadCategory(x.id, x.nume, lang)}
             </option>
           ))}
         </select>
       </label>
       {c.unitate && (
         <NumberField
-          label={c.camp ?? ""}
+          label={roadField(c.id, c.camp ?? "", lang)}
           value={value}
           onChange={(n) => setValues({ ...values, [c.id]: n })}
-          suffix={c.unitate}
+          suffix={u}
           step={c.unitate === "t" ? 0.1 : 1}
         />
       )}
-      <ResultRows rows={[["Calcul", rule]]} total={["Taxa pe an", lei(tax)]} />
+      <ResultRows rows={[[t.calc, rule]]} total={[t.road.total, money(tax, lang)]} />
     </div>
   );
 }

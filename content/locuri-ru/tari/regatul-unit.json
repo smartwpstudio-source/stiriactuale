@@ -1,0 +1,56 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Ambasada Republicii Moldova — contacte",
+      "url": "https://regatulunit.mfa.gov.md/content/contacte"
+    },
+    {
+      "name": "Ambasada Republicii Moldova — program de lucru și informații de contact",
+      "url": "https://regatulunit.mfa.gov.md/content/programul-de-lucru-%C5%9Fi-informa%C5%A3ii"
+    },
+    {
+      "name": "NHS — When to call 999",
+      "url": "https://www.nhs.uk/nhs-services/urgent-and-emergency-care-services/when-to-call-999/"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Посольство и консульства",
+      "items": [
+        {
+          "name": "Посольство Республики Молдова в Лондоне — канцелярия",
+          "phone": "+44 20 3518 6286",
+          "address": "55 Catherine Place, London SW1E 6DY",
+          "url": "https://regatulunit.mfa.gov.md/"
+        },
+        {
+          "name": "Консульский отдел — консультации (пн–пт, 14:00–16:00)",
+          "phone": "+44 20 3518 6221"
+        }
+      ]
+    },
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Экстренный консульский телефон (без записи и консульской информации)",
+          "phone": "+44 7895 805306"
+        },
+        {
+          "name": "Местный экстренный номер (Великобритания): 999",
+          "url": "https://www.nhs.uk/nhs-services/urgent-and-emergency-care-services/when-to-call-999/"
+        }
+      ]
+    },
+    {
+      "title": "Запись в консульство",
+      "items": [
+        {
+          "name": "Онлайн-запись на консульские услуги",
+          "url": "https://embassyoftherepublicofmoldova6534.setmore.com/"
+        }
+      ]
+    }
+  ]
+}

@@ -2,24 +2,26 @@
 
 import { useState } from "react";
 import { sickPay, type CalcParams } from "@/lib/calculators";
-import { NumberField, ResultRows, lei } from "./fields";
+import { NumberField, ResultRows } from "./fields";
+import { T, money, type Lang } from "./i18n";
 
-export function SickPayCalculator({ p }: { p: NonNullable<CalcParams["concediu_medical"]> }) {
+export function SickPayCalculator({ p, lang = "ro" }: { p: NonNullable<CalcParams["concediu_medical"]>; lang?: Lang }) {
+  const t = T[lang];
   const [avg, setAvg] = useState(10000);
   const [years, setYears] = useState(5);
   const [days, setDays] = useState(10);
   const r = sickPay(avg, years, days, p);
   return (
     <div className="grid gap-4">
-      <NumberField label={`Venitul mediu lunar asigurat (ultimele ${p.luni_baza} luni)`} value={avg} onChange={setAvg} suffix="lei" step={100} />
-      <NumberField label="Stagiul total de cotizare" value={years} onChange={setYears} suffix="ani" />
-      <NumberField label="Zile de concediu medical (din certificat)" value={days} onChange={setDays} suffix="zile" />
+      <NumberField label={t.sick.avg(p.luni_baza)} value={avg} onChange={setAvg} suffix={t.lei} step={100} />
+      <NumberField label={t.sick.stagiu} value={years} onChange={setYears} suffix={t.yearsUnit} />
+      <NumberField label={t.sick.days} value={days} onChange={setDays} suffix={t.daysUnit} />
       <ResultRows
         rows={[
-          [`Primele ${r.empDays} zile — plătește angajatorul (${r.empPct}%)`, lei(r.employer)],
-          [`Restul de ${Math.max(0, days - r.empDays)} zile — plătește CNAS (${r.pct}%, după stagiu)`, lei(r.cnas)],
+          [t.sick.employer(r.empDays, r.empPct), money(r.employer, lang)],
+          [t.sick.cnas(Math.max(0, days - r.empDays), r.pct), money(r.cnas, lang)],
         ]}
-        total={[`Total pentru ${days} zile`, lei(r.total)]}
+        total={[t.sick.total(days), money(r.total, lang)]}
       />
     </div>
   );

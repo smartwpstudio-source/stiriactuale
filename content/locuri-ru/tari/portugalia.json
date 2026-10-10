@@ -1,0 +1,43 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Ambasada Republicii Moldova — contacte",
+      "url": "https://portugalia.mfa.gov.md/ro/content/contacte"
+    },
+    {
+      "name": "Ambasada Republicii Moldova — program de lucru și informații de contact",
+      "url": "https://portugalia.mfa.gov.md/content/programul-de-lucru-%C5%9Fi-informa%C5%A3ii-de-contact"
+    },
+    {
+      "name": "Your Europe — Single emergency number",
+      "url": "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Посольство и консульства",
+      "items": [
+        {
+          "name": "Посольство Республики Молдова в Лиссабоне — консульские консультации (пн–пт, 14:00–16:00)",
+          "phone": "+351 21 300 9065",
+          "address": "Rua Gonçalo Velho Cabral 31 e 31A, 1400-188 Lisboa",
+          "url": "https://portugalia.mfa.gov.md/"
+        }
+      ]
+    },
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Экстренный телефон (без записи и консульской информации)",
+          "phone": "+351 961 929 964"
+        },
+        {
+          "name": "Единый европейский номер экстренных служб (полиция, скорая помощь, пожарные): 112",
+          "url": "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+        }
+      ]
+    }
+  ]
+}

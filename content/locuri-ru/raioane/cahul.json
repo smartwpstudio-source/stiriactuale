@@ -1,0 +1,90 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Consiliul Raional Cahul",
+      "url": "https://cahul.md"
+    },
+    {
+      "name": "Primăria Cahul",
+      "url": "https://primariacahul.md"
+    },
+    {
+      "name": "Poliția Republicii Moldova — IP Cahul",
+      "url": "https://politia.md/ro/inspectoratul-de-politie-cahul"
+    },
+    {
+      "name": "Spitalul Raional Cahul",
+      "url": "https://spital.md/contact/"
+    },
+    {
+      "name": "Agenția Servicii Publice — Cahul",
+      "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/cahul"
+    },
+    {
+      "name": "CNAS — CTAS Cahul",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/%D1%81ahul"
+    },
+    {
+      "name": "ANOFM — lista subdiviziunilor teritoriale",
+      "url": "https://www.anofm.md/files/elfinder/+Lista%20STOFM%20email%20contacte.pdf"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Инспекторат полиции Кагул",
+          "phone": "+373 299 25615",
+          "address": "ул. 31 August 28-30, мун. Cahul",
+          "url": "https://politia.md/ro/inspectoratul-de-politie-cahul"
+        },
+        {
+          "name": "Районная больница Кагул — отделение неотложной помощи (UPU)",
+          "phone": "+373 299 34492",
+          "url": "https://spital.md/contact/"
+        }
+      ]
+    },
+    {
+      "title": "Органы власти",
+      "items": [
+        {
+          "name": "Районный совет Кагул",
+          "phone": "+373 299 22058",
+          "address": "пл. Independenței 2, мун. Cahul",
+          "url": "https://cahul.md"
+        },
+        {
+          "name": "Примэрия Кагул",
+          "phone": "+373 299 22400",
+          "address": "пл. Independenței 6, мун. Cahul",
+          "url": "https://primariacahul.md"
+        }
+      ]
+    },
+    {
+      "title": "Государственные услуги",
+      "items": [
+        {
+          "name": "Территориальная касса социального страхования (CTAS) Кагул",
+          "address": "пл. Independenței 6, мун. Cahul",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/%D1%81ahul"
+        },
+        {
+          "name": "Агентство государственных услуг (ASP) — многофункциональный центр Кагул",
+          "phone": "+373 299 84691",
+          "address": "просп. Republicii 24 G, мун. Cahul",
+          "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/cahul"
+        },
+        {
+          "name": "Управление занятости Кагул (ANOFM)",
+          "phone": "+373 299 22186",
+          "address": "ул. Ștefan cel Mare 15, Cahul",
+          "url": "https://www.anofm.md/files/elfinder/+Lista%20STOFM%20email%20contacte.pdf"
+        }
+      ]
+    }
+  ]
+}

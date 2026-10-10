@@ -1,0 +1,64 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Ambasada Republicii Moldova — contacte",
+      "url": "https://italia.mfa.gov.md/ro/content/contacte"
+    },
+    {
+      "name": "Ambasada Republicii Moldova — program de lucru și informații de contact",
+      "url": "https://italia.mfa.gov.md/content/programul-de-lucru-%C5%9Fi-informa%C5%A3ii-de-contact"
+    },
+    {
+      "name": "Your Europe — Single emergency number",
+      "url": "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Посольство и консульства",
+      "items": [
+        {
+          "name": "Посольство Республики Молдова в Риме — консульская информация (пн–пт, 14:00–17:30)",
+          "phone": "+39 06 4788 1022",
+          "address": "Via Francesco Cherubini 27, 00135 Roma",
+          "url": "https://italia.mfa.gov.md/"
+        },
+        {
+          "name": "Генеральное консульство Республики Молдова в Милане",
+          "phone": "+39 02 3674 5703",
+          "address": "Via Vincenzo Gioberti 8, 20123 Milano",
+          "url": "https://milano.mfa.gov.md/"
+        },
+        {
+          "name": "Генеральное консульство Республики Молдова в Падуе",
+          "phone": "+39 049 856 0420",
+          "address": "Via Milazzo 22, 35139 Padova",
+          "url": "https://padova.mfa.gov.md/"
+        }
+      ]
+    },
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Экстренный консульский телефон (только несчастные случаи, смерть, стихийные бедствия; без консульской информации)",
+          "phone": "+39 329 442 1091"
+        },
+        {
+          "name": "Единый европейский номер экстренных служб (полиция, скорая помощь, пожарные): 112",
+          "url": "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+        }
+      ]
+    },
+    {
+      "title": "Запись в консульство",
+      "items": [
+        {
+          "name": "Онлайн-запись на консульские услуги (Timify)",
+          "url": "https://www.timify.com/it-it/profile/ambasadarepubliciimoldovaitalia/?v=4"
+        }
+      ]
+    }
+  ]
+}

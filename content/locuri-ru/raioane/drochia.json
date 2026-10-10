@@ -1,0 +1,102 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Inspectoratul de Poliție Drochia",
+      "url": "https://politia.md/inspectoratul-de-politie-drochia"
+    },
+    {
+      "name": "Spitalul Raional Drochia",
+      "url": "https://sr-drochia.com.md/contacte/"
+    },
+    {
+      "name": "Inspectoratul General pentru Situații de Urgență",
+      "url": "https://igsu.gov.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "Consiliul Raional Drochia",
+      "url": "https://drochia.md/contacte/"
+    },
+    {
+      "name": "Primăria orașului Drochia",
+      "url": "https://primariadrochia.md/"
+    },
+    {
+      "name": "Casa Națională de Asigurări Sociale",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/drochia"
+    },
+    {
+      "name": "Agenția Servicii Publice",
+      "url": "https://www.asp.gov.md/contacte/subdiviziuni-teritoriale/drochia"
+    },
+    {
+      "name": "Agenția Națională pentru Ocuparea Forței de Muncă",
+      "url": "https://anofm.md/ro/subdiviziuni"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Инспекторат полиции Дрокия (дежурная часть)",
+          "phone": "+373 252 68 101",
+          "address": "ул. 31 August 7, г. Drochia",
+          "url": "https://politia.md/inspectoratul-de-politie-drochia"
+        },
+        {
+          "name": "Районная больница Дрокия «Николае Тестемицану» (24/7)",
+          "phone": "+373 61 099 226",
+          "address": "бул. Nicolae Testemițanu 2/3, г. Drochia",
+          "url": "https://sr-drochia.com.md/"
+        },
+        {
+          "name": "Отдел по чрезвычайным ситуациям Дрокия (IGSU)",
+          "phone": "+373 252 22 101",
+          "address": "ул. Hotin 34A, г. Drochia",
+          "url": "https://igsu.gov.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Органы власти",
+      "items": [
+        {
+          "name": "Районный совет Дрокия",
+          "phone": "+373 252 22 058",
+          "address": "бул. Independenței 15, г. Drochia",
+          "url": "https://drochia.md/"
+        },
+        {
+          "name": "Примэрия города Дрокия",
+          "phone": "+373 252 22 309",
+          "address": "бул. Independenței 15A, г. Drochia",
+          "url": "https://primariadrochia.md/"
+        }
+      ]
+    },
+    {
+      "title": "Государственные услуги",
+      "items": [
+        {
+          "name": "Территориальная касса социального страхования (CTAS) Дрокия",
+          "phone": "+373 252 26 940",
+          "address": "ул. Independenței 15, г. Drochia",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/drochia"
+        },
+        {
+          "name": "Агентство государственных услуг (ASP) — многофункциональный центр Дрокия",
+          "phone": "+373 252 20 930",
+          "address": "ул. Mitropolit Varlaam 2/F, г. Drochia",
+          "url": "https://www.asp.gov.md/contacte/subdiviziuni-teritoriale/drochia"
+        },
+        {
+          "name": "Территориальное агентство занятости Дрокия (ANOFM)",
+          "phone": "+373 252 21 827",
+          "address": "ул. Independenței 15, г. Drochia",
+          "url": "https://anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}

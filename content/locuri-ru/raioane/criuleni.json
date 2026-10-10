@@ -1,0 +1,68 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Inspectoratul General al Poliției (politia.md)",
+      "url": "https://politia.md/inspectoratul-de-politie-criuleni"
+    },
+    {
+      "name": "Inspectoratul General pentru Situații de Urgență",
+      "url": "https://igsu.gov.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "Casa Națională de Asigurări Sociale – subdiviziuni teritoriale",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+    },
+    {
+      "name": "Agenția Servicii Publice – subdiviziuni teritoriale",
+      "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/criuleni"
+    },
+    {
+      "name": "Agenția Națională pentru Ocuparea Forței de Muncă – subdiviziuni",
+      "url": "https://anofm.md/ro/subdiviziuni"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Инспекторат полиции Криуляны",
+          "phone": "+373 248 58 100",
+          "address": "ул. 31 August 1989 № 72, Criuleni",
+          "url": "https://politia.md/inspectoratul-de-politie-criuleni",
+          "note": "Номер дежурной части"
+        },
+        {
+          "name": "Отдел по чрезвычайным ситуациям Криуляны (IGSU)",
+          "phone": "+373 248 22 181",
+          "address": "ул. 31 August 4, Criuleni",
+          "url": "https://igsu.gov.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Государственные услуги",
+      "items": [
+        {
+          "name": "Территориальная касса социального страхования (CTAS) Криуляны",
+          "phone": "+373 248 21 723",
+          "address": "ул. Biruinței 12, Criuleni",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+        },
+        {
+          "name": "Агентство государственных услуг (ASP) — многофункциональный центр Криуляны",
+          "phone": "+373 248 21 986",
+          "address": "ул. 31 August 1989 № 139, Criuleni",
+          "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/criuleni"
+        },
+        {
+          "name": "Отдел занятости Криуляны (ANOFM)",
+          "phone": "+373 248 21 450",
+          "address": "ул. Biruința 12, Criuleni",
+          "url": "https://anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}

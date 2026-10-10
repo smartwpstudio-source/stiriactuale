@@ -1,0 +1,53 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Ambasada Republicii Moldova — contacte",
+      "url": "https://rusia.mfa.gov.md/content/contacte"
+    },
+    {
+      "name": "Ambasada Republicii Moldova — program de lucru și informații de contact",
+      "url": "https://rusia.mfa.gov.md/content/programul-de-lucru-%C5%9Fi-informa%C5%A3ii-de-contact"
+    },
+    {
+      "name": "МЧС России — Система 112",
+      "url": "https://50.mchs.gov.ru/deyatelnost/poleznaya-informaciya/rekomendacii-naseleniyu/sistema-112"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Посольство и консульства",
+      "items": [
+        {
+          "name": "Консульский отдел Посольства Республики Молдова в Москве",
+          "phone": "+7 495 790 75 46",
+          "address": "ул. Рождественка, 7, 107031 Москва",
+          "url": "https://rusia.mfa.gov.md/"
+        },
+        {
+          "name": "Посольство Республики Молдова в Москве — приёмная",
+          "phone": "+7 495 624 53 53",
+          "address": "ул. Кузнецкий Мост, 18, 107031 Москва"
+        }
+      ]
+    },
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Единый номер экстренных служб (Россия): 112",
+          "url": "https://50.mchs.gov.ru/deyatelnost/poleznaya-informaciya/rekomendacii-naseleniyu/sistema-112"
+        }
+      ]
+    },
+    {
+      "title": "Запись в консульство",
+      "items": [
+        {
+          "name": "Онлайн-запись на консульские услуги (Reservio)",
+          "url": "https://ambasada-r-moldova-in-f-rusa.reservio.com/"
+        }
+      ]
+    }
+  ]
+}

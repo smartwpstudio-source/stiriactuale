@@ -122,6 +122,17 @@ async function main() {
           if (it.url && !String(it.url).startsWith("https://")) fail(file, `url invalid: ${it.url}`);
         }
       }
+      // varianta rusă (content/locuri-ru/): aceleași telefoane, URL-uri și surse, în aceeași ordine
+      const ruFile = `locuri-ru/${kind}/${f}`;
+      const ru = await readFile(path.join(ROOT, "locuri-ru", kind, f), "utf8").then(JSON.parse, () => null);
+      if (!ru) { fail(file, `lipsește varianta rusă ${ruFile}`); continue; }
+      type Block = { title?: string; items?: { name?: string; phone?: string; url?: string }[] };
+      const facts = (x: { sources?: unknown; blocks?: Block[] }) =>
+        JSON.stringify([x.sources, (x.blocks ?? []).map((b) => (b.items ?? []).map((it) => [it.phone ?? "", it.url ?? ""]))]);
+      if (facts(ru) !== facts(p)) fail(ruFile, "telefoanele / URL-urile / sursele diferă de varianta română");
+      checkDate(ruFile, ru.updated);
+      for (const b of (ru.blocks ?? []) as Block[])
+        if (![b.title, ...(b.items ?? []).map((it) => it.name)].every((t) => /[а-яё]/i.test(String(t)))) fail(ruFile, `text netradus în blocul ${b.title}`);
     }
   }
 
@@ -249,6 +260,9 @@ async function main() {
   for (const m of COMPLAINT_MODELS) {
     const r = await loadComplaintModel(m.slug);
     if (!r || r.template.fields.length < 3) fail(`ghiduri/${m.guide}.json`, `modelul „${m.slug}” nu se citește (Către … Semnătura, cu [câmpuri])`);
+    // /ru/modele-reclamatii/: etichetele câmpurilor vin din „Образец” al ghidului rusesc, câmp cu câmp
+    const ru = await loadComplaintModel(m.slug, "ru");
+    if (r && !ru?.ruFields) fail(`ghiduri-ru/${m.guide}.json`, `modelul rusesc „${m.slug}” nu are aceleași [câmpuri] ca cel românesc (Кому … Подпись)`);
   }
 
   if (errors.length) {

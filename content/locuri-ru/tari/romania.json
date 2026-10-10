@@ -1,0 +1,57 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Ambasada Republicii Moldova — contacte",
+      "url": "https://romania.mfa.gov.md/content/contacte"
+    },
+    {
+      "name": "Ambasada Republicii Moldova — program de lucru și informații de contact",
+      "url": "https://romania.mfa.gov.md/content/programul-de-lucru"
+    },
+    {
+      "name": "Your Europe — Single emergency number",
+      "url": "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Посольство и консульства",
+      "items": [
+        {
+          "name": "Посольство Республики Молдова в Бухаресте",
+          "phone": "+40 21 230 04 74",
+          "address": "Aleea Alexandru 40, сектор 1, 011824 Бухарест",
+          "url": "https://romania.mfa.gov.md/"
+        },
+        {
+          "name": "Консульский отдел — консультации (пн–чт, 14:00–16:00)",
+          "phone": "+40 21 410 98 27",
+          "address": "ул. Ermil Pangratti 12, сектор 1, 011424 Бухарест"
+        }
+      ]
+    },
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Экстренная линия консульского отдела (без консульской информации)",
+          "phone": "+40 787 898 050"
+        },
+        {
+          "name": "Единый европейский номер экстренных служб (полиция, скорая помощь, пожарные): 112",
+          "url": "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+        }
+      ]
+    },
+    {
+      "title": "Запись в консульство",
+      "items": [
+        {
+          "name": "Онлайн-запись на консульские услуги",
+          "url": "https://programari.gov.md/ro/mae/appointments/272088ee-0f02-4880-aa17-cd72b085ff31"
+        }
+      ]
+    }
+  ]
+}

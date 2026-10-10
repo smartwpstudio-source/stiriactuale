@@ -1,0 +1,103 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Inspectoratul General al Poliției (politia.md)",
+      "url": "https://politia.md/inspectoratul-de-politie-telenesti"
+    },
+    {
+      "name": "Inspectoratul General pentru Situații de Urgență",
+      "url": "https://igsu.gov.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "Casa Națională de Asigurări Sociale – subdiviziuni teritoriale",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+    },
+    {
+      "name": "Agenția Servicii Publice – subdiviziuni teritoriale",
+      "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/telenesti"
+    },
+    {
+      "name": "Agenția Națională pentru Ocuparea Forței de Muncă – subdiviziuni",
+      "url": "https://anofm.md/ro/subdiviziuni"
+    },
+    {
+      "name": "Consiliul Raional Telenești",
+      "url": "https://telenesti.md/contacte/"
+    },
+    {
+      "name": "Spitalul raional Telenești",
+      "url": "https://srtelenesti.md/contacte/"
+    },
+    {
+      "name": "Primăria Telenești",
+      "url": "https://www.primariatelenesti.md/contacte/"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Инспекторат полиции Теленешты",
+          "phone": "+373 258 23 034",
+          "address": "ул. Dacia 5, Telenești",
+          "url": "https://politia.md/inspectoratul-de-politie-telenesti",
+          "note": "Дежурная часть: +373 67 402 636"
+        },
+        {
+          "name": "Районная больница Теленешты — приёмная",
+          "phone": "+373 258 22 448",
+          "address": "ул. Ciprian Porumbescu 8, Telenești",
+          "url": "https://srtelenesti.md/contacte/",
+          "note": "Приёмное отделение: +373 79 113 025"
+        },
+        {
+          "name": "Отдел по чрезвычайным ситуациям Теленешты (IGSU)",
+          "phone": "+373 258 24 081",
+          "address": "ул. Gheorghe Șova 1, Telenești",
+          "url": "https://igsu.gov.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Органы власти",
+      "items": [
+        {
+          "name": "Районный совет Теленешты",
+          "phone": "+373 258 22 058",
+          "address": "ул. 31 August 1989 № 9, Telenești",
+          "url": "https://telenesti.md/contacte/"
+        },
+        {
+          "name": "Примэрия города Теленешты",
+          "address": "ул. 31 August № 8, Telenești",
+          "url": "https://www.primariatelenesti.md/contacte/"
+        }
+      ]
+    },
+    {
+      "title": "Государственные услуги",
+      "items": [
+        {
+          "name": "Территориальная касса социального страхования (CTAS) Теленешты",
+          "phone": "+373 258 22 996",
+          "address": "ул. Renașterii 69, Telenești",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+        },
+        {
+          "name": "Агентство государственных услуг (ASP) — многофункциональный центр Теленешты",
+          "phone": "+373 258 24 575",
+          "address": "ул. 31 August 1989 № 18, Telenești",
+          "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/telenesti"
+        },
+        {
+          "name": "Отдел занятости Теленешты (ANOFM)",
+          "phone": "+373 258 22 795",
+          "address": "ул. Renașterii 69, Telenești",
+          "url": "https://anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}

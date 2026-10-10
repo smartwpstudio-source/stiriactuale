@@ -1,0 +1,52 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Ambasada Republicii Moldova — contacte",
+      "url": "https://olanda.mfa.gov.md/content/contacte"
+    },
+    {
+      "name": "Ambasada Republicii Moldova — program de lucru și informații de contact",
+      "url": "https://olanda.mfa.gov.md/content/programul-de-lucru-%C5%9Fi-informa%C5%A3ii-de-contact"
+    },
+    {
+      "name": "Your Europe — Single emergency number",
+      "url": "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Посольство и консульства",
+      "items": [
+        {
+          "name": "Посольство Республики Молдова в Гааге — консульские консультации (вт и чт, 14:00–17:00)",
+          "phone": "+31 70 737 1200",
+          "address": "Bezuidenhoutseweg 117, 2594 AD Гаага",
+          "url": "https://olanda.mfa.gov.md/"
+        }
+      ]
+    },
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Экстренный телефон (без записи и консульской информации)",
+          "phone": "+31 658 827 910"
+        },
+        {
+          "name": "Единый европейский номер экстренных служб (полиция, скорая помощь, пожарные): 112",
+          "url": "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+        }
+      ]
+    },
+    {
+      "title": "Запись в консульство",
+      "items": [
+        {
+          "name": "Онлайн-запись (E-Programări) — консульские услуги по вторникам и четвергам",
+          "url": "https://programari.gov.md/ro/maeie/appointments/c841bf54-5041-4198-9daa-65109645c96d"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Poliția Moldovei – IP Sîngerei",
+      "url": "https://politia.md/inspectoratul-de-politie-singerei"
+    },
+    {
+      "name": "IGSU – contactele instituției",
+      "url": "https://dse.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "Consiliul Raional Sîngerei",
+      "url": "https://singerei.md/contacte/"
+    },
+    {
+      "name": "Primăria Sîngerei",
+      "url": "https://primariasingerei.md"
+    },
+    {
+      "name": "CNAS – CTAS Sîngerei",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/s%C3%AEngerei"
+    },
+    {
+      "name": "ASP – subdiviziuni teritoriale",
+      "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/singerei"
+    },
+    {
+      "name": "ANOFM – subdiviziuni",
+      "url": "https://anofm.md/ro/subdiviziuni"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Инспекторат полиции Сынжерей (дежурная часть)",
+          "phone": "+373 262 22 980",
+          "address": "ул. Independenței 100, г. Sîngerei",
+          "url": "https://politia.md/inspectoratul-de-politie-singerei"
+        },
+        {
+          "name": "Районная больница Сынжерей (приёмное отделение)",
+          "phone": "+373 262 84 423"
+        },
+        {
+          "name": "Отдел по чрезвычайным ситуациям Сынжерей (IGSU)",
+          "phone": "+373 262 25 001",
+          "address": "ул. Dostoievski 7, г. Sîngerei",
+          "url": "https://dse.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Органы власти",
+      "items": [
+        {
+          "name": "Районный совет Сынжерей",
+          "phone": "+373 262 22 058",
+          "address": "ул. Independenței 111, г. Sîngerei",
+          "url": "https://singerei.md"
+        },
+        {
+          "name": "Примэрия Сынжерей",
+          "phone": "+373 262 22 480",
+          "address": "ул. Independenței 124, г. Sîngerei",
+          "url": "https://primariasingerei.md"
+        }
+      ]
+    },
+    {
+      "title": "Государственные услуги",
+      "items": [
+        {
+          "name": "Территориальная касса социального страхования (CTAS) Сынжерей",
+          "address": "ул. Calea Pieții 2A, г. Sîngerei",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/s%C3%AEngerei"
+        },
+        {
+          "name": "Агентство государственных услуг (ASP) — офис Сынжерей",
+          "phone": "+373 262 21 848",
+          "address": "ул. Independenței 95, блок 3, г. Sîngerei",
+          "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/singerei"
+        },
+        {
+          "name": "Территориальное подразделение занятости Сынжерей (ANOFM)",
+          "phone": "+373 262 24 237",
+          "address": "ул. Independenței 136, г. Sîngerei",
+          "url": "https://anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}

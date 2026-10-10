@@ -1,0 +1,82 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Inspectoratul General al Poliției (politia.md)",
+      "url": "https://politia.md/inspectoratul-de-politie-anenii-noi"
+    },
+    {
+      "name": "Inspectoratul General pentru Situații de Urgență",
+      "url": "https://igsu.gov.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "Casa Națională de Asigurări Sociale – subdiviziuni teritoriale",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+    },
+    {
+      "name": "Agenția Servicii Publice – subdiviziuni teritoriale",
+      "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/anenii-noi"
+    },
+    {
+      "name": "Agenția Națională pentru Ocuparea Forței de Muncă – subdiviziuni",
+      "url": "https://anofm.md/ro/subdiviziuni"
+    },
+    {
+      "name": "Consiliul Raional Anenii Noi",
+      "url": "https://anenii-noi.md/contacte"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Инспекторат полиции Анений Ной",
+          "phone": "+373 265 22 980",
+          "address": "ул. Chișinăului 7, Anenii Noi",
+          "url": "https://politia.md/inspectoratul-de-politie-anenii-noi"
+        },
+        {
+          "name": "Отдел по чрезвычайным ситуациям Анений Ной (IGSU)",
+          "phone": "+373 265 22 501",
+          "address": "ул. Chișinăului 62, Anenii Noi",
+          "url": "https://igsu.gov.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Органы власти",
+      "items": [
+        {
+          "name": "Районный совет Анений Ной",
+          "phone": "+373 265 23 143",
+          "address": "пл. 31 August 4, Anenii Noi",
+          "url": "https://anenii-noi.md/contacte"
+        }
+      ]
+    },
+    {
+      "title": "Государственные услуги",
+      "items": [
+        {
+          "name": "Территориальная касса социального страхования (CTAS) Анений Ной",
+          "phone": "+373 265 21 076",
+          "address": "пл. 31 August 4, Anenii Noi",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+        },
+        {
+          "name": "Агентство государственных услуг (ASP) — многофункциональный центр Анений Ной",
+          "phone": "+373 265 21 232",
+          "address": "ул. A. Suvorov 2b, Anenii Noi",
+          "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/anenii-noi"
+        },
+        {
+          "name": "Отдел занятости Анений Ной (ANOFM)",
+          "phone": "+373 265 23 982",
+          "address": "ул. Chișinăului 6, Anenii Noi",
+          "url": "https://anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}

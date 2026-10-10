@@ -1,0 +1,99 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Poliția Republicii Moldova",
+      "url": "https://politia.md/inspectoratul-de-politie-riscani-0"
+    },
+    {
+      "name": "Spitalul Raional Rîșcani",
+      "url": "https://srriscani.md/contacte/"
+    },
+    {
+      "name": "Inspectoratul General pentru Situații de Urgență",
+      "url": "https://igsu.gov.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "Primăria orașului Rîșcani",
+      "url": "https://www.riscani.md/contacte/"
+    },
+    {
+      "name": "Platforma particip.gov.md — Consiliul Raional Rîșcani",
+      "url": "https://particip.gov.md/ro/authorities/970/utils"
+    },
+    {
+      "name": "Casa Națională de Asigurări Sociale",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+    },
+    {
+      "name": "Agenția Servicii Publice",
+      "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/riscani"
+    },
+    {
+      "name": "Agenția Națională pentru Ocuparea Forței de Muncă",
+      "url": "https://anofm.md/ro/subdiviziuni"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Инспекторат полиции Рышканы — дежурная часть",
+          "phone": "+373 256 29 302",
+          "address": "ул. Independenței 36, г. Rîșcani",
+          "url": "https://politia.md/inspectoratul-de-politie-riscani-0"
+        },
+        {
+          "name": "Районная больница Рышканы — приёмная",
+          "phone": "+373 256 22 448",
+          "address": "ул. N. Testemițanu 6, г. Rîșcani",
+          "url": "https://srriscani.md/contacte/"
+        },
+        {
+          "name": "Отдел по чрезвычайным ситуациям Рышканы (IGSU)",
+          "phone": "+373 256 24 501",
+          "address": "ул. Trandafirilor 1, г. Rîșcani",
+          "url": "https://igsu.gov.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Органы власти",
+      "items": [
+        {
+          "name": "Районный совет Рышканы",
+          "phone": "+373 256 22 400"
+        },
+        {
+          "name": "Примэрия города Рышканы",
+          "phone": "+373 256 24 664",
+          "address": "ул. 31 August 4, г. Rîșcani",
+          "url": "https://www.riscani.md/contacte/"
+        }
+      ]
+    },
+    {
+      "title": "Государственные услуги",
+      "items": [
+        {
+          "name": "Территориальная касса социального страхования (CTAS) Рышканы",
+          "address": "ул. Ion Neculce 2, г. Rîșcani",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+        },
+        {
+          "name": "Агентство государственных услуг (ASP) — многофункциональный центр Рышканы",
+          "phone": "+373 256 23 102",
+          "address": "ул. Ștefan cel Mare și Sfânt 1, г. Rîșcani",
+          "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/riscani"
+        },
+        {
+          "name": "Отдел занятости Рышканы (ANOFM)",
+          "phone": "+373 256 23 261",
+          "address": "ул. 31 August 16, г. Rîșcani",
+          "url": "https://anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Inspectoratul General al Poliției (politia.md)",
+      "url": "https://politia.md/inspectoratul-de-politie-nisporeni"
+    },
+    {
+      "name": "Inspectoratul General pentru Situații de Urgență",
+      "url": "https://igsu.gov.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "Casa Națională de Asigurări Sociale – subdiviziuni teritoriale",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+    },
+    {
+      "name": "Agenția Servicii Publice – subdiviziuni teritoriale",
+      "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/nisporeni"
+    },
+    {
+      "name": "Agenția Națională pentru Ocuparea Forței de Muncă – subdiviziuni",
+      "url": "https://anofm.md/ro/subdiviziuni"
+    },
+    {
+      "name": "Consiliul Raional Nisporeni",
+      "url": "https://nisporeni.md/contacte/"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Инспекторат полиции Ниспорены",
+          "phone": "+373 264 26 113",
+          "address": "ул. Ioan Vodă cel Viteaz 3, Nisporeni",
+          "url": "https://politia.md/inspectoratul-de-politie-nisporeni",
+          "note": "Дежурная часть: +373 264 22 980"
+        },
+        {
+          "name": "Отдел по чрезвычайным ситуациям Ниспорены (IGSU)",
+          "phone": "+373 264 22 008",
+          "address": "ул. Industrială 86, Nisporeni",
+          "url": "https://igsu.gov.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Органы власти",
+      "items": [
+        {
+          "name": "Районный совет Ниспорены",
+          "phone": "+373 264 22 058",
+          "address": "ул. Ioan Vodă 2, Nisporeni",
+          "url": "https://nisporeni.md/contacte/"
+        }
+      ]
+    },
+    {
+      "title": "Государственные услуги",
+      "items": [
+        {
+          "name": "Территориальная касса социального страхования (CTAS) Ниспорены",
+          "phone": "+373 264 23 798",
+          "address": "ул. Suveranității 10, Nisporeni",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+        },
+        {
+          "name": "Агентство государственных услуг (ASP) — многофункциональный центр Ниспорены",
+          "phone": "+373 264 22 805",
+          "address": "ул. Ioan Vodă cel Viteaz 5, Nisporeni",
+          "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/nisporeni"
+        },
+        {
+          "name": "Отдел занятости Ниспорены (ANOFM)",
+          "phone": "+373 264 23 055",
+          "address": "ул. Suveranității 2, Nisporeni",
+          "url": "https://anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Inspectoratul de Poliție Edineț",
+      "url": "https://politia.md/inspectoratul-de-politie-edinet"
+    },
+    {
+      "name": "Spitalul Raional Edineț",
+      "url": "https://sredinet.md/"
+    },
+    {
+      "name": "Inspectoratul General pentru Situații de Urgență",
+      "url": "https://igsu.gov.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "Consiliul Raional Edineț",
+      "url": "https://edinet.md/"
+    },
+    {
+      "name": "Primăria municipiului Edineț",
+      "url": "https://primariaedinet.md/contacte/"
+    },
+    {
+      "name": "Casa Națională de Asigurări Sociale",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+    },
+    {
+      "name": "Agenția Servicii Publice",
+      "url": "https://www.asp.gov.md/contacte/subdiviziuni-teritoriale/edinet"
+    },
+    {
+      "name": "Agenția Națională pentru Ocuparea Forței de Muncă",
+      "url": "https://anofm.md/ro/subdiviziuni"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Инспекторат полиции Единцы (дежурная часть)",
+          "phone": "+373 246 22 175",
+          "address": "ул. Ștefan Vodă 5, мун. Edineț",
+          "url": "https://politia.md/inspectoratul-de-politie-edinet"
+        },
+        {
+          "name": "Районная больница Единцы",
+          "phone": "+373 246 21 320",
+          "address": "шоссе Bucovinei 1, мун. Edineț",
+          "url": "https://sredinet.md/"
+        },
+        {
+          "name": "Управление по чрезвычайным ситуациям Единцы (IGSU)",
+          "phone": "+373 79 604 155",
+          "address": "ул. Octavian Cirimpei 34, мун. Edineț",
+          "url": "https://igsu.gov.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Органы власти",
+      "items": [
+        {
+          "name": "Районный совет Единцы",
+          "phone": "+373 246 25 068",
+          "address": "ул. Independenței 33, мун. Edineț",
+          "url": "https://edinet.md/"
+        },
+        {
+          "name": "Примэрия муниципия Единцы",
+          "phone": "+373 246 22 930",
+          "address": "ул. Octavian Cirimpei 30, мун. Edineț",
+          "url": "https://primariaedinet.md/"
+        }
+      ]
+    },
+    {
+      "title": "Государственные услуги",
+      "items": [
+        {
+          "name": "Территориальная касса социального страхования (CTAS) Единцы",
+          "phone": "+373 246 22 686",
+          "address": "ул. Independenței 95, мун. Edineț",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+        },
+        {
+          "name": "Агентство государственных услуг (ASP) — многофункциональный центр Единцы",
+          "phone": "+373 246 22 884",
+          "address": "ул. 31 August 40, мун. Edineț",
+          "url": "https://www.asp.gov.md/contacte/subdiviziuni-teritoriale/edinet"
+        },
+        {
+          "name": "Территориальное агентство занятости Единцы (ANOFM)",
+          "phone": "+373 246 22 779",
+          "address": "ул. Independenței 33, эт. 1, мун. Edineț",
+          "url": "https://anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}

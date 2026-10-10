@@ -1,0 +1,77 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Gagauzia.md — portalul UTA Găgăuzia",
+      "url": "https://gagauzia.md/"
+    },
+    {
+      "name": "Inspectoratul de Poliție Comrat",
+      "url": "https://igp.gov.md/ro/inspectoratul-de-politie-comrat"
+    },
+    {
+      "name": "Agenția Servicii Publice — Comrat",
+      "url": "https://asp.gov.md/en/contacte/subdiviziuni-teritoriale/comrat"
+    },
+    {
+      "name": "CNAS — CTAS Comrat",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/сomrat"
+    },
+    {
+      "name": "Inspectoratul General pentru Situații de Urgență",
+      "url": "https://igsu.gov.md/"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Единый номер экстренных служб 112",
+          "url": "https://igsu.gov.md/",
+          "note": "Звонок бесплатный, 24 часа в сутки"
+        },
+        {
+          "name": "Инспекторат полиции Комрат — секретариат",
+          "phone": "+373 298 2 00 11",
+          "address": "г. Comrat, ул. Третьякова 20",
+          "url": "https://igp.gov.md/ro/inspectoratul-de-politie-comrat"
+        },
+        {
+          "name": "Инспекторат полиции Комрат — дежурная часть",
+          "phone": "+373 298 2 00 02"
+        }
+      ]
+    },
+    {
+      "title": "Органы власти",
+      "items": [
+        {
+          "name": "Исполнительный комитет АТО Гагаузия (Başkanlık)",
+          "phone": "+373 298 2 46 36",
+          "url": "https://gagauzia.md/"
+        },
+        {
+          "name": "Исполнительный комитет АТО Гагаузия — дополнительная линия",
+          "phone": "+373 298 2 12 21"
+        }
+      ]
+    },
+    {
+      "title": "Государственные услуги",
+      "items": [
+        {
+          "name": "Агентство государственных услуг (ASP) — многофункциональный центр Комрат",
+          "phone": "+373 298 8 40 05",
+          "address": "мун. Comrat, ул. Ленина 36",
+          "url": "https://asp.gov.md/en/contacte/subdiviziuni-teritoriale/comrat"
+        },
+        {
+          "name": "Территориальная касса социального страхования (CTAS) Комрат",
+          "address": "Comrat, ул. Третьякова 42/1",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale/сomrat"
+        }
+      ]
+    }
+  ]
+}

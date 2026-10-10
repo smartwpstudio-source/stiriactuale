@@ -31,6 +31,30 @@ export const GUIDE_CATEGORIES = {
 
 export type GuideCategory = keyof typeof GUIDE_CATEGORIES;
 
+// Etichetele categoriilor pentru cuprinsul rusesc (/ru/ghiduri/)
+export const GUIDE_CATEGORIES_RU: Record<GuideCategory, string> = {
+  diaspora: "Диаспора",
+  acte: "Документы",
+  bani: "Деньги, пенсии и пособия",
+  sanatate: "Здоровье",
+  auto: "Авто и транспорт",
+  afaceri: "Бизнес и работа",
+  educatie: "Образование",
+  siguranta: "Безопасность и права",
+  dosare: "Досье: большие темы",
+  orase: "Города и районы: полезные контакты",
+  costuri: "Сколько стоит в Молдове",
+  explicat: "Простыми словами",
+  sarbatori: "Праздники и традиции",
+  calatorii: "Путешествия из Молдовы",
+  lumea: "Мир: досье",
+  gospodarie: "Хозяйство, сад и виноградник",
+  bucatarie: "Молдавская кухня",
+  turism: "Туристическая Молдова",
+  animale: "Домашние животные",
+  casa: "Дом и многоэтажка",
+};
+
 export interface Guide {
   slug: string;
   title: string;

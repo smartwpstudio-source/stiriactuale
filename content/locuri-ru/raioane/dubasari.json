@@ -1,0 +1,87 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Inspectoratul General al Poliției (politia.md)",
+      "url": "https://politia.md/inspectoratul-de-politie-dubasari"
+    },
+    {
+      "name": "Inspectoratul General pentru Situații de Urgență",
+      "url": "https://igsu.gov.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "Casa Națională de Asigurări Sociale – subdiviziuni teritoriale",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+    },
+    {
+      "name": "Agenția Servicii Publice – subdiviziuni teritoriale",
+      "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/dubasari"
+    },
+    {
+      "name": "Agenția Națională pentru Ocuparea Forței de Muncă – subdiviziuni",
+      "url": "https://anofm.md/ro/subdiviziuni"
+    },
+    {
+      "name": "Consiliul Raional Dubăsari",
+      "url": "https://dubasari.md/pagins/contact"
+    },
+    {
+      "name": "ASP Dubăsari – Ustia",
+      "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/dubasari-ustia"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Инспекторат полиции Дубоссары",
+          "phone": "+373 22 255 630",
+          "address": "с. Ustia, р-н Dubăsari",
+          "url": "https://politia.md/inspectoratul-de-politie-dubasari",
+          "note": "Номер дежурной части"
+        },
+        {
+          "name": "Отдел по чрезвычайным ситуациям Дубоссары (IGSU)",
+          "phone": "+373 248 52 503",
+          "address": "с. Cocieri, ул. Independenței 30",
+          "url": "https://igsu.gov.md/ro/contactele-institutiei",
+          "note": "Номер пожарно-спасательного поста (PSP) Кочиеры"
+        }
+      ]
+    },
+    {
+      "title": "Органы власти",
+      "items": [
+        {
+          "name": "Районный совет Дубоссары",
+          "address": "с. Coșnița, ул. Păcii 70",
+          "url": "https://dubasari.md/pagins/contact"
+        }
+      ]
+    },
+    {
+      "title": "Государственные услуги",
+      "items": [
+        {
+          "name": "Территориальная касса социального страхования (CTAS) Криуляны — отдел Дубоссары",
+          "phone": "+373 248 52 484",
+          "address": "с. Cocieri, ул. Cosmonauților 10",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+        },
+        {
+          "name": "Агентство государственных услуг (ASP) — Кошница (документы, удостоверяющие личность)",
+          "phone": "+373 248 44 780",
+          "address": "с. Coșnița, ул. Păcii 68/a",
+          "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/dubasari-cosnita"
+        },
+        {
+          "name": "Отдел занятости Дубоссары (ANOFM)",
+          "phone": "+373 248 93 360",
+          "address": "с. Cocieri, ул. Țărmului 2",
+          "url": "https://anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}

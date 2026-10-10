@@ -1,4 +1,5 @@
 import { getGuide } from "./content/guides";
+import { getGuideRu, type GuideRu } from "./content/guides-ru";
 import { decodeEntities } from "./html-entities";
 
 // Modele de reclamații completabile (/modele-reclamatii/). Textul NU e
@@ -21,6 +22,32 @@ export const COMPLAINT_MODELS = [
 ] as const;
 
 export type ComplaintModel = (typeof COMPLAINT_MODELS)[number];
+export type ComplaintLang = "ro" | "ru";
+
+// Versiunea rusă (/ru/modele-reclamatii/): titlul și descrierea traduse aici;
+// etichetele câmpurilor vin din „Образец …” al ghidului rusesc. Scrisoarea
+// rămâne în română — instituțiile o primesc în limba de stat.
+export const COMPLAINT_MODELS_RU: Record<ComplaintModel["slug"], { title: string; description: string }> = {
+  "banca-asigurator-ocn": { title: "Жалоба в банк, страховщику или ОКН (OCN)", description: "Необоснованная комиссия, неизвестная транзакция, отказ в возврате денег: письменная жалоба по новым правилам Национальной комиссии по финансовому рынку (CNPF), срок ответа — 15 рабочих дней." },
+  "asigurator-despagubire": { title: "Жалоба страховщику: не выплачено возмещение по RCA или КАСКО", description: "Страховщик затягивает выплату, отказывает или платит слишком мало: жалоба со сроками из Закона об RCA и Гражданского кодекса." },
+  "colectori-datorii": { title: "Письмо коллекторам", description: "Запрашиваете копию договора и расчёт долга и требуете прекратить звонки родственникам, коллегам и работодателю." },
+  "executor-judecatoresc": { title: "Жалоба на судебного исполнителя", description: "Дисциплинарная жалоба на нарушения судебного исполнителя: арест имущества, на которое нельзя обращать взыскание, удержания сверх лимита, отсутствие информирования." },
+  notar: { title: "Жалоба на нотариуса", description: "Нотариус отказал в нотариальном действии, потребовал слишком много или ошибся: жалоба в Дисциплинарную коллегию нотариусов." },
+  avocat: { title: "Жалоба на адвоката", description: "Адвокат не выполнил свою работу или не возвращает гонорар: жалоба в Комиссию по этике и дисциплине." },
+  "petitie-primarie-minister": { title: "Петиция в примэрию, министерство или другой орган", description: "Петиция по Административному кодексу (Codul administrativ) с установленным законом сроком ответа 30 дней." },
+  "operator-telefonie-internet": { title: "Жалоба на оператора связи или интернет-провайдера", description: "Неверный счёт, навязанная подписка, не работает интернет: жалоба оператору, затем в Национальное агентство по регулированию в области коммуникаций (ARCOM)." },
+  "medic-spital": { title: "Жалоба на врача или больницу", description: "Незаконно требовали деньги, отказали в помощи, некорректное отношение: жалоба в учреждение и в Национальную медицинскую страховую компанию (CNAM)." },
+  "magazin-online": { title: "Жалоба в интернет-магазин: заказ не доставлен", description: "Вы заплатили, а товар не пришёл: требуете доставку или возврат денег на основании Гражданского кодекса и Закона о защите прав потребителей." },
+  "garantie-chirie": { title: "Претензия о возврате залога за аренду жилья", description: "Хозяин не возвращает залог: письменная претензия до обращения в суд." },
+  "contestatie-amenda": { title: "Жалоба на протокол о штрафе", description: "Обжалуете штраф полиции, примэрии, Национального агентства по безопасности пищевых продуктов (ANSA) или другого констатирующего агента: жалоба в течение 15 дней, с доказательствами и требованием отменить протокол." },
+  "apartament-constructie-intarziat": { title: "Претензия застройщику: квартира сдана с опозданием", description: "Застройщик нарушил срок по договору: претензия с неустойкой и окончательным сроком." },
+};
+
+/** Titlul și descrierea modelului în limba paginii. */
+export const modelText = (m: ComplaintModel, lang: ComplaintLang): { title: string; description: string } =>
+  lang === "ru" ? COMPLAINT_MODELS_RU[m.slug] : m;
+/** /modele-reclamatii/[slug/] sau /ru/modele-reclamatii/[slug/] */
+export const modelPath = (lang: ComplaintLang, slug?: string) => `${lang === "ru" ? "/ru" : ""}/modele-reclamatii/${slug ? `${slug}/` : ""}`;
 
 // Un paragraf = text simplu și câmpuri; câmpul e eticheta din paranteze.
 export type Part = string | { field: number; label: string; long: boolean };
@@ -36,11 +63,13 @@ const isLong = (label: string) => label.length > 40 || /descri|faptel/i.test(lab
 
 // Parantezele de pe primul nivel sunt câmpuri ([cererea: suma de [suma] lei]
 // = un singur câmp, cu eticheta fără parantezele interioare). [semnătura] nu e
-// câmp: rămâne linie de semnat de mână.
+// câmp: rămâne linie de semnat de mână. Sfârșitul = „Semnătura: [semnătura]”,
+// nu orice „semnătură” din text („contra semnătură” la garanția de chirie).
+// Același parser citește și „Образец” din ghidul rusesc (Кому … Подпись).
 export function parseTemplate(sectionHtml: string): Template {
   const paras = [...sectionHtml.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)].map((m) => strip(m[1]));
-  const start = paras.findIndex((p) => /^Către\b/.test(p));
-  const end = paras.findIndex((p, i) => i >= start && /Semnătur/i.test(p));
+  const start = paras.findIndex((p) => /^(Către\b|Кому:)/.test(p));
+  const end = paras.findIndex((p, i) => i >= start && /\[(semnătur|подпис)|(Semnătura|Подпись):/i.test(p));
   const letter = start < 0 ? [] : paras.slice(start, end < 0 ? undefined : end + 1);
   const fields: Template["fields"] = [];
   const paragraphs = letter.map((text) => {
@@ -60,11 +89,11 @@ export function parseTemplate(sectionHtml: string): Template {
         depth--;
         if (depth === 0) {
           const l = label.trim();
-          if (/^semnătur/i.test(l)) parts.push("____________");
+          if (/^(semnătur|подпис)/i.test(l)) parts.push("____________");
           else {
             const before = parts.map((x) => (typeof x === "string" ? x : "…")).join("") + buf;
             const hint = before.trim().split(/\s+/).slice(-5).join(" ");
-            fields.push({ label: l, long: isLong(l), hint, today: /^Data:?$/.test(before.trim()) });
+            fields.push({ label: l, long: isLong(l), hint, today: /^(Data|Дата):?$/.test(before.trim()) });
             parts.push({ field: fields.length - 1, label: l, long: isLong(l) });
           }
         }
@@ -79,14 +108,30 @@ export function parseTemplate(sectionHtml: string): Template {
   return { paragraphs, fields };
 }
 
-export async function loadComplaintModel(slug: string) {
+// lang "ru": scrisoarea rămâne cea românească; etichetele câmpurilor (și
+// indiciile) vin din modelul rusesc, câmp cu câmp — aceleași paranteze, în
+// aceeași ordine. `explain` = modelul rusesc, doar ca explicație (nu se depune).
+// Dacă ghidul rusesc lipsește sau nu se potrivește, rămân etichetele românești
+// (`ruFields: false` — check:content îl semnalează).
+export async function loadComplaintModel(slug: string, lang: ComplaintLang = "ro") {
   const model = COMPLAINT_MODELS.find((m) => m.slug === slug);
   if (!model) return null;
   const guide = await getGuide(model.guide);
   const section = guide?.bodyHtml.match(/<h2>Model[^<]*<\/h2>([\s\S]*?)(?=<h2>|$)/)?.[1];
   if (!guide || !section) return null;
   const template = parseTemplate(section);
-  return template.paragraphs.length ? { model, guide, template } : null;
+  if (!template.paragraphs.length) return null;
+  const base = { model, guide, template, guideRu: undefined as GuideRu | undefined, explain: undefined as string[] | undefined, ruFields: false };
+  if (lang === "ro") return base;
+  const guideRu = await getGuideRu(model.guide);
+  const ruSection = guideRu?.bodyHtml.match(/<h2>Образ[^<]*<\/h2>([\s\S]*?)(?=<h2>|$)/)?.[1];
+  const ru = ruSection ? parseTemplate(ruSection) : undefined;
+  if (!ru || ru.fields.length !== template.fields.length) return { ...base, guideRu };
+  const fields = template.fields.map((f, i) => ({ ...f, label: ru.fields[i].label, hint: ru.fields[i].hint }));
+  const explain = ru.paragraphs.map((ps) =>
+    ps.map((p) => (typeof p === "string" ? p : `[${p.label}]`)).join("").replace(/\s+/g, " ").trim(),
+  );
+  return { ...base, template: { ...template, fields }, guideRu, explain, ruFields: true };
 }
 
 export const modelForGuide = (guideSlug: string) => COMPLAINT_MODELS.find((m) => m.guide === guideSlug);

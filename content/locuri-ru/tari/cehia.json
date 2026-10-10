@@ -1,0 +1,48 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Ambasada Republicii Moldova — contacte",
+      "url": "https://cehia.mfa.gov.md/content/contacte"
+    },
+    {
+      "name": "Your Europe — Single emergency number",
+      "url": "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Посольство и консульства",
+      "items": [
+        {
+          "name": "Посольство Республики Молдова в Праге",
+          "phone": "+420 233 323 762",
+          "address": "Juárezova 14, 160 00 Praha 6 – Bubeneč",
+          "url": "https://cehia.mfa.gov.md/"
+        },
+        {
+          "name": "Посольство — телефонная линия (ежедневно, 14:00–16:00)",
+          "phone": "+420 233 323 764"
+        }
+      ]
+    },
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Единый европейский номер экстренных служб (полиция, скорая помощь, пожарные): 112",
+          "url": "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+        }
+      ]
+    },
+    {
+      "title": "Запись в консульство",
+      "items": [
+        {
+          "name": "Онлайн-запись на консульские услуги",
+          "url": "https://programari.gov.md/ro/mae/appointments/61b92d23-c708-4e0c-bc1e-7f34841b1a10"
+        }
+      ]
+    }
+  ]
+}

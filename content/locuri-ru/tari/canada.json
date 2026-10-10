@@ -1,0 +1,48 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Ambasada Republicii Moldova — contacte",
+      "url": "https://canada.mfa.gov.md/content/contacte"
+    },
+    {
+      "name": "Ambasada Republicii Moldova — program de lucru și informații de contact",
+      "url": "https://canada.mfa.gov.md/content/programul-de-lucru-%C5%9Fi-informa%C5%A3ii-de-contact"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Посольство и консульства",
+      "items": [
+        {
+          "name": "Посольство Республики Молдова в Оттаве — консульские консультации (пн–пт, 14:30–17:00)",
+          "phone": "+1 613 563 0242",
+          "address": "275 Slater Street, suite 801, Ottawa, Ontario K1P 5H9",
+          "url": "https://canada.mfa.gov.md/"
+        },
+        {
+          "name": "Канцелярия посольства (без консульских консультаций)",
+          "phone": "+1 613 563 0243"
+        }
+      ]
+    },
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Экстренная линия посольства (без консульской информации)",
+          "phone": "+1 613 790 0582"
+        }
+      ]
+    },
+    {
+      "title": "Запись в консульство",
+      "items": [
+        {
+          "name": "Онлайн-запись на консульские услуги",
+          "url": "https://programari.gov.md/ro/MAE/appointments/379838d8-a862-4fa8-a26d-30b3e81b157a"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Consiliul Raional Cantemir",
+      "url": "https://cantemir.md/contacte"
+    },
+    {
+      "name": "Poliția Republicii Moldova — IP Cantemir",
+      "url": "https://politia.md/ro/inspectoratul-de-politie-cantemir"
+    },
+    {
+      "name": "IMSP Spitalul Raional Cantemir",
+      "url": "https://spitalcantemir.wordpress.com/date-de-contact-imsp-sr-cant/"
+    },
+    {
+      "name": "Agenția Servicii Publice — Cantemir",
+      "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/cantemir"
+    },
+    {
+      "name": "ANOFM — lista subdiviziunilor teritoriale",
+      "url": "https://www.anofm.md/files/elfinder/+Lista%20STOFM%20email%20contacte.pdf"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Инспекторат полиции Кантемир",
+          "phone": "+373 273 20130",
+          "address": "ул. N. Testimițeanu 2, Cantemir",
+          "url": "https://politia.md/ro/inspectoratul-de-politie-cantemir"
+        },
+        {
+          "name": "Районная больница Кантемир — администрация",
+          "phone": "+373 273 22448",
+          "url": "https://spitalcantemir.wordpress.com/date-de-contact-imsp-sr-cant/"
+        }
+      ]
+    },
+    {
+      "title": "Органы власти",
+      "items": [
+        {
+          "name": "Районный совет Кантемир",
+          "phone": "+373 273 22058",
+          "address": "ул. Trandafirilor 2, Cantemir",
+          "url": "https://cantemir.md/contacte"
+        }
+      ]
+    },
+    {
+      "title": "Государственные услуги",
+      "items": [
+        {
+          "name": "Агентство государственных услуг (ASP) — многофункциональный центр Кантемир",
+          "phone": "+373 273 23020",
+          "address": "ул. Basarabia 4, Cantemir",
+          "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/cantemir"
+        },
+        {
+          "name": "Управление занятости Кантемир (ANOFM)",
+          "phone": "+373 273 23300",
+          "address": "ул. Trandafirilor 2, Cantemir",
+          "url": "https://www.anofm.md/files/elfinder/+Lista%20STOFM%20email%20contacte.pdf"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Guvernul — Consiliul Raional Leova (particip.gov.md)",
+      "url": "https://particip.gov.md/ro/authorities/833"
+    },
+    {
+      "name": "Poliția — IP Leova",
+      "url": "https://politia.md/ro/inspectoratul-de-politie-leova"
+    },
+    {
+      "name": "Spitalul Raional Leova",
+      "url": "https://srleova.md"
+    },
+    {
+      "name": "Primăria Leova",
+      "url": "https://primarialeova.md"
+    },
+    {
+      "name": "ASP — oficiul Leova",
+      "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/leova"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Инспекторат полиции Леова (дежурная часть)",
+          "phone": "+373 263 20502",
+          "address": "ул. Unirii 28, Leova",
+          "url": "https://politia.md/ro/inspectoratul-de-politie-leova"
+        },
+        {
+          "name": "Районная больница Леова — регистратура",
+          "phone": "+373 263 22141",
+          "address": "ул. Ștefan cel Mare 63, Leova",
+          "url": "https://srleova.md"
+        },
+        {
+          "name": "Районная больница Леова — неотложная помощь",
+          "phone": "+373 263 23187",
+          "url": "https://srleova.md"
+        }
+      ]
+    },
+    {
+      "title": "Органы власти",
+      "items": [
+        {
+          "name": "Районный совет Леова",
+          "phone": "+373 263 24524"
+        },
+        {
+          "name": "Примэрия Леова",
+          "phone": "+373 263 22206",
+          "address": "ул. Unirii 22, Leova",
+          "url": "https://primarialeova.md"
+        }
+      ]
+    },
+    {
+      "title": "Государственные услуги",
+      "items": [
+        {
+          "name": "Агентство государственных услуг (ASP) — многофункциональный центр Леова",
+          "phone": "+373 263 20231",
+          "address": "ул. B. P. Hașdeu 2/B, Leova",
+          "url": "https://www.asp.gov.md/en/contacte/subdiviziuni-teritoriale/leova"
+        }
+      ]
+    }
+  ]
+}

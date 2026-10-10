@@ -1,6 +1,7 @@
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import type { Guide } from "./guides";
+import { CALCULATORS } from "@/lib/calculators";
 
 // Ghidurile în rusă (content/ghiduri-ru/<slug>.json): aceeași structură ca
 // ghidurile românești, același slug — legătura dintre limbi (hreflang) e slug-ul.
@@ -42,7 +43,15 @@ export async function ruSlugs(): Promise<Set<string>> {
 // În textul rusesc, linkurile spre ghidurile românești devin linkuri spre
 // varianta rusă, când există — traducătorii lasă linkurile neschimbate.
 export function localizeLinks(html: string, ru: Set<string>): string {
-  return html.replace(/href="\/ghiduri\/([a-z0-9-]+)\/"/g, (m, slug: string) => (ru.has(slug) ? `href="/ru/ghiduri/${slug}/"` : m));
+  return html
+    .replace(/href="\/ghiduri\/([a-z0-9-]+)\/"/g, (m, slug: string) => (ru.has(slug) ? `href="/ru/ghiduri/${slug}/"` : m))
+    // modelele de reclamații au toate varianta rusă (/ru/modele-reclamatii/)
+    .replace(/href="\/modele-reclamatii\/([a-z0-9-]+\/)?"/g, 'href="/ru/modele-reclamatii/$1"')
+    // calculatoarele au toate varianta rusă (/ru/calculatoare/)
+    .replace(/href="\/calculatoare\/([a-z0-9-]+)\/"/g, (m, slug: string) => (CALC_SLUGS.has(slug) ? `href="/ru/calculatoare/${slug}/"` : m))
+    .replace(/href="\/calculatoare\/"/g, 'href="/ru/calculatoare/"');
 }
+
+const CALC_SLUGS = new Set<string>(CALCULATORS.map((c) => c.slug));
 
 export const ruPath = (slug: string) => `/ru/ghiduri/${slug}/`;

@@ -1,0 +1,58 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Ambasada Republicii Moldova — contacte",
+      "url": "https://spania.mfa.gov.md/content/contacte"
+    },
+    {
+      "name": "Ambasada Republicii Moldova — program de lucru",
+      "url": "https://spania.mfa.gov.md/content/programul-de-lucru"
+    },
+    {
+      "name": "Your Europe — Single emergency number",
+      "url": "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Посольство и консульства",
+      "items": [
+        {
+          "name": "Посольство Республики Молдова в Мадриде — консульские консультации (пн–чт, 13:00–15:00, доб. 1)",
+          "phone": "+34 91 828 79 89",
+          "address": "Paseo de la Castellana 178, 5 dcha., 28046 Madrid",
+          "url": "https://spania.mfa.gov.md/"
+        },
+        {
+          "name": "Генеральное консульство Республики Молдова в Барселоне",
+          "phone": "+34 93 754 54 40",
+          "address": "Calle Corsega 329, 3-3, 08037 Barcelona",
+          "url": "https://barcelona.mfa.gov.md/"
+        }
+      ]
+    },
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Экстренный телефон, 24/7 (без записи и консульской информации)",
+          "phone": "+34 664 598 545"
+        },
+        {
+          "name": "Единый европейский номер экстренных служб (полиция, скорая помощь, пожарные): 112",
+          "url": "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+        }
+      ]
+    },
+    {
+      "title": "Запись в консульство",
+      "items": [
+        {
+          "name": "Онлайн-запись на консульские услуги (Мадрид)",
+          "url": "https://programari.gov.md/ro/mae/appointments/35ee1340-f8d2-440a-89bf-566a92630e31"
+        }
+      ]
+    }
+  ]
+}

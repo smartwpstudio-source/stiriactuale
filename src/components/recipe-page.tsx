@@ -175,7 +175,7 @@ export async function RecipePage({ r, lang, hasOther }: { r: Recipe; lang: Lang;
       "@type": "BreadcrumbList",
       itemListElement: [
         { name: t.home, item: absoluteUrl("/") },
-        ...(lang === "ro" ? [{ name: t.recipes, item: absoluteUrl("/retete/") }] : []),
+        { name: t.recipes, item: absoluteUrl(lang === "ro" ? "/retete/" : "/ru/retete/") },
         { name: r.title, item: url },
       ].map((x, i) => ({ "@type": "ListItem", position: i + 1, ...x })),
     },
@@ -200,7 +200,7 @@ export async function RecipePage({ r, lang, hasOther }: { r: Recipe; lang: Lang;
           items={
             lang === "ro"
               ? [{ label: t.home, href: "/" }, { label: t.cuisine, href: "/ghiduri/#bucatarie" }, { label: t.recipes, href: "/retete/" }]
-              : [{ label: "Știri Actuale", href: "/" }, { label: t.cuisine }, { label: t.recipes }]
+              : [{ label: "Știri Actuale", href: "/" }, { label: t.cuisine, href: "/ru/ghiduri/#bucatarie" }, { label: t.recipes, href: "/ru/retete/" }]
           }
         />
       </div>

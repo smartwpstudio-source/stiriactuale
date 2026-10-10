@@ -1,0 +1,56 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Ambasada Republicii Moldova — contacte",
+      "url": "https://germania.mfa.gov.md/content/contacte"
+    },
+    {
+      "name": "Ambasada Republicii Moldova — program de lucru și informații de contact",
+      "url": "https://germania.mfa.gov.md/content/programul-de-lucru-%C5%9Fi-informa%C5%A3ii-de-contact"
+    },
+    {
+      "name": "Your Europe — Single emergency number",
+      "url": "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Посольство и консульства",
+      "items": [
+        {
+          "name": "Посольство Республики Молдова в Берлине",
+          "phone": "+49 30 44 652 970",
+          "address": "Gotlandstraße 16, 10439 Berlin",
+          "url": "https://germania.mfa.gov.md/"
+        },
+        {
+          "name": "Консульский отдел — консультации по телефону (пн–чт, 14:30–15:30)",
+          "phone": "+49 30 28 352 37"
+        }
+      ]
+    },
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Экстренный телефон для чрезвычайных ситуаций, 24/7 (без записи)",
+          "phone": "+49 176 4581 3159"
+        },
+        {
+          "name": "Единый европейский номер экстренных служб (полиция, скорая помощь, пожарные): 112",
+          "url": "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+        }
+      ]
+    },
+    {
+      "title": "Запись в консульство",
+      "items": [
+        {
+          "name": "Онлайн-запись в посольство",
+          "url": "https://botschaftmoldau.setmore.com/"
+        }
+      ]
+    }
+  ]
+}

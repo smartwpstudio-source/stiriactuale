@@ -1,0 +1,99 @@
+{
+  "updated": "2026-10-10",
+  "sources": [
+    {
+      "name": "Poliția Republicii Moldova",
+      "url": "https://politia.md/inspectoratul-de-politie-falesti"
+    },
+    {
+      "name": "Spitalul Raional Fălești",
+      "url": "https://srfalesti.md"
+    },
+    {
+      "name": "Inspectoratul General pentru Situații de Urgență",
+      "url": "https://igsu.gov.md/ro/contactele-institutiei"
+    },
+    {
+      "name": "Primăria orașului Fălești",
+      "url": "https://falesti.md/index.php/contacte"
+    },
+    {
+      "name": "Platforma particip.gov.md — Consiliul Raional Fălești",
+      "url": "https://particip.gov.md/ro/authorities/672/utils"
+    },
+    {
+      "name": "Casa Națională de Asigurări Sociale",
+      "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+    },
+    {
+      "name": "Agenția Servicii Publice",
+      "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/falesti"
+    },
+    {
+      "name": "Agenția Națională pentru Ocuparea Forței de Muncă",
+      "url": "https://anofm.md/ro/subdiviziuni"
+    }
+  ],
+  "blocks": [
+    {
+      "title": "Экстренные службы",
+      "items": [
+        {
+          "name": "Инспекторат полиции Фалешты — дежурная часть",
+          "phone": "+373 259 22 633",
+          "address": "ул. Mihai Eminescu 18, г. Fălești",
+          "url": "https://politia.md/inspectoratul-de-politie-falesti"
+        },
+        {
+          "name": "Районная больница Фалешты",
+          "phone": "+373 259 23 475",
+          "address": "ул. Ștefan cel Mare și Sfânt 36, г. Fălești",
+          "url": "https://srfalesti.md"
+        },
+        {
+          "name": "Отдел по чрезвычайным ситуациям Фалешты (IGSU)",
+          "phone": "+373 259 22 201",
+          "address": "ул. Mihai Eminescu 59, г. Fălești",
+          "url": "https://igsu.gov.md/ro/contactele-institutiei"
+        }
+      ]
+    },
+    {
+      "title": "Органы власти",
+      "items": [
+        {
+          "name": "Районный совет Фалешты",
+          "phone": "+373 259 23 622"
+        },
+        {
+          "name": "Примэрия города Фалешты",
+          "phone": "+373 259 23 447",
+          "address": "ул. Ștefan cel Mare 73, г. Fălești",
+          "url": "https://falesti.md/index.php/contacte"
+        }
+      ]
+    },
+    {
+      "title": "Государственные услуги",
+      "items": [
+        {
+          "name": "Территориальная касса социального страхования (CTAS) Фалешты",
+          "address": "ул. Moldovei 27, г. Fălești",
+          "url": "https://cnas.gov.md/ro/despre/subdiviziunile-teritoriale"
+        },
+        {
+          "name": "Агентство государственных услуг (ASP) — многофункциональный центр Фалешты",
+          "phone": "+373 259 23 423",
+          "address": "ул. Ștefan cel Mare 18, г. Fălești",
+          "url": "https://www.asp.gov.md/ro/contacte/subdiviziuni-teritoriale/falesti"
+        },
+        {
+          "name": "Отдел занятости Фалешты (ANOFM)",
+          "phone": "+373 259 22 262",
+          "address": "ул. Moldovei 27, г. Fălești",
+          "url": "https://anofm.md/ro/subdiviziuni"
+        }
+      ]
+    }
+  ]
+}
