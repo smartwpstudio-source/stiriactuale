@@ -1,0 +1,252 @@
+{
+  "slug": "cozonac-moldovenesc",
+  "title": "Молдавский козунак с орехами и какао к Рождеству и Пасхе",
+  "description": "Домашний козунак с начинкой из орехов и какао: опара, замес, расстойка, как заплести и сколько печь, чтобы не был сырым или сухим. 3 козунака.",
+  "updated": "2026-10-10",
+  "image": {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/retete/cozonac-moldovenesc-myBPR4m6MrJqgx8k4zSPLrV2N23siO.jpg",
+    "credit": "Magnific (stoc)",
+    "alt": "Козунак в форме батона с румяной корочкой, разрезанный с краю: в пышном мякише спираль начинки с какао и кусочками орехов; на деревянном блюде рядом с чашкой кофе"
+  },
+  "servings": 30,
+  "prepMinutes": 240,
+  "cookMinutes": 50,
+  "difficulty": "dificil",
+  "fasting": false,
+  "course": "deserturi",
+  "region": "вся Молдова",
+  "occasions": [
+    "masa-de-craciun-in-moldova-bucate-si-retete",
+    "pastele-traditii-in-moldova",
+    "pastele-blajinilor-traditii-si-pomenirea-mortilor",
+    "meniul-de-paste-in-moldova",
+    "meniul-de-revelion-moldovenesc",
+    "ce-se-imparte-de-pomana-in-moldova"
+  ],
+  "ingredients": [
+    {
+      "group": "Опара",
+      "items": [
+        {
+          "qty": "40",
+          "unit": "г",
+          "name": "свежие дрожжи",
+          "note": "или 14 г сухих"
+        },
+        {
+          "qty": "100",
+          "unit": "мл",
+          "name": "тёплое молоко",
+          "note": "из общего количества"
+        },
+        {
+          "qty": "1",
+          "unit": "ст. л.",
+          "name": "сахар"
+        },
+        {
+          "qty": "2",
+          "unit": "ст. л.",
+          "name": "мука"
+        }
+      ]
+    },
+    {
+      "group": "Тесто (3 козунака)",
+      "items": [
+        {
+          "qty": "1",
+          "unit": "кг",
+          "name": "пшеничная мука",
+          "note": "высшего сорта, просеянная"
+        },
+        {
+          "qty": "400",
+          "unit": "мл",
+          "name": "тёплое молоко"
+        },
+        {
+          "qty": "6",
+          "unit": "шт.",
+          "name": "желтки"
+        },
+        {
+          "qty": "2",
+          "unit": "шт.",
+          "name": "целые яйца"
+        },
+        {
+          "qty": "250",
+          "unit": "г",
+          "name": "сахар"
+        },
+        {
+          "qty": "150",
+          "unit": "г",
+          "name": "сливочное масло",
+          "note": "растопленное и остуженное"
+        },
+        {
+          "qty": "100",
+          "unit": "мл",
+          "name": "подсолнечное масло"
+        },
+        {
+          "qty": "1",
+          "unit": "ч. л.",
+          "name": "соль"
+        },
+        {
+          "qty": "1",
+          "unit": "шт.",
+          "name": "лимон",
+          "note": "тёртая цедра"
+        },
+        {
+          "qty": "1",
+          "unit": "пакетик",
+          "name": "ванильный сахар"
+        },
+        {
+          "qty": "2",
+          "unit": "ст. л.",
+          "name": "ром",
+          "note": "по желанию"
+        }
+      ]
+    },
+    {
+      "group": "Начинка",
+      "items": [
+        {
+          "qty": "400",
+          "unit": "г",
+          "name": "грецкие орехи",
+          "note": "молотые"
+        },
+        {
+          "qty": "150",
+          "unit": "г",
+          "name": "сахар"
+        },
+        {
+          "qty": "3",
+          "unit": "ст. л.",
+          "name": "какао"
+        },
+        {
+          "qty": "150",
+          "unit": "мл",
+          "name": "горячее молоко"
+        },
+        {
+          "qty": "6",
+          "unit": "шт.",
+          "name": "белки",
+          "note": "оставшиеся от теста"
+        }
+      ]
+    },
+    {
+      "group": "Сверху",
+      "items": [
+        {
+          "qty": "1",
+          "unit": "шт.",
+          "name": "яйцо",
+          "note": "взбитое"
+        }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "Сделайте опару: растворите дрожжи в тёплом молоке с сахаром, добавьте муку и оставьте в тепле на 15 минут, пока не запенится.",
+      "minutes": 15
+    },
+    {
+      "text": "Взбейте желтки и яйца с сахаром, ванилью, лимонной цедрой и солью добела. Влейте тёплое молоко.",
+      "minutes": 10
+    },
+    {
+      "text": "Насыпьте муку в большую миску, сделайте углубление, влейте опару и яичную смесь и начинайте месить. Когда тесто соберётся, постепенно добавляйте сливочное и растительное масло и месите 20–30 минут, пока оно не перестанет липнуть к рукам и не появятся пузырьки.",
+      "minutes": 30
+    },
+    {
+      "text": "Накройте миску полотенцем и оставьте тесто в тепле, без сквозняков, на 1,5–2 часа, пока не увеличится вдвое.",
+      "minutes": 120
+    },
+    {
+      "text": "Приготовьте начинку: смешайте орехи с сахаром и какао, залейте горячим молоком и остудите. В конце взбейте белки в пену и аккуратно вмешайте.",
+      "minutes": 10
+    },
+    {
+      "text": "Разделите тесто на 6 частей. Раскатайте каждую в пласт толщиной в палец, смажьте начинкой и сверните рулетом. Перевейте по два рулета друг с другом.",
+      "minutes": 20
+    },
+    {
+      "text": "Уложите козунаки в 3 формы для кекса, смазанные маслом и застеленные пергаментом, заполнив их наполовину. Оставьте на расстойку на 45–60 минут, пока тесто почти не дойдёт до края формы.",
+      "minutes": 60
+    },
+    {
+      "text": "Смажьте взбитым яйцом. Выпекайте в разогретой до 170 °C духовке 45–50 минут. Если верх быстро румянится, накройте пергаментом. Зубочистка должна выходить сухой.",
+      "minutes": 50
+    },
+    {
+      "text": "Выньте из форм и остудите на решётке, положив набок, чтобы мякиш не осел.",
+      "minutes": 30
+    }
+  ],
+  "tips": [
+    "Все продукты должны быть комнатной температуры, а кухня тёплой, без открытых окон. Тесто для козунака не терпит сквозняков.",
+    "Масло на руки, а не лишняя мука: тесто должно остаться мягким. Избыток муки делает козунак жёстким.",
+    "Козунак режут на следующий день, когда мякиш устоится. Завёрнутый в полотенце и пакет, он остаётся мягким несколько дней."
+  ],
+  "mistakes": [
+    "Слишком горячее молоко на дрожжи: они погибают, и тесто не поднимается. Молоко должно быть лишь тёплым.",
+    "Мало вымешивали: козунак получается плотным и не тянется волокнами. Месите не менее 20 минут.",
+    "Форму заполнили доверху: тесто убегает, а середина остаётся сырой.",
+    "Слишком жидкая начинка: отходит от теста и оставляет пустоты. Ореховая масса должна быть как паста, а не как суп."
+  ],
+  "variants": [
+    {
+      "region": "вся Молдова",
+      "text": "С рахат-лукумом кубиками и изюмом, вымоченным в роме, вместо какао, или только с изюмом, без начинки."
+    },
+    {
+      "region": "Пасха",
+      "text": "Это же тесто используют для пасхи: дно и плетёный бортик, а в середине — сладкая творожная начинка."
+    }
+  ],
+  "storyHtml": "<p>Козунак у нас пекут на Рождество и на Пасху. <a href=\"https://www.moldpres.md/turism/descopera-moldova-cu-moldpres-obiceiuri-si-traditii-de-iarna-care-ne-fac-sarbatorile-mai-frumoase-i-atractive\">Moldpres</a> называет его среди рождественских блюд, а на Пасху он стоит на столе рядом с пасхой и красными яйцами; на второй день Пасхи крестники несут крёстным пасху и козунак (<a href=\"https://www.moldpres.md/rom/turism/descopera-moldova-cu-moldpres-cum-petrec-moldovenii-pastele\">Moldpres</a>).</p><p>Но это не многовековой рецепт. В перечне блюд реестра наследия <a href=\"https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala\">Министерства культуры</a> речь идёт о калачах и пасхе, а не о козунаке. Книга Татьяны Никулеску об истории козунака (Humanitas, 2024), согласно <a href=\"https://rosa.uniroma1.it/rosa05/romania_orientale/article/download/70/65/130\">рецензии в Romània Orientale</a>, показывает, что название появляется в записанном рецепте лишь около середины XIX века и что эта сдоба перешла со стола боярских домов на семейный стол. Словарь <a href=\"https://dexonline.ro/definitie/cozonac\">DEX</a> сравнивает слово с болгарским <em>kozunak</em>.</p>",
+  "sources": [
+    {
+      "name": "Moldpres: Descoperă Moldova – obiceiuri și tradiții de iarnă (masa de Crăciun)",
+      "url": "https://www.moldpres.md/turism/descopera-moldova-cu-moldpres-obiceiuri-si-traditii-de-iarna-care-ne-fac-sarbatorile-mai-frumoase-i-atractive"
+    },
+    {
+      "name": "Moldpres: Descoperă Moldova – Cum petrec moldovenii Paștele",
+      "url": "https://www.moldpres.md/rom/turism/descopera-moldova-cu-moldpres-cum-petrec-moldovenii-pastele"
+    },
+    {
+      "name": "Ministerul Culturii: Registrul patrimoniului cultural imaterial, Capitolul VII. Cunoștințe privind alimentația tradițională",
+      "url": "https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala"
+    },
+    {
+      "name": "E. Sava: recenzie la T. Niculescu, Delicioasa poveste a cozonacului românesc (Romània Orientale 37, 2024)",
+      "url": "https://rosa.uniroma1.it/rosa05/romania_orientale/article/download/70/65/130"
+    },
+    {
+      "name": "dexonline: cozonac (DEX '09)",
+      "url": "https://dexonline.ro/definitie/cozonac"
+    }
+  ],
+  "related": [
+    "painea-colacii-si-cozonacul-in-traditia-moldoveneasca",
+    "pasca-moldoveneasca-cu-branza",
+    "bucataria-moldoveneasca-istorie-feluri-traditii",
+    "cusma-lui-guguta",
+    "friptura-de-miel-la-cuptor",
+    "compot-de-fructe-uscate"
+  ]
+}

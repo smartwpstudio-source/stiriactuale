@@ -1,0 +1,165 @@
+{
+  "slug": "fasole-batuta-cu-ceapa-calita",
+  "title": "Fasole bătută cu ceapă călită, de post",
+  "description": "Fasole bătută cu usturoi și ceapă călită, gustarea de post de la masa din Ajunul Crăciunului: cantități pentru 8 porții, cât fierbe fasolea și cum o faci cremoasă.",
+  "updated": "2026-10-10",
+  "image": {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/retete/fasole-batuta-cu-ceapa-calita-8knO8RnP2p8Lhc9kBA7UeBmThE6Svl.jpg",
+    "credit": "Magnific (stoc)",
+    "alt": "Fasole bătută întinsă pe două felii de pâine neagră, pe un fund de lemn, lângă pesmeți din pâine albă și neagră"
+  },
+  "servings": 8,
+  "prepMinutes": 20,
+  "cookMinutes": 120,
+  "difficulty": "usor",
+  "fasting": true,
+  "course": "aperitive",
+  "region": "toată Moldova",
+  "occasions": [
+    "masa-de-craciun-in-moldova-bucate-si-retete",
+    "postul-craciunului-cand-incepe-si-cum-se-tine",
+    "postul-mare-cand-incepe-si-cum-se-tine",
+    "meniul-de-revelion-moldovenesc",
+    "ce-gatesti-in-post-meniu-pe-o-saptamana"
+  ],
+  "ingredients": [
+    {
+      "group": "Fasolea",
+      "items": [
+        {
+          "qty": "500",
+          "unit": "g",
+          "name": "fasole albă uscată"
+        },
+        {
+          "qty": "2",
+          "unit": "buc.",
+          "name": "foi de dafin"
+        },
+        {
+          "qty": "1 1/2",
+          "unit": "lingurițe",
+          "name": "sare",
+          "note": "și după gust"
+        },
+        {
+          "qty": "4",
+          "unit": "cățe",
+          "name": "usturoi",
+          "note": "pisate"
+        },
+        {
+          "qty": "60",
+          "unit": "ml",
+          "name": "ulei de floarea-soarelui"
+        }
+      ]
+    },
+    {
+      "group": "Ceapa călită",
+      "items": [
+        {
+          "qty": "3",
+          "unit": "buc.",
+          "name": "cepe mari",
+          "note": "cca 500 g, tăiate peștișori"
+        },
+        {
+          "qty": "80",
+          "unit": "ml",
+          "name": "ulei de floarea-soarelui"
+        },
+        {
+          "qty": "1",
+          "unit": "linguriță",
+          "name": "boia dulce",
+          "note": "opțional"
+        }
+      ]
+    },
+    {
+      "group": "La servire",
+      "items": [
+        {
+          "name": "pâine neagră sau mămăligă"
+        },
+        {
+          "name": "murături"
+        }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "Alege fasolea, spal-o și las-o la înmuiat 8–12 ore în multă apă rece."
+    },
+    {
+      "text": "Scurge fasolea, pune-o în apă rece proaspătă cu dafinul și fierbe-o la foc mic 1 oră–1 oră și jumătate, până se zdrobește ușor între degete. Pune sarea în ultimele 15 minute.",
+      "minutes": 90
+    },
+    {
+      "text": "Scurge fasolea și păstrează o cană din zeama în care a fiert. Scoate foile de dafin.",
+      "minutes": 5
+    },
+    {
+      "text": "Cât e caldă, bate fasolea cu blenderul sau cu zdrobitorul, adăugând usturoiul, uleiul în fir subțire și zeamă câte o lingură, până devine o pastă cremoasă. Gustă și potrivește sarea.",
+      "minutes": 10
+    },
+    {
+      "text": "Călește ceapa în ulei, la foc mic, 20–25 de minute, amestecând des, până devine aurie și moale. Presară boiaua la final și amestecă 30 de secunde.",
+      "minutes": 25
+    },
+    {
+      "text": "Întinde fasolea într-un castron sau pe un platou și pune deasupra ceapa călită cu uleiul ei.",
+      "minutes": 5
+    },
+    {
+      "text": "Servește fasolea rece sau călduță, cu pâine neagră sau mămăligă și murături."
+    }
+  ],
+  "tips": [
+    "Fasolea din recolta nouă fierbe mai repede. Cea veche poate avea nevoie de încă o jumătate de oră.",
+    "Bate fasolea cât e caldă: se face cremoasă mult mai ușor decât rece.",
+    "Ceapa capătă gust dulce doar la foc mic, călită încet, 20–25 de minute.",
+    "Fasolea bătută ține 3–4 zile la frigider, în borcan sau în castron acoperit."
+  ],
+  "mistakes": [
+    "Sare pusă la începutul fierberii: fasolea rămâne tare. Sărează în ultimele 15 minute.",
+    "Fasole fiartă prea puțin: pasta iese grunjoasă. Boabele trebuie să se zdrobească ușor între degete.",
+    "Ceapă călită la foc mare: se arde pe margini și dă gust amar.",
+    "Prea multă zeamă adăugată deodată: pasta curge. Pune zeama câte o lingură."
+  ],
+  "variants": [
+    {
+      "region": "ceapa",
+      "text": "Ceapa călită se pune deasupra, în strat, cu uleiul ei, sau o parte se amestecă direct în pastă."
+    },
+    {
+      "region": "cu boia",
+      "text": "La sfârșit, ceapa călită se poate presăra cu boia dulce, care dă culoare și gust."
+    }
+  ],
+  "storyHtml": "<p>Masa de post din Ajunul Crăciunului include fasolea, alături de colivă, plăcintele cu varză sau cartofi, sarmalele de post și compotul de fructe uscate, scrie agenția <a href=\"https://www.moldpres.md/rom/cultura/crestinii-ortodocsi-sarbatoresc-ajunul-craciunului-pe-stil-vechi-traditii-si-spirit-de-sarbatoare-in-casele-moldovenilor\">Moldpres</a>.</p><p>Registrul patrimoniului cultural imaterial al <a href=\"https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala\">Ministerului Culturii</a> trece fierturile din fasole, legume și verdețuri între bucatele de post.</p><p>Pentru zilele de post, Agenția Națională pentru Sănătate Publică recomandă proteinele de origine vegetală: leguminoase, nuci, semințe și ciuperci (<a href=\"https://ansp.md/recomandarile-ansp-pentru-o-alimentatie-echilibrata-in-perioada-postului-mare/\">ANSP, 2025</a>). Fasolea bătută cu pâine sau cu mămăligă e unul dintre cele mai simple feluri de a le pune pe masă.</p>",
+  "sources": [
+    {
+      "name": "Moldpres: Ajunul Crăciunului pe stil vechi, masa de post cu 12 feluri",
+      "url": "https://www.moldpres.md/rom/cultura/crestinii-ortodocsi-sarbatoresc-ajunul-craciunului-pe-stil-vechi-traditii-si-spirit-de-sarbatoare-in-casele-moldovenilor"
+    },
+    {
+      "name": "Ministerul Culturii: Registrul patrimoniului cultural imaterial, Capitolul VII. Cunoștințe privind alimentația tradițională",
+      "url": "https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala"
+    },
+    {
+      "name": "Agenția Națională pentru Sănătate Publică: recomandări pentru o alimentație echilibrată în perioada Postului Mare (2025)",
+      "url": "https://ansp.md/recomandarile-ansp-pentru-o-alimentatie-echilibrata-in-perioada-postului-mare/"
+    }
+  ],
+  "related": [
+    "bucataria-de-post-in-moldova",
+    "sarmale-de-post-cu-orez-si-ciuperci",
+    "bucataria-moldoveneasca-istorie-feluri-traditii",
+    "placinte-cu-varza-de-post",
+    "zacusca-de-vinete",
+    "mamaliga-fara-cocoloase-cum-o-faci-corect"
+  ]
+}

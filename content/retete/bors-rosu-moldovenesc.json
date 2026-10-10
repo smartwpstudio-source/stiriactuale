@@ -1,0 +1,215 @@
+{
+  "slug": "bors-rosu-moldovenesc",
+  "title": "Borș roșu moldovenesc cu sfeclă, varză și carne de porc",
+  "description": "Rețeta de borș roșu moldovenesc cu sfeclă, varză și carne de porc, acrit cu borș: cantități pentru 8 porții, ordinea legumelor și cum îi păstrezi culoarea.",
+  "updated": "2026-10-10",
+  "image": {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/retete/bors-rosu-moldovenesc-hfPGqNMFPl9PFU0fel0NFgLGCtEH86.jpg",
+    "credit": "Magnific (stoc)",
+    "alt": "Borș roșu cu sfeclă într-un castron verde-gri, cu o lingură de smântână și ceapă verde deasupra, lângă boluri cu smântână, mărar și ceapă verde, usturoi și felii de pâine"
+  },
+  "servings": 8,
+  "prepMinutes": 30,
+  "cookMinutes": 130,
+  "difficulty": "mediu",
+  "fasting": false,
+  "course": "ciorbe",
+  "region": "toată Moldova",
+  "ingredients": [
+    {
+      "group": "Carnea și supa",
+      "items": [
+        {
+          "qty": "800",
+          "unit": "g",
+          "name": "carne de porc cu os",
+          "note": "coaste sau ceafă; merge și carne de vită"
+        },
+        {
+          "qty": "3",
+          "unit": "l",
+          "name": "apă rece"
+        },
+        {
+          "qty": "1",
+          "unit": "linguriță",
+          "name": "sare",
+          "note": "și după gust"
+        }
+      ]
+    },
+    {
+      "group": "Legumele",
+      "items": [
+        {
+          "qty": "2",
+          "unit": "buc.",
+          "name": "sfecle roșii mijlocii",
+          "note": "cca 400 g, date pe răzătoarea mare"
+        },
+        {
+          "qty": "400",
+          "unit": "g",
+          "name": "varză albă",
+          "note": "tăiată fideluță"
+        },
+        {
+          "qty": "4",
+          "unit": "buc.",
+          "name": "cartofi",
+          "note": "cca 500 g, tăiați cuburi"
+        },
+        {
+          "qty": "1",
+          "unit": "buc.",
+          "name": "ceapă",
+          "note": "tocată"
+        },
+        {
+          "qty": "1",
+          "unit": "buc.",
+          "name": "morcov",
+          "note": "dat pe răzătoare"
+        },
+        {
+          "qty": "1",
+          "unit": "buc.",
+          "name": "ardei gras",
+          "note": "fâșii"
+        },
+        {
+          "qty": "2",
+          "unit": "linguri",
+          "name": "pastă de roșii"
+        },
+        {
+          "qty": "3",
+          "unit": "linguri",
+          "name": "ulei de floarea-soarelui"
+        },
+        {
+          "qty": "2",
+          "unit": "buc.",
+          "name": "foi de dafin"
+        }
+      ]
+    },
+    {
+      "group": "Acrirea și verdeața",
+      "items": [
+        {
+          "qty": "500",
+          "unit": "ml",
+          "name": "borș acru",
+          "note": "sau zeama de la o lămâie"
+        },
+        {
+          "qty": "1",
+          "unit": "legătură",
+          "name": "mărar și pătrunjel",
+          "note": "tocate"
+        },
+        {
+          "qty": "2",
+          "unit": "cățe",
+          "name": "usturoi",
+          "note": "opțional, pisate"
+        },
+        {
+          "qty": "200",
+          "unit": "g",
+          "name": "smântână",
+          "note": "la servire"
+        }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "Pune carnea în apa rece și adu-o încet la fierbere. Ia spuma, adaugă sarea și fierbe la foc mic, cu capacul puțin tras, 1 oră și jumătate (carnea de vită are nevoie de 2 ore).",
+      "minutes": 90
+    },
+    {
+      "text": "Între timp, călește sfecla în 1 lingură de ulei 5 minute. Adaugă o lingură de borș acru sau de zeamă de lămâie, pasta de roșii și 100 ml de supă din oală și înăbușă la foc mic 15 minute.",
+      "minutes": 20
+    },
+    {
+      "text": "Separat, călește ceapa, morcovul și ardeiul în restul de ulei, la foc mic, până se înmoaie.",
+      "minutes": 10
+    },
+    {
+      "text": "Pune cartofii în supă și fierbe-i 10 minute.",
+      "minutes": 10
+    },
+    {
+      "text": "Adaugă varza și fierbe încă 10 minute.",
+      "minutes": 10
+    },
+    {
+      "text": "Pune în oală sfecla înăbușită, legumele călite și foile de dafin. Lasă la foc mic 10 minute, fără clocot puternic.",
+      "minutes": 10
+    },
+    {
+      "text": "Fierbe borșul acru separat, ia spuma și toarnă-l în oală. Lasă 2–3 minute, apoi gustă și potrivește sarea.",
+      "minutes": 5
+    },
+    {
+      "text": "Stinge focul, adaugă verdeața și usturoiul, acoperă și lasă borșul să stea 15 minute. Servește-l cu smântână și pâine.",
+      "minutes": 15
+    }
+  ],
+  "tips": [
+    "Sfecla călită separat, cu puțină zeamă de lămâie sau borș acru, își păstrează culoarea roșie. Fiartă direct în supă devine maronie.",
+    "Borșul e mai bun a doua zi: gusturile se leagă, iar culoarea rămâne dacă îl încălzești încet, fără să clocotească.",
+    "Scoate carnea fiartă, desprinde-o de pe os și pune-o înapoi în bucăți mici: se mănâncă mai ușor.",
+    "Dacă folosești varză murată în loc de proaspătă, pune-o odată cu cartofii și sărează mai puțin."
+  ],
+  "mistakes": [
+    "Clocot puternic după ce ai pus borșul acru și sfecla: supa se tulbură și își pierde culoarea.",
+    "Borș acru pus nefiert: face spumă și tulbură supa. Fierbe-l separat și ia spuma.",
+    "Varză pusă prea devreme: se face terci. Are nevoie de 10–15 minute, nu mai mult.",
+    "Sare multă la început: supa scade, iar borșul acru aduce și el gust. Potrivește sarea la sfârșit."
+  ],
+  "variants": [
+    {
+      "region": "borș scăzut",
+      "text": "Registrul patrimoniului trece între ciorbe borșul scăzut cu varză și carne de porc: mai gros, cu mai puțină zeamă."
+    },
+    {
+      "region": "post",
+      "text": "Borșul gros, din crupe de porumb și varză acră, este una dintre bucatele de post din registru. Varianta roșie de post se face fără carne, cu supă de legume și ulei."
+    },
+    {
+      "region": "acrirea",
+      "text": "Tradițional, cu borș acru din tărâțe de grâu, cu făină de porumb și pâine de secară. Azi mulți folosesc zeamă de lămâie sau puțin oțet."
+    }
+  ],
+  "storyHtml": "<p>La noi, cuvântul <em>borș</em> are două înțelesuri: lichidul acru obținut din tărâțe fermentate și supa acrită cu el. <a href=\"https://dexonline.ro/definitie/bor%C8%99\">DEX</a> le dă pe amândouă și arată că numele vine din rusă și ucraineană (<em>borșci</em>).</p><p>Registrul patrimoniului cultural imaterial al <a href=\"https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala\">Ministerului Culturii</a> scrie că zeama, borșul și ciorba se acresc cu borș și se servesc „ca prim fel de bucate”. Între ciorbe trece borșul scăzut cu varză și carne de porc, iar între bucatele de post, borșul gros, din crupe de porumb și varză acră.</p><p>Borșul acru, ingredientul care dă numele supei, se face din tărâțe de grâu, făină de porumb și pâine de secară, opărite și ținute la cald până se acresc, au arătat cercetătoarele <a href=\"https://doi.org/10.52603/9789975333788.26\">Universității Tehnice a Moldovei</a>. Un alt <a href=\"https://repository.utm.md/handle/5014/26852\">studiu UTM</a> leagă diversitatea bucătăriei moldovenești de etniile care trăiesc aici, „în special ucrainenii, găgăuzii și bulgarii”.</p>",
+  "sources": [
+    {
+      "name": "Ministerul Culturii: Registrul patrimoniului cultural imaterial, Capitolul VII. Cunoștințe privind alimentația tradițională",
+      "url": "https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala"
+    },
+    {
+      "name": "dexonline: borș (DEX '09)",
+      "url": "https://dexonline.ro/definitie/bor%C8%99"
+    },
+    {
+      "name": "E. Covaliov, O. Gutium, C. Babcenco, V. Cazac: Aspecte tradiționale și tehnologice ale borșului acru (2021)",
+      "url": "https://doi.org/10.52603/9789975333788.26"
+    },
+    {
+      "name": "N. Suhodol, V. Cazac, C. Babcenco: Similitudini ale tradițiilor gastronomice găgăuze cu cele din bucătăria moldovenească (2023)",
+      "url": "https://repository.utm.md/handle/5014/26852"
+    }
+  ],
+  "related": [
+    "bucataria-moldoveneasca-istorie-feluri-traditii",
+    "zeama-de-gaina-cu-taitei-de-casa",
+    "ciorba-de-perisoare",
+    "bucataria-de-post-in-moldova",
+    "zeama-de-peste",
+    "cum-faci-borsul-acru-de-tarate-acasa",
+    "legume-de-sezon-in-moldova-ce-gatesti-in-fiecare-luna"
+  ]
+}

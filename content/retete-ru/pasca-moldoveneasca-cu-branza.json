@@ -1,0 +1,225 @@
+{
+  "slug": "pasca-moldoveneasca-cu-branza",
+  "title": "Молдавская пасха с творогом и изюмом",
+  "description": "Молдавская пасха с творогом и изюмом: дрожжевое тесто, плетёный бортик, крест сверху, начинка, которая не трескается, и время выпечки. На форму 26 см.",
+  "updated": "2026-10-10",
+  "image": {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/retete/pasca-moldoveneasca-cu-branza-wYXjHSozMTvROFb1iBbDRWsXsqAuvg.jpg",
+    "credit": "Magnific (stoc)",
+    "alt": "Кусок пасхи на белой тарелке, между слоями теста творожная начинка с изюмом; сзади круглая пасха с плетёным бортиком, крашеные жёлтые, голубые и красные яйца и белые цветы вишни"
+  },
+  "servings": 12,
+  "prepMinutes": 180,
+  "cookMinutes": 55,
+  "difficulty": "dificil",
+  "fasting": false,
+  "course": "deserturi",
+  "region": "вся Молдова",
+  "occasions": [
+    "pastele-traditii-in-moldova",
+    "pastele-blajinilor-traditii-si-pomenirea-mortilor",
+    "meniul-de-paste-in-moldova",
+    "ce-se-imparte-de-pomana-in-moldova"
+  ],
+  "ingredients": [
+    {
+      "group": "Тесто (одна пасха 26 см)",
+      "items": [
+        {
+          "qty": "600",
+          "unit": "г",
+          "name": "пшеничная мука",
+          "note": "просеянная"
+        },
+        {
+          "qty": "25",
+          "unit": "г",
+          "name": "свежие дрожжи",
+          "note": "или 7 г сухих"
+        },
+        {
+          "qty": "250",
+          "unit": "мл",
+          "name": "тёплое молоко"
+        },
+        {
+          "qty": "3",
+          "unit": "шт.",
+          "name": "желтки"
+        },
+        {
+          "qty": "1",
+          "unit": "шт.",
+          "name": "целое яйцо"
+        },
+        {
+          "qty": "120",
+          "unit": "г",
+          "name": "сахар"
+        },
+        {
+          "qty": "80",
+          "unit": "г",
+          "name": "сливочное масло",
+          "note": "растопленное и остуженное"
+        },
+        {
+          "qty": "50",
+          "unit": "мл",
+          "name": "подсолнечное масло"
+        },
+        {
+          "qty": "1/2",
+          "unit": "ч. л.",
+          "name": "соль"
+        },
+        {
+          "qty": "1",
+          "unit": "шт.",
+          "name": "лимон",
+          "note": "тёртая цедра"
+        }
+      ]
+    },
+    {
+      "group": "Начинка",
+      "items": [
+        {
+          "qty": "800",
+          "unit": "г",
+          "name": "творог (brânză de vaci)",
+          "note": "посуше, протёртый через сито"
+        },
+        {
+          "qty": "3",
+          "unit": "шт.",
+          "name": "яйца"
+        },
+        {
+          "qty": "150",
+          "unit": "г",
+          "name": "сахар"
+        },
+        {
+          "qty": "150",
+          "unit": "г",
+          "name": "сметана"
+        },
+        {
+          "qty": "2",
+          "unit": "ст. л.",
+          "name": "манная крупа"
+        },
+        {
+          "qty": "100",
+          "unit": "г",
+          "name": "изюм",
+          "note": "замоченный и обсушенный"
+        },
+        {
+          "qty": "1",
+          "unit": "пакетик",
+          "name": "ванильный сахар"
+        }
+      ]
+    },
+    {
+      "group": "Сверху",
+      "items": [
+        {
+          "qty": "1",
+          "unit": "шт.",
+          "name": "яйцо",
+          "note": "взбитое с ложкой молока"
+        }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "Растворите дрожжи в 100 мл тёплого молока с чайной ложкой сахара и столовой ложкой муки. Оставьте в тепле на 15 минут, пока не запенится.",
+      "minutes": 15
+    },
+    {
+      "text": "Взбейте желтки и яйцо с сахаром, солью и лимонной цедрой. Насыпьте муку в миску, добавьте опару, яйца и остальное молоко и месите. Постепенно добавьте сливочное и растительное масло и месите 15–20 минут, пока тесто не станет мягким и не перестанет липнуть.",
+      "minutes": 25
+    },
+    {
+      "text": "Накройте тесто и оставьте в тепле на 1,5 часа, пока не увеличится вдвое.",
+      "minutes": 90
+    },
+    {
+      "text": "Приготовьте начинку: смешайте творог с яйцами, сахаром, ванилью, сметаной и манкой, затем добавьте изюм. Масса должна быть густой, не текучей.",
+      "minutes": 10
+    },
+    {
+      "text": "Возьмите треть теста и раскатайте круглый пласт по размеру дна формы 26 см, смазанной и застеленной пергаментом. Из остального сделайте три длинных жгута и заплетите косу. Уложите её по краю пласта, как калач, и слегка прижмите.",
+      "minutes": 20
+    },
+    {
+      "text": "Выложите начинку в середину. Из оставшегося теста сделайте две тонкие полоски и положите их крестом на начинку, подсунув концы под косу.",
+      "minutes": 5
+    },
+    {
+      "text": "Дайте пасхе подняться ещё 30 минут под полотенцем. Смажьте тесто, но не творог, взбитым яйцом.",
+      "minutes": 30
+    },
+    {
+      "text": "Выпекайте пасху при 170 °C 50–55 минут, пока тесто не зарумянится, а начинка в центре не перестанет дрожать. Если верх быстро румянится, накройте пергаментом.",
+      "minutes": 55
+    },
+    {
+      "text": "Дайте пасхе остыть в форме не меньше часа, чтобы начинка не треснула, затем выньте.",
+      "minutes": 60
+    }
+  ],
+  "tips": [
+    "Слишком влажный творог откидывают на ночь на марлю. Водянистая начинка размачивает тесто снизу и не схватывается.",
+    "Протёртый через сито творог даёт нежную начинку без крупинок.",
+    "Пасху для освящения в ночь Воскресения пекут в Великий четверг или субботу. В прохладном месте, накрытой, она хранится несколько дней."
+  ],
+  "mistakes": [
+    "Слишком много или слишком жидкой начинки: она вытекает и трескается. Манка и сухой творог её держат.",
+    "Слишком горячая духовка: бортик подгорает, а творог в середине остаётся сырым.",
+    "Пасху вынули из формы горячей: начинка ломается и оседает.",
+    "Тесто недостаточно поднялось: пасха получается низкой и твёрдой. Дайте ему увеличиться вдвое."
+  ],
+  "variants": [
+    {
+      "region": "вся Молдова",
+      "text": "Без начинки: пасха-хлеб из сдобного теста, украшенная крестами, цветами или косичками из теста."
+    },
+    {
+      "region": "Радоница (Паштеле Блажинилор)",
+      "text": "Пасху несут на кладбище и раздают в помин вместе с красными яйцами и калачами."
+    }
+  ],
+  "storyHtml": "<p>Пасха — хлеб Светлого Воскресения; слово происходит от латинского <em>pascha</em>, согласно <a href=\"https://dexonline.ro/definitie/pasc%C4%83\">DEX</a>. Реестр нематериального культурного наследия <a href=\"https://mc.gov.md/ro/content/capitolul-v-sarbatorile-obiceiurile-si-ritualurile\">Министерства культуры</a> называет «выпечку пасхи на Страстной неделе» среди пасхальных обычаев. Глава о <a href=\"https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala\">традиционном питании</a> добавляет, что пасху освящают в ночь Воскресения, едят в первые дни Пасхи и на Радоницу (Паштеле Блажинилор) и пекут вплоть до Троицы.</p><p>Пасха не только для семейного стола. На второй день Пасхи крестники идут к крёстным с пасхой, козунаком и красными яйцами, пишет <a href=\"https://www.moldpres.md/rom/turism/descopera-moldova-cu-moldpres-cum-petrec-moldovenii-pastele\">Moldpres</a>.</p>",
+  "sources": [
+    {
+      "name": "Ministerul Culturii: Registrul patrimoniului cultural imaterial, Capitolul V. Sărbătorile, obiceiurile și ritualurile",
+      "url": "https://mc.gov.md/ro/content/capitolul-v-sarbatorile-obiceiurile-si-ritualurile"
+    },
+    {
+      "name": "Ministerul Culturii: Registrul patrimoniului cultural imaterial, Capitolul VII. Cunoștințe privind alimentația tradițională",
+      "url": "https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala"
+    },
+    {
+      "name": "Moldpres: Descoperă Moldova – Cum petrec moldovenii Paștele",
+      "url": "https://www.moldpres.md/rom/turism/descopera-moldova-cu-moldpres-cum-petrec-moldovenii-pastele"
+    },
+    {
+      "name": "dexonline: pască (DEX '09)",
+      "url": "https://dexonline.ro/definitie/pasc%C4%83"
+    }
+  ],
+  "related": [
+    "pastele-traditii-in-moldova",
+    "cozonac-moldovenesc",
+    "painea-colacii-si-cozonacul-in-traditia-moldoveneasca",
+    "pastele-blajinilor-traditii-si-pomenirea-mortilor",
+    "friptura-de-miel-la-cuptor",
+    "vertute-cu-branza-la-cuptor",
+    "cum-alegi-branza-la-piata"
+  ]
+}

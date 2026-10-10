@@ -1,0 +1,188 @@
+{
+  "slug": "friptura-de-miel-la-cuptor",
+  "title": "Friptură de miel la cuptor cu cartofi, pentru masa de Paști",
+  "description": "Friptură de miel la cuptor cu usturoi, cimbru și cartofi, pentru masa de Paști: cantități pentru 6 porții, cât o ții la marinat, temperaturi și greșelile frecvente.",
+  "updated": "2026-10-10",
+  "image": {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/retete/friptura-de-miel-la-cuptor-3MHQRYonqiVEyS8AUVyUduB1yxBwwA.jpg",
+    "credit": "Magnific (stoc)",
+    "alt": "Bucăți de miel la cuptor cu cartofi întregi rumeniți, foi de dafin și pătrunjel pe o farfurie albastră, pe o față de masă în carouri roșii"
+  },
+  "servings": 6,
+  "prepMinutes": 30,
+  "cookMinutes": 140,
+  "difficulty": "usor",
+  "fasting": false,
+  "course": "fel-principal",
+  "region": "toată Moldova",
+  "occasions": [
+    "pastele-traditii-in-moldova",
+    "meniul-de-paste-in-moldova"
+  ],
+  "ingredients": [
+    {
+      "group": "Carnea și marinata",
+      "items": [
+        {
+          "qty": "2",
+          "unit": "kg",
+          "name": "carne de miel cu os",
+          "note": "pulpă, spată sau coaste, în bucăți mari"
+        },
+        {
+          "qty": "1",
+          "unit": "căpățână",
+          "name": "usturoi",
+          "note": "pisat"
+        },
+        {
+          "qty": "2",
+          "unit": "lingurițe",
+          "name": "cimbru uscat",
+          "note": "sau o legătură de cimbru proaspăt"
+        },
+        {
+          "qty": "1",
+          "unit": "lingură",
+          "name": "sare",
+          "note": "cca 15 g"
+        },
+        {
+          "qty": "1",
+          "unit": "linguriță",
+          "name": "piper negru măcinat"
+        },
+        {
+          "qty": "1",
+          "unit": "linguriță",
+          "name": "boia dulce"
+        },
+        {
+          "qty": "4",
+          "unit": "linguri",
+          "name": "ulei de floarea-soarelui"
+        }
+      ]
+    },
+    {
+      "group": "În tavă",
+      "items": [
+        {
+          "qty": "1",
+          "unit": "kg",
+          "name": "cartofi",
+          "note": "în sferturi"
+        },
+        {
+          "qty": "2",
+          "unit": "buc.",
+          "name": "cepe",
+          "note": "felii groase"
+        },
+        {
+          "qty": "3",
+          "unit": "buc.",
+          "name": "foi de dafin"
+        },
+        {
+          "qty": "200",
+          "unit": "ml",
+          "name": "vin alb sec"
+        },
+        {
+          "qty": "200",
+          "unit": "ml",
+          "name": "apă"
+        }
+      ]
+    },
+    {
+      "group": "La servire",
+      "items": [
+        {
+          "qty": "1",
+          "unit": "legătură",
+          "name": "ceapă verde"
+        },
+        {
+          "name": "salată verde și vin roșu"
+        }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "Spală carnea, șterge-o bine și taie grăsimea groasă și pielițele. Dacă bucățile sunt foarte mari, taie-le pe încheieturi.",
+      "minutes": 15
+    },
+    {
+      "text": "Pisează usturoiul cu sarea, apoi amestecă-l cu piperul, boiaua, cimbrul și uleiul. Unge carnea pe toate părțile și las-o la rece cel puțin 2 ore, cel mai bine peste noapte.",
+      "minutes": 120
+    },
+    {
+      "text": "Încinge cuptorul la 180 °C. Pune cartofii și ceapa în tavă, sărează-i puțin, așază carnea deasupra, adaugă dafinul și toarnă vinul și apa.",
+      "minutes": 10
+    },
+    {
+      "text": "Acoperă tava cu folie sau cu capac și coace 1 oră și jumătate.",
+      "minutes": 90
+    },
+    {
+      "text": "Scoate folia, întoarce bucățile și stropește-le cu sosul din tavă. Mai coace 30–40 de minute, la 190–200 °C, până se rumenesc și carnea se desprinde ușor de pe os.",
+      "minutes": 40
+    },
+    {
+      "text": "Lasă friptura 10 minute sub folie, apoi servește-o cu cartofii din tavă, ceapă verde, salată verde și un pahar de vin roșu.",
+      "minutes": 10
+    }
+  ],
+  "tips": [
+    "Carnea cu os (pulpă, spată, coaste) rămâne mai suculentă decât cea dezosată.",
+    "Marinata ținută peste noapte la rece pătrunde mai bine decât două ore.",
+    "Prima oră și jumătate sub folie face carnea fragedă; rumeneala vine la sfârșit, fără folie.",
+    "Stropește carnea cu sosul din tavă de 2–3 ori cât stă fără folie, ca să nu se usuce."
+  ],
+  "mistakes": [
+    "Friptură lăsată descoperită de la început: se usucă la suprafață înainte să se înmoaie înăuntru.",
+    "Grăsimea groasă și pielițele lăsate pe carne: dau gust de seu. Taie-le înainte de marinat.",
+    "Carnea tăiată imediat ce iese din cuptor: își pierde sucul. Las-o 10 minute sub folie.",
+    "Cartofi tăiați prea mărunt: în două ore se fac terci. Pune-i în sferturi sau întregi, dacă sunt mici."
+  ],
+  "variants": [
+    {
+      "region": "sudul Moldovei",
+      "text": "Registrul patrimoniului trece între bucatele sudului mielul copt în pământ."
+    },
+    {
+      "region": "sud-vestul Moldovei",
+      "text": "Din carnea de miel se face și ciorbă, pe care registrul o trece la sud-vest."
+    },
+    {
+      "region": "la tigaie",
+      "text": "Registrul mai păstrează rețetele cărnii de miel prăjite la tigaie: bucăți mici, rumenite în grăsime, apoi înăbușite cu usturoi."
+    }
+  ],
+  "storyHtml": "<p>La masa de Paști din Moldova nu lipsesc pasca, cozonacul, ouăle roșii și mielul copt la cuptor, alături de vin roșu, scrie agenția <a href=\"https://www.moldpres.md/rom/societate/crestinii-ortodocsi-sarbatoresc-sfintele-pasti-1\">Moldpres</a>.</p><p>Registrul patrimoniului cultural imaterial al <a href=\"https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala\">Ministerului Culturii</a> păstrează mai multe feluri de a găti mielul: rețetele cărnii de miel prăjite la tigaie, mielul copt în pământ, specific sudului, și ciorba cu carne de miel, din sud-vest.</p><p>În sud, găgăuzii și bulgarii fac din carne de oaie sau de miel kaurma, servită caldă sau rece, arată un <a href=\"https://repository.utm.md/handle/5014/26852\">studiu al Universității Tehnice a Moldovei</a>.</p>",
+  "sources": [
+    {
+      "name": "Moldpres: Creștinii ortodocși sărbătoresc Sfintele Paști (2026)",
+      "url": "https://www.moldpres.md/rom/societate/crestinii-ortodocsi-sarbatoresc-sfintele-pasti-1"
+    },
+    {
+      "name": "Ministerul Culturii: Registrul patrimoniului cultural imaterial, Capitolul VII. Cunoștințe privind alimentația tradițională",
+      "url": "https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala"
+    },
+    {
+      "name": "N. Suhodol, V. Cazac, C. Babcenco: Similitudini ale tradițiilor gastronomice găgăuze cu cele din bucătăria moldovenească (2023)",
+      "url": "https://repository.utm.md/handle/5014/26852"
+    }
+  ],
+  "related": [
+    "bucataria-moldoveneasca-istorie-feluri-traditii",
+    "bucataria-gagauza-si-bulgara-din-sudul-moldovei",
+    "mesele-de-sarbatori-stomacul-ficatul-si-bolile-cronice",
+    "placinte-cu-branza-la-tigaie",
+    "pasca-moldoveneasca-cu-branza",
+    "cozonac-moldovenesc"
+  ]
+}

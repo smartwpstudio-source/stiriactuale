@@ -8,6 +8,7 @@ import { COUNTRY_NAMES, RAION_NAMES } from "../../src/lib/content/geo";
 import { sanitizeBody } from "../../src/lib/content/sanitize";
 import { COMPLAINT_MODELS, loadComplaintModel } from "../../src/lib/complaint-models";
 import { AUTHORS } from "../../src/lib/content/analyses";
+import { COURSES, DIFFICULTIES } from "../../src/lib/content/recipes";
 
 const ROOT = path.join(import.meta.dirname, "..", "..", "content");
 // surse oficiale: instituții de stat MD (*.gov.md) + câteva cu alt domeniu
@@ -178,6 +179,71 @@ async function main() {
     checkSources(file, a.sources, 2, false);
     if (/[şţŞŢ]/.test(JSON.stringify(a))) fail(file, "ş/ţ cu sedilă");
   }
+
+  // rețetele (docs/cloud/gospodarie-bucatarie-turism.md): RO + RU obligatoriu, același slug și aceleași cantități
+  const recipes = { ro: await readJson(path.join(ROOT, "retete")), ru: await readJson(path.join(ROOT, "retete-ru")) };
+  const linkable = new Set([...roSlugs, ...recipes.ro.map((x) => x.f.slice(0, -5))]);
+  const qtys = (r: { ingredients?: { items?: { qty?: string }[] }[] }) =>
+    JSON.stringify((r.ingredients ?? []).flatMap((g) => (g.items ?? []).map((i) => i.qty ?? "")));
+  const roQty = new Map<string, string>();
+  for (const lang of ["ro", "ru"] as const) {
+    for (const { f, data: r } of recipes[lang]) {
+      if (!r) continue;
+      const file = `${lang === "ro" ? "retete" : "retete-ru"}/${f}`;
+      if (r.slug !== f.slice(0, -5) || !/^[a-z0-9]+(-[a-z0-9]+)*$/.test(r.slug)) fail(file, "slug invalid sau diferit de numele fișierului");
+      if (typeof r.title !== "string" || r.title.length < 20 || r.title.length > 110) fail(file, "titlu 20-110 caractere");
+      if (typeof r.description !== "string" || r.description.length < 110 || r.description.length > 175) fail(file, "description 110-175 caractere");
+      checkDate(file, r.updated);
+      const img = r.image ?? {};
+      if (!/^https:\/\/[a-z0-9]+\.public\.blob\.vercel-storage\.com\//.test(String(img.url)) || !img.credit || !img.alt) {
+        fail(file, "image: url din Vercel Blob, credit și alt obligatorii");
+      }
+      for (const k of ["servings", "prepMinutes", "cookMinutes"]) {
+        if (!Number.isInteger(r[k]) || r[k] < (k === "servings" ? 1 : 0)) fail(file, `${k}: număr întreg`);
+      }
+      if (!(r.difficulty in DIFFICULTIES)) fail(file, `difficulty necunoscut: ${r.difficulty}`);
+      if (!(r.course in COURSES)) fail(file, `course necunoscut: ${r.course}`);
+      if (typeof r.fasting !== "boolean") fail(file, "fasting: true/false");
+      if (r.region !== undefined && typeof r.region !== "string") fail(file, "region: text");
+      const groups = r.ingredients as { group?: unknown; items?: { qty?: unknown; unit?: unknown; name?: unknown; note?: unknown }[] }[];
+      if (!Array.isArray(groups) || groups.some((g) => !Array.isArray(g.items) || (g.group !== undefined && typeof g.group !== "string"))) {
+        fail(file, "ingredients: [{ group?, items: [...] }]");
+      } else {
+        const items = groups.flatMap((g) => g.items ?? []);
+        if (items.length < 3) fail(file, "minim 3 ingrediente");
+        if (items.some((i) => typeof i.name !== "string" || !i.name || [i.qty, i.unit, i.note].some((x) => x !== undefined && typeof x !== "string"))) {
+          fail(file, "ingredient invalid (name obligatoriu; qty, unit, note text)");
+        }
+      }
+      const steps = r.steps as { text?: unknown; minutes?: unknown }[];
+      if (!Array.isArray(steps) || steps.length < 3) fail(file, "minim 3 pași");
+      else if (steps.some((s) => typeof s.text !== "string" || !s.text || (s.minutes !== undefined && !Number.isInteger(s.minutes)))) fail(file, "pas invalid");
+      for (const k of ["tips", "mistakes"]) {
+        if (r[k] !== undefined && (!Array.isArray(r[k]) || r[k].some((x: unknown) => typeof x !== "string" || !x))) fail(file, `${k}: listă de texte`);
+      }
+      if (r.variants !== undefined && (!Array.isArray(r.variants) || r.variants.some((v: { region?: unknown; text?: unknown }) => !v.region || !v.text))) {
+        fail(file, "variants: [{ region, text }]");
+      }
+      for (const k of ["occasions", "related"]) {
+        if (r[k] === undefined) continue;
+        if (!Array.isArray(r[k])) fail(file, `${k}: listă de slug-uri`);
+        else for (const s of r[k]) if (!linkable.has(s)) fail(file, `${k}: nu există ghid sau rețetă „${s}”`);
+      }
+      if (r.storyHtml !== undefined) {
+        const story = String(r.storyHtml);
+        if (/<h1|<script|<style|<iframe|style=|onclick|<img/i.test(story)) fail(file, "storyHtml: HTML nepermis");
+        if (sanitizeBody(story).length < story.length * 0.97) fail(file, "storyHtml pierde conținut la sanitizare");
+      }
+      checkSources(file, r.sources, 1, false);
+      if (/[şţŞŢ]/.test(JSON.stringify(r))) fail(file, "ş/ţ cu sedilă");
+      if (lang === "ro") roQty.set(r.slug, qtys(r));
+      else if (!roQty.has(r.slug)) fail(file, "nu există rețeta românească cu același slug");
+      else if (roQty.get(r.slug) !== qtys(r)) fail(file, "cantitățile (qty) diferă de rețeta românească");
+      if (lang === "ru" && !/[а-яё]/i.test(r.title)) fail(file, "textul nu e în rusă");
+    }
+  }
+  const ruRecipes = new Set(recipes.ru.map((x) => x.f.slice(0, -5)));
+  for (const slug of roQty.keys()) if (!ruRecipes.has(slug)) fail(`retete/${slug}.json`, "lipsește varianta rusă în content/retete-ru/");
 
   // modelele de reclamații (/modele-reclamatii/) vin din secțiunea „Model” a ghidului
   for (const m of COMPLAINT_MODELS) {

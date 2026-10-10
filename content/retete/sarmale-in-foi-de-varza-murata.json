@@ -1,0 +1,239 @@
+{
+  "slug": "sarmale-in-foi-de-varza-murata",
+  "title": "Sarmale în foi de varză murată, ca la moldoveni",
+  "description": "Rețeta de sarmale moldovenești mici în foi de varză murată: cantități testate, cum le învelești, cât fierb, greșelile frecvente și variantele pe regiuni.",
+  "updated": "2026-10-10",
+  "image": {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/retete/sarmale-in-foi-de-varza-murata-hu3j152EEtq6bHkm2dppXDZ47wkvLj.jpg",
+    "credit": "Magnific (stoc)",
+    "alt": "Sarmale mici în foi de varză, într-un castron de lut cu frunze de pătrunjel, lângă un bol cu smântână, felii de pâine și o cană de lut"
+  },
+  "servings": 8,
+  "prepMinutes": 90,
+  "cookMinutes": 180,
+  "difficulty": "mediu",
+  "fasting": false,
+  "course": "fel-principal",
+  "region": "toată Moldova",
+  "occasions": [
+    "masa-de-craciun-in-moldova-bucate-si-retete",
+    "craciunul-nasterea-domnului-traditii-in-moldova",
+    "sfantul-vasile-si-anul-nou-traditii",
+    "pastele-traditii-in-moldova",
+    "meniul-de-paste-in-moldova",
+    "meniul-de-revelion-moldovenesc",
+    "ce-gatesti-de-hram-meniu-pentru-oaspeti"
+  ],
+  "ingredients": [
+    {
+      "group": "Umplutura",
+      "items": [
+        {
+          "qty": "800",
+          "unit": "g",
+          "name": "carne tocată de porc",
+          "note": "mai grasă, sau 600 g porc și 200 g vită"
+        },
+        {
+          "qty": "200",
+          "unit": "g",
+          "name": "orez cu bob rotund",
+          "note": "spălat și scurs"
+        },
+        {
+          "qty": "2",
+          "unit": "buc.",
+          "name": "cepe mijlocii",
+          "note": "tocate mărunt"
+        },
+        {
+          "qty": "1",
+          "unit": "buc.",
+          "name": "morcov",
+          "note": "dat pe răzătoare"
+        },
+        {
+          "qty": "3",
+          "unit": "linguri",
+          "name": "ulei de floarea-soarelui"
+        },
+        {
+          "qty": "1 1/2",
+          "unit": "lingurițe",
+          "name": "sare"
+        },
+        {
+          "qty": "1",
+          "unit": "linguriță",
+          "name": "piper negru măcinat"
+        },
+        {
+          "qty": "1",
+          "unit": "linguriță",
+          "name": "cimbru uscat"
+        },
+        {
+          "qty": "1",
+          "unit": "legătură",
+          "name": "mărar și pătrunjel",
+          "note": "tocate"
+        },
+        {
+          "qty": "100",
+          "unit": "ml",
+          "name": "apă rece"
+        }
+      ]
+    },
+    {
+      "group": "Învelișul și fiertura",
+      "items": [
+        {
+          "qty": "1",
+          "unit": "buc.",
+          "name": "varză murată întreagă",
+          "note": "cca 2 kg, cu foi întregi"
+        },
+        {
+          "qty": "200",
+          "unit": "g",
+          "name": "costiță afumată",
+          "note": "opțional, tăiată fâșii"
+        },
+        {
+          "qty": "3",
+          "unit": "buc.",
+          "name": "foi de dafin"
+        },
+        {
+          "qty": "500",
+          "unit": "ml",
+          "name": "suc de roșii"
+        },
+        {
+          "qty": "1",
+          "unit": "l",
+          "name": "apă",
+          "note": "cât să acopere sarmalele"
+        }
+      ]
+    },
+    {
+      "group": "La servire",
+      "items": [
+        {
+          "qty": "200",
+          "unit": "g",
+          "name": "smântână"
+        },
+        {
+          "name": "mămăligă sau pâine"
+        }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "Gustă o foaie de varză. Dacă e foarte sărată, ține foile 1–2 ore în apă rece, schimbând apa o dată.",
+      "minutes": 60
+    },
+    {
+      "text": "Călește ceapa și morcovul în ulei, la foc mic, până se înmoaie. Adaugă orezul și amestecă 2 minute, apoi lasă amestecul să se răcească.",
+      "minutes": 10
+    },
+    {
+      "text": "Amestecă bine carnea cu ceapa și orezul, sarea, piperul, cimbrul, verdeața și apa rece, până compoziția se leagă.",
+      "minutes": 5
+    },
+    {
+      "text": "Taie cotorul gros din mijlocul fiecărei foi și taie foile în bucăți cam cât palma. Foile rupte și resturile le tocă mărunt.",
+      "minutes": 10
+    },
+    {
+      "text": "Pune o lingură de umplutură pe marginea unei bucăți de foaie, rulează o dată, îndoaie marginile spre interior și rulează până la capăt. Nu strânge tare: orezul crește.",
+      "minutes": 40
+    },
+    {
+      "text": "Pune pe fundul oalei jumătate din varza tocată și jumătate din costiță. Așază sarmalele strâns, în cercuri, strat peste strat, cu foi de dafin și puțin cimbru între straturi.",
+      "minutes": 10
+    },
+    {
+      "text": "Acoperă cu restul de varză tocată și de costiță. Toarnă sucul de roșii și apa, cât să acopere sarmalele cu un deget. Pune o farfurie răsturnată deasupra, ca să nu se ridice.",
+      "minutes": 5
+    },
+    {
+      "text": "Adu la fierbere, apoi lasă la foc foarte mic, cu capac, 2 ore și jumătate–3 ore. Sau dă oala la cuptor, la 160–170 °C, cu capac, 3 ore. Dacă scade lichidul, adaugă apă fierbinte.",
+      "minutes": 180
+    },
+    {
+      "text": "Lasă sarmalele să se odihnească 15 minute. Servește-le calde, cu smântână și mămăligă.",
+      "minutes": 15
+    }
+  ],
+  "tips": [
+    "Prăjește o linguriță de umplutură în tigaie și gust-o: așa corectezi sarea înainte să înveli 40 de sarmale.",
+    "Oala de fontă sau de lut ține căldura egal. Oala de lut se ține puțin în apă înainte, apoi se unge cu ulei.",
+    "Sarmalele sunt mai bune a doua zi, încălzite încet, în oala lor.",
+    "Le poți congela crude, înșirate pe o tavă, apoi puse în pungi; le fierbi fără să le dezgheți, cu o oră în plus."
+  ],
+  "mistakes": [
+    "Varza nedesărată: sarmalele ies prea sărate și nu le mai poți repara.",
+    "Prea mult orez sau sarmale strânse tare: orezul se umflă și rupe foaia.",
+    "Foc prea mare: sarmalele de jos se lipesc și se ard, iar umplutura rămâne tare.",
+    "Lichid prea puțin: sarmalele de deasupra rămân crude. Lichidul trebuie să le acopere tot timpul."
+  ],
+  "variants": [
+    {
+      "region": "nordul Moldovei",
+      "text": "Sarmale mici, în formă de corn sau de tub. În unele sate se pune în sarma și o bucată de coastă de porc sau de pui cu os."
+    },
+    {
+      "region": "ucrainenii din nord",
+      "text": "Umplutură cu crupe de porumb sau hrișcă, amestecate cu orez (de exemplu la Mărcăuți)."
+    },
+    {
+      "region": "centrul Moldovei",
+      "text": "Sarmale lunguiețe, mai mari. În părțile Rezinei se fac de post, mici cât cireașa, iar la Lalova „pitice”, cât unghia."
+    },
+    {
+      "region": "Găgăuzia",
+      "text": "Sarma în frunze de viță-de-vie, cu bulgur și orez în părți egale."
+    },
+    {
+      "region": "Rîșcani și Drochia",
+      "text": "În unele sate, crupele de porumb au luat locul orezului."
+    },
+    {
+      "region": "post",
+      "text": "Fără carne: orez sau crupe cu ceapă, morcov și ciuperci călite în ulei. Se fac pentru Ajunul Crăciunului și în posturi."
+    }
+  ],
+  "storyHtml": "<p>Sarmalele, numite la noi și <strong>găluște</strong> sau găluști, sunt felul care „deschide calea bucatelor calde” la masa de sărbătoare, scriu cercetătoarele Universității Tehnice a Moldovei într-un <a href=\"https://doi.org/10.5281/zenodo.4296393\">studiu din 2020</a>. Ele arată că sarmalele moldovenești au multe forme: în foi de varză murată sau dulce, în frunze de viță, de hrean, de podbal, de măcriș sau de lobodă, de la cele cât unghia până la cele mari, coapte în oale de lut.</p><p>Numele vine din turcă: <em>sarma</em>, de la <em>sarmak</em>, „a învârti”. Că turcii le-ar fi inventat e doar o părere răspândită, iar autoarele notează că sarmalele turcești, cu orez și stafide, nu seamănă cu ale noastre. Orezul nu crește la noi, așa că pe vremuri sarmalele se umpleau cu crupe de porumb sau cu bulgur.</p><p>Registrul patrimoniului cultural imaterial al <a href=\"https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala\">Ministerului Culturii</a> trece sarmalele (găluștele) cu carne de porc sau cu porc și vită la preparatele tradiționale din carne tocată. Un <a href=\"https://repository.utm.md/handle/5014/26852\">studiu despre bucătăria găgăuză</a> arată că bulgurul a fost înlocuit în cea mai mare parte a Moldovei cu orez, dar găgăuzii îl folosesc și azi.</p>",
+  "sources": [
+    {
+      "name": "O. Gutium, R. Siminiuc, C. Grosu, V. Cazac: Sarmale – symbol of Moldovan gastronomy, Journal of Social Sciences, UTM, 2020",
+      "url": "https://doi.org/10.5281/zenodo.4296393"
+    },
+    {
+      "name": "Ministerul Culturii: Registrul patrimoniului cultural imaterial, Capitolul VII. Cunoștințe privind alimentația tradițională",
+      "url": "https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala"
+    },
+    {
+      "name": "N. Suhodol, V. Cazac, C. Babcenco: Similitudini ale tradițiilor gastronomice găgăuze cu cele din bucătăria moldovenească (2023)",
+      "url": "https://repository.utm.md/handle/5014/26852"
+    },
+    {
+      "name": "dexonline: sarma (DEX '09)",
+      "url": "https://dexonline.ro/definitie/sarma"
+    }
+  ],
+  "related": [
+    "bucataria-moldoveneasca-istorie-feluri-traditii",
+    "placinte-cu-branza-la-tigaie",
+    "zeama-de-gaina-cu-taitei-de-casa",
+    "sarmale-de-post-cu-orez-si-ciuperci",
+    "mamaliga-cu-branza-si-smantana",
+    "cum-faci-varza-murata",
+    "masa-de-sarbatoare-in-moldova-hram-nunta-pomana"
+  ]
+}

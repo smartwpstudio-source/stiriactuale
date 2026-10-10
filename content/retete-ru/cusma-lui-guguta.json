@@ -1,0 +1,182 @@
+{
+  "slug": "cusma-lui-guguta",
+  "title": "«Шапка Гугуцэ» (Cușma lui Guguță): торт из блинов с вишней и сметаной",
+  "description": "«Шапка Гугуцэ» по шагам: тонкие блины с вишней, уложенные пирамидой со сметанным кремом и шоколадом. Пропорции, сколько держать в холодильнике и частые ошибки.",
+  "updated": "2026-10-10",
+  "image": {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/retete/cusma-lui-guguta-dzG1mDKeVBvYPB8lPUuzmOA0Au22Aj.jpg",
+    "credit": "Magnific (stoc)",
+    "alt": "Треугольный кусок торта из блинных трубочек с вишней, уложенных пирамидой с белым кремом между ними, покрытый кремом и тёртым шоколадом, на белой тарелке; сзади остаток торта и миска с вишней"
+  },
+  "servings": 12,
+  "prepMinutes": 90,
+  "cookMinutes": 40,
+  "difficulty": "mediu",
+  "fasting": false,
+  "course": "deserturi",
+  "region": "вся Молдова",
+  "occasions": [
+    "masa-de-craciun-in-moldova-bucate-si-retete",
+    "meniul-de-revelion-moldovenesc"
+  ],
+  "ingredients": [
+    {
+      "group": "Блины (15–16 штук)",
+      "items": [
+        {
+          "qty": "4",
+          "unit": "шт.",
+          "name": "яйца"
+        },
+        {
+          "qty": "500",
+          "unit": "мл",
+          "name": "молоко"
+        },
+        {
+          "qty": "250",
+          "unit": "г",
+          "name": "пшеничная мука"
+        },
+        {
+          "qty": "2",
+          "unit": "ст. л.",
+          "name": "сахар"
+        },
+        {
+          "qty": "1",
+          "unit": "щепотка",
+          "name": "соль"
+        },
+        {
+          "qty": "3",
+          "unit": "ст. л.",
+          "name": "растительное масло",
+          "note": "и немного для сковороды"
+        }
+      ]
+    },
+    {
+      "group": "Начинка",
+      "items": [
+        {
+          "qty": "700",
+          "unit": "г",
+          "name": "вишня без косточек",
+          "note": "свежая, замороженная или из компота, хорошо отцеженная"
+        },
+        {
+          "qty": "3",
+          "unit": "ст. л.",
+          "name": "сахар"
+        }
+      ]
+    },
+    {
+      "group": "Крем и украшение",
+      "items": [
+        {
+          "qty": "600",
+          "unit": "г",
+          "name": "жирная сметана",
+          "note": "25–30%, холодная"
+        },
+        {
+          "qty": "150",
+          "unit": "г",
+          "name": "сахарная пудра"
+        },
+        {
+          "qty": "1",
+          "unit": "пакетик",
+          "name": "ванильный сахар"
+        },
+        {
+          "qty": "50",
+          "unit": "г",
+          "name": "чёрный шоколад",
+          "note": "тёртый"
+        }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "Выложите вишню в сито над миской и дайте стечь не меньше 30 минут. Сироп не выливайте: его можно выпить или добавить в компот.",
+      "minutes": 30
+    },
+    {
+      "text": "Взбейте яйца с сахаром и солью, влейте молоко, затем понемногу всыпьте муку, размешивая, чтобы не было комков. В конце добавьте масло. Дайте тесту постоять 20 минут.",
+      "minutes": 25
+    },
+    {
+      "text": "Испеките тонкие блины на слегка смазанной сковороде 22–24 см, примерно по минуте с каждой стороны. Сложите стопкой и полностью остудите.",
+      "minutes": 40
+    },
+    {
+      "text": "Взбейте холодную сметану с сахарной пудрой и ванильным сахаром только до лёгкого загустения; если перебить, она расслоится.",
+      "minutes": 5
+    },
+    {
+      "text": "Выложите полоску вишни на край каждого блина, слегка посыпьте сахаром и плотно сверните трубочкой. Сделайте 15 трубочек.",
+      "minutes": 20
+    },
+    {
+      "text": "На длинное блюдо положите 5 трубочек рядом и смажьте кремом. Сверху положите 4 трубочки, затем 3, 2 и 1, промазывая каждый ряд кремом, чтобы получилась пирамида.",
+      "minutes": 15
+    },
+    {
+      "text": "Покройте всю пирамиду оставшимся кремом и посыпьте тёртым шоколадом.",
+      "minutes": 5
+    },
+    {
+      "text": "Уберите торт в холодильник минимум на 6 часов, лучше на ночь. Режьте острым ножом, смоченным в горячей воде.",
+      "minutes": 360
+    }
+  ],
+  "tips": [
+    "Готовьте торт за день до застолья: крем пропитает блины, и куски будут ровными.",
+    "Вишня из домашнего компота очень хороша, но её нужно хорошо отцедить; замороженную размораживайте прямо в сите.",
+    "Берите жирную сметану, 25–30%. Нежирная не загустеет и будет стекать с трубочек.",
+    "Если блинов больше, трубочки нижнего ряда можно класть по две встык — торт получится длиннее."
+  ],
+  "mistakes": [
+    "Неотцеженная вишня: сок размачивает блины, и пирамида заваливается набок.",
+    "Трубочки из тёплых блинов: крем тает и сползает.",
+    "Толстые блины: плохо сворачиваются, и торт получается тяжёлым.",
+    "Торт разрезали слишком рано: без нескольких часов в холоде ряды разваливаются при нарезке."
+  ],
+  "variants": [
+    {
+      "region": "с черешней",
+      "text": "Вместо вишни можно взять черешню без косточек, свежую или из компота; торт получится слаще, поэтому сахара в начинку кладите меньше."
+    }
+  ],
+  "storyHtml": "<p>Официальный туристический портал <a href=\"https://moldova.travel/en/moldovas-gastronomic-delights-a-journey-through-local-cuisine/\">moldova.travel</a> советует обязательно попробовать в Молдове этот десерт: блины с вишнёвой начинкой, уложенные слоями с кремом. Торт часто бывает и на <a href=\"/ghiduri/masa-de-craciun-in-moldova-bucate-si-retete/\">рождественском столе</a>.</p><p>Название взято из детских книг <strong>Спиридона Вангели</strong>, пишет газета <a href=\"https://www.bzi.ro/cusma-lui-guguta-desert-moldovenesc-cu-visine-iata-care-sunt-ingredientele-si-modul-de-preparare-5138992\">BZI</a>: его герой Гугуцэ всегда носил на голове пастушью шапку (кушму), а торт в разрезе на неё похож. Вангели родился 14 июня 1932 года в Гринэуць, а книга «Isprăvile lui Guguță» («Приключения Гугуцэ»), вышедшая в 1967 году в издательстве Lumina, принесла ему известность, сообщает <a href=\"https://old.bncreanga.md/scriitori/Vangheli/biographical.htm\">Национальная детская библиотека имени Иона Крянгэ</a>. Там же указана книга «Шапка Гугуцэ», изданная в Москве в 1969 году.</p><p>Надёжного источника о том, кто и когда придумал торт, мы не нашли. В <a href=\"https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala\">реестре нематериального культурного наследия</a>, где собраны старые традиционные блюда, его нет.</p>",
+  "sources": [
+    {
+      "name": "moldova.travel: Moldova's Culinary Delights",
+      "url": "https://moldova.travel/en/moldovas-gastronomic-delights-a-journey-through-local-cuisine/"
+    },
+    {
+      "name": "BZI: Cușma lui Guguță, desert moldovenesc cu vișine (17.12.2024)",
+      "url": "https://www.bzi.ro/cusma-lui-guguta-desert-moldovenesc-cu-visine-iata-care-sunt-ingredientele-si-modul-de-preparare-5138992"
+    },
+    {
+      "name": "Biblioteca Națională pentru Copii „Ion Creangă”: Spiridon Vangheli, date biografice",
+      "url": "https://old.bncreanga.md/scriitori/Vangheli/biographical.htm"
+    },
+    {
+      "name": "Ministerul Culturii: Registrul patrimoniului cultural imaterial, Capitolul VII. Cunoștințe privind alimentația tradițională (V. Iarovoi)",
+      "url": "https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala"
+    }
+  ],
+  "related": [
+    "bucataria-moldoveneasca-istorie-feluri-traditii",
+    "masa-de-craciun-in-moldova-bucate-si-retete",
+    "unde-mananci-traditional-in-moldova-ghid-pentru-turisti",
+    "gogosi-moldovenesti",
+    "compot-de-fructe-uscate",
+    "cozonac-moldovenesc"
+  ]
+}

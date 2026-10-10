@@ -159,7 +159,7 @@ async function generate(prompt: string, headers: Record<string, string>): Promis
   throw new Error("generare: timeout");
 }
 
-async function copyToBlob(sourceUrl: string, path: string): Promise<string> {
+export async function copyToBlob(sourceUrl: string, path: string): Promise<string> {
   const file = await fetch(sourceUrl, {
     headers: { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/130 Safari/537.36" },
     signal: AbortSignal.timeout(30_000),

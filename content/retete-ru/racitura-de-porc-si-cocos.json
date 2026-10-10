@@ -1,0 +1,202 @@
+{
+  "slug": "racitura-de-porc-si-cocos",
+  "title": "Холодец (рэчитура) из свинины и петуха к рождественскому столу",
+  "description": "Молдавская рэчитура из свиных ножек и домашнего петуха: сколько варить, как получить прозрачный бульон, который застывает сам, с чесноком и без желатина.",
+  "updated": "2026-10-10",
+  "image": {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/retete/racitura-de-porc-si-cocos-j7TKYo3Kx4e2WHaEXAgmpZEjYpKjBA.jpg",
+    "credit": "Magnific (stoc)",
+    "alt": "Порция холодца, перевёрнутая на тарелку, с кусочками мяса и ломтиками моркови в застывшем бульоне, зубчиками чеснока и листьями петрушки, на клетчатом красном полотенце"
+  },
+  "servings": 12,
+  "prepMinutes": 60,
+  "cookMinutes": 360,
+  "difficulty": "mediu",
+  "fasting": false,
+  "course": "aperitive",
+  "region": "вся Молдова",
+  "occasions": [
+    "masa-de-craciun-in-moldova-bucate-si-retete",
+    "craciunul-nasterea-domnului-traditii-in-moldova",
+    "sfantul-vasile-si-anul-nou-traditii",
+    "revelionul-traditii-si-cum-il-petreci",
+    "meniul-de-paste-in-moldova",
+    "meniul-de-revelion-moldovenesc",
+    "ce-gatesti-de-hram-meniu-pentru-oaspeti"
+  ],
+  "ingredients": [
+    {
+      "group": "Мясо",
+      "items": [
+        {
+          "qty": "4",
+          "unit": "шт.",
+          "name": "свиные ножки",
+          "note": "около 1,5 кг, очищенные и разрубленные пополам"
+        },
+        {
+          "qty": "1",
+          "unit": "кг",
+          "name": "свиная рулька или голяшка",
+          "note": "с костью и шкуркой"
+        },
+        {
+          "qty": "1",
+          "unit": "шт.",
+          "name": "домашний петух",
+          "note": "1,5–2 кг, разрубленный на куски"
+        },
+        {
+          "qty": "5",
+          "unit": "л",
+          "name": "холодная вода"
+        }
+      ]
+    },
+    {
+      "group": "Для бульона",
+      "items": [
+        {
+          "qty": "2",
+          "unit": "шт.",
+          "name": "луковицы",
+          "note": "целые, в шелухе"
+        },
+        {
+          "qty": "2",
+          "unit": "шт.",
+          "name": "морковь"
+        },
+        {
+          "qty": "1",
+          "unit": "шт.",
+          "name": "корень петрушки"
+        },
+        {
+          "qty": "10",
+          "unit": "шт.",
+          "name": "горошины чёрного перца"
+        },
+        {
+          "qty": "3",
+          "unit": "шт.",
+          "name": "лавровый лист"
+        },
+        {
+          "qty": "1",
+          "unit": "ст. л.",
+          "name": "соль",
+          "note": "или по вкусу"
+        }
+      ]
+    },
+    {
+      "group": "В конце",
+      "items": [
+        {
+          "qty": "1",
+          "unit": "головка",
+          "name": "чеснок",
+          "note": "8–10 зубчиков, растолочь"
+        },
+        {
+          "qty": "1",
+          "unit": "пучок",
+          "name": "петрушка",
+          "note": "для украшения"
+        }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "Замочите ножки и рульку в холодной воде на 2 часа. Затем хорошо поскоблите шкурку ножом и опалите оставшиеся щетинки.",
+      "minutes": 120
+    },
+    {
+      "text": "Положите свинину в большую кастрюлю с холодной водой и доведите до кипения. Снимайте пену шумовкой каждый раз, когда она поднимается, затем убавьте огонь до минимума.",
+      "minutes": 15
+    },
+    {
+      "text": "Варите на едва заметном кипении, слегка сдвинув крышку, 2 часа. Бульон не должен бурлить: от сильного кипения он мутнеет.",
+      "minutes": 120
+    },
+    {
+      "text": "Добавьте петуха и варите ещё 2,5 часа на слабом огне. За последний час положите лук, морковь, корень петрушки, перец, лавровый лист и соль.",
+      "minutes": 150
+    },
+    {
+      "text": "Сделайте пробу: налейте ложку бульона на холодную тарелку и поставьте в холодильник на 15 минут. Если застыл, холодец готов. Если нет, варите ещё 30–60 минут.",
+      "minutes": 15
+    },
+    {
+      "text": "Выньте мясо, дайте немного остыть и отделите от костей. Нарежьте кусочками и разложите по мискам или глубоким тарелкам, добавив несколько кружков моркови.",
+      "minutes": 30
+    },
+    {
+      "text": "Процедите бульон через марлю. Снимите ложкой жир сверху, вмешайте толчёный чеснок и посолите по вкусу. Залейте мясо бульоном.",
+      "minutes": 10
+    },
+    {
+      "text": "Дайте мискам остыть при комнатной температуре, затем уберите в холодильник или холодную кладовую на ночь, минимум на 8 часов. Подавайте холодец холодным, с мамалыгой или хлебом.",
+      "minutes": 480
+    }
+  ],
+  "tips": [
+    "Желирующие вещества дают ножки, уши и шкурка. Без них бульон не застынет и понадобится покупной желатин.",
+    "Домашний петух, более старый, выдерживает долгую варку и даёт вкус. Бройлер быстро разваривается: кладите его только на последний час.",
+    "Лук в шелухе придаёт бульону красивый золотистый цвет.",
+    "Храните холодец в холодильнике, накрытым, и съешьте за несколько дней. Не оставляйте его часами на тёплом столе."
+  ],
+  "mistakes": [
+    "Варка на сильном огне: бульон мутнеет и больше не будет прозрачным.",
+    "Слишком много воды на это количество мяса: бульон не застывает. Вода должна покрывать мясо лишь на 3–4 пальца.",
+    "Чеснок, сваренный вместе с мясом, теряет аромат. Его кладут в конце, в процеженный бульон.",
+    "Соль в самом начале: за 6 часов бульон уваривается и получается пересоленным. Солите в последний час и пробуйте."
+  ],
+  "variants": [
+    {
+      "region": "вся Молдова",
+      "text": "Только из свинины (ножки, уши, рулька) или только из петуха, с несколькими куриными лапками для застывания. Реестр наследия называет холодцы из свинины, птицы и рыбы."
+    },
+    {
+      "region": "из рыбы",
+      "text": "Холодец из головы и хвоста карпа или судака, сваренных с овощами; застывает хуже, поэтому бульон уваривают сильнее."
+    }
+  ],
+  "storyHtml": "<p>Рэчитура, или пифтие, — одно из блюд, без которых не обходится рождественский стол. <a href=\"https://www.moldpres.md/turism/descopera-moldova-cu-moldpres-obiceiuri-si-traditii-de-iarna-care-ne-fac-sarbatorile-mai-frumoase-i-atractive\">Moldpres</a> называет её среди праздничных блюд вместе с козунаком, голубцами, свиными колбасками и красным вином, а <a href=\"https://tvrmoldova.md/article/12e70240be2a6909/craciunei-si-colaci-copti-dupa-o-reteta-traditionala-din-satul-lozova.html\">TVR Moldova</a> видел её на столе хозяйки из села Лозова Страшенского района.</p><p>Мясо по традиции берут от свиньи, заколотой перед праздниками, а из ножек, ушей и хвоста варят холодец, пишет <a href=\"https://www.crestinortodox.ro/datini-obiceiuri-superstitii/obiceiuri-ignat-98422.html\">CrestinOrtodox.ro</a>. Реестр нематериального культурного наследия <a href=\"https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala\">Министерства культуры</a> относит холодцы из свинины, птицы (петуха) и рыбы к блюдам из варёного мяса «церемониального и праздничного характера».</p><p>Название говорит само за себя: по словарю DEX, răcitură происходит от глагола a răci — «остужать», а синоним piftie пришёл из болгарского и новогреческого.</p>",
+  "sources": [
+    {
+      "name": "Ministerul Culturii: Registrul patrimoniului cultural imaterial, Capitolul VII. Cunoștințe privind alimentația tradițională",
+      "url": "https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala"
+    },
+    {
+      "name": "Moldpres: Descoperă Moldova – obiceiuri și tradiții de iarnă (masa de Crăciun)",
+      "url": "https://www.moldpres.md/turism/descopera-moldova-cu-moldpres-obiceiuri-si-traditii-de-iarna-care-ne-fac-sarbatorile-mai-frumoase-i-atractive"
+    },
+    {
+      "name": "TVR Moldova: Crăciunei și colaci, copți după o rețetă tradițională din satul Lozova",
+      "url": "https://tvrmoldova.md/article/12e70240be2a6909/craciunei-si-colaci-copti-dupa-o-reteta-traditionala-din-satul-lozova.html"
+    },
+    {
+      "name": "CrestinOrtodox.ro: Obiceiuri de Ignat",
+      "url": "https://www.crestinortodox.ro/datini-obiceiuri-superstitii/obiceiuri-ignat-98422.html"
+    },
+    {
+      "name": "dexonline: răcitură (DEX '09)",
+      "url": "https://dexonline.ro/definitie/r%C4%83citur%C4%83"
+    },
+    {
+      "name": "dexonline: piftie (DEX '09)",
+      "url": "https://dexonline.ro/definitie/piftie"
+    }
+  ],
+  "related": [
+    "bucataria-moldoveneasca-istorie-feluri-traditii",
+    "mamaliga-cu-branza-si-smantana",
+    "sarmale-in-foi-de-varza-murata",
+    "masa-de-sarbatoare-in-moldova-hram-nunta-pomana",
+    "tochitura-moldoveneasca",
+    "cate-portii-calculezi-pentru-nunta-sau-pomana"
+  ]
+}

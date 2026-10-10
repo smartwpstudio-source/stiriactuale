@@ -1,0 +1,225 @@
+{
+  "slug": "pasca-moldoveneasca-cu-branza",
+  "title": "Pască moldovenească cu brânză și stafide, pentru Paști",
+  "description": "Pasca moldovenească cu brânză de vaci și stafide: aluat dospit, marginea împletită, crucea de deasupra, umplutura care nu crapă și cât o coci. Pentru o tavă de 26 cm.",
+  "updated": "2026-10-10",
+  "image": {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/retete/pasca-moldoveneasca-cu-branza-wYXjHSozMTvROFb1iBbDRWsXsqAuvg.jpg",
+    "credit": "Magnific (stoc)",
+    "alt": "Felie de pască pe o farfurie albă, cu stratul de umplutură de brânză cu stafide între aluat; în spate pasca rotundă, cu marginea împletită, ouă vopsite galbene, albastre și roșii și flori albe de cireș"
+  },
+  "servings": 12,
+  "prepMinutes": 180,
+  "cookMinutes": 55,
+  "difficulty": "dificil",
+  "fasting": false,
+  "course": "deserturi",
+  "region": "toată Moldova",
+  "occasions": [
+    "pastele-traditii-in-moldova",
+    "pastele-blajinilor-traditii-si-pomenirea-mortilor",
+    "meniul-de-paste-in-moldova",
+    "ce-se-imparte-de-pomana-in-moldova"
+  ],
+  "ingredients": [
+    {
+      "group": "Aluatul (o pască de 26 cm)",
+      "items": [
+        {
+          "qty": "600",
+          "unit": "g",
+          "name": "făină albă de grâu",
+          "note": "cernută"
+        },
+        {
+          "qty": "25",
+          "unit": "g",
+          "name": "drojdie proaspătă",
+          "note": "sau 7 g drojdie uscată"
+        },
+        {
+          "qty": "250",
+          "unit": "ml",
+          "name": "lapte călduț"
+        },
+        {
+          "qty": "3",
+          "unit": "buc.",
+          "name": "gălbenușuri"
+        },
+        {
+          "qty": "1",
+          "unit": "buc.",
+          "name": "ou întreg"
+        },
+        {
+          "qty": "120",
+          "unit": "g",
+          "name": "zahăr"
+        },
+        {
+          "qty": "80",
+          "unit": "g",
+          "name": "unt",
+          "note": "topit și răcit"
+        },
+        {
+          "qty": "50",
+          "unit": "ml",
+          "name": "ulei de floarea-soarelui"
+        },
+        {
+          "qty": "1/2",
+          "unit": "linguriță",
+          "name": "sare"
+        },
+        {
+          "qty": "1",
+          "unit": "buc.",
+          "name": "lămâie",
+          "note": "coaja rasă"
+        }
+      ]
+    },
+    {
+      "group": "Umplutura",
+      "items": [
+        {
+          "qty": "800",
+          "unit": "g",
+          "name": "brânză de vaci",
+          "note": "mai uscată, frecată prin sită"
+        },
+        {
+          "qty": "3",
+          "unit": "buc.",
+          "name": "ouă"
+        },
+        {
+          "qty": "150",
+          "unit": "g",
+          "name": "zahăr"
+        },
+        {
+          "qty": "150",
+          "unit": "g",
+          "name": "smântână"
+        },
+        {
+          "qty": "2",
+          "unit": "linguri",
+          "name": "griș"
+        },
+        {
+          "qty": "100",
+          "unit": "g",
+          "name": "stafide",
+          "note": "înmuiate și scurse"
+        },
+        {
+          "qty": "1",
+          "unit": "plic",
+          "name": "zahăr vanilat"
+        }
+      ]
+    },
+    {
+      "group": "Deasupra",
+      "items": [
+        {
+          "qty": "1",
+          "unit": "buc.",
+          "name": "ou",
+          "note": "bătut cu o lingură de lapte"
+        }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "Dizolvă drojdia în 100 ml de lapte călduț cu o linguriță de zahăr și o lingură de făină. Las-o la cald 15 minute, până face spumă.",
+      "minutes": 15
+    },
+    {
+      "text": "Bate gălbenușurile și oul cu zahărul, sarea și coaja de lămâie. Pune făina într-un vas, adaugă maiaua, ouăle și restul de lapte și frământă. Încorporează treptat untul și uleiul și frământă 15–20 de minute, până aluatul e moale și nu se lipește.",
+      "minutes": 25
+    },
+    {
+      "text": "Acoperă aluatul și lasă-l la cald 1 oră și jumătate, până își dublează volumul.",
+      "minutes": 90
+    },
+    {
+      "text": "Fă umplutura: amestecă brânza cu ouăle, zahărul, vanilia, smântâna și grișul, apoi adaugă stafidele. Compoziția trebuie să fie groasă, nu curgătoare.",
+      "minutes": 10
+    },
+    {
+      "text": "Ia o treime din aluat și întinde-o într-o foaie rotundă, cât fundul unei tăvi de 26 cm unse și tapetate cu hârtie de copt. Din restul fă trei suluri lungi și împletește-le într-o cosiță. Așaz-o pe marginea foii, ca un colac, și apas-o ușor.",
+      "minutes": 20
+    },
+    {
+      "text": "Toarnă umplutura în mijloc. Din aluatul rămas fă două fâșii subțiri și pune-le în cruce peste umplutură, cu capetele prinse sub cosiță.",
+      "minutes": 5
+    },
+    {
+      "text": "Lasă pasca să mai crească 30 de minute, acoperită. Unge aluatul, nu și brânza, cu ou bătut.",
+      "minutes": 30
+    },
+    {
+      "text": "Coace pasca la 170 °C, 50–55 de minute, până aluatul e rumen și umplutura nu mai tremură la mijloc. Dacă se rumenește prea repede, acoper-o cu hârtie de copt.",
+      "minutes": 55
+    },
+    {
+      "text": "Las-o să se răcească în tavă cel puțin o oră, ca să nu se rupă umplutura, apoi scoate-o.",
+      "minutes": 60
+    }
+  ],
+  "tips": [
+    "Brânza de vaci prea umedă se scurge peste noapte într-un tifon. Umplutura apoasă udă aluatul de dedesubt și nu se mai leagă.",
+    "Frecată prin sită, brânza dă o umplutură fină, fără grăunțe.",
+    "Pasca pentru sfințit la Înviere se coace din Joia sau Sâmbăta Mare. Ține la loc răcoros, acoperită, câteva zile."
+  ],
+  "mistakes": [
+    "Umplutură prea multă sau prea moale: dă pe dinafară și se crapă. Grișul și brânza uscată o țin.",
+    "Cuptor prea fierbinte: marginea se arde, iar brânza din mijloc rămâne crudă.",
+    "Pască scoasă fierbinte din tavă: umplutura se rupe și se lasă.",
+    "Aluat nedospit destul: pasca iese joasă și tare. Lasă-l să-și dubleze volumul."
+  ],
+  "variants": [
+    {
+      "region": "toată Moldova",
+      "text": "Fără umplutură: pască-pâine din aluat dulce, împodobită cu cruci, flori sau cosițe din aluat."
+    },
+    {
+      "region": "Paștele Blajinilor",
+      "text": "Pasca de la Paști se duce la morminte și se dă de pomană, alături de ouă roșii și colaci."
+    }
+  ],
+  "storyHtml": "<p>Pasca e pâinea Paștelui; numele vine din latinescul <em>pascha</em>, după <a href=\"https://dexonline.ro/definitie/pasc%C4%83\">DEX</a>. Registrul patrimoniului cultural imaterial al <a href=\"https://mc.gov.md/ro/content/capitolul-v-sarbatorile-obiceiurile-si-ritualurile\">Ministerului Culturii</a> trece „coacerea pascăi în Săptămâna patimilor” printre obiceiurile Paștelui. Capitolul despre <a href=\"https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala\">alimentația tradițională</a> adaugă că pasca se sfințește în noaptea Învierii, se mănâncă în primele zile ale Paștelui și la Paștele Blajinilor și se mai face până la Duminica Mare.</p><p>Pasca nu e doar pentru masa familiei. A doua zi de Paști, finii merg la nași cu pască, cozonac și ouă roșii, scrie <a href=\"https://www.moldpres.md/rom/turism/descopera-moldova-cu-moldpres-cum-petrec-moldovenii-pastele\">Moldpres</a>.</p>",
+  "sources": [
+    {
+      "name": "Ministerul Culturii: Registrul patrimoniului cultural imaterial, Capitolul V. Sărbătorile, obiceiurile și ritualurile",
+      "url": "https://mc.gov.md/ro/content/capitolul-v-sarbatorile-obiceiurile-si-ritualurile"
+    },
+    {
+      "name": "Ministerul Culturii: Registrul patrimoniului cultural imaterial, Capitolul VII. Cunoștințe privind alimentația tradițională",
+      "url": "https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala"
+    },
+    {
+      "name": "Moldpres: Descoperă Moldova – Cum petrec moldovenii Paștele",
+      "url": "https://www.moldpres.md/rom/turism/descopera-moldova-cu-moldpres-cum-petrec-moldovenii-pastele"
+    },
+    {
+      "name": "dexonline: pască (DEX '09)",
+      "url": "https://dexonline.ro/definitie/pasc%C4%83"
+    }
+  ],
+  "related": [
+    "pastele-traditii-in-moldova",
+    "cozonac-moldovenesc",
+    "painea-colacii-si-cozonacul-in-traditia-moldoveneasca",
+    "pastele-blajinilor-traditii-si-pomenirea-mortilor",
+    "friptura-de-miel-la-cuptor",
+    "vertute-cu-branza-la-cuptor",
+    "cum-alegi-branza-la-piata"
+  ]
+}

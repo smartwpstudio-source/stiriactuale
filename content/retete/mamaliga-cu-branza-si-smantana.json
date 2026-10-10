@@ -1,0 +1,160 @@
+{
+  "slug": "mamaliga-cu-branza-si-smantana",
+  "title": "Mămăligă cu brânză și smântână, ca la moldoveni",
+  "description": "Mămăligă moldovenească fără cocoloașe: cât mălai pui la un litru de apă, cum o fierbi în ceaun, cum o răstorni și cum o servești cu brânză de oaie și smântână.",
+  "updated": "2026-10-10",
+  "image": {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/retete/mamaliga-cu-branza-si-smantana-ucCeQCuP6VPun7tJ7rKT4B200FcpqA.jpg",
+    "credit": "Magnific (stoc)",
+    "alt": "Mămăligă rotundă, răsturnată pe un platou gri, cu o bucată de unt deasupra, lângă un bol de sticlă cu brânză rasă, un bol cu smântână și câteva fire de ceapă verde"
+  },
+  "servings": 4,
+  "prepMinutes": 5,
+  "cookMinutes": 40,
+  "difficulty": "usor",
+  "fasting": false,
+  "course": "garnituri",
+  "region": "toată Moldova",
+  "occasions": [
+    "masa-de-craciun-in-moldova-bucate-si-retete",
+    "craciunul-nasterea-domnului-traditii-in-moldova"
+  ],
+  "ingredients": [
+    {
+      "group": "Mămăliga",
+      "items": [
+        {
+          "qty": "1",
+          "unit": "l",
+          "name": "apă"
+        },
+        {
+          "qty": "250",
+          "unit": "g",
+          "name": "mălai (făină de porumb)",
+          "note": "măcinat mediu, galben"
+        },
+        {
+          "qty": "1",
+          "unit": "linguriță",
+          "name": "sare",
+          "note": "rasă"
+        },
+        {
+          "qty": "20",
+          "unit": "g",
+          "name": "unt",
+          "note": "opțional"
+        }
+      ]
+    },
+    {
+      "group": "La servire",
+      "items": [
+        {
+          "qty": "300",
+          "unit": "g",
+          "name": "brânză de oaie sărată",
+          "note": "sau 200 g de oaie și 100 g de vaci"
+        },
+        {
+          "qty": "300",
+          "unit": "g",
+          "name": "smântână",
+          "note": "mai grasă"
+        },
+        {
+          "qty": "4",
+          "unit": "fire",
+          "name": "ceapă verde",
+          "note": "opțional"
+        }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "Pune apa cu sarea la fiert într-un ceaun de fontă sau într-o oală cu fundul gros. Când apa e caldă, dar încă nu fierbe, presară o mână de mălai și amestecă.",
+      "minutes": 5
+    },
+    {
+      "text": "Când fierbe, toarnă restul de mălai în ploaie subțire, cu o mână, în timp ce cu cealaltă amesteci repede cu făcălețul sau cu un tel, ca să nu se facă cocoloașe.",
+      "minutes": 3
+    },
+    {
+      "text": "Dă focul la mic și lasă mămăliga să fiarbă 30–35 de minute. Amestecă des și apasă cu făcălețul pe pereții vasului, ca să nu se prindă. E gata când se desprinde singură de pereți și făcălețul înfipt în mijloc stă drept.",
+      "minutes": 30
+    },
+    {
+      "text": "Adaugă untul, dacă vrei, și netezește mămăliga cu o lingură udă. Lasă vasul 1–2 minute pe foc, apoi scutură-l ușor, ca mămăliga să se desprindă de fund.",
+      "minutes": 2
+    },
+    {
+      "text": "Răstoarn-o dintr-o mișcare pe un fund de lemn sau pe un platou. Tai-o cu o ață, nu cu cuțitul.",
+      "minutes": 1
+    },
+    {
+      "text": "Servește mămăliga fierbinte, cu brânza rasă sau fărâmițată și cu smântână. Pune brânza pe mămăliga caldă, ca să se înmoaie puțin.",
+      "minutes": 3
+    }
+  ],
+  "tips": [
+    "Proporția de bază e 250 g de mălai la un litru de apă. Pentru o mămăligă mai moale, de mâncat cu lingura, pune mai multă apă; pentru una tare, de tăiat felii, mai puțin.",
+    "Mălaiul măcinat mediu dă cea mai bună textură. Cel foarte fin se leagă repede și face cocoloașe, cel grișat cere mai multă apă și mai mult timp.",
+    "Ține o cană cu apă fierbinte lângă aragaz. Dacă mămăliga se îngroașă prea repede și mălaiul pare crud, adaugă câteva linguri și continuă să fierbi.",
+    "Mămăliga rămasă se taie felii a doua zi și se rumenește în tigaie cu puțin ulei sau unt."
+  ],
+  "mistakes": [
+    "Mălai turnat tot odată în apă clocotită: se formează cocoloașe care rămân crude la mijloc.",
+    "Mămăligă scoasă prea devreme: are gust de făină crudă și se lipește de dinți. Fierbe-o cel puțin 30 de minute.",
+    "Foc prea mare: mămăliga se arde pe fund și „scuipă” fierbinte. Ține focul mic și amestecă des.",
+    "Brânză nedesărată: brânza de oaie din putină poate fi foarte sărată. Gust-o și, la nevoie, ține-o 1–2 ore în apă sau în lapte."
+  ],
+  "variants": [
+    {
+      "region": "toată Moldova",
+      "text": "Cu tocană, friptură de porc, sarmale sau răcitură în loc de brânză și smântână."
+    },
+    {
+      "region": "post",
+      "text": "Cu fasole bătută, cu varză călită sau cu mujdei de usturoi, fără lactate."
+    },
+    {
+      "region": "terci și budincă",
+      "text": "Din același mălai se face terciul, mai moale, fiert mai puțin, și budinca, coaptă la cuptor. Registrul patrimoniului le trece alături de mămăligă."
+    }
+  ],
+  "storyHtml": "<p>Registrul patrimoniului cultural imaterial al <a href=\"https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala\">Ministerului Culturii</a> trece mămăliga, alături de pâine și de mălai, la „alimentul de bază”, „împreună cu obiectele aferente”. Tot acolo, la bucatele din cereale, sunt numite mămăliga, terciul și budinca din făină de porumb.</p><p>Mămăliga de porumb nu e totuși veche de când lumea. Porumbul a venit din America și s-a răspândit la noi abia la sfârșitul secolului al XVII-lea. Până atunci, hrana de bază fuseseră terciurile din mei, după sinteza etnografului Ion Chelcea (<a href=\"https://revistacalitateavietii.ro/journal/article/download/108/84/157\">recenzie în Revista Calitatea Vieții</a>). Dicționarul explicativ trece originea cuvântului „mămăligă” ca necunoscută.</p><p>Portalul turistic <a href=\"https://moldova.travel/en/moldovas-gastronomic-delights-a-journey-through-local-cuisine/\">moldova.travel</a> scrie că mămăliga se mănâncă cu brânză de vaci sau de oaie, cu smântână, cu tocană sau cu friptură de porc. Nu lipsește nici de la masa de Crăciun: „se mai mănâncă și mămăligă”, notează <a href=\"https://www.moldpres.md/turism/descopera-moldova-cu-moldpres-obiceiuri-si-traditii-de-iarna-care-ne-fac-sarbatorile-mai-frumoase-i-atractive\">Moldpres</a>.</p>",
+  "sources": [
+    {
+      "name": "Ministerul Culturii: Registrul patrimoniului cultural imaterial, Capitolul VII. Cunoștințe privind alimentația tradițională",
+      "url": "https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala"
+    },
+    {
+      "name": "Revista Calitatea Vieții: recenzie la Ion Chelcea, Agricultura la români (introducerea porumbului)",
+      "url": "https://revistacalitateavietii.ro/journal/article/download/108/84/157"
+    },
+    {
+      "name": "moldova.travel: Moldova's Culinary Delights",
+      "url": "https://moldova.travel/en/moldovas-gastronomic-delights-a-journey-through-local-cuisine/"
+    },
+    {
+      "name": "Moldpres: Descoperă Moldova – obiceiuri și tradiții de iarnă (masa de Crăciun)",
+      "url": "https://www.moldpres.md/turism/descopera-moldova-cu-moldpres-obiceiuri-si-traditii-de-iarna-care-ne-fac-sarbatorile-mai-frumoase-i-atractive"
+    },
+    {
+      "name": "dexonline: mămăligă (DEX '09)",
+      "url": "https://dexonline.ro/definitie/m%C4%83m%C4%83lig%C4%83"
+    }
+  ],
+  "related": [
+    "bucataria-moldoveneasca-istorie-feluri-traditii",
+    "sarmale-in-foi-de-varza-murata",
+    "racitura-de-porc-si-cocos",
+    "zeama-de-peste",
+    "tochitura-moldoveneasca",
+    "tocana-de-porc-cu-mamaliga",
+    "mamaliga-fara-cocoloase-cum-o-faci-corect",
+    "cum-alegi-branza-la-piata"
+  ]
+}

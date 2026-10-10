@@ -1,0 +1,131 @@
+{
+  "slug": "vin-fiert-cu-scortisoara",
+  "title": "Vin fiert cu scorțișoară și portocală, din vin roșu moldovenesc",
+  "description": "Vin fiert de casă din vin roșu sec: cât zahăr și ce condimente pui, de ce nu trebuie să clocotească, ce vin moldovenesc alegi și varianta fără alcool pentru copii.",
+  "updated": "2026-10-10",
+  "image": {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/retete/vin-fiert-cu-scortisoara-1anzNMdS18UqjYWLSFY1w510oZn5qx.jpg",
+    "credit": "Magnific (stoc)",
+    "alt": "Cană de sticlă cu picior plină cu vin fiert, cu un baton de scorțișoară, o felie de portocală, o felie de măr, anason stelat și cuișoare, între mere roșii, conuri de brad și o lumânare roșie aprinsă"
+  },
+  "servings": 6,
+  "prepMinutes": 10,
+  "cookMinutes": 20,
+  "difficulty": "usor",
+  "fasting": false,
+  "course": "bauturi",
+  "region": "toată Moldova",
+  "occasions": [
+    "vinul-si-bauturile-traditionale-din-moldova",
+    "meniul-de-revelion-moldovenesc"
+  ],
+  "ingredients": [
+    {
+      "items": [
+        {
+          "qty": "750",
+          "unit": "ml",
+          "name": "vin roșu sec",
+          "note": "o sticlă"
+        },
+        {
+          "qty": "200",
+          "unit": "ml",
+          "name": "apă"
+        },
+        {
+          "qty": "60-80",
+          "unit": "g",
+          "name": "zahăr",
+          "note": "sau 2–3 linguri de miere"
+        },
+        {
+          "qty": "1",
+          "unit": "buc.",
+          "name": "portocală",
+          "note": "spălată, tăiată felii"
+        },
+        {
+          "qty": "1",
+          "unit": "buc.",
+          "name": "măr",
+          "note": "tăiat felii"
+        },
+        {
+          "qty": "2",
+          "unit": "buc.",
+          "name": "batoane de scorțișoară"
+        },
+        {
+          "qty": "5",
+          "unit": "buc.",
+          "name": "cuișoare"
+        },
+        {
+          "qty": "1",
+          "unit": "buc.",
+          "name": "anason stelat",
+          "note": "opțional"
+        }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "Pune în oală apa, zahărul, scorțișoara, cuișoarele și anasonul. Fierbe 5 minute la foc mic, până zahărul se topește și apa prinde aroma condimentelor.",
+      "minutes": 5
+    },
+    {
+      "text": "Adaugă feliile de portocală și de măr și lasă încă 2 minute.",
+      "minutes": 2
+    },
+    {
+      "text": "Toarnă vinul. Încălzește-l la foc mic până începe să fumege și apar primele bule mici pe margine. Nu-l lăsa să clocotească.",
+      "minutes": 8
+    },
+    {
+      "text": "Ține-l așa, la foc foarte mic, 5–10 minute, ca să se lege gustul. Gustă și mai pune zahăr dacă e nevoie.",
+      "minutes": 10
+    },
+    {
+      "text": "Strecoară-l și servește-l fierbinte, în căni sau pahare care rezistă la căldură, cu câte o felie de portocală.",
+      "minutes": 2
+    }
+  ],
+  "tips": [
+    "Alege un vin roșu sec, simplu și curat la gust; nu are rost să folosești o sticlă scumpă. Din soiurile autohtone, Rara Neagră dă vinuri mai ușoare, Fetească Neagră unele mai pline.",
+    "Pentru copii și pentru cine conduce, fă aceeași rețetă cu suc de struguri sau de mere în loc de vin și cu mai puțin zahăr.",
+    "Dacă rămâne, încălzește-l a doua zi la foc mic, fără să-l aduci la clocot.",
+    "Vinul fiert rămâne o băutură alcoolică: nu-l da copiilor și nu te urca la volan după el."
+  ],
+  "mistakes": [
+    "Vin lăsat să clocotească: gustul devine aspru, iar condimentele se fac amare.",
+    "Prea multe cuișoare: 5 sunt destule la o sticlă, altfel vinul are gust de medicament.",
+    "Vin dulce sau demidulce plus zahăr: iese siropos. Pornește de la vin sec și îndulcește treptat.",
+    "Vin de casă oțetit sau cu gust străin: căldura scoate defectul și mai tare în evidență."
+  ],
+  "variants": [
+    {
+      "region": "fără alcool",
+      "text": "Suc de struguri roșii sau de mere, cu aceleași condimente și felii de fructe, încălzit la fel de încet."
+    }
+  ],
+  "storyHtml": "<p>Vinul fiert nu apare în <a href=\"https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala\">registrul patrimoniului cultural imaterial</a>: acolo sunt trecute vinul de casă, rachiul, vișinata, braga, cvasul, miedul și compoturile, cu felurile lor de preparare. E o băutură de iarnă care se vinde azi la târgurile de Crăciun, de la <a href=\"/ghiduri/targ-craciun-sibiu/\">Sibiu</a> la Praga.</p><p>Pentru el folosești vin roșu sec, iar Moldova are două soiuri roșii autohtone, arată <a href=\"https://wineofmoldova.com/ro/soiuri-autohtone-de-struguri/\">Oficiul Național al Viei și Vinului</a>: <strong>Rara Neagră</strong>, cu vinuri ușoare, și <strong>Fetească Neagră</strong>, din care se fac vinuri roșii și roze. Despre vinurile și băuturile din Moldova citește <a href=\"/ghiduri/vinul-si-bauturile-traditionale-din-moldova/\">ghidul nostru</a>.</p>",
+  "sources": [
+    {
+      "name": "Ministerul Culturii: Registrul patrimoniului cultural imaterial, Capitolul VII. Cunoștințe privind alimentația tradițională (V. Iarovoi)",
+      "url": "https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala"
+    },
+    {
+      "name": "Oficiul Național al Viei și Vinului (Wine of Moldova): soiurile de struguri autohtone",
+      "url": "https://wineofmoldova.com/ro/soiuri-autohtone-de-struguri/"
+    }
+  ],
+  "related": [
+    "vinul-si-bauturile-traditionale-din-moldova",
+    "alcoolul-la-volan-limite-si-sanctiuni",
+    "ziua-nationala-a-vinului",
+    "compot-de-fructe-uscate",
+    "cusma-lui-guguta"
+  ]
+}

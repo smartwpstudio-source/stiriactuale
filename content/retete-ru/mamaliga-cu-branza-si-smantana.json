@@ -1,0 +1,160 @@
+{
+  "slug": "mamaliga-cu-branza-si-smantana",
+  "title": "Мамалыга с брынзой и сметаной по-молдавски",
+  "description": "Молдавская мамалыга без комков: сколько кукурузной муки на литр воды, как варить в казанке, как перевернуть и подать с овечьей брынзой и сметаной.",
+  "updated": "2026-10-10",
+  "image": {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/retete/mamaliga-cu-branza-si-smantana-ucCeQCuP6VPun7tJ7rKT4B200FcpqA.jpg",
+    "credit": "Magnific (stoc)",
+    "alt": "Круглая мамалыга, перевёрнутая на серое блюдо, с кусочком масла сверху, рядом стеклянная миска с тёртой брынзой, миска со сметаной и несколько перьев зелёного лука"
+  },
+  "servings": 4,
+  "prepMinutes": 5,
+  "cookMinutes": 40,
+  "difficulty": "usor",
+  "fasting": false,
+  "course": "garnituri",
+  "region": "вся Молдова",
+  "occasions": [
+    "masa-de-craciun-in-moldova-bucate-si-retete",
+    "craciunul-nasterea-domnului-traditii-in-moldova"
+  ],
+  "ingredients": [
+    {
+      "group": "Мамалыга",
+      "items": [
+        {
+          "qty": "1",
+          "unit": "л",
+          "name": "вода"
+        },
+        {
+          "qty": "250",
+          "unit": "г",
+          "name": "кукурузная мука (mălai)",
+          "note": "средний помол, жёлтая"
+        },
+        {
+          "qty": "1",
+          "unit": "ч. л.",
+          "name": "соль",
+          "note": "без горки"
+        },
+        {
+          "qty": "20",
+          "unit": "г",
+          "name": "сливочное масло",
+          "note": "по желанию"
+        }
+      ]
+    },
+    {
+      "group": "Для подачи",
+      "items": [
+        {
+          "qty": "300",
+          "unit": "г",
+          "name": "солёная овечья брынза",
+          "note": "или 200 г овечьей и 100 г творога"
+        },
+        {
+          "qty": "300",
+          "unit": "г",
+          "name": "сметана",
+          "note": "пожирнее"
+        },
+        {
+          "qty": "4",
+          "unit": "пера",
+          "name": "зелёный лук",
+          "note": "по желанию"
+        }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "Поставьте воду с солью на огонь в чугунный казанок или кастрюлю с толстым дном. Когда вода нагреется, но ещё не закипит, всыпьте горсть кукурузной муки и перемешайте.",
+      "minutes": 5
+    },
+    {
+      "text": "Когда закипит, всыпайте остальную муку тонкой струйкой одной рукой, а другой быстро мешайте мешалкой (făcăleț) или венчиком, чтобы не было комков.",
+      "minutes": 3
+    },
+    {
+      "text": "Убавьте огонь и варите мамалыгу 30–35 минут. Часто мешайте и прижимайте её мешалкой к стенкам, чтобы не пригорала. Она готова, когда сама отходит от стенок, а воткнутая в центр мешалка стоит прямо.",
+      "minutes": 30
+    },
+    {
+      "text": "По желанию добавьте масло и разгладьте мамалыгу мокрой ложкой. Подержите казанок на огне ещё 1–2 минуты, затем слегка встряхните, чтобы мамалыга отошла от дна.",
+      "minutes": 2
+    },
+    {
+      "text": "Одним движением переверните её на деревянную доску или блюдо. Режьте ниткой, а не ножом.",
+      "minutes": 1
+    },
+    {
+      "text": "Подавайте мамалыгу горячей, с тёртой или раскрошенной брынзой и сметаной. Кладите брынзу на горячую мамалыгу, чтобы она немного подтаяла.",
+      "minutes": 3
+    }
+  ],
+  "tips": [
+    "Базовая пропорция — 250 г кукурузной муки на литр воды. Для мягкой мамалыги, которую едят ложкой, воды больше; для плотной, которую режут ломтями, — меньше.",
+    "Лучшая текстура — из муки среднего помола. Очень мелкая быстро схватывается и даёт комки, крупка требует больше воды и времени.",
+    "Держите рядом чашку с горячей водой. Если мамалыга густеет слишком быстро, а мука ещё сырая, добавьте несколько ложек и варите дальше.",
+    "Оставшуюся мамалыгу на следующий день режут ломтями и обжаривают на сковороде с небольшим количеством масла."
+  ],
+  "mistakes": [
+    "Вся мука сразу в кипящую воду: образуются комки, сырые внутри.",
+    "Мамалыгу сняли слишком рано: у неё вкус сырой муки и она липнет к зубам. Варите не меньше 30 минут.",
+    "Слишком сильный огонь: мамалыга пригорает и «плюётся» кипящими брызгами. Держите слабый огонь и часто мешайте.",
+    "Брынзу не вымочили: овечья брынза из кадки бывает очень солёной. Попробуйте и при необходимости подержите её 1–2 часа в воде или молоке."
+  ],
+  "variants": [
+    {
+      "region": "вся Молдова",
+      "text": "С тушёным мясом (tocană), жареной свининой, голубцами или холодцом вместо брынзы и сметаны."
+    },
+    {
+      "region": "пост",
+      "text": "С фасолевым пюре, тушёной капустой или чесночным соусом (mujdei), без молочного."
+    },
+    {
+      "region": "терч и будинка",
+      "text": "Из той же муки варят более жидкую кашу терч (terci) и запекают будинку (budincă). Реестр наследия называет их рядом с мамалыгой."
+    }
+  ],
+  "storyHtml": "<p>Реестр нематериального культурного наследия <a href=\"https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala\">Министерства культуры</a> относит мамалыгу вместе с хлебом и кукурузным хлебом (mălai) к «основной пище», «вместе с относящимися к ним предметами». Там же среди блюд из злаков названы мамалыга, каша терч и будинка из кукурузной муки.</p><p>При этом кукурузная мамалыга не так стара, как кажется. Кукуруза пришла из Америки и распространилась у нас лишь в конце XVII века. До этого основной пищей были каши из проса, по обобщению этнографа Иона Келчи (<a href=\"https://revistacalitateavietii.ro/journal/article/download/108/84/157\">рецензия в Revista Calitatea Vieții</a>). Толковый словарь румынского языка указывает происхождение слова «мамалыга» как неизвестное.</p><p>Туристический портал <a href=\"https://moldova.travel/en/moldovas-gastronomic-delights-a-journey-through-local-cuisine/\">moldova.travel</a> пишет, что мамалыгу едят с коровьей или овечьей брынзой, со сметаной, с тушёным мясом или жареной свининой. Бывает она и на рождественском столе: «едят и мамалыгу», отмечает <a href=\"https://www.moldpres.md/turism/descopera-moldova-cu-moldpres-obiceiuri-si-traditii-de-iarna-care-ne-fac-sarbatorile-mai-frumoase-i-atractive\">Moldpres</a>.</p>",
+  "sources": [
+    {
+      "name": "Ministerul Culturii: Registrul patrimoniului cultural imaterial, Capitolul VII. Cunoștințe privind alimentația tradițională",
+      "url": "https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala"
+    },
+    {
+      "name": "Revista Calitatea Vieții: recenzie la Ion Chelcea, Agricultura la români (introducerea porumbului)",
+      "url": "https://revistacalitateavietii.ro/journal/article/download/108/84/157"
+    },
+    {
+      "name": "moldova.travel: Moldova's Culinary Delights",
+      "url": "https://moldova.travel/en/moldovas-gastronomic-delights-a-journey-through-local-cuisine/"
+    },
+    {
+      "name": "Moldpres: Descoperă Moldova – obiceiuri și tradiții de iarnă (masa de Crăciun)",
+      "url": "https://www.moldpres.md/turism/descopera-moldova-cu-moldpres-obiceiuri-si-traditii-de-iarna-care-ne-fac-sarbatorile-mai-frumoase-i-atractive"
+    },
+    {
+      "name": "dexonline: mămăligă (DEX '09)",
+      "url": "https://dexonline.ro/definitie/m%C4%83m%C4%83lig%C4%83"
+    }
+  ],
+  "related": [
+    "bucataria-moldoveneasca-istorie-feluri-traditii",
+    "sarmale-in-foi-de-varza-murata",
+    "racitura-de-porc-si-cocos",
+    "zeama-de-peste",
+    "tochitura-moldoveneasca",
+    "tocana-de-porc-cu-mamaliga",
+    "mamaliga-fara-cocoloase-cum-o-faci-corect",
+    "cum-alegi-branza-la-piata"
+  ]
+}

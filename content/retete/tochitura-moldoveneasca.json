@@ -1,0 +1,208 @@
+{
+  "slug": "tochitura-moldoveneasca",
+  "title": "Tochitură moldovenească cu mămăligă, ou ochi și brânză",
+  "description": "Tochitură moldovenească din carne de porc și cârnați, cu mămăligă, ou ochi, brânză de oaie și smântână: cantități pentru 4 porții, pașii și greșelile frecvente.",
+  "updated": "2026-10-10",
+  "image": {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/retete/tochitura-moldoveneasca-RgoLdS9uY6AT9OC5ayidgAWja3psCo.jpg",
+    "credit": "Magnific (stoc)",
+    "alt": "Bucăți de carne de porc înăbușită cu ceapă, două felii de mămăligă cu un ou ochi deasupra, brânză sfărâmată, smântână și o crenguță de pătrunjel pe o farfurie albă"
+  },
+  "servings": 4,
+  "prepMinutes": 20,
+  "cookMinutes": 60,
+  "difficulty": "usor",
+  "fasting": false,
+  "course": "fel-principal",
+  "region": "toată Moldova",
+  "occasions": [
+    "masa-de-sarbatoare-in-moldova-hram-nunta-pomana",
+    "masa-de-craciun-in-moldova-bucate-si-retete",
+    "ce-gatesti-de-hram-meniu-pentru-oaspeti"
+  ],
+  "ingredients": [
+    {
+      "group": "Tochitura",
+      "items": [
+        {
+          "qty": "600",
+          "unit": "g",
+          "name": "carne de porc",
+          "note": "ceafă sau pulpă, cuburi de 2–3 cm"
+        },
+        {
+          "qty": "200",
+          "unit": "g",
+          "name": "cârnați de porc",
+          "note": "afumați sau proaspeți, felii"
+        },
+        {
+          "qty": "100",
+          "unit": "g",
+          "name": "slănină sau costiță",
+          "note": "cubulețe"
+        },
+        {
+          "qty": "150",
+          "unit": "g",
+          "name": "ficat de porc",
+          "note": "opțional, cuburi"
+        },
+        {
+          "qty": "1",
+          "unit": "buc.",
+          "name": "ceapă",
+          "note": "tocată"
+        },
+        {
+          "qty": "1",
+          "unit": "linguriță",
+          "name": "boia dulce"
+        },
+        {
+          "qty": "100",
+          "unit": "ml",
+          "name": "vin alb sec"
+        },
+        {
+          "qty": "150",
+          "unit": "ml",
+          "name": "apă",
+          "note": "sau supă"
+        },
+        {
+          "qty": "1/2",
+          "unit": "linguriță",
+          "name": "cimbru uscat"
+        },
+        {
+          "qty": "1",
+          "unit": "linguriță",
+          "name": "sare",
+          "note": "după gust"
+        },
+        {
+          "qty": "1/2",
+          "unit": "linguriță",
+          "name": "piper negru măcinat"
+        },
+        {
+          "qty": "4",
+          "unit": "cățe",
+          "name": "usturoi",
+          "note": "pisate"
+        }
+      ]
+    },
+    {
+      "group": "La servire",
+      "items": [
+        {
+          "qty": "4",
+          "unit": "buc.",
+          "name": "ouă",
+          "note": "pentru ochiuri"
+        },
+        {
+          "qty": "300",
+          "unit": "g",
+          "name": "mălai",
+          "note": "pentru mămăligă, cu 1,2 l apă"
+        },
+        {
+          "qty": "200",
+          "unit": "g",
+          "name": "brânză de oaie",
+          "note": "sfărâmată"
+        },
+        {
+          "qty": "100",
+          "unit": "g",
+          "name": "smântână"
+        },
+        {
+          "name": "murături"
+        }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "Topește slănina într-o tigaie mare sau într-un ceaun, la foc mediu, 5 minute.",
+      "minutes": 5
+    },
+    {
+      "text": "Adaugă carnea și prăjește-o 10 minute, amestecând, până se rumenește pe toate părțile.",
+      "minutes": 10
+    },
+    {
+      "text": "Pune ceapa și cârnații și mai prăjește 5 minute.",
+      "minutes": 5
+    },
+    {
+      "text": "Presară boiaua, toarnă vinul și apa, adaugă cimbrul, sarea și piperul. Acoperă și lasă la foc mic 25–30 de minute, până se înmoaie carnea.",
+      "minutes": 30
+    },
+    {
+      "text": "Adaugă ficatul și usturoiul și lasă încă 5–7 minute fără capac, până scade sosul.",
+      "minutes": 7
+    },
+    {
+      "text": "În paralel, fă mămăliga din mălai, 1,2 l de apă și puțină sare, ca în rețeta de tocană cu mămăligă.",
+      "minutes": 30
+    },
+    {
+      "text": "Prăjește ouăle ochiuri în câteva linguri din grăsimea tochiturii, 3–4 minute, să rămână gălbenușul moale.",
+      "minutes": 4
+    },
+    {
+      "text": "Pune în farfurie mămăliga, tochitura cu sosul ei și oul deasupra. Servește cu brânză de oaie, smântână și murături."
+    }
+  ],
+  "tips": [
+    "Slănina topită la început dă grăsimea și gustul tochiturii; carnea prăjită în ea nu se usucă.",
+    "Ficatul se pune în ultimele minute, ca să rămână moale.",
+    "Ouăle ochiuri ies mai bune prăjite în câteva linguri din grăsimea tochiturii.",
+    "Brânza de oaie e sărată: potrivește sarea tochiturii abia după ce ai gustat-o cu brânză."
+  ],
+  "mistakes": [
+    "Ficat pus odată cu carnea: se întărește și se face amar.",
+    "Prea mult lichid: iese tocană. Tochitura are puțin sos, cât să ude mămăliga.",
+    "Carne doar slabă, fără slănină sau cârnați: tochitura iese uscată.",
+    "Foc mare la înăbușit: sosul scade, iar carnea se prinde de fund înainte să se înmoaie."
+  ],
+  "variants": [
+    {
+      "region": "sudul Moldovei",
+      "text": "Registrul patrimoniului trece între bucatele sudului tochitura de porc și de oaie."
+    },
+    {
+      "region": "la tăierea porcului",
+      "text": "Tradițional se făcea în ziua tăierii porcului, din bucăți mici de carne slabă și grasă și din organe, prăjite în tigaie."
+    }
+  ],
+  "storyHtml": "<p>Tochitura, numită și <em>topitură</em>, este un preparat „făcut tradițional cu ocazia tăierii porcului”, din bucăți mici de carne și organe prăjite, servit cu mămăliguță, ouă și brânză, după definiția din <a href=\"https://dexonline.ro/definitie/tochitur%C4%83\">Dicționarul gastronomic explicativ</a> de pe dexonline.</p><p>Registrul patrimoniului cultural imaterial al <a href=\"https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala\">Ministerului Culturii</a> trece tochitura de porc și de oaie între bucatele specifice sudului Moldovei, alături de ciulama și de mielul copt în pământ.</p><p>Porcii se tăiau, tradițional, de <a href=\"https://www.crestinortodox.ro/datini-obiceiuri-superstitii/ignatul-68816.html\">Ignat</a>, pe 20 decembrie, iar carnea lor ajungea pe masa de Crăciun.</p>",
+  "sources": [
+    {
+      "name": "Ministerul Culturii: Registrul patrimoniului cultural imaterial, Capitolul VII. Cunoștințe privind alimentația tradițională",
+      "url": "https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala"
+    },
+    {
+      "name": "dexonline: tochitură (Dicționar gastronomic explicativ, 2003)",
+      "url": "https://dexonline.ro/definitie/tochitur%C4%83"
+    },
+    {
+      "name": "CrestinOrtodox.ro: Ignatul",
+      "url": "https://www.crestinortodox.ro/datini-obiceiuri-superstitii/ignatul-68816.html"
+    }
+  ],
+  "related": [
+    "bucataria-moldoveneasca-istorie-feluri-traditii",
+    "tocana-de-porc-cu-mamaliga",
+    "bucataria-gagauza-si-bulgara-din-sudul-moldovei",
+    "placinte-cu-branza-la-tigaie",
+    "mamaliga-cu-branza-si-smantana",
+    "mamaliga-fara-cocoloase-cum-o-faci-corect",
+    "racitura-de-porc-si-cocos"
+  ]
+}

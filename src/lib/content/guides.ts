@@ -22,6 +22,11 @@ export const GUIDE_CATEGORIES = {
   sarbatori: "Sărbători și tradiții",
   calatorii: "Călătorii din Moldova",
   lumea: "Lumea: dosare",
+  gospodarie: "Gospodărie, grădină și vie",
+  bucatarie: "Bucătăria moldovenească",
+  turism: "Moldova turistică",
+  animale: "Animalul de companie",
+  casa: "Casa și blocul",
 } as const;
 
 export type GuideCategory = keyof typeof GUIDE_CATEGORIES;

@@ -1,0 +1,196 @@
+{
+  "slug": "zeama-de-peste",
+  "title": "Рыбная зама из речной рыбы с кислым боршем, по-молдавски",
+  "description": "Рыбная зама из карпа или судака с овощами, помидорами и кислым боршем: как сварить прозрачный бульон и когда класть рыбу. На Благовещение и Вербное.",
+  "updated": "2026-10-10",
+  "image": {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/retete/zeama-de-peste-mJWosa2mYerNn2sWk8afVbWXgRAhcP.jpg",
+    "credit": "Magnific (stoc)",
+    "alt": "Глубокая тарелка с расписными цветами, полная прозрачной рыбной замы, с куском карпа на кости, картофелем, морковью и помидорами, посыпанная петрушкой и укропом, на деревянном столе"
+  },
+  "servings": 6,
+  "prepMinutes": 30,
+  "cookMinutes": 60,
+  "difficulty": "usor",
+  "fasting": false,
+  "course": "ciorbe",
+  "region": "вся Молдова",
+  "occasions": [
+    "buna-vestire-traditii-si-credinte",
+    "floriile-traditii-si-onomastica",
+    "postul-craciunului-cand-incepe-si-cum-se-tine",
+    "ce-gatesti-in-post-meniu-pe-o-saptamana",
+    "ce-gatesti-de-hram-meniu-pentru-oaspeti"
+  ],
+  "ingredients": [
+    {
+      "group": "Рыба",
+      "items": [
+        {
+          "qty": "1,5",
+          "unit": "кг",
+          "name": "речная рыба",
+          "note": "карп, судак или карась, очищенная"
+        },
+        {
+          "qty": "3",
+          "unit": "л",
+          "name": "вода"
+        }
+      ]
+    },
+    {
+      "group": "Овощи",
+      "items": [
+        {
+          "qty": "2",
+          "unit": "шт.",
+          "name": "луковицы",
+          "note": "нарезанные"
+        },
+        {
+          "qty": "2",
+          "unit": "шт.",
+          "name": "морковь",
+          "note": "кружками"
+        },
+        {
+          "qty": "1",
+          "unit": "шт.",
+          "name": "корень петрушки",
+          "note": "кружками"
+        },
+        {
+          "qty": "1",
+          "unit": "шт.",
+          "name": "болгарский перец",
+          "note": "соломкой"
+        },
+        {
+          "qty": "3",
+          "unit": "шт.",
+          "name": "картофель",
+          "note": "кубиками"
+        },
+        {
+          "qty": "3",
+          "unit": "шт.",
+          "name": "помидоры",
+          "note": "без кожицы, нарезанные, или 300 мл томатного сока"
+        }
+      ]
+    },
+    {
+      "group": "Кислый борш и зелень",
+      "items": [
+        {
+          "qty": "500",
+          "unit": "мл",
+          "name": "кислый борш (borș acru)",
+          "note": "или сок половины лимона"
+        },
+        {
+          "qty": "8",
+          "unit": "шт.",
+          "name": "горошины чёрного перца"
+        },
+        {
+          "qty": "2",
+          "unit": "шт.",
+          "name": "лавровый лист"
+        },
+        {
+          "qty": "1",
+          "unit": "ч. л.",
+          "name": "соль",
+          "note": "или по вкусу"
+        },
+        {
+          "qty": "1",
+          "unit": "пучок",
+          "name": "любисток",
+          "note": "нарезанный"
+        },
+        {
+          "qty": "1",
+          "unit": "пучок",
+          "name": "петрушка и укроп",
+          "note": "нарезанные"
+        }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "Очистите рыбу от чешуи и внутренностей, удалите жабры и хорошо промойте. Нарежьте кусками 4–5 см, с костью. Голову и хвост оставьте для бульона.",
+      "minutes": 15
+    },
+    {
+      "text": "Положите голову и хвост в холодную воду с перцем и лавровым листом. Доведите до кипения, снимите пену и варите 30 минут на слабом огне. Процедите бульон через частое сито.",
+      "minutes": 30
+    },
+    {
+      "text": "Положите в процеженный бульон лук, морковь, корень петрушки и перец и варите 10 минут. Добавьте картофель и варите ещё 5 минут.",
+      "minutes": 15
+    },
+    {
+      "text": "Добавьте помидоры и кислый борш, предварительно прокипячённый отдельно 1–2 минуты со снятой пеной. Посолите.",
+      "minutes": 5
+    },
+    {
+      "text": "Положите куски рыбы, дайте закипеть, затем убавьте огонь и варите 12–15 минут, не мешая, а лишь встряхивая кастрюлю.",
+      "minutes": 15
+    },
+    {
+      "text": "Выключите огонь, добавьте любисток и зелень и оставьте заму под крышкой на 5 минут. Подавайте горячей, с хлебом или мамалыгой.",
+      "minutes": 5
+    }
+  ],
+  "tips": [
+    "Зама вкуснее из двух-трёх видов рыбы: жирной, как карп, и с белым мясом, как судак.",
+    "Кислый борш кипятят отдельно и снимают пену, иначе он замутит бульон.",
+    "Рыбу можно подать отдельно на блюде с чесночным соусом (mujdei), а бульон с овощами — в тарелках."
+  ],
+  "mistakes": [
+    "Рыбу положили в самом начале: она разваливается, и бульон полон мелких костей. Куски кладут только на последние 15 минут.",
+    "Мешали ложкой после того, как положили рыбу: мясо ломается. Только встряхивайте кастрюлю.",
+    "Жабры оставили в голове: бульон горчит и мутнеет."
+  ],
+  "variants": [
+    {
+      "region": "вся Молдова",
+      "text": "Подкисленная только помидорами или лимонным соком, если нет кислого борша."
+    },
+    {
+      "region": "юг Молдовы",
+      "text": "Из той же рыбы готовят плакию — рыбу, тушённую с луком, помидорами и маслом, которую реестр наследия относит к блюдам юга."
+    }
+  ],
+  "storyHtml": "<p>Реестр нематериального культурного наследия <a href=\"https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala\">Министерства культуры</a> называет рыбную заму рядом с куриной замой и борщом с капустой и свининой, а заму, борщ и чорбу описывает как супы, «подкисленные кислым боршем», которые подают первым блюдом. Кислый борш — это жидкость, получаемая брожением пшеничных отрубей с кукурузной мукой, показывает <a href=\"https://doi.org/10.52603/9789975333788.26\">исследование Технического университета Молдовы</a>.</p><p>Рыбная зама — блюдо дней с разрешением на рыбу. В Великий пост рыба разрешена на Благовещение (<a href=\"https://doxologia.ro/de-ce-mancam-peste-de-buna-vestire\">Doxologia</a>) и в Вербное воскресенье, когда «Церковь установила в этот день разрешение на рыбу и вино», указывает <a href=\"https://mitropolia.md/ips-mitropolit-vladimir-a-liturghisit-in-duminica-floriilor-la-catedrala-mitropolitana-din-chisinau/\">Митрополия Молдовы</a>.</p>",
+  "sources": [
+    {
+      "name": "Ministerul Culturii: Registrul patrimoniului cultural imaterial, Capitolul VII. Cunoștințe privind alimentația tradițională",
+      "url": "https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala"
+    },
+    {
+      "name": "E. Covaliov, O. Gutium, C. Babcenco, V. Cazac: Aspecte tradiționale și tehnologice ale borșului acru (2021)",
+      "url": "https://doi.org/10.52603/9789975333788.26"
+    },
+    {
+      "name": "Doxologia: De ce mâncăm pește de Buna Vestire?",
+      "url": "https://doxologia.ro/de-ce-mancam-peste-de-buna-vestire"
+    },
+    {
+      "name": "Mitropolia Chișinăului și a Întregii Moldove: Duminica Floriilor la Catedrala Mitropolitană",
+      "url": "https://mitropolia.md/ips-mitropolit-vladimir-a-liturghisit-in-duminica-floriilor-la-catedrala-mitropolitana-din-chisinau/"
+    }
+  ],
+  "related": [
+    "bucataria-de-post-in-moldova",
+    "zeama-de-gaina-cu-taitei-de-casa",
+    "mamaliga-cu-branza-si-smantana",
+    "bucataria-moldoveneasca-istorie-feluri-traditii",
+    "bors-rosu-moldovenesc",
+    "cum-faci-borsul-acru-de-tarate-acasa"
+  ]
+}

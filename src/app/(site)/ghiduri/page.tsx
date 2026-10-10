@@ -85,6 +85,11 @@ export default async function GuidesPage() {
                 <GuideLink key={g.slug} g={g} />
               ))}
             </ul>
+            {c === "bucatarie" && (
+              <Link href="/retete/" className="mt-2 inline-block font-mono text-sm text-teal hover:text-amber-ink">
+                Rețete moldovenești pas cu pas →
+              </Link>
+            )}
           </section>
           ),
         )}

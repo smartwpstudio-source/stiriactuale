@@ -1,0 +1,226 @@
+{
+  "slug": "zeama-de-gaina-cu-taitei-de-casa",
+  "title": "Zeamă de găină cu tăiței de casă, acrită cu borș",
+  "description": "Rețeta de zeamă moldovenească: găină de casă, tăiței făcuți în casă, borș acru și leuștean. Cantități pentru 8 porții, pașii, sfaturi și variantele de acrire.",
+  "updated": "2026-10-10",
+  "image": {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/retete/zeama-de-gaina-cu-taitei-de-casa-4JWiuV8mqTMPjuOyEPTapcDZFLk2JN.jpg",
+    "credit": "Magnific (stoc)",
+    "alt": "Farfurie de zeamă limpede cu o pulpă de pasăre, tăiței lați, cartofi și pătrunjel, lângă felii de pâine neagră, brânză albă și căței de usturoi"
+  },
+  "servings": 8,
+  "prepMinutes": 45,
+  "cookMinutes": 150,
+  "difficulty": "mediu",
+  "fasting": false,
+  "course": "ciorbe",
+  "region": "toată Moldova",
+  "ingredients": [
+    {
+      "group": "Supa",
+      "items": [
+        {
+          "qty": "1",
+          "unit": "buc.",
+          "name": "găină de casă",
+          "note": "1,8–2 kg, tăiată bucăți"
+        },
+        {
+          "qty": "4",
+          "unit": "l",
+          "name": "apă rece"
+        },
+        {
+          "qty": "1",
+          "unit": "buc.",
+          "name": "ceapă",
+          "note": "întreagă, curățată"
+        },
+        {
+          "qty": "2",
+          "unit": "buc.",
+          "name": "morcovi",
+          "note": "tăiați rondele"
+        },
+        {
+          "qty": "1",
+          "unit": "buc.",
+          "name": "rădăcină de pătrunjel",
+          "note": "tăiată rondele"
+        },
+        {
+          "qty": "1",
+          "unit": "buc.",
+          "name": "ardei gras",
+          "note": "opțional, tăiat fâșii"
+        },
+        {
+          "qty": "3",
+          "unit": "buc.",
+          "name": "cartofi",
+          "note": "opțional, tăiați cuburi"
+        },
+        {
+          "qty": "2",
+          "unit": "lingurițe",
+          "name": "sare",
+          "note": "plus după gust"
+        },
+        {
+          "qty": "500-700",
+          "unit": "ml",
+          "name": "borș acru de tărâțe",
+          "note": "sau zeama de la 1 lămâie"
+        },
+        {
+          "qty": "1",
+          "unit": "legătură",
+          "name": "leuștean",
+          "note": "tocat"
+        },
+        {
+          "qty": "1",
+          "unit": "legătură",
+          "name": "pătrunjel și mărar",
+          "note": "tocate"
+        }
+      ]
+    },
+    {
+      "group": "Tăițeii de casă",
+      "items": [
+        {
+          "qty": "200",
+          "unit": "g",
+          "name": "făină albă",
+          "note": "plus puțină pentru întins"
+        },
+        {
+          "qty": "2",
+          "unit": "buc.",
+          "name": "ouă"
+        },
+        {
+          "qty": "1",
+          "unit": "praf",
+          "name": "sare"
+        }
+      ]
+    },
+    {
+      "group": "La servire",
+      "items": [
+        {
+          "qty": "200",
+          "unit": "g",
+          "name": "smântână"
+        },
+        {
+          "name": "ardei iute",
+          "note": "după gust"
+        }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "Pune găina în oală cu apa rece și adu încet la fierbere. Ia spuma cu o lingură, 5–10 minute, până nu mai apare.",
+      "minutes": 15
+    },
+    {
+      "text": "Adaugă ceapa întreagă și o linguriță de sare. Lasă să fiarbă la foc mic, cu capacul puțin tras, 1 oră și jumătate–2 ore, până carnea se desprinde ușor de pe os. O găină bătrână poate cere mai mult.",
+      "minutes": 120
+    },
+    {
+      "text": "Între timp, fă tăițeii: frământă făina cu ouăle și sarea 5–8 minute, până obții un aluat tare și neted. Acoperă-l și lasă-l 20 de minute.",
+      "minutes": 30
+    },
+    {
+      "text": "Întinde aluatul cu sucitorul cât mai subțire, presărând puțină făină. Lasă foaia să se zvânte 15–20 de minute, apoi rulează-o și taie fâșii de 2–3 mm. Desfă-le și lasă-le să se usuce pe masă.",
+      "minutes": 30
+    },
+    {
+      "text": "Scoate ceapa din supă. Adaugă morcovii, pătrunjelul, ardeiul și cartofii și fierbe 15–20 de minute, până se înmoaie.",
+      "minutes": 20
+    },
+    {
+      "text": "Fierbe separat borșul într-o cratiță și ia-i spuma. Toarnă-l în supă treptat, gustând, până zeama e acrișoară cât îți place.",
+      "minutes": 5
+    },
+    {
+      "text": "Pune tăițeii și fierbe 3–5 minute, până sunt gata. Gustă de sare.",
+      "minutes": 5
+    },
+    {
+      "text": "Stinge focul, adaugă leușteanul și verdeața, acoperă oala și lasă zeama 10 minute. Servește-o cu smântână și ardei iute.",
+      "minutes": 10
+    }
+  ],
+  "tips": [
+    "Găina de casă dă gust și culoare. Puiul de broiler fierbe în 40 de minute, dar zeama iese mai slabă.",
+    "Fierberea la foc mic ține zeama limpede. Clocotul puternic o tulbură.",
+    "Dacă păstrezi zeama mai multe zile, fierbe tăițeii separat și pune-i în farfurie: în oală se umflă și absorb supa.",
+    "Tăițeii uscați bine se păstrează câteva săptămâni într-un borcan închis."
+  ],
+  "mistakes": [
+    "Borș pus nefiert: face spumă și tulbură zeama.",
+    "Leuștean fiert mult: își pierde aroma. Se pune la sfârșit, cu focul stins.",
+    "Tăiței nezvântați: se lipesc între ei și se rup la fiert.",
+    "Prea multă sare la început: supa scade la fiert și borșul aduce și el gust. Potrivește sarea la final."
+  ],
+  "variants": [
+    {
+      "region": "acrirea",
+      "text": "Tradițional, cu borș acru din tărâțe de grâu, cu făină de porumb și pâine de secară. Azi mulți folosesc zeamă de lămâie sau sare de lămâie."
+    },
+    {
+      "region": "toată Moldova",
+      "text": "Zeamă de pui, mai repede gata, sau zeamă de pește, trecută și ea între bucatele tradiționale."
+    },
+    {
+      "region": "nume regionale",
+      "text": "Drojdia pentru borș, huștia, are la noi mai multe nume: huște (Cahul), huști (Bălți, Edineț), huce (Criuleni, Dubăsari), ciuce (Călărași)."
+    },
+    {
+      "region": "mai simplă",
+      "text": "Fără cartofi și ardei, doar cu morcov, pătrunjel, tăiței și verdeață."
+    }
+  ],
+  "storyHtml": "<p>Cuvântul <em>zeamă</em> vine din latinescul <em>zema</em>, după DEX. Registrul patrimoniului cultural imaterial al <a href=\"https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala\">Ministerului Culturii</a> trece zeama de pui și zeama de pește între preparatele tradiționale din carne fiartă cu legume și paste făinoase. Tot acolo scrie că zeama, borșul și ciorba se acresc cu borș, un ferment din tărâțe de grâu și porumb, și se servesc „ca prim fel de bucate”.</p><p>Borșul acru e secretul zemii. Cercetătoarele <a href=\"https://doi.org/10.52603/9789975333788.26\">Universității Tehnice a Moldovei</a> au adunat rețetele gospodinelor: tărâțe de grâu, făină de porumb și pâine de secară, opărite cu apă caldă și ținute la cald până se acresc, uneori cu ramuri de vișin sau cu leuștean. Ele citează și cartea etnografului Mihai Lupescu, <em>Din bucătăria țăranului român</em>, cu rețeta borșului făcut în putină. Borșul se făcea în chiup de lut și se păstra mereu proaspăt, iar o strachină din drojdia veche (huștia) pornea borșul următor.</p><p>Printre bucatele fără de care nu trece nicio sărbătoare tradițională, un <a href=\"https://doi.org/10.5281/zenodo.4296393\">studiu UTM din 2020</a> numește, alături de sarmale, tăițeii de pasăre.</p>",
+  "sources": [
+    {
+      "name": "Ministerul Culturii: Registrul patrimoniului cultural imaterial, Capitolul VII. Cunoștințe privind alimentația tradițională",
+      "url": "https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala"
+    },
+    {
+      "name": "E. Covaliov, O. Gutium, C. Babcenco, V. Cazac: Aspecte tradiționale și tehnologice ale borșului acru (2021)",
+      "url": "https://doi.org/10.52603/9789975333788.26"
+    },
+    {
+      "name": "O. Gutium, R. Siminiuc, C. Grosu, V. Cazac: Sarmale – symbol of Moldovan gastronomy, Journal of Social Sciences, UTM, 2020",
+      "url": "https://doi.org/10.5281/zenodo.4296393"
+    },
+    {
+      "name": "moldova.travel: Moldova's Culinary Delights",
+      "url": "https://moldova.travel/en/moldovas-gastronomic-delights-a-journey-through-local-cuisine/"
+    },
+    {
+      "name": "dexonline: zeamă (DEX '09)",
+      "url": "https://dexonline.ro/definitie/zeam%C4%83"
+    }
+  ],
+  "related": [
+    "bucataria-moldoveneasca-istorie-feluri-traditii",
+    "sarmale-in-foi-de-varza-murata",
+    "placinte-cu-branza-la-tigaie",
+    "bors-rosu-moldovenesc",
+    "ciorba-de-perisoare",
+    "cum-faci-borsul-acru-de-tarate-acasa",
+    "masa-de-sarbatoare-in-moldova-hram-nunta-pomana"
+  ],
+  "occasions": [
+    "meniul-de-paste-in-moldova",
+    "meniul-de-revelion-moldovenesc",
+    "ce-gatesti-de-hram-meniu-pentru-oaspeti"
+  ]
+}

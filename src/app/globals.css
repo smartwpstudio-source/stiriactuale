@@ -95,6 +95,14 @@ body {
   #complaint-letter { position: absolute; inset: 0 auto auto 0; width: 100%; }
 }
 
+/* „Printează” la rețete: fără header, bandă, footer și reclame — doar rețeta */
+@media print {
+  body:has(#recipe) > :not(main),
+  body:has(#recipe) .adsbygoogle,
+  body:has(#recipe) .google-auto-placed { display: none !important; }
+  #recipe { max-width: none; padding: 0; }
+}
+
 /* Tabelele din ghiduri: pe telefon fiecare rând devine un card (prima coloană
    = titlul cardului), pe ecran mare tabel cu antet și rânduri alternante. */
 .prose-article table {

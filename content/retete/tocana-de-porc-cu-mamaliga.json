@@ -1,0 +1,225 @@
+{
+  "slug": "tocana-de-porc-cu-mamaliga",
+  "title": "Tocană de porc cu mămăligă, ca la moldoveni",
+  "description": "Tocană de porc cu ceapă și sos de roșii, făcută în ceaun și servită cu mămăligă, brânză și smântână: cantități pentru 6 porții, timpi și greșelile de evitat.",
+  "updated": "2026-10-10",
+  "image": {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/retete/tocana-de-porc-cu-mamaliga-f4aSbbDeAigCVpHUhlcQAAhf50qduC.jpg",
+    "credit": "Magnific (stoc)",
+    "alt": "Coaste și bucăți de carne de porc înăbușite în sos de roșii, lângă mămăligă, într-o farfurie albă cu margine în relief"
+  },
+  "servings": 6,
+  "prepMinutes": 20,
+  "cookMinutes": 135,
+  "difficulty": "mediu",
+  "fasting": false,
+  "course": "fel-principal",
+  "region": "toată Moldova",
+  "occasions": [
+    "craciunul-nasterea-domnului-traditii-in-moldova",
+    "masa-de-craciun-in-moldova-bucate-si-retete",
+    "ce-gatesti-de-hram-meniu-pentru-oaspeti"
+  ],
+  "ingredients": [
+    {
+      "group": "Tocana",
+      "items": [
+        {
+          "qty": "1,2",
+          "unit": "kg",
+          "name": "carne de porc",
+          "note": "ceafă și coaste, în bucăți de 4–5 cm"
+        },
+        {
+          "qty": "3",
+          "unit": "buc.",
+          "name": "cepe mari",
+          "note": "cca 500 g, tocate"
+        },
+        {
+          "qty": "3",
+          "unit": "linguri",
+          "name": "untură sau ulei"
+        },
+        {
+          "qty": "2",
+          "unit": "linguri",
+          "name": "pastă de roșii"
+        },
+        {
+          "qty": "1",
+          "unit": "linguriță",
+          "name": "boia dulce"
+        },
+        {
+          "qty": "100",
+          "unit": "ml",
+          "name": "vin alb sec",
+          "note": "opțional"
+        },
+        {
+          "qty": "500",
+          "unit": "ml",
+          "name": "apă fierbinte"
+        },
+        {
+          "qty": "2",
+          "unit": "buc.",
+          "name": "foi de dafin"
+        },
+        {
+          "qty": "1",
+          "unit": "linguriță",
+          "name": "cimbru uscat"
+        },
+        {
+          "qty": "1 1/2",
+          "unit": "lingurițe",
+          "name": "sare"
+        },
+        {
+          "qty": "1/2",
+          "unit": "linguriță",
+          "name": "piper negru măcinat"
+        },
+        {
+          "qty": "3",
+          "unit": "cățe",
+          "name": "usturoi",
+          "note": "pisate"
+        }
+      ]
+    },
+    {
+      "group": "Mămăliga",
+      "items": [
+        {
+          "qty": "400",
+          "unit": "g",
+          "name": "mălai"
+        },
+        {
+          "qty": "1,6",
+          "unit": "l",
+          "name": "apă"
+        },
+        {
+          "qty": "1",
+          "unit": "linguriță",
+          "name": "sare"
+        },
+        {
+          "qty": "30",
+          "unit": "g",
+          "name": "unt",
+          "note": "opțional"
+        }
+      ]
+    },
+    {
+      "group": "La servire",
+      "items": [
+        {
+          "qty": "200",
+          "unit": "g",
+          "name": "brânză de oaie",
+          "note": "sfărâmată"
+        },
+        {
+          "qty": "200",
+          "unit": "g",
+          "name": "smântână"
+        },
+        {
+          "name": "murături"
+        }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "Sărează carnea. Încinge untura într-un ceaun sau într-o oală cu fund gros și rumenește carnea în două tranșe, câte 5 minute.",
+      "minutes": 10
+    },
+    {
+      "text": "Pune toată carnea înapoi, adaugă ceapa și călește-o 10 minute, amestecând, până se înmoaie.",
+      "minutes": 10
+    },
+    {
+      "text": "Adaugă pasta de roșii și boiaua și amestecă un minut. Stinge cu vinul.",
+      "minutes": 3
+    },
+    {
+      "text": "Toarnă apa fierbinte cât să acopere carnea pe jumătate, pune dafinul, cimbrul și piperul. Acoperă și lasă la foc mic 1 oră și jumătate. Amestecă din când în când și adaugă puțină apă dacă scade prea tare.",
+      "minutes": 90
+    },
+    {
+      "text": "Adaugă usturoiul și lasă încă 5 minute fără capac. Sosul trebuie să fie scurt și gros, iar carnea să se desprindă de pe os. Gustă și potrivește sarea.",
+      "minutes": 5
+    },
+    {
+      "text": "Pentru mămăligă, pune apa cu sarea la fiert într-un ceaun. Când clocotește, presară o mână de mălai și lasă 2 minute să fiarbă. Apoi adaugă restul de mălai în ploaie, amestecând continuu cu făcălețul.",
+      "minutes": 10
+    },
+    {
+      "text": "Lasă mămăliga la foc mic 20–25 de minute, amestecând des și apăsând-o de pereții ceaunului. E gata când se desprinde ușor de pereți. Pune untul, răstoarn-o pe un fund de lemn și taie-o cu ața.",
+      "minutes": 25
+    },
+    {
+      "text": "Servește tocana caldă lângă mămăligă, cu brânză de oaie, smântână și murături."
+    }
+  ],
+  "tips": [
+    "Ceafa și coastele dau cea mai bună tocană: carnea rămâne moale, iar oasele îngroașă sosul.",
+    "Ceapa multă, călită odată cu carnea, leagă singură sosul: nu e nevoie de făină.",
+    "Tocana e și mai bună a doua zi. Încălzește-o încet, cu o lingură-două de apă.",
+    "Pentru mămăligă socotește 1 parte mălai la 4 părți apă: iese tare, de tăiat cu ața."
+  ],
+  "mistakes": [
+    "Toată carnea pusă odată în ceaun: lasă apă și fierbe în loc să se rumenească. Rumenește-o în două tranșe.",
+    "Prea multă apă: iese supă, nu tocană. Lichidul trebuie să acopere carnea doar pe jumătate.",
+    "Foc mare sub capac: sosul se prinde de fund. Tocana are nevoie de foc mic și de răbdare.",
+    "Mălai turnat tot odată: mămăliga face cocoloașe. Presară-l în ploaie și amestecă fără oprire."
+  ],
+  "variants": [
+    {
+      "region": "carnea",
+      "text": "Registrul patrimoniului trece între bucatele tradiționale tocana de porc, de vită și de pasăre. Cea de pasăre e gata în 40–50 de minute."
+    },
+    {
+      "region": "post",
+      "text": "În posturi se face tocană din legume sau din vinete, cu ulei în loc de untură; registrul o trece între bucatele de post."
+    }
+  ],
+  "storyHtml": "<p>Cuvântul <em>tocană</em> vine din maghiarul <em>tokány</em>, iar <a href=\"https://dexonline.ro/definitie/tocan%C4%83\">DEX</a> o descrie ca mâncare cu sos din bucăți mici de carne prăjite cu ceapă. Registrul patrimoniului cultural imaterial al <a href=\"https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala\">Ministerului Culturii</a> trece între bucatele tradiționale tocana de porc, de vită și de pasăre, iar între cele de post, tocana de legume și de vinete.</p><p>Mămăliga se mănâncă cu brânză, cu smântână, cu tocană sau cu friptură de porc, scrie portalul turistic <a href=\"https://moldova.travel/en/moldovas-gastronomic-delights-a-journey-through-local-cuisine/\">moldova.travel</a>.</p><p>Carnea pentru masa de Crăciun venea, tradițional, de la porcul tăiat de <a href=\"https://www.crestinortodox.ro/datini-obiceiuri-superstitii/ignatul-68816.html\">Ignat</a>, pe 20 decembrie. Ziua e închinată Sfântului Ignatie Teoforul și cade în Postul Crăciunului, amintește un <a href=\"https://www.crestinortodox.ro/editoriale/sfantul-ignatie-ignatul-porcilor-70421.html\">editorial CrestinOrtodox.ro</a>, așa că bucatele din carne se mănâncă abia de sărbători.</p>",
+  "sources": [
+    {
+      "name": "Ministerul Culturii: Registrul patrimoniului cultural imaterial, Capitolul VII. Cunoștințe privind alimentația tradițională",
+      "url": "https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala"
+    },
+    {
+      "name": "dexonline: tocană (DEX '09)",
+      "url": "https://dexonline.ro/definitie/tocan%C4%83"
+    },
+    {
+      "name": "moldova.travel: Moldova's Culinary Delights",
+      "url": "https://moldova.travel/en/moldovas-gastronomic-delights-a-journey-through-local-cuisine/"
+    },
+    {
+      "name": "CrestinOrtodox.ro: Ignatul",
+      "url": "https://www.crestinortodox.ro/datini-obiceiuri-superstitii/ignatul-68816.html"
+    },
+    {
+      "name": "CrestinOrtodox.ro: Sfântul Ignatie, nu Ignatul porcilor",
+      "url": "https://www.crestinortodox.ro/editoriale/sfantul-ignatie-ignatul-porcilor-70421.html"
+    }
+  ],
+  "related": [
+    "bucataria-moldoveneasca-istorie-feluri-traditii",
+    "tochitura-moldoveneasca",
+    "sarmale-in-foi-de-varza-murata",
+    "masa-de-sarbatoare-in-moldova-hram-nunta-pomana",
+    "mamaliga-cu-branza-si-smantana",
+    "mamaliga-fara-cocoloase-cum-o-faci-corect"
+  ]
+}

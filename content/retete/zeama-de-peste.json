@@ -1,0 +1,196 @@
+{
+  "slug": "zeama-de-peste",
+  "title": "Zeamă de pește de râu, acrită cu borș, ca la moldoveni",
+  "description": "Zeamă de pește din crap sau șalău, cu legume, roșii și borș acru: cum faci zeama limpede, când pui peștele ca să nu se destrame. Pentru Buna Vestire și Florii.",
+  "updated": "2026-10-10",
+  "image": {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/retete/zeama-de-peste-mJWosa2mYerNn2sWk8afVbWXgRAhcP.jpg",
+    "credit": "Magnific (stoc)",
+    "alt": "Farfurie adâncă cu flori pictate, plină cu zeamă limpede de pește, cu o bucată de crap cu os, cartofi, morcov și roșii, presărată cu pătrunjel și mărar, pe o masă de lemn"
+  },
+  "servings": 6,
+  "prepMinutes": 30,
+  "cookMinutes": 60,
+  "difficulty": "usor",
+  "fasting": false,
+  "course": "ciorbe",
+  "region": "toată Moldova",
+  "occasions": [
+    "buna-vestire-traditii-si-credinte",
+    "floriile-traditii-si-onomastica",
+    "postul-craciunului-cand-incepe-si-cum-se-tine",
+    "ce-gatesti-in-post-meniu-pe-o-saptamana",
+    "ce-gatesti-de-hram-meniu-pentru-oaspeti"
+  ],
+  "ingredients": [
+    {
+      "group": "Peștele",
+      "items": [
+        {
+          "qty": "1,5",
+          "unit": "kg",
+          "name": "pește de râu",
+          "note": "crap, șalău sau caras, curățat"
+        },
+        {
+          "qty": "3",
+          "unit": "l",
+          "name": "apă"
+        }
+      ]
+    },
+    {
+      "group": "Legumele",
+      "items": [
+        {
+          "qty": "2",
+          "unit": "buc.",
+          "name": "cepe",
+          "note": "tocate"
+        },
+        {
+          "qty": "2",
+          "unit": "buc.",
+          "name": "morcovi",
+          "note": "felii"
+        },
+        {
+          "qty": "1",
+          "unit": "buc.",
+          "name": "rădăcină de pătrunjel",
+          "note": "felii"
+        },
+        {
+          "qty": "1",
+          "unit": "buc.",
+          "name": "ardei gras",
+          "note": "fâșii"
+        },
+        {
+          "qty": "3",
+          "unit": "buc.",
+          "name": "cartofi",
+          "note": "cuburi"
+        },
+        {
+          "qty": "3",
+          "unit": "buc.",
+          "name": "roșii",
+          "note": "decojite și tăiate, sau 300 ml suc de roșii"
+        }
+      ]
+    },
+    {
+      "group": "Acreala și verdeața",
+      "items": [
+        {
+          "qty": "500",
+          "unit": "ml",
+          "name": "borș acru",
+          "note": "sau zeama de la o jumătate de lămâie"
+        },
+        {
+          "qty": "8",
+          "unit": "buc.",
+          "name": "boabe de piper"
+        },
+        {
+          "qty": "2",
+          "unit": "buc.",
+          "name": "foi de dafin"
+        },
+        {
+          "qty": "1",
+          "unit": "linguriță",
+          "name": "sare",
+          "note": "sau după gust"
+        },
+        {
+          "qty": "1",
+          "unit": "legătură",
+          "name": "leuștean",
+          "note": "tocat"
+        },
+        {
+          "qty": "1",
+          "unit": "legătură",
+          "name": "pătrunjel și mărar",
+          "note": "tocate"
+        }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "Curăță peștele de solzi și de mațe, scoate branhiile și spală-l bine. Taie-l în bucăți de 4–5 cm, cu os. Capul și coada le păstrezi pentru zeamă.",
+      "minutes": 15
+    },
+    {
+      "text": "Pune capul și coada în apa rece cu piperul și dafinul. Adu la fierbere, ia spuma și fierbe 30 de minute la foc mic. Strecoară zeama printr-o sită deasă.",
+      "minutes": 30
+    },
+    {
+      "text": "Pune în zeama strecurată ceapa, morcovii, pătrunjelul și ardeiul și fierbe 10 minute. Adaugă cartofii și fierbe încă 5 minute.",
+      "minutes": 15
+    },
+    {
+      "text": "Adaugă roșiile și borșul acru, pe care l-ai fiert separat 1–2 minute și l-ai spumuit. Sărează.",
+      "minutes": 5
+    },
+    {
+      "text": "Pune bucățile de pește, lasă să dea un clocot, apoi dă focul la mic și fierbe 12–15 minute, fără să amesteci, doar scuturând oala.",
+      "minutes": 15
+    },
+    {
+      "text": "Stinge focul, pune leușteanul și verdeața și lasă zeama acoperită 5 minute. Servește-o caldă, cu pâine sau mămăligă.",
+      "minutes": 5
+    }
+  ],
+  "tips": [
+    "Zeama e mai bună din două-trei feluri de pește: unul gras, cum e crapul, și unul cu carne albă, cum e șalăul.",
+    "Borșul acru se fierbe separat înainte și se spumuiește, altfel tulbură zeama.",
+    "Peștele se servește separat, pe un platou, cu mujdei de usturoi, iar zeama în farfurii, cu legumele."
+  ],
+  "mistakes": [
+    "Pește pus de la început: se destramă și zeama se umple de oase mici. Bucățile intră doar în ultimul sfert de oră.",
+    "Amestecat cu lingura după ce ai pus peștele: carnea se rupe. Doar scutură oala.",
+    "Branhii lăsate în cap: zeama capătă gust amar și se tulbură."
+  ],
+  "variants": [
+    {
+      "region": "toată Moldova",
+      "text": "Acrită doar cu roșii sau cu zeamă de lămâie, când nu ai borș acru."
+    },
+    {
+      "region": "sudul Moldovei",
+      "text": "Din același pește se face plachia, pește înăbușit cu ceapă, roșii și ulei, pe care registrul patrimoniului o trece la bucatele sudului."
+    }
+  ],
+  "storyHtml": "<p>Registrul patrimoniului cultural imaterial al <a href=\"https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala\">Ministerului Culturii</a> numește zeama de pește alături de zeama de pui și de borșul cu varză și carne de porc, iar zeama, borșul și ciorba sunt descrise ca fierturi „acrite cu borș”, servite ca prim fel. Borșul acru e lichidul obținut prin fermentarea tărâțelor de grâu, cu făină de porumb, arată un <a href=\"https://doi.org/10.52603/9789975333788.26\">studiu al Universității Tehnice a Moldovei</a>.</p><p>Zeama de pește ține de zilele cu dezlegare. În Postul Mare, peștele e îngăduit de Buna Vestire (<a href=\"https://doxologia.ro/de-ce-mancam-peste-de-buna-vestire\">Doxologia</a>) și în Duminica Floriilor, când „Biserica a rânduit în această zi dezlegare la pește și vin”, arată <a href=\"https://mitropolia.md/ips-mitropolit-vladimir-a-liturghisit-in-duminica-floriilor-la-catedrala-mitropolitana-din-chisinau/\">Mitropolia Moldovei</a>.</p>",
+  "sources": [
+    {
+      "name": "Ministerul Culturii: Registrul patrimoniului cultural imaterial, Capitolul VII. Cunoștințe privind alimentația tradițională",
+      "url": "https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala"
+    },
+    {
+      "name": "E. Covaliov, O. Gutium, C. Babcenco, V. Cazac: Aspecte tradiționale și tehnologice ale borșului acru (2021)",
+      "url": "https://doi.org/10.52603/9789975333788.26"
+    },
+    {
+      "name": "Doxologia: De ce mâncăm pește de Buna Vestire?",
+      "url": "https://doxologia.ro/de-ce-mancam-peste-de-buna-vestire"
+    },
+    {
+      "name": "Mitropolia Chișinăului și a Întregii Moldove: Duminica Floriilor la Catedrala Mitropolitană",
+      "url": "https://mitropolia.md/ips-mitropolit-vladimir-a-liturghisit-in-duminica-floriilor-la-catedrala-mitropolitana-din-chisinau/"
+    }
+  ],
+  "related": [
+    "bucataria-de-post-in-moldova",
+    "zeama-de-gaina-cu-taitei-de-casa",
+    "mamaliga-cu-branza-si-smantana",
+    "bucataria-moldoveneasca-istorie-feluri-traditii",
+    "bors-rosu-moldovenesc",
+    "cum-faci-borsul-acru-de-tarate-acasa"
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "slug": "compot-de-fructe-uscate",
+  "title": "Компот из сухофруктов к Сочельнику по-молдавски",
+  "description": "Компот из сухофруктов для постного стола в Сочельник: яблоки, груши и чернослив, сколько варить, сколько настаивать, чем подсластить и почему он получается мутным.",
+  "updated": "2026-10-10",
+  "image": {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/retete/compot-de-fructe-uscate-xBZNXmzcKTU6iLiuTSujIlfcTmvulY.jpg",
+    "credit": "Magnific (stoc)",
+    "alt": "Стеклянный кувшин с золотистым компотом, в котором плавают сушёные яблоки и чернослив, рядом деревянная миска и горка сушёных яблок и груш на салфетке в зелёную клетку"
+  },
+  "servings": 10,
+  "prepMinutes": 15,
+  "cookMinutes": 30,
+  "difficulty": "usor",
+  "fasting": true,
+  "course": "bauturi",
+  "region": "вся Молдова",
+  "occasions": [
+    "masa-de-craciun-in-moldova-bucate-si-retete",
+    "postul-craciunului-cand-incepe-si-cum-se-tine",
+    "bucataria-de-post-in-moldova",
+    "meniul-de-revelion-moldovenesc",
+    "ce-gatesti-in-post-meniu-pe-o-saptamana"
+  ],
+  "ingredients": [
+    {
+      "items": [
+        {
+          "qty": "150",
+          "unit": "г",
+          "name": "сушёные яблоки",
+          "note": "дольки"
+        },
+        {
+          "qty": "100",
+          "unit": "г",
+          "name": "сушёные груши"
+        },
+        {
+          "qty": "100",
+          "unit": "г",
+          "name": "чернослив",
+          "note": "с косточкой или без; копчёный, если нравится вкус дымка"
+        },
+        {
+          "qty": "50",
+          "unit": "г",
+          "name": "сушёные абрикосы или вишня",
+          "note": "по желанию"
+        },
+        {
+          "qty": "3",
+          "unit": "л",
+          "name": "вода"
+        },
+        {
+          "qty": "100-150",
+          "unit": "г",
+          "name": "сахар",
+          "note": "или 3–4 ст. л. мёда"
+        },
+        {
+          "qty": "1",
+          "unit": "шт.",
+          "name": "палочка корицы",
+          "note": "по желанию"
+        },
+        {
+          "qty": "1/2",
+          "unit": "шт.",
+          "name": "лимон",
+          "note": "только цедра, по желанию"
+        }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "Положите сухофрукты в миску и промойте 2–3 раза в тёплой воде, слегка перетирая руками, пока вода не станет прозрачной.",
+      "minutes": 5
+    },
+    {
+      "text": "Оставьте их на 20–30 минут в холодной воде, чтобы размякли. Воду после замачивания вылейте.",
+      "minutes": 30
+    },
+    {
+      "text": "Положите яблоки и груши в кастрюлю с 3 литрами холодной воды. Доведите до кипения и варите на слабом огне 15 минут: они самые твёрдые и варятся дольше.",
+      "minutes": 15
+    },
+    {
+      "text": "Добавьте чернослив, абрикосы или вишню и корицу. Варите ещё 10 минут на слабом огне, без сильного кипения.",
+      "minutes": 10
+    },
+    {
+      "text": "Всыпьте сахар, перемешайте до растворения и выключите огонь. Если подслащиваете мёдом, добавьте его, когда компот немного остынет, чтобы мёд не кипел.",
+      "minutes": 2
+    },
+    {
+      "text": "Накройте крышкой и дайте компоту настояться не меньше 3 часов, лучше всего ночь. Только так он набирает цвет и вкус.",
+      "minutes": 180
+    },
+    {
+      "text": "Попробуйте и доведите сладость по вкусу. Подавайте холодным или комнатной температуры, с фруктами в стакане.",
+      "minutes": 2
+    }
+  ],
+  "tips": [
+    "Варите компот за день до Сочельника: настоявшийся за ночь он намного вкуснее только что сваренного.",
+    "Несколько штук копчёного чернослива дают компоту вкус дымка, как у многих бабушек. Копчёного должно быть не больше трети, иначе он забьёт остальные фрукты.",
+    "Фрукты из компота съедают: выложите их в отдельную миску с небольшим количеством отвара — получится постный десерт.",
+    "Храните компот в холодильнике в закрытой посуде и выпейте за несколько дней."
+  ],
+  "mistakes": [
+    "Немытые сухофрукты: их сушили на солнце или на чердаке, на них пыль и сор, от которых компот мутнеет.",
+    "Все фрукты сразу и долгая варка: чернослив и абрикосы разваливаются в кашу, а компот становится мутным.",
+    "Много сахара с самого начала: сухофрукты и так сладкие. Положите меньше, попробуйте после настаивания и только потом добавьте.",
+    "Пить сразу после варки: компот ещё бледный и водянистый. Ему нужно несколько часов постоять под крышкой."
+  ],
+  "storyHtml": "<p>В Сочельник молдаване ставят на стол постные блюда, и <strong>компот из сухофруктов</strong> — среди них, вместе с коливой, плацындами с капустой или картофелем, постными сармале и фасолью, пишет <a href=\"https://www.moldpres.md/rom/cultura/crestinii-ortodocsi-sarbatoresc-ajunul-craciunului-pe-stil-vechi-traditii-si-spirit-de-sarbatoare-in-casele-moldovenilor\">Moldpres</a> о столе из 12 блюд.</p><p>Реестр нематериального культурного наследия <a href=\"https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala\">Министерства культуры</a> относит компоты из фруктов и ягод к традиционным напиткам, с их способами приготовления, хранения и употребления, а среди постных блюд называет отвары из свежих, сушёных или копчёных фруктов. Сушка фруктов — один из старых способов сохранить их на зиму.</p><p>Слово <em>compot</em> пришло в румынский из французского, указывает <a href=\"https://dexonline.ro/definitie/compot\">словарь</a>. О столе в Сочельник читайте в материале <a href=\"/ghiduri/masa-de-craciun-in-moldova-bucate-si-retete/\">рождественский стол в Молдове</a>.</p>",
+  "sources": [
+    {
+      "name": "Moldpres: Ajunul Crăciunului pe stil vechi, masa de post cu 12 feluri",
+      "url": "https://www.moldpres.md/rom/cultura/crestinii-ortodocsi-sarbatoresc-ajunul-craciunului-pe-stil-vechi-traditii-si-spirit-de-sarbatoare-in-casele-moldovenilor"
+    },
+    {
+      "name": "Ministerul Culturii: Registrul patrimoniului cultural imaterial, Capitolul VII. Cunoștințe privind alimentația tradițională (V. Iarovoi)",
+      "url": "https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala"
+    },
+    {
+      "name": "dexonline: compot (DEX '09)",
+      "url": "https://dexonline.ro/definitie/compot"
+    }
+  ],
+  "related": [
+    "bucataria-moldoveneasca-istorie-feluri-traditii",
+    "vinul-si-bauturile-traditionale-din-moldova",
+    "sarmale-in-foi-de-varza-murata",
+    "vin-fiert-cu-scortisoara",
+    "cusma-lui-guguta",
+    "cozonac-moldovenesc",
+    "conservele-de-iarna-muraturi-zacusca-dulceata"
+  ]
+}

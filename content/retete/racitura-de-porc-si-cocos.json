@@ -1,0 +1,202 @@
+{
+  "slug": "racitura-de-porc-si-cocos",
+  "title": "Răcitură de porc și cocoș, pentru masa de Crăciun",
+  "description": "Răcitură moldovenească din picioare de porc și cocoș de casă: cât fierbe, cum obții zeama limpede care se încheagă singură, cu usturoi, fără gelatină.",
+  "updated": "2026-10-10",
+  "image": {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/retete/racitura-de-porc-si-cocos-j7TKYo3Kx4e2WHaEXAgmpZEjYpKjBA.jpg",
+    "credit": "Magnific (stoc)",
+    "alt": "Porție de răcitură răsturnată pe o farfurie, cu bucăți de carne și felii de morcov prinse în zeama încheiată, căței de usturoi și frunze de pătrunjel, pe un ștergar în carouri roșii"
+  },
+  "servings": 12,
+  "prepMinutes": 60,
+  "cookMinutes": 360,
+  "difficulty": "mediu",
+  "fasting": false,
+  "course": "aperitive",
+  "region": "toată Moldova",
+  "occasions": [
+    "masa-de-craciun-in-moldova-bucate-si-retete",
+    "craciunul-nasterea-domnului-traditii-in-moldova",
+    "sfantul-vasile-si-anul-nou-traditii",
+    "revelionul-traditii-si-cum-il-petreci",
+    "meniul-de-paste-in-moldova",
+    "meniul-de-revelion-moldovenesc",
+    "ce-gatesti-de-hram-meniu-pentru-oaspeti"
+  ],
+  "ingredients": [
+    {
+      "group": "Carnea",
+      "items": [
+        {
+          "qty": "4",
+          "unit": "buc.",
+          "name": "picioare de porc",
+          "note": "cca 1,5 kg, curățate și tăiate în două"
+        },
+        {
+          "qty": "1",
+          "unit": "kg",
+          "name": "ciolan sau rasol de porc",
+          "note": "cu os și șorici"
+        },
+        {
+          "qty": "1",
+          "unit": "buc.",
+          "name": "cocoș de casă",
+          "note": "1,5–2 kg, tăiat în bucăți"
+        },
+        {
+          "qty": "5",
+          "unit": "l",
+          "name": "apă rece"
+        }
+      ]
+    },
+    {
+      "group": "Pentru zeamă",
+      "items": [
+        {
+          "qty": "2",
+          "unit": "buc.",
+          "name": "cepe",
+          "note": "întregi, în coajă"
+        },
+        {
+          "qty": "2",
+          "unit": "buc.",
+          "name": "morcovi"
+        },
+        {
+          "qty": "1",
+          "unit": "buc.",
+          "name": "rădăcină de pătrunjel"
+        },
+        {
+          "qty": "10",
+          "unit": "buc.",
+          "name": "boabe de piper"
+        },
+        {
+          "qty": "3",
+          "unit": "buc.",
+          "name": "foi de dafin"
+        },
+        {
+          "qty": "1",
+          "unit": "lingură",
+          "name": "sare",
+          "note": "sau după gust"
+        }
+      ]
+    },
+    {
+      "group": "La final",
+      "items": [
+        {
+          "qty": "1",
+          "unit": "cap",
+          "name": "usturoi",
+          "note": "8–10 căței, pisați"
+        },
+        {
+          "qty": "1",
+          "unit": "legătură",
+          "name": "pătrunjel",
+          "note": "pentru decor"
+        }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "Pune picioarele și ciolanul la înmuiat în apă rece 2 ore. Apoi răzuiește bine șoriciul cu cuțitul și pârlește firele rămase.",
+      "minutes": 120
+    },
+    {
+      "text": "Pune carnea de porc într-o oală mare cu apa rece și adu la fierbere. Ia spuma cu spumiera de câte ori se ridică, apoi dă focul la cel mai mic.",
+      "minutes": 15
+    },
+    {
+      "text": "Lasă să fiarbă abia simțit, cu capacul puțin tras, 2 ore. Zeama nu trebuie să clocotească: de la fiertul tare se tulbură.",
+      "minutes": 120
+    },
+    {
+      "text": "Adaugă cocoșul și fierbe încă 2 ore și jumătate, tot la foc mic. În ultima oră pune ceapa, morcovii, pătrunjelul, piperul, dafinul și sarea.",
+      "minutes": 150
+    },
+    {
+      "text": "Fă proba: pune o lingură de zeamă pe o farfurie rece și dă-o 15 minute la frigider. Dacă s-a încheiat, răcitura e gata. Dacă nu, mai fierbe 30–60 de minute.",
+      "minutes": 15
+    },
+    {
+      "text": "Scoate carnea, las-o să se răcească puțin și desprinde-o de pe oase. Taie-o bucăți și împarte-o în boluri sau farfurii adânci, cu câteva felii de morcov.",
+      "minutes": 30
+    },
+    {
+      "text": "Strecoară zeama printr-un tifon. Ia cu lingura grăsimea de deasupra, amestecă usturoiul pisat și gustă de sare. Toarnă zeama peste carne.",
+      "minutes": 10
+    },
+    {
+      "text": "Lasă bolurile să se răcească la temperatura camerei, apoi dă-le la frigider sau în cămară rece peste noapte, cel puțin 8 ore. Servește răcitura rece, cu mămăligă sau pâine.",
+      "minutes": 480
+    }
+  ],
+  "tips": [
+    "Picioarele, urechile și șoriciul dau gelatina. Fără ele, zeama nu se încheagă și ai nevoie de gelatină din comerț.",
+    "Cocoșul de casă, mai bătrân, ține la fiert și dă gust. Puiul de broiler se destramă repede: pune-l doar în ultima oră.",
+    "Ceapa în coajă dă zemii o culoare aurie frumoasă.",
+    "Răcitura se ține la frigider, acoperită, și se mănâncă în câteva zile. Nu o lăsa ore întregi pe masa caldă."
+  ],
+  "mistakes": [
+    "Fiert la foc mare: zeama se tulbură și nu mai e limpede.",
+    "Prea multă apă față de carne: zeama nu se încheagă. Apa trebuie doar să acopere carnea cu 3–4 degete.",
+    "Usturoiul fiert împreună cu carnea își pierde aroma. Se pune la sfârșit, în zeama strecurată.",
+    "Sare pusă la început: zeama scade în 6 ore și iese prea sărată. Sărează în ultima oră și gustă."
+  ],
+  "variants": [
+    {
+      "region": "toată Moldova",
+      "text": "Doar din porc (picioare, urechi, ciolan) sau doar din cocoș, cu câteva picioare de pasăre pentru încheiere. Registrul patrimoniului numește răcituri din carne de porc, de pasăre și de pește."
+    },
+    {
+      "region": "din pește",
+      "text": "Răcitură din cap și coadă de crap sau de șalău, fierte cu legume; se încheagă mai greu, așa că zeama se scade mai mult."
+    }
+  ],
+  "storyHtml": "<p>Răcitura, numită și piftie, e unul dintre felurile care nu lipsesc de la masa de Crăciun. <a href=\"https://www.moldpres.md/turism/descopera-moldova-cu-moldpres-obiceiuri-si-traditii-de-iarna-care-ne-fac-sarbatorile-mai-frumoase-i-atractive\">Moldpres</a> o numără printre bucatele sărbătorii, alături de cozonac, sarmale, cârnați de porc și vin roșu, iar <a href=\"https://tvrmoldova.md/article/12e70240be2a6909/craciunei-si-colaci-copti-dupa-o-reteta-traditionala-din-satul-lozova.html\">TVR Moldova</a> a găsit-o pe masa unei gospodine din satul Lozova, raionul Strășeni.</p><p>Carnea vine, tradițional, de la porcul tăiat înainte de sărbători, iar din picioare, urechi și coadă se fac răciturile, scrie <a href=\"https://www.crestinortodox.ro/datini-obiceiuri-superstitii/obiceiuri-ignat-98422.html\">CrestinOrtodox.ro</a>. Registrul patrimoniului cultural imaterial al <a href=\"https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala\">Ministerului Culturii</a> trece răciturile din carne de porc, de pasăre (cocoș) și de pește la preparatele din carne fiartă, cu „caracter ceremonial și festiv”.</p><p>Numele spune cum se face: după DEX, „răcitură” vine de la „a răci”, iar sinonimul „piftie” a intrat în limbă din bulgară și neogreacă.</p>",
+  "sources": [
+    {
+      "name": "Ministerul Culturii: Registrul patrimoniului cultural imaterial, Capitolul VII. Cunoștințe privind alimentația tradițională",
+      "url": "https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala"
+    },
+    {
+      "name": "Moldpres: Descoperă Moldova – obiceiuri și tradiții de iarnă (masa de Crăciun)",
+      "url": "https://www.moldpres.md/turism/descopera-moldova-cu-moldpres-obiceiuri-si-traditii-de-iarna-care-ne-fac-sarbatorile-mai-frumoase-i-atractive"
+    },
+    {
+      "name": "TVR Moldova: Crăciunei și colaci, copți după o rețetă tradițională din satul Lozova",
+      "url": "https://tvrmoldova.md/article/12e70240be2a6909/craciunei-si-colaci-copti-dupa-o-reteta-traditionala-din-satul-lozova.html"
+    },
+    {
+      "name": "CrestinOrtodox.ro: Obiceiuri de Ignat",
+      "url": "https://www.crestinortodox.ro/datini-obiceiuri-superstitii/obiceiuri-ignat-98422.html"
+    },
+    {
+      "name": "dexonline: răcitură (DEX '09)",
+      "url": "https://dexonline.ro/definitie/r%C4%83citur%C4%83"
+    },
+    {
+      "name": "dexonline: piftie (DEX '09)",
+      "url": "https://dexonline.ro/definitie/piftie"
+    }
+  ],
+  "related": [
+    "bucataria-moldoveneasca-istorie-feluri-traditii",
+    "mamaliga-cu-branza-si-smantana",
+    "sarmale-in-foi-de-varza-murata",
+    "masa-de-sarbatoare-in-moldova-hram-nunta-pomana",
+    "tochitura-moldoveneasca",
+    "cate-portii-calculezi-pentru-nunta-sau-pomana"
+  ]
+}

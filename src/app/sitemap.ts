@@ -5,6 +5,7 @@ import { COMPLAINT_MODELS } from "@/lib/complaint-models";
 import type { MetadataRoute } from "next";
 import { getHubCounts, getSitemapArticles } from "@/lib/content/queries";
 import { getGuides } from "@/lib/content/guides";
+import { getRecipes, recipePath } from "@/lib/content/recipes";
 import { listPlaces } from "@/lib/content/places";
 import { articleUrl } from "@/lib/content/url";
 import { SITE_URL } from "@/lib/seo";
@@ -18,13 +19,15 @@ export const revalidate = 3600;
 // ponytail: un singur sitemap; Google acceptă max 50.000 URL-uri, împarte
 // cu generateSitemaps() când arhiva se apropie de limită.
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [articles, counts, guides, raioane, tari, calcParams] = await Promise.all([
+  const [articles, counts, guides, raioane, tari, calcParams, recipes, recipesRu] = await Promise.all([
     getSitemapArticles(),
     getHubCounts(),
     getGuides(),
     listPlaces("raioane"),
     listPlaces("tari"),
     getCalcParams(),
+    getRecipes("ro"),
+    getRecipes("ru"),
   ]);
   // hub-uri cu articole SAU cu informații utile (fără ele au noindex)
   const raionSlugs = [...new Set([...Object.keys(counts.localities), ...raioane])];
@@ -38,6 +41,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...["despre", "contact", "politica-editoriala", "confidentialitate", "publicitate"].map((p) => ({ url: `/${p}/`, priority: 0.3 })),
     { url: "/video/", priority: 0.7 },
     { url: "/ghiduri/", priority: 0.7 },
+    ...(recipes.length ? [{ url: "/retete/", priority: 0.7 }] : []),
     { url: "/calculatoare/", priority: 0.7 },
     { url: "/modele-reclamatii/", priority: 0.7 },
     { url: "/impact/", priority: 0.7 },
@@ -55,6 +59,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     ...guides.map((g) => ({ url: `${SITE_URL}/ghiduri/${g.slug}/`, lastModified: g.updated, priority: 0.7 })),
     ...(await getGuidesRu()).map((g) => ({ url: `${SITE_URL}${ruPath(g.slug)}`, lastModified: g.updated, priority: 0.7 })),
+    ...recipes.map((r) => ({ url: `${SITE_URL}${recipePath(r.slug)}`, lastModified: r.updated, priority: 0.7 })),
+    ...recipesRu.map((r) => ({ url: `${SITE_URL}${recipePath(r.slug, "ru")}`, lastModified: r.updated, priority: 0.7 })),
     ...hubs.map((h) => ({ url: `${SITE_URL}${h.url}`, changeFrequency: "hourly" as const, priority: h.priority })),
     // slug-uri cu "%" (emoji codat la migrare) dau 404 — nu le punem în sitemap
     ...articles.filter((a) => !a.slug.includes("%")).map((a) => ({

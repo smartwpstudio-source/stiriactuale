@@ -1,52 +1,76 @@
 {
   "slug": "subventii-aipa-agricultori-tipuri-cum-aplici",
-  "title": "Subvențiile AIPA pentru agricultori: tipuri și cum aplici",
-  "description": "Ce tipuri de subvenții dă AIPA fermierilor (post-investiție, în avans, plăți directe, asigurare), cum depui dosarul pe e-AIPA și unde afli apelurile.",
+  "title": "Subvențiile AIPA pentru agricultori în 2026: PSPA, intervențiile și cum aplici",
+  "description": "Ce s-a schimbat din 2026: Programul strategic PSPA 2026–2030, intervențiile PD, DR și IS, apelurile deschise acum și unde depui cererea la AIPA.",
   "category": "afaceri",
-  "updated": "2026-10-02",
+  "updated": "2026-10-10",
   "sources": [
     {
-      "name": "AIPA — subvenții",
-      "url": "https://aipa.gov.md/subventii/"
+      "name": "AIPA — Programul strategic al politicii agricole 2026–2030 (PSPA, HG nr. 288/2026)",
+      "url": "https://aipa.gov.md/pspa-program-strategic-al-politicii-agricole/"
     },
     {
-      "name": "AIPA — plata postinvestiție",
+      "name": "AIPA — PSPA 2026–2030 a intrat în vigoare (23 iunie 2026)",
+      "url": "https://aipa.gov.md/aipa-informeaza-programul-strategic-al-politicii-agricole-2026-2030-a-intrat-in-vigoare/"
+    },
+    {
+      "name": "AIPA — PSPA: plăți directe cuplate (PD-01 – PD-08)",
+      "url": "https://aipa.gov.md/pspa-program-strategic-al-politicii-agricole/pd-plati-directe-cuplate/"
+    },
+    {
+      "name": "AIPA — PSPA: intervențiile pentru dezvoltare rurală (DR-01 – DR-12)",
+      "url": "https://aipa.gov.md/pspa-program-strategic-al-politicii-agricole/dr-interventiile-pentru-dezvoltarea-rurala/"
+    },
+    {
+      "name": "AIPA — PSPA: intervențiile sectoriale (IS)",
+      "url": "https://aipa.gov.md/pspa-program-strategic-al-politicii-agricole/is-interventiile-sectoriale/"
+    },
+    {
+      "name": "AIPA — Lansarea apelului nr. 1 pentru DR-09 și DR-10 (Ordinul MAIA nr. 133/2026)",
+      "url": "https://aipa.gov.md/se-anunta-lansarea-apelului-nr-1-de-depunere-a-cererilor-de-acordare-a-sprijinului-financiar-pentru-instalarea-tinerilor-si-a-noilor-fermieri-si-sprijinirea-micilor-fermieri-si-a-fermelor-de-familie/"
+    },
+    {
+      "name": "AIPA — Se extinde sfera de aplicabilitate pentru intervenția DR-10 (8 octombrie 2026)",
+      "url": "https://aipa.gov.md/se-extinde-sfera-de-aplicabilitate-pentru-interventia-dr-10/"
+    },
+    {
+      "name": "AIPA — Apelul pentru intervenția PD-05, sprijin cuplat pentru carne (5 octombrie 2026)",
+      "url": "https://aipa.gov.md/se-anunta-lansarea-apelului-de-depunere-a-cererilor-de-acordare-a-sprijinului-financiar-pentru-interventia-pd-05-sprijin-cuplat-pentru-venit-carne-de-bovine-ovine-porc-pasare-si-iepure/"
+    },
+    {
+      "name": "AIPA — Reluarea autorizării plăților complementare pentru cererile din 2025 (6 octombrie 2026)",
+      "url": "https://aipa.gov.md/aipa-a-reluat-procesul-de-autorizare-a-platilor-complementare/"
+    },
+    {
+      "name": "AIPA — plata postinvestiție (sistemul anterior, HG nr. 491/2023)",
       "url": "https://aipa.gov.md/subventii/plata-postinvestitie/"
     },
     {
-      "name": "AIPA — plăți directe în sectorul zootehnic (per cap de animal)",
-      "url": "https://aipa.gov.md/subventii/plati-directe-in-sectorul-zootehnic/per-cap-de-animal/"
-    },
-    {
-      "name": "AIPA — asigurarea în agricultură",
+      "name": "AIPA — asigurarea în agricultură (Legea nr. 183/2020)",
       "url": "https://aipa.gov.md/subventii/sprijin-financiar/asigurarea-in-agricultura/"
-    },
-    {
-      "name": "Portalul e-AIPA",
-      "url": "https://e-aipa.gov.md/home"
     }
   ],
-  "bodyHtml": "<p>Agenția de Intervenție și Plăți pentru Agricultură (AIPA) gestionează sprijinul financiar pentru producătorii agricoli din Moldova. Cererile se depun online, pe portalul e-AIPA, iar regulile și termenele diferă de la o măsură la alta. Mai jos găsești tipurile de subvenții publicate de AIPA și pașii generali; condițiile exacte, sumele și termenele le verifici mereu în regulamentul măsurii, pe aipa.gov.md.</p>\n\n<h2>Tipurile de subvenții</h2>\n<p>Pe pagina de subvenții, AIPA grupează sprijinul astfel:</p>\n<ul>\n<li><strong>Plata postinvestiție</strong> — subvenție acordată pe baza unui proiect investițional. Faci investiția cu banii tăi, iar subvenția se plătește după implementarea proiectului, pe baza costurilor suportate integral de tine.</li>\n<li><strong>Plata investițiilor pe etape</strong> — subvenție acordată etapizat, tot pe baza unui proiect investițional.</li>\n<li><strong>Plata în avans</strong> — include îmbunătățirile funciare și proiectele în avans.</li>\n<li><strong>Sprijin financiar</strong> — de exemplu pentru valoarea producției comercializate de grupul de producători și pentru asigurarea în agricultură.</li>\n<li><strong>Plăți directe în sectorul zootehnic</strong> — pe cap de animal (bovine, ovine, caprine, ecvidee) și pe kilogram de produs.</li>\n<li><strong>Programul LEADER</strong> — măsura 1 și măsura 2.</li>\n</ul>\n<p>Separat de subvenții, AIPA publică și secțiunea <strong>granturi</strong> (de exemplu MAC-P și AGGRI).</p>\n\n<h2>Cum aplici, pas cu pas</h2>\n<ol>\n<li><strong>Alege măsura</strong> potrivită activității tale și citește regulamentul ei de pe aipa.gov.md.</li>\n<li><strong>Verifică dacă este deschis un apel.</strong> Pentru mai multe măsuri, AIPA anunță apeluri cu perioade de depunere; ordinele de lansare sunt publicate pe site.</li>\n<li><strong>Pregătește dosarul</strong> conform listei de documente a măsurii. Pentru plățile pe cap de animal, AIPA publică modele de declarație pe propria răspundere și fișe de calcul separate pe categorii de animale.</li>\n<li><strong>Depune cererea online</strong> pe e-AIPA (e-aipa.gov.md).</li>\n<li><strong>Urmărește starea dosarului</strong> pe portalul de verificare al AIPA (siagds.gov.md/aipa).</li>\n<li><strong>Pentru investiții:</strong> după evaluarea pozitivă, implementezi proiectul și ceri plata în baza costurilor reale.</li>\n</ol>\n\n<h2>Cine poate aplica</h2>\n<p>Condițiile de eligibilitate sunt stabilite prin lege și prin regulamentele fiecărei măsuri, iar AIPA nu le rezumă pe pagina principală. Cel mai sigur este să citești regulamentul măsurii și să verifici, înainte de a începe investiția, dacă tu și proiectul tău îndepliniți cerințele. Verifică în regulamentul măsurii care te interesează ce statut trebuie să ai (de exemplu, cel de producător agricol înregistrat) și dacă există cerințe legate de obligațiile față de buget.</p>\n<p>AIPA oferă și instrumente utile: registrul prețurilor de referință, un calculator de finanțare (finantare.maia.gov.md) și accesul la registrul exploatațiilor.</p>\n\n<h2>Asigurarea în agricultură</h2>\n<p>Statul acordă sprijin financiar pentru asigurarea în agricultură în baza Legii nr. 183 din 11 septembrie 2020. Cererile se depun tot pe e-AIPA. AIPA a anunțat că recepția cererilor pentru sprijin financiar legat de primele de asigurare s-a încheiat la 1 octombrie 2026; urmărește site-ul pentru următoarea perioadă de depunere.</p>\n\n<h2>Cum te pregătești înainte de apel</h2>\n<p>Apelurile se deschid pentru perioade limitate, așa că pregătirea dinainte face diferența. Citește regulamentul măsurii și lista de documente, adună actele despre terenul și exploatația ta și verifică-ți datele în registrele pe care AIPA le folosește. Dacă ai nevoie de ajutor cu dosarul, sună la AIPA sau cere sprijin de la consultantul agricol din raionul tău, înainte de ultima zi a apelului. Păstrează toate documentele de plată, pentru că la plata postinvestiție subvenția se calculează pe baza costurilor suportate.</p>\n\n<h2>Greșeli frecvente</h2>\n<ul>\n<li>Începi investiția înainte să știi dacă proiectul va fi acceptat în apel.</li>\n<li>Depui dosarul după termenul apelului. Perioadele de depunere sunt limitate.</li>\n<li>Folosești modele de declarații sau fișe de calcul din anii trecuți. Descarcă formularele actuale de pe site.</li>\n<li>Păstrezi actele doveditoare (facturi, documente de plată) incomplet, deși plata se face pe baza costurilor demonstrate.</li>\n</ul>\n\n<h2>Unde ceri ajutor</h2>\n<ul>\n<li>Sediul central AIPA: Chișinău, bd. Ștefan cel Mare și Sfânt 162, MD-2004.</li>\n<li>Telefon: 022 222 786. E-mail: aipa@aipa.gov.md.</li>\n<li>Listele beneficiarilor și solicitanților, precum și graficul verificărilor pe teren sunt publicate pe aipa.gov.md, la secțiunea de informații publice despre subvenții.</li>\n</ul>\n<h2>Documentele și datele pe care le ai la îndemână</h2>\n<p>Regulamentele măsurilor stabilesc lista exactă de acte, dar, în practică, merită să ai pregătite din timp datele de identificare ale exploatației, actele de proprietate sau de folosință asupra terenului, contul bancar și, la investiții, ofertele și facturile furnizorilor. Dacă ceri plăți directe în zootehnie, ține la îndemână evidența animalelor, pentru că cererea se completează pe categorii (bovine, ovine, caprine, ecvidee). Unele formulare trebuie semnate sau însoțite de declarație pe propria răspundere privind corectitudinea datelor; AIPA publică modelele pe site.</p>\n<p>Dacă un dosar este respins sau ai nelămuriri după verificare, cere în scris motivul și întreabă la AIPA ce poți corecta. Regulile de contestare și termenele sunt stabilite în regulamentul măsurii și în legislația în vigoare.</p>\n",
+  "bodyHtml": "<p><strong>Pe scurt:</strong> din 2026, sprijinul pentru agricultori din Fondul național de dezvoltare a agriculturii și mediului rural (FNDAMR) se dă după <strong>Programul strategic al politicii agricole pentru perioada 2026–2030 (PSPA)</strong>, aprobat prin Hotărârea Guvernului nr. 288 din 3 iunie 2026, în baza Legii nr. 126/2025. Vechile „măsuri de subvenționare” (plata postinvestiție, plata în avans, plățile directe pe cap de animal) au fost înlocuite de „intervenții” cu coduri. Agenția de Intervenție și Plăți pentru Agricultură (AIPA) le aplică, iar fiecare intervenție se deschide printr-un apel separat, lansat prin ordin al Ministerului Agriculturii și Industriei Alimentare (MAIA). Informații verificate pe aipa.gov.md la 10 octombrie 2026.</p>\n<p>Dacă ai o gospodărie sau o fermă mică, citește direct <a href=\"/ghiduri/subventii-aipa-pentru-gospodarii-si-fermieri-mici/\">ghidul despre subvențiile pentru gospodării și fermieri mici</a>: acolo sunt condițiile DR-10, asigurarea DR-03 și plățile pe carne explicate pas cu pas.</p>\n<h2>Cele trei tipuri de intervenții din PSPA</h2>\n<p>AIPA grupează intervențiile PSPA în trei categorii:</p>\n<ul>\n<li><strong>PD — plăți directe cuplate</strong> („sprijin cuplat pentru venit”), legate de ce produci: PD-01 semințe; PD-02 sfeclă de zahăr; PD-03 legume și cartof în teren deschis și legume în teren protejat; PD-04 lapte de bovine, ovine și caprine (pe kg); PD-05 carne de bovine, ovine, porc, pasăre și iepure; PD-06 tineret bovin, ovin, caprin și cabaline (pe cap de animal); PD-07 plante furajere; PD-08 leguminoase boabe.</li>\n<li><strong>DR — dezvoltare rurală</strong>, în principal investiții: DR-01 exploatații din sectorul vegetal; DR-02 ferme zootehnice; DR-03 contribuții la plata primelor de asigurare; DR-04 accesarea creditelor agricole; DR-05 agricultura ecologică; DR-06 reziliența la schimbările climatice și managementul resurselor naturale; DR-07 condiționarea, procesarea și depozitarea produselor agroalimentare; DR-08 grupuri operaționale pentru cooperare și inovare; DR-09 instalarea tinerilor și a noilor fermieri; DR-10 micii fermieri și fermele de familie; DR-11 infrastructura exploatației agricole; DR-12 diversificarea activităților neagricole.</li>\n<li><strong>IS — intervenții sectoriale</strong>: IS-V-01 plantațiile viticole; IS-V-02 competitivitatea unităților vinicole; IS-OP-03 planificarea producției și tehnologii adaptate la clima în schimbare; IS-A-04 sectorul apicol; IS-C-05 încadrarea în scheme de calitate.</li>\n</ul>\n<p>Nu toate se deschid în fiecare an. La intrarea în vigoare a PSPA, AIPA a anunțat că în 2026 sunt estimate să fie lansate zece intervenții: PD-02 – PD-06 și DR-03, DR-05, DR-06, DR-09, DR-10. Condițiile, ghidul solicitantului, formularele și lista actelor se publică pe pagina fiecărei intervenții de pe aipa.gov.md, odată cu lansarea apelului.</p>\n<h2>Apelurile deschise acum (octombrie 2026)</h2>\n<table><thead><tr><th>Intervenția</th><th>Perioada de depunere</th><th>Temeiul</th></tr></thead><tbody>\n<tr><td>DR-09 (tineri și noi fermieri) și DR-10 (mici fermieri și ferme de familie)</td><td>1–30 octombrie 2026</td><td>Ordinul MAIA nr. 133 din 8 septembrie 2026, modificat prin Ordinul nr. 154 din 6 octombrie 2026</td></tr>\n<tr><td>PD-05 (carne de bovine, ovine, porc, pasăre și iepure)</td><td>22 octombrie – 20 noiembrie 2026</td><td>Ordinul MAIA nr. 148 din 1 octombrie 2026</td></tr>\n</tbody></table>\n<p>La DR-10, Ordinul nr. 154/2026 a scos limita de 10 ha (5 ha la vie) din apel: suprafețele se verifică acum după plafoanele din fișa intervenției. Banii pentru DR-09, DR-10 și PD-05 vin din Planul de creștere pentru Republica Moldova 2025–2027 (HG nr. 260/2025). Pentru celelalte intervenții, urmărește secțiunea de noutăți de pe aipa.gov.md: apelurile se anunță acolo și în Monitorul Oficial.</p>\n<h2>Cum și unde depui cererea acum</h2>\n<ol>\n<li><strong>Verifică dacă ai statutul cerut.</strong> La intervențiile PSPA, ghidurile AIPA cer înregistrarea în Registrul fermierilor; AIPA a publicat și o instrucțiune video pentru înregistrare. La plățile pe animale, animalele trebuie să fie în Registrul de stat al animalelor.</li>\n<li><strong>Citește fișa intervenției și ghidul solicitantului</strong> de pe pagina intervenției. Formularele sunt noi, pe fiecare intervenție: nu folosi cererile din anii trecuți.</li>\n<li><strong>Pregătește dosarul</strong> după lista de documente a apelului.</li>\n<li><strong>Depune cererea pe hârtie, la direcția teritorială AIPA</strong>, în zilele lucrătoare, între 08:00 și 17:00. Așa prevăd anunțurile AIPA pentru apelurile DR-09, DR-10 și PD-05 din 2026. Site-ul AIPA păstrează linkul spre portalul e-AIPA, dar modul de depunere îl stabilește anunțul fiecărui apel, așa că verifică-l acolo.</li>\n<li><strong>Urmărește starea dosarului</strong> pe portalul de verificare al AIPA (siagds.gov.md/aipa), legat din pagina „Verifică starea dosarului”.</li>\n</ol>\n<h2>Ce s-a schimbat față de sistemul vechi</h2>\n<table><thead><tr><th></th><th>Până în 2025</th><th>Din 2026 (PSPA)</th></tr></thead><tbody>\n<tr><td>Cadrul</td><td>Măsuri de subvenționare din FNDAMR (de exemplu, regulamentul privind subvenționarea investițiilor, HG nr. 491/2023)</td><td>Intervenții PD, DR și IS din PSPA 2026–2030 (HG nr. 288/2026)</td></tr>\n<tr><td>Investițiile</td><td>Mai ales plata postinvestiție: investeai cu banii tăi, iar subvenția venea după implementare</td><td>La DR-10, de exemplu, 50% se plătește în avans și 50% după implementare</td></tr>\n<tr><td>Plățile pe producție</td><td>Plăți directe în zootehnie, pe cap de animal și pe kilogram de produs</td><td>Sprijin cuplat pentru venit (PD-01 – PD-08), pe culturi și produse</td></tr>\n<tr><td>Depunerea</td><td>Online, pe e-AIPA, la majoritatea măsurilor</td><td>La apelurile lansate până acum: pe hârtie, la direcțiile teritoriale AIPA</td></tr>\n<tr><td>Calendarul</td><td>Perioade de depunere stabilite pe măsuri</td><td>Apel separat pentru fiecare intervenție, prin ordin MAIA</td></tr>\n</tbody></table>\n<p><strong>Ce rămâne din sistemul vechi:</strong> cererile depuse în 2025 se procesează în continuare. Pe 6 octombrie 2026, AIPA a anunțat că a reluat autorizarea plăților complementare pentru circa 3.700 de cereri din 2025 (de exemplu, pentru accesarea creditelor, agricultura ecologică și defrișarea plantațiilor), după ce Comitetul național de monitorizare a PSPA a redistribuit banii nefolosiți din alte forme de subvenționare. Paginile vechi de pe aipa.gov.md („Subvenții”: plata postinvestiție, plata în avans, plățile directe în zootehnie, LEADER) sunt încă online, dar documentele lor sunt din 2025: nu le folosi pentru o cerere nouă.</p>\n<h2>Asigurarea în agricultură</h2>\n<p>Sprijinul statului pentru asigurare se acordă în baza Legii nr. 183/2020, iar în PSPA intră la intervenția DR-03: statul acoperă 70% din costul poliței, virat direct asigurătorului. Contractul se încheie înainte de apel, iar partea ta din primă o plătești înainte să depui cererea. Detaliile sunt în <a href=\"/ghiduri/subventii-aipa-pentru-gospodarii-si-fermieri-mici/\">ghidul pentru gospodării și fermieri mici</a>. Când se apropie înghețurile și grindina, vezi riscurile pe luni în <a href=\"/ghiduri/calendarul-agricol-al-moldovei-ce-si-cand-semeni/\">Calendarul agricol al Moldovei</a>.</p>\n<h2>Greșeli frecvente</h2>\n<ul>\n<li>Cauți „plata postinvestiție” pentru o investiție nouă. Din 2026, investițiile se finanțează prin intervențiile DR, pe apeluri.</li>\n<li>Folosești formulare și liste de acte din 2025. Descarcă-le de pe pagina intervenției, după lansarea apelului.</li>\n<li>Aștepți apelul ca să te înregistrezi în Registrul fermierilor sau ca să-ți înregistrezi gospodăria țărănească. Un apel durează de obicei o lună.</li>\n<li>Pleci la direcția teritorială fără să fi verificat în anunț perioada și modul de depunere.</li>\n<li>Începi investiția înainte să citești condițiile intervenției; unele costuri nu sunt eligibile.</li>\n</ul>\n<h2>Unde ceri ajutor</h2>\n<ul>\n<li><strong>AIPA</strong>: Chișinău, bd. Ștefan cel Mare și Sfânt 162, MD-2004; tel. 022 222 786; aipa@aipa.gov.md; sau direcția teritorială din raionul tău.</li>\n<li><strong>Centrul de Consiliere Agricolă și Rurală (CCAR)</strong> organizează cursuri și consiliere pentru cei care cer DR-09 și DR-10; detaliile sunt în <a href=\"/ghiduri/subventii-aipa-pentru-gospodarii-si-fermieri-mici/\">ghidul pentru fermieri mici</a>.</li>\n<li>Pe finantare.maia.gov.md găsești un calculator de finanțare. AIPA publică pe site și listele beneficiarilor și ale solicitanților.</li>\n</ul>",
   "faq": [
     {
-      "q": "Unde depun cererea de subvenție la AIPA?",
-      "a": "Online, pe portalul e-AIPA (e-aipa.gov.md). Pentru întrebări poți suna la 022 222 786 sau scrie la aipa@aipa.gov.md."
+      "q": "Ce este PSPA 2026–2030?",
+      "a": "Programul strategic al politicii agricole pentru perioada 2026–2030, aprobat prin HG nr. 288/2026. Stabilește cum se dau banii din FNDAMR, pe intervenții cu coduri: PD (plăți directe cuplate), DR (dezvoltare rurală) și IS (intervenții sectoriale)."
     },
     {
-      "q": "Ce este plata postinvestiție?",
-      "a": "Este o subvenție acordată pe baza unui proiect investițional. Faci investiția cu banii tăi, iar subvenția se plătește după implementare, pe baza costurilor suportate de tine."
+      "q": "Mai există plata postinvestiție la AIPA?",
+      "a": "Pentru investițiile noi, nu: din 2026 sprijinul vine prin intervențiile PSPA, pe apeluri. Cererile depuse în 2025 după regulile vechi se procesează în continuare; de exemplu, AIPA a reluat în octombrie 2026 autorizarea plăților complementare pentru ele."
+    },
+    {
+      "q": "Unde depun cererea de subvenție în 2026?",
+      "a": "La apelurile lansate până acum (DR-09, DR-10 și PD-05), pe hârtie, la direcțiile teritoriale AIPA, în zilele lucrătoare, între 08:00 și 17:00. Verifică modul de depunere în anunțul fiecărui apel."
+    },
+    {
+      "q": "Ce apeluri sunt deschise acum?",
+      "a": "DR-09 și DR-10, între 1 și 30 octombrie 2026, și PD-05 (carne), între 22 octombrie și 20 noiembrie 2026. Celelalte intervenții se anunță prin ordin MAIA, pe aipa.gov.md."
     },
     {
       "q": "Cum verific starea cererii mele?",
-      "a": "AIPA are un portal de verificare a dosarelor la siagds.gov.md/aipa, legat de pagina de subvenții."
-    },
-    {
-      "q": "Există subvenții pentru asigurarea culturilor?",
-      "a": "Da, statul acordă sprijin financiar pentru asigurarea în agricultură (Legea nr. 183/2020). Ultima perioadă de recepție anunțată a luat sfârșit la 1 octombrie 2026."
-    },
-    {
-      "q": "Unde văd cine a primit subvenții?",
-      "a": "AIPA publică listele beneficiarilor și ale solicitanților pe aipa.gov.md, la informațiile publice despre subvenții."
+      "a": "Pe portalul de verificare al AIPA, siagds.gov.md/aipa, legat din pagina „Verifică starea dosarului”. Poți suna și la 022 222 786."
     }
   ]
 }

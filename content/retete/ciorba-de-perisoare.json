@@ -1,0 +1,218 @@
+{
+  "slug": "ciorba-de-perisoare",
+  "title": "Ciorbă de perișoare acrită cu borș, ca la moldoveni",
+  "description": "Ciorbă de perișoare din carne de porc cu orez, acrită cu borș și dreasă cu leuștean: cantități pentru 8 porții, cum faci perișoare care nu se desfac și greșelile frecvente.",
+  "updated": "2026-10-10",
+  "image": {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/retete/ciorba-de-perisoare-wQ0rFUOnTshY0yVWJeGKWMDZXq8VXB.jpg",
+    "credit": "Magnific (stoc)",
+    "alt": "Ciorbă limpede cu perișoare, cartofi, morcov și ceapă verde într-un castron alb, cu felii de pâine prăjită alături și un al doilea castron în fundal"
+  },
+  "servings": 8,
+  "prepMinutes": 30,
+  "cookMinutes": 60,
+  "difficulty": "mediu",
+  "fasting": false,
+  "course": "ciorbe",
+  "region": "toată Moldova",
+  "ingredients": [
+    {
+      "group": "Perișoarele",
+      "items": [
+        {
+          "qty": "500",
+          "unit": "g",
+          "name": "carne tocată de porc",
+          "note": "sau porc și vită"
+        },
+        {
+          "qty": "50",
+          "unit": "g",
+          "name": "orez cu bob rotund",
+          "note": "spălat și scurs"
+        },
+        {
+          "qty": "1",
+          "unit": "buc.",
+          "name": "ou"
+        },
+        {
+          "qty": "1",
+          "unit": "buc.",
+          "name": "ceapă mică",
+          "note": "dată pe răzătoarea mică"
+        },
+        {
+          "qty": "1",
+          "unit": "linguriță",
+          "name": "sare"
+        },
+        {
+          "qty": "1/2",
+          "unit": "linguriță",
+          "name": "piper negru măcinat"
+        },
+        {
+          "qty": "1",
+          "unit": "lingură",
+          "name": "pătrunjel și mărar",
+          "note": "tocate"
+        }
+      ]
+    },
+    {
+      "group": "Ciorba",
+      "items": [
+        {
+          "qty": "2,5",
+          "unit": "l",
+          "name": "apă"
+        },
+        {
+          "qty": "1",
+          "unit": "buc.",
+          "name": "ceapă",
+          "note": "tocată mărunt"
+        },
+        {
+          "qty": "1",
+          "unit": "buc.",
+          "name": "morcov",
+          "note": "rondele sau fâșii"
+        },
+        {
+          "qty": "1",
+          "unit": "buc.",
+          "name": "rădăcină de pătrunjel",
+          "note": "sau o bucată de țelină"
+        },
+        {
+          "qty": "1",
+          "unit": "buc.",
+          "name": "ardei gras",
+          "note": "cubulețe"
+        },
+        {
+          "qty": "3",
+          "unit": "buc.",
+          "name": "cartofi",
+          "note": "cca 400 g, cuburi"
+        },
+        {
+          "qty": "200",
+          "unit": "ml",
+          "name": "suc de roșii",
+          "note": "sau 2 roșii rase"
+        },
+        {
+          "qty": "1",
+          "unit": "linguriță",
+          "name": "sare",
+          "note": "și după gust"
+        },
+        {
+          "qty": "500",
+          "unit": "ml",
+          "name": "borș acru",
+          "note": "sau zeama de la o lămâie"
+        },
+        {
+          "qty": "1",
+          "unit": "legătură",
+          "name": "leuștean",
+          "note": "tocat"
+        },
+        {
+          "qty": "1",
+          "unit": "legătură",
+          "name": "pătrunjel",
+          "note": "tocat"
+        },
+        {
+          "qty": "200",
+          "unit": "g",
+          "name": "smântână",
+          "note": "la servire"
+        }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "Amestecă carnea cu orezul, oul, ceapa rasă, sarea, piperul și verdeața. Frământă 3–4 minute, până compoziția se leagă.",
+      "minutes": 10
+    },
+    {
+      "text": "Cu mâinile ude, formează perișoare cât o nucă. Ies cam 30–35. Lasă-le pe o tavă udată cu apă.",
+      "minutes": 15
+    },
+    {
+      "text": "Pune apa la fiert cu ceapa, morcovul, rădăcina de pătrunjel și sarea. Fierbe 15 minute la foc mediu.",
+      "minutes": 15
+    },
+    {
+      "text": "Adaugă cartofii și ardeiul și fierbe 5 minute.",
+      "minutes": 5
+    },
+    {
+      "text": "Lasă perișoarele una câte una în ciorba care clocotește ușor. Nu amesteca primele 5 minute. Fierbe-le la foc mic 25 de minute și ia spuma.",
+      "minutes": 25
+    },
+    {
+      "text": "Adaugă sucul de roșii și borșul acru fiert separat și spumuit. Mai fierbe 5 minute.",
+      "minutes": 5
+    },
+    {
+      "text": "Gustă și potrivește sarea. Stinge focul, pune leușteanul și pătrunjelul și lasă ciorba acoperită 5 minute. Servește cu smântână.",
+      "minutes": 5
+    }
+  ],
+  "tips": [
+    "Fierbe o perișoară de probă înainte să le formezi pe toate: așa vezi dacă țin și dacă sarea e bună.",
+    "Udă-ți mâinile în apă rece când formezi perișoarele: compoziția nu se lipește și ies netede.",
+    "Perișoarele se pot forma cu o seară înainte și ține acoperite la frigider.",
+    "Pune leușteanul la sfârșit, cu focul stins: e verdeața care dă ciorbei gustul ei."
+  ],
+  "mistakes": [
+    "Perișoare puse în apă rece sau care abia fierbe: se desfac. Lasă-le în ciorbă când clocotește ușor.",
+    "Amestecat imediat după ce ai pus perișoarele: se rup. Așteaptă 5 minute până se întăresc.",
+    "Prea mult orez în carne: perișoarele se umflă și crapă. Ajung 50 g la jumătate de kilogram.",
+    "Borș acru pus nefiert: face spumă și tulbură ciorba. Fierbe-l separat și ia spuma."
+  ],
+  "variants": [
+    {
+      "region": "acrirea",
+      "text": "Tradițional, cu borș acru din tărâțe. Azi multe gospodine acresc cu zeamă de lămâie sau cu zeamă de varză murată."
+    },
+    {
+      "region": "carnea",
+      "text": "Din carne de porc sau din porc și vită în părți egale; perișoarele din carne de pui fierb mai repede, în 15 minute."
+    }
+  ],
+  "storyHtml": "<p>Cuvântul <em>ciorbă</em> vine din turcescul <em>çorba</em>, iar <em>perișoara</em> este, după <a href=\"https://dexonline.ro/definitie/peri%C8%99oar%C4%83\">DEX</a>, un „preparat de formă sferică din carne tocată (amestecată cu orez și cu alte adaosuri)”.</p><p>Registrul patrimoniului cultural imaterial al <a href=\"https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala\">Ministerului Culturii</a> scrie că zeama, borșul și ciorba se acresc cu borș și se servesc ca prim fel. Tot acolo, între preparatele din carne tocată, sunt trecute chiftelele de porc.</p><p>Borșul acru din tărâțe de grâu, cu făină de porumb și pâine de secară, era pregătit în fiecare gospodărie, iar o parte din drojdia veche pornea borșul următor, au arătat cercetătoarele <a href=\"https://doi.org/10.52603/9789975333788.26\">Universității Tehnice a Moldovei</a>.</p>",
+  "sources": [
+    {
+      "name": "Ministerul Culturii: Registrul patrimoniului cultural imaterial, Capitolul VII. Cunoștințe privind alimentația tradițională",
+      "url": "https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala"
+    },
+    {
+      "name": "dexonline: perișoară (DEX '09)",
+      "url": "https://dexonline.ro/definitie/peri%C8%99oar%C4%83"
+    },
+    {
+      "name": "dexonline: ciorbă (DEX '09)",
+      "url": "https://dexonline.ro/definitie/ciorb%C4%83"
+    },
+    {
+      "name": "E. Covaliov, O. Gutium, C. Babcenco, V. Cazac: Aspecte tradiționale și tehnologice ale borșului acru (2021)",
+      "url": "https://doi.org/10.52603/9789975333788.26"
+    }
+  ],
+  "related": [
+    "bucataria-moldoveneasca-istorie-feluri-traditii",
+    "bors-rosu-moldovenesc",
+    "zeama-de-gaina-cu-taitei-de-casa",
+    "masa-de-sarbatoare-in-moldova-hram-nunta-pomana",
+    "cum-faci-borsul-acru-de-tarate-acasa"
+  ]
+}

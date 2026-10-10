@@ -1,0 +1,155 @@
+{
+  "slug": "zacusca-de-vinete",
+  "title": "Закуска (zacuscă) из баклажанов и печёного перца, безопасный способ",
+  "description": "Закуска из баклажанов и печёного перца небольшой порцией для холодильника: шаги, сколько тушить и почему без автоклава её не ставят в кладовую — по правилам ANSA.",
+  "updated": "2026-10-10",
+  "image": {
+    "url": "https://adbkkroefuiuzovm.public.blob.vercel-storage.com/retete/zacusca-de-vinete-3d8DRzvaFuVilDjeYAuLj3yDM0Cnd0.jpg",
+    "credit": "Magnific (stoc)",
+    "alt": "Стеклянная банка с откидной крышкой, полная закуски из рубленых баклажанов и красного перца, и ломтик чёрного хлеба с закуской и листиком базилика на деревянной доске"
+  },
+  "servings": 12,
+  "prepMinutes": 60,
+  "cookMinutes": 120,
+  "difficulty": "mediu",
+  "fasting": true,
+  "course": "conserve",
+  "region": "вся Молдова",
+  "occasions": [
+    "conservele-de-iarna-muraturi-zacusca-dulceata",
+    "bucataria-de-post-in-moldova"
+  ],
+  "ingredients": [
+    {
+      "items": [
+        {
+          "qty": "1",
+          "unit": "кг",
+          "name": "баклажаны",
+          "note": "3–4 штуки"
+        },
+        {
+          "qty": "1",
+          "unit": "кг",
+          "name": "красный мясистый перец или гогошары"
+        },
+        {
+          "qty": "400",
+          "unit": "г",
+          "name": "лук",
+          "note": "мелко нарезанный"
+        },
+        {
+          "qty": "500",
+          "unit": "г",
+          "name": "спелые помидоры",
+          "note": "или 150 г томатной пасты"
+        },
+        {
+          "qty": "150",
+          "unit": "мл",
+          "name": "подсолнечное масло"
+        },
+        {
+          "qty": "2",
+          "unit": "ч. л.",
+          "name": "соль",
+          "note": "по вкусу"
+        },
+        {
+          "qty": "1/2",
+          "unit": "ч. л.",
+          "name": "молотый чёрный перец"
+        },
+        {
+          "qty": "2",
+          "unit": "шт.",
+          "name": "лавровый лист"
+        }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "text": "Запеките баклажаны и перец на решётке, на плите или в духовке при 220 °C, переворачивая, пока кожица не почернеет, а мякоть не станет мягкой: 30–40 минут.",
+      "minutes": 40
+    },
+    {
+      "text": "Положите печёный перец в посуду с крышкой на 10 минут, чтобы отошла кожица. Баклажаны очистите, пока горячие, и оставьте в дуршлаге на 30 минут, чтобы стёк сок.",
+      "minutes": 30
+    },
+    {
+      "text": "Очистите перец от кожицы и семян. Мелко порубите баклажаны и перец ножом или тяпкой.",
+      "minutes": 15
+    },
+    {
+      "text": "Обжарьте лук в масле на слабом огне 10 минут, пока он не станет мягким, но не подрумянится.",
+      "minutes": 10
+    },
+    {
+      "text": "Добавьте натёртые помидоры (или пасту с небольшим количеством воды) и тушите 10 минут. Положите перец и тушите ещё 20 минут, помешивая.",
+      "minutes": 30
+    },
+    {
+      "text": "Добавьте баклажаны, соль, перец и лавровый лист. Тушите на слабом огне 40–60 минут, часто перемешивая со дна, пока не уйдёт вода и масло не поднимется наверх.",
+      "minutes": 60
+    },
+    {
+      "text": "Выньте лавровый лист. Разложите горячую закуску по чистым маленьким банкам и закройте.",
+      "minutes": 10
+    },
+    {
+      "text": "Когда банки остынут, держите их в холодильнике и съешьте закуску за несколько дней. То, что не съедите быстро, разложите по маленьким контейнерам и заморозьте.",
+      "minutes": 5
+    }
+  ],
+  "tips": [
+    "Готовьте закуску небольшими порциями и в маленьких банках: открываете по одной и быстро доедаете.",
+    "Морозилка — самый простой безопасный способ хранить её дома дольше: разложите порциями по контейнерам или пакетам и размораживайте в холодильнике.",
+    "Мешайте деревянной ложкой до самого дна: густая закуска легко пригорает.",
+    "Подавайте на поджаренном хлебе или с мамалыгой как постную закуску."
+  ],
+  "mistakes": [
+    "Банки прокипятили в водяной бане и поставили в кладовую на зиму: закуска — из овощей с низкой кислотностью, а для них ANSA требует стерилизации под давлением при 116–121 °C. При 100 °C споры ботулизма не погибают, сколько ни кипяти.",
+    "Уксус «на глаз», чтобы «законсервировать»: дома невозможно узнать, опустилась ли кислотность достаточно (pH ниже 4,6).",
+    "Банки стерилизуют в духовке или укутывают в одеяла, чтобы медленно остывали: стерилизацию в духовке ANSA называет «крайне опасной», а медленное остывание помогает спорам.",
+    "Баклажаны не отцедили: закуска получается водянистой и тушится гораздо дольше."
+  ],
+  "variants": [
+    {
+      "region": "рыбная закуска",
+      "text": "Словарь упоминает и закуску из рыбы с овощным гарниром, а не только из баклажанов и перца."
+    }
+  ],
+  "storyHtml": "<p>Слово <em>zacuscă</em> пришло в румынский из русского «закуска» и обозначает, по <a href=\"https://dexonline.ro/definitie/zacusc%C4%83\">словарю</a>, блюдо из баклажанов, гогошар и лука или из рыбы с овощами. Под своим названием закуска в <a href=\"https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala\">реестре нематериального культурного наследия</a> не значится, но там среди блюд из огородных овощей названы баклажаны, а среди постных блюд — жаренный в масле мясистый перец и рагу из баклажанов. <a href=\"https://repository.utm.md/handle/5014/26852\">Исследование Технического университета Молдовы</a> отмечает, что помидоры, баклажаны и перец пришли в молдавскую кухню от соседних народов.</p><p>Сегодня закуска — одна из самых обычных осенних заготовок, но и одна из самых рискованных, если её закрыть неправильно. <a href=\"https://www.ansa.gov.md/media/comunicate-de-presa/ansa-atentioneaza-sezonul-conservelor-de-casa-respectati-regulile-de\">Национальное агентство по безопасности пищевых продуктов (ANSA)</a> объясняет, что овощи без достаточной кислотности нужно стерилизовать под давлением, а кипячение при 100 °C не уничтожает споры ботулизма. Поэтому этот рецепт — для холодильника: ANSA советует держать в холодильнике от 1 до 5 °C, а лишнюю приготовленную еду замораживать. Все правила — в материале <a href=\"/ghiduri/conservele-de-iarna-muraturi-zacusca-dulceata/\">заготовки на зиму без риска</a>.</p>",
+  "sources": [
+    {
+      "name": "ANSA: În sezonul conservelor de casă respectați regulile de siguranță alimentară (comunicat, 30.07.2026)",
+      "url": "https://www.ansa.gov.md/media/comunicate-de-presa/ansa-atentioneaza-sezonul-conservelor-de-casa-respectati-regulile-de"
+    },
+    {
+      "name": "ANSA: Evitați risipa alimentară de sărbători (recomandări pentru păstrarea alimentelor)",
+      "url": "https://ansa.gov.md/media/comunicate-de-presa/ansa-evitati-risipa-alimentara-de-sarbatori.html"
+    },
+    {
+      "name": "dexonline: zacuscă (DEX '09)",
+      "url": "https://dexonline.ro/definitie/zacusc%C4%83"
+    },
+    {
+      "name": "Ministerul Culturii: Registrul patrimoniului cultural imaterial, Capitolul VII. Cunoștințe privind alimentația tradițională (V. Iarovoi)",
+      "url": "https://mc.gov.md/ro/content/capitolul-vii-cunostinte-privind-alimentatia-traditionala"
+    },
+    {
+      "name": "N. Suhodol, V. Cazac, C. Babcenco: Similitudini ale tradițiilor gastronomice găgăuze cu cele din bucătăria moldovenească (Comrat, 2023)",
+      "url": "https://repository.utm.md/handle/5014/26852"
+    }
+  ],
+  "related": [
+    "conservele-de-iarna-muraturi-zacusca-dulceata",
+    "pregatirea-gospodariei-de-iarna-beci-conserve-pomi",
+    "bucataria-moldoveneasca-istorie-feluri-traditii",
+    "calendarul-agricol-al-moldovei-ce-si-cand-semeni",
+    "fasole-batuta-cu-ceapa-calita",
+    "muraturile-in-butoi-varza-si-castraveti"
+  ]
+}
