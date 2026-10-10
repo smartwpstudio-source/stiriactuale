@@ -15,7 +15,8 @@ const TOOL_LINE = { calc: "🧮 Calculează", ghid: "📘 Ghid", model: "📝 Mo
 // dacă l-a publicat editorul din /admin sau pipeline-ul automat:
 //  - mesaj privat către editor ("Publicat" / "Publicat automat");
 //  - postare în canalul Telegram și pe pagina de Facebook (o singură dată per articol);
-// Notificarea push NU pleacă de aici: o trimite editorul manual din /admin.
+// Notificarea push NU pleacă de aici: manual din /admin sau automat din
+// pipeline, după regulile din src/lib/pipeline/auto-push.ts.
 export async function announcePublished(id: number, how: "manual" | "auto"): Promise<void> {
   const db = getDb();
   const [a] = await db.select().from(articles).where(eq(articles.id, id));

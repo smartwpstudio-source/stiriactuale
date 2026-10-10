@@ -3,7 +3,8 @@ import { AUTHORS, analysisPath, authorPath, getAnalyses } from "@/lib/content/an
 import { HISTORY_PATH, dayPath, historyDays } from "@/lib/history";
 import { COMPLAINT_MODELS } from "@/lib/complaint-models";
 import type { MetadataRoute } from "next";
-import { getHubCounts, getSitemapArticles } from "@/lib/content/queries";
+import { getHubCounts, getSitemapArticles, listRuArticles } from "@/lib/content/queries";
+import { RU_NEWS_PUBLIC, ruNewsPath } from "@/lib/ru-news-public";
 import { getGuides } from "@/lib/content/guides";
 import { getRecipes, recipePath } from "@/lib/content/recipes";
 import { listPlaces } from "@/lib/content/places";
@@ -55,6 +56,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...[0, 1].map((d) => ({ url: `/calendar-crestin-ortodox/${new Date().getFullYear() + d}/`, priority: 0.6 })),
     ...availableCalculators(calcParams).map((c) => ({ url: `/calculatoare/${c.slug}/`, priority: 0.7 })),
     // versiunea rusă: cuprinsurile, calculatoarele și modelele de reclamații
+    ...(RU_NEWS_PUBLIC ? [{ url: "/ru/", priority: 0.8 }] : []),
     { url: "/ru/ghiduri/", priority: 0.7 },
     ...(recipes.length ? [{ url: "/ru/retete/", priority: 0.7 }] : []),
     { url: "/ru/calculatoare/", priority: 0.7 },
@@ -69,6 +71,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...recipes.map((r) => ({ url: `${SITE_URL}${recipePath(r.slug)}`, lastModified: r.updated, priority: 0.7 })),
     ...recipesRu.map((r) => ({ url: `${SITE_URL}${recipePath(r.slug, "ru")}`, lastModified: r.updated, priority: 0.7 })),
     ...hubs.map((h) => ({ url: `${SITE_URL}${h.url}`, changeFrequency: "hourly" as const, priority: h.priority })),
+    // știrile în rusă: abia după activare (ru-news-public.ts)
+    ...(RU_NEWS_PUBLIC ? await listRuArticles(5000) : []).map(({ article }) => ({
+      url: `${SITE_URL}${ruNewsPath(article.slug)}`,
+      lastModified: article.publishedAt,
+      priority: 0.6,
+    })),
     // slug-uri cu "%" (emoji codat la migrare) dau 404 — nu le punem în sitemap
     ...articles.filter((a) => !a.slug.includes("%")).map((a) => ({
       url: `${SITE_URL}${articleUrl({ ...a, locality: a.locality ?? undefined, country: a.country ?? undefined })}`,

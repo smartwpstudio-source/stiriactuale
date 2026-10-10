@@ -1,4 +1,5 @@
 import type { Impact } from "../../impact-types";
+import type { RuNews } from "../../ru-news-public";
 import {
   pgTable,
   serial,
@@ -82,6 +83,11 @@ export const articles = pgTable("articles", {
   impact: jsonb("impact").$type<Impact>(),
   // click-uri din blocul de impact spre unelte (ghid, calculator, model)
   impactClicks: integer("impact_clicks").notNull().default(0),
+  // varianta rusă (/ru/novosti/<slug>/, src/lib/pipeline/ru-news.ts); null = netradusă
+  ru: jsonb("ru").$type<RuNews>(),
+  // ultima încercare de traducere (reușită sau respinsă la verificare); null =
+  // de tradus — editarea din admin și completarea știrii pe scurt îl golesc
+  ruUpdatedAt: timestamp("ru_updated_at", { withTimezone: true }),
   // id-ul articolului din WordPress, doar pentru arhiva importată
   wpId: integer("wp_id").unique(),
   // articol de arhivă preluat de la altă redacție: doar rezumat + link spre

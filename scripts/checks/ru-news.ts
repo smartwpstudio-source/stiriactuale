@@ -1,0 +1,66 @@
+// Regulile știrilor în rusă și ale push-ului automat: npx tsx scripts/checks/ru-news.ts
+import assert from "node:assert/strict";
+import { shouldTranslateRu, ruMismatch, numbersOf, type RuCandidate } from "../../src/lib/pipeline/ru-news";
+import { shouldAutoPush } from "../../src/lib/pipeline/auto-push";
+import type { Impact } from "../../src/lib/impact-types";
+
+const impact: Impact = { tip: "bani", cine: "toți", ce: "tariful crește la 15,5 lei", pasi: ["verifică factura"], unelte: [], verificat: "2026-10-11" };
+const base: RuCandidate = { section: "national", kind: "stire", archived: false, impact: null, pushWorthy: false, locality: null, country: null, title: "Ședință la primărie", leadText: "Consilierii s-au întrunit." };
+const tr = (o: Partial<RuCandidate>) => shouldTranslateRu({ ...base, ...o });
+
+// --- traducerea în rusă: pozitive, câte una pe regulă
+assert.ok(tr({ impact }), "(a) bloc de impact");
+assert.ok(tr({ pushWorthy: true }), "(b) pushWorthy");
+assert.ok(tr({ section: "regiuni", locality: "balti" }), "(c) Bălți");
+assert.ok(tr({ section: "regiuni", locality: "gagauzia" }), "(c) Găgăuzia");
+assert.ok(tr({ section: "regiuni", locality: "ceadir-lunga" }), "(c) Ceadîr-Lunga");
+assert.ok(tr({ section: "regiuni", locality: "taraclia" }), "(c) Taraclia");
+assert.ok(tr({ section: "regiuni", locality: "basarabeasca" }), "(c) Basarabeasca");
+assert.ok(tr({ title: "Tiraspolul ridică prețul la gaz" }), "(c) Tiraspol în titlu");
+assert.ok(tr({ leadText: "Autoritățile din stânga Nistrului au anunțat" }), "(c) stânga Nistrului, cu diacritice");
+assert.ok(tr({ title: "Regiunea transnistreană fără apă" }), "(c) transnistreană");
+assert.ok(tr({ section: "diaspora", country: "rusia" }), "(d) Rusia");
+assert.ok(tr({ section: "diaspora", country: "israel" }), "(d) Israel");
+// negative
+assert.ok(!tr({}), "știre obișnuită");
+assert.ok(!tr({ section: "regiuni", locality: "orhei" }), "Orhei");
+assert.ok(!tr({ section: "diaspora", country: "italia" }), "Italia");
+assert.ok(!tr({ section: "international", pushWorthy: true, impact }), "Lumea nu se traduce niciodată");
+assert.ok(!tr({ kind: "pe-scurt", impact }), "pe scurt");
+assert.ok(!tr({ kind: "analiza", pushWorthy: true }), "analiza");
+assert.ok(!tr({ archived: true, impact }), "arhivă");
+
+// --- verificarea traducerii: aceleași cifre și linkuri
+assert.deepEqual(numbersOf("1 500 lei, 34,22 și 1.500"), numbersOf("1500 лей, 34.22 и 1 500"));
+const ro = { title: "Gazul se scumpește cu 10%", lead: "Din 1 noiembrie, 15,5 lei.", bodyHtml: '<p>Vezi <a href="/ghiduri/x/">ghidul</a>, 2 500 de lei.</p>' };
+const ok = { title: "Газ дорожает на 10%", lead: "С 1 ноября — 15,5 лея.", bodyHtml: '<p>См. <a href="/ghiduri/x/">справочник</a>, 2 500 леев.</p>', metaDescription: "" };
+assert.equal(ruMismatch(ro, ok), null);
+assert.match(ruMismatch(ro, { ...ok, title: "Газ дорожает на 12%" })!, /titlu/);
+assert.match(ruMismatch(ro, { ...ok, lead: "С 1 ноября — 16 лей." })!, /text/);
+assert.match(ruMismatch(ro, { ...ok, bodyHtml: '<p>См. <a href="/ru/x/">справочник</a>, 2 500 леев.</p>' })!, /linkuri/);
+assert.match(ruMismatch({ ...ro, impact }, { ...ok })!, /cifre|impact/);
+
+// --- push automat
+const p = (title: string, o: Partial<RuCandidate> = {}) => shouldAutoPush({ ...base, pushWorthy: true, title, leadText: "", ...o });
+// pozitive
+assert.ok(p("Cod portocaliu de ger în toată țara"));
+assert.ok(p("Cutremur resimțit în Chișinău"));
+assert.ok(p("Legea nouă intră în vigoare de mâine: amenzi mai mari"));
+assert.ok(p("ANRE a aprobat un tarif nou la gaz"));
+assert.ok(p("Alertă 112: mesaj de avertizare pentru locuitorii din nord"));
+assert.ok(p("Parlamentul a modificat Codul fiscal: scutirea crește de la 1 ianuarie"));
+assert.ok(p("Inundații în sudul țării: oamenii, evacuați"));
+assert.ok(p("Guvernul a aprobat majorarea pensiilor de la 1 aprilie"));
+assert.ok(p("Accident grav pe traseul Chișinău–Hîncești: trei morți"));
+// negative
+assert.ok(!p("Președintele a declarat că opoziția minte"), "declarație politică");
+assert.ok(!p("Accident la Orhei: un rănit"), "accident cu un rănit");
+assert.ok(!p("Cod roșu de ger în România", { section: "international" }), "internațional");
+assert.ok(!p("Prețul pâinii a crescut cu 2% în magazine"), "creștere de preț fără decizie");
+assert.ok(!p("Deputații au discutat un proiect de modificare a legii"), "doar discuție / proiect");
+assert.ok(!p("Guvernul a aprobat proiectul de lege privind pensiile"), "proiect, încă neadoptat");
+assert.ok(!p("Cod portocaliu de ger în toată țara", { pushWorthy: false }), "fără pushWorthy");
+assert.ok(!p("Cod portocaliu de ger în toată țara", { kind: "pe-scurt" }), "pe scurt");
+assert.ok(!p("Ședință de guvern", { impact }), "impact singur nu ajunge");
+
+console.log("ru-news + auto-push: OK");

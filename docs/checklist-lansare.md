@@ -30,7 +30,7 @@ Ordinea contează: emailul și pozele se rezolvă ÎNAINTE de mutarea DNS.
 | `TELEGRAM_CHANNEL_ID` | da | da | `-1001082195144` (Reporter News). Golit intenționat în `.env.local` până la lansare — altfel testele locale ar posta în canalul public |
 | `FACEBOOK_PAGE_ID` | da | da | id-ul paginii „Știri Actuale” — gol local, ca testele să nu posteze pe pagină |
 | `FACEBOOK_PAGE_TOKEN` | da | da | token de pagină fără expirare (pages_manage_posts) din aplicația Meta |
-| `NEXT_PUBLIC_VAPID_PUBLIC_KEY` | da | da | notificări push; aceeași valoare ca în `.env.local` |
+| `NEXT_PUBLIC_VAPID_PUBLIC_KEY` | da | da | notificări push; aceeași valoare ca în `.env.local`. Din 2026-10-11 push-ul pleacă și automat din pipeline (GitHub Actions), doar după regulile stricte din `src/lib/pipeline/auto-push.ts` (pushWorthy + lege/modificare/decizie/tarif adoptat sau urgență, calamitate, vreme periculoasă, alertă 112/IGSU; fără plafon zilnic, nimic 22–07, un push per articol); butonul manual din /admin rămâne |
 | `VAPID_PRIVATE_KEY` | da | da | NU se schimbă după lansare — altfel toți abonații se pierd |
 | `GITHUB_DISPATCH_TOKEN` | da | — | token fine-grained, doar repo-ul stiriactuale, „Actions: Read and write” — cron-ul Vercel pornește pipeline-ul exact la oră (GitHub schedule întârzie cu ore) |
 

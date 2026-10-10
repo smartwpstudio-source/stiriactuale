@@ -36,7 +36,7 @@ const listColumns = {
 
 type ListRow = { [K in keyof typeof listColumns]: (typeof t.$inferSelect)[K] };
 
-function mapRow(row: ListRow & { bodyHtml?: string }): Article {
+function mapRow(row: ListRow & { bodyHtml?: string; hasRu?: boolean }): Article {
   return {
     slug: row.slug,
     title: row.title,
@@ -62,6 +62,7 @@ function mapRow(row: ListRow & { bodyHtml?: string }): Article {
     impact: row.impact ?? undefined,
     sources: row.sources,
     archived: row.archived,
+    hasRu: row.hasRu,
   };
 }
 
@@ -159,11 +160,31 @@ export async function getArticleBySection(
   if (locality !== undefined) c.push(eq(t.locality, locality));
   if (country !== undefined) c.push(eq(t.country, country));
   const [row] = await getDb()
-    .select({ ...listColumns, bodyHtml: t.bodyHtml })
+    .select({ ...listColumns, bodyHtml: t.bodyHtml, hasRu: sql<boolean>`${t.ru} is not null` })
     .from(t)
     .where(and(...c))
     .limit(1);
   return row ? mapRow(row) : undefined;
+}
+
+// Știrile în rusă (/ru/novosti/, /ru/): doar cele publicate, cu traducere.
+export async function getRuArticle(slug: string) {
+  const [row] = await getDb()
+    .select({ ...listColumns, bodyHtml: t.bodyHtml, ru: t.ru })
+    .from(t)
+    .where(and(where({}), eq(t.slug, slug), isNotNull(t.ru)))
+    .limit(1);
+  return row?.ru ? { article: mapRow(row), ru: row.ru } : undefined;
+}
+
+export async function listRuArticles(limit: number) {
+  const rows = await getDb()
+    .select({ ...listColumns, ru: t.ru, ruUpdatedAt: t.ruUpdatedAt })
+    .from(t)
+    .where(and(where({}), isNotNull(t.ru)))
+    .orderBy(desc(t.publishedAt))
+    .limit(limit);
+  return rows.map((r) => ({ article: mapRow(r), ru: r.ru!, ruUpdatedAt: r.ruUpdatedAt }));
 }
 
 // Același subiect sau, pentru regiuni/diaspora, același raion/țară.

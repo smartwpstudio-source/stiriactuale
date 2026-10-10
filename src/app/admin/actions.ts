@@ -55,12 +55,20 @@ export async function saveArticle(id: number, formData: FormData) {
   const postUrl = postLink ? toPostEmbedUrl(postLink) : null;
   if (postLink && !postUrl) redirect(`/admin/articol/${id}/?e=post`);
 
+  const title = String(formData.get("title")).trim();
+  const leadText = String(formData.get("lead")).trim();
+  const bodyHtml = sanitizeBody(String(formData.get("body")));
+  const [old] = await getDb().select({ title: articles.title, leadText: articles.leadText, bodyHtml: articles.bodyHtml }).from(articles).where(eq(articles.id, id));
+  // textul s-a schimbat: varianta rusă dispare și se retraduce la rularea următoare
+  const ruReset = old && (old.title !== title || old.leadText !== leadText || old.bodyHtml !== bodyHtml) ? { ru: null, ruUpdatedAt: null } : {};
+
   await getDb()
     .update(articles)
     .set({
-      title: String(formData.get("title")).trim(),
-      leadText: String(formData.get("lead")).trim(),
-      bodyHtml: sanitizeBody(String(formData.get("body"))),
+      title,
+      leadText,
+      bodyHtml,
+      ...ruReset,
       metaDescription: String(formData.get("meta")).trim().slice(0, 200),
       imageAltText: String(formData.get("alt") ?? "").trim() || null,
       videoUrl,
@@ -305,7 +313,8 @@ export async function saveImpact(id: number, formData: FormData) {
           editat: true,
         }
       : null;
-  await getDb().update(articles).set({ impact }).where(eq(articles.id, id));
+  // blocul tradus ar rămâne vechi: varianta rusă se reface la rularea următoare
+  await getDb().update(articles).set({ impact, ru: null, ruUpdatedAt: null }).where(eq(articles.id, id));
   refreshSite();
   redirect(`/admin/articol/${id}/?ok=1`);
 }

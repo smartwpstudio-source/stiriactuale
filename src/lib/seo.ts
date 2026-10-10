@@ -3,6 +3,7 @@ import type { Article } from "./content/types";
 import { SECTION_LABELS } from "./content/geo";
 import { articleUrl } from "./content/url";
 import { youtubeThumb } from "./video";
+import { RU_NEWS_PUBLIC, ruNewsPath } from "./ru-news-public";
 
 export const SITE_URL = "https://stiriactuale.info";
 
@@ -84,7 +85,8 @@ export function articleMetadata(article: Article): Metadata {
   return {
     title: article.title,
     description,
-    alternates: { canonical: url },
+    // hreflang spre varianta rusă — doar după activarea știrilor RU (ru-news-public.ts)
+    alternates: { canonical: url, ...(RU_NEWS_PUBLIC && article.hasRu && { languages: { ro: url, ru: ruNewsPath(article.slug) } }) },
     // arhivă preluată de la altă redacție — nu se indexează (conținut duplicat)
     ...(article.archived && { robots: { index: false, follow: true } }),
     openGraph: {

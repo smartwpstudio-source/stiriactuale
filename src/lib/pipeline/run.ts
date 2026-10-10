@@ -17,6 +17,8 @@ import { shortVideoArticle } from "./video-article";
 import { isDuplicate, loadRecentFingerprints, loadUsedImageIds, publishArticle, updateBriefArticle } from "./publish";
 import { mapWithConcurrency } from "./concurrency";
 import { spentUsd } from "./llm";
+import { autoPush } from "./auto-push";
+import { translatePendingRu } from "./ru-news";
 import { alertEditor } from "@/lib/telegram";
 import type { Section } from "@/lib/content/types";
 import type { ScoredCandidate } from "./types";
@@ -60,6 +62,7 @@ export interface PipelineRunSummary {
   articlesUpdated: number; // știri pe scurt completate
   bySection: Record<Section, number>;
   costUsd: number; // echivalent la prețuri API — doar pentru a urmări consumul din limite
+  ruTranslated: number; // știri traduse în rusă (ru-news.ts)
   skipped?: string;
 }
 
@@ -78,6 +81,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     articlesUpdated: 0,
     bySection: { regiuni: 0, national: 0, international: 0, diaspora: 0 },
     costUsd: 0,
+    ruTranslated: 0,
   };
 
   try {
@@ -228,6 +232,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     const recentImages = (
       await db.select({ url: articles.imageUrl }).from(articles).orderBy(desc(articles.publishedAt)).limit(80)
     ).flatMap((r) => (r.url ? [r.url] : []));
+    const publishedIds: number[] = [];
     const published = await mapWithConcurrency(toPublish, PUBLISH_CONCURRENCY, async (c): Promise<Section | null> => {
       try {
         // material puțin: linkul video al editorului -> știre video scurtă, scrisă
@@ -277,7 +282,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
             (await findArticleImage(generated.stock_query, generated.image_prompt, generated.slug, usedImageIds, subject)));
         // (VIDEO) / (FOTO) la sfârșitul titlului: cititorul știe din listă ce găsește
         generated.titlu = mediaTag(generated.titlu, !!generated.video_url, c.group.items.some((i) => i.sourceUrl.includes("?foto=1")));
-        await publishArticle(c, generated, image, kind);
+        publishedIds.push(await publishArticle(c, generated, image, kind));
         if (c.group.manual) {
           await db.update(candidates).set({ processedAt: new Date() }).where(inArray(candidates.id, c.group.candidateIds));
         }
@@ -315,6 +320,15 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
         summary.failedArticles.push(`actualizare ${u.articleId}: ${err instanceof Error ? err.message : String(err)}`);
       }
     }
+
+    // push automat, doar după reguli stricte (auto-push.ts); pe rând, după publicare
+    for (const id of publishedIds) {
+      const r = await autoPush(id);
+      if (r) console.log(r);
+    }
+    // traducerea în rusă (ru-news.ts): articolele noi care se califică și cele
+    // schimbate între timp; o eroare nu atinge publicarea în română
+    summary.ruTranslated = (await translatePendingRu().catch((err) => (console.error(`Traducere RU: ${err}`), { done: 0 }))).done;
 
     for (const section of published) {
       if (!section) continue;

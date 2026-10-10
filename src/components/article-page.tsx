@@ -32,6 +32,7 @@ import { IconFolder } from "@tabler/icons-react";
 import { ImpactBlock } from "./impact-block";
 import { GooglePreferred } from "./google-preferred";
 import { resolveTools } from "@/lib/impact";
+import { RU_NEWS_PUBLIC, ruNewsPath } from "@/lib/ru-news-public";
 
 import type { Article } from "@/lib/content/types";
 
@@ -121,6 +122,13 @@ export async function ArticlePage({
           {article.updatedAt &&
             ` · actualizat la ${new Date(article.updatedAt).toLocaleString("ro-MD", { timeZone: "Europe/Chisinau", hour: "2-digit", minute: "2-digit", day: "numeric", month: "long" })}`}
         </p>
+        {RU_NEWS_PUBLIC && article.hasRu && (
+          <p className="mt-2 font-mono text-sm">
+            <Link href={ruNewsPath(article.slug)} lang="ru" hrefLang="ru" className="text-teal underline hover:text-amber-ink">
+              Читать на русском
+            </Link>
+          </p>
+        )}
         <ShareButtons url={absoluteUrl(articleUrl(article))} title={article.title} />
         {article.archived && article.sources?.[0] ? (
           <>

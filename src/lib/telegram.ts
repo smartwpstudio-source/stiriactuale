@@ -34,6 +34,7 @@ const HEADS = {
   "draft-alerta": "📝🔔 Draft — subiect sensibil, așteaptă aprobarea ta (propus și pentru notificare push)",
   publicat: "✅ Publicat",
   "publicat-auto": "✅ Publicat automat — verifică-l când poți",
+  "push-auto": "🔔 Push automat trimis",
 };
 
 export async function notifyEditor(kind: keyof typeof HEADS, a: { id: number; title: string; lead: string }) {

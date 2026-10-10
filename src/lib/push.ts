@@ -3,9 +3,12 @@ import { eq, inArray } from "drizzle-orm";
 import { getDb } from "@/lib/pipeline/db/client";
 import { articles, pushSubscriptions } from "@/lib/pipeline/db/schema";
 
-// Notificări Web Push, trimise DOAR manual din /admin (decizia proprietarului,
-// 2026-10-03: fără trimitere automată, fără plafon zilnic). Rămân orele de
-// liniște: nimic între 22:00 și 07:00 (ora Chișinăului).
+// Notificări Web Push: manual din /admin (butonul rămâne) și, din 2026-10-11,
+// automat din pipeline, dar DOAR după reguli stricte (src/lib/pipeline/auto-push.ts:
+// pushWorthy + lege/modificare/decizie/tarif adoptat sau urgență, calamitate,
+// vreme periculoasă, alertă 112/IGSU; fără Lumea, pe scurt, analize). Fără plafon
+// zilnic; un singur push per articol (pushSentAt). Rămân orele de liniște:
+// nimic între 22:00 și 07:00 (ora Chișinăului).
 const QUIET_FROM = 22;
 const QUIET_TO = 7;
 const CONCURRENCY = 20;

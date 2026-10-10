@@ -36,4 +36,5 @@ export interface Article {
   impact?: Impact; // blocul „Ce înseamnă pentru tine”
   sources?: { name: string; url: string }[];
   archived?: boolean; // arhivă preluată de la altă redacție: rezumat + link, noindex, fără reclame
+  hasRu?: boolean; // are varianta rusă (/ru/novosti/<slug>/) — doar pe pagina de articol
 }

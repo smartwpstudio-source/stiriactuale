@@ -52,7 +52,7 @@ export async function publishArticle(
   generated: GeneratedArticle,
   image: ArticleImage | null,
   kind: "stire" | "pe-scurt" | "analiza" = "stire",
-): Promise<void> {
+): Promise<number> {
   const db = getDb();
   const sourceUrls = candidate.group.items.map((i) => i.sourceUrl).filter(Boolean);
   // o redacție o singură dată în "Surse:", chiar dacă a dat 2 știri (update)
@@ -100,7 +100,7 @@ export async function publishArticle(
     if (inserted.length) {
       const id = inserted[0].id;
       await announcePublished(id, "auto");
-      return;
+      return id;
     }
   }
   throw new Error(`slug ocupat: ${generated.slug}`);
@@ -140,6 +140,9 @@ export async function updateBriefArticle(
       impact: old.impact?.editat ? old.impact : ((generated.impact as Impact | undefined) ?? old.impact),
       kind: "stire",
       updatedAt: new Date(),
+      // textul s-a schimbat: se retraduce la sfârșitul rulării, dacă se califică
+      ru: null,
+      ruUpdatedAt: null,
     })
     .where(eq(articles.id, articleId));
 }

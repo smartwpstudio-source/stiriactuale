@@ -1,10 +1,11 @@
 import crypto from "node:crypto";
 import { revalidatePath } from "next/cache";
-import { gte, inArray, or } from "drizzle-orm";
+import { gte, inArray, or, sql } from "drizzle-orm";
 import { getDb } from "@/lib/pipeline/db/client";
 import { articles } from "@/lib/pipeline/db/schema";
 import { articleUrl } from "@/lib/content/url";
 import { revalidateKey } from "@/lib/revalidate";
+import { ruNewsPath } from "@/lib/ru-news-public";
 import type { Article } from "@/lib/content/types";
 
 // Listele (prima pagină, secțiunile, raioanele, țările, subiectele) și
@@ -28,6 +29,7 @@ const LISTS = [
   "/diaspora/[tara]/pagina/[n]",
   "/subiect/[topic]",
   "/subiect/[topic]/pagina/[n]",
+  "/ru",
 ];
 
 export async function POST(request: Request) {
@@ -46,13 +48,30 @@ export async function POST(request: Request) {
   const since = body.since ? new Date(body.since) : null;
   let paths: string[] = [];
   if (since && !Number.isNaN(since.getTime())) {
-    const cols = { id: articles.id, slug: articles.slug, section: articles.section, locality: articles.locality, country: articles.country, continuesId: articles.continuesId };
+    const cols = {
+      id: articles.id,
+      slug: articles.slug,
+      section: articles.section,
+      locality: articles.locality,
+      country: articles.country,
+      continuesId: articles.continuesId,
+      hasRu: sql<boolean>`${articles.ru} is not null`,
+    };
     const db = getDb();
-    const changed = await db.select(cols).from(articles).where(or(gte(articles.publishedAt, since), gte(articles.updatedAt, since)));
+    const changed = await db
+      .select(cols)
+      .from(articles)
+      .where(or(gte(articles.publishedAt, since), gte(articles.updatedAt, since), gte(articles.ruUpdatedAt, since)));
     // articolul continuat primește linkul spre continuare
     const prevIds = changed.map((a) => a.continuesId).filter((id): id is number => id != null);
     const prev = prevIds.length ? await db.select(cols).from(articles).where(inArray(articles.id, prevIds)) : [];
-    paths = [...new Set([...changed, ...prev].map((a) => articleUrl(a as Pick<Article, "section" | "slug" | "locality" | "country">)))];
+    paths = [
+      ...new Set([
+        ...[...changed, ...prev].map((a) => articleUrl(a as Pick<Article, "section" | "slug" | "locality" | "country">)),
+        // varianta rusă: și cea ștearsă la editare se reface (devine 404)
+        ...changed.map((a) => ruNewsPath(a.slug)),
+      ]),
+    ];
     for (const p of paths) revalidatePath(p);
   }
   return Response.json({ lists: LISTS.length, articles: paths.length });
