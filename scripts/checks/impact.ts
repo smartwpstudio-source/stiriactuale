@@ -64,6 +64,18 @@ import("../../src/lib/content/guide-country").then(({ guideCountry }) => {
     assert.equal(matchDossier("Universitatea Harvard pierde finanțarea federală"), undefined);
     assert.equal(matchDossier("Bacalaureatul în România: rezultatele de anul acesta"), undefined);
     assert.equal(matchDossier("Liftul nu funcționează: elevatorul a fost oprit"), undefined);
+    assert.equal(matchDossier("Escrocii au furat 400.000 de lei de la o pensionară din Bălți"), "escrocheriile-in-moldova-cum-le-recunosti-si-ce-faci");
+    assert.equal(matchDossier("Fraudă electorală: CEC verifică sesizările"), undefined);
+    assert.equal(matchDossier("Dobânzile la depozite au scăzut în august"), "banii-in-familie-buget-economii-credite-ghid-complet");
+    assert.equal(matchDossier("Grindina a lovit viile din raionul Cimișlia"), "calendarul-agricol-al-moldovei-ce-si-cand-semeni");
+    assert.equal(matchDossier("Ger și ninsoare la Chișinău: cum circulă transportul"), undefined);
+    assert.equal(matchDossier("Sute de albine au murit după stropirea unui lan de rapiță"), "stropirile-si-albinele-ce-spune-legea");
+    assert.equal(matchDossier("Un copil, mușcat de un câine fără stăpân în Bălți"), "ce-faci-daca-te-musca-un-caine-rabie-maidanezi");
+    assert.equal(matchDossier("Explozie de gaz într-un bloc din Chișinău"), "verificarea-gazului-si-a-cosului-de-fum-obligatii");
+    assert.equal(matchDossier("Familie intoxicată cu monoxid de carbon la Soroca"), "intoxicatia-cu-monoxid-de-carbon-semne-prim-ajutor");
+    assert.equal(matchDossier("Tariful de salubrizare crește la Chișinău"), "deseurile-sortare-voluminoase-tarife-salubrizare");
+    assert.equal(matchDossier("Numărul turiștilor străini în Moldova a crescut cu 10%"), "moldova-turistica-ce-vizitezi-trasee-vinarii-manastiri");
+    assert.equal(matchDossier("Turiștii moldoveni din Turcia, blocați la aeroport"), undefined);
     assert.equal(matchDossier("Trei morți după un incendiu la o școală din Cahul"), undefined);
     assert.equal(matchDossier("Un elev a murit lovit de o mașină în Ialoveni"), undefined);
     console.log("impact: OK");

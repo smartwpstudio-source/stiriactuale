@@ -3,13 +3,13 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { HistoryList } from "@/components/history-list";
-import { HISTORY_PATH, dayLabel, dayPath, getHistoryDay, historyDays, parseDaySlug, daySlug } from "@/lib/history";
+import { HISTORY_PATH, dayLabel, dayPath, getHistoryDay, parseDaySlug } from "@/lib/history";
 
-// Pagini statice, una pe zi a anului (fără an: „6 octombrie” e aceeași în fiecare an).
-export const dynamicParams = false;
+// O pagină pe zi a anului (fără an: „6 octombrie” e aceeași în fiecare an),
+// generată la prima vizită și păstrată în cache — nu la build (cost Vercel).
 
 export async function generateStaticParams() {
-  return (await historyDays()).map((d) => ({ zi: daySlug(d.month, d.day) }));
+  return [];
 }
 
 export async function generateMetadata({ params }: PageProps<"/azi-in-istorie/[zi]">): Promise<Metadata> {

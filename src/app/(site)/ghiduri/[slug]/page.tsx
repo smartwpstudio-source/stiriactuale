@@ -6,7 +6,7 @@ import { TelegramCta } from "@/components/telegram-cta";
 import { sanitizeBody, splitAfterParagraph } from "@/lib/content/sanitize";
 import { ADSENSE_IN_ARTICLE_SLOT } from "@/lib/adsense";
 import { AdSlot } from "@/components/ad-slot";
-import { GUIDE_CATEGORIES, getGuide, getGuides } from "@/lib/content/guides";
+import { GUIDE_CATEGORIES, getGuide } from "@/lib/content/guides";
 import { absoluteUrl } from "@/lib/seo";
 import Link from "next/link";
 import { modelForGuide } from "@/lib/complaint-models";
@@ -15,13 +15,14 @@ import { RelatedCalculator } from "@/components/related-calculator";
 import { getGuideCalculators } from "@/lib/content/related-calculator";
 import { ruPath, ruSlugs } from "@/lib/content/guides-ru";
 
-// Ghidurile sunt statice: generate la build din content/ghiduri/*.json.
-export const dynamicParams = false;
+// Ghidurile nu se mai construiesc la build (sute de pagini = minute de build
+// plătite la fiecare push): se generează la prima vizită și rămân în cache.
+// Slug necunoscut -> notFound() mai jos.
 // „Ultimele știri care schimbă asta” se schimbă odată cu știrile
 export const revalidate = 3600;
 
 export async function generateStaticParams() {
-  return (await getGuides()).map((g) => ({ slug: g.slug }));
+  return [];
 }
 
 export async function generateMetadata({ params }: PageProps<"/ghiduri/[slug]">): Promise<Metadata> {

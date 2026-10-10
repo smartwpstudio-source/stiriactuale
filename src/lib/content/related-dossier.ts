@@ -31,6 +31,8 @@ const RULES: [slug: string, re: RegExp][] = [
   ["aeroportul-international-chisinau-concesionare-procese", /aeroport\w* (international )?(din )?chisinau|avia invest/],
   ["reforma-administrativ-teritoriala-raioane-primarii", /reforma administrativ|comasar\w* (a )?primarii|lichidar\w* raioan|amalgamar/],
   ["pensii-si-salarii-indexari-si-calcul", /indexar\w* (a )?pensii|pensiile (se )?indexeaza/],
+  // escrocheriile înaintea pensiilor: „pensionară păcălită” e despre escroci
+  ["escrocheriile-in-moldova-cum-le-recunosti-si-ce-faci", /^(?!.*(electoral|alegeri|\bvot\b|furtul miliardului))(?=.*(escroc|\bfraud(a|e|at)\w*|phishing|pacalit\w*|inselat\w* de|investiti\w* false|schema de investitii|apel\w* fals|sms\w* fals))/],
   // pilonul pensiilor („pensiune” = casă de oaspeți, nu intră)
   ["pensiile-in-moldova-tot-ce-trebuie-sa-stii", /\bpensi(a|e|i|ii|ile|ilor|onar\w*)\b|varsta de pensionare|stagiu\w* de cotizare/],
   ["preturile-la-alimente-si-inflatia-date-bns-bnm", /inflati/],
@@ -62,6 +64,25 @@ const RULES: [slug: string, re: RegExp][] = [
   ["admiterea-la-facultate-in-moldova-calendar-si-acte", new RegExp(String.raw`^${NOT_ABROAD}(?=.*(admiter\w* (la |in )?(facultat|universitat|studii superioare|licenta|master|doctorat)|eadmitere|locur\w* bugetare))`)],
   // pilonul: „MEC” doar lângă un termen școlar; „elevator”/„elevat” nu intră
   ["educatia-in-moldova-ghid-complet", new RegExp(String.raw`^${NOT_ABROAD}${NO_TRAGEDY}(?=.*(ministerul educatiei|\bmec\b.*(scoal|elev|profesor|educati|invatamant|student|gradinit)|(scoal|elev|profesor|educati|invatamant|student|gradinit)\w*.*\bmec\b|cadre(le|lor)? didactic\w*|profesor\w* (din|de la) scoal|\belev(ul|ului|a|ei|i|ii|ilor|e|ele|elor)?\b|gradinit\w*|\bscoal(a|ii|ile|ilor)\b|institut\w* de invatamant|\binvatamant\w*|universitat\w* (de stat|din moldova|din chisinau|din balti|tehnica|pedagogic\w*|de medicina)|comasar\w* (a )?scolilor|(optimizar|reorganizar)\w* (a )?(retelei scolare|scolilor)|(testar\w*|evaluar\w*|rezultat\w*|testul) pisa\b|\bpisa 20\d\d|examen\w* de absolvire|anul de studii|anul scolar))`)],
+  // rubricile evergreen (2026-10-11): vremea -> calendarul agricol, animalele,
+  // casa și blocul, turismul. La final: regulile mai precise de mai sus au prioritate.
+  ["calendarul-agricol-al-moldovei-ce-si-cand-semeni", /^(?=.*(inghet|\bbrum[ae]\b|grindin|secet|\bger\b|geruri|canicul|ploi\w* torential))(?=.*(agricult|fermier|recolt|culturi|livez|livad|\bvii\b|viile|vita de vie|podgor|gradin|legum|\bpomi\b|pomicult|cereal|\bgrau\b|porumb|floarea-soarelui|stupin|albin))/],
+  ["stropirile-si-albinele-ce-spune-legea", /^(?=.*albin)(?=.*(stropi|pesticid|tratament\w* chimic|otrav|intoxic|mortalitat|au murit))/],
+  ["stuparitul-pe-anotimpuri-obligatii-si-lucrari", /apicult|stupin|\bstupi(i|lor)?\b/],
+  ["ce-faci-daca-te-musca-un-caine-rabie-maidanezi", /\brabi(e|ei|a)\b|maidanez|caini? fara stapan|(muscat|atacat|sfasiat)\w* de (un |o )?(caine|caini|haita)|haita de caini/],
+  ["calatoria-cu-cainele-sau-pisica-in-ue-din-moldova", /^(?=.*(animal\w* de companie|cainele|pisica|\bcaini\b|pisici))(?=.*(calator|frontier|\bvama\b|avion|zbor))/],
+  ["animalul-de-companie-in-moldova-acte-vaccin-reguli", /animal\w* de companie|adapost\w* (pentru|de) (animale|caini)|cruzim\w* (fata de|asupra) animal|maltrat\w* (un |a )?(caine|pisic|animal)|microcip/],
+  ["intoxicatia-cu-monoxid-de-carbon-semne-prim-ajutor", /monoxid|intoxica\w* cu (fum|gaz)/],
+  ["verificarea-gazului-si-a-cosului-de-fum-obligatii", /(explozi\w*|scurger\w*|miros\w*) (de |a )?gaz|\bcos\w* de fum|detector\w* de gaz/],
+  ["mucegaiul-in-apartament-cauze-ce-faci-sanatate", /mucegai/],
+  ["asociatia-de-proprietari-condominiu-drepturile-locatarilor", /asociati\w* de proprietari|condominiu|\bimgfl\b/],
+  ["reparatiile-in-bloc-acoperis-subsol-fatada-cine-plateste", /(acoperis|subsol|fatad|ascensor|\blift)\w* (blocului|blocurilor|de bloc)|reparati\w* (a |la )?(blocului|blocurilor)/],
+  ["deseurile-sortare-voluminoase-tarife-salubrizare", /deseur|\bgunoi|salubriz|autosalubritate/],
+  ["casa-si-blocul-intretinere-siguranta-drepturi", /incendi\w* (in|intr-un|intr-o) (apartament|bloc|casa|locuint)|locatari\w* (blocului|din bloc)/],
+  ["bucataria-moldoveneasca-istorie-feluri-traditii", /bucatari\w* (moldoveneasc|traditional|national)|bucate traditionale|retet\w* traditional/],
+  ["moldova-turistica-ce-vizitezi-trasee-vinarii-manastiri", new RegExp(String.raw`^${NOT_ABROAD}(?!.*(bucovin|maramures|bulgari|greci|egipt|antalya|dubai|emirat|muntenegr|georgi|austri|cehi|ungari|budapest|praga|viena|cluj|brasov|sibiu|poiana))(?=.*(turism|turist|orheiul vechi|drumul vinului|iter vitis|agroturism|pensiun\w* (turistic|agroturistic)))`)],
+  // escrocheriile (nu frauda electorală sau bancară mare — acelea au dosarele lor) și banii
+  ["banii-in-familie-buget-economii-credite-ghid-complet", /dobanz\w* (la|pentru) (depozit|credit)|rata de baza|depozit\w* bancar|credit\w* (de consum|ipotecar|imobiliar)|valor\w* mobiliare de stat|\bevms\b/],
 ];
 
 export function matchDossier(text: string): string | undefined {
@@ -88,6 +109,23 @@ const MOLDOVA_ONLY = new Set([
   "bacalaureatul-2027-calendar-probe-contestatii",
   "admiterea-2027-la-colegii-si-facultati",
   "admiterea-la-facultate-in-moldova-calendar-si-acte",
+  "calendarul-agricol-al-moldovei-ce-si-cand-semeni",
+  "stropirile-si-albinele-ce-spune-legea",
+  "stuparitul-pe-anotimpuri-obligatii-si-lucrari",
+  "ce-faci-daca-te-musca-un-caine-rabie-maidanezi",
+  "calatoria-cu-cainele-sau-pisica-in-ue-din-moldova",
+  "animalul-de-companie-in-moldova-acte-vaccin-reguli",
+  "intoxicatia-cu-monoxid-de-carbon-semne-prim-ajutor",
+  "verificarea-gazului-si-a-cosului-de-fum-obligatii",
+  "mucegaiul-in-apartament-cauze-ce-faci-sanatate",
+  "asociatia-de-proprietari-condominiu-drepturile-locatarilor",
+  "reparatiile-in-bloc-acoperis-subsol-fatada-cine-plateste",
+  "deseurile-sortare-voluminoase-tarife-salubrizare",
+  "casa-si-blocul-intretinere-siguranta-drepturi",
+  "bucataria-moldoveneasca-istorie-feluri-traditii",
+  "moldova-turistica-ce-vizitezi-trasee-vinarii-manastiri",
+  "escrocheriile-in-moldova-cum-le-recunosti-si-ce-faci",
+  "banii-in-familie-buget-economii-credite-ghid-complet",
 ]);
 
 export async function getRelatedDossier(title: string, lead: string, topics: string[] = [], section?: string) {
