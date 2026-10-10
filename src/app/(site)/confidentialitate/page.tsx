@@ -32,6 +32,11 @@ export default function PrivacyPage() {
           tehnologii similare — descrise mai jos;
         </li>
         <li>
+          <strong>statistica vizitelor</strong> prin Yandex.Metrica (Yandex): paginile vizitate, durata vizitei, de
+          unde vii, tipul dispozitivului și clicurile, prin cookie-uri și tehnologii similare, fără să te
+          identifice după nume; o folosim doar ca să știm ce citesc oamenii și ce trebuie îmbunătățit;
+        </li>
+        <li>
           <strong>abonarea la alerte</strong> (dacă o activezi): păstrăm doar cheia tehnică a browserului, necesară
           pentru a-ți trimite notificarea, și, opțional, raionul sau țara pe care le alegi tu. Nu păstrăm adresa IP
           și nu folosim locația ta. Când dezactivezi alertele, cheia se șterge;
