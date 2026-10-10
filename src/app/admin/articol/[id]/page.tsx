@@ -24,6 +24,8 @@ import {
 import { ConfirmButton } from "../../confirm-button";
 import { UploadImage } from "../../upload-image";
 import { IMPACT_TYPES } from "@/lib/impact";
+import { pushAudience } from "@/lib/push";
+import { receives } from "@/lib/push-segment";
 
 const input = "w-full rounded border border-line bg-white px-3 py-2 text-ink";
 const label = "mb-1 block text-sm text-sub";
@@ -46,6 +48,14 @@ export default async function EditArticlePage({ params, searchParams }: PageProp
   const results = query ? await searchStock(query, 12).catch(() => []) : [];
   const url = articleUrl({ ...a, locality: a.locality ?? undefined, country: a.country ?? undefined });
   const isDraft = a.status === "draft";
+  // cine ar primi push-ul: toți (știre națională) sau doar segmentul raionului / țării
+  const reach = !isDraft && !a.pushSentAt ? (await pushAudience()).filter((s) => receives(s, a)).length : 0;
+  const segment =
+    a.section === "regiuni" && a.locality
+      ? `raionul ${RAION_NAMES[a.locality] ?? a.locality}`
+      : a.section === "diaspora" && a.country
+        ? `diaspora ${COUNTRY_NAMES[a.country] ?? a.country}`
+        : "toată țara";
 
   return (
     <div className="flex flex-col gap-6">
@@ -115,6 +125,11 @@ export default async function EditArticlePage({ params, searchParams }: PageProp
               <form action={postToFacebookNow.bind(null, id)}>
                 <button className="rounded bg-[#1877f2] px-2 py-1 text-xs text-white">Postează pe Facebook</button>
               </form>
+            )}
+            {!isDraft && (
+              <span className="font-mono text-xs text-sub">
+                ar primi: {reach} abonați ({segment})
+              </span>
             )}
             {!isDraft && (
               <form action={sendPushNow.bind(null, id)}>

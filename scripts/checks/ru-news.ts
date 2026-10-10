@@ -2,6 +2,7 @@
 import assert from "node:assert/strict";
 import { shouldTranslateRu, ruMismatch, numbersOf, type RuCandidate } from "../../src/lib/pipeline/ru-news";
 import { shouldAutoPush } from "../../src/lib/pipeline/auto-push";
+import { receives, parsePrefs, type PushPrefs } from "../../src/lib/push-segment";
 import type { Impact } from "../../src/lib/impact-types";
 
 const impact: Impact = { tip: "bani", cine: "toți", ce: "tariful crește la 15,5 lei", pasi: ["verifică factura"], unelte: [], verificat: "2026-10-11" };
@@ -63,4 +64,29 @@ assert.ok(!p("Cod portocaliu de ger în toată țara", { pushWorthy: false }), "
 assert.ok(!p("Cod portocaliu de ger în toată țara", { kind: "pe-scurt" }), "pe scurt");
 assert.ok(!p("Ședință de guvern", { impact }), "impact singur nu ajunge");
 
-console.log("ru-news + auto-push: OK");
+assert.ok(p("Cod portocaliu de ger la Orhei", { section: "regiuni", locality: "orhei" }), "regional: trece, dar doar la segmentul lui");
+
+// --- segmentarea push-ului: cine primește
+const all: PushPrefs = { scope: "all", raion: null, country: null };
+const orhei: PushPrefs = { scope: "raion", raion: "orhei", country: null };
+const italia: PushPrefs = { scope: "tara", raion: null, country: "italia" };
+type T = { section: string; locality: string | null; country: string | null };
+const nat: T = { section: "national", locality: null, country: null };
+const reg = { section: "regiuni", locality: "orhei", country: null };
+const dia = { section: "diaspora", locality: null, country: "italia" };
+const who = (a: T) => [all, orhei, italia].map((s) => receives(s, a));
+assert.deepEqual(who(nat), [true, true, true], "național → toți");
+assert.deepEqual(who(reg), [false, true, false], "Orhei → doar abonații din Orhei");
+assert.deepEqual(who({ ...reg, locality: "cahul" }), [false, false, false], "Cahul fără abonați → nimeni");
+assert.deepEqual(who(dia), [false, false, true], "diaspora Italia → doar Italia");
+assert.deepEqual(who({ ...dia, country: "spania" }), [false, false, false], "Spania → nimeni");
+assert.deepEqual(who({ section: "regiuni", locality: null, country: null }), [true, true, true], "regiuni fără raion → toți");
+// validarea preferințelor din browser
+assert.deepEqual(parsePrefs({ scope: "raion", raion: "orhei", country: "italia" }), orhei);
+assert.deepEqual(parsePrefs({ scope: "all", raion: "orhei" }), all);
+assert.equal(parsePrefs({ scope: "raion", raion: "atlantida" }), null);
+assert.equal(parsePrefs({ scope: "raion", raion: "toString" }), null);
+assert.equal(parsePrefs({ scope: "tara" }), null);
+assert.equal(parsePrefs({ scope: "admin" }), null);
+
+console.log("ru-news + auto-push + segmente push: OK");

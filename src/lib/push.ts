@@ -2,13 +2,16 @@ import webpush from "web-push";
 import { eq, inArray } from "drizzle-orm";
 import { getDb } from "@/lib/pipeline/db/client";
 import { articles, pushSubscriptions } from "@/lib/pipeline/db/schema";
+import { receives, type PushPrefs } from "@/lib/push-segment";
 
 // Notificări Web Push: manual din /admin (butonul rămâne) și, din 2026-10-11,
 // automat din pipeline, dar DOAR după reguli stricte (src/lib/pipeline/auto-push.ts:
 // pushWorthy + lege/modificare/decizie/tarif adoptat sau urgență, calamitate,
 // vreme periculoasă, alertă 112/IGSU; fără Lumea, pe scurt, analize). Fără plafon
 // zilnic; un singur push per articol (pushSentAt). Rămân orele de liniște:
-// nimic între 22:00 și 07:00 (ora Chișinăului).
+// nimic între 22:00 și 07:00 (ora Chișinăului). Din 2026-10-11 pe segmente:
+// știrile locale / din diaspora merg doar la cine a ales acel raion / țară
+// (src/lib/push-segment.ts).
 const QUIET_FROM = 22;
 const QUIET_TO = 7;
 const CONCURRENCY = 20;
@@ -38,14 +41,29 @@ export async function pushBlockedReason(): Promise<string | null> {
   return null;
 }
 
-export async function sendPush(articleId: number, payload: { title: string; body: string; url: string; image?: string }) {
+type Target = Parameters<typeof receives>[1];
+
+// Preferințele tuturor abonaților, fără chei — pentru contoarele din /admin.
+export async function pushAudience(): Promise<PushPrefs[]> {
+  const rows = await getDb()
+    .select({ scope: pushSubscriptions.scope, raion: pushSubscriptions.raion, country: pushSubscriptions.country })
+    .from(pushSubscriptions);
+  return rows as PushPrefs[];
+}
+
+export async function sendPush(
+  articleId: number,
+  target: Target,
+  payload: { title: string; body: string; url: string; image?: string },
+) {
   webpush.setVapidDetails(
     "mailto:contact@stiriactuale.info",
     process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!,
     process.env.VAPID_PRIVATE_KEY!,
   );
   const db = getDb();
-  const subs = await db.select().from(pushSubscriptions);
+  const subs = (await db.select().from(pushSubscriptions)).filter((s) => receives(s as PushPrefs, target));
+  if (!subs.length) return { delivered: 0, expired: 0, total: 0 }; // nimeni în segment: nu se marchează trimisă
   const expired: number[] = [];
   let delivered = 0;
 

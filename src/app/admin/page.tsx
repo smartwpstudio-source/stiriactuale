@@ -6,6 +6,8 @@ import { requireAdmin } from "@/lib/admin/auth";
 import { SECTION_LABELS } from "@/lib/content/geo";
 import { addLink, logoutAction, sendPushNow, togglePipeline } from "./actions";
 import { pipelineEnabled } from "@/lib/pipeline/settings";
+import { pushAudience } from "@/lib/push";
+import { receives } from "@/lib/push-segment";
 import { ConfirmButton } from "./confirm-button";
 import { PhotoField } from "./photo-field";
 
@@ -34,6 +36,8 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
     id: articles.id,
     title: articles.title,
     section: articles.section,
+    locality: articles.locality,
+    country: articles.country,
     score: articles.qualityScore,
     image: articles.imageUrl,
     video: articles.videoUrl,
@@ -44,7 +48,7 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
     createdAt: articles.createdAt,
     publishedAt: articles.publishedAt,
   };
-  const [published, pending, runs, autoOn] = await Promise.all([
+  const [published, pending, runs, autoOn, audience] = await Promise.all([
     db.select(cols).from(articles).where(eq(articles.status, "published")).orderBy(desc(articles.publishedAt)).limit(30),
     db
       .select({ id: candidates.id, title: candidates.title, url: candidates.url })
@@ -52,7 +56,11 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
       .where(and(eq(candidates.manual, true), isNull(candidates.processedAt))),
     db.select().from(pipelineRuns).orderBy(desc(pipelineRuns.startedAt)).limit(9),
     pipelineEnabled(),
+    pushAudience(),
   ]);
+  // câți ar primi push-ul fiecărei știri (segmentare: src/lib/push-segment.ts)
+  const reach = (r: (typeof published)[number]) => audience.filter((s) => receives(s, r)).length;
+  const bySegment = (scope: string) => audience.filter((s) => s.scope === scope).length;
 
   const list = (rows: typeof published, dateOf: (r: (typeof published)[number]) => Date) => (
     <ul className="divide-y divide-line rounded border border-line bg-white">
@@ -67,7 +75,7 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
             <span className="w-16 text-right font-mono text-xs text-sub" title="afișări pe site">{r.views} viz.</span>
             <span className="font-mono text-xs text-sub" title="scor pipeline">{Math.round(r.score)}</span>
           </Link>
-          {/* notificarea push se trimite doar manual: clopoțel la fiecare știre publicată */}
+          {/* alerta push: automat pentru urgențe/legi (auto-push.ts) sau manual cu clopoțelul de la fiecare știre */}
           {r.status === "published" &&
             (r.pushSentAt ? (
               <span className="w-10 text-center text-xs text-teal" title="notificare trimisă">🔔✓</span>
@@ -77,7 +85,7 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
                 className="w-10 text-center"
                 title={r.push ? "Trimite notificarea (AI o propune)" : "Trimite notificarea"}
               >
-                <ConfirmButton message={`Trimiți notificarea tuturor abonaților? „${r.title}”`} className={r.push ? "" : "opacity-40 hover:opacity-100"}>
+                <ConfirmButton message={`Trimiți notificarea la ${reach(r)} abonați (segmentul știrii)? „${r.title}”`} className={r.push ? "" : "opacity-40 hover:opacity-100"}>
                   🔔
                 </ConfirmButton>
               </form>
@@ -191,6 +199,10 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
 
       <section>
         <h2 className="mb-2 font-medium text-ink">Publicate recent</h2>
+        <p className="mb-2 font-mono text-xs text-sub">
+          Abonați push: {audience.length} — toată țara {bySegment("all")} · pe raioane {bySegment("raion")} · pe țări{" "}
+          {bySegment("tara")}
+        </p>
         {list(published, (r) => r.publishedAt)}
       </section>
 

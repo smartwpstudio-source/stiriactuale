@@ -9,6 +9,8 @@ import { notifyEditor } from "@/lib/telegram";
 // știrile marcate pushWorthy de clasificator ȘI dintr-o categorie de mai jos.
 // Fără plafon zilnic (să nu pierdem o știre importantă); rămân orele de
 // liniște 22–07 (pushBlockedReason) și un singur push per articol (pushSentAt).
+// Știrile din Regiuni / Diaspora trec aceleași reguli, dar pleacă doar la
+// abonații care au ales acel raion / țară (sendPush + src/lib/push-segment.ts).
 
 // calamități, urgențe, vreme periculoasă, alerte
 const EMERGENCY = new RegExp(

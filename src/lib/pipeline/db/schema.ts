@@ -142,6 +142,11 @@ export const pushSubscriptions = pgTable("push_subscriptions", {
   endpoint: text("endpoint").notNull().unique(),
   p256dh: text("p256dh").notNull(),
   auth: text("auth").notNull(),
+  // alegerea opțională a cititorului (src/lib/push-segment.ts): 'all' | 'raion' | 'tara'
+  // + cheia din geo.ts. Fără IP, fără geolocalizare.
+  scope: varchar("scope", { length: 10 }).notNull().default("all"),
+  raion: varchar("raion", { length: 50 }),
+  country: varchar("country", { length: 50 }),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 

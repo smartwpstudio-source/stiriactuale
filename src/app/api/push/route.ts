@@ -2,12 +2,17 @@ import { eq } from "drizzle-orm";
 import { getDb } from "@/lib/pipeline/db/client";
 import { pushSubscriptions } from "@/lib/pipeline/db/schema";
 import { isValidEndpoint } from "@/lib/push";
+import { parsePrefs } from "@/lib/push-segment";
 
 // Abonare / dezabonare la notificări — apelat de butonul din PushOptIn.
-// Fără date personale: doar adresa tehnică a browserului și cheile lui.
+// Fără date personale: doar adresa tehnică a browserului și cheile lui, plus
+// (opțional, PATCH) raionul / țara alese de cititor. Fără IP, fără geolocalizare.
 
 interface Body {
   endpoint?: unknown;
+  scope?: unknown;
+  raion?: unknown;
+  country?: unknown;
   keys?: { p256dh?: unknown; auth?: unknown };
 }
 
@@ -33,4 +38,17 @@ export async function DELETE(request: Request) {
   if (typeof endpoint !== "string") return bad();
   await getDb().delete(pushSubscriptions).where(eq(pushSubscriptions.endpoint, endpoint));
   return new Response(null, { status: 204 });
+}
+
+// Ce alerte vrea abonatul: toată țara / + raionul lui / diaspora dintr-o țară.
+export async function PATCH(request: Request) {
+  const body = (await request.json().catch(() => ({}))) as Body;
+  const prefs = parsePrefs(body);
+  if (typeof body.endpoint !== "string" || !isValidEndpoint(body.endpoint) || !prefs) return bad();
+  const updated = await getDb()
+    .update(pushSubscriptions)
+    .set(prefs)
+    .where(eq(pushSubscriptions.endpoint, body.endpoint))
+    .returning({ id: pushSubscriptions.id });
+  return new Response(null, { status: updated.length ? 204 : 404 });
 }

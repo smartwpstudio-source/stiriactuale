@@ -32,6 +32,11 @@ export default function PrivacyPage() {
           tehnologii similare — descrise mai jos;
         </li>
         <li>
+          <strong>abonarea la alerte</strong> (dacă o activezi): păstrăm doar cheia tehnică a browserului, necesară
+          pentru a-ți trimite notificarea, și, opțional, raionul sau țara pe care le alegi tu. Nu păstrăm adresa IP
+          și nu folosim locația ta. Când dezactivezi alertele, cheia se șterge;
+        </li>
+        <li>
           <strong>mesajele pe care ni le trimiți</strong> pe email, folosite doar pentru a-ți răspunde.
         </li>
       </ul>

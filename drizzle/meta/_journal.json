@@ -162,6 +162,13 @@
       "when": 1791661748037,
       "tag": "0022_glorious_revanche",
       "breakpoints": true
+    },
+    {
+      "idx": 23,
+      "version": "7",
+      "when": 1791667449232,
+      "tag": "0023_easy_franklin_richards",
+      "breakpoints": true
     }
   ]
 }

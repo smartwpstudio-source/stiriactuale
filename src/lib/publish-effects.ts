@@ -46,6 +46,7 @@ export async function pushNow(id: number): Promise<string> {
   if (blocked) return `netrimisă: ${blocked}`;
   const [a] = await getDb().select().from(articles).where(eq(articles.id, id));
   const url = articleUrl({ ...a, locality: a.locality ?? undefined, country: a.country ?? undefined });
-  const r = await sendPush(id, { title: a.title, body: a.leadText.slice(0, 180), url, image: a.imageUrl ?? undefined });
+  const r = await sendPush(id, a, { title: a.title, body: a.leadText.slice(0, 180), url, image: a.imageUrl ?? undefined });
+  if (!r.total) return "netrimisă: niciun abonat în segmentul știrii";
   return `trimisă la ${r.delivered} din ${r.total} abonați`;
 }
