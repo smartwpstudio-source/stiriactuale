@@ -48,3 +48,6 @@ next-env.d.ts
 scripts/migration/data/wp-content.json
 scripts/migration/data/uploads/
 scripts/migration/data/download-failed.txt
+.open-next/
+.wrangler/
+.dev.vars
