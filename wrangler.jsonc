@@ -1,0 +1,60 @@
+// Configurația Cloudflare Workers (OpenNext). Resursele de creat în cont și secretele:
+// docs/cloudflare-migrare.md. Local: `npm run cf:build` apoi `npm run cf:preview`
+// (binding-urile R2 / Durable Objects / Images sunt emulate de wrangler/miniflare).
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "stiriactuale",
+  "main": "cloudflare/worker.ts",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+
+  // Fișierele statice (public/, _next/static) + conținutul din content/ copiat de
+  // scripts/cloudflare/content-assets.ts sub /_continut/. Cererile directe la /_continut/
+  // trec întâi prin worker, care răspunde 404; binding-ul ASSETS le citește oricum.
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS",
+    "run_worker_first": ["/_continut/*"]
+  },
+
+  // Referință la sine — cerută de cache-ul OpenNext (regenerare ISR)
+  "services": [{ "binding": "WORKER_SELF_REFERENCE", "service": "stiriactuale" }],
+
+  // Cache ISR (paginile generate). Bucket-ul se creează înainte de primul deploy.
+  "r2_buckets": [{ "binding": "NEXT_INC_CACHE_R2_BUCKET", "bucket_name": "stiriactuale-cache" }],
+
+  "durable_objects": {
+    "bindings": [
+      { "name": "NEXT_CACHE_DO_QUEUE", "class_name": "DOQueueHandler" },
+      { "name": "NEXT_TAG_CACHE_DO_SHARDED", "class_name": "DOShardedTagCache" },
+      { "name": "NEXT_CACHE_DO_PURGE", "class_name": "BucketCachePurge" }
+    ]
+  },
+  "migrations": [
+    { "tag": "v1", "new_sqlite_classes": ["DOQueueHandler", "DOShardedTagCache", "BucketCachePurge"] }
+  ],
+
+  // next/image prin Cloudflare Images (respectă images.remotePatterns din next.config.ts);
+  // fără binding imaginile se servesc neoptimizate.
+  "images": { "binding": "IMAGES" },
+
+  // Aceleași orare ca vercel.json, în UTC. Rutele chemate: cloudflare/worker.ts (CRONS).
+  "triggers": {
+    "crons": ["0 * * * *", "0 3-19/2 * * *", "0 4,5,6 * * *", "0 19,20 * * *"]
+  },
+
+  "observability": { "enabled": true },
+
+  // Baza Neon e în us-east-2: paginile ne-cache-uite fac interogări peste ocean din
+  // centrul de date al vizitatorului. Dacă timpii de răspuns la generare sunt mari,
+  // de încercat plasarea worker-ului lângă bază (după măsurători, nu din oficiu):
+  // "placement": { "mode": "smart" },
+
+  "vars": {
+    // "1" DOAR după comutarea DNS și oprirea cron-urilor din Vercel (altfel rulează dublu)
+    "CRONS_ENABLED": "0",
+    // purge-ul cache-ului (open-next.config.ts) adună tag-urile atâtea secunde
+    "NEXT_CACHE_DO_PURGE_BUFFER_TIME_IN_SECONDS": "5"
+  }
+  // Secrete (wrangler secret put / GitHub Actions): vezi docs/cloudflare-migrare.md
+}
