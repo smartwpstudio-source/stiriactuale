@@ -169,6 +169,13 @@
       "when": 1791667449232,
       "tag": "0023_easy_franklin_richards",
       "breakpoints": true
+    },
+    {
+      "idx": 24,
+      "version": "7",
+      "when": 1791808934850,
+      "tag": "0024_fearless_stranger",
+      "breakpoints": true
     }
   ]
 }

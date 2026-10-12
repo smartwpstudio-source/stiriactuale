@@ -48,7 +48,7 @@ export interface Recipe {
   region?: string;
   occasions?: string[];
   ingredients: { group?: string; items: Ingredient[] }[];
-  steps: { text: string; minutes?: number }[];
+  steps: { text: string; minutes?: number; name?: string }[]; // name: opțional, pentru JSON-LD (altfel derivat din text)
   tips?: string[];
   mistakes?: string[];
   variants?: { region: string; text: string }[];

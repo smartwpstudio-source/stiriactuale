@@ -226,9 +226,9 @@ async function main() {
           fail(file, "ingredient invalid (name obligatoriu; qty, unit, note text)");
         }
       }
-      const steps = r.steps as { text?: unknown; minutes?: unknown }[];
+      const steps = r.steps as { text?: unknown; minutes?: unknown; name?: unknown }[];
       if (!Array.isArray(steps) || steps.length < 3) fail(file, "minim 3 pași");
-      else if (steps.some((s) => typeof s.text !== "string" || !s.text || (s.minutes !== undefined && !Number.isInteger(s.minutes)))) fail(file, "pas invalid");
+      else if (steps.some((s) => typeof s.text !== "string" || !s.text || (s.minutes !== undefined && !Number.isInteger(s.minutes)) || (s.name !== undefined && (typeof s.name !== "string" || !s.name.trim() || s.name.length > 80)))) fail(file, "pas invalid");
       for (const k of ["tips", "mistakes"]) {
         if (r[k] !== undefined && (!Array.isArray(r[k]) || r[k].some((x: unknown) => typeof x !== "string" || !x))) fail(file, `${k}: listă de texte`);
       }

@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { IconMinus, IconPlus, IconPrinter } from "@tabler/icons-react";
+import { IconMinus, IconPlus, IconPrinter, IconStar, IconStarFilled } from "@tabler/icons-react";
 import type { Ingredient } from "@/lib/content/recipes";
+import { formatRating, isStars, ratingsLabel, type RatingSummary } from "@/lib/recipe-rating";
 
 // "500", "0,5", "1/2", "1 1/2" → număr; altceva ("după gust") → NaN
 function parseNum(s: string): number {
@@ -121,5 +122,89 @@ export function PrintButton({ label }: { label: string }) {
       <IconPrinter size={18} stroke={1.75} aria-hidden />
       {label}
     </button>
+  );
+}
+
+type RatingLabels = { title: string; star: string; thanks: string; error: string; none: string; yours: string };
+
+// „Notează rețeta”: 5 butoane-stea (Tab + Enter/Space), media și numărul de note.
+// Votul dat rămâne afișat din localStorage; serverul ține un singur vot per vizitator.
+export function RecipeRating({
+  slug,
+  lang,
+  initial,
+  labels,
+}: {
+  slug: string;
+  lang: "ro" | "ru";
+  initial: RatingSummary | null;
+  labels: RatingLabels;
+}) {
+  const [summary, setSummary] = useState(initial);
+  const [mine, setMine] = useState(0);
+  const [hover, setHover] = useState(0);
+  const [state, setState] = useState<"idle" | "sending" | "done" | "error">("idle");
+  const key = `nota:${slug}`;
+
+  useEffect(() => {
+    try {
+      const v = Number(localStorage.getItem(key));
+      if (isStars(v)) setMine(v);
+    } catch {}
+  }, [key]);
+
+  const vote = async (stars: number) => {
+    if (state === "sending") return;
+    setState("sending");
+    try {
+      const res = await fetch("/api/retete/nota/", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ slug, stars }),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      const data = (await res.json()) as { value: number | null; count: number };
+      setMine(stars);
+      if (data.value !== null && data.count > 0) setSummary({ value: data.value, count: data.count });
+      setState("done");
+      try {
+        localStorage.setItem(key, String(stars));
+      } catch {}
+    } catch {
+      setState("error");
+    }
+  };
+
+  const shown = hover || mine;
+  return (
+    <section className="mt-8 rounded border border-line bg-white p-4 sm:p-5 print:hidden" aria-labelledby="noteaza">
+      <h2 id="noteaza" className="font-serif text-xl text-ink">{labels.title}</h2>
+      <p className="mt-1 font-mono text-sm text-sub" aria-live="polite">
+        {summary ? `${formatRating(summary.value, lang)} · ${ratingsLabel(summary.count, lang)}` : labels.none}
+      </p>
+      <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
+        <div className="flex gap-1" role="group" aria-label={labels.title} onMouseLeave={() => setHover(0)}>
+          {[1, 2, 3, 4, 5].map((n) => (
+            <button
+              key={n}
+              type="button"
+              onClick={() => vote(n)}
+              onMouseEnter={() => setHover(n)}
+              onFocus={() => setHover(n)}
+              onBlur={() => setHover(0)}
+              disabled={state === "sending"}
+              aria-label={labels.star.replace("{n}", String(n))}
+              aria-pressed={mine === n}
+              className="flex h-10 w-10 items-center justify-center rounded text-amber-ink hover:bg-paper focus-visible:outline focus-visible:outline-2 focus-visible:outline-teal disabled:opacity-60"
+            >
+              {n <= shown ? <IconStarFilled size={28} aria-hidden /> : <IconStar size={28} stroke={1.5} aria-hidden />}
+            </button>
+          ))}
+        </div>
+        <span className="text-sm text-ink" aria-live="polite">
+          {state === "done" ? labels.thanks : state === "error" ? labels.error : mine ? labels.yours.replace("{n}", String(mine)) : ""}
+        </span>
+      </div>
+    </section>
   );
 }
