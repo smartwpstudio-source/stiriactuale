@@ -3,6 +3,7 @@ import { eq, inArray } from "drizzle-orm";
 import { getDb } from "@/lib/pipeline/db/client";
 import { articles, pushSubscriptions } from "@/lib/pipeline/db/schema";
 import { receives, type PushPrefs } from "@/lib/push-segment";
+import { deliverPush } from "@/lib/push-deliver";
 
 // Notificări Web Push: manual din /admin (butonul rămâne) și, din 2026-10-11,
 // automat din pipeline, dar DOAR după reguli stricte (src/lib/pipeline/auto-push.ts:
@@ -72,16 +73,15 @@ export async function sendPush(
     Array.from({ length: CONCURRENCY }, async () => {
       for (let s = queue.shift(); s; s = queue.shift()) {
         try {
-          await webpush.sendNotification(
+          const status = await deliverPush(
             { endpoint: s.endpoint, keys: { p256dh: s.p256dh, auth: s.auth } },
             JSON.stringify(payload),
-            { TTL: 6 * 3600, urgency: "high" }, // o știre de acum 6 ore nu mai e alertă
           );
-          delivered++;
+          if (status >= 200 && status < 300) delivered++;
+          else if (status === 404 || status === 410) expired.push(s.id);
+          else console.error(`Push eșuat (${status})`);
         } catch (err) {
-          const status = (err as { statusCode?: number }).statusCode;
-          if (status === 404 || status === 410) expired.push(s.id);
-          else console.error(`Push eșuat (${status ?? "?"}): ${err instanceof Error ? err.message : String(err)}`);
+          console.error(`Push eșuat (?): ${err instanceof Error ? err.message : String(err)}`);
         }
       }
     }),
