@@ -11,6 +11,8 @@ import type { Article } from "@/lib/content/types";
 // Listele (prima pagină, secțiunile, raioanele, țările, subiectele) și
 // articolele noi sau actualizate se refac imediat; restul paginilor, după ceas
 // (articolele o dată pe zi, listele o dată pe oră).
+// rutele cu [param] se invalidează după fișierul paginii, cu grupul (site)
+// inclus — fără el revalidatePath nu atingea nimic (vezi docs revalidatePath).
 const LISTS = [
   "/",
   "/national",
@@ -18,17 +20,17 @@ const LISTS = [
   "/diaspora",
   "/regiuni",
   "/video",
-  "/national/pagina/[n]",
-  "/international/pagina/[n]",
-  "/diaspora/pagina/[n]",
-  "/regiuni/pagina/[n]",
-  "/video/pagina/[n]",
-  "/regiuni/[raion]",
-  "/regiuni/[raion]/pagina/[n]",
-  "/diaspora/[tara]",
-  "/diaspora/[tara]/pagina/[n]",
-  "/subiect/[topic]",
-  "/subiect/[topic]/pagina/[n]",
+  "/(site)/national/pagina/[n]",
+  "/(site)/international/pagina/[n]",
+  "/(site)/diaspora/pagina/[n]",
+  "/(site)/regiuni/pagina/[n]",
+  "/(site)/video/pagina/[n]",
+  "/(site)/regiuni/[raion]",
+  "/(site)/regiuni/[raion]/pagina/[n]",
+  "/(site)/diaspora/[tara]",
+  "/(site)/diaspora/[tara]/pagina/[n]",
+  "/(site)/subiect/[topic]",
+  "/(site)/subiect/[topic]/pagina/[n]",
   "/ru",
 ];
 
