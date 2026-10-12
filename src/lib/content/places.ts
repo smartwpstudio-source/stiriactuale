@@ -1,5 +1,4 @@
-import { readdir, readFile } from "node:fs/promises";
-import path from "node:path";
+import { listContent, readContent } from "./store";
 import { guideCountry } from "./guide-country";
 
 // Informații practice pentru paginile de raion și de țară (contacte utile:
@@ -20,19 +19,12 @@ export interface PlaceInfo {
 
 export type PlaceKind = "raioane" | "tari";
 
-export async function listPlaces(kind: PlaceKind): Promise<string[]> {
-  const files = await readdir(path.join(process.cwd(), "content", "locuri", kind)).catch(() => []);
-  return files.filter((f) => f.endsWith(".json")).map((f) => f.slice(0, -5));
+export function listPlaces(kind: PlaceKind): Promise<string[]> {
+  return listContent(`locuri/${kind}`);
 }
 
 export async function getPlaceInfo(kind: PlaceKind, slug: string, lang: "ro" | "ru" = "ro"): Promise<PlaceInfo | null> {
-  if (!/^[a-z0-9-]+$/.test(slug)) return null;
-  const dir = lang === "ru" ? "locuri-ru" : "locuri";
-  try {
-    return JSON.parse(await readFile(path.join(process.cwd(), "content", dir, kind, `${slug}.json`), "utf8"));
-  } catch {
-    return null;
-  }
+  return (await readContent<PlaceInfo>(`${lang === "ru" ? "locuri-ru" : "locuri"}/${kind}`, slug)) ?? null;
 }
 
 // Raionul / țara unui ghid, după slug: ghidurile de oraș „<raion>-primaria-…”

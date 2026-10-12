@@ -1,5 +1,4 @@
-import { readdir, readFile } from "node:fs/promises";
-import path from "node:path";
+import { readAllContent } from "./store";
 
 // Ghiduri evergreen (diaspora, acte, ajutoare, sănătate...) — fișiere JSON în
 // content/ghiduri/, scrise de sesiuni Claude Code în cloud și aprobate de
@@ -66,8 +65,6 @@ export interface Guide {
   faq?: { q: string; a: string }[];
 }
 
-const DIR = path.join(process.cwd(), "content", "ghiduri");
-
 // Citite o dată pe proces în producție (fișierele nu se schimbă între deploy-uri):
 // sute de ghiduri deschise în paralel, de mai multe ori pe pagină, depășeau
 // limita de fișiere deschise pe Vercel (EMFILE → 500, 2026-10-09).
@@ -79,9 +76,7 @@ export function getGuides(): Promise<Guide[]> {
 }
 
 async function loadGuides(): Promise<Guide[]> {
-  const files = (await readdir(DIR).catch(() => [])).filter((f) => f.endsWith(".json"));
-  const guides: Guide[] = [];
-  for (const f of files) guides.push(JSON.parse(await readFile(path.join(DIR, f), "utf8")) as Guide);
+  const guides = await readAllContent<Guide>("ghiduri");
   return guides.sort((a, b) => a.title.localeCompare(b.title, "ro"));
 }
 

@@ -1,5 +1,4 @@
-import { readFile } from "node:fs/promises";
-import path from "node:path";
+import { readContent } from "./content/store";
 
 // „Azi în istorie”: evenimentele pe zile din content/istorie/MM.json (scrise
 // în cloud, verificate pe surse — docs/cloud/istorie.md). Pagini
@@ -26,14 +25,16 @@ export function parseDaySlug(slug: string): { month: number; day: number } | nul
   return month && day >= 1 && day <= DAYS[month - 1] ? { month, day } : null;
 }
 
+// null = luna nu e scrisă încă; o eroare de citire nu rămâne în cache (se reîncearcă)
 const cache = new Map<number, Promise<Record<string, HistoryEvent[]> | null>>();
 export function getHistoryMonth(month: number) {
   if (!cache.has(month))
     cache.set(
       month,
-      readFile(path.join(process.cwd(), "content", "istorie", `${String(month).padStart(2, "0")}.json`), "utf8")
-        .then((s) => JSON.parse(s).zile as Record<string, HistoryEvent[]>)
-        .catch(() => null),
+      readContent<{ zile: Record<string, HistoryEvent[]> }>("istorie", String(month).padStart(2, "0")).then(
+        (f) => f?.zile ?? null,
+        (e) => (cache.delete(month), Promise.reject(e)),
+      ),
     );
   return cache.get(month)!;
 }

@@ -1,5 +1,4 @@
-import { readdir, readFile } from "node:fs/promises";
-import path from "node:path";
+import { listContent, readAllContent, readContent } from "./store";
 import type { Guide } from "./guides";
 import { CALCULATORS } from "@/lib/calculators";
 
@@ -10,8 +9,6 @@ import { CALCULATORS } from "@/lib/calculators";
 // prima vizită și rămân în cache — vezi /ru/ghiduri/[slug].
 export type GuideRu = Guide & { ruOnly?: boolean };
 
-const DIR = path.join(process.cwd(), "content", "ghiduri-ru");
-
 // o dată pe proces în producție, citite pe rând (EMFILE — vezi guides.ts)
 let cache: Promise<GuideRu[]> | undefined;
 
@@ -20,24 +17,17 @@ export function getGuidesRu(): Promise<GuideRu[]> {
   return (cache ??= loadGuidesRu().catch((e) => ((cache = undefined), Promise.reject(e))));
 }
 
-async function loadGuidesRu(): Promise<GuideRu[]> {
-  const files = (await readdir(DIR).catch(() => [])).filter((f) => f.endsWith(".json"));
-  const guides: GuideRu[] = [];
-  for (const f of files) guides.push(JSON.parse(await readFile(path.join(DIR, f), "utf8")) as GuideRu);
-  return guides;
+function loadGuidesRu(): Promise<GuideRu[]> {
+  return readAllContent<GuideRu>("ghiduri-ru");
 }
 
-export async function getGuideRu(slug: string): Promise<GuideRu | undefined> {
-  if (!/^[a-z0-9-]+$/.test(slug)) return undefined;
-  try {
-    return JSON.parse(await readFile(path.join(DIR, `${slug}.json`), "utf8")) as GuideRu;
-  } catch {
-    return undefined;
-  }
+// un singur fișier (nu toată lista): pagina unui ghid RU se generează la prima vizită
+export function getGuideRu(slug: string): Promise<GuideRu | undefined> {
+  return readContent<GuideRu>("ghiduri-ru", slug);
 }
 
 export async function ruSlugs(): Promise<Set<string>> {
-  return new Set((await readdir(DIR).catch(() => [])).filter((f) => f.endsWith(".json")).map((f) => f.slice(0, -5)));
+  return new Set(await listContent("ghiduri-ru"));
 }
 
 // În textul rusesc, linkurile spre ghidurile românești devin linkuri spre

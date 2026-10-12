@@ -1,5 +1,4 @@
-import { readdir, readFile } from "node:fs/promises";
-import path from "node:path";
+import { readAllContent } from "./store";
 
 // Analizele semnate (concept 2026-10-07): opinia autorului, cu faptele
 // verificate și sursele lor. Fișiere în content/analize/<slug>.json, scrise de
@@ -40,11 +39,8 @@ export const AUTHORS: Record<string, { name: string; role: string; bio: string; 
   },
 };
 
-const DIR = path.join(process.cwd(), "content", "analize");
-
 export async function getAnalyses(): Promise<Analysis[]> {
-  const files = (await readdir(DIR).catch(() => [])).filter((f) => f.endsWith(".json"));
-  const all = await Promise.all(files.map(async (f) => JSON.parse(await readFile(path.join(DIR, f), "utf8")) as Analysis));
+  const all = await readAllContent<Analysis>("analize");
   return all.sort((a, b) => b.published.localeCompare(a.published));
 }
 

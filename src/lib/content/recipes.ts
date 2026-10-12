@@ -1,5 +1,4 @@
-import { readdir, readFile } from "node:fs/promises";
-import path from "node:path";
+import { readAllContent } from "./store";
 
 // Rețetele (docs/cloud/gospodarie-bucatarie-turism.md): content/retete/<slug>.json
 // + varianta rusă obligatorie în content/retete-ru/<slug>.json, același slug.
@@ -57,9 +56,6 @@ export interface Recipe {
   related?: string[];
 }
 
-const DIR_RO = path.join(process.cwd(), "content", "retete");
-const DIR_RU = path.join(process.cwd(), "content", "retete-ru");
-
 // o dată pe proces în producție, citite pe rând (EMFILE — vezi guides.ts)
 const cache: Partial<Record<Lang, Promise<Recipe[]>>> = {};
 
@@ -69,10 +65,7 @@ export function getRecipes(lang: Lang = "ro"): Promise<Recipe[]> {
 }
 
 async function load(lang: Lang): Promise<Recipe[]> {
-  const dir = lang === "ru" ? DIR_RU : DIR_RO;
-  const files = (await readdir(dir).catch(() => [])).filter((f) => f.endsWith(".json"));
-  const recipes: Recipe[] = [];
-  for (const f of files) recipes.push(JSON.parse(await readFile(path.join(dir, f), "utf8")) as Recipe);
+  const recipes = await readAllContent<Recipe>(lang === "ru" ? "retete-ru" : "retete");
   return recipes.sort((a, b) => a.title.localeCompare(b.title, lang));
 }
 
