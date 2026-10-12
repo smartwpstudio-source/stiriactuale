@@ -42,6 +42,11 @@ export default function PrivacyPage() {
           și nu folosim locația ta. Când dezactivezi alertele, cheia se șterge;
         </li>
         <li>
+          <strong>notele date rețetelor</strong> (dacă notezi una): păstrăm doar nota și un identificator anonim,
+          calculat criptografic, ca aceeași persoană să nu poată vota de mai multe ori. Adresa IP nu se păstrează în
+          clar;
+        </li>
+        <li>
           <strong>mesajele pe care ni le trimiți</strong> pe email, folosite doar pentru a-ți răspunde.
         </li>
       </ul>

@@ -11,7 +11,13 @@ import {
   jsonb,
   pgEnum,
   boolean,
+  smallint,
+  char,
+  unique,
+  index,
+  check,
 } from "drizzle-orm/pg-core";
+import { sql } from "drizzle-orm";
 
 export const sectionEnum = pgEnum("section", [
   "regiuni",
@@ -180,3 +186,22 @@ export const scheduledPosts = pgTable("scheduled_posts", {
   pin: boolean("pin").notNull().default(false),
   sentAt: timestamp("sent_at", { withTimezone: true }),
 });
+
+// Notele cititorilor la rețete (1–5 stele), comune RO/RU — /api/retete/nota/.
+// `voter` = sha256(IP + browser + sare secretă), ca să nu se voteze de mai multe
+// ori; IP-ul nu se păstrează. Revotul actualizează rândul (și created_at).
+export const recipeRatings = pgTable(
+  "recipe_ratings",
+  {
+    id: serial("id").primaryKey(),
+    slug: varchar("slug", { length: 255 }).notNull(),
+    stars: smallint("stars").notNull(),
+    voter: char("voter", { length: 64 }).notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    unique("recipe_ratings_slug_voter").on(t.slug, t.voter),
+    index("recipe_ratings_voter_created").on(t.voter, t.createdAt),
+    check("recipe_ratings_stars", sql`${t.stars} between 1 and 5`),
+  ],
+);

@@ -4,13 +4,15 @@ import Link from "next/link";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { ShareButtons } from "@/components/share-buttons";
 import { AdSlot } from "@/components/ad-slot";
-import { PrintButton, RecipeIngredients } from "@/components/recipe-client";
+import { PrintButton, RecipeIngredients, RecipeRating } from "@/components/recipe-client";
 import { ADSENSE_IN_ARTICLE_SLOT } from "@/lib/adsense";
 import { sanitizeBody } from "@/lib/content/sanitize";
 import { getGuides } from "@/lib/content/guides";
 import { getGuidesRu, localizeLinks, ruPath, ruSlugs } from "@/lib/content/guides-ru";
 import { COURSES, DIFFICULTIES, getRecipes, recipePath, type Lang, type Recipe } from "@/lib/content/recipes";
 import { absoluteUrl } from "@/lib/seo";
+import { stepName } from "@/lib/recipe-rating";
+import { getRecipeRating } from "@/lib/recipe-rating-db";
 
 // Șablonul unei rețete, în română sau rusă (/retete/<slug>/, /ru/retete/<slug>/).
 const T = {
@@ -43,6 +45,12 @@ const T = {
     h: "h",
     min: "min",
     cuisineName: "Moldovenească",
+    rate: "Notează rețeta",
+    star: "{n} din 5 stele",
+    thanks: "Mulțumim!",
+    rateError: "Nu s-a putut trimite nota. Încearcă mai târziu.",
+    noRatings: "Încă nicio notă. Fii primul care o notează.",
+    yours: "Nota ta: {n}",
   },
   ru: {
     home: "Главная",
@@ -73,6 +81,12 @@ const T = {
     h: "ч",
     min: "мин",
     cuisineName: "Молдавская",
+    rate: "Оцените рецепт",
+    star: "{n} из 5 звёзд",
+    thanks: "Спасибо!",
+    rateError: "Не удалось отправить оценку. Попробуйте позже.",
+    noRatings: "Оценок пока нет. Будьте первым.",
+    yours: "Ваша оценка: {n}",
   },
 } as const;
 
@@ -136,7 +150,7 @@ export async function RecipePage({ r, lang, hasOther }: { r: Recipe; lang: Lang;
   const t = T[lang];
   const url = absoluteUrl(recipePath(r.slug, lang));
   const total = r.prepMinutes + r.cookMinutes;
-  const resolve = await linkResolver(lang);
+  const [resolve, rating] = await Promise.all([linkResolver(lang), getRecipeRating(r.slug)]);
   const occasions = (r.occasions ?? []).map(resolve).filter((x) => x !== undefined);
   const related = (r.related ?? []).map(resolve).filter((x) => x !== undefined);
   let story = r.storyHtml ? sanitizeBody(r.storyHtml) : "";
@@ -167,8 +181,18 @@ export async function RecipePage({ r, lang, hasOther }: { r: Recipe; lang: Lang;
       recipeCuisine: t.cuisineName,
       keywords: [t.cuisine, COURSES[r.course][lang], r.region, r.fasting ? t.fasting : undefined].filter(Boolean).join(", "),
       recipeIngredient: r.ingredients.flatMap((g) => g.items.map(ingredientText)),
-      recipeInstructions: r.steps.map((s, i) => ({ "@type": "HowToStep", position: i + 1, text: s.text, url: `${url}#pas-${i + 1}` })),
+      recipeInstructions: r.steps.map((s, i) => ({
+        "@type": "HowToStep",
+        position: i + 1,
+        name: s.name ?? stepName(s.text),
+        text: s.text,
+        url: `${url}#pas-${i + 1}`,
+      })),
       citation: r.sources.map((s) => ({ "@type": "CreativeWork", name: s.name, url: s.url })),
+      // doar note reale ale cititorilor; fără nicio notă, fără aggregateRating
+      ...(rating && {
+        aggregateRating: { "@type": "AggregateRating", ratingValue: rating.value, ratingCount: rating.count, bestRating: 5, worstRating: 1 },
+      }),
     },
     {
       "@context": "https://schema.org",
@@ -295,6 +319,13 @@ export async function RecipePage({ r, lang, hasOther }: { r: Recipe; lang: Lang;
           </dl>
         </section>
       )}
+
+      <RecipeRating
+        slug={r.slug}
+        lang={lang}
+        initial={rating}
+        labels={{ title: t.rate, star: t.star, thanks: t.thanks, error: t.rateError, none: t.noRatings, yours: t.yours }}
+      />
 
       {ADSENSE_IN_ARTICLE_SLOT && (
         <div className="print:hidden">
