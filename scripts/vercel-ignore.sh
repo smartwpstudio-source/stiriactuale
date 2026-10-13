@@ -3,6 +3,8 @@
 # Fără build când s-au schimbat doar lucruri care nu ajung pe site: documentație,
 # scripturi, workflow-uri, migrații, arhiva de poze a pipeline-ului.
 # Build-ul se plătește la minut-procesor — vezi vercel.json.
+# doar master se construiește pe Vercel (ramura cf-migration e pentru Cloudflare)
+[ "$VERCEL_GIT_COMMIT_REF" = "master" ] || exit 0
 prev="$VERCEL_GIT_PREVIOUS_SHA"
 [ -n "$prev" ] && git cat-file -e "$prev" 2>/dev/null || exit 1
 git diff --quiet "$prev" HEAD -- . ':!docs' ':!scripts' ':!.github' ':!drizzle' ':!*.md' \

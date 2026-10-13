@@ -18,6 +18,10 @@ on:
         description: "Doar build + wrangler deploy --dry-run (nu publică nimic)"
         type: boolean
         default: true
+      production:
+        description: "Comutarea: pune și secretele de publicare (canal Telegram, Facebook)"
+        type: boolean
+        default: false
 
 concurrency:
   group: cloudflare-deploy
@@ -54,3 +58,38 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      # Secretele de rulare, din secretele GitHub. Pe adresa de test (staging) FĂRĂ
+      # TELEGRAM_CHANNEL_ID și Facebook: nimic nu se postează public de acolo.
+      # La comutare: input-ul `production` = true le adaugă și pe ele.
+      - name: Secretele worker-ului
+        if: ${{ !inputs.dry_run }}
+        run: |
+          node -e '
+            const keys = ["DATABASE_URL","TELEGRAM_BOT_TOKEN","TELEGRAM_ADMIN_CHAT_ID","ADMIN_PASSWORD","CRON_SECRET",
+              "NEXT_PUBLIC_VAPID_PUBLIC_KEY","VAPID_PRIVATE_KEY","BLOB_READ_WRITE_TOKEN","MAGNIFIC_API_KEY","GITHUB_DISPATCH_TOKEN"];
+            if (process.env.PRODUCTION === "true") keys.push("TELEGRAM_CHANNEL_ID","FACEBOOK_PAGE_ID","FACEBOOK_PAGE_TOKEN");
+            const out = {};
+            for (const k of keys) if (process.env[k]) out[k] = process.env[k];
+            console.log("secrete: " + Object.keys(out).join(", "));
+            require("fs").writeFileSync("secrets.json", JSON.stringify(out));
+          '
+          npx wrangler secret bulk secrets.json
+          rm -f secrets.json
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          PRODUCTION: ${{ inputs.production }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_ADMIN_CHAT_ID: ${{ secrets.TELEGRAM_ADMIN_CHAT_ID }}
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+          FACEBOOK_PAGE_ID: ${{ secrets.FACEBOOK_PAGE_ID }}
+          FACEBOOK_PAGE_TOKEN: ${{ secrets.FACEBOOK_PAGE_TOKEN }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+          NEXT_PUBLIC_VAPID_PUBLIC_KEY: ${{ secrets.NEXT_PUBLIC_VAPID_PUBLIC_KEY }}
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+          MAGNIFIC_API_KEY: ${{ secrets.MAGNIFIC_API_KEY }}
+          GITHUB_DISPATCH_TOKEN: ${{ secrets.GITHUB_DISPATCH_TOKEN }}
