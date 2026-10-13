@@ -67,6 +67,9 @@ import("../../src/lib/content/guide-country").then(({ guideCountry }) => {
     assert.equal(matchDossier("Universitatea Harvard pierde finanțarea federală"), undefined);
     assert.equal(matchDossier("Bacalaureatul în România: rezultatele de anul acesta"), undefined);
     assert.equal(matchDossier("Liftul nu funcționează: elevatorul a fost oprit"), undefined);
+    assert.equal(matchDossier("Aerisirea caloriferelor: cum o faci corect"), "sezonul-de-incalzire-2026-2027");
+    assert.equal(matchDossier("Termoelectrica anunță pornirea căldurii în blocuri"), "sezonul-de-incalzire-2026-2027");
+    assert.equal(matchDossier("Agentul termic ajunge în blocurile din Chișinău"), "sezonul-de-incalzire-2026-2027");
     assert.equal(matchDossier("Escrocii au furat 400.000 de lei de la o pensionară din Bălți"), "escrocheriile-in-moldova-cum-le-recunosti-si-ce-faci");
     assert.equal(matchDossier("Fraudă electorală: CEC verifică sesizările"), undefined);
     assert.equal(matchDossier("Dobânzile la depozite au scăzut în august"), "banii-in-familie-buget-economii-credite-ghid-complet");

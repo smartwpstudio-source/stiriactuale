@@ -51,6 +51,8 @@ const RULES: [slug: string, re: RegExp][] = [
   // pilonul șoferilor: orice altă știre despre mașini și șoferi (nu accidentele —
   // acolo „șoferul” e la singular și nu e o temă pentru șoferi)
   ["masina-in-moldova-ghidul-complet-al-soferului", /parc\w* auto|inmatricul\w*|vamuir\w*|\bsoferi(i|lor)?\b|automobilist\w*|piata auto|masini(le)? (noi|second|electrice|la mana a doua)|autovehicul\w*|girofar\w*|vinieta|taxa (de|pentru) drum/],
+  // încălzirea locuinței (înaintea pilonului întreprinderilor, care prinde și „Termoelectrica”)
+  ["sezonul-de-incalzire-2026-2027", /calorifer|sezon\w* de incalzire|agent\w* termic|incalzir\w* centralizat|pornir\w* (a )?(caldurii|incalzirii)|termoficar/],
   // companiile statului: Poșta, trenurile, apoi pilonul (după Moldovagaz, Energocom
   // și Aeroport, care au dosarele lor; „Poșta Română” nu intră)
   ["posta-moldovei-servicii-tarife-urmarire-colete", /posta moldovei/],
@@ -126,6 +128,7 @@ const MOLDOVA_ONLY = new Set([
   "moldova-turistica-ce-vizitezi-trasee-vinarii-manastiri",
   "escrocheriile-in-moldova-cum-le-recunosti-si-ce-faci",
   "banii-in-familie-buget-economii-credite-ghid-complet",
+  "sezonul-de-incalzire-2026-2027",
 ]);
 
 // slug-ul dosarului / ghidului-pilon (fără citirea ghidului) — și pentru

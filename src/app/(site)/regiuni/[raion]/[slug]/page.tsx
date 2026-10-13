@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { ArticlePage } from "@/components/article-page";
 import { getArticleBySection } from "@/lib/content/queries";
 import { raionLabel } from "@/lib/content/geo";
@@ -34,7 +34,12 @@ export default async function RegiuniArticlePage({
 }) {
   const { raion, slug } = await params;
   const article = await getArticleBySection("regiuni", slug, raion);
-  if (!article) notFound();
+  if (!article) {
+    // raionul corectat după publicare: adresa veche duce la cea nouă
+    const moved = await getArticleBySection("regiuni", slug);
+    if (moved?.locality && moved.locality !== raion) permanentRedirect(`/regiuni/${moved.locality}/${slug}/`);
+    notFound();
+  }
 
   const raionName = raionLabel(raion);
   const breadcrumbItems = [
