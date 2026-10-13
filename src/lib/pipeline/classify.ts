@@ -93,7 +93,7 @@ const SYSTEM_PROMPT = [
   "- continues: OBLIGATORIU când grupul e despre un eveniment deja publicat [RN] și aduce informații noi (reacții oficiale, cifre noi, ancheta, consecințe, descoperiri) — ex. dronele căzute în Moldova: primul articol relatează exploziile, apoi reacția MAE sau explicațiile Ministerului Apărării sunt continuări. E o știre nouă, legată de cea veche; fără continues ar apărea două articole care par aceeași știre.",
   "- niciuna: subiect diferit.",
   "reject=true dacă grupul relatează ACELAȘI fapt ca un articol recent [RN], fără nimic nou (altă formulare, altă sursă, alt titlu — ex. „contract de 23 mil. pentru drumul R13” și „23 mil. investiți în drumul R13”): e dublură, nu publicăm de două ori.",
-  "reject=true pentru ORICE știre despre droguri (consum, trafic, capturi, laboratoare, plantații de cânepă, dosare și condamnări pentru droguri, droguri sintetice/etnobotanice) — decizia redacției, risc de penalizare Google.",
+  "reject=true când SUBIECTUL PRINCIPAL al știrii sunt drogurile (consum, trafic, capturi, laboratoare, plantații de cânepă, droguri sintetice/etnobotanice); dacă drogurile apar doar ca detaliu într-un caz mai larg (un proces, o persoană publică), NU respinge pentru asta — decizia redacției, risc de penalizare Google.",
   "reject=true pentru: horoscop, publicitate/advertorial/promoții, monden și vedete fără interes public, rețete, sfaturi generale, sondaje de opinie online, rezultate sportive fără legătură cu Moldova, știri vechi reluate.",
 ].join("\n");
 
@@ -175,11 +175,12 @@ export async function classifyGroups(
 }
 
 // Știrile despre droguri nu se publică (decizia redacției, 2026-10-13: risc de
-// penalizare Google, importanță mică). Fără diacritice, pe titlu + rezumat.
+// penalizare Google, importanță mică). Doar TITLUL decide: o știre în care drogurile
+// apar doar ca detaliu (un proces, o persoană publică) rămâne. Fără diacritice.
 const DRUGS = /\bdrog(uri|urile|urilor)?\b|narcotic|stupefiant|\bcanabis|\bcannabis|marijuana|marihuana|\bcanepa|cocain|heroin|metadon|ecstasy|\bmdma\b|amfetamin|metamfetamin|mefedron|\bsar(urile)? de baie|etnobotanic|psihotrop|trafic\w* de (droguri|substante)/;
 
 export function isDrugNews(group: { representativeTitle?: string; items?: { title?: string; summary?: string }[] }): boolean {
-  const text = [group.representativeTitle ?? "", ...(group.items ?? []).flatMap((x) => [x.title ?? "", (x.summary ?? "").slice(0, 400)])]
+  const text = [group.representativeTitle ?? "", ...(group.items ?? []).map((x) => x.title ?? "")]
     .join(" ")
     .normalize("NFD")
     .replace(/\p{M}/gu, "")
