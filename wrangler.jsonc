@@ -38,6 +38,12 @@
   // fără binding imaginile se servesc neoptimizate.
   "images": { "binding": "IMAGES" },
 
+  // domeniul live (comutarea de pe Vercel, 2026-10-13); www -> 301 în cloudflare/worker.ts
+  "routes": [
+    { "pattern": "stiriactuale.info", "custom_domain": true },
+    { "pattern": "www.stiriactuale.info", "custom_domain": true }
+  ],
+
   // Aceleași orare ca vercel.json, în UTC. Rutele chemate: cloudflare/worker.ts (CRONS).
   "triggers": {
     "crons": ["0 * * * *", "0 3-19/2 * * *", "0 4,5,6 * * *", "0 19,20 * * *"]
@@ -52,7 +58,7 @@
 
   "vars": {
     // "1" DOAR după comutarea DNS și oprirea cron-urilor din Vercel (altfel rulează dublu)
-    "CRONS_ENABLED": "0",
+    "CRONS_ENABLED": "1",
     // purge-ul cache-ului (open-next.config.ts) adună tag-urile atâtea secunde
     "NEXT_CACHE_DO_PURGE_BUFFER_TIME_IN_SECONDS": "5"
   }

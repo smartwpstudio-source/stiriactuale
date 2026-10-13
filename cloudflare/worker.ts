@@ -36,7 +36,13 @@ const handler = openNext as Handler;
 
 const worker = {
   async fetch(request: Request, env: Env, ctx: Ctx): Promise<Response> {
-    if (new URL(request.url).pathname.startsWith("/_continut/")) {
+    const url = new URL(request.url);
+    // www -> adresa fără www (la Vercel o făcea setarea domeniului)
+    if (url.hostname === "www.stiriactuale.info") {
+      url.hostname = "stiriactuale.info";
+      return Response.redirect(url.toString(), 301);
+    }
+    if (url.pathname.startsWith("/_continut/")) {
       return new Response("Not Found", { status: 404, headers: { "x-robots-tag": "noindex" } });
     }
     return handler.fetch(request, env, ctx);
