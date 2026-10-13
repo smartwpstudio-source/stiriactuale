@@ -92,4 +92,4 @@ jobs:
           VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
           BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
           MAGNIFIC_API_KEY: ${{ secrets.MAGNIFIC_API_KEY }}
-          GITHUB_DISPATCH_TOKEN: ${{ secrets.GITHUB_DISPATCH_TOKEN }}
+          GITHUB_DISPATCH_TOKEN: ${{ secrets.DISPATCH_TOKEN }} # GitHub nu permite secrete care încep cu GITHUB_
