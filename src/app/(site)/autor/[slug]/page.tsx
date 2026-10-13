@@ -27,7 +27,7 @@ export default async function AuthorPage({ params }: PageProps<"/autor/[slug]">)
   return (
     <div className="mx-auto w-full max-w-[860px] px-4 py-8">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
-      <Breadcrumb items={[{ label: "Acasă", href: "/" }, { label: "Analiză", href: "/analiza/" }, { label: a.name }]} />
+      <Breadcrumb items={[{ label: "Acasă", href: "/" }, { label: a.name }]} />
       <div className="mt-4">
         <AuthorBadge slug={slug} />
       </div>
