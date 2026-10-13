@@ -101,6 +101,9 @@ export const CALCULATORS = [
   { slug: "vamuire-auto", title: "Vămuirea mașinii (acciza)", description: "Cât plătești la vamă pentru o mașină adusă din străinătate: acciza după motor, capacitate și anul fabricației.", needs: "vamuire_auto" },
   { slug: "impozit-imobil", title: "Impozitul pe casă și teren", description: "Impozitul anual pe bunurile imobiliare, din valoarea estimată și cota primăriei.", needs: "impozit_imobil" },
   { slug: "taxa-drum", title: "Taxa pentru folosirea drumurilor", description: "Cât plătești pe an pentru mașină, motocicletă, remorcă sau autobuz, după cotele din Codul fiscal.", needs: "taxa_drum", guide: "taxa-pentru-folosirea-drumurilor-cat-platesti-si-cand" },
+  { slug: "rata-credit", title: "Rata la credit", description: "Rata lunară, totalul de plată și dobânda pentru un credit, cu rate egale (anuități) sau descrescătoare.", needs: null, guide: "creditul-de-consum-ce-verifici-inainte-sa-semnezi" },
+  { slug: "regula-90-180", title: "Regula 90/180 de zile în spațiul Schengen", description: "Câte zile ai stat și câte îți mai rămân din cele 90 permise în orice perioadă de 180 de zile, după datele călătoriilor.", needs: null },
+  { slug: "portii-eveniment", title: "Câte porții pentru nuntă, cumătrie sau pomană", description: "Cantitățile de bucate reci, zeamă, sarmale, friptură, garnitură, dulciuri și pâine după numărul de invitați.", needs: null, guide: "cate-portii-calculezi-pentru-nunta-sau-pomana" },
 ] as const;
 
 export type CalculatorSlug = (typeof CALCULATORS)[number]["slug"];
@@ -209,4 +212,82 @@ export function customsExcise(engine: Engine, cm3: number, age: number, customsV
 
 export function propertyTax(value: number, ratePct: number) {
   return round((value * ratePct) / 100);
+}
+
+// Rata la credit: anuități (rată egală) sau rate descrescătoare (principal egal),
+// dobânda lunară = anuală / 12. Fără comisioane și asigurări (le arată DAE).
+export type LoanType = "anuitate" | "descrescator";
+
+export function loan(amount: number, ratePct: number, months: number, type: LoanType) {
+  const n = Math.floor(months);
+  if (amount <= 0 || n < 1) return null;
+  const r = ratePct / 1200;
+  const annuity = r ? (amount * r) / (1 - (1 + r) ** -n) : amount / n;
+  let bal = amount;
+  const pays: number[] = [];
+  const years: { year: number; principal: number; interest: number; remaining: number }[] = [];
+  for (let i = 0; i < n; i++) {
+    const interest = bal * r;
+    const principal = i === n - 1 ? bal : type === "anuitate" ? annuity - interest : amount / n;
+    bal -= principal;
+    pays.push(principal + interest);
+    if (i % 12 === 0) years.push({ year: i / 12 + 1, principal: 0, interest: 0, remaining: 0 });
+    const y = years[years.length - 1];
+    y.principal += principal;
+    y.interest += interest;
+    y.remaining = Math.max(0, bal);
+  }
+  const total = pays.reduce((a, b) => a + b, 0);
+  return {
+    first: round(pays[0]),
+    last: round(pays[n - 1]),
+    total: round(total),
+    interest: round(total - amount),
+    years: years.map((y) => ({ year: y.year, principal: round(y.principal), interest: round(y.interest), remaining: round(y.remaining) })),
+  };
+}
+
+// Regula 90/180 (Schengen): zilele de ședere în fereastra de 180 de zile care se
+// încheie la data de control (data + cele 179 de zile dinainte). Ziua intrării și
+// a ieșirii se numără; zilele din călătorii suprapuse se numără o singură dată.
+// Datele: "AAAA-LL-ZZ"; rândurile goale sau inversate sunt ignorate.
+export type Trip = { from: string; to: string };
+
+const dayNo = (iso: string) => {
+  const t = Date.parse(`${iso}T00:00:00Z`);
+  return Number.isNaN(t) ? NaN : Math.round(t / 86400000);
+};
+
+export function schengenDays(trips: Trip[], controlDate: string) {
+  const end = dayNo(controlDate);
+  if (Number.isNaN(end)) return null;
+  const start = end - 179;
+  const days = new Set<number>();
+  for (const t of trips) {
+    const a = Math.max(dayNo(t.from), start);
+    const b = Math.min(dayNo(t.to), end);
+    for (let d = a; d <= b; d++) days.add(d); // NaN: bucla nu rulează
+  }
+  const used = days.size;
+  return { used, remaining: Math.max(0, 90 - used), over: used > 90, windowStart: new Date(start * 86400000).toISOString().slice(0, 10) };
+}
+
+// Porții pentru o masă mare (nuntă, cumătrie, pomană): reperele practice din ghidul
+// cate-portii-calculezi-pentru-nunta-sau-pomana (nu norme oficiale). Copiii mici:
+// jumătate de porție; plus porțiile de rezervă.
+export const PORTION_NORMS = [
+  { id: "reci", min: 0.15, max: 0.2, unit: "kg" },
+  { id: "salate", min: 0.15, max: 0.15, unit: "kg" },
+  { id: "zeama", min: 0.3, max: 0.3, unit: "l" },
+  { id: "sarmale", min: 5, max: 6, unit: "buc" },
+  { id: "friptura", min: 0.15, max: 0.2, unit: "kg" },
+  { id: "garnitura", min: 0.15, max: 0.15, unit: "kg" },
+  { id: "dulciuri", min: 2, max: 3, unit: "buc" },
+  { id: "paine", min: 0.08, max: 0.1, unit: "paini" }, // 2–3 felii; 8–10 pâini la 100 de oaspeți
+] as const;
+
+export function eventPortions(adults: number, children: number, reserve: number) {
+  const portions = Math.ceil(adults + children / 2 + reserve);
+  const amount = (x: number, unit: string) => (unit === "buc" || unit === "paini" ? Math.ceil(portions * x - 1e-9) : Math.round(portions * x * 10) / 10);
+  return { portions, items: PORTION_NORMS.map((p) => ({ ...p, from: amount(p.min, p.unit), to: amount(p.max, p.unit) })) };
 }
