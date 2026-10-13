@@ -25,10 +25,12 @@ import { chisinauHour, lastRunHour, morningHour, todayChisinau } from "@/lib/sch
 // 3) calculatoarele și ghidurile site-ului, în context (cum le folosești);
 // 4) rețete; 5) sfântul zilei, la sfinții mari.
 // Fiecare articol trimite OBLIGATORIU la un ghid, calculator sau rețetă de pe site.
-// Planul îl propune AI-ul lunea (sau la cererea editorului), editorul îl aprobă
-// în /admin/util/, iar pipeline-ul scrie câte un articol aprobat la orele Util.
+// Planul pe săptămâna următoare (luni–duminică) îl propune AI-ul vinerea dimineața
+// (sau la cererea editorului), editorul îl aprobă în weekend în /admin/util/, iar
+// pipeline-ul scrie câte un articol aprobat la orele Util.
 
 const PLAN_DAYS = 7;
+const PLAN_WEEKDAY = 5; // vineri (decizia proprietarului, 2026-10-14: săptămâni de luni până duminică)
 const PER_DAY = 3;
 const key = (d: Date) => d.toISOString().slice(0, 10);
 
@@ -107,11 +109,12 @@ interface PlanItem {
   locality?: string | null;
 }
 
-// Planul pentru zilele din următoarele 7 care au mai puțin de PER_DAY teme active.
+// Planul săptămânii următoare (luni–duminică): zilele cu mai puțin de PER_DAY teme active.
 export async function planWeek(): Promise<number> {
   const db = getDb();
   const today = todayChisinau();
-  const days = Array.from({ length: PLAN_DAYS }, (_, i) => addDays(today, i));
+  const monday = addDays(today, (8 - today.getUTCDay()) % 7 || 7);
+  const days = Array.from({ length: PLAN_DAYS }, (_, i) => addDays(monday, i));
   const existing = await db
     .select({ day: utilPlan.day })
     .from(utilPlan)
@@ -280,8 +283,8 @@ export async function runUtil(): Promise<string[]> {
   const today = key(todayChisinau());
 
   const planAsked = (await getSetting(PLAN_REQUEST)) === "1";
-  const monday = todayChisinau().getUTCDay() === 1 && hour === morningHour();
-  if (planAsked || monday) {
+  const planDay = todayChisinau().getUTCDay() === PLAN_WEEKDAY && hour === morningHour();
+  if (planAsked || planDay) {
     await setSetting(PLAN_REQUEST, "0");
     try {
       log.push(`plan Util: ${await planWeek()} teme noi`);

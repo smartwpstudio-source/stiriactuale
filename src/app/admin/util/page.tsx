@@ -38,12 +38,12 @@ export default async function UtilAdminPage({ searchParams }: PageProps<"/admin/
       <h1 className="mt-2 font-serif text-3xl text-ink">Planul Util</h1>
       <p className="mt-2 text-sub">
         Articolele proprii ale zilei, scrise la orele {utilHours().map((h) => `${h}:00`).join(", ")} (azi). Se scriu doar temele
-        <strong> aprobate</strong>. Planul nou vine lunea dimineața sau cu butonul de mai jos.
+        <strong> aprobate</strong>. Planul săptămânii următoare (luni–duminică) vine vineri dimineața; îl aprobi până duminică seara. Sau cu butonul de mai jos.
       </p>
       {run && <p className="mt-3 rounded bg-teal/10 p-3 text-ink">{MESSAGES[String(run)]}</p>}
       {err && <p className="mt-3 rounded bg-alert/10 p-3 text-alert">Completează ziua, tema, tipul și cel puțin o unealtă (ex. calc:salariu-net).</p>}
       <form action={planNow} className="mt-4">
-        <button className="rounded bg-ink px-4 py-2 text-white">Fă planul acum (zilele care nu au 3 teme)</button>
+        <button className="rounded bg-ink px-4 py-2 text-white">Fă acum planul săptămânii următoare</button>
       </form>
 
       {days.map((day) => {
