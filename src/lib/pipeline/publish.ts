@@ -1,3 +1,4 @@
+import { asciiSlug } from "@/lib/ascii-slug";
 import crypto from "node:crypto";
 import { eq, gte, isNotNull } from "drizzle-orm";
 import { getDb } from "./db/client";
@@ -62,8 +63,10 @@ export async function publishArticle(
 
   // Slug-ul poate coincide cu un articol mai vechi (subiect recurent) ->
   // sufix -2, -3... Unicitatea o garantează constrângerea din DB.
+  // slug doar ASCII: AI-ul a scris o dată „і” chirilic (URL 404)
+  const base = asciiSlug(generated.slug).slice(0, 90).replace(/-+$/, "") || asciiSlug(generated.titlu).slice(0, 90).replace(/-+$/, "");
   for (let n = 1; n <= 10; n++) {
-    const slug = n === 1 ? generated.slug : `${generated.slug}-${n}`;
+    const slug = n === 1 ? base : `${base}-${n}`;
     const inserted = await db
       .insert(articles)
       .values({
