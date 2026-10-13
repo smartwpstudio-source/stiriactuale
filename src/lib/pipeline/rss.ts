@@ -24,6 +24,18 @@ function stripHtml(input: string): string {
     .trim();
 }
 
+// Parametrii de urmărire (TVR Moldova: ?utm_source=RSS&…) scoși din link: aceeași
+// știre are aceeași adresă oricum ar ajunge la noi.
+export function cleanLink(link: string): string {
+  try {
+    const u = new URL(link);
+    for (const k of [...u.searchParams.keys()]) if (k.startsWith("utm_")) u.searchParams.delete(k);
+    return u.toString();
+  } catch {
+    return link;
+  }
+}
+
 export async function fetchRssFeed(url: string, feedId: string, sourceName: string): Promise<RawCandidate[]> {
   const res = await fetch(url, {
     headers: { "User-Agent": "Mozilla/5.0 (stiriactuale-pipeline)" },
@@ -43,7 +55,7 @@ export async function fetchRssFeed(url: string, feedId: string, sourceName: stri
       title: String(item.title ?? "").trim(),
       summary: body.slice(0, MAX_SUMMARY_CHARS),
       sourceName,
-      sourceUrl: String(item.link ?? "").trim(),
+      sourceUrl: cleanLink(String(item.link ?? "").trim()),
       publishedAt: new Date(item.pubDate ?? Date.now()),
       feedId,
     };

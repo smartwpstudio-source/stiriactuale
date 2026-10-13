@@ -25,7 +25,7 @@ const RULES: [slug: string, re: RegExp][] = [
   ["criza-energetica-din-moldova-cauze-cronologie-facturi", /criz\w* energetic|criza gazelor|stare\w* de urgenta (in|pe|din) energetic|mgres|cuciurgan|sistar\w* (a )?livrar\w* de gaz/],
   ["moldovagaz-si-datoriile-la-gaz", /moldovagaz|gazprom/],
   ["pretul-gazului-in-moldova-tarif-si-schimbari", /pretul (la )?gaz|tarif\w* (la|pentru) gaz|gazul (se )?scump|metrul cub de gaz/],
-  ["independenta-energetica-gaz-si-curent-moldova", /energocom|independent\w* energetic|interconect|linia (electrica|de inalta tensiune)|vulcanesti|securitat\w* energetic/],
+  ["independenta-energetica-gaz-si-curent-moldova", /energocom|independent\w* energetic|interconect|linia (electrica|de inalta tensiune)|vulcanesti\W{1,3}(chisinau|balti|suceava)|(linia|lea)\b.{0,40}vulcanesti|securitat\w* energetic/],
   ["reforma-justitiei-vetting-judecatori-procurori", /vetting|evaluar\w* (externa )?a judecator|consiliul superior al magistraturii|reforma justitiei/],
   ["furtul-miliardului-cronologia-dosarului", /furtul miliardului|frauda bancara/],
   ["aeroportul-international-chisinau-concesionare-procese", /aeroport\w* (international )?(din )?chisinau|avia invest/],
@@ -128,9 +128,16 @@ const MOLDOVA_ONLY = new Set([
   "banii-in-familie-buget-economii-credite-ghid-complet",
 ]);
 
-export async function getRelatedDossier(title: string, lead: string, topics: string[] = [], section?: string) {
+// slug-ul dosarului / ghidului-pilon (fără citirea ghidului) — și pentru
+// regula „știre cu ghid” din pipeline (guide-rule.ts)
+export function dossierSlug(title: string, lead: string, topics: string[] = [], section?: string): string | undefined {
   // subiectul „criză energetică” fără o regulă mai precisă -> pilonul crizei
-  let slug = matchDossier(`${title} ${lead}`) ?? (topics.includes("criza-energetica") ? "criza-energetica-din-moldova-cauze-cronologie-facturi" : undefined);
-  if (slug && MOLDOVA_ONLY.has(slug) && (section === "diaspora" || section === "international")) slug = undefined;
+  const slug = matchDossier(`${title} ${lead}`) ?? (topics.includes("criza-energetica") ? "criza-energetica-din-moldova-cauze-cronologie-facturi" : undefined);
+  if (slug && MOLDOVA_ONLY.has(slug) && (section === "diaspora" || section === "international")) return undefined;
+  return slug;
+}
+
+export async function getRelatedDossier(title: string, lead: string, topics: string[] = [], section?: string) {
+  const slug = dossierSlug(title, lead, topics, section);
   return slug ? getGuide(slug) : undefined;
 }

@@ -78,7 +78,7 @@ export async function ArticlePage({
   article: Article;
   breadcrumbItems: BreadcrumbItem[];
 }) {
-  const [similar, { items: latest }, guide, previous, calculator, tools, dossier, analyses] = await Promise.all([
+  const [similar, { items: latest }, guide, previous, calculator, tools, dossier, analyses, [guideTool]] = await Promise.all([
     getSimilarArticles(article),
     listArticles({}, 1, 9),
     article.archived ? undefined : getRelatedGuide(article.title, article.lead, article.locality),
@@ -87,9 +87,19 @@ export async function ArticlePage({
     resolveTools(article.impact?.unelte ?? []),
     article.archived ? undefined : getRelatedDossier(article.title, article.lead, article.topics, article.section),
     analysesForArticle(articleUrl(article)),
+    article.archived || !article.guideTool ? [] : resolveTools([article.guideTool]),
   ]);
   // casetele de jos nu repetă unealta deja recomandată în blocul de impact
   const shown = new Set([...tools.map((t) => t.href), ...(dossier ? [`/ghiduri/${dossier.slug}/`] : [])]);
+  // „Ghid util” ales de pipeline (regula „știre cu ghid”), dacă nu e deja afișat
+  // ca dosar, unealtă din blocul de impact, calculator sau ghid de jos
+  const usefulTool =
+    guideTool &&
+    !shown.has(guideTool.href) &&
+    guideTool.href !== (calculator && `/calculatoare/${calculator.slug}/`) &&
+    guideTool.href !== (guide && `/ghiduri/${guide.slug}/`)
+      ? guideTool
+      : undefined;
 
   return (
     <div className="mx-auto grid w-full max-w-7xl gap-12 px-4 py-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:px-8">
@@ -193,6 +203,20 @@ export async function ArticlePage({
                     {dossier.category === "dosare" || dossier.category === "lumea" ? "Context: dosarul subiectului" : "Ghid pe acest subiect"}
                   </span>
                   <span className="mt-0.5 block font-medium leading-snug text-ink">{dossier.title}</span>
+                </span>
+              </Link>
+            )}
+            {usefulTool && (
+              <Link
+                href={usefulTool.href}
+                className="mt-5 flex items-start gap-3 rounded-lg border-l-4 border-teal bg-white p-3 hover:bg-paper"
+              >
+                <IconFolder size={22} stroke={1.75} className="mt-0.5 shrink-0 text-teal" aria-hidden />
+                <span>
+                  <span className="block font-mono text-xs uppercase tracking-wide text-teal">
+                    {usefulTool.kind === "calc" ? "Calculator util" : usefulTool.kind === "model" ? "Model de reclamație util" : "Ghid util"}
+                  </span>
+                  <span className="mt-0.5 block font-medium leading-snug text-ink">{usefulTool.title}</span>
                 </span>
               </Link>
             )}

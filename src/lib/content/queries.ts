@@ -32,6 +32,7 @@ const listColumns = {
   updatedAt: t.updatedAt,
   continuesId: t.continuesId,
   impact: t.impact,
+  guideTool: t.guideTool,
 };
 
 type ListRow = { [K in keyof typeof listColumns]: (typeof t.$inferSelect)[K] };
@@ -60,6 +61,7 @@ function mapRow(row: ListRow & { bodyHtml?: string; hasRu?: boolean }): Article 
     updatedAt: row.updatedAt?.toISOString(),
     continuesId: row.continuesId ?? undefined,
     impact: row.impact ?? undefined,
+    guideTool: row.guideTool ?? undefined,
     sources: row.sources,
     archived: row.archived,
     hasRu: row.hasRu,

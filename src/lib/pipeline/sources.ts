@@ -21,6 +21,9 @@ export const FEEDS: { id: string; name: string; url: string; trusted: boolean; t
   { id: "tv8", name: "TV8", url: "https://tv8.md/feed", trusted: false, telegram: "tv8md" },
   { id: "diez", name: "Diez", url: "https://www.diez.md/feed/", trusted: false, telegram: "diezmd" },
   { id: "pulsmedia", name: "Puls Media", url: "https://pulsmedia.md/rss/all/", trusted: false, telegram: "pulsmedia" },
+  // adăugate 2026-10-13 (decizia proprietarului); verificate local: titluri, pubDate, text integral
+  { id: "tvrmoldova", name: "TVR Moldova", url: "https://tvrmoldova.md/rss/all", trusted: false },
+  { id: "deschide", name: "Deschide.md", url: "https://deschide.md/api/rss", trusted: false },
   // surse internaționale în română, care publică și noaptea — pentru Lumea
   // (aceleași criterii stricte din classify.ts); decizia proprietarului, 2026-10-05
   { id: "europalibera", name: "Europa Liberă", url: "https://moldova.europalibera.org/api/", trusted: true },

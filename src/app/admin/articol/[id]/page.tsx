@@ -40,7 +40,7 @@ const ERRORS: Record<string, string> = {
 export default async function EditArticlePage({ params, searchParams }: PageProps<"/admin/articol/[id]">) {
   await requireAdmin();
   const id = Number((await params).id);
-  const { q, ok, e, push, fb } = await searchParams;
+  const { q, ok, e, push, fb, img } = await searchParams;
   const [a] = Number.isInteger(id) ? await getDb().select().from(articles).where(eq(articles.id, id)) : [];
   if (!a) notFound();
 
@@ -85,6 +85,7 @@ export default async function EditArticlePage({ params, searchParams }: PageProp
         </div>
       </header>
       {ok && <p className="text-sm text-teal">Salvat.</p>}
+      {img && <p className="text-sm text-teal">Poza a fost înlocuită{isDraft ? "." : " — pagina articolului și listele se reîmprospătează."}</p>}
       {typeof push === "string" && (
         <p className={`text-sm ${push.startsWith("trimisă") ? "text-teal" : "text-alert"}`}>Notificare push {push}.</p>
       )}
@@ -267,11 +268,15 @@ export default async function EditArticlePage({ params, searchParams }: PageProp
           </form>
           <section>
             <h2 className="mb-2 font-medium text-ink">Imagine</h2>
+            <p className="mb-2 text-xs text-sub">
+              Poza se poate înlocui oricând, și la articolele publicate: încarcă un fișier nou sau alege din stoc (mai jos).
+            </p>
             {a.imageUrl ? (
               <div className="flex flex-col gap-2">
                 {/* eslint-disable-next-line @next/next/no-img-element -- previzualizare admin */}
                 <img src={a.imageUrl} alt={a.imageAltText ?? ""} className="w-full rounded" />
-                {a.imageCredit && <p className="font-mono text-xs text-sub">Foto: {a.imageCredit}</p>}
+                {a.imageCredit && <p className="font-mono text-xs text-sub">{/simbol/i.test(a.imageCredit) ? a.imageCredit : `Foto: ${a.imageCredit}`}</p>}
+                {a.imageAltText && <p className="text-xs text-sub">Descriere: {a.imageAltText}</p>}
                 <form action={removeImage.bind(null, id)}>
                   <button className="text-sm text-alert underline">Scoate imaginea</button>
                 </form>
@@ -279,26 +284,31 @@ export default async function EditArticlePage({ params, searchParams }: PageProp
             ) : (
               <p className="text-sm text-alert">Fără imagine.</p>
             )}
-            <form className="mt-3 flex gap-2">
-              <input name="q" defaultValue={query} placeholder="Caută pe Magnific (în engleză)" className={input} />
-              <button className="rounded border border-line px-3 py-2 text-ink">Caută</button>
-            </form>
-            {results.length > 0 && (
-              <div className="mt-3 grid grid-cols-3 gap-2">
-                {results.map((r) => (
-                  <form key={r.id} action={replaceImage.bind(null, id, r.id)}>
-                    <button className="block w-full" title="Folosește această imagine">
-                      {/* eslint-disable-next-line @next/next/no-img-element -- miniatură Magnific */}
-                      <img src={r.preview} alt="" className="aspect-video w-full rounded object-cover hover:opacity-80" />
-                    </button>
-                  </form>
-                ))}
-              </div>
-            )}
-            {query && results.length === 0 && <p className="mt-2 text-sm text-sub">Niciun rezultat.</p>}
             <div className="mt-4">
               <UploadImage action={uploadImage.bind(null, id)} />
             </div>
+            <form className="mt-4 flex gap-2">
+              <input name="q" defaultValue={query} placeholder="Sau caută în stoc, pe Magnific (în engleză)" className={input} />
+              <button className="rounded border border-line px-3 py-2 text-ink">Caută</button>
+            </form>
+            {results.length > 0 && (
+              // un singur formular: descrierea și „simbol” se aplică pozei alese
+              <form action={replaceImage.bind(null, id)} className="mt-3 flex flex-col gap-2 text-sm">
+                <input name="alt" placeholder="Descrierea pozei (opțional; apare sub poză)" className={input} />
+                <label className="flex items-center gap-2 text-sub">
+                  <input type="checkbox" name="simbol" /> imagine simbol (se refolosește la știri pe aceeași temă)
+                </label>
+                <div className="grid grid-cols-3 gap-2">
+                  {results.map((r) => (
+                    <button key={r.id} name="resourceId" value={r.id} className="block w-full" title="Înlocuiește poza cu aceasta">
+                      {/* eslint-disable-next-line @next/next/no-img-element -- miniatură Magnific */}
+                      <img src={r.preview} alt="" className="aspect-video w-full rounded object-cover hover:opacity-80" />
+                    </button>
+                  ))}
+                </div>
+              </form>
+            )}
+            {query && results.length === 0 && <p className="mt-2 text-sm text-sub">Niciun rezultat.</p>}
           </section>
 
           <section>

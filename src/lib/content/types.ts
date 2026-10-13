@@ -34,6 +34,7 @@ export interface Article {
   updatedAt?: string; // știre pe scurt completată ulterior
   continuesId?: number; // articolul anterior din aceeași poveste
   impact?: Impact; // blocul „Ce înseamnă pentru tine”
+  guideTool?: string; // unealta „Ghid util” aleasă de pipeline (guide-rule.ts): ghid:/calc:/model:<slug>
   sources?: { name: string; url: string }[];
   archived?: boolean; // arhivă preluată de la altă redacție: rezumat + link, noindex, fără reclame
   hasRu?: boolean; // are varianta rusă (/ru/novosti/<slug>/) — doar pe pagina de articol

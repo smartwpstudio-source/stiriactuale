@@ -12,7 +12,7 @@ import { fetchArticle } from "@/lib/pipeline/fulltext";
 import { COUNTRY_NAMES, RAION_NAMES } from "@/lib/content/geo";
 import { logIn, logOut, requireAdmin } from "@/lib/admin/auth";
 import { dispatchPipeline } from "@/lib/pipeline-dispatch";
-import { setPipelineEnabled } from "@/lib/pipeline/settings";
+import { setGuideRuleMode, setPipelineEnabled } from "@/lib/pipeline/settings";
 import { deleteFromChannel } from "@/lib/telegram";
 import { deleteFromPage, lastFacebookError, postToPage } from "@/lib/facebook";
 import { articleUrl } from "@/lib/content/url";
@@ -142,15 +142,35 @@ export async function deleteArticle(id: number) {
   redirect("/admin/");
 }
 
-export async function replaceImage(id: number, resourceId: number) {
+// Sursa și descrierea pozei din formular: „imagine simbol” bate orice semnătură
+// (se refolosește apoi la știri pe aceeași temă — places.ts loadSymbolPhotos).
+function imageMeta(formData: FormData) {
+  const credit = formData.get("simbol") ? "Imagine simbol" : String(formData.get("credit") ?? "").trim().slice(0, 80) || null;
+  const alt = String(formData.get("alt") ?? "").trim().slice(0, 200) || null;
+  return { credit, alt };
+}
+
+// După înlocuirea pozei: tot site-ul (listele) și explicit pagina articolului.
+// Poza veche rămâne în Blob (nu se șterg fișiere).
+async function refreshArticle(id: number) {
+  refreshSite();
+  const [a] = await getDb().select().from(articles).where(eq(articles.id, id));
+  if (a) revalidatePath(articleUrl({ ...a, locality: a.locality ?? undefined, country: a.country ?? undefined }));
+}
+
+// Poză din stoc (Magnific), și la articolele deja publicate.
+export async function replaceImage(id: number, formData: FormData) {
   await requireAdmin();
+  const resourceId = Number(formData.get("resourceId"));
   const db = getDb();
   const [row] = await db.select({ slug: articles.slug }).from(articles).where(eq(articles.id, id));
   if (!row) redirect("/admin/");
+  if (!Number.isInteger(resourceId) || resourceId <= 0) redirect(`/admin/articol/${id}/`);
   const url = await stockToBlob(resourceId, row.slug);
-  await db.update(articles).set({ imageUrl: url, imageResourceId: resourceId, imageCredit: null, imageAltText: null }).where(eq(articles.id, id));
-  refreshSite();
-  redirect(`/admin/articol/${id}/`);
+  const { credit, alt } = imageMeta(formData);
+  await db.update(articles).set({ imageUrl: url, imageResourceId: resourceId, imageCredit: credit, imageAltText: alt }).where(eq(articles.id, id));
+  await refreshArticle(id);
+  redirect(`/admin/articol/${id}/?img=1`);
 }
 
 export async function uploadImage(id: number, formData: FormData) {
@@ -160,17 +180,16 @@ export async function uploadImage(id: number, formData: FormData) {
   const db = getDb();
   const [row] = await db.select({ slug: articles.slug }).from(articles).where(eq(articles.id, id));
   if (!row) redirect("/admin/");
-  const credit = String(formData.get("credit") ?? "").trim().slice(0, 80) || null;
+  const { credit, alt } = imageMeta(formData);
   const prefix = formData.get("ai") && !credit ? AI_IMAGE_PREFIX : "articole/";
   const blob = await put(`${prefix}${row.slug}.jpg`, file, {
     access: "public",
     contentType: file.type,
     addRandomSuffix: true,
   });
-  const alt = String(formData.get("alt") ?? "").trim().slice(0, 200) || null;
   await db.update(articles).set({ imageUrl: blob.url, imageResourceId: null, imageCredit: credit, imageAltText: alt }).where(eq(articles.id, id));
-  refreshSite();
-  redirect(`/admin/articol/${id}/`);
+  await refreshArticle(id);
+  redirect(`/admin/articol/${id}/?img=1`);
 }
 
 export async function removeImage(id: number) {
@@ -186,6 +205,13 @@ export async function removeImage(id: number) {
 export async function togglePipeline(on: boolean) {
   await requireAdmin();
   await setPipelineEnabled(on);
+  redirect("/admin/");
+}
+
+// Regula „știre cu ghid”: raport (se publică tot, se notează) / strict
+export async function setGuideRule(mode: "raport" | "strict") {
+  await requireAdmin();
+  await setGuideRuleMode(mode === "strict" ? "strict" : "raport");
   redirect("/admin/");
 }
 
