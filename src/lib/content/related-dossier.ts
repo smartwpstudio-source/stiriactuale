@@ -58,7 +58,7 @@ const RULES: [slug: string, re: RegExp][] = [
   ["posta-moldovei-servicii-tarife-urmarire-colete", /posta moldovei/],
   ["calea-ferata-din-moldova-trenuri-rute-bilete", /calea ferata (din|a) moldovei|\bcfm\b|tren\w* (de calatori )?(pe ruta |spre )?(chisinau|ungheni|balti|bucuresti|odesa|iasi|kiev)/],
   // „IS”/„APP” doar cu ghilimele sau context; privatizarea apartamentului nu intră
-  ["intreprinderile-de-stat-din-moldova", /intreprinder\w* (de stat|municipal\w*)|\bi\.?s\.? ?["„“«]|agenti\w* proprietatii publice|^(?=.*\bapp\b)(?=.*(privatiz|licitati|intreprinder|director|concurs|proprietat))|privatiz\w*\b(?! (a |al )?(apartament|locuint|cas))|deetatizar\w*|capital\w* (integral |majoritar )?de stat|metalferos|moldelectrica|moldtelecom|(?<!centrala )\btermoelectrica\b/],
+  ["intreprinderile-de-stat-din-moldova", /intreprinder\w*( \w+){0,2} (de stat|municipal\w*)|\bi\.?s\.? ?["„“«]|agenti\w* proprietatii publice|^(?=.*\bapp\b)(?=.*(privatiz|licitati|intreprinder|director|concurs|proprietat))|privatiz\w*\b(?! (a |al )?(apartament|locuint|cas))|deetatizar\w*|capital\w* (integral |majoritar )?de stat|metalferos|moldelectrica|moldtelecom|(?<!centrala )\btermoelectrica\b/],
   // educația, la final: „elev”, „școală”, „ministerul educației” apar și în știrile
   // din România, Franța etc. (NOT_ABROAD); „școala auto” e prinsă mai sus de permis
   ["bacalaureatul-2027-calendar-probe-contestatii", new RegExp(String.raw`^${NOT_ABROAD}(?=.*(bacalaureat|\bbac-?ul(ui)?\b|\bbac 20\d\d))`)],

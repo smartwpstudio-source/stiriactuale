@@ -198,6 +198,9 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     summary.candidatesClassified = scored.length;
 
     const toPublish = scored.filter((c) => c.group.manual);
+    // linkurile editorului nu se filtrează, dar primesc și ele ghidul potrivit
+    // (modul „raport” nu respinge niciodată) — 2026-10-13, știrea Moldsilva
+    for (const c of toPublish) await guideStep(c, "raport", summary).catch(() => true);
     const bySection = new Map<Section, ScoredCandidate[]>();
     for (const c of scored) {
       if (!passesSelection(c)) continue;
