@@ -14,10 +14,8 @@ export const CALENDAR_PATH = "/calendar-crestin-ortodox/";
 export const FIRST_YEAR = 2024;
 export const LAST_YEAR = 2035;
 
-export function todayChisinau(): Date {
-  const [y, m, d] = new Date().toLocaleDateString("en-CA", { timeZone: "Europe/Chisinau" }).split("-").map(Number);
-  return new Date(Date.UTC(y, m - 1, d));
-}
+import { todayChisinau } from "@/lib/schedule";
+export { todayChisinau };
 
 export async function OrthodoxCalendar({ year, style, basePath }: { year: number; style: Style; basePath: string }) {
   const feasts = yearFeasts(year, style);

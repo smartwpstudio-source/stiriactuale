@@ -46,7 +46,7 @@
 
   // Aceleași orare ca vercel.json, în UTC. Rutele chemate: cloudflare/worker.ts (CRONS).
   "triggers": {
-    "crons": ["0 * * * *", "0 3-19/2 * * *", "0 4,5,6 * * *", "0 19,20 * * *"]
+    "crons": ["0 * * * *"]
   },
 
   "observability": { "enabled": true },

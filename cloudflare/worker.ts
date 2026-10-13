@@ -21,11 +21,16 @@ type Handler = { fetch(request: Request, env: Env, ctx: Ctx): Promise<Response> 
 // Aceleași orare ca în vercel.json. Cron Triggers rulează în UTC, ca la Vercel —
 // rutele de rezumat aleg singure ora Chișinăului (iarnă/vară).
 // Cheia = expresia cron exact cum e în wrangler.jsonc ("triggers.crons").
+// Din oră în oră; fiecare rută decide singură după ora Chișinăului (src/lib/schedule.ts),
+// așa că trecerea iarnă/vară nu mută nimic. Rezumatul de dimineață înaintea știrilor.
 const CRONS: Record<string, string[]> = {
-  "0 * * * *": ["/api/cron/collect/", "/api/cron/scheduled/"],
-  "0 3-19/2 * * *": ["/api/cron/pipeline/"],
-  "0 4,5,6 * * *": ["/api/cron/digest/?tip=dimineata"],
-  "0 19,20 * * *": ["/api/cron/digest/?tip=seara"],
+  "0 * * * *": [
+    "/api/cron/digest/?tip=dimineata",
+    "/api/cron/digest/?tip=seara",
+    "/api/cron/pipeline/",
+    "/api/cron/collect/",
+    "/api/cron/scheduled/",
+  ],
 };
 
 // Cererea internă trece prin handlerul Next (nu prin rețea); gazda e cea reală,
