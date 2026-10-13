@@ -49,6 +49,8 @@ function target(segments: string[]): string | null {
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  // adresa de test (*.workers.dev) nu se indexează: ar dubla site-ul în Google
+  const staging = request.nextUrl.hostname.endsWith(".workers.dev");
 
   if (/^\/[^/]*sitemap[^/]*\.xml$/.test(pathname) && pathname !== "/sitemap.xml" && pathname !== "/news-sitemap.xml") {
     return NextResponse.redirect(new URL("/sitemap.xml", request.url), 301);
@@ -72,7 +74,9 @@ export function proxy(request: NextRequest) {
       return NextResponse.redirect(new URL(`/${fixed.join("/")}/`, request.url), 301);
     }
   }
-  return NextResponse.next();
+  const res = NextResponse.next();
+  if (staging) res.headers.set("X-Robots-Tag", "noindex, nofollow");
+  return res;
 }
 
 export const config = {
