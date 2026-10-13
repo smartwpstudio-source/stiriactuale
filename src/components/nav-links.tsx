@@ -8,7 +8,6 @@ export const NAV = [
   { href: "/national/", label: "Național" },
   { href: "/international/", label: "Lumea" },
   { href: "/diaspora/", label: "Diaspora" },
-  { href: "/analiza/", label: "Analiză" },
   { href: "/video/", label: "Video" },
   { href: "/ghiduri/", label: "Ghiduri" },
   { href: "/calculatoare/", label: "Calculatoare" },

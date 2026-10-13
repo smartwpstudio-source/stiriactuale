@@ -1,4 +1,4 @@
-import { chisinauHour, EVENING_HOUR, morningHour } from "@/lib/schedule";
+import { chisinauHour, lastRunHour, morningHour } from "@/lib/schedule";
 import { and, count, desc, eq, gte, inArray, isNotNull, isNull, or, sql } from "drizzle-orm";
 import { getDb } from "./db/client";
 import { articles, candidates, guideChecks, pipelineRuns } from "./db/schema";
@@ -41,7 +41,7 @@ const MAX_GROUPS_TO_CLASSIFY = 40;
 const PUBLISH_CONCURRENCY = 4;
 const FEED_ALERT_MIN = 3; // feed-uri căzute deodată, din 14
 // Fereastra de publicare automată, ora Chișinăului: de la mesajul de dimineață
-// (07:00 / 08:00 în zilele libere) până la 21:59; de la 22:00 pauză (src/lib/schedule.ts).
+// (07:00 / 08:00 în zilele libere) până la 21:59 (20:59 în zilele libere), apoi pauză (src/lib/schedule.ts).
 
 // Apelurile Claude consumă din limitele abonamentului Max, comune cu munca
 // editorului — plafonul e în articole, nu în bani. 30/zi, max 4 pe rulare (9
@@ -115,7 +115,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     // butonul "Publică acum" e pentru știri urgente.
     const hour = chisinauHour();
     const firstHour = morningHour();
-    const night = hour < firstHour || hour >= EVENING_HOUR || !autoOn;
+    const night = hour < firstHour || hour > lastRunHour() || !autoOn;
 
     const rows = await db
       .select()

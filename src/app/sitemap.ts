@@ -30,6 +30,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     getRecipes("ro"),
     getRecipes("ru"),
   ]);
+  const analyses = await getAnalyses();
   // hub-uri cu articole SAU cu informații utile (fără ele au noindex)
   const raionSlugs = [...new Set([...Object.keys(counts.localities), ...raioane])];
   const taraSlugs = [...new Set([...Object.keys(counts.countries), ...tari])];
@@ -46,8 +47,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: "/calculatoare/", priority: 0.7 },
     { url: "/modele-reclamatii/", priority: 0.7 },
     { url: "/impact/", priority: 0.7 },
-    { url: "/analiza/", priority: 0.7 },
-    ...(await getAnalyses()).map((a) => ({ url: analysisPath(a), priority: 0.8 })),
+    // Analiză pe pauză (2026-10-14): în sitemap doar când are analize publicate
+    ...(analyses.length ? [{ url: "/analiza/", priority: 0.7 }] : []),
+    ...analyses.map((a) => ({ url: analysisPath(a), priority: 0.8 })),
     ...Object.keys(AUTHORS).map((slug) => ({ url: authorPath(slug), priority: 0.5 })),
     { url: HISTORY_PATH, priority: 0.7 },
     ...(await historyDays()).map((d) => ({ url: dayPath(d.month, d.day), priority: 0.6 })),

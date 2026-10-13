@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { AnalysisCard } from "@/components/analysis-card";
 import { getAnalyses } from "@/lib/content/analyses";
@@ -11,6 +12,8 @@ export const metadata: Metadata = {
 
 export default async function AnalysesPage() {
   const list = await getAnalyses();
+  // secțiunea e pe pauză (2026-10-14): fără analize publicate, pagina nu există
+  if (list.length === 0) notFound();
   return (
     <div className="mx-auto w-full max-w-[860px] px-4 py-8">
       <Breadcrumb items={[{ label: "Acasă", href: "/" }, { label: "Analiză" }]} />
@@ -23,7 +26,6 @@ export default async function AnalysesPage() {
         {list.map((a) => (
           <AnalysisCard key={a.slug} a={a} />
         ))}
-        {list.length === 0 && <p className="text-sub">Prima analiză apare în curând.</p>}
       </div>
     </div>
   );
