@@ -1,3 +1,4 @@
+import { chisinauHour, EVENING_HOUR, morningHour } from "@/lib/schedule";
 import { and, count, desc, eq, gte, inArray, isNotNull, isNull, or, sql } from "drizzle-orm";
 import { getDb } from "./db/client";
 import { articles, candidates, guideChecks, pipelineRuns } from "./db/schema";
@@ -39,10 +40,8 @@ const WINDOW_HOURS = 6;
 const MAX_GROUPS_TO_CLASSIFY = 40;
 const PUBLISH_CONCURRENCY = 4;
 const FEED_ALERT_MIN = 3; // feed-uri căzute deodată, din 14
-// Fereastra de publicare automată, ora Chișinăului: 06:00-22:59 (rularea de
-// 22:00 poate întârzia puțin; după 23:00 nu mai publică).
-const PUBLISH_FROM_HOUR = 6;
-const PUBLISH_UNTIL_HOUR = 23;
+// Fereastra de publicare automată, ora Chișinăului: de la mesajul de dimineață
+// (07:00 / 08:00 în zilele libere) până la 21:59; de la 22:00 pauză (src/lib/schedule.ts).
 
 // Apelurile Claude consumă din limitele abonamentului Max, comune cu munca
 // editorului — plafonul e în articole, nu în bani. 30/zi, max 4 pe rulare (9
@@ -114,8 +113,9 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     // noapte în canal îi fac pe oameni să se dezaboneze). Dimineața, fereastra
     // de 6h prinde tot. Linkurile adăugate de editor se publică și noaptea —
     // butonul "Publică acum" e pentru știri urgente.
-    const hour = Number(new Date().toLocaleString("en-GB", { hour: "2-digit", hour12: false, timeZone: "Europe/Chisinau" }));
-    const night = hour < PUBLISH_FROM_HOUR || hour >= PUBLISH_UNTIL_HOUR || !autoOn;
+    const hour = chisinauHour();
+    const firstHour = morningHour();
+    const night = hour < firstHour || hour >= EVENING_HOUR || !autoOn;
 
     const rows = await db
       .select()
@@ -123,7 +123,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       .where(
         or(
           // prima rulare a dimineții (06:00) ia toată noaptea, de la 22:00
-          gte(candidates.publishedAt, new Date(Date.now() - (hour === PUBLISH_FROM_HOUR ? 8 : WINDOW_HOURS) * 3600_000)),
+          gte(candidates.publishedAt, new Date(Date.now() - (hour === firstHour ? hour + 2 : WINDOW_HOURS) * 3600_000)),
           and(eq(candidates.manual, true), isNull(candidates.processedAt)),
         ),
       );
@@ -154,7 +154,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
         ),
       );
     // dimineața (06:00) se strâng știrile nopții: până la 6, pentru rezumatul de la 08:00
-    const perRun = hour === PUBLISH_FROM_HOUR ? 6 : MAX_ARTICLES_PER_RUN;
+    const perRun = hour === firstHour ? 6 : MAX_ARTICLES_PER_RUN;
     const autoSlots = night ? 0 : Math.max(0, Math.min(perRun, DAILY_ARTICLE_LIMIT - today));
 
     const recent = await loadRecentFingerprints();
@@ -216,7 +216,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     }
     const auto = [...bySection].flatMap(([section, list]) =>
       // dimineața (06:00), Lumea are prioritate: noaptea Moldova doarme, știrile vin din lume
-      list.sort((a, b) => b.qualityScore - a.qualityScore).slice(0, section === "international" && hour === PUBLISH_FROM_HOUR ? 4 : SECTION_CONFIG[section].cap),
+      list.sort((a, b) => b.qualityScore - a.qualityScore).slice(0, section === "international" && hour === firstHour ? 4 : SECTION_CONFIG[section].cap),
     );
     // a doua verificare de dubluri, per știre, față de articolele din ultimele
     // 48h (recent-duplicate.ts) — locul unei dubluri îl ia următoarea știre
