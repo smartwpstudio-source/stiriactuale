@@ -31,6 +31,8 @@ const RULES: [slug: string, re: RegExp][] = [
   ["aeroportul-international-chisinau-concesionare-procese", /aeroport\w* (international )?(din )?chisinau|avia invest/],
   ["reforma-administrativ-teritoriala-raioane-primarii", /reforma administrativ|comasar\w* (a )?primarii|lichidar\w* raioan|amalgamar/],
   ["pensii-si-salarii-indexari-si-calcul", /indexar\w* (a )?pensii|pensiile (se )?indexeaza/],
+  // violența în familie și femicidul (rubrica din 2026-10-14) — înaintea escrocheriilor și a pensiilor
+  ["violenta-in-familie-in-moldova-cum-o-recunosti-unde-ceri-ajutor-ce-spune-legea", /violent\w* (in|din) famili|violent\w* domestic|violent\w* (impotriva|asupra) (femeilor|femeii|sotiei|partenerei)|femicid|ordin\w* de restrictie|ordonant\w* de protectie|(sot|sotul|sotia|sotie|concubin\w*|fost\w* (sot|partener|iubit)\w*)\b.{0,80}\b(lovit\w*|batut\w*|bataie|agresat\w*|ucis\w*|omor\w*|injunghiat\w*|amenint\w*|sechestrat\w*)|(lovit\w*|batut\w*|agresat\w*|ucis\w*|omor\w*|injunghiat\w*)\b.{0,60}\b(sotia|sotul|concubin\w*|fost\w* (sotie|partenera|iubita))/],
   // escrocheriile înaintea pensiilor: „pensionară păcălită” e despre escroci
   ["escrocheriile-in-moldova-cum-le-recunosti-si-ce-faci", /^(?!.*(electoral|alegeri|\bvot\b|furtul miliardului))(?=.*(escroc|\bfraud(a|e|at)\w*|phishing|pacalit\w*|inselat\w* de|investiti\w* false|schema de investitii|apel\w* fals|sms\w* fals))/],
   // pilonul pensiilor („pensiune” = casă de oaspeți, nu intră)
@@ -127,6 +129,7 @@ const MOLDOVA_ONLY = new Set([
   "bucataria-moldoveneasca-istorie-feluri-traditii",
   "moldova-turistica-ce-vizitezi-trasee-vinarii-manastiri",
   "escrocheriile-in-moldova-cum-le-recunosti-si-ce-faci",
+  "violenta-in-familie-in-moldova-cum-o-recunosti-unde-ceri-ajutor-ce-spune-legea",
   "banii-in-familie-buget-economii-credite-ghid-complet",
   "sezonul-de-incalzire-2026-2027",
 ]);
