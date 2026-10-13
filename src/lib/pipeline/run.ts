@@ -1,4 +1,4 @@
-import { and, count, desc, eq, gte, inArray, isNotNull, isNull, or } from "drizzle-orm";
+import { and, count, desc, eq, gte, inArray, isNotNull, isNull, or, sql } from "drizzle-orm";
 import { getDb } from "./db/client";
 import { articles, candidates, guideChecks, pipelineRuns } from "./db/schema";
 import { collectCandidates } from "./collect";
@@ -49,7 +49,7 @@ const PUBLISH_UNTIL_HOUR = 23;
 // rulări între 06 și 22), ca să rămână articole și pentru știrile de seară.
 // Consumul îl controlează editorul cu butonul Pornit/Oprit din admin.
 // Linkurile manuale nu intră în plafon: editorul a decis explicit.
-const DAILY_ARTICLE_LIMIT = 30;
+const DAILY_ARTICLE_LIMIT = 50;
 const MAX_ARTICLES_PER_RUN = 4;
 
 // Regulile vechi de selecție automată (reject de la clasificator, pragul de
@@ -145,7 +145,14 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     const [{ today }] = await db
       .select({ today: count() })
       .from(articles)
-      .where(and(gte(articles.createdAt, dayStart), isNull(articles.wpId)));
+      .where(
+        and(
+          gte(articles.createdAt, dayStart),
+          isNull(articles.wpId),
+          // linkurile editorului nu ocupă locuri din limita zilnică (2026-10-13)
+          sql`not exists (select 1 from candidates c where c.manual and jsonb_exists(${articles.sourceUrls}, c.url))`,
+        ),
+      );
     // dimineața (06:00) se strâng știrile nopții: până la 6, pentru rezumatul de la 08:00
     const perRun = hour === PUBLISH_FROM_HOUR ? 6 : MAX_ARTICLES_PER_RUN;
     const autoSlots = night ? 0 : Math.max(0, Math.min(perRun, DAILY_ARTICLE_LIMIT - today));
