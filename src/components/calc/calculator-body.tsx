@@ -8,6 +8,9 @@ import { UnemploymentCalculator } from "./unemployment";
 import { ChildcareCalculator } from "./childcare";
 import { CustomsCalculator } from "./customs";
 import { PropertyTaxCalculator } from "./property-tax";
+import { LoanCalculator } from "./loan";
+import { SchengenCalculator } from "./schengen";
+import { PortionsCalculator } from "./portions";
 import { T, calcText, noteText, type Lang, type NoteKey } from "./i18n";
 import { getBnmRates } from "@/lib/bnm";
 import { availableCalculators } from "@/lib/calculators";
@@ -38,6 +41,12 @@ export async function loadCalculator(slug: string, lang: Lang = "ro") {
     const bnm = await getBnmRates();
     body = bnm ? <CurrencyConverter rates={bnm.rates} lang={lang} /> : <p className="text-sub">{t.currency.unavailable}</p>;
     if (bnm) sources = [{ name: t.currency.source(bnm.date), url: "https://www.bnm.md/ro/content/ratele-de-schimb" }];
+  } else if (slug === "rata-credit") {
+    body = <LoanCalculator lang={lang} />;
+  } else if (slug === "regula-90-180") {
+    body = <SchengenCalculator lang={lang} />;
+  } else if (slug === "portii-eveniment") {
+    body = <PortionsCalculator lang={lang} />;
   } else if (slug === "salariu-net" && p?.salariu) {
     body = <SalaryCalculator p={p.salariu} lang={lang} />;
     sources = p.salariu.surse;
@@ -69,11 +78,13 @@ export async function loadCalculator(slug: string, lang: Lang = "ro") {
   // nota din parametri.json (tradusă, dacă traducerea e la zi) + cine stabilește suma exactă
   const key = NOTE_KEY[slug];
   const section = key && p?.[key];
+  // calculatoarele fără parametri oficiali au nota lor (fără „valorile oficiale pentru anul X”)
   const note =
-    slug === "convertor-valutar" || !p
+    t.notes.own[found.slug] ??
+    (slug === "convertor-valutar" || !p
       ? ""
       : key && section
         ? `${noteText(key, section.nota, lang)} ${t.notes[key]}`
-        : t.notes.generic(p.an, p.updated);
+        : t.notes.generic(p.an, p.updated));
   return { calc: c, body, sources, note };
 }

@@ -115,7 +115,7 @@ export async function CalculatorView({ slug, lang }: { slug: string; lang: Lang 
       {guideHref && (
         <Link href={guideHref} className="mt-6 block rounded border border-line bg-white p-4 text-ink hover:border-teal">
           <span className="block font-mono text-xs uppercase tracking-wide text-teal">{t.guide}</span>
-          <span className="mt-1 block font-medium">{t.guideText}</span>
+          <span className="mt-1 block font-medium">{t.guideTexts[r.calc.slug] ?? t.guideText}</span>
         </Link>
       )}
       {r.note && <p className="mt-6 text-sm text-sub">{r.note}</p>}

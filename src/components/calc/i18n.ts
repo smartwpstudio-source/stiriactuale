@@ -1,4 +1,4 @@
-import type { CalculatorSlug, Engine } from "@/lib/calculators";
+import type { CalculatorSlug, Engine, LoanType } from "@/lib/calculators";
 
 // Textele calculatoarelor în română și rusă (/calculatoare/, /ru/calculatoare/).
 // Un singur cod: componentele primesc `lang` și iau de aici etichetele; calculul
@@ -10,6 +10,9 @@ const LOCALE: Record<Lang, string> = { ro: "ro-MD", ru: "ru-RU" };
 
 // numerele doar la afișare: ro „1.234,56”, ru „1 234,56”
 export const num = (n: number, lang: Lang, max = 2) => n.toLocaleString(LOCALE[lang], { maximumFractionDigits: max });
+
+// "2026-10-14" -> 14.10.2026
+export const date = (iso: string, lang: Lang) => new Date(`${iso}T00:00:00Z`).toLocaleDateString(LOCALE[lang], { timeZone: "UTC" });
 
 export const money = (n: number, lang: Lang) =>
   `${n.toLocaleString(LOCALE[lang], { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${T[lang].lei}`;
@@ -109,6 +112,54 @@ const RO = {
     lux: (pct: number) => `Acciza de lux (${pct}% din valoare)`,
     total: "Total de plată la vamă",
   },
+  loan: {
+    amount: "Suma împrumutată",
+    rate: "Dobânda anuală",
+    months: "Termenul",
+    monthsUnit: "luni",
+    type: "Tipul ratelor",
+    types: { anuitate: "Rate egale (anuități)", descrescator: "Rate descrescătoare" } as Record<LoanType, string>,
+    monthly: "Rata lunară",
+    first: "Prima rată",
+    last: "Ultima rată",
+    interest: "Total dobândă",
+    total: "Total de plată",
+    year: "Anul",
+    principal: "Credit rambursat",
+    interestCol: "Dobândă",
+    remaining: "Rămas de plată",
+    invalid: "Introdu suma și termenul (cel puțin o lună).",
+  },
+  schengen: {
+    trips: "Călătoriile în spațiul Schengen (ziua intrării și a ieșirii se numără)",
+    from: "Data intrării",
+    to: "Data ieșirii",
+    add: "+ adaugă o călătorie",
+    remove: "Șterge",
+    control: "Data de control",
+    controlHint: "Implicit azi. Pentru o călătorie planificată, adaug-o în listă și pune aici ultima ei zi.",
+    window: "Perioada de 180 de zile",
+    used: "Zile de ședere în această perioadă",
+    remaining: "Zile rămase din 90",
+    over: (n: number) => `Ai depășit limita de 90 de zile cu ${n} ${n === 1 ? "zi" : "zile"}.`,
+  },
+  portions: {
+    adults: "Adulți (și copii mari)",
+    children: "Copii mici (jumătate de porție)",
+    reserve: "Porții de rezervă (pentru cei veniți neanunțați)",
+    portions: "Porții calculate",
+    items: {
+      reci: "Bucate reci (răcitură, mezeluri, brânză)",
+      salate: "Salate",
+      zeama: "Zeamă",
+      sarmale: "Sarmale mici",
+      friptura: "Friptură (carne gătită)",
+      garnitura: "Garnitură (cartofi, mămăligă)",
+      dulciuri: "Plăcinte, cozonac, prăjituri",
+      paine: "Pâine",
+    } as Record<string, string>,
+    units: { kg: "kg", l: "l", buc: "buc.", paini: "pâini" } as Record<string, string>,
+  },
   property: {
     value: "Valoarea estimată (de pe avizul de plată)",
     rate: (min: number) => `Cota primăriei (minimul legal: ${min}%)`,
@@ -142,6 +193,10 @@ const RO = {
     go: "Calculează →",
     guide: "Ghid complet",
     guideText: "Cine plătește, termene, scutiri și cum se achită →",
+    guideTexts: {
+      "rata-credit": "DAE, comisioane, graficul de rambursare și ce verifici în contract →",
+      "portii-eveniment": "Metoda de calcul, colacii de pomană și siguranța la mesele mari →",
+    } as Partial<Record<CalculatorSlug, string>>,
     sources: "Surse:",
     other: "Читать на русском",
   },
@@ -152,6 +207,15 @@ const RO = {
     crestere_copil: "Estimare orientativă; suma exactă o stabilește CNAS.",
     vamuire_auto: "Estimare orientativă; suma exactă o stabilește Serviciul Vamal.",
     impozit_imobil: "Suma exactă e pe avizul de plată.",
+    // calculatoarele fără parametri oficiali (needs: null)
+    own: {
+      "rata-credit":
+        "Calcul orientativ, doar din dobânda anuală. Costul real al creditului include și comisioanele și asigurările: compară ofertele după dobânda anuală efectivă (DAE), pe care banca trebuie să ți-o arate.",
+      "regula-90-180":
+        "Regula privește șederile de scurtă durată fără viză ale cetățenilor Moldovei cu pașaport biometric. Comisia Europeană are și un calculator oficial pentru regula 90/180. Cei care au cetățenia României sau a altui stat UE nu sunt supuși acestei reguli. Decizia de intrare o ia poliția de frontieră, la frontieră.",
+      "portii-eveniment":
+        "Repere practice ale redacției, nu norme oficiale, pentru un meniu tradițional cu toate felurile; cu mai multe feluri, porția din fiecare e mai mică. La nuntă, unde masa ține multe ore, unii oaspeți mai iau o porție din felurile calde. Carnea scade la gătit, așa că din carne crudă cumperi mai mult. Colacii de pomană se socotesc după obiceiul locului.",
+    } as Partial<Record<CalculatorSlug, string>>,
     generic: (an: number, updated: string) =>
       `Estimare orientativă, cu valorile oficiale pentru ${an} (verificate la ${updated}). Suma exactă o stabilește angajatorul sau instituția care plătește.`,
   },
@@ -243,6 +307,54 @@ const RU: Dict = {
     lux: (pct) => `Акциз на роскошь (${pct}% стоимости)`,
     total: "Итого к оплате на таможне",
   },
+  loan: {
+    amount: "Сумма кредита",
+    rate: "Годовая процентная ставка",
+    months: "Срок",
+    monthsUnit: "мес.",
+    type: "Тип платежей",
+    types: { anuitate: "Равные платежи (аннуитет)", descrescator: "Убывающие платежи" },
+    monthly: "Ежемесячный платёж",
+    first: "Первый платёж",
+    last: "Последний платёж",
+    interest: "Всего процентов",
+    total: "Всего к оплате",
+    year: "Год",
+    principal: "Погашено долга",
+    interestCol: "Проценты",
+    remaining: "Остаток долга",
+    invalid: "Укажите сумму и срок (не менее одного месяца).",
+  },
+  schengen: {
+    trips: "Поездки в Шенгенскую зону (день въезда и день выезда считаются)",
+    from: "Дата въезда",
+    to: "Дата выезда",
+    add: "+ добавить поездку",
+    remove: "Удалить",
+    control: "Дата проверки",
+    controlHint: "По умолчанию — сегодня. Для планируемой поездки добавьте её в список и укажите здесь её последний день.",
+    window: "Период 180 дней",
+    used: "Дней пребывания за этот период",
+    remaining: "Осталось дней из 90",
+    over: (n) => `Лимит в 90 дней превышен на ${n} ${ru(n, "день", "дня", "дней")}.`,
+  },
+  portions: {
+    adults: "Взрослые (и дети постарше)",
+    children: "Маленькие дети (половина порции)",
+    reserve: "Запасные порции (для пришедших без приглашения)",
+    portions: "Расчётных порций",
+    items: {
+      reci: "Холодные закуски (холодец, колбасы, брынза)",
+      salate: "Салаты",
+      zeama: "Зама",
+      sarmale: "Маленькие голубцы (сармале)",
+      friptura: "Жаркое (готовое мясо)",
+      garnitura: "Гарнир (картофель, мамалыга)",
+      dulciuri: "Плачинты, куличи, пирожные",
+      paine: "Хлеб",
+    },
+    units: { kg: "кг", l: "л", buc: "шт.", paini: "буханок" },
+  },
   property: {
     value: "Оценочная стоимость (из платёжного извещения)",
     rate: (min) => `Ставка примэрии (законный минимум: ${min}%)`,
@@ -276,6 +388,10 @@ const RU: Dict = {
     go: "Рассчитать →",
     guide: "Подробный справочник",
     guideText: "Кто платит, сроки, льготы и как оплатить →",
+    guideTexts: {
+      "rata-credit": "Эффективная ставка (DAE), комиссии, график погашения и что проверить в договоре →",
+      "portii-eveniment": "Как считать, колачи на поминки и безопасность на больших застольях →",
+    },
     sources: "Источники:",
     other: "Citește în română",
   },
@@ -286,6 +402,14 @@ const RU: Dict = {
     crestere_copil: "Ориентировочный расчёт; точную сумму устанавливает CNAS.",
     vamuire_auto: "Ориентировочный расчёт; точную сумму устанавливает Таможенная служба (Serviciul Vamal).",
     impozit_imobil: "Точная сумма указана в платёжном извещении.",
+    own: {
+      "rata-credit":
+        "Ориентировочный расчёт только по годовой процентной ставке. Реальная стоимость кредита включает также комиссии и страховки: сравнивайте предложения по эффективной годовой ставке (DAE), которую банк обязан вам показать.",
+      "regula-90-180":
+        "Правило касается краткосрочного безвизового пребывания граждан Молдовы с биометрическим паспортом. У Европейской комиссии есть и официальный калькулятор правила 90/180. На тех, у кого есть гражданство Румынии или другой страны ЕС, это правило не распространяется. Решение о въезде принимает пограничная полиция на границе.",
+      "portii-eveniment":
+        "Практические ориентиры редакции, а не официальные нормы — для традиционного меню со всеми блюдами; чем больше блюд, тем меньше порция каждого. На свадьбе, где застолье длится много часов, некоторые гости берут добавку горячего. Мясо при готовке ужаривается, поэтому сырого мяса покупайте больше. Колачи на поминки считают по местному обычаю.",
+    },
     generic: (an, updated) =>
       `Ориентировочный расчёт по официальным значениям на ${an} год (проверены ${updated}). Точную сумму устанавливает работодатель или учреждение, которое производит выплату.`,
   },
@@ -334,6 +458,18 @@ const CALC_RU: Record<CalculatorSlug, { title: string; description: string }> = 
   "taxa-drum": {
     title: "Сбор за пользование дорогами",
     description: "Сколько платить в год за автомобиль, мотоцикл, прицеп или автобус — по ставкам Налогового кодекса.",
+  },
+  "rata-credit": {
+    title: "Платёж по кредиту",
+    description: "Ежемесячный платёж, общая сумма к оплате и проценты по кредиту — равными (аннуитетными) или убывающими платежами.",
+  },
+  "regula-90-180": {
+    title: "Правило 90/180 дней в Шенгенской зоне",
+    description: "Сколько дней вы уже пробыли и сколько осталось из 90 разрешённых в любой период 180 дней — по датам поездок.",
+  },
+  "portii-eveniment": {
+    title: "Сколько порций на свадьбу, крестины или поминки",
+    description: "Сколько нужно холодных закусок, замы, голубцов, жаркого, гарнира, сладкого и хлеба — по числу гостей.",
   },
 };
 
