@@ -14,6 +14,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import legacyRedirects from "@/data/legacy-redirects.json";
 import legacyCategories from "@/data/legacy-categories.json";
+import { asciiSlug } from "@/lib/ascii-slug";
 
 const articles = legacyRedirects as Record<string, string>;
 const categories = legacyCategories as Record<string, string>;
@@ -57,6 +58,19 @@ export function proxy(request: NextRequest) {
   const newUrl = segments.length ? target(segments) : null;
   if (newUrl && newUrl !== pathname) {
     return NextResponse.redirect(new URL(newUrl, request.url), 301);
+  }
+  // după redirecturile WordPress (au și ele chei codate): slug cu litere ne-ASCII
+  // (ex. „і” chirilic scris de AI) -> adresa ASCII a articolului
+  if (/%[89a-fA-F][0-9a-fA-F]|[^\x00-\x7f]/.test(pathname)) {
+    let decoded = pathname;
+    try {
+      decoded = decodeURIComponent(pathname);
+    } catch {}
+    const parts = decoded.split("/").filter(Boolean);
+    const fixed = parts.map((p) => (/[^\x00-\x7f]/.test(p) ? asciiSlug(p) : p));
+    if (parts.length && fixed.some((p, i) => p !== parts[i]) && fixed.every(Boolean)) {
+      return NextResponse.redirect(new URL(`/${fixed.join("/")}/`, request.url), 301);
+    }
   }
   return NextResponse.next();
 }
