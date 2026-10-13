@@ -73,6 +73,7 @@ export interface ArticleFilter {
   locality?: string;
   country?: string;
   topic?: Topic;
+  kind?: string; // rubrica Util: articolele proprii (kind = "util")
   video?: boolean; // rubrica Video: articolele cu player (YouTube, Facebook, Telegram)
   q?: string;
   includeArchived?: boolean; // doar căutarea — arhiva preluată nu apare în liste
@@ -86,6 +87,7 @@ function where(f: ArticleFilter): SQL {
   if (f.locality) c.push(eq(t.locality, f.locality));
   if (f.country) c.push(eq(t.country, f.country));
   if (f.topic) c.push(sql`${t.topics} @> ${JSON.stringify([f.topic])}::jsonb`);
+  if (f.kind) c.push(eq(t.kind, f.kind));
   if (f.video) c.push(isNotNull(t.videoUrl));
   if (f.impact === true) c.push(isNotNull(t.impact));
   else if (f.impact) c.push(sql`${t.impact}->>'tip' = ${f.impact}`);

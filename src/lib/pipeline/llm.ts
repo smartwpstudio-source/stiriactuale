@@ -20,6 +20,8 @@ function claudeEnv(): Record<string, string | undefined> {
   return env;
 }
 
+const WEB_TOOLS = ["WebSearch", "WebFetch"];
+
 let totalCostUsd = 0;
 export const spentUsd = () => totalCostUsd;
 
@@ -29,13 +31,16 @@ export async function structured<T>(opts: {
   prompt: string;
   schema: Record<string, unknown>;
   maxBudgetUsd: number;
+  // căutare și citire pe internet (rubrica Util: fapte doar din surse citite)
+  web?: boolean;
 }): Promise<T> {
   for await (const m of query({
     prompt: opts.prompt,
     options: {
       model: opts.model,
       systemPrompt: opts.system,
-      tools: [],
+      tools: opts.web ? WEB_TOOLS : [],
+      ...(opts.web ? { allowedTools: WEB_TOOLS, maxTurns: 40 } : {}),
       settingSources: [],
       persistSession: false,
       cwd: os.tmpdir(), // fără CLAUDE.md-ul proiectului în context

@@ -52,7 +52,7 @@ export async function publishArticle(
   candidate: ScoredCandidate,
   generated: GeneratedArticle,
   image: ArticleImage | null,
-  kind: "stire" | "pe-scurt" | "analiza" = "stire",
+  kind: "stire" | "pe-scurt" | "analiza" | "util" = "stire",
 ): Promise<number> {
   const db = getDb();
   const sourceUrls = candidate.group.items.map((i) => i.sourceUrl).filter(Boolean);

@@ -103,6 +103,7 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
     <div className="flex flex-col gap-8">
       <header className="flex items-center justify-between">
         <h1 className="font-serif text-2xl text-ink">Admin</h1>
+        <Link href="/admin/util/" className="rounded bg-teal px-3 py-1.5 text-white">Planul Util →</Link>
         <form action={logoutAction}>
           <button className="text-sm text-sub underline">Ieșire</button>
         </form>
@@ -113,7 +114,7 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
       >
         <span className="font-medium text-ink">Știri automate:</span>
         <span className={`font-mono text-sm ${autoOn ? "text-teal" : "text-alert"}`}>
-          {autoOn ? "● PORNIT — colectare din oră în oră, publicare 06–23, max 30/zi" : "● OPRIT — nu se colectează și nu se scrie nimic automat"}
+          {autoOn ? "● PORNIT — colectare din oră în oră, publicare de la 07 (08 în zilele libere) până la 21 (20), max 50/zi" : "● OPRIT — nu se colectează și nu se scrie nimic automat"}
         </span>
         <form action={togglePipeline.bind(null, !autoOn)} className="ml-auto">
           <button className={`rounded px-4 py-2 font-medium text-white ${autoOn ? "bg-alert" : "bg-teal"}`}>

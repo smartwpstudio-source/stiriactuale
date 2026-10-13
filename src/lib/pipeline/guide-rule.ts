@@ -86,7 +86,7 @@ export function validatePick(id: string | null | undefined, ids: Set<string>, te
 // Ghidurile vin prin getGuides (fișiere / store, după platformă).
 let catalogCache: Promise<{ lines: string; ids: Set<string> }> | undefined;
 
-function loadCatalog() {
+export function loadCatalog() {
   return (catalogCache ??= (async () => {
     const [guides, params] = await Promise.all([getGuides(), getCalcParams()]);
     const rows = [

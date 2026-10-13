@@ -7,6 +7,7 @@ import { GooglePreferred } from "./google-preferred";
 
 // secțiunile din meniu care nu sunt în SECTION_LABELS
 const MORE = [
+  { href: "/util/", label: "Util" },
   { href: "/video/", label: "Video" },
   { href: "/impact/", label: "Ce te afectează" },
 ];
