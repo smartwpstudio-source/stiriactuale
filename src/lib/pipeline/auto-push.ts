@@ -43,11 +43,16 @@ const SUBJECT =
 const NOT_YET = /proiect|prima lectura|dezbater|consultar|propune|ar putea/;
 const FINAL = /intra\w* in vigoare|lectura (a doua|finala)|a doua lectura|in lectura finala/;
 
-export function shouldAutoPush(a: { pushWorthy: boolean; section: string; kind: string; title: string; leadText: string }): boolean {
-  if (!a.pushWorthy || a.section === "international" || a.kind === "pe-scurt" || a.kind === "analiza") return false;
-  const t = stripDiacritics(`${a.title} ${a.leadText}`).toLowerCase();
+// urgență / vreme periculoasă / lege sau decizie majoră adoptată — după text
+export function isMajorNews(text: string): boolean {
+  const t = stripDiacritics(text).toLowerCase();
   if (EMERGENCY.test(t)) return true;
   return ADOPTED.test(t) && SUBJECT.test(t) && (!NOT_YET.test(t) || FINAL.test(t));
+}
+
+export function shouldAutoPush(a: { pushWorthy: boolean; section: string; kind: string; title: string; leadText: string }): boolean {
+  if (!a.pushWorthy || a.section === "international" || a.kind === "pe-scurt" || a.kind === "analiza") return false;
+  return isMajorNews(`${a.title} ${a.leadText}`);
 }
 
 // După publicare, în pipeline. Erorile se loghează, nu opresc publicarea.

@@ -89,6 +89,9 @@ export const articles = pgTable("articles", {
   impact: jsonb("impact").$type<Impact>(),
   // click-uri din blocul de impact spre unelte (ghid, calculator, model)
   impactClicks: integer("impact_clicks").notNull().default(0),
+  // unealta practică pe care cititorul o folosește după știre (regula „știre
+  // cu ghid”, guide-rule.ts): „ghid:<slug>”, „calc:<slug>” sau „model:<slug>”
+  guideTool: varchar("guide_tool", { length: 300 }),
   // varianta rusă (/ru/novosti/<slug>/, src/lib/pipeline/ru-news.ts); null = netradusă
   ru: jsonb("ru").$type<RuNews>(),
   // ultima încercare de traducere (reușită sau respinsă la verificare); null =
@@ -170,6 +173,28 @@ export const pipelineRuns = pgTable("pipeline_runs", {
   costUsd: real("cost_usd").notNull().default(0),
   errorMessage: text("error_message"),
 });
+
+// Regula „știre cu ghid” (guide-rule.ts): o verificare per știre aleasă de
+// pipeline — ce unealtă s-a găsit, ce temă lipsește, ce s-ar fi respins în
+// modul „raport”. Baza secțiunii „Ghiduri care lipsesc” din /admin.
+export const guideChecks = pgTable(
+  "guide_checks",
+  {
+    id: serial("id").primaryKey(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    title: text("title").notNull(),
+    section: varchar("section", { length: 20 }).notNull(),
+    tool: varchar("tool", { length: 300 }), // null = fără ghid
+    via: varchar("via", { length: 20 }).notNull(), // dosar | calc | ai | niciunul
+    exempt: varchar("exempt", { length: 30 }), // urgenta-lege = scutită de cerința de ghid
+    topic: varchar("topic", { length: 120 }), // tema lipsă (AI), la știrile fără ghid
+    reason: text("reason"),
+    mode: varchar("mode", { length: 10 }).notNull(), // raport | strict
+    rejected: boolean("rejected").notNull().default(false), // respinsă de fapt (strict)
+    articleId: integer("article_id"),
+  },
+  (t) => [index("guide_checks_created_idx").on(t.createdAt)],
+);
 
 // Setări schimbate din /admin (ex. pipeline_enabled = "0" / "1").
 export const appSettings = pgTable("app_settings", {

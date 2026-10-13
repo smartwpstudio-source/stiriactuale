@@ -1,6 +1,6 @@
 import { and, count, desc, eq, gte, inArray, isNotNull, isNull, or } from "drizzle-orm";
 import { getDb } from "./db/client";
-import { articles, candidates, pipelineRuns } from "./db/schema";
+import { articles, candidates, guideChecks, pipelineRuns } from "./db/schema";
 import { collectCandidates } from "./collect";
 import { groupCandidates } from "./dedup";
 import { classifyGroups } from "./classify";
@@ -11,7 +11,8 @@ import { loadOfficialItems, matchOfficialPhoto } from "./official-photos";
 import { loadPlaces, loadSymbolPhotos, matchPlacePhoto } from "./places";
 import { checkRecent } from "./recent-duplicate";
 import { mediaTag } from "./media-tag";
-import { pipelineEnabled } from "./settings";
+import { guideRuleMode, pipelineEnabled } from "./settings";
+import { checkGuide, guideDecision, guideExempt, type GuideRuleMode } from "./guide-rule";
 import { toEmbedUrl, youtubeThumb } from "@/lib/video";
 import { shortVideoArticle } from "./video-article";
 import { isDuplicate, loadRecentFingerprints, loadUsedImageIds, publishArticle, updateBriefArticle } from "./publish";
@@ -37,7 +38,7 @@ const SECTION_CONFIG: Record<Section, { minScore: number; cap: number }> = {
 const WINDOW_HOURS = 6;
 const MAX_GROUPS_TO_CLASSIFY = 40;
 const PUBLISH_CONCURRENCY = 4;
-const FEED_ALERT_MIN = 3; // feed-uri căzute deodată, din 12
+const FEED_ALERT_MIN = 3; // feed-uri căzute deodată, din 14
 // Fereastra de publicare automată, ora Chișinăului: 06:00-22:59 (rularea de
 // 22:00 poate întârzia puțin; după 23:00 nu mai publică).
 const PUBLISH_FROM_HOUR = 6;
@@ -51,6 +52,13 @@ const PUBLISH_UNTIL_HOUR = 23;
 const DAILY_ARTICLE_LIMIT = 30;
 const MAX_ARTICLES_PER_RUN = 4;
 
+// Regulile vechi de selecție automată (reject de la clasificator, pragul de
+// scor al secțiunii). Regula „știre cu ghid” vine abia DUPĂ ele (guideStep).
+export function passesSelection(c: ScoredCandidate): boolean {
+  const { section, reject } = c.classification;
+  return !c.group.manual && !reject && c.qualityScore >= SECTION_CONFIG[section].minScore;
+}
+
 export interface PipelineRunSummary {
   collected: number;
   failedFeeds: string[];
@@ -63,6 +71,7 @@ export interface PipelineRunSummary {
   bySection: Record<Section, number>;
   costUsd: number; // echivalent la prețuri API — doar pentru a urmări consumul din limite
   ruTranslated: number; // știri traduse în rusă (ru-news.ts)
+  guideMissing: string[]; // știri fără ghid (regula „știre cu ghid”): în strict nepublicate, în raport doar notate
   skipped?: string;
 }
 
@@ -82,6 +91,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     bySection: { regiuni: 0, national: 0, international: 0, diaspora: 0 },
     costUsd: 0,
     ruTranslated: 0,
+    guideMissing: [],
   };
 
   try {
@@ -190,8 +200,8 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     const toPublish = scored.filter((c) => c.group.manual);
     const bySection = new Map<Section, ScoredCandidate[]>();
     for (const c of scored) {
-      const { section, reject } = c.classification;
-      if (c.group.manual || reject || c.qualityScore < SECTION_CONFIG[section].minScore) continue;
+      if (!passesSelection(c)) continue;
+      const { section } = c.classification;
       bySection.set(section, [...(bySection.get(section) ?? []), c]);
     }
     const auto = [...bySection].flatMap(([section, list]) =>
@@ -204,6 +214,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       .filter((r) => r.publishedAt.getTime() > Date.now() - 48 * 3600_000)
       .map((r) => ({ id: r.id, title: r.title, lead: r.lead }));
     let autoTaken = 0;
+    const guideMode: GuideRuleMode = await guideRuleMode().catch(() => "raport");
     for (const c of auto.sort((a, b) => b.qualityScore - a.qualityScore)) {
       if (autoTaken >= autoSlots) break;
       const v = await checkRecent(c.group, recent48);
@@ -215,6 +226,9 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
         c.classification.continuesId = v.continuesId;
         c.classification.continuesTitle = recent48.find((r) => r.id === v.continuesId)?.title;
       }
+      // regula „știre cu ghid” (guide-rule.ts): filtru ÎN PLUS, după toate
+      // regulile de mai sus; în strict, locul știrii fără ghid îl ia următoarea
+      if (!(await guideStep(c, guideMode, summary))) continue;
       toPublish.push(c);
       autoTaken++;
       // și știrile alese în aceeași rulare intră în comparație (2026-10-05:
@@ -282,7 +296,9 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
             (await findArticleImage(generated.stock_query, generated.image_prompt, generated.slug, usedImageIds, subject)));
         // (VIDEO) / (FOTO) la sfârșitul titlului: cititorul știe din listă ce găsește
         generated.titlu = mediaTag(generated.titlu, !!generated.video_url, c.group.items.some((i) => i.sourceUrl.includes("?foto=1")));
-        publishedIds.push(await publishArticle(c, generated, image, kind));
+        const articleId = await publishArticle(c, generated, image, kind);
+        publishedIds.push(articleId);
+        if (c.guide?.checkId) await db.update(guideChecks).set({ articleId }).where(eq(guideChecks.id, c.guide.checkId)).catch(() => {});
         if (c.group.manual) {
           await db.update(candidates).set({ processedAt: new Date() }).where(inArray(candidates.id, c.group.candidateIds));
         }
@@ -346,6 +362,41 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       .where(eq(pipelineRuns.id, run.id));
     throw err;
   }
+}
+
+// Pasul „știre cu ghid” pentru o știre care a trecut regulile vechi: caută
+// unealta (reguli, apoi AI), notează verificarea și spune dacă se publică.
+async function guideStep(c: ScoredCandidate, mode: GuideRuleMode, summary: PipelineRunSummary): Promise<boolean> {
+  const input = {
+    title: c.group.representativeTitle,
+    summary: c.group.items[0]?.summary.slice(0, 700) ?? "",
+    section: c.classification.section,
+    topics: c.classification.topics,
+  };
+  const exempt = guideExempt({ pushWorthy: c.classification.pushWorthy, ...input });
+  const check = await checkGuide(input);
+  const { publish, wouldReject } = guideDecision(mode, check, exempt);
+  const [row] = await getDb()
+    .insert(guideChecks)
+    .values({
+      title: input.title.slice(0, 500),
+      section: input.section,
+      tool: check.tool,
+      via: check.via,
+      exempt: exempt ? "urgenta-lege" : null,
+      topic: check.topic ?? null,
+      reason: check.reason ?? null,
+      mode,
+      rejected: !publish,
+    })
+    .returning({ id: guideChecks.id })
+    .catch((err) => (console.error(`guide_checks: ${err}`), []));
+  c.guide = { tool: check.tool, checkId: row?.id };
+  if (wouldReject) {
+    summary.guideMissing.push(`${input.title.slice(0, 80)}${check.topic ? ` [${check.topic}]` : ""}`);
+    console.log(`Fără ghid${publish ? " (raport: se publică)" : " — nepublicată"}: ${input.title.slice(0, 80)}`);
+  }
+  return publish;
 }
 
 // Lanț same_as (3 -> 1 -> 0) până la grupul rădăcină; sameAs < i garantează terminarea.

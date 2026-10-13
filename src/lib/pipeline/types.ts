@@ -36,13 +36,14 @@ export interface ClassificationResult {
   continuesId?: number; // id-ul articolului anterior din aceeași poveste (continuare)
   continuesTitle?: string; // titlul lui — continuarea trebuie să se distingă de el
   pushWorthy: boolean; // propunere de notificare push (criteriile redacției)
-  sensitive: boolean; // impact emoțional puternic / risc juridic -> draft, așteaptă aprobarea
+  sensitive: boolean; // impact emoțional puternic / risc juridic — marcaj informativ, nu oprește publicarea
 }
 
 export interface ScoredCandidate {
   group: CandidateGroup;
   classification: ClassificationResult;
   qualityScore: number;
+  guide?: { tool: string | null; checkId?: number }; // regula „știre cu ghid” (guide-rule.ts)
 }
 
 export interface GeneratedArticle {

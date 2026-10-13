@@ -176,6 +176,13 @@
       "when": 1791808934850,
       "tag": "0024_fearless_stranger",
       "breakpoints": true
+    },
+    {
+      "idx": 25,
+      "version": "7",
+      "when": 1791847261219,
+      "tag": "0025_exotic_butterfly",
+      "breakpoints": true
     }
   ]
 }

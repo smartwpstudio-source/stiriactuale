@@ -4,8 +4,9 @@ import { getDb } from "@/lib/pipeline/db/client";
 import { articles, candidates, pipelineRuns } from "@/lib/pipeline/db/schema";
 import { requireAdmin } from "@/lib/admin/auth";
 import { SECTION_LABELS } from "@/lib/content/geo";
-import { addLink, logoutAction, sendPushNow, togglePipeline } from "./actions";
-import { pipelineEnabled } from "@/lib/pipeline/settings";
+import { addLink, logoutAction, sendPushNow, setGuideRule, togglePipeline } from "./actions";
+import { guideRuleMode, pipelineEnabled } from "@/lib/pipeline/settings";
+import { loadMissingGuidesReport } from "@/lib/admin/guide-report";
 import { pushAudience } from "@/lib/push";
 import { receives } from "@/lib/push-segment";
 import { ConfirmButton } from "./confirm-button";
@@ -48,7 +49,7 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
     createdAt: articles.createdAt,
     publishedAt: articles.publishedAt,
   };
-  const [published, pending, runs, autoOn, audience] = await Promise.all([
+  const [published, pending, runs, autoOn, audience, guideMode, guideReport] = await Promise.all([
     db.select(cols).from(articles).where(eq(articles.status, "published")).orderBy(desc(articles.publishedAt)).limit(30),
     db
       .select({ id: candidates.id, title: candidates.title, url: candidates.url })
@@ -57,6 +58,8 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
     db.select().from(pipelineRuns).orderBy(desc(pipelineRuns.startedAt)).limit(9),
     pipelineEnabled(),
     pushAudience(),
+    guideRuleMode(),
+    loadMissingGuidesReport(),
   ]);
   // câți ar primi push-ul fiecărei știri (segmentare: src/lib/push-segment.ts)
   const reach = (r: (typeof published)[number]) => audience.filter((s) => receives(s, r)).length;
@@ -120,6 +123,26 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
         <p className="basis-full text-xs text-sub">
           Oprit: linkurile tale se scriu în continuare cu „Adaugă și publică acum” / „Publică acum”. La pornire se iau știrile
           din ultimele 6 ore.
+        </p>
+      </section>
+
+      <section
+        className={`flex flex-wrap items-center gap-3 rounded border px-4 py-3 ${guideMode === "strict" ? "border-alert bg-white" : "border-line bg-white"}`}
+      >
+        <span className="font-medium text-ink">Regula „știre cu ghid”:</span>
+        <span className={`font-mono text-sm ${guideMode === "strict" ? "text-alert" : "text-teal"}`}>
+          {guideMode === "strict"
+            ? "● STRICT — știrile fără ghid (și fără urgență/lege majoră) nu se publică"
+            : "● RAPORT — se publică tot, se notează ce s-ar fi respins"}
+        </span>
+        <form action={setGuideRule.bind(null, guideMode === "strict" ? "raport" : "strict")} className="ml-auto">
+          <button className={`rounded px-4 py-2 font-medium text-white ${guideMode === "strict" ? "bg-teal" : "bg-alert"}`}>
+            {guideMode === "strict" ? "Treci pe raport" : "Treci pe strict"}
+          </button>
+        </form>
+        <p className="basis-full text-xs text-sub">
+          Filtru în plus, după toate regulile de selecție. Linkurile tale nu trec prin el; urgențele, vremea periculoasă și legile
+          majore se publică și fără ghid.
         </p>
       </section>
 
@@ -204,6 +227,47 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
           {bySegment("tara")}
         </p>
         {list(published, (r) => r.publishedAt)}
+      </section>
+
+      <section>
+        <h2 className="mb-2 font-medium text-ink">Ghiduri care lipsesc (ultimele 7 zile)</h2>
+        <table className="mb-3 w-full rounded border border-line bg-white text-sm">
+          <thead className="text-left font-mono text-xs text-sub">
+            <tr>
+              <th className="px-3 py-2">Ziua</th>
+              <th className="px-3 py-2">Publicate (pipeline)</th>
+              <th className="px-3 py-2">Verificate</th>
+              <th className="px-3 py-2">Fără ghid</th>
+              <th className="px-3 py-2">Respinse (strict)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {guideReport.days.map((d) => (
+              <tr key={d.day} className="border-t border-line">
+                <td className="px-3 py-2 font-mono text-xs">{d.day}</td>
+                <td className="px-3 py-2">{d.published}</td>
+                <td className="px-3 py-2">{d.checked}</td>
+                <td className="px-3 py-2">{d.withoutGuide}</td>
+                <td className="px-3 py-2">{d.rejected}</td>
+              </tr>
+            ))}
+            {guideReport.days.length === 0 && (
+              <tr>
+                <td colSpan={5} className="px-3 py-2 text-sub">Nicio verificare încă.</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+        <ul className="divide-y divide-line rounded border border-line bg-white text-sm">
+          {guideReport.topics.map((tp) => (
+            <li key={tp.topic} className="px-3 py-2">
+              <span className="font-medium text-ink">{tp.topic}</span>{" "}
+              <span className="font-mono text-xs text-sub">— {tp.count} {tp.count === 1 ? "știre" : "știri"}</span>
+              <span className="block text-xs text-sub">{tp.examples.join(" · ")}</span>
+            </li>
+          ))}
+          {guideReport.topics.length === 0 && <li className="px-3 py-2 text-sub">Nicio temă lipsă.</li>}
+        </ul>
       </section>
 
       <section>

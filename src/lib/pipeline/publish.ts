@@ -92,6 +92,7 @@ export async function publishArticle(
         kind,
         continuesId: candidate.classification.continuesId,
         impact: (generated.impact as Impact | undefined) ?? null,
+        guideTool: candidate.guide?.tool ?? null,
         postUrl: candidate.group.postUrl,
         status: "published",
       })
