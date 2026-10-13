@@ -183,6 +183,13 @@
       "when": 1791847261219,
       "tag": "0025_exotic_butterfly",
       "breakpoints": true
+    },
+    {
+      "idx": 26,
+      "version": "7",
+      "when": 1791931610844,
+      "tag": "0026_material_mister_sinister",
+      "breakpoints": true
     }
   ]
 }

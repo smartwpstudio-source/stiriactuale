@@ -230,3 +230,25 @@ export const recipeRatings = pgTable(
     check("recipe_ratings_stars", sql`${t.stars} between 1 and 5`),
   ],
 );
+
+// Planul rubricii „Util” (src/lib/pipeline/util.ts): 2-3 articole proprii pe zi —
+// evenimentele săptămânii, anotimpul, calculatoarele și ghidurile în context,
+// rețete, sfântul zilei. Propuse de AI lunea, aprobate de editor în /admin,
+// scrise de pipeline în ziua lor.
+export const utilPlan = pgTable(
+  "util_plan",
+  {
+    id: serial("id").primaryKey(),
+    day: varchar("day", { length: 10 }).notNull(), // AAAA-LL-ZZ, ora Chișinăului
+    type: varchar("type", { length: 20 }).notNull(), // eveniment | sezon | unealta | reteta | sfant
+    topic: text("topic").notNull(), // titlul de lucru
+    angle: text("angle").notNull(), // ce acoperă articolul, punct cu punct
+    tools: jsonb("tools").$type<string[]>().notNull().default([]), // „ghid:<slug>”, „calc:<slug>”
+    locality: varchar("locality", { length: 100 }), // raionul, la evenimentele locale
+    status: varchar("status", { length: 20 }).notNull().default("propus"), // propus | aprobat | respins | publicat | esuat
+    articleId: integer("article_id"),
+    note: text("note"), // motivul eșecului
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index("util_plan_day_idx").on(t.day)],
+);

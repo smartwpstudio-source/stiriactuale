@@ -6,12 +6,15 @@ import path from "node:path";
 config({ path: path.join(import.meta.dirname, "..", "..", ".env.local"), quiet: true });
 
 import { runPipeline } from "../../src/lib/pipeline/run";
+import { runUtil } from "../../src/lib/pipeline/util";
 import { requestRevalidate } from "../../src/lib/revalidate";
 
 const since = new Date().toISOString();
 runPipeline()
   .then(async (summary) => {
     console.log(JSON.stringify(summary, null, 2));
+    // rubrica Util (util.ts): planul săptămânii și articolul orei; o eroare nu atinge știrile
+    for (const line of await runUtil().catch((e) => [`Util: ${e}`])) console.log(line);
     // paginile nu se mai refac după ceas: site-ul arată acum știrile noi
     console.log((await requestRevalidate({ since })) ? "site reîmprospătat" : "reîmprospătarea site-ului a eșuat (se reface în max. o oră)");
     process.exit(0);

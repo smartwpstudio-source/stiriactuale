@@ -94,6 +94,18 @@ export function videoHub(): Hub {
   };
 }
 
+// Rubrica Util (2026-10-14): articolele proprii, practice — evenimentele săptămânii,
+// anotimpul, calculatoarele și ghidurile în context (src/lib/pipeline/util.ts).
+export function utilHub(): Hub {
+  return {
+    title: "Util",
+    description: "Ce faci concret: ghiduri scurte pentru săptămâna aceasta în Moldova — sărbători, termene, anotimp, calculatoare și sfaturi practice.",
+    basePath: "/util/",
+    crumbs: [home, { label: "Util" }],
+    filter: { kind: "util" },
+  };
+}
+
 // /pagina/1/ nu există (pagina 1 e basePath) — orice altceva decât 2..N -> 404.
 export function parsePage(n: string): number | null {
   const page = Number(n);
