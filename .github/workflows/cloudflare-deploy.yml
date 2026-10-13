@@ -48,7 +48,7 @@ jobs:
           NEXT_PUBLIC_ADSENSE_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_ADSENSE_CLIENT_ID }}
           NEXT_TELEMETRY_DISABLED: "1"
 
-      - name: Mărimea worker-ului (limita Workers Paid: 10 MiB comprimat)
+      - name: "Mărimea worker-ului (limita Workers Paid, 10 MiB comprimat)"
         run: npx wrangler deploy --dry-run --outdir .wrangler/dist | tail -5
 
       # deploy = populează cache-ul R2 cu paginile pre-randate + încarcă worker-ul
