@@ -122,7 +122,7 @@ export async function aiPick(c: { title: string; summary: string }): Promise<Gui
       },
       required: ["guide", "reason"],
     },
-    maxBudgetUsd: 0.1,
+    maxBudgetUsd: 0.4, // catalogul are ~20k tokeni: 0,1 $ nu ajungea (2026-10-13)
   });
   const tool = validatePick(r.guide, ids, `${c.title} ${c.summary}`);
   return {
