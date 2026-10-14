@@ -56,7 +56,7 @@ export function getDb(): Db {
     // max > 1: etapa de publicare a pipeline-ului rulează cu concurență
     // (vezi run.ts) — un singur connection ar serializa scrierile în DB și
     // ar anula o parte din câștigul de timp obținut prin paralelizare.
-    const client = postgres(connectionString(), { max: 6 });
+    const client = postgres(connectionString(), { max: 4 });
     cachedDb = drizzlePostgres(client, { schema });
   }
   return cachedDb;
