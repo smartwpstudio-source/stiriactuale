@@ -30,6 +30,9 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      # binding-ul HYPERDRIVE (baza Supabase): la build/populare wrangler cere o adresă directă
+      CLOUDFLARE_HYPERDRIVE_LOCAL_CONNECTION_STRING_HYPERDRIVE: ${{ secrets.DATABASE_URL }}
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
