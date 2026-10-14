@@ -24,6 +24,8 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "*.public.blob.vercel-storage.com" },
       // graficele proprii (/grafic/: cod galben, alertă 112, escrocherie)
       { protocol: "https", hostname: "stiriactuale.info", pathname: "/grafic/**" },
+      // ilustrațiile-simbol desenate (public/simbol/, content/locuri/simbol.json)
+      { protocol: "https", hostname: "stiriactuale.info", pathname: "/simbol/**" },
       // capturile video-urilor YouTube din surse (src/lib/video.ts)
       { protocol: "https", hostname: "i.ytimg.com", pathname: "/vi/**" },
     ],

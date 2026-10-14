@@ -6,6 +6,7 @@ import { OPUS_MODEL, structured } from "./llm";
 import { SCHEMA } from "./generate";
 import { loadCatalog } from "./guide-rule";
 import { findArticleImage } from "./image";
+import { loadPlaces, loadSymbolPhotos, matchPlacePhoto } from "./places";
 import { loadUsedImageIds, publishArticle } from "./publish";
 import type { GeneratedArticle, ScoredCandidate } from "./types";
 import { pipelineEnabled } from "./settings";
@@ -247,7 +248,13 @@ async function writeItem(item: Row): Promise<number> {
   gen.corp_html = keepToolLinks(gen.corp_html, links);
   if (!/<a href=/.test(gen.corp_html)) throw new Error("fără link spre unealta site-ului");
 
-  const image = await findArticleImage(gen.stock_query, gen.image_prompt, gen.slug, await loadUsedImageIds(), `${gen.titlu}. ${gen.lead}`);
+  // ilustrația-simbol pe temă (rotită), apoi stocul / AI-ul — ca la știri
+  const subject = `${gen.titlu}. ${gen.lead}`;
+  const recent = (await getDb().select({ url: articles.imageUrl }).from(articles).orderBy(desc(articles.publishedAt)).limit(80)).flatMap((r) => (r.url ? [r.url] : []));
+  const place = await matchPlacePhoto(subject, [...loadPlaces(), ...(await loadSymbolPhotos().catch(() => []))], item.locality ?? undefined, recent);
+  const image = place
+    ? { url: place.url, resourceId: null, credit: place.credit, alt: place.alt }
+    : await findArticleImage(gen.stock_query, gen.image_prompt, gen.slug, await loadUsedImageIds(), subject);
   const now = new Date();
   const candidate: ScoredCandidate = {
     group: {

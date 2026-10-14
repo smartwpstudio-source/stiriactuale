@@ -1,0 +1,73 @@
+name: Mutarea bazei pe Supabase
+
+# Mutarea bazei de date de pe Neon (limita gratuită de ore de calcul) pe Supabase
+# Free (2026-10-14). Doar manual: Actions -> „Mutarea bazei pe Supabase” -> Run workflow.
+# Secretele: DATABASE_URL (Neon, sursa) și SUPABASE_DATABASE_URL (Session pooler,
+# destinația). Adresele nu apar în loguri (GitHub le maschează).
+#   pas = copiere  -> structura (migrațiile drizzle) + datele, apoi numărătoarea pe tabele
+#   pas = hyperdrive -> configurația Hyperdrive pentru worker (id-ul apare în log)
+on:
+  workflow_dispatch:
+    inputs:
+      pas:
+        description: "copiere | hyperdrive"
+        type: choice
+        options: [copiere, hyperdrive]
+        default: copiere
+
+jobs:
+  move:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+
+      - name: Clientul PostgreSQL 18 (ca serverul Neon)
+        if: ${{ inputs.pas == 'copiere' }}
+        run: |
+          sudo install -d /usr/share/postgresql-common/pgdg
+          sudo curl -fsSo /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc https://www.postgresql.org/media/keys/ACCC4CF8.asc
+          echo "deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list
+          sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client-18
+          /usr/lib/postgresql/18/bin/psql --version
+
+      - name: Copierea
+        if: ${{ inputs.pas == 'copiere' }}
+        env:
+          SRC: ${{ secrets.DATABASE_URL }}
+          DST: ${{ secrets.SUPABASE_DATABASE_URL }}
+        run: |
+          set -euo pipefail
+          PG=/usr/lib/postgresql/18/bin
+          [ -n "$DST" ] || { echo "lipsește secretul SUPABASE_DATABASE_URL"; exit 1; }
+          case "$SRC" in *neon.tech*) ;; *) echo "DATABASE_URL nu mai e Neon — copierea s-a făcut deja?"; exit 1;; esac
+          # structura: aceleași migrații ca la Neon (creează și extensia unaccent)
+          DATABASE_URL="$DST" npx drizzle-kit migrate
+          # o nouă rulare golește întâi tabelele (copierea finală, la comutare)
+          TABLES=$($PG/psql "$DST" -Atc "select string_agg(format('%I', tablename), ', ') from pg_tables where schemaname = 'public'")
+          $PG/psql "$DST" -v ON_ERROR_STOP=1 -qc "truncate $TABLES restart identity"
+          # datele (și contoarele id-urilor), fără setările pe care serverul nu le are
+          $PG/pg_dump "$SRC" --data-only --schema=public --no-owner --no-privileges \
+            | sed '/^SET transaction_timeout/d' \
+            | $PG/psql "$DST" -v ON_ERROR_STOP=1 -q
+          echo "tabel | Neon | Supabase"
+          for t in $($PG/psql "$SRC" -Atc "select tablename from pg_tables where schemaname = 'public' order by 1"); do
+            a=$($PG/psql "$SRC" -Atc "select count(*) from public.\"$t\"")
+            b=$($PG/psql "$DST" -Atc "select count(*) from public.\"$t\"")
+            echo "$t | $a | $b"; [ "$a" = "$b" ] || { echo "DIFERENȚĂ la $t"; exit 1; }
+          done
+          echo "copiere: OK"
+
+      - name: Hyperdrive
+        if: ${{ inputs.pas == 'hyperdrive' }}
+        env:
+          DST: ${{ secrets.SUPABASE_DATABASE_URL }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        # fără cache de interogări: admin-ul și pipeline-ul văd imediat ce s-a scris
+        run: npx wrangler hyperdrive create stiriactuale-db --connection-string="$DST" --caching-disabled
