@@ -14,3 +14,18 @@ for (const [k, v] of [["DATABASE_URL", process.env.A], ["SUPABASE_DATABASE_URL",
   }
 }
 console.log("aceeasi adresa:", process.env.A === process.env.B);
+
+// conexiunea prin Transaction pooler (portul 6543), ca pipeline-ul și build-ul
+if (process.env.A) {
+  const { default: postgres } = await import("postgres");
+  const u = new URL(process.env.A);
+  if (u.hostname.endsWith(".pooler.supabase.com")) u.port = "6543";
+  const sql = postgres(u.toString(), { max: 2, prepare: false });
+  try {
+    const [r] = await sql`select current_schema() as schema, (select count(*) from articles)::int as articole`;
+    console.log("transaction pooler:", r.schema, r.articole, "articole");
+  } catch (e) {
+    console.log("transaction pooler EROARE:", e.message);
+  }
+  await sql.end();
+}
