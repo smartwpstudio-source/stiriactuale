@@ -14,6 +14,8 @@ export async function dispatchPipeline(): Promise<{ ok: boolean; status: number 
       Authorization: `Bearer ${token}`,
       Accept: "application/vnd.github+json",
       "X-GitHub-Api-Version": "2022-11-28",
+      // obligatoriu la GitHub (403 fără el); pe Workers fetch nu-l pune singur (2026-10-14)
+      "User-Agent": "stiriactuale-cron",
     },
     body: JSON.stringify({ ref: "master" }),
     signal: AbortSignal.timeout(15_000),
