@@ -98,6 +98,5 @@ jobs:
           CRON_SECRET: ${{ secrets.CRON_SECRET }}
         run: |
           for p in "/api/cron/pipeline/" "/api/cron/digest/?tip=dimineata" "/api/cron/collect/"; do
-            echo "== $p"; curl -s -m 60 -w "  [HTTP %{http_code}]
-" -H "authorization: Bearer $CRON_SECRET" "https://stiriactuale.info$p" | head -c 400; echo
+            echo "== $p"; curl -s -m 60 -w "  [HTTP %{http_code}]" -H "authorization: Bearer $CRON_SECRET" "https://stiriactuale.info$p" | head -c 400; echo
           done
