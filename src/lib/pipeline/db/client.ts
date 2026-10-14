@@ -56,8 +56,20 @@ export function getDb(): Db {
     // max > 1: etapa de publicare a pipeline-ului rulează cu concurență
     // (vezi run.ts) — un singur connection ar serializa scrierile în DB și
     // ar anula o parte din câștigul de timp obținut prin paralelizare.
-    const client = postgres(connectionString(), { max: 4 });
+    const client = postgres(...nodeConnection(connectionString()));
     cachedDb = drizzlePostgres(client, { schema });
   }
   return cachedDb;
+}
+
+// Supabase: Node (pipeline, build) prin Transaction pooler (portul 6543, sute de
+// clienți), nu prin Session pooler (15 clienți în total, împărțiți cu Hyperdrive).
+// Același secret DATABASE_URL (portul 5432); în modul tranzacție fără prepared statements.
+function nodeConnection(url: string): [string, postgres.Options<Record<string, postgres.PostgresType>>] {
+  const u = new URL(url);
+  if (u.hostname.endsWith(".pooler.supabase.com") && u.port === "5432") {
+    u.port = "6543";
+    return [u.toString(), { max: 4, prepare: false }];
+  }
+  return [url, { max: 4 }];
 }
