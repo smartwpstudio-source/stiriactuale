@@ -12,7 +12,7 @@ on:
       pas:
         description: "copiere | hyperdrive | verificare"
         type: choice
-        options: [copiere, hyperdrive, verificare]
+        options: [copiere, hyperdrive, verificare, cron]
         default: copiere
 
 jobs:
@@ -90,3 +90,14 @@ jobs:
           A: ${{ secrets.DATABASE_URL }}
           B: ${{ secrets.SUPABASE_DATABASE_URL }}
         run: node scripts/db-url-check.mjs
+
+      # apelează rutele cron ale site-ului ca programarea Cloudflare (diagnostic)
+      - name: Rutele cron
+        if: ${{ inputs.pas == 'cron' }}
+        env:
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          for p in "/api/cron/pipeline/" "/api/cron/digest/?tip=dimineata" "/api/cron/collect/"; do
+            echo "== $p"; curl -s -m 60 -w "  [HTTP %{http_code}]
+" -H "authorization: Bearer $CRON_SECRET" "https://stiriactuale.info$p" | head -c 400; echo
+          done
