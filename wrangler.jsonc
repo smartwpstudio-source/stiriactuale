@@ -38,6 +38,9 @@
   // fără binding imaginile se servesc neoptimizate.
   "images": { "binding": "IMAGES" },
 
+  // baza Supabase (schema stiriactuale) prin Hyperdrive, fără cache de interogări (2026-10-14)
+  "hyperdrive": [{ "binding": "HYPERDRIVE", "id": "3ef3a98a5cff4ca7a051e8b6d4164ae3" }],
+
   // domeniul live (comutarea de pe Vercel, 2026-10-13); www -> 301 în cloudflare/worker.ts
   "routes": [
     { "pattern": "stiriactuale.info", "custom_domain": true },
