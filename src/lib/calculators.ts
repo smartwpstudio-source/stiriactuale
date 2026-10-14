@@ -284,10 +284,21 @@ export const PORTION_NORMS = [
   { id: "garnitura", min: 0.15, max: 0.15, unit: "kg" },
   { id: "dulciuri", min: 2, max: 3, unit: "buc" },
   { id: "paine", min: 0.08, max: 0.1, unit: "paini" }, // 2–3 felii; 8–10 pâini la 100 de oaspeți
+  // băuturile (ghidul, 2026-10-14): vinul doar pentru adulți, sucul și apa pentru toți (copiii — porție întreagă)
+  { id: "vin", min: 0.3, max: 0.5, unit: "l", base: "adulti" },
+  { id: "suc", min: 0.5, max: 0.5, unit: "l", base: "toti" },
+  { id: "apa", min: 0.5, max: 0.5, unit: "l", base: "toti" },
 ] as const;
 
 export function eventPortions(adults: number, children: number, reserve: number) {
   const portions = Math.ceil(adults + children / 2 + reserve);
-  const amount = (x: number, unit: string) => (unit === "buc" || unit === "paini" ? Math.ceil(portions * x - 1e-9) : Math.round(portions * x * 10) / 10);
-  return { portions, items: PORTION_NORMS.map((p) => ({ ...p, from: amount(p.min, p.unit), to: amount(p.max, p.unit) })) };
+  const people = { adulti: adults + reserve, toti: adults + children + reserve };
+  const amount = (n: number, x: number, unit: string) => (unit === "buc" || unit === "paini" ? Math.ceil(n * x - 1e-9) : Math.round(n * x * 10) / 10);
+  return {
+    portions,
+    items: PORTION_NORMS.map((p) => {
+      const n = "base" in p ? people[p.base] : portions;
+      return { ...p, from: amount(n, p.min, p.unit), to: amount(n, p.max, p.unit) };
+    }),
+  };
 }

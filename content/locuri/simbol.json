@@ -1,0 +1,595 @@
+[
+  {
+    "id": "ilustratie-factura-gaz",
+    "name": "TEMĂ (ilustrație): Factura la gaz: facturi, tarife la gaz, consum, plăți, ANRE, Moldovagaz",
+    "keywords": "factura gaz, gaze naturale, tarif gaz, pret gaz, Moldovagaz, Energocom, ANRE, consum gaz, plata gaz, facturi, gaz metan",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/factura-gaz-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: factură la gaze naturale, flacără și calculator"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/factura-gaz-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: factură la gaze naturale, flacără și calculator"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/factura-gaz-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: factură la gaze naturale, flacără și calculator"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-factura-curent",
+    "name": "TEMĂ (ilustrație): Factura la energie electrică: tarife la lumină, kWh, consum, plăți",
+    "keywords": "factura curent, energie electrica, lumina, tarif energie, kWh, Premier Energy, FEE Nord, ANRE, contor, pret curent, electricitate",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/factura-curent-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: factură la energie electrică, fulger și contor"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/factura-curent-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: factură la energie electrică, fulger și contor"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/factura-curent-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: factură la energie electrică, fulger și contor"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-caldura-termoficare",
+    "name": "TEMĂ (ilustrație): Căldură și termoficare: agent termic, Gcal, sezonul de încălzire, facturi la căldură",
+    "keywords": "caldura, termoficare, agent termic, Gcal, Termoelectrica, incalzire, calorifer, sezon de incalzire, factura caldura, apa calda",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/caldura-termoficare-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: calorifer cald, termometru și factură la energie termică"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/caldura-termoficare-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: calorifer cald, termometru și factură la energie termică"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/caldura-termoficare-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: calorifer cald, termometru și factură la energie termică"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-pensii-salarii",
+    "name": "TEMĂ (ilustrație): Pensii, salarii și bani: indexare, salariu minim, indemnizații, plăți sociale",
+    "keywords": "pensii, salarii, salariu minim, indexare pensii, CNAS, indemnizatii, ajutor social, compensatii, bani, lei, venituri, plati sociale",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/pensii-salarii-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: portofel cu bancnote, monede și grafic în creștere"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/pensii-salarii-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: portofel cu bancnote, monede și grafic în creștere"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/pensii-salarii-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: portofel cu bancnote, monede și grafic în creștere"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-preturi-scumpiri",
+    "name": "TEMĂ (ilustrație): Prețuri și scumpiri: inflație, coșul de consum, prețuri la alimente și produse",
+    "keywords": "preturi, scumpiri, inflatie, cos de consum, alimente, magazin, pret, scumpire, ieftiniri, BNS, produse, cumparaturi",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/preturi-scumpiri-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: coș de cumpărături, etichetă de preț și săgeată în sus"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/preturi-scumpiri-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: coș de cumpărături, etichetă de preț și săgeată în sus"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/preturi-scumpiri-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: coș de cumpărături, etichetă de preț și săgeată în sus"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-urgenta-112",
+    "name": "TEMĂ (ilustrație): Urgențe și 112: apeluri de urgență, intervenții, salvatori, ambulanță",
+    "keywords": "urgenta, 112, apel de urgenta, interventie, salvatori, IGSU, ambulanta, pompieri, serviciul 112, situatie de urgenta",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/urgenta-112-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: telefon cu numărul 112 și scut de protecție"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/urgenta-112-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: telefon cu numărul 112 și scut de protecție"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/urgenta-112-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: telefon cu numărul 112 și scut de protecție"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-politia",
+    "name": "TEMĂ (ilustrație): Poliția: polițiști, ordine publică, IGP, controale, patrulare",
+    "keywords": "politia, politisti, IGP, ordine publica, patrulare, inspectoratul de politie, control, patrula, politie",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/politia-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: chipiu de poliție și scut cu stea"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/politia-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: chipiu de poliție și scut cu stea"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/politia-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: chipiu de poliție și scut cu stea"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-masina-politiei",
+    "name": "TEMĂ (ilustrație): Mașina poliției: patrulă, girofar, intervenție a poliției, filtre în trafic",
+    "keywords": "masina politiei, girofar, patrula, echipaj de politie, interventie, politia de patrulare, INP, filtru, control in trafic, politie rutiera",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/masina-politiei-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: mașină de poliție cu girofar aprins"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/masina-politiei-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: mașină de poliție cu girofar aprins"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/masina-politiei-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: mașină de poliție cu girofar aprins"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-accident-rutier",
+    "name": "TEMĂ (ilustrație): Accident rutier: tamponări, coliziuni, accidente în trafic, siguranță rutieră",
+    "keywords": "accident, accident rutier, tamponare, coliziune, impact, accident grav, trafic, politia de patrulare, sofer, masina, drum, carambol",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/accident-rutier-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: accident rutier cu mașini avariate și triunghi reflectorizant"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/accident-rutier-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: accident rutier cu mașini avariate și triunghi reflectorizant"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/accident-rutier-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: accident rutier cu mașini avariate și triunghi reflectorizant"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/accident-rutier-4.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: accident rutier cu mașini avariate și triunghi reflectorizant"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/accident-rutier-5.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: accident rutier cu mașini avariate și triunghi reflectorizant"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/accident-rutier-6.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: accident rutier cu mașini avariate și triunghi reflectorizant"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-crima-ancheta",
+    "name": "TEMĂ (ilustrație): Crimă și anchetă: infracțiuni, cercetare penală, locul faptei, investigații",
+    "keywords": "crima, omor, ancheta, investigatie, dosar penal, cercetare penala, locul faptei, infractiune, criminalisti, politia, urmarire penala, suspect",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/crima-ancheta-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: bandă de poliție, marcaje numerotate pentru probe și lupă"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/crima-ancheta-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: bandă de poliție, marcaje numerotate pentru probe și lupă"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/crima-ancheta-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: bandă de poliție, marcaje numerotate pentru probe și lupă"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-arest",
+    "name": "TEMĂ (ilustrație): Arest și detenție: reținere, arest preventiv, condamnare, închisoare, penitenciar",
+    "keywords": "arest, retinut, arestat, arest preventiv, condamnat, inchisoare, penitenciar, detentie, catuse, gratii, pedeapsa, condamnare",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/arest-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: cătușe în fața unei ferestre cu gratii"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/arest-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: cătușe în fața unei ferestre cu gratii"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/arest-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: cătușe în fața unei ferestre cu gratii"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-perchezitii",
+    "name": "TEMĂ (ilustrație): Percheziții și descinderi: mascați, CNA, procuratura, ridicare de documente",
+    "keywords": "perchezitii, perchezitie, descinderi, mascati, CNA, procuratura, PCCOCS, ridicare de documente, probe, ofiteri, ancheta, coruptie",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/perchezitii-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: siluete de ofițeri văzuți din spate și cutii cu documente ridicate"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/perchezitii-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: siluete de ofițeri văzuți din spate și cutii cu documente ridicate"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/perchezitii-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: siluete de ofițeri văzuți din spate și cutii cu documente ridicate"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-escrocherii",
+    "name": "TEMĂ (ilustrație): Escrocherii și fraude: apeluri false, phishing, carduri, înșelătorii online",
+    "keywords": "escrocherie, escroci, frauda, inselatorie, phishing, apel fals, card bancar, date bancare, SMS fals, inselaciune, online, teapa",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/escrocherii-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: telefon cu avertizare, card bancar prins în cârlig și lacăt"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/escrocherii-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: telefon cu avertizare, card bancar prins în cârlig și lacăt"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/escrocherii-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: telefon cu avertizare, card bancar prins în cârlig și lacăt"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-cod-galben",
+    "name": "TEMĂ (ilustrație): Cod galben de vreme rea: ploi, vânt, caniculă, avertizări meteo",
+    "keywords": "cod galben, avertizare meteo, vreme rea, ploi, averse, vant, meteo, Serviciul Hidrometeorologic, prognoza, instabilitate atmosferica",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/cod-galben-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: nor cu ploaie, termometru și semn de avertizare cod galben"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/cod-galben-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: nor cu ploaie, termometru și semn de avertizare cod galben"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/cod-galben-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: nor cu ploaie, termometru și semn de avertizare cod galben"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-cod-portocaliu",
+    "name": "TEMĂ (ilustrație): Cod portocaliu: furtuni, vânt puternic, vijelii, fenomene meteo periculoase",
+    "keywords": "cod portocaliu, furtuna, vant puternic, vijelie, grindina, fenomene periculoase, avertizare meteo, meteo, rafale, descarcari electrice",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/cod-portocaliu-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: nor de furtună cu fulger, vânt și semn de avertizare portocaliu"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/cod-portocaliu-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: nor de furtună cu fulger, vânt și semn de avertizare portocaliu"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/cod-portocaliu-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: nor de furtună cu fulger, vânt și semn de avertizare portocaliu"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-ger-polei",
+    "name": "TEMĂ (ilustrație): Ger și polei: temperaturi negative, drumuri înghețate, ninsori, frig",
+    "keywords": "ger, polei, inghet, temperaturi negative, frig, ninsoare, zapada, drum inghetat, iarna, viscol, lapovita",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/ger-polei-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: fulg de zăpadă, termometru sub zero și drum cu gheață"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/ger-polei-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: fulg de zăpadă, termometru sub zero și drum cu gheață"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/ger-polei-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: fulg de zăpadă, termometru sub zero și drum cu gheață"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-canicula",
+    "name": "TEMĂ (ilustrație): Caniculă și căldură extremă: temperaturi ridicate, arșiță, cod de caniculă",
+    "keywords": "canicula, caldura, arsita, temperaturi ridicate, vara, soare, cod rosu canicula, hidratare, val de caldura, seceta",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/canicula-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: soare puternic, termometru ridicat și sticlă cu apă"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/canicula-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: soare puternic, termometru ridicat și sticlă cu apă"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/canicula-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: soare puternic, termometru ridicat și sticlă cu apă"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-scoala-educatie",
+    "name": "TEMĂ (ilustrație): Școală și educație: elevi, profesori, examene, BAC, universități, Ministerul Educației",
+    "keywords": "scoala, educatie, elevi, profesori, BAC, bacalaureat, examene, universitate, studenti, an scolar, invatamant, gradinita, licee",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/scoala-educatie-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: clădire de școală, carte deschisă și creion"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/scoala-educatie-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: clădire de școală, carte deschisă și creion"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/scoala-educatie-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: clădire de școală, carte deschisă și creion"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-spital-sanatate",
+    "name": "TEMĂ (ilustrație): Sănătate și spitale: medici, pacienți, CNAM, medicamente, sistemul medical",
+    "keywords": "sanatate, spital, medici, pacienti, CNAM, asigurare medicala, medicamente, boala, tratament, Ministerul Sanatatii, urgenta medicala, vaccin",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/spital-sanatate-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: spital cu cruce roșie, stetoscop și dosar medical"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/spital-sanatate-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: spital cu cruce roșie, stetoscop și dosar medical"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/spital-sanatate-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: spital cu cruce roșie, stetoscop și dosar medical"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-acte-asp",
+    "name": "TEMĂ (ilustrație): Acte și ASP: buletin, pașaport, permis, servicii publice, documente oficiale",
+    "keywords": "acte, ASP, buletin, pasaport, act de identitate, documente, servicii publice, permis, inregistrare, cetatenie, eliberare acte, Agentia Servicii Publice",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/acte-asp-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: carte de identitate, pașaport și ștampilă"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/acte-asp-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: carte de identitate, pașaport și ștampilă"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/acte-asp-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: carte de identitate, pașaport și ștampilă"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-vama-frontiera",
+    "name": "TEMĂ (ilustrație): Vamă și frontieră: puncte de trecere, Poliția de Frontieră, controale vamale, cozi",
+    "keywords": "vama, frontiera, punct de trecere, Politia de Frontiera, Serviciul Vamal, granita, control vamal, cozi la vama, camioane, pasaport, trecerea frontierei",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/vama-frontiera-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: barieră la punct de trecere a frontierei și camion"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/vama-frontiera-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: barieră la punct de trecere a frontierei și camion"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/vama-frontiera-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: barieră la punct de trecere a frontierei și camion"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-drumuri-reparatii",
+    "name": "TEMĂ (ilustrație): Drumuri și reparații: lucrări la drumuri, asfaltare, trafic restricționat, infrastructură",
+    "keywords": "drumuri, reparatii drumuri, asfaltare, lucrari, santier, trafic restrictionat, infrastructura, Administratia Nationala a Drumurilor, gropi, reabilitare drum",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/drumuri-reparatii-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: drum în reparație cu conuri și semn de avertizare"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/drumuri-reparatii-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: drum în reparație cu conuri și semn de avertizare"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/drumuri-reparatii-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: drum în reparație cu conuri și semn de avertizare"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-agricultura",
+    "name": "TEMĂ (ilustrație): Agricultură: fermieri, recoltă, subvenții, culturi, câmp, AIPA",
+    "keywords": "agricultura, fermieri, recolta, subventii, AIPA, culturi, grau, porumb, camp, seceta, agricultori, tractor, productie agricola",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/agricultura-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: tractor pe câmp și spic de grâu"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/agricultura-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: tractor pe câmp și spic de grâu"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/agricultura-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Ilustrație: tractor pe câmp și spic de grâu"
+      }
+    ]
+  }
+]
