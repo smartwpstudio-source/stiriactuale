@@ -46,10 +46,15 @@ jobs:
           PG=/usr/lib/postgresql/18/bin
           [ -n "$DST" ] || { echo "lipsește secretul SUPABASE_DATABASE_URL"; exit 1; }
           case "$SRC" in *neon.tech*) ;; *) echo "DATABASE_URL nu mai e Neon — copierea s-a făcut deja?"; exit 1;; esac
+          # SIGURANȚA: baza de destinație poate fi a altui proiect. Se oprește dacă în
+          # schema public există tabele care nu sunt ale site-ului (nu atinge nimic străin).
+          OURS=$($PG/psql "$SRC" -Atc "select tablename from pg_tables where schemaname = 'public' order by 1")
+          FOREIGN=$($PG/psql "$DST" -Atc "select tablename from pg_tables where schemaname = 'public' order by 1" | grep -vxF "$OURS" || true)
+          if [ -n "$FOREIGN" ]; then echo "STOP: baza Supabase are deja alte tabele (alt proiect?):"; echo "$FOREIGN"; exit 1; fi
           # structura: aceleași migrații ca la Neon (creează și extensia unaccent)
           DATABASE_URL="$DST" npx drizzle-kit migrate
-          # o nouă rulare golește întâi tabelele (copierea finală, la comutare)
-          TABLES=$($PG/psql "$DST" -Atc "select string_agg(format('%I', tablename), ', ') from pg_tables where schemaname = 'public'")
+          # o nouă rulare golește întâi DOAR tabelele site-ului (copierea finală, la comutare)
+          TABLES=$(echo "$OURS" | sed 's/.*/"&"/' | paste -sd, -)
           $PG/psql "$DST" -v ON_ERROR_STOP=1 -qc "truncate $TABLES restart identity"
           # datele (și contoarele id-urilor), fără setările pe care serverul nu le are
           $PG/pg_dump "$SRC" --data-only --schema=public --no-owner --no-privileges \
