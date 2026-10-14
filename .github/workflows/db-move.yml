@@ -46,24 +46,30 @@ jobs:
           PG=/usr/lib/postgresql/18/bin
           [ -n "$DST" ] || { echo "lipsește secretul SUPABASE_DATABASE_URL"; exit 1; }
           case "$SRC" in *neon.tech*) ;; *) echo "DATABASE_URL nu mai e Neon — copierea s-a făcut deja?"; exit 1;; esac
-          # SIGURANȚA: baza de destinație poate fi a altui proiect. Se oprește dacă în
-          # schema public există tabele care nu sunt ale site-ului (nu atinge nimic străin).
+          # SIGURANȚA: proiectul Supabase e comun cu alt site (tabelele lui stau în „public”).
+          # Site-ul lucrează DOAR în schema „stiriactuale”, cu utilizatorul lui (search_path =
+          # stiriactuale, extensions). Dacă conexiunea nu e așa configurată, nu atinge nimic.
+          SCHEMA=$($PG/psql "$DST" -Atc "select current_schema()")
+          [ "$SCHEMA" = "stiriactuale" ] || { echo "STOP: schema curentă e „$SCHEMA”, nu „stiriactuale” — utilizatorul nu e configurat"; exit 1; }
           OURS=$($PG/psql "$SRC" -Atc "select tablename from pg_tables where schemaname = 'public' order by 1")
-          FOREIGN=$($PG/psql "$DST" -Atc "select tablename from pg_tables where schemaname = 'public' order by 1" | grep -vxF "$OURS" || true)
-          if [ -n "$FOREIGN" ]; then echo "STOP: baza Supabase are deja alte tabele (alt proiect?):"; echo "$FOREIGN"; exit 1; fi
-          # structura: aceleași migrații ca la Neon (creează și extensia unaccent)
+          FOREIGN=$($PG/psql "$DST" -Atc "select tablename from pg_tables where schemaname = 'stiriactuale' order by 1" | grep -vxF "$OURS" || true)
+          if [ -n "$FOREIGN" ]; then echo "STOP: schema stiriactuale are tabele străine:"; echo "$FOREIGN"; exit 1; fi
+          # structura: aceleași migrații, fără „public.” (tipurile intră în schema stiriactuale)
+          sed -i 's/"public"\.//g' drizzle/*.sql
           DATABASE_URL="$DST" npx drizzle-kit migrate
           # o nouă rulare golește întâi DOAR tabelele site-ului (copierea finală, la comutare)
-          TABLES=$(echo "$OURS" | sed 's/.*/"&"/' | paste -sd, -)
+          TABLES=$(echo "$OURS" | sed 's/.*/stiriactuale."&"/' | paste -sd, -)
           $PG/psql "$DST" -v ON_ERROR_STOP=1 -qc "truncate $TABLES restart identity"
-          # datele (și contoarele id-urilor), fără setările pe care serverul nu le are
+          # datele: din public (Neon) în stiriactuale (Supabase) — doar comenzile COPY și
+          # setval se rescriu, textul articolelor rămâne neatins
           $PG/pg_dump "$SRC" --data-only --schema=public --no-owner --no-privileges \
-            | sed '/^SET transaction_timeout/d' \
+            | sed -e '/^SET transaction_timeout/d' -e "/^SELECT pg_catalog.set_config('search_path'/d" \
+                  -e 's/^COPY public\./COPY stiriactuale./' -e "s/^SELECT pg_catalog.setval('public\./SELECT pg_catalog.setval('stiriactuale./" \
             | $PG/psql "$DST" -v ON_ERROR_STOP=1 -q
           echo "tabel | Neon | Supabase"
-          for t in $($PG/psql "$SRC" -Atc "select tablename from pg_tables where schemaname = 'public' order by 1"); do
+          for t in $OURS; do
             a=$($PG/psql "$SRC" -Atc "select count(*) from public.\"$t\"")
-            b=$($PG/psql "$DST" -Atc "select count(*) from public.\"$t\"")
+            b=$($PG/psql "$DST" -Atc "select count(*) from stiriactuale.\"$t\"")
             echo "$t | $a | $b"; [ "$a" = "$b" ] || { echo "DIFERENȚĂ la $t"; exit 1; }
           done
           echo "copiere: OK"
