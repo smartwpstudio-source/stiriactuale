@@ -89,17 +89,4 @@ jobs:
         env:
           A: ${{ secrets.DATABASE_URL }}
           B: ${{ secrets.SUPABASE_DATABASE_URL }}
-        run: |
-          node -e '
-            for (const [k, v] of [["DATABASE_URL", process.env.A], ["SUPABASE_DATABASE_URL", process.env.B]]) {
-              try {
-                const u = new URL(v);
-                const pw = decodeURIComponent(u.password);
-                console.log(k, "OK", "host:", u.hostname, "port:", u.port, "user:", u.username, "db:", u.pathname, "parola:", pw.length, "caractere, speciale:", [...new Set(pw.replace(/[A-Za-z0-9]/g, ""))].length ? "DA" : "nu");
-              } catch (e) {
-                const raw = v || "";
-                console.log(k, "INVALID:", e.message, "| lungime:", raw.length, "| începe cu postgresql://:", raw.startsWith("postgresql://"), "| spații:", /\s/.test(raw), "| ghilimele:", /["']/.test(raw), "| @ de", (raw.match(/@/g) || []).length, "ori");
-              }
-            }
-            console.log("aceeași adresă:", process.env.A === process.env.B);
-          '
+        run: node scripts/db-url-check.mjs
