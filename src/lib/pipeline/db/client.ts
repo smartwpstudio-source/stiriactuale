@@ -7,16 +7,21 @@ import * as schema from "./schema";
 
 // Două drivere, după platformă (același schema, aceleași interogări Drizzle):
 // - Node (Vercel, scripturile pipeline-ului din GitHub Actions): postgres.js, pool TCP.
-// - Cloudflare Workers: Neon prin HTTP (@neondatabase/serverless). Un pool TCP global
-//   nu supraviețuiește între cereri în workerd („Worker's code had hung”); clientul HTTP
-//   nu ține conexiuni, deci poate rămâne o dată pe izolat. Limită: fără db.transaction()
-//   interactiv (nu e folosit în cod).
+// - Cloudflare Workers: prin Hyperdrive (binding HYPERDRIVE, baza Supabase din 2026-10-14):
+//   postgres.js cu un client NOU pe fiecare cerere — un pool TCP global nu supraviețuiește
+//   între cereri în workerd („Worker's code had hung”); Hyperdrive ține conexiunile spre bază.
+//   Fără binding: Neon prin HTTP (@neondatabase/serverless), varianta dinainte.
 // Tipul expus rămâne cel postgres.js: cele două se comportă la fel pentru
 // select/insert/update/delete/returning, singurele forme folosite.
 type Db = PostgresJsDatabase<typeof schema>;
 
 let cachedDb: Db | null = null;
 let cachedHttpDb: Db | null = null;
+
+// contextul cererii curente pus de OpenNext pe globalThis (ca în content/store.ts)
+type CfContext = { env?: { HYPERDRIVE?: { connectionString: string } }; ctx?: object };
+const cfContext = () => (globalThis as Record<symbol, CfContext | undefined>)[Symbol.for("__cloudflare-context__")];
+const perRequest = new WeakMap<object, Db>();
 
 function connectionString(): string {
   // Citit la apel, nu la nivel de modul — scripturile standalone (dotenv)
@@ -34,6 +39,16 @@ function connectionString(): string {
 
 export function getDb(): Db {
   if (onWorkers()) {
+    const cf = cfContext();
+    const hyperdrive = cf?.env?.HYPERDRIVE?.connectionString;
+    if (hyperdrive && cf?.ctx) {
+      let db = perRequest.get(cf.ctx);
+      if (!db) {
+        db = drizzlePostgres(postgres(hyperdrive, { max: 5, fetch_types: false }), { schema });
+        perRequest.set(cf.ctx, db);
+      }
+      return db;
+    }
     cachedHttpDb ??= drizzleNeonHttp(neon(connectionString()), { schema }) as unknown as Db;
     return cachedHttpDb;
   }

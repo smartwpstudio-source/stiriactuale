@@ -17,12 +17,18 @@ export interface Place {
   photos: { url: string; credit: string; source: string; alt?: string }[];
 }
 
-export function loadPlaces(): Place[] {
+const readPlaces = (file: string): Place[] => {
   try {
-    return JSON.parse(readFileSync(path.join(process.cwd(), "content", "locuri", "locuri.json"), "utf8"));
+    return JSON.parse(readFileSync(path.join(process.cwd(), "content", "locuri", file), "utf8"));
   } catch {
     return [];
   }
+};
+
+// + ilustrațiile-simbol desenate pe teme (public/simbol/, 2026-10-14): 3 variante
+// pe temă, rotite ca pozele locurilor; înaintea stocului și a AI-ului
+export function loadPlaces(): Place[] {
+  return [...readPlaces("locuri.json"), ...readPlaces("simbol.json")];
 }
 
 // Pozele marcate „Imagine simbol” (regula proprietarului, 2026-10-07; extinsă
