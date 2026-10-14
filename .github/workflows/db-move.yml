@@ -10,9 +10,9 @@ on:
   workflow_dispatch:
     inputs:
       pas:
-        description: "copiere | hyperdrive"
+        description: "copiere | hyperdrive | verificare"
         type: choice
-        options: [copiere, hyperdrive]
+        options: [copiere, hyperdrive, verificare]
         default: copiere
 
 jobs:
@@ -82,3 +82,24 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         # fără cache de interogări: admin-ul și pipeline-ul văd imediat ce s-a scris
         run: npx wrangler hyperdrive create stiriactuale-db --connection-string="$DST" --caching-disabled
+
+      # verifică adresele fără să le afișeze: se pot citi ca URL? ce fel de caractere are parola?
+      - name: Verificarea adreselor
+        if: ${{ inputs.pas == 'verificare' }}
+        env:
+          A: ${{ secrets.DATABASE_URL }}
+          B: ${{ secrets.SUPABASE_DATABASE_URL }}
+        run: |
+          node -e '
+            for (const [k, v] of [["DATABASE_URL", process.env.A], ["SUPABASE_DATABASE_URL", process.env.B]]) {
+              try {
+                const u = new URL(v);
+                const pw = decodeURIComponent(u.password);
+                console.log(k, "OK", "host:", u.hostname, "port:", u.port, "user:", u.username, "db:", u.pathname, "parola:", pw.length, "caractere, speciale:", [...new Set(pw.replace(/[A-Za-z0-9]/g, ""))].length ? "DA" : "nu");
+              } catch (e) {
+                const raw = v || "";
+                console.log(k, "INVALID:", e.message, "| lungime:", raw.length, "| începe cu postgresql://:", raw.startsWith("postgresql://"), "| spații:", /\s/.test(raw), "| ghilimele:", /["']/.test(raw), "| @ de", (raw.match(/@/g) || []).length, "ori");
+              }
+            }
+            console.log("aceeași adresă:", process.env.A === process.env.B);
+          '
