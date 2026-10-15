@@ -27,6 +27,10 @@ const nextConfig: NextConfig = {
   ...(cloudflare && { turbopack: { resolveAlias: { undici: "./cloudflare/undici-fetch.mjs" } } }),
 
   images: {
+    // puține mărimi: fiecare (poză, lățime) e o transformare separată la Cloudflare Images
+    // (5.000 incluse pe lună). Implicit erau 16 lățimi (2026-10-15).
+    deviceSizes: [640, 828, 1200],
+    imageSizes: [128, 256, 384],
     remotePatterns: [
       { protocol: "https", hostname: "*.public.blob.vercel-storage.com" },
       // graficele proprii (/grafic/: cod galben, alertă 112, escrocherie)
