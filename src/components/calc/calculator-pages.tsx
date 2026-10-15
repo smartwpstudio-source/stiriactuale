@@ -101,6 +101,9 @@ export async function CalculatorView({ slug, lang }: { slug: string; lang: Lang 
   const r = await loadCalculator(slug, lang);
   if (!r) return null;
   const t = T[lang].page;
+  // calculatoarele înrudite (doar cele disponibile)
+  const see: readonly string[] = "see" in r.calc ? r.calc.see : [];
+  const seeCalcs = see.length ? availableCalculators(await getCalcParams()).filter((c) => see.includes(c.slug)).map((c) => calcText(c, lang)) : [];
   // ghidul pereche: în rusă doar dacă există traducerea
   const guide = "guide" in r.calc ? r.calc.guide : undefined;
   const guideHref = guide && (lang === "ro" ? `/ghiduri/${guide}/` : (await ruSlugs()).has(guide) ? ruPath(guide) : undefined);
@@ -117,6 +120,20 @@ export async function CalculatorView({ slug, lang }: { slug: string; lang: Lang 
           <span className="block font-mono text-xs uppercase tracking-wide text-teal">{t.guide}</span>
           <span className="mt-1 block font-medium">{t.guideTexts[r.calc.slug] ?? t.guideText}</span>
         </Link>
+      )}
+      {seeCalcs.length > 0 && (
+        <div className="mt-6 rounded border border-line bg-white p-4">
+          <span className="block font-mono text-xs uppercase tracking-wide text-teal">{t.see}</span>
+          <ul className="mt-1 space-y-1">
+            {seeCalcs.map((c) => (
+              <li key={c.slug}>
+                <Link href={calcPath(c.slug, lang)} className="font-medium text-ink hover:text-teal">
+                  {c.title} →
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
       {"recipes" in r.calc && (
         <Link href={lang === "ru" ? "/ru/retete/" : "/retete/"} className="mt-6 block rounded border border-line bg-white p-4 text-ink hover:border-teal">

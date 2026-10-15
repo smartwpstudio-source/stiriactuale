@@ -115,6 +115,10 @@ export const CALCULATORS = [
   { slug: "ore-suplimentare", title: "Plata orelor suplimentare, de noapte și de sărbători", description: "Cât trebuie să primești, brut, pentru orele suplimentare, munca de noapte și munca în zilele de odihnă sau de sărbătoare, după Codul muncii.", needs: null, guide: "plangere-la-inspectoratul-de-stat-al-muncii-cand-si-cum" },
   { slug: "zile-lucratoare", title: "Câte zile lucrătoare are luna", description: "Zilele și orele lucrătoare dintr-o lună sau dintr-o perioadă, fără weekenduri și sărbători legale, plus calculul unui termen în zile lucrătoare.", needs: null, guide: "sarbatorile-legale-in-moldova-in-2027-zile-libere" },
   { slug: "cost-calatorie", title: "Costul unei călătorii cu mașina", description: "Cât te costă drumul cu mașina: litrii de benzină, motorină sau GPL, prețul maxim ANRE și suma pe fiecare pasager.", needs: null, guide: "economia-la-benzina-si-motorina-pret-si-consum" },
+  { slug: "imc", title: "IMC și greutatea ideală", description: "Indicele de masă corporală din greutate și înălțime, categoria după clasificarea OMS și intervalul de greutate sănătoasă pentru înălțimea ta.", needs: null, recipes: true, see: ["calorii"] },
+  { slug: "sarcina", title: "Săptămâna de sarcină și data probabilă a nașterii", description: "Data probabilă a nașterii din prima zi a ultimei menstruații sau din data concepției: săptămâna de sarcină, trimestrul și câte zile au rămas.", needs: null, guide: "concediul-de-maternitate-si-paternal-durata-plata-acte", see: ["concediu-maternitate", "indemnizatie-nastere"] },
+  { slug: "indemnizatie-nastere", title: "Indemnizația unică la nașterea copilului", description: "Cât primește mama de la stat pentru fiecare copil născut viu, după anul nașterii: gemenii — pentru fiecare copil, fără cerere.", needs: null, guide: "indemnizatia-unica-la-nasterea-copilului-suma-acte-termen", see: ["indemnizatie-crestere-copil", "concediu-maternitate"] },
+  { slug: "masuri-culinare", title: "Măsuri culinare: pahar, lingură → grame", description: "Câte grame de făină, zahăr, orez, unt sau miere încap într-un pahar, o cană, o lingură sau o linguriță — și invers, din grame în linguri și pahare.", needs: null, recipes: true },
 ] as const;
 
 export type CalculatorSlug = (typeof CALCULATORS)[number]["slug"];
@@ -616,4 +620,122 @@ export function tripCost(o: { km: number; roundTrip: boolean; lPer100: number; p
   const total = fuel === null ? null : round(fuel + (o.extra || 0));
   const people = Math.max(1, Math.floor(o.passengers));
   return { km, liters: round(liters), fuel, total, perPerson: total === null ? null : round(total / people), people };
+}
+
+// IMC = kg / m², rotunjit la o zecimală, categoria după clasificarea OMS pentru adulți
+// (OMS Europa, „Nutrition for a healthy life”, verificat la 15.10.2026): sub 18,5 subponderal,
+// 18,5–24,9 normal, 25–29,9 preobezitate, 30–34,9 / 35–39,9 / 40+ obezitate de gradul I / II / III.
+// Sub 18 ani IMC se compară cu curbele de creștere pe vârstă și sex — fără categorie.
+export const BMI_CLASSES = [
+  { id: "sub", below: 18.5 },
+  { id: "normal", below: 25 },
+  { id: "supra", below: 30 },
+  { id: "ob1", below: 35 },
+  { id: "ob2", below: 40 },
+  { id: "ob3", below: Infinity },
+] as const;
+export type BmiClass = (typeof BMI_CLASSES)[number]["id"];
+export const BMI_HEALTHY = { min: 18.5, max: 24.9, adult_age: 18 } as const;
+
+export function bmi(kg: number, cm: number, age = 0) {
+  if (!(kg > 0 && cm >= 50 && cm <= 250)) return null;
+  const m2 = (cm / 100) ** 2;
+  const value = Math.round((kg / m2) * 10) / 10;
+  const minor = age > 0 && age < BMI_HEALTHY.adult_age;
+  const r1 = (n: number) => Math.round(n * 10) / 10;
+  return {
+    value,
+    category: minor ? null : BMI_CLASSES.find((c) => value < c.below)!.id,
+    minor,
+    minKg: r1(BMI_HEALTHY.min * m2),
+    maxKg: r1(BMI_HEALTHY.max * m2),
+  };
+}
+
+// Sarcina: regula lui Naegele — data probabilă = prima zi a ultimei menstruații + 280 de zile
+// (40 de săptămâni), la un ciclu de 28 de zile; la alt ciclu se mută cu (ciclu − 28) zile. Din
+// data concepției: + 266 de zile (concepția ≈ ziua 14). Trimestrele după convenția obișnuită:
+// I până la 13 săptămâni și 6 zile, II până la 27 + 6, III de la 28 de săptămâni.
+export type PregnancyFrom = "menstruatie" | "conceptie";
+export const PREGNANCY = { zile: 280, conceptie: 14, ciclu: 28, ciclu_min: 21, ciclu_max: 45, trimestrul2: 98, trimestrul3: 196 } as const;
+
+export function pregnancy(from: PregnancyFrom, date: string, cycle: number, today: string) {
+  const d = dayNo(date);
+  const now = dayNo(today);
+  if (Number.isNaN(d) || Number.isNaN(now) || d > now) return null;
+  if (from === "menstruatie" && !(cycle >= PREGNANCY.ciclu_min && cycle <= PREGNANCY.ciclu_max)) return null;
+  const P = PREGNANCY;
+  // „ziua 0” a sarcinii: ultima menstruație corectată după ciclu, sau concepția − 14 zile
+  const start = from === "menstruatie" ? d + Math.round(cycle) - P.ciclu : d - P.conceptie;
+  const days = now - start;
+  if (days > 44 * 7) return null; // peste 44 de săptămâni: data e, cel mai probabil, greșită
+  const iso = (n: number) => new Date(n * 86400000).toISOString().slice(0, 10);
+  return {
+    due: iso(start + P.zile),
+    weeks: Math.floor(days / 7),
+    days: days % 7,
+    trimester: days < P.trimestrul2 ? 1 : days < P.trimestrul3 ? 2 : 3,
+    left: start + P.zile - now,
+    milestones: {
+      trimestrul1: iso(start + P.trimestrul2 - 1),
+      trimestrul2: iso(start + P.trimestrul3 - 1),
+      termen: iso(start + 37 * 7),
+      depasire: iso(start + 42 * 7),
+    },
+  };
+}
+
+// Indemnizația unică la nașterea copilului (Legea nr. 315/2016, art. 5: coșul minim pentru
+// nașterea unui copil, aprobat anual de Guvern în anexa nr. 1 la HG nr. 1478/2002), pentru
+// fiecare copil născut viu, după anul nașterii. 2026: 21 886 lei (CNAS, verificat la 15.10.2026;
+// HG aprobată de Guvern la 17.12.2025); 2025: 21 350 lei (nota de fundamentare a aceleiași HG).
+// 2027: neaprobat la 15.10.2026 — se adaugă când Guvernul aprobă suma.
+export const BIRTH_ALLOWANCE: { verificat: string; lei: Record<number, number> } = { verificat: "2026-10-15", lei: { 2025: 21350, 2026: 21886 } };
+
+export function birthAllowance(year: number, children: number) {
+  const perChild = BIRTH_ALLOWANCE.lei[year];
+  const n = Math.floor(children);
+  if (!perChild || n < 1) return null;
+  return { perChild, children: n, total: perChild * n };
+}
+
+// Măsuri de bucătărie: volume obișnuite și densități tipice (g/ml) pentru ingrediente
+// turnate fără îndesare, cu lingura rasă. Valori tipice de bucătărie, nu o normă:
+// greutatea reală depinde de cât de afânat e ingredientul.
+export const KITCHEN_UNITS = [
+  { id: "pahar200", ml: 200 },
+  { id: "pahar250", ml: 250 },
+  { id: "cana", ml: 240 }, // cana din rețetele americane (cup), rotunjită
+  { id: "lingura", ml: 15 },
+  { id: "lingurita", ml: 5 },
+  { id: "ml", ml: 1 },
+] as const;
+export type KitchenUnit = (typeof KITCHEN_UNITS)[number]["id"];
+export const KITCHEN_G_ML = {
+  faina: 0.65,
+  zahar: 0.8,
+  "zahar-pudra": 0.6,
+  orez: 0.9,
+  gris: 0.8,
+  malai: 0.65,
+  hrisca: 0.84,
+  "fulgi-ovaz": 0.36,
+  sare: 1.3,
+  cacao: 0.45,
+  "nuci-macinate": 0.5,
+  unt: 0.91, // topit
+  ulei: 0.92,
+  lapte: 1.03,
+  apa: 1,
+  smantana: 1,
+  miere: 1.4,
+} as const;
+export type KitchenIngredient = keyof typeof KITCHEN_G_ML;
+
+// cantitatea într-o unitate (sau în grame) -> grame + aceeași cantitate în fiecare unitate de volum
+export function kitchenMeasure(ingredient: KitchenIngredient, qty: number, unit: KitchenUnit | "g") {
+  if (!(qty > 0)) return null;
+  const density = KITCHEN_G_ML[ingredient];
+  const ml = unit === "g" ? qty / density : qty * KITCHEN_UNITS.find((u) => u.id === unit)!.ml;
+  return { grams: round(ml * density), ml: round(ml), units: KITCHEN_UNITS.map((u) => ({ id: u.id, qty: round(ml / u.ml) })) };
 }
