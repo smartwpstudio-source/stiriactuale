@@ -15,12 +15,34 @@ import { GasBillCalculator } from "./gas-bill";
 import { PowerBillCalculator } from "./power-bill";
 import { HeatingCalculator } from "./heating";
 import { CaloriesCalculator } from "./calories";
+import { RadiatorsCalculator } from "./radiators";
+import { FirewoodCalculator } from "./firewood";
+import { DepositCalculator } from "./deposit";
+import { OvertimeCalculator } from "./overtime";
+import { WorkdaysCalculator } from "./workdays";
+import { TripCalculator } from "./trip";
 import { T, calcText, noteText, type Lang, type NoteKey } from "./i18n";
 import { getBnmRates } from "@/lib/bnm";
 import { availableCalculators, ENERGY_SOURCES } from "@/lib/calculators";
 import { getCalcParams } from "@/lib/calculators-data";
 
 type Source = { name: string; url: string };
+
+// Sursele calculatoarelor din lotul 2 (citite la 15.10.2026)
+const CODUL_MUNCII = "https://www.legis.md/cautare/getResults?doc_id=156323&lang=ro";
+const LOT2_SOURCES: Record<string, Source[]> = {
+  "dobanda-depozit": [
+    { name: "Codul fiscal, art. 90¹ alin. (3⁷) — impozitul de 6% pe dobânzi (legis.md)", url: "https://www.legis.md/cautare/getResults?doc_id=155071&lang=ro" },
+    { name: "FGDSB — plafonul de garantare pentru deponenți", url: "https://fgdsb.md/pentru-deponenti/" },
+  ],
+  "ore-suplimentare": [{ name: "Codul muncii, art. 103, 104, 157, 158, 159 (legis.md)", url: CODUL_MUNCII }],
+  "zile-lucratoare": [
+    { name: "Codul muncii, art. 95, 100, 102, 111 (legis.md)", url: CODUL_MUNCII },
+    { name: "HG nr. 963/2022 — transferul unor zile de odihnă în 2023 (legis.md)", url: "https://www.legis.md/cautare/getResults?doc_id=134774&lang=ro" },
+    { name: "HG nr. 289/2023 — zilele de odihnă 1 și 2 iunie 2023 (legis.md)", url: "https://www.legis.md/cautare/getResults?doc_id=136974&lang=ro" },
+  ],
+  "cost-calatorie": [{ name: "ANRE — prețurile maxime la produsele petroliere (stabilite la 15.10.2026)", url: "https://anre.md/" }],
+};
 
 const NOTE_KEY: Partial<Record<string, NoteKey>> = {
   "taxa-drum": "taxa_drum",
@@ -63,6 +85,22 @@ export async function loadCalculator(slug: string, lang: Lang = "ro") {
   } else if (slug === "calorii") {
     body = <CaloriesCalculator lang={lang} />;
     sources = [{ name: "Mifflin MD, St Jeor ST et al., Am J Clin Nutr 1990;51(2):241–247 (PubMed)", url: "https://pubmed.ncbi.nlm.nih.gov/2305711/" }];
+  } else if (slug === "putere-calorifere") {
+    body = <RadiatorsCalculator lang={lang} />;
+  } else if (slug === "lemne-peleti") {
+    body = <FirewoodCalculator lang={lang} />;
+  } else if (slug === "dobanda-depozit") {
+    body = <DepositCalculator lang={lang} />;
+    sources = LOT2_SOURCES[slug];
+  } else if (slug === "ore-suplimentare") {
+    body = <OvertimeCalculator lang={lang} />;
+    sources = LOT2_SOURCES[slug];
+  } else if (slug === "zile-lucratoare") {
+    body = <WorkdaysCalculator lang={lang} />;
+    sources = LOT2_SOURCES[slug];
+  } else if (slug === "cost-calatorie") {
+    body = <TripCalculator lang={lang} />;
+    sources = LOT2_SOURCES[slug];
   } else if (slug === "salariu-net" && p?.salariu) {
     body = <SalaryCalculator p={p.salariu} lang={lang} />;
     sources = p.salariu.surse;
