@@ -71,6 +71,11 @@ import("../../src/lib/content/guide-country").then(({ guideCountry }) => {
     assert.equal(matchDossier("Un caz de femicid la Ungheni: femeia a fost ucisă de fostul concubin"), "violenta-in-familie-in-moldova-cum-o-recunosti-unde-ceri-ajutor-ce-spune-legea");
     assert.equal(matchDossier("Ordonanța de protecție încălcată: agresorul, plasat în arest"), "violenta-in-familie-in-moldova-cum-o-recunosti-unde-ceri-ajutor-ce-spune-legea");
     assert.equal(matchDossier("Soțul președintelui a vizitat expoziția"), undefined);
+    assert.equal(matchDossier("ODA lansează un nou apel de granturi pentru afaceri în noiembrie"), "afacerea-mica-in-moldova-imm-ghid-complet");
+    assert.equal(matchDossier("Câte IMM-uri au fost create în 2025"), "afacerea-mica-in-moldova-imm-ghid-complet");
+    assert.equal(matchDossier("Guvernul pregătește regulile pentru inteligența artificială"), "inteligenta-artificiala-ghid-practic-moldova");
+    assert.equal(matchDossier("Deepfake cu premierul: escrocii promovează investiții false"), "escrocheriile-in-moldova-cum-le-recunosti-si-ce-faci");
+    assert.equal(matchDossier("Antreprenorul care asfaltează drumul a întârziat lucrările"), undefined);
     assert.equal(matchDossier("Reforma Moldsilva: cele 23 de întreprinderi silvice de stat vor fi comasate"), "intreprinderile-de-stat-din-moldova");
     assert.equal(matchDossier("Aerisirea caloriferelor: cum o faci corect"), "sezonul-de-incalzire-2026-2027");
     assert.equal(matchDossier("Termoelectrica anunță pornirea căldurii în blocuri"), "sezonul-de-incalzire-2026-2027");

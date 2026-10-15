@@ -1,0 +1,52 @@
+{
+  "slug": "cum-recunosti-poze-video-stiri-facute-cu-ai",
+  "title": "Cum recunoști o poză, un video sau o știre făcută cu AI (deepfake)",
+  "description": "Cei 5 pași din ghidul oficial StratCom, semnele unei imagini sau ale unui video făcut cu AI, căutarea inversă de imagini și unde raportezi conținutul fals.",
+  "category": "siguranta",
+  "updated": "2026-10-15",
+  "sources": [
+    {
+      "name": "Centrul pentru Comunicare Strategică și Combatere a Dezinformării — „DEEPFAKE – Ghid pentru utilizatori” (august 2025)",
+      "url": "https://stratcom.md/wp-content/uploads/2025/08/DEEPFAKE-Ghid-pentru-utilizatori.pdf"
+    },
+    {
+      "name": "Radio Moldova — CEC condamnă un video fals generat cu AI cu președinta CEC (31 iulie 2025)",
+      "url": "https://radiomoldova.md/p/56315"
+    },
+    {
+      "name": "Radio Moldova — CNPF despre clipurile deepfake cu oficiali și „taxa de intrare” (23 februarie 2026)",
+      "url": "https://radiomoldova.md/p/70355"
+    },
+    {
+      "name": "Banca Națională a Moldovei — riscurile generate de dezinformare și schemele de investiții false (3 iunie 2025)",
+      "url": "https://bnm.md/en/node/68554"
+    },
+    {
+      "name": "Poliția Republicii Moldova — creșterea numărului de anunțuri sponsorizate cu conținut „deepfake” pe rețelele de socializare (4 iulie 2025)",
+      "url": "https://politia.md/ro/print/pdf/node/646"
+    }
+  ],
+  "bodyHtml": "<p><strong>Pe scurt:</strong> pozele, clipurile și chiar „știrile” făcute cu inteligența artificială (AI) arată tot mai real, așa că nu te mai poți baza doar pe ochi. Centrul pentru Comunicare Strategică și Combatere a Dezinformării (StratCom) a publicat în august 2025 un ghid oficial cu 5 pași de verificare. Aici îi găsești explicați simplu, plus semne practice, cum faci o căutare inversă a unei imagini și unde raportezi un fals.</p>\n<h2>Ce înseamnă conținut făcut cu AI</h2>\n<p>Programele de AI pot crea de la zero o poză, un video sau o voce, ori pot modifica unele reale. Când rezultatul arată o persoană reală spunând sau făcând ceva ce nu a făcut, i se spune <strong>deepfake</strong>. Tot cu AI se pot scrie rapid texte care imită o știre, cu titlu, „citate” și „surse” inventate.</p>\n<p>Exemplu din Moldova: pe 31 iulie 2025, Comisia Electorală Centrală (CEC) a condamnat un video fals generat cu AI, în care președinta CEC părea să vorbească despre ingerințe în alegeri. CEC a precizat că ea nu a făcut niciodată astfel de declarații. Clipul a fost distribuit de canale Telegram proruse. Alte falsuri, cu oficiali și bănci, sunt folosite în reclame pentru investiții false (detalii în ghidul despre <a href=\"/ghiduri/escrocherii-deepfake-voce-clonata-cum-te-aperi/\">escrocheriile cu deepfake și voce clonată</a>).</p>\n<h2>Cei 5 pași de verificare din ghidul StratCom</h2>\n<ol>\n<li><strong>Verifică sursa.</strong> Vine de la un cont oficial sau de la o instituție media cunoscută? Apare și în alte surse de încredere? Un clip „exploziv” care circulă doar pe conturi necunoscute e un semnal de alarmă.</li>\n<li><strong>Uită-te atent la imagine și ascultă sunetul.</strong> Caută lumină inconsecventă, clipit nenatural, buze care nu se potrivesc cu vorbele, mâini sau ochi deformați, fundal neclar, pauze sau intonații ciudate în voce.</li>\n<li><strong>Judecă logica.</strong> Afirmațiile senzaționale, făcute să te sperie sau să te enerveze, și ofertele „prea perfecte ca să fie adevărate” sunt tipice pentru falsuri.</li>\n<li><strong>Folosește unelte.</strong> Căutarea inversă de imagini (de exemplu Google sau TinEye), verificarea metadatelor (informațiile ascunse din fișier: data, aparatul) și detectoarele de deepfake. Niciun detector nu e infailibil, așa că îl folosești doar ca un indiciu în plus.</li>\n<li><strong>Ține cont de context și de momentul publicării.</strong> În campanii electorale și în perioade de criză apar mai multe falsuri. Atunci verifici de două ori înainte să crezi sau să distribui.</li>\n</ol>\n<h2>Semne practice, pe scurt</h2>\n<h3>La poze</h3>\n<ul>\n<li>Degete prea multe sau lipite, urechi, dinți ori bijuterii nepereche.</li>\n<li>Texte din fundal (firme, plăcuțe, afișe) cu litere fără sens.</li>\n<li>Piele „de plastic”, prea netedă, și umbre care cad în direcții diferite.</li>\n<li>Margini ciudate în jurul părului sau al obiectelor.</li>\n</ul>\n<h3>La video și voce</h3>\n<ul>\n<li>Fața pare „lipită”: se mișcă diferit de gât sau de restul capului.</li>\n<li>Mimică nenaturală, vorbire sacadată, accent ciudat (semnele enumerate și de Comisia Națională a Pieței Financiare).</li>\n<li>Buzele nu se potrivesc cu sunetul; vocea e plată, fără respirație.</li>\n<li>Clipul e scurt, cu calitate proastă, ca să ascundă defectele.</li>\n</ul>\n<h3>La „știri”</h3>\n<ul>\n<li>Nu are autor, dată sau sursă pe care o poți verifica.</li>\n<li>Site-ul imită o publicație cunoscută, dar adresa e puțin diferită.</li>\n<li>Titlul te îndeamnă să distribui „urgent”, „până nu se șterge”.</li>\n<li>Nu găsești știrea la nicio instituție de presă cunoscută și nici pe site-ul oficial al instituției despre care vorbește.</li>\n</ul>\n<p>Atenție: lipsa acestor semne nu înseamnă că un material e real. Falsurile bune nu au defecte vizibile, de aceea pașii 1 și 5 (sursa și contextul) contează cel mai mult.</p>\n<h2>Cum faci o căutare inversă de imagini</h2>\n<p>Căutarea inversă înseamnă că pornești de la o poză, nu de la cuvinte, și afli unde a mai apărut. Pașii, în general:</p>\n<ol>\n<li>Salvezi poza sau faci o captură de ecran (la video, o captură dintr-un cadru clar).</li>\n<li>Deschizi un motor de căutare cu căutare după imagine (de exemplu Google sau TinEye) și încarci poza.</li>\n<li>Te uiți la rezultate: unde și când a apărut prima dată? Dacă poza e veche sau din altă țară, „știrea” e falsă sau scoasă din context.</li>\n<li>Compari cu sursa originală: diferențele (o persoană adăugată, un text schimbat) arată o modificare.</li>\n</ol>\n<p>Dacă nu găsești nimic, nu înseamnă că poza e reală. Poate fi nouă, generată special.</p>\n<h2>Ce faci cu un material suspect</h2>\n<ol>\n<li><strong>Nu-l distribui</strong> și nu-l trimite „ca să vadă și alții”. Fiecare redistribuire îl face mai credibil.</li>\n<li><strong>Verifici la sursa oficială.</strong> BNM, de exemplu, precizează că comunicările ei oficiale apar doar pe bnm.md. La fel faci cu orice instituție: cauți declarația pe site-ul ei.</li>\n<li><strong>Îl raportezi.</strong> Ghidul StratCom indică adresa <strong>dialog@stratcom.md</strong> pentru conținutul suspect. Raportează-l și pe rețeaua socială unde l-ai văzut.</li>\n<li><strong>Dacă e o escrocherie</strong> (reclamă cu investiții, cerere de bani sau de date), anunță Poliția și, dacă ai plătit, banca. Poliția sfătuiește să nu oferi date personale sau bancare și să nu instalezi aplicații de control la distanță.</li>\n</ol>\n<p>Ghidul StratCom arată că, în funcție de caz, crearea și răspândirea unui deepfake poate fi și o faptă pedepsită de lege, de exemplu când e folosit pentru calomnie. Încadrarea exactă o stabilesc Poliția și instanța, nu tu.</p>\n<h2>Greșeli frecvente</h2>\n<ul>\n<li>„Am văzut cu ochii mei, deci e adevărat.” Azi video-ul nu mai e o dovadă în sine.</li>\n<li>Te bazezi pe un singur detector online și îl crezi orbește.</li>\n<li>Distribui ca să întrebi „e adevărat?”. Mai bine întrebi pe cineva în privat sau verifici singur.</li>\n<li>Crezi o „știre” doar pentru că sună cu ce credeai deja. Falsurile sunt făcute exact ca să-ți confirme temerile.</li>\n</ul>\n<p>Mai departe: <a href=\"/ghiduri/escrocheriile-in-moldova-cum-le-recunosti-si-ce-faci/\">Escrocheriile în Moldova</a>, <a href=\"/ghiduri/vanzari-online-999-marketplace-cum-nu-te-pacalesti/\">vânzările online fără păcăleli</a> (inclusiv poze furate sau false în anunțuri) și ghidul general <a href=\"/ghiduri/inteligenta-artificiala-ghid-practic-moldova/\">Inteligența artificială pe înțelesul tuturor</a>.</p>\n<p><em>Informații verificate la 15 octombrie 2026.</em></p>",
+  "faq": [
+    {
+      "q": "Cum îmi dau seama dacă un video e deepfake?",
+      "a": "Verifică întâi sursa și dacă apare și în alte surse de încredere. Apoi caută semnele: buze desincronizate, clipit nenatural, mimică ciudată, vorbire sacadată, lumină inconsecventă."
+    },
+    {
+      "q": "Există un program care spune sigur dacă o poză e făcută cu AI?",
+      "a": "Nu. Detectoarele de deepfake și căutarea inversă de imagini ajută, dar nu sunt infailibile. Folosește-le ca indiciu, împreună cu verificarea sursei și a contextului."
+    },
+    {
+      "q": "Unde raportez un deepfake în Moldova?",
+      "a": "Ghidul StratCom indică adresa dialog@stratcom.md. Dacă e o escrocherie cu bani sau date, anunță Poliția. Raportează materialul și pe rețeaua socială unde l-ai văzut."
+    },
+    {
+      "q": "Ce este căutarea inversă de imagini?",
+      "a": "O căutare în care încarci o poză în loc să scrii cuvinte, de exemplu în Google sau TinEye. Afli unde și când a mai apărut poza."
+    },
+    {
+      "q": "De ce apar mai multe falsuri înainte de alegeri?",
+      "a": "Ghidul StratCom cere atenție sporită în campanii electorale și în crize. Un exemplu este video-ul fals cu președinta CEC, condamnat de CEC în iulie 2025."
+    }
+  ]
+}
