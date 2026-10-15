@@ -43,6 +43,11 @@ export async function HubPage({ hub, page }: { hub: Hub | null; page: number | n
   // pagina unei țări din Diaspora: ghidurile pentru moldovenii de acolo
   const country = hub.filter.section === "diaspora" ? hub.filter.country : undefined;
   const countryGuides = country && page === 1 ? (await getGuides()).filter((g) => g.category === "diaspora" && guideCountry(g.slug) === country) : [];
+  // pagina unui raion: ghidul complet al instituțiilor (primăria, spitalul, ASP...), ca să nu rămână ascuns
+  const cityGuide =
+    hub.place?.kind === "raioane" && page === 1
+      ? (await getGuides()).find((g) => g.slug === `${hub.place!.slug}-primaria-spitalul-asp-transportul`)
+      : undefined;
   if (page > pages) notFound();
 
   // filtre pentru raioanele/țările cu articole sau cu informații utile (+ cel curent)
@@ -74,6 +79,18 @@ export async function HubPage({ hub, page }: { hub: Hub | null; page: number | n
       )}
       {hub.filter.section === "diaspora" && page === 1 && <ActiveAlerts diaspora country={country} />}
       {place && hub.place && <PlaceInfoBox info={place} name={hub.place.name} />}
+      {cityGuide && (
+        <Link
+          href={`/ghiduri/${cityGuide.slug}/`}
+          className="mt-3 flex items-center justify-between gap-3 rounded border border-teal/40 bg-white px-5 py-3 hover:border-teal"
+        >
+          <span>
+            <span className="block font-serif text-lg text-ink">Toate instituțiile din {hub.place?.name}: adrese, telefoane, program</span>
+            <span className="text-sm text-sub">{cityGuide.title}</span>
+          </span>
+          <span className="shrink-0 font-medium text-teal">Ghidul →</span>
+        </Link>
+      )}
       {countryGuides.length > 0 && (
         <section className="mt-6">
           <h2 className="font-serif text-xl text-ink">Ghiduri pentru moldovenii din {hub.place?.name}</h2>
