@@ -104,6 +104,10 @@ export const CALCULATORS = [
   { slug: "rata-credit", title: "Rata la credit", description: "Rata lunară, totalul de plată și dobânda pentru un credit, cu rate egale (anuități) sau descrescătoare.", needs: null, guide: "creditul-de-consum-ce-verifici-inainte-sa-semnezi" },
   { slug: "regula-90-180", title: "Regula 90/180 de zile în spațiul Schengen", description: "Câte zile ai stat și câte îți mai rămân din cele 90 permise în orice perioadă de 180 de zile, după datele călătoriilor.", needs: null },
   { slug: "portii-eveniment", title: "Câte porții pentru nuntă, cumătrie sau pomană", description: "Cantitățile de bucate reci, zeamă, sarmale, friptură, garnitură, dulciuri și pâine după numărul de invitați.", needs: null, guide: "cate-portii-calculezi-pentru-nunta-sau-pomana" },
+  { slug: "factura-gaz", title: "Verifică factura la gaz", description: "Cât trebuie să plătești pentru gazul consumat, din metri cubi sau din indexul contorului, la prețul ANRE în vigoare, cu TVA.", needs: null, guide: "cum-citesti-factura-de-gaz-sau-de-energie-electrica" },
+  { slug: "factura-curent", title: "Factura la curent și consumul aparatelor", description: "Cât plătești pentru kWh consumați la Premier Energy sau FEE Nord, la prețul ANRE, și cât consumă boilerul, caloriferul sau frigiderul.", needs: null, guide: "cum-economisesti-energie-electrica-acasa" },
+  { slug: "cost-incalzire", title: "Costul încălzirii pe sezon", description: "Cât te costă iarna cu gaz, termoficare, curent, lemne sau peleți, după suprafața și izolația locuinței.", needs: null, guide: "cum-reduci-factura-la-incalzire-sfaturi-practice" },
+  { slug: "calorii", title: "Câte calorii îți trebuie pe zi", description: "Necesarul zilnic de calorii după vârstă, greutate, înălțime și activitate: pentru menținere, slăbit sau pus în greutate.", needs: null, recipes: true },
 ] as const;
 
 export type CalculatorSlug = (typeof CALCULATORS)[number]["slug"];
@@ -301,4 +305,146 @@ export function eventPortions(adults: number, children: number, reserve: number)
       return { ...p, from: amount(n, p.min, p.unit), to: amount(n, p.max, p.unit) };
     }),
   };
+}
+
+// Gaz, curent, căldură: prețurile reglementate ANRE pentru casnici, verificate la
+// `verificat` în Monitorul Oficial (hotărârile, cu anexele). ANRE le publică fără
+// TVA. Pe factura casnicilor: gazul + TVA 8% (Codul fiscal, art. 96 lit. b);
+// curentul și căldura pentru locuințe sunt scutite de TVA (art. 104 lit. b), deci
+// factura = prețul ANRE. La o nouă hotărâre ANRE se schimbă doar valorile de aici.
+export const ENERGY = {
+  verificat: "2026-10-15",
+  gaz: { lei_m3: 24.202, tva_pct: 8, de_la: "2026-10-01" }, // ANRE nr. 578/2026: 24 202 lei/1000 m³, joasă presiune
+  // ANRE nr. 222 și 224 din 31.03.2026 (MO 02.04.2026), serviciul universal, joasă tensiune
+  curent: {
+    premier: { lei_kwh: 3.56, zi: 3.75, noapte: 2.94 },
+    "fee-nord": { lei_kwh: 3.95, zi: 4.11, noapte: 3.43 },
+  },
+  // ANRE nr. 579–585 din 28.09.2026, în vigoare din 01.10.2026
+  caldura: [
+    { id: "termoelectrica", lei_gcal: 3277 },
+    { id: "cet-nord", lei_gcal: 3374 },
+    { id: "apa-canal", lei_gcal: 2957 },
+    { id: "comrat", lei_gcal: 4393 },
+    { id: "antermo", lei_gcal: 3544 },
+    { id: "comgaz", lei_gcal: 3835 },
+    { id: "glodeni", lei_gcal: 4322 },
+  ],
+} as const;
+
+export type PowerSupplier = keyof typeof ENERGY.curent;
+export type HeatSupplier = (typeof ENERGY.caldura)[number]["id"];
+
+const MO_SEP = "https://monitorul.gov.md/ro/monitor/3352";
+const CODUL_FISCAL = { name: "Codul fiscal, art. 96 lit. b) și art. 104 lit. b) — TVA (legis.md)", url: "https://www.legis.md/cautare/getResults?doc_id=155071&lang=ro" };
+export const ENERGY_SOURCES: Record<"gaz" | "curent" | "caldura", Source[]> = {
+  gaz: [
+    { name: "Hotărârea ANRE nr. 578 din 28.09.2026 (Monitorul Oficial nr. 486-489 din 29.09.2026)", url: MO_SEP },
+    { name: "ANRE — tarife în vigoare: gaze naturale", url: "https://anre.md/gaze-naturale-3-205" },
+    { name: "Energocom — cota TVA la gazele naturale", url: "https://energocom.md/gaze-naturale-intrebari-frecvente/" },
+    CODUL_FISCAL,
+  ],
+  curent: [
+    { name: "Hotărârile ANRE nr. 222 și 224 din 31.03.2026 (Monitorul Oficial nr. 146-147 din 02.04.2026)", url: "https://monitorul.gov.md/ro/monitor/3253" },
+    { name: "ANRE — tarife în vigoare: energie electrică", url: "https://anre.md/energie-electrica-3-290" },
+    CODUL_FISCAL,
+  ],
+  caldura: [
+    { name: "Hotărârile ANRE nr. 578–585 din 28.09.2026 (Monitorul Oficial nr. 486-489 din 29.09.2026)", url: MO_SEP },
+    { name: "ANRE — tarife în vigoare: energie termică", url: "https://anre.md/energie-termica-3-247" },
+    { name: "Hotărârile ANRE nr. 222 și 224 din 31.03.2026 — energie electrică", url: "https://monitorul.gov.md/ro/monitor/3253" },
+    CODUL_FISCAL,
+  ],
+};
+
+// Factura la gaz: m³ × prețul ANRE, plus TVA.
+export function gasBill(m3: number) {
+  const net = round(m3 * ENERGY.gaz.lei_m3);
+  const vat = round((net * ENERGY.gaz.tva_pct) / 100);
+  return { m3, net, vat, total: round(net + vat) };
+}
+
+// Factura la curent: preț unic, sau zi (07–23) / noapte (23–07) cu contor pe ore. Fără TVA (scutit).
+export function powerBill(s: PowerSupplier, dayKwh: number, nightKwh: number | null) {
+  const p = ENERGY.curent[s];
+  if (nightKwh === null) return { kwh: dayKwh, total: round(dayKwh * p.lei_kwh) };
+  return { kwh: dayKwh + nightKwh, total: round(dayKwh * p.zi + nightKwh * p.noapte) };
+}
+
+// Un aparat: putere (W) × ore pe zi × zile.
+export function applianceUse(watts: number, hours: number, days: number, leiKwh: number) {
+  const kwh = round((watts * hours * days) / 1000);
+  return { kwh, lei: round(kwh * leiKwh) };
+}
+
+// Încălzirea pe sezon. Necesarul de căldură: kWh/m² pe un sezon întreg (6 luni,
+// 15 octombrie – 15 aprilie), ipoteze ale redacției pentru clădiri tipice din
+// Moldova — utilizatorul le poate schimba. Randamentele și puterea calorifică
+// sunt valori tipice, nu oficiale. 1 Gcal = 1163 kWh (definiție).
+export type Dwelling = "apartament" | "casa";
+export type Insulation = "slaba" | "medie" | "buna";
+export const HEAT_NEED_KWH_M2: Record<Dwelling, Record<Insulation, number>> = {
+  apartament: { slaba: 180, medie: 120, buna: 70 },
+  casa: { slaba: 250, medie: 160, buna: 90 },
+};
+export const HEAT_TYPICAL = {
+  luni_sezon: 6,
+  kwh_gcal: 1163,
+  gaz_kwh_m3: 9.3, // puterea calorifică inferioară, ~8 000 kcal/m³
+  centrala_gaz: 0.9,
+  lemn_kwh_m3: 1600, // 1 m³ (ster) de lemn de esență tare, uscat
+  soba_lemne: 0.65,
+  pelet_kwh_kg: 4.8,
+  centrala_pelet: 0.85,
+} as const;
+
+export function heatingCost(o: {
+  area: number;
+  needKwhM2: number;
+  months: number;
+  heat: HeatSupplier;
+  power: PowerSupplier;
+  woodLeiM3: number; // NaN / 0 = fără preț
+  pelletLeiT: number;
+}) {
+  const h = HEAT_TYPICAL;
+  const need = round((o.area * o.needKwhM2 * o.months) / h.luni_sezon);
+  const gasM3 = need / (h.gaz_kwh_m3 * h.centrala_gaz);
+  const gcal = need / h.kwh_gcal;
+  const woodM3 = need / (h.lemn_kwh_m3 * h.soba_lemne);
+  const pelletT = need / (h.pelet_kwh_kg * h.centrala_pelet) / 1000;
+  const heatTariff = ENERGY.caldura.find((x) => x.id === o.heat)!.lei_gcal;
+  const price = (n: number) => (n > 0 ? n : null);
+  const wood = price(o.woodLeiM3);
+  const pellet = price(o.pelletLeiT);
+  return {
+    need,
+    options: [
+      { id: "gaz", qty: round(gasM3), unit: "m3", lei: gasBill(gasM3).total },
+      { id: "termoficare", qty: round(gcal), unit: "gcal", lei: round(gcal * heatTariff) },
+      { id: "curent", qty: need, unit: "kwh", lei: round(need * ENERGY.curent[o.power].lei_kwh) },
+      { id: "lemne", qty: round(woodM3), unit: "m3", lei: wood && round(woodM3 * wood) },
+      { id: "peleti", qty: round(pelletT), unit: "t", lei: pellet && round(pelletT * pellet) },
+    ],
+  };
+}
+
+// Necesarul de calorii: Mifflin-St Jeor (rata metabolică de bază) × factorul de
+// activitate. Slăbit: −500 kcal, dar nu sub 1200 (femei) / 1500 (bărbați); îngrășat: +500.
+export type Sex = "f" | "m";
+export const ACTIVITY = [
+  { id: "sedentar", factor: 1.2 },
+  { id: "usor", factor: 1.375 },
+  { id: "moderat", factor: 1.55 },
+  { id: "activ", factor: 1.725 },
+  { id: "foarte", factor: 1.9 },
+] as const;
+export type Activity = (typeof ACTIVITY)[number]["id"];
+
+export function calories(sex: Sex, age: number, kg: number, cm: number, activity: Activity) {
+  if (!(age > 0 && kg > 0 && cm > 0)) return null;
+  const bmr = 10 * kg + 6.25 * cm - 5 * age + (sex === "m" ? 5 : -161);
+  const maintain = Math.round(bmr * ACTIVITY.find((a) => a.id === activity)!.factor);
+  const floor = sex === "m" ? 1500 : 1200;
+  return { bmr: Math.round(bmr), maintain, lose: Math.min(maintain, Math.max(floor, maintain - 500)), gain: maintain + 500, floor };
 }

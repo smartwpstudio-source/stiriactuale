@@ -118,6 +118,12 @@ export async function CalculatorView({ slug, lang }: { slug: string; lang: Lang 
           <span className="mt-1 block font-medium">{t.guideTexts[r.calc.slug] ?? t.guideText}</span>
         </Link>
       )}
+      {"recipes" in r.calc && (
+        <Link href={lang === "ru" ? "/ru/retete/" : "/retete/"} className="mt-6 block rounded border border-line bg-white p-4 text-ink hover:border-teal">
+          <span className="block font-mono text-xs uppercase tracking-wide text-teal">{t.recipes}</span>
+          <span className="mt-1 block font-medium">{t.recipesText}</span>
+        </Link>
+      )}
       {r.note && <p className="mt-6 text-sm text-sub">{r.note}</p>}
       {r.sources.length > 0 && (
         <p className="mt-2 text-sm text-sub">

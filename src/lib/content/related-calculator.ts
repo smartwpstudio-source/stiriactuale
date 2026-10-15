@@ -17,6 +17,10 @@ const RULES: [slug: (typeof CALCULATORS)[number]["slug"], re: RegExp][] = [
   ["concediu-medical", /concedi(u|ul|i) medical|certificat(ul)? (de concediu )?medical|incapacitat(e|ii) temporar/],
   ["salariu-net", /salari(u|ul|ile|ului|ilor) (net|brut|minim|mediu)|salariul in mana|impozitul pe venit|salarii(le)? (cresc|se majoreaza)|majorarea salari/],
   ["convertor-valutar", /curs(ul)? (valutar|oficial|bnm)|schimb(ul)? valutar|leul (se )?(depreciaz|apreciaz|scade|creste)/],
+  ["factura-gaz", /factur\w* (la|de|pentru) gaz|(tarif|pret)\w* (reglementat\w* )?(la |pentru )?gaz/],
+  ["factura-curent", /factur\w* (la|de|pentru) (curent|lumina|energi\w* electric)|(tarif|pret)\w* (reglementat\w* )?(la |pentru )?(curent|energi\w* electric)/],
+  ["cost-incalzire", /\bgcal\b|sezon\w* de incalzire|(cost|factur)\w* (la |pentru )?(incalzir|caldur)|termoficar|energi\w* termic/],
+  ["calorii", /\bcalorii\b|\bdiet(a|e|ei|ele)\b/],
 ];
 
 export function matchCalculator(text: string) {

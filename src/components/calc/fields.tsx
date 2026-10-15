@@ -53,3 +53,52 @@ export function ResultRows({ rows, total }: { rows: [string, string][]; total: [
     </div>
   );
 }
+
+// Alegere între câteva variante (butoane, ca la tipul ratelor) sau, cu multe variante, listă.
+export function Choice<K extends string>({
+  label,
+  value,
+  options,
+  onChange,
+}: {
+  label: string;
+  value: K;
+  options: [K, string][];
+  onChange: (k: K) => void;
+}) {
+  if (options.length > 4)
+    return (
+      <label className="block">
+        <span className="block text-sm font-medium text-ink">{label}</span>
+        <select
+          value={value}
+          onChange={(e) => onChange(e.target.value as K)}
+          className="mt-1 w-full rounded border border-line bg-white px-3 py-2.5 text-ink outline-none focus:border-teal"
+        >
+          {options.map(([id, name]) => (
+            <option key={id} value={id}>
+              {name}
+            </option>
+          ))}
+        </select>
+      </label>
+    );
+  return (
+    <fieldset>
+      <legend className="block text-sm font-medium text-ink">{label}</legend>
+      <div className="mt-1 flex flex-wrap gap-2">
+        {options.map(([id, name]) => (
+          <button
+            key={id}
+            type="button"
+            onClick={() => onChange(id)}
+            aria-pressed={value === id}
+            className={`rounded px-3 py-1.5 text-sm ${value === id ? "bg-ink text-white" : "border border-line text-ink"}`}
+          >
+            {name}
+          </button>
+        ))}
+      </div>
+    </fieldset>
+  );
+}

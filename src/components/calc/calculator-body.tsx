@@ -11,9 +11,13 @@ import { PropertyTaxCalculator } from "./property-tax";
 import { LoanCalculator } from "./loan";
 import { SchengenCalculator } from "./schengen";
 import { PortionsCalculator } from "./portions";
+import { GasBillCalculator } from "./gas-bill";
+import { PowerBillCalculator } from "./power-bill";
+import { HeatingCalculator } from "./heating";
+import { CaloriesCalculator } from "./calories";
 import { T, calcText, noteText, type Lang, type NoteKey } from "./i18n";
 import { getBnmRates } from "@/lib/bnm";
-import { availableCalculators } from "@/lib/calculators";
+import { availableCalculators, ENERGY_SOURCES } from "@/lib/calculators";
 import { getCalcParams } from "@/lib/calculators-data";
 
 type Source = { name: string; url: string };
@@ -47,6 +51,18 @@ export async function loadCalculator(slug: string, lang: Lang = "ro") {
     body = <SchengenCalculator lang={lang} />;
   } else if (slug === "portii-eveniment") {
     body = <PortionsCalculator lang={lang} />;
+  } else if (slug === "factura-gaz") {
+    body = <GasBillCalculator lang={lang} />;
+    sources = ENERGY_SOURCES.gaz;
+  } else if (slug === "factura-curent") {
+    body = <PowerBillCalculator lang={lang} />;
+    sources = ENERGY_SOURCES.curent;
+  } else if (slug === "cost-incalzire") {
+    body = <HeatingCalculator lang={lang} />;
+    sources = ENERGY_SOURCES.caldura;
+  } else if (slug === "calorii") {
+    body = <CaloriesCalculator lang={lang} />;
+    sources = [{ name: "Mifflin MD, St Jeor ST et al., Am J Clin Nutr 1990;51(2):241–247 (PubMed)", url: "https://pubmed.ncbi.nlm.nih.gov/2305711/" }];
   } else if (slug === "salariu-net" && p?.salariu) {
     body = <SalaryCalculator p={p.salariu} lang={lang} />;
     sources = p.salariu.surse;
