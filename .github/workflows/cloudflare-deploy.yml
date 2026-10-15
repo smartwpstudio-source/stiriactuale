@@ -96,3 +96,15 @@ jobs:
           BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
           MAGNIFIC_API_KEY: ${{ secrets.MAGNIFIC_API_KEY }}
           GITHUB_DISPATCH_TOKEN: ${{ secrets.DISPATCH_TOKEN }} # GitHub nu permite secrete care încep cu GITHUB_
+
+      # O cerere venită în secundele de propagare a versiunii noi poate salva în cache
+      # un 404 pentru o pagină nouă (ghiduri noi, 2026-10-15): după 30 s, tot site-ul
+      # se reface la cerere (cheia /api/revalidate/ derivă din TELEGRAM_BOT_TOKEN).
+      - name: Reîmprospătarea paginilor după publicare
+        if: ${{ !inputs.dry_run && inputs.production }}
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: |
+          sleep 30
+          KEY=$(node -e 'console.log(require("crypto").createHash("sha256").update("revalidate:" + process.env.TELEGRAM_BOT_TOKEN).digest("hex"))')
+          curl -sf -m 60 -X POST -H "authorization: Bearer $KEY" -H "content-type: application/json" -d '{"all":true}' https://stiriactuale.info/api/revalidate/ && echo " reîmprospătat"
