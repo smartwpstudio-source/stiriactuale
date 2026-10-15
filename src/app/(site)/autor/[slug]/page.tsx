@@ -6,7 +6,6 @@ import { AuthorBadge } from "@/components/author-badge";
 import { AUTHORS, authorPath, getAnalyses } from "@/lib/content/analyses";
 import { absoluteUrl } from "@/lib/seo";
 
-export const dynamicParams = false;
 
 export function generateStaticParams() {
   return Object.keys(AUTHORS).map((slug) => ({ slug }));

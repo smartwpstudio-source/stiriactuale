@@ -6,7 +6,6 @@ import { COMPLAINT_MODELS, loadComplaintModel } from "@/lib/complaint-models";
 
 // Modelul de reclamație inserat pe alte site-uri (iframe), ca widget-ul
 // calculatoarelor. noindex: pagina canonică e /modele-reclamatii/<slug>/.
-export const dynamicParams = false;
 export const metadata: Metadata = { robots: { index: false, follow: true } };
 
 export function generateStaticParams() {

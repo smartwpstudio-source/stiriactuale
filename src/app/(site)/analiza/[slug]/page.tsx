@@ -10,7 +10,6 @@ import { AUTHORS, analysisPath, authorPath, getAnalyses, getAnalysis } from "@/l
 import { resolveTools } from "@/lib/impact";
 import { absoluteUrl } from "@/lib/seo";
 
-export const dynamicParams = false;
 
 export async function generateStaticParams() {
   return (await getAnalyses()).map((a) => ({ slug: a.slug }));

@@ -4,7 +4,6 @@ import { COMPLAINT_MODELS } from "@/lib/complaint-models";
 
 // Varianta rusă: interfața în rusă, scrisoarea în română (limba în care o
 // primesc instituțiile). Doar 13 pagini — se construiesc la build, ca cele românești.
-export const dynamicParams = false;
 
 export function generateStaticParams() {
   return COMPLAINT_MODELS.map((m) => ({ slug: m.slug }));
