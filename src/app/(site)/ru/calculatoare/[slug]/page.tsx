@@ -7,7 +7,6 @@ import { CALCULATORS } from "@/lib/calculators";
 // doar textele diferă (components/calc/i18n.ts). Puține pagini — se construiesc
 // la build, ca varianta românească.
 export const revalidate = 3600;
-export const dynamicParams = false;
 
 export function generateStaticParams() {
   return CALCULATORS.map((c) => ({ slug: c.slug }));

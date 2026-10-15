@@ -7,7 +7,6 @@ import { describe, getForecast, LOCATIONS } from "@/lib/weather";
 // informerelor vechi (ex. gliadrochiana.info, 2026-10-15). Datele: MET Norway
 // (CC BY 4.0 — sursa se citează). noindex: e doar un widget.
 export const revalidate = 1800;
-export const dynamicParams = false;
 export const metadata: Metadata = { robots: { index: false, follow: true } };
 
 export function generateStaticParams() {

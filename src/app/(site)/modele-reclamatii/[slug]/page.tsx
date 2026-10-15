@@ -3,7 +3,6 @@ import { ComplaintModelView, complaintModelMetadata } from "@/components/complai
 import { COMPLAINT_MODELS } from "@/lib/complaint-models";
 
 // Textul vine din ghidul legat, la build.
-export const dynamicParams = false;
 
 export function generateStaticParams() {
   return COMPLAINT_MODELS.map((m) => ({ slug: m.slug }));

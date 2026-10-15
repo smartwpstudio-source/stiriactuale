@@ -5,7 +5,6 @@ import { CALCULATORS } from "@/lib/calculators";
 
 // cursul BNM se schimbă zilnic; parametrii doar la deploy
 export const revalidate = 3600;
-export const dynamicParams = false;
 
 export function generateStaticParams() {
   return CALCULATORS.map((c) => ({ slug: c.slug }));

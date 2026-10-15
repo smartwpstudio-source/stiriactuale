@@ -8,7 +8,6 @@ import { EmbedHeight } from "@/components/calc/embed-height";
 // și fără reclame (e în afara layout-ului (site)). noindex: pagina canonică e
 // /calculatoare/<slug>/.
 export const revalidate = 3600;
-export const dynamicParams = false;
 export const metadata: Metadata = { robots: { index: false, follow: true } };
 
 export function generateStaticParams() {
