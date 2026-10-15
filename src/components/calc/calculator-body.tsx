@@ -21,6 +21,10 @@ import { DepositCalculator } from "./deposit";
 import { OvertimeCalculator } from "./overtime";
 import { WorkdaysCalculator } from "./workdays";
 import { TripCalculator } from "./trip";
+import { BmiCalculator } from "./bmi";
+import { PregnancyCalculator } from "./pregnancy";
+import { BirthAllowanceCalculator } from "./birth-allowance";
+import { KitchenCalculator } from "./kitchen";
 import { T, calcText, noteText, type Lang, type NoteKey } from "./i18n";
 import { getBnmRates } from "@/lib/bnm";
 import { availableCalculators, ENERGY_SOURCES } from "@/lib/calculators";
@@ -42,6 +46,24 @@ const LOT2_SOURCES: Record<string, Source[]> = {
     { name: "HG nr. 289/2023 — zilele de odihnă 1 și 2 iunie 2023 (legis.md)", url: "https://www.legis.md/cautare/getResults?doc_id=136974&lang=ro" },
   ],
   "cost-calatorie": [{ name: "ANRE — prețurile maxime la produsele petroliere (stabilite la 15.10.2026)", url: "https://anre.md/" }],
+};
+
+// Sursele calculatoarelor din lotul 3 (citite la 15.10.2026). Sarcina: surse medicale
+// secundare (spital, NHS) — regula lui Naegele nu e o normă legală.
+const LOT3_SOURCES: Record<string, Source[]> = {
+  imc: [
+    { name: "OMS Europa — Nutrition for a healthy life: clasificarea IMC la adulți", url: "https://www.who.int/europe/news-room/fact-sheets/item/nutrition---maintaining-a-healthy-lifestyle" },
+    { name: "OMS — Obesity and overweight (copii și adolescenți)", url: "https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight" },
+  ],
+  sarcina: [
+    { name: "Cedars-Sinai — Calculating a Due Date (regula lui Naegele, 280 de zile)", url: "https://www.cedars-sinai.org/health-topics/calculating-a-due-date" },
+    { name: "NHS — Due date calculator (ciclu diferit de 28 de zile)", url: "https://www.nhs.uk/pregnancy/finding-out/due-date-calculator/" },
+  ],
+  "indemnizatie-nastere": [
+    { name: "CNAS — indemnizații adresate familiilor cu copii (21 886 lei pentru copiii născuți din 2026)", url: "https://cnas.gov.md/ro/servicii/servicii/indemnizatii/indemnizatii-adresate-familiilor-cu-copii" },
+    { name: "Guvern — proiectul HG de modificare a anexei nr. 1 la HG nr. 1478/2002 și nota de fundamentare (ședința din decembrie 2025)", url: "https://www.gov.md/sites/default/files/media/documents/sedinte-de-guvern/2025-12/NU-927-MMPS-2025.pdf" },
+    { name: "Legea nr. 315/2016 privind prestațiile sociale pentru copii, art. 5 (legis.md)", url: "https://www.legis.md/cautare/getResults?doc_id=97157&lang=ro" },
+  ],
 };
 
 const NOTE_KEY: Partial<Record<string, NoteKey>> = {
@@ -101,6 +123,17 @@ export async function loadCalculator(slug: string, lang: Lang = "ro") {
   } else if (slug === "cost-calatorie") {
     body = <TripCalculator lang={lang} />;
     sources = LOT2_SOURCES[slug];
+  } else if (slug === "imc") {
+    body = <BmiCalculator lang={lang} />;
+    sources = LOT3_SOURCES[slug];
+  } else if (slug === "sarcina") {
+    body = <PregnancyCalculator lang={lang} />;
+    sources = LOT3_SOURCES[slug];
+  } else if (slug === "indemnizatie-nastere") {
+    body = <BirthAllowanceCalculator lang={lang} />;
+    sources = LOT3_SOURCES[slug];
+  } else if (slug === "masuri-culinare") {
+    body = <KitchenCalculator lang={lang} />;
   } else if (slug === "salariu-net" && p?.salariu) {
     body = <SalaryCalculator p={p.salariu} lang={lang} />;
     sources = p.salariu.surse;

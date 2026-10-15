@@ -1,4 +1,4 @@
-import type { Activity, CalculatorSlug, Capitalization, Dwelling, Engine, Fuel, HeatSupplier, Insulation, LoanType, PowerSupplier, Sex } from "@/lib/calculators";
+import type { Activity, BmiClass, CalculatorSlug, Capitalization, Dwelling, Engine, Fuel, HeatSupplier, Insulation, KitchenIngredient, KitchenUnit, LoanType, PowerSupplier, PregnancyFrom, Sex } from "@/lib/calculators";
 import type { HolidayId } from "@/lib/orthodox";
 
 // Textele calculatoarelor în română și rusă (/calculatoare/, /ru/calculatoare/).
@@ -18,8 +18,9 @@ export const date = (iso: string, lang: Lang) => new Date(`${iso}T00:00:00Z`).to
 // numele lunii: ro „octombrie”, ru „октябрь”
 export const monthName = (m: number, lang: Lang) => new Date(Date.UTC(2026, m - 1, 1)).toLocaleDateString(LOCALE[lang], { month: "long", timeZone: "UTC" });
 
-export const money = (n: number, lang: Lang) =>
-  `${n.toLocaleString(LOCALE[lang], { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${T[lang].lei}`;
+// sumele: exact 2 zecimale („12,50”); money() adaugă „lei”
+export const fixed = (n: number, lang: Lang) => n.toLocaleString(LOCALE[lang], { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+export const money = (n: number, lang: Lang) => `${fixed(n, lang)} ${T[lang].lei}`;
 
 // rusă: 1 день, 2 дня, 5 дней
 function ru(n: number, one: string, few: string, many: string) {
@@ -400,6 +401,93 @@ const RO = {
     perPerson: (n: number) => (n === 1 ? "Pe persoană" : `Pe persoană (${n} persoane)`),
     noPrice: "introdu prețul",
   },
+  bmi: {
+    kg: "Greutatea",
+    cm: "Înălțimea",
+    age: "Vârsta (opțional)",
+    total: "Indicele de masă corporală (IMC)",
+    category: "Categoria (OMS)",
+    classes: {
+      sub: "Subponderal (sub 18,5)",
+      normal: "Greutate normală (18,5–24,9)",
+      supra: "Supraponderal (25–29,9)",
+      ob1: "Obezitate de gradul I (30–34,9)",
+      ob2: "Obezitate de gradul II (35–39,9)",
+      ob3: "Obezitate de gradul III (40 și peste)",
+    } as Record<BmiClass, string>,
+    healthy: (a: string, b: string) => `Greutatea sănătoasă pentru înălțimea ta (IMC ${a}–${b})`,
+    minor:
+      "Sub 18 ani, IMC nu se citește după categoriile pentru adulți: medicul îl compară cu curbele de creștere pentru vârstă și sex (percentile). De aceea nu afișăm categoria și greutatea sănătoasă.",
+    invalid: "Introdu greutatea și înălțimea (în cm).",
+  },
+  pregnancy: {
+    from: "Calculez din",
+    froms: { menstruatie: "Ultima menstruație", conceptie: "Data concepției" } as Record<PregnancyFrom, string>,
+    lmp: "Prima zi a ultimei menstruații",
+    conception: "Data concepției",
+    cycle: "Durata obișnuită a ciclului",
+    week: "Vârsta sarcinii",
+    weekValue: (w: number, d: number) => `${w} săpt. și ${d} ${d === 1 ? "zi" : "zile"}`,
+    trimester: "Trimestrul",
+    trimesters: ["I (săptămânile 1–13)", "II (săptămânile 14–27)", "III (din săptămâna 28)"],
+    left: "Până la data probabilă",
+    leftValue: (n: number) => (n === 1 ? "1 zi" : `${n} zile`),
+    past: (n: number) => `a trecut de ${n === 1 ? "1 zi" : `${n} zile`}`,
+    end1: "Sfârșitul trimestrului I (13 săpt. și 6 zile)",
+    end2: "Sfârșitul trimestrului II (27 săpt. și 6 zile)",
+    term: "Sarcina ajunge la termen (37 de săpt.)",
+    over: "42 de săptămâni (sarcină prelungită)",
+    due: "Data probabilă a nașterii",
+    empty: "Alege data din calendar.",
+    invalid: "Verifică data (nu poate fi în viitor sau mai veche de 44 de săptămâni) și ciclul (21–45 de zile).",
+  },
+  birth: {
+    year: "Anul nașterii copilului",
+    children: "Câți copii s-au născut (gemeni: 2)",
+    perChild: "Pentru fiecare copil născut viu",
+    count: "Copii",
+    total: "Indemnizația unică",
+    invalid: "Introdu numărul de copii.",
+    hint: "Indemnizația se stabilește mamei din oficiu, fără cerere, după înregistrarea nașterii; banii vin prin modalitatea de plată aleasă în MPay.",
+  },
+  kitchen: {
+    ingredient: "Ingredientul",
+    ingredients: {
+      faina: "Făină albă",
+      zahar: "Zahăr",
+      "zahar-pudra": "Zahăr pudră",
+      orez: "Orez",
+      gris: "Griș",
+      malai: "Mălai (făină de porumb)",
+      hrisca: "Hrișcă",
+      "fulgi-ovaz": "Fulgi de ovăz",
+      sare: "Sare",
+      cacao: "Cacao",
+      "nuci-macinate": "Nuci măcinate",
+      unt: "Unt topit",
+      ulei: "Ulei",
+      lapte: "Lapte",
+      apa: "Apă",
+      smantana: "Smântână",
+      miere: "Miere",
+    } as Record<KitchenIngredient, string>,
+    qty: "Cantitatea",
+    unit: "Unitatea",
+    units: {
+      pahar250: "Pahar de 250 ml",
+      pahar200: "Pahar fațetat (200 ml)",
+      cana: "Cană (cup, 240 ml)",
+      lingura: "Lingură (15 ml)",
+      lingurita: "Linguriță (5 ml)",
+      ml: "Mililitri (ml)",
+      g: "Grame (g)",
+    } as Record<KitchenUnit | "g", string>,
+    grams: "Cântărește",
+    volume: "Volumul",
+    g: "g",
+    ml: "ml",
+    invalid: "Introdu cantitatea.",
+  },
   property: {
     value: "Valoarea estimată (de pe avizul de plată)",
     rate: (min: number) => `Cota primăriei (minimul legal: ${min}%)`,
@@ -445,10 +533,13 @@ const RO = {
       "ore-suplimentare": "Nu ți se plătesc orele în plus? Cum depui plângere la Inspectoratul Muncii →",
       "zile-lucratoare": "Sărbătorile legale, transferurile și plata pentru munca de sărbători →",
       "cost-calatorie": "Cum se formează prețul la benzină și cum reduci consumul →",
+      sarcina: "Concediul de maternitate: cât durează, cine plătește și ce acte îți trebuie →",
+      "indemnizatie-nastere": "Cine o primește, de ce nu trebuie cerere și ce faci dacă banii nu ajung →",
     } as Partial<Record<CalculatorSlug, string>>,
     sources: "Surse:",
     recipes: "Rețete",
     recipesText: "Rețete moldovenești pas cu pas, pentru meniul de fiecare zi →",
+    see: "Calculează și",
     other: "Читать на русском",
   },
   notes: {
@@ -486,6 +577,14 @@ const RO = {
         "Săptămâna de lucru de 5 zile, cu 8 ore pe zi (Codul muncii, art. 95 și 100). Sărbătorile nelucrătoare sunt cele din art. 111, cu Paștele și Paștele Blajinilor după calendarul ortodox; hramul localității nu e inclus, pentru că data lui o stabilește consiliul local. În ajunul unei sărbători nelucrătoare ziua de muncă se scurtează cu cel puțin o oră (art. 102) — am scăzut o oră. Transferurile zilelor de odihnă le aprobă Guvernul prin hotărâre, obligatorii pentru instituțiile publice și recomandare pentru firmele private: la 15.10.2026, pe legis.md nu există nicio hotărâre pentru 2026 sau 2027; sunt incluse transferurile din 2023 (HG nr. 963/2022 și nr. 289/2023). Termenele din procedurile judiciare sau administrative pot avea reguli proprii.",
       "cost-calatorie":
         "Prețurile implicite sunt prețurile maxime de comercializare stabilite de ANRE la 15.10.2026 pentru benzina 95 și motorina standard, aplicabile pe 16.10.2026: 33,73 și 35,20 lei/litru. ANRE le stabilește în fiecare zi lucrătoare, iar stațiile pot vinde mai ieftin, așa că scrie prețul de la pompă. GPL-ul nu are preț maxim ANRE. Consumul real depinde de viteză, trafic, încărcătură și aerul condiționat. Vinieta, taxele de pod sau de autostradă din alte țări și parcarea nu au valori implicite: adaugă-le la „Alte costuri”.",
+      imc:
+        "IMC e un reper pentru adulți, nu un diagnostic: nu arată cât din greutate e grăsime și cât e mușchi, așa că la sportivi, la vârstnici sau în sarcină poate înșela. Categoriile sunt cele ale Organizației Mondiale a Sănătății (OMS), verificate pe who.int la 15.10.2026: sub 18,5 — subponderal, 18,5–24,9 — greutate normală, 25–29,9 — supraponderal (preobezitate), 30–34,9, 35–39,9 și 40 sau peste — obezitate de gradul I, II și III. Greutatea sănătoasă e intervalul care dă un IMC între 18,5 și 24,9 la înălțimea ta. La copii și adolescenți, IMC se compară cu curbele de creștere pentru vârstă și sex (percentile), nu cu aceste praguri. Pentru o evaluare, vorbește cu medicul de familie.",
+      sarcina:
+        "Estimare după regula lui Naegele: data probabilă a nașterii este prima zi a ultimei menstruații plus 280 de zile (40 de săptămâni), pentru un ciclu de 28 de zile; la un ciclu mai lung sau mai scurt, data se mută cu diferența de zile. Din data concepției se adaugă 266 de zile. Puțini copii se nasc exact la data probabilă: nașterea la termen înseamnă între 37 și 42 de săptămâni. Trimestrele sunt după convenția obișnuită (I — până la 13 săptămâni și 6 zile, II — până la 27 de săptămâni și 6 zile, III — de la 28 de săptămâni). Data reală a sarcinii o stabilește medicul, de obicei după ecografia din primul trimestru. Nu e sfat medical.",
+      "indemnizatie-nastere":
+        "Pentru copiii născuți din 1 ianuarie 2026, indemnizația este de 21 886 lei pentru fiecare copil născut viu — suma publicată de CNAS (verificată pe cnas.gov.md la 15.10.2026) și aprobată de Guvern în anexa nr. 1 la HG nr. 1478/2002; pentru copiii născuți în 2025 a fost de 21 350 lei. Cuantumul îl aprobă Guvernul în fiecare an, egal cu valoarea coșului minim de bunuri necesare la nașterea unui copil (Legea nr. 315/2016, art. 5); suma pentru 2027 nu era aprobată la 15.10.2026. La gemeni sau tripleți se plătește pentru fiecare copil. Din 1 ianuarie 2024, CNAS o stabilește mamei din oficiu, fără cerere, după datele din Registrul de stat al populației; dacă mama a decedat, o primește reprezentantul legal al copilului. Sumele neridicate 3 luni la rând se suspendă și se reiau la cerere, retroactiv pe cel mult 3 ani. Indemnizația lunară pentru creșterea copilului e o prestație separată.",
+      "masuri-culinare":
+        "Valori tipice de bucătărie, nu o normă oficială: am socotit cu densități obișnuite (de exemplu, un pahar de 250 ml ține circa 160 g de făină, 200 g de zahăr sau 350 g de miere), cu ingredientul turnat fără să-l îndeși și cu lingura rasă, nu cu vârf. Făina cernută sau îndesată, zahărul mai mare sau mai fin schimbă greutatea, așa că la prăjituri cântărește dacă poți. Unitățile: paharul fațetat de 200 ml, paharul de 250 ml, cana din rețetele americane (cup, circa 240 ml), lingura de 15 ml și lingurița de 5 ml.",
     } as Partial<Record<CalculatorSlug, string>>,
     generic: (an: number, updated: string) =>
       `Estimare orientativă, cu valorile oficiale pentru ${an} (verificate la ${updated}). Suma exactă o stabilește angajatorul sau instituția care plătește.`,
@@ -862,6 +961,93 @@ const RU: Dict = {
     perPerson: (n) => (n === 1 ? "На человека" : `На человека (${n} ${ru(n, "человек", "человека", "человек")})`),
     noPrice: "укажите цену",
   },
+  bmi: {
+    kg: "Вес",
+    cm: "Рост",
+    age: "Возраст (необязательно)",
+    total: "Индекс массы тела (ИМТ)",
+    category: "Категория (ВОЗ)",
+    classes: {
+      sub: "Недостаточный вес (меньше 18,5)",
+      normal: "Нормальный вес (18,5–24,9)",
+      supra: "Избыточный вес (25–29,9)",
+      ob1: "Ожирение I степени (30–34,9)",
+      ob2: "Ожирение II степени (35–39,9)",
+      ob3: "Ожирение III степени (40 и выше)",
+    },
+    healthy: (a, b) => `Здоровый вес для вашего роста (ИМТ ${a}–${b})`,
+    minor:
+      "До 18 лет ИМТ не оценивают по категориям для взрослых: врач сравнивает его с кривыми роста для возраста и пола (перцентили). Поэтому категорию и здоровый вес мы не показываем.",
+    invalid: "Укажите вес и рост (в см).",
+  },
+  pregnancy: {
+    from: "Считать от",
+    froms: { menstruatie: "Последней менструации", conceptie: "Даты зачатия" },
+    lmp: "Первый день последней менструации",
+    conception: "Дата зачатия",
+    cycle: "Обычная длина цикла",
+    week: "Срок беременности",
+    weekValue: (w, d) => `${w} ${ru(w, "неделя", "недели", "недель")} и ${d} ${ru(d, "день", "дня", "дней")}`,
+    trimester: "Триместр",
+    trimesters: ["I (недели 1–13)", "II (недели 14–27)", "III (с 28-й недели)"],
+    left: "До предполагаемой даты",
+    leftValue: (n) => `${n} ${ru(n, "день", "дня", "дней")}`,
+    past: (n) => `прошло ${n} ${ru(n, "день", "дня", "дней")}`,
+    end1: "Конец I триместра (13 недель и 6 дней)",
+    end2: "Конец II триместра (27 недель и 6 дней)",
+    term: "Доношенная беременность (37 недель)",
+    over: "42 недели (переношенная беременность)",
+    due: "Предполагаемая дата родов",
+    empty: "Выберите дату в календаре.",
+    invalid: "Проверьте дату (не в будущем и не раньше чем 44 недели назад) и длину цикла (21–45 дней).",
+  },
+  birth: {
+    year: "Год рождения ребёнка",
+    children: "Сколько детей родилось (двойня: 2)",
+    perChild: "На каждого живорождённого ребёнка",
+    count: "Детей",
+    total: "Единовременное пособие",
+    invalid: "Укажите число детей.",
+    hint: "Пособие назначается матери автоматически, без заявления, после регистрации рождения; деньги приходят способом выплаты, выбранным в MPay.",
+  },
+  kitchen: {
+    ingredient: "Продукт",
+    ingredients: {
+      faina: "Мука пшеничная",
+      zahar: "Сахар",
+      "zahar-pudra": "Сахарная пудра",
+      orez: "Рис",
+      gris: "Манка",
+      malai: "Кукурузная мука",
+      hrisca: "Гречка",
+      "fulgi-ovaz": "Овсяные хлопья",
+      sare: "Соль",
+      cacao: "Какао",
+      "nuci-macinate": "Молотые орехи",
+      unt: "Сливочное масло (растопленное)",
+      ulei: "Растительное масло",
+      lapte: "Молоко",
+      apa: "Вода",
+      smantana: "Сметана",
+      miere: "Мёд",
+    },
+    qty: "Количество",
+    unit: "Мера",
+    units: {
+      pahar250: "Стакан 250 мл",
+      pahar200: "Гранёный стакан (200 мл)",
+      cana: "Чашка (cup, 240 мл)",
+      lingura: "Столовая ложка (15 мл)",
+      lingurita: "Чайная ложка (5 мл)",
+      ml: "Миллилитры (мл)",
+      g: "Граммы (г)",
+    },
+    grams: "Вес",
+    volume: "Объём",
+    g: "г",
+    ml: "мл",
+    invalid: "Укажите количество.",
+  },
   property: {
     value: "Оценочная стоимость (из платёжного извещения)",
     rate: (min) => `Ставка примэрии (законный минимум: ${min}%)`,
@@ -907,10 +1093,13 @@ const RU: Dict = {
       "ore-suplimentare": "Не оплачивают сверхурочные? Как подать жалобу в Инспекцию труда →",
       "zile-lucratoare": "Праздничные дни, переносы и оплата работы в праздники →",
       "cost-calatorie": "Как формируется цена бензина и как снизить расход →",
+      sarcina: "Отпуск по беременности и родам: сколько длится, кто платит и какие нужны документы →",
+      "indemnizatie-nastere": "Кто получает, почему не нужно заявление и что делать, если деньги не пришли →",
     },
     sources: "Источники:",
     recipes: "Рецепты",
     recipesText: "Молдавская кухня: блюда шаг за шагом, на каждый день →",
+    see: "Посчитайте также",
     other: "Citește în română",
   },
   notes: {
@@ -947,6 +1136,14 @@ const RU: Dict = {
         "Пятидневная рабочая неделя, 8 часов в день (Трудовой кодекс, ст. 95 и 100). Нерабочие праздничные дни — по ст. 111, Пасха и Пасха Блажинилор — по православному календарю; храмовый праздник населённого пункта не учтён, его дату устанавливает местный совет. Накануне нерабочего праздничного дня рабочий день сокращается не менее чем на час (ст. 102) — мы вычли один час. Переносы дней отдыха утверждает Правительство постановлением: они обязательны для государственных учреждений и носят рекомендательный характер для частных компаний. На 15.10.2026 на legis.md нет постановлений на 2026 и 2027 годы; учтены переносы 2023 года (ПП № 963/2022 и № 289/2023). Сроки в судебных и административных процедурах могут считаться по своим правилам.",
       "cost-calatorie":
         "Цены по умолчанию — предельные розничные цены, установленные ANRE 15.10.2026 для бензина 95 и стандартного дизеля и действующие 16.10.2026: 33,73 и 35,20 лея за литр. ANRE устанавливает их каждый рабочий день, а заправки могут продавать дешевле, поэтому укажите цену на колонке. На газ (GPL) предельной цены ANRE нет. Реальный расход зависит от скорости, пробок, загрузки и кондиционера. Виньетка, сборы за мосты или платные дороги в других странах и парковка не заданы по умолчанию: добавьте их в «Прочие расходы».",
+      imc:
+        "ИМТ — ориентир для взрослых, а не диагноз: он не показывает, сколько в весе жира и сколько мышц, поэтому у спортсменов, пожилых людей или при беременности может вводить в заблуждение. Категории — по классификации Всемирной организации здравоохранения (ВОЗ), проверено на who.int 15.10.2026: меньше 18,5 — недостаточный вес, 18,5–24,9 — нормальный вес, 25–29,9 — избыточный вес (предожирение), 30–34,9, 35–39,9 и 40 и выше — ожирение I, II и III степени. Здоровый вес — диапазон, при котором ИМТ для вашего роста находится между 18,5 и 24,9. У детей и подростков ИМТ сравнивают с кривыми роста для возраста и пола (перцентили), а не с этими порогами. Для оценки обратитесь к семейному врачу.",
+      sarcina:
+        "Оценка по правилу Негеле: предполагаемая дата родов — первый день последней менструации плюс 280 дней (40 недель) при цикле 28 дней; при более длинном или коротком цикле дата сдвигается на разницу в днях. От даты зачатия прибавляется 266 дней. Точно в предполагаемую дату рождаются немногие: роды в срок — это от 37 до 42 недель. Триместры — по обычному соглашению (I — до 13 недель и 6 дней, II — до 27 недель и 6 дней, III — с 28 недель). Точный срок беременности устанавливает врач, обычно по УЗИ в первом триместре. Это не медицинский совет.",
+      "indemnizatie-nastere":
+        "Для детей, родившихся с 1 января 2026 года, пособие составляет 21 886 лей на каждого живорождённого ребёнка — сумма опубликована CNAS (проверено на cnas.gov.md 15.10.2026) и утверждена Правительством в приложении № 1 к Постановлению Правительства № 1478/2002; для детей, родившихся в 2025 году, — 21 350 лей. Размер ежегодно утверждает Правительство: он равен стоимости минимальной корзины товаров, необходимых при рождении ребёнка (Закон № 315/2016, ст. 5); сумма на 2027 год на 15.10.2026 ещё не утверждена. За двойню или тройню пособие выплачивается на каждого ребёнка. С 1 января 2024 года CNAS назначает его матери автоматически, без заявления, по данным Государственного регистра населения; если мать умерла, пособие получает законный представитель ребёнка. Суммы, не полученные 3 месяца подряд, приостанавливаются и возобновляются по заявлению — задним числом не более чем за 3 года. Ежемесячное пособие по уходу за ребёнком — отдельная выплата.",
+      "masuri-culinare":
+        "Типичные кухонные значения, а не официальная норма: расчёт по обычной плотности продуктов (например, в стакан 250 мл входит около 160 г муки, 200 г сахара или 350 г мёда), продукт насыпан без утрамбовки, ложка — без горки. Просеянная или утрамбованная мука, крупный или мелкий сахар меняют вес, поэтому для выпечки по возможности взвешивайте. Меры: гранёный стакан 200 мл, стакан 250 мл, чашка из американских рецептов (cup, около 240 мл), столовая ложка 15 мл и чайная ложка 5 мл.",
     },
     generic: (an, updated) =>
       `Ориентировочный расчёт по официальным значениям на ${an} год (проверены ${updated}). Точную сумму устанавливает работодатель или учреждение, которое производит выплату.`,
@@ -1048,6 +1245,22 @@ const CALC_RU: Record<CalculatorSlug, { title: string; description: string }> = 
   "cost-calatorie": {
     title: "Стоимость поездки на машине",
     description: "Во сколько обойдётся поездка: литры бензина, дизеля или газа, предельная цена ANRE и сумма на каждого пассажира.",
+  },
+  imc: {
+    title: "ИМТ и идеальный вес",
+    description: "Индекс массы тела по весу и росту, категория по классификации ВОЗ и диапазон здорового веса для вашего роста.",
+  },
+  sarcina: {
+    title: "Срок беременности и предполагаемая дата родов",
+    description: "Предполагаемая дата родов по первому дню последней менструации или по дате зачатия: неделя беременности, триместр и сколько дней осталось.",
+  },
+  "indemnizatie-nastere": {
+    title: "Единовременное пособие при рождении ребёнка",
+    description: "Сколько мать получает от государства на каждого живорождённого ребёнка — по году рождения: за двойню — на каждого ребёнка, без заявления.",
+  },
+  "masuri-culinare": {
+    title: "Кухонные меры: стакан, ложка → граммы",
+    description: "Сколько граммов муки, сахара, риса, масла или мёда в стакане, чашке, столовой или чайной ложке — и обратно, из граммов в ложки и стаканы.",
   },
 };
 

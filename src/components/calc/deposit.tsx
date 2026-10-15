@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { DEPOSIT, deposit, type Capitalization } from "@/lib/calculators";
 import { Choice, NumberField, ResultRows } from "./fields";
-import { T, money, num, type Lang } from "./i18n";
+import { T, fixed, money, num, type Lang } from "./i18n";
 
 export function DepositCalculator({ lang = "ro" }: { lang?: Lang }) {
   const t = T[lang].deposit;
@@ -58,9 +58,9 @@ export function DepositCalculator({ lang = "ro" }: { lang?: Lang }) {
                   return (
                     <tr key={x.month}>
                       <td className="px-3 py-1.5 text-left">{byYear ? Math.ceil(x.month / 12) : x.month}</td>
-                      <td className="whitespace-nowrap px-3 py-1.5">{num(sumTo(x.month, from, "interest"), lang)}</td>
-                      <td className="whitespace-nowrap px-3 py-1.5">{num(sumTo(x.month, from, "tax"), lang)}</td>
-                      <td className="whitespace-nowrap px-3 py-1.5">{num(x.balance, lang)}</td>
+                      <td className="whitespace-nowrap px-3 py-1.5">{fixed(sumTo(x.month, from, "interest"), lang)}</td>
+                      <td className="whitespace-nowrap px-3 py-1.5">{fixed(sumTo(x.month, from, "tax"), lang)}</td>
+                      <td className="whitespace-nowrap px-3 py-1.5">{fixed(x.balance, lang)}</td>
                     </tr>
                   );
                 })}
