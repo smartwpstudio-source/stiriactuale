@@ -35,6 +35,10 @@ const RULES: [slug: string, re: RegExp][] = [
   ["violenta-in-familie-in-moldova-cum-o-recunosti-unde-ceri-ajutor-ce-spune-legea", /violent\w* (in|din) famili|violent\w* domestic|violent\w* (impotriva|asupra) (femeilor|femeii|sotiei|partenerei)|femicid|ordin\w* de restrictie|ordonant\w* de protectie|(sot|sotul|sotia|sotie|concubin\w*|fost\w* (sot|partener|iubit)\w*)\b.{0,80}\b(lovit\w*|batut\w*|bataie|agresat\w*|ucis\w*|omor\w*|injunghiat\w*|amenint\w*|sechestrat\w*)|(lovit\w*|batut\w*|agresat\w*|ucis\w*|omor\w*|injunghiat\w*)\b.{0,60}\b(sotia|sotul|concubin\w*|fost\w* (sotie|partenera|iubita))/],
   // escrocheriile înaintea pensiilor: „pensionară păcălită” e despre escroci
   ["escrocheriile-in-moldova-cum-le-recunosti-si-ce-faci", /^(?!.*(electoral|alegeri|\bvot\b|furtul miliardului))(?=.*(escroc|\bfraud(a|e|at)\w*|phishing|pacalit\w*|inselat\w* de|investiti\w* false|schema de investitii|apel\w* fals|sms\w* fals))/],
+  // afacerea mică (2026-10-15): IMM, ODA, granturi pentru afaceri, antreprenori independenți
+  ["afacerea-mica-in-moldova-imm-ghid-complet", /\bimm\b|intreprinderi\w* mici (si|și) mijlocii|organizati\w* pentru dezvoltarea antreprenoriatului|\boda\b.{0,80}(grant|program|apel|antreprenor)|(grant|program|apel)\w*.{0,80}\boda\b|crestem imm|antreprenoriat\w*|antreprenor\w* independent|regimul (fiscal )?(pentru )?imm/],
+  // inteligența artificială (2026-10-15) — după escrocherii: „deepfake cu investiții false” rămâne la escrocherii
+  ["inteligenta-artificiala-ghid-practic-moldova", /inteligent\w* artificial|\bdeepfake|chatgpt|\bchatbot|voce\w* clonat|clonar\w* (a )?voc/],
   // pilonul pensiilor („pensiune” = casă de oaspeți, nu intră)
   ["pensiile-in-moldova-tot-ce-trebuie-sa-stii", /\bpensi(a|e|i|ii|ile|ilor|onar\w*)\b|varsta de pensionare|stagiu\w* de cotizare/],
   ["preturile-la-alimente-si-inflatia-date-bns-bnm", /inflati/],
