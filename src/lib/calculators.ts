@@ -4,6 +4,7 @@
 // Un calculator fără parametri nu apare (nu afișăm cifre neverificate).
 // Fără importuri de server aici: formulele rulează și în browser
 // (citirea fișierului e în calculators-data.ts).
+import { addDays, holidayOn, isDayOff, type HolidayId } from "./orthodox";
 
 type Source = { name: string; url: string };
 
@@ -108,6 +109,12 @@ export const CALCULATORS = [
   { slug: "factura-curent", title: "Factura la curent și consumul aparatelor", description: "Cât plătești pentru kWh consumați la Premier Energy sau FEE Nord, la prețul ANRE, și cât consumă boilerul, caloriferul sau frigiderul.", needs: null, guide: "cum-economisesti-energie-electrica-acasa" },
   { slug: "cost-incalzire", title: "Costul încălzirii pe sezon", description: "Cât te costă iarna cu gaz, termoficare, curent, lemne sau peleți, după suprafața și izolația locuinței.", needs: null, guide: "cum-reduci-factura-la-incalzire-sfaturi-practice" },
   { slug: "calorii", title: "Câte calorii îți trebuie pe zi", description: "Necesarul zilnic de calorii după vârstă, greutate, înălțime și activitate: pentru menținere, slăbit sau pus în greutate.", needs: null, recipes: true },
+  { slug: "putere-calorifere", title: "Câte calorifere și ce centrală îți trebuie", description: "Puterea de încălzire necesară pentru o cameră sau o locuință, câte elemente de calorifer și ce putere de centrală să alegi, după suprafață, tavan și izolație.", needs: null, guide: "cum-reduci-factura-la-incalzire-sfaturi-practice" },
+  { slug: "lemne-peleti", title: "Câte lemne sau peleți îți trebuie pentru iarnă", description: "Câți metri steri de lemne sau câte tone de peleți îți trebuie pe un sezon de încălzire și cât costă, după suprafața și izolația casei.", needs: null, guide: "pregatirea-gospodariei-de-iarna-beci-conserve-pomi" },
+  { slug: "dobanda-depozit", title: "Dobânda la depozit", description: "Cât câștigi dintr-un depozit bancar: dobânda brută, impozitul de 6% reținut de bancă, suma netă și creșterea lună de lună, cu sau fără capitalizare.", needs: null, guide: "depozitul-bancar-ce-garanteaza-statul-fgdsb" },
+  { slug: "ore-suplimentare", title: "Plata orelor suplimentare, de noapte și de sărbători", description: "Cât trebuie să primești, brut, pentru orele suplimentare, munca de noapte și munca în zilele de odihnă sau de sărbătoare, după Codul muncii.", needs: null, guide: "plangere-la-inspectoratul-de-stat-al-muncii-cand-si-cum" },
+  { slug: "zile-lucratoare", title: "Câte zile lucrătoare are luna", description: "Zilele și orele lucrătoare dintr-o lună sau dintr-o perioadă, fără weekenduri și sărbători legale, plus calculul unui termen în zile lucrătoare.", needs: null, guide: "sarbatorile-legale-in-moldova-in-2027-zile-libere" },
+  { slug: "cost-calatorie", title: "Costul unei călătorii cu mașina", description: "Cât te costă drumul cu mașina: litrii de benzină, motorină sau GPL, prețul maxim ANRE și suma pe fiecare pasager.", needs: null, guide: "economia-la-benzina-si-motorina-pret-si-consum" },
 ] as const;
 
 export type CalculatorSlug = (typeof CALCULATORS)[number]["slug"];
@@ -447,4 +454,166 @@ export function calories(sex: Sex, age: number, kg: number, cm: number, activity
   const maintain = Math.round(bmr * ACTIVITY.find((a) => a.id === activity)!.factor);
   const floor = sex === "m" ? 1500 : 1200;
   return { bmr: Math.round(bmr), maintain, lose: Math.min(maintain, Math.max(floor, maintain - 500)), gain: maintain + 500, floor };
+}
+
+
+// Puterea de încălzire: metoda practică W/m² (la tavan de 2,7 m), corectată după
+// înălțimea tavanului, camera de colț și ferestrele mari. Valori tipice ale
+// redacției, nu o normă: calculul exact (SM EN 12831) îl face un proiectant.
+export const RADIATOR_W_M2: Record<Dwelling, Record<Insulation, number>> = {
+  apartament: { slaba: 120, medie: 100, buna: 70 },
+  casa: { slaba: 150, medie: 120, buna: 80 },
+};
+export const RADIATOR_TYPICAL = {
+  tavan_m: 2.7,
+  colt: 1.15, // cameră de colț: +15%
+  geamuri: 1.1, // ferestre mari sau vechi: +10%
+  element_w: 160, // un element de aluminiu/bimetal la ΔT 50 °C
+  rezerva_centrala: 1.2, // centrala: +20% peste necesarul locuinței
+} as const;
+
+export function radiatorPower(o: { area: number; ceiling: number; dwelling: Dwelling; insulation: Insulation; corner: boolean; bigWindows: boolean; elementW: number }) {
+  const t = RADIATOR_TYPICAL;
+  const w = o.area * RADIATOR_W_M2[o.dwelling][o.insulation] * (o.ceiling / t.tavan_m) * (o.corner ? t.colt : 1) * (o.bigWindows ? t.geamuri : 1);
+  const watts = Math.round(w);
+  return {
+    watts,
+    elements: o.elementW > 0 ? Math.ceil(watts / o.elementW - 1e-9) : null,
+    boilerKw: Math.round((watts * t.rezerva_centrala) / 100) / 10,
+  };
+}
+
+// Lemne și peleți pe sezon: același necesar de căldură și aceleași randamente ca la
+// costul încălzirii (HEAT_NEED_KWH_M2, HEAT_TYPICAL). Prețurile — doar ale utilizatorului.
+export const PELLET_BAG_KG = 15; // sacul obișnuit de peleți
+
+export function firewood(o: { area: number; needKwhM2: number; months: number; woodLeiM3: number; pelletLeiT: number }) {
+  const r = heatingCost({ ...o, heat: "termoelectrica", power: "premier" });
+  const wood = r.options.find((x) => x.id === "lemne")!;
+  const pellet = r.options.find((x) => x.id === "peleti")!;
+  return { need: r.need, woodM3: wood.qty, woodLei: wood.lei, pelletT: pellet.qty, pelletBags: Math.ceil((pellet.qty * 1000) / PELLET_BAG_KG - 1e-9), pelletLei: pellet.lei };
+}
+
+// Dobânda la depozit. Impozitul: 6% din dobânzile plătite persoanelor fizice
+// rezidente, reținut final de bancă (Codul fiscal, art. 90¹ alin. (3⁷), legis.md,
+// 15.10.2026). FGDSB garantează 200 000 lei de deponent la fiecare bancă (fgdsb.md).
+export const DEPOSIT = { impozit_pct: 6, plafon_fgdsb_lei: 200000, verificat: "2026-10-15" } as const;
+export type Capitalization = "lunar" | "scadenta";
+
+export function deposit(amount: number, ratePct: number, months: number, cap: Capitalization, taxed: boolean) {
+  const n = Math.floor(months);
+  if (!(amount > 0) || n < 1 || n > 600) return null;
+  const r = ratePct / 1200;
+  const tax = taxed ? DEPOSIT.impozit_pct / 100 : 0;
+  let bal = amount;
+  let gross = 0;
+  const rows: { month: number; interest: number; tax: number; balance: number }[] = [];
+  for (let m = 1; m <= n; m++) {
+    // lunar: dobânda netă se adaugă la depozit; la scadență: dobândă simplă, plătită la final
+    const i = (cap === "lunar" ? bal : amount) * r;
+    gross += i;
+    if (cap === "lunar") bal += i * (1 - tax);
+    rows.push({ month: m, interest: round(i), tax: round(i * tax), balance: round(cap === "lunar" ? bal : amount + gross * (1 - tax)) });
+  }
+  const taxTotal = round(gross * tax);
+  return {
+    gross: round(gross),
+    tax: taxTotal,
+    net: round(gross - taxTotal),
+    final: round(amount + gross - taxTotal),
+    effectivePct: round(cap === "lunar" ? ((1 + r) ** 12 - 1) * 100 : ratePct), // rata anuală efectivă, înainte de impozit
+    overGuarantee: amount + gross - taxTotal > DEPOSIT.plafon_fgdsb_lei,
+    rows,
+  };
+}
+
+// Orele suplimentare, de noapte, de odihnă și de sărbătoare (Codul muncii, verificat pe
+// legis.md la 15.10.2026): art. 157 — primele 2 ore suplimentare (pe zi) cel puțin ×1,5,
+// următoarele cel puțin ×2; art. 159 — noaptea (22:00–6:00, art. 103) adaos de cel puțin
+// 0,5; art. 158 — zi de repaus/sărbătoare: cel puțin încă un salariu pe oră în limita
+// normei lunare, dublu peste normă. Minimele legale; contractul poate da mai mult.
+export const LABOUR = { primele_ore: 2, supl_primele: 1.5, supl_urmatoarele: 2, noapte_adaos: 0.5, sarbatoare_in_norma: 1, sarbatoare_peste_norma: 2 } as const;
+
+export function overtimePay(o: { hourly: number; overtimeHours: number; overtimeDays: number; nightHours: number; holidayHours: number; holidayInNorm: boolean }) {
+  const L = LABOUR;
+  const first = Math.min(o.overtimeHours, L.primele_ore * Math.max(1, Math.floor(o.overtimeDays)));
+  const overtime = round(o.hourly * (first * L.supl_primele + (o.overtimeHours - first) * L.supl_urmatoarele));
+  const night = round(o.hourly * o.nightHours * L.noapte_adaos);
+  const holiday = round(o.hourly * o.holidayHours * (o.holidayInNorm ? L.sarbatoare_in_norma : L.sarbatoare_peste_norma));
+  return { first, rest: o.overtimeHours - first, overtime, night, holiday, total: round(overtime + night + holiday) };
+}
+
+// Zilele lucrătoare: săptămâna de 5 zile, 8 ore pe zi (art. 95, 100 CM); în ajunul unei
+// sărbători nelucrătoare ziua se scurtează cu cel puțin o oră (art. 102); sărbătorile din
+// art. 111 (orthodox.ts). Transferurile zilelor de odihnă prin hotărâre de Guvern
+// (art. 111 alin. (5); obligatorii pentru sectorul public, recomandare pentru firmele private):
+// la 15.10.2026, pe legis.md nu există nicio hotărâre pentru 2024–2027; ultimele sunt din 2023.
+export const DAY_TRANSFERS: { date: string; off: boolean; act: string }[] = [
+  { date: "2023-01-02", off: true, act: "HG nr. 963/2022" },
+  { date: "2023-01-28", off: false, act: "HG nr. 963/2022" },
+  { date: "2023-05-08", off: true, act: "HG nr. 963/2022" },
+  { date: "2023-05-13", off: false, act: "HG nr. 963/2022" },
+  { date: "2023-06-02", off: true, act: "HG nr. 289/2023" }, // recuperată prin prelungirea zilei de muncă
+];
+export const WORKDAY_HOURS = 8;
+
+const isoDay = (d: Date) => d.toISOString().slice(0, 10);
+const parseDay = (s: string) => {
+  const t = Date.parse(`${s}T00:00:00Z`);
+  return Number.isNaN(t) ? null : new Date(t);
+};
+
+export function isWorkDay(d: Date) {
+  const t = DAY_TRANSFERS.find((x) => x.date === isoDay(d));
+  return t ? !t.off : !isDayOff(d);
+}
+
+export function workingDays(from: string, to: string) {
+  const a = parseDay(from);
+  const b = parseDay(to);
+  if (!a || !b || b < a) return null;
+  let calendar = 0;
+  let work = 0;
+  let short = 0;
+  const holidays: { date: string; id: HolidayId }[] = [];
+  const transfers: typeof DAY_TRANSFERS = [];
+  // ponytail: maximum ~10 ani pe interval, cât să nu blocheze browserul
+  for (let d = a; d <= b && calendar < 3700; d = addDays(d, 1)) {
+    calendar++;
+    const h = holidayOn(d);
+    const wd = d.getUTCDay();
+    if (h && wd !== 0 && wd !== 6) holidays.push({ date: isoDay(d), id: h.id });
+    const t = DAY_TRANSFERS.find((x) => x.date === isoDay(d));
+    if (t) transfers.push(t);
+    if (!isWorkDay(d)) continue;
+    work++;
+    if (holidayOn(addDays(d, 1))) short++;
+  }
+  return { calendar, work, short, hours: work * WORKDAY_HOURS - short, holidays, transfers };
+}
+
+// Termenul: a N-a zi lucrătoare după data de pornire (ziua de pornire nu se numără).
+export function addWorkingDays(start: string, n: number) {
+  let d = parseDay(start);
+  if (!d || n < 0 || n > 3000) return null;
+  for (let k = 0; k < Math.floor(n); ) {
+    d = addDays(d, 1);
+    if (isWorkDay(d)) k++;
+  }
+  return isoDay(d);
+}
+
+// Costul drumului cu mașina. Prețurile maxime ANRE pentru benzina 95 și motorina
+// standard (anre.md, stabilite la 15.10.2026, aplicabile pe 16.10.2026) — se schimbă
+// aproape zilnic, utilizatorul le poate modifica. GPL-ul nu are preț maxim ANRE.
+export const FUEL = { stabilit: "2026-10-15", de_la: "2026-10-16", benzina: 33.73, motorina: 35.2 } as const;
+export type Fuel = "benzina" | "motorina" | "gpl";
+
+export function tripCost(o: { km: number; roundTrip: boolean; lPer100: number; price: number; passengers: number; extra: number }) {
+  const km = o.km * (o.roundTrip ? 2 : 1);
+  const liters = (km * o.lPer100) / 100;
+  const fuel = o.price > 0 ? round(liters * o.price) : null;
+  const total = fuel === null ? null : round(fuel + (o.extra || 0));
+  const people = Math.max(1, Math.floor(o.passengers));
+  return { km, liters: round(liters), fuel, total, perPerson: total === null ? null : round(total / people), people };
 }

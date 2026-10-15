@@ -165,18 +165,25 @@ export const formatDay = (d: Date) => `${d.getUTCDate()} ${MONTHS[d.getUTCMonth(
 export const weekday = (d: Date) => WEEKDAYS[d.getUTCDay()];
 export const monthName = (m: number) => MONTHS[m - 1];
 
-// Zilele de sărbătoare nelucrătoare la nivel național (Codul muncii, art. 111;
-// lista din ghidul „Sărbătorile legale”). Fără hramurile locale.
-export function isPublicHoliday(day: Date): boolean {
-  const y = day.getUTCFullYear();
+// Zilele de sărbătoare nelucrătoare la nivel național (Codul muncii, art. 111
+// alin. (1), verificat pe legis.md la 15.10.2026). Fără hramurile locale (lit. j).
+export type HolidayId =
+  | "anul-nou" | "craciun-vechi-1" | "craciun-vechi-2" | "ziua-femeii" | "paste-1" | "paste-2" | "blajini"
+  | "1-mai" | "9-mai" | "1-iunie" | "independenta" | "limba-romana" | "craciun-nou";
+
+export function publicHolidays(y: number): { date: Date; id: HolidayId }[] {
   const easter = orthodoxEaster(y);
-  const days = [
-    utc(y, 1, 1), utc(y, 1, 7), utc(y, 1, 8), utc(y, 3, 8), utc(y, 5, 1), utc(y, 5, 9), utc(y, 6, 1),
-    utc(y, 8, 27), utc(y, 8, 31), utc(y, 12, 25),
-    easter, addDays(easter, 1), addDays(easter, 8), // Paștele, a doua zi, Paștele Blajinilor (luni)
+  const list: [Date, HolidayId][] = [
+    [utc(y, 1, 1), "anul-nou"], [utc(y, 1, 7), "craciun-vechi-1"], [utc(y, 1, 8), "craciun-vechi-2"], [utc(y, 3, 8), "ziua-femeii"],
+    [easter, "paste-1"], [addDays(easter, 1), "paste-2"], [addDays(easter, 8), "blajini"], // Paștele Blajinilor: lunea, o săptămână după Paști
+    [utc(y, 5, 1), "1-mai"], [utc(y, 5, 9), "9-mai"], [utc(y, 6, 1), "1-iunie"], [utc(y, 8, 27), "independenta"], [utc(y, 8, 31), "limba-romana"],
+    [utc(y, 12, 25), "craciun-nou"],
   ];
-  return days.some((d) => d.getTime() === day.getTime());
+  return list.map(([date, id]) => ({ date, id }));
 }
+
+export const holidayOn = (day: Date) => publicHolidays(day.getUTCFullYear()).find((h) => h.date.getTime() === day.getTime());
+export const isPublicHoliday = (day: Date) => holidayOn(day) !== undefined;
 
 // Zi liberă: sâmbătă, duminică sau sărbătoare legală
 export const isDayOff = (day: Date) => day.getUTCDay() === 0 || day.getUTCDay() === 6 || isPublicHoliday(day);
