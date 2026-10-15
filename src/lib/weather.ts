@@ -52,9 +52,13 @@ export async function getWeather() {
     const t = all[i]?.[0];
     return t ? { city: c.name, temp: Math.round(t.data.instant.details.air_temperature), symbol: t.data.next_1_hours?.summary.symbol_code } : null;
   }).filter((x) => x !== null);
-  // Chișinău: min/max pe zilele următoare
+  return { now, days: nextDays(all[0]) };
+}
+
+// min/max și simbolul pe zilele următoare (după azi), din seria unei locații
+function nextDays(s: Series) {
   const byDay = new Map<string, { min: number; max: number; symbol?: string }>();
-  for (const t of all[0]) {
+  for (const t of s) {
     const k = dayKey(t.time);
     const temp = t.data.instant.details.air_temperature;
     const d = byDay.get(k) ?? { min: temp, max: temp };
@@ -66,8 +70,23 @@ export async function getWeather() {
     if (!d.symbol && h >= 6 && h <= 12) d.symbol = t.data.next_6_hours?.summary.symbol_code;
     byDay.set(k, d);
   }
-  const days = [...byDay.entries()].slice(1, 4).map(([date, d]) => ({ date, min: Math.round(d.min), max: Math.round(d.max), symbol: d.symbol }));
-  return { now, days };
+  return [...byDay.entries()].slice(1, 4).map(([date, d]) => ({ date, min: Math.round(d.min), max: Math.round(d.max), symbol: d.symbol }));
+}
+
+// Localitățile widget-ului /embed/vremea/<loc>/ (pentru site-urile partenere)
+export const LOCATIONS = {
+  drochia: { name: "Drochia", lat: 48.03, lon: 27.81 },
+} as const;
+
+// O singură locație: acum + următoarele 3 zile
+export async function getForecast(lat: number, lon: number) {
+  const s = await series(lat, lon);
+  const t = s?.[0];
+  if (!s || !t) return null;
+  return {
+    now: { temp: Math.round(t.data.instant.details.air_temperature), symbol: t.data.next_1_hours?.summary.symbol_code },
+    days: nextDays(s),
+  };
 }
 
 // Azi, per oraș: minima și maxima până la miezul nopții + simbolul zilei —
