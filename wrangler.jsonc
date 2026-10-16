@@ -58,6 +58,11 @@
 
   "observability": { "enabled": true },
 
+  // site-ul răspunde doar pe stiriactuale.info (+ www); adresele *.workers.dev și de
+  // previzualizare se închid (aveau oricum noindex, vezi src/proxy.ts)
+  "workers_dev": false,
+  "preview_urls": false,
+
   // Baza Neon e în us-east-2: paginile ne-cache-uite fac interogări peste ocean din
   // centrul de date al vizitatorului. Dacă timpii de răspuns la generare sunt mari,
   // de încercat plasarea worker-ului lângă bază (după măsurători, nu din oficiu):
