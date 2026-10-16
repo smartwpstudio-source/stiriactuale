@@ -31,6 +31,14 @@ const RULES: [slug: (typeof CALCULATORS)[number]["slug"], re: RegExp][] = [
   ["lemne-peleti", /lemn\w* de foc|\bpelet/],
   ["putere-calorifere", /central\w* termic|calorifer/],
   ["cost-calatorie", /carburant|\bbenzin|\bmotorin/],
+  // lotul 4: la sfârșit, ca potrivirile vechi să rămână neschimbate
+  ["varsta-pensionare", /varst\w* (standard )?de pensionare|stagi\w* (minim |complet )?de cotizare|\bpensionar(ea|ii) (femeilor|barbatilor)/],
+  // „amendă” singură e și la ANSA, ecologie, primărie — doar cu context rutier; „parchet”, „tapet” nu (Parchetul, „pe tapet”)
+  ["amenzi-rutiere", /puncte(le|lor)? de penalizare|\bamen(zi|da|dat|dar|zil)\w*.{0,80}(rutier|circulati|sofer|volan|vitez|permis\w* de conducere|centur|semafor|pe rosu|pieton|alcoolemi|in stare de ebrietate)|(rutier|circulati|sofer|vitez|volan)\w*.{0,80}\bamen(zi|da|dat|dar|zil)/],
+  ["rca-carte-verde", /\brca\b|carte(a)? verde|cartii verzi|raspunder\w* civil\w* auto/],
+  ["penalitati-intarziere", /(dobanz|dobanda|majorar|penalitat)\w* de intarziere|penalitat\w* (pentru|la) (plata cu intarziere|neachitar|intarzier)/],
+  ["tva", /\btva\b|taxa pe valoarea adaugata/],
+  ["materiale-renovare", /renovar\w* (unui |unei |a |in )?(apartament|casei|casa|locuint|bucatari|baii|camer)|\bgresie\b|\bfaianta\b/],
 ];
 
 export function matchCalculator(text: string) {
@@ -75,6 +83,12 @@ const GUIDE_CALCULATORS: Record<string, CalculatorSlug[]> = {
   "condusul-economic-cum-reduci-consumul-de-carburant": ["cost-calatorie"],
   "pregatirea-gospodariei-de-iarna-beci-conserve-pomi": ["lemne-peleti"],
   "cum-reduci-factura-la-incalzire-sfaturi-practice": ["cost-incalzire", "putere-calorifere", "lemne-peleti"],
+  // lotul 4: ghidurile-pereche ale calculatoarelor, unde expresiile nu prind titlul
+  "amenzile-in-moldova-cine-te-poate-amenda-si-cum-contesti": ["amenzi-rutiere"],
+  "cum-eviti-datoriile-microcredite-dae-restante": ["penalitati-intarziere"],
+  "casa-si-blocul-intretinere-siguranta-drepturi": ["materiale-renovare"],
+  // „fără TVA” în descriere: ghidul tarifelor nu e despre TVA
+  "tarifele-la-gaz-energie-electrica-si-termoficare": [],
   // potriviri false ale expresiilor („certificat medical”, șomajul din Israel)
   "certificat-medical-pentru-permisul-de-conducere": [],
   "lucratorii-moldoveni-din-israel-drepturi-cand-activitatea-se-opreste": [],

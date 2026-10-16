@@ -25,6 +25,12 @@ import { BmiCalculator } from "./bmi";
 import { PregnancyCalculator } from "./pregnancy";
 import { BirthAllowanceCalculator } from "./birth-allowance";
 import { KitchenCalculator } from "./kitchen";
+import { RetirementCalculator } from "./retirement";
+import { TrafficFinesCalculator } from "./traffic-fines";
+import { VatCalculator } from "./vat";
+import { LatePaymentCalculator } from "./late-payment";
+import { RenovationCalculator } from "./renovation";
+import { RcaCalculator } from "./rca";
 import { T, calcText, noteText, type Lang, type NoteKey } from "./i18n";
 import { getBnmRates } from "@/lib/bnm";
 import { availableCalculators, ENERGY_SOURCES } from "@/lib/calculators";
@@ -63,6 +69,31 @@ const LOT3_SOURCES: Record<string, Source[]> = {
     { name: "CNAS — indemnizații adresate familiilor cu copii (21 886 lei pentru copiii născuți din 2026)", url: "https://cnas.gov.md/ro/servicii/servicii/indemnizatii/indemnizatii-adresate-familiilor-cu-copii" },
     { name: "Guvern — proiectul HG de modificare a anexei nr. 1 la HG nr. 1478/2002 și nota de fundamentare (ședința din decembrie 2025)", url: "https://www.gov.md/sites/default/files/media/documents/sedinte-de-guvern/2025-12/NU-927-MMPS-2025.pdf" },
     { name: "Legea nr. 315/2016 privind prestațiile sociale pentru copii, art. 5 (legis.md)", url: "https://www.legis.md/cautare/getResults?doc_id=97157&lang=ro" },
+  ],
+};
+
+// Sursele calculatoarelor din lotul 4 (citite la 16.10.2026). Materialele pentru renovare: doar
+// valori tipice, fără sursă oficială.
+const LEGIS = (id: number) => `https://www.legis.md/cautare/getResults?doc_id=${id}&lang=ro`;
+const BNM_DECISION = (d: string) => `https://www.bnm.md/ro/content/decizia-de-politica-monetara-${d}`;
+const LOT4_SOURCES: Record<string, Source[]> = {
+  "varsta-pensionare": [{ name: "Legea nr. 156/1998 privind sistemul public de pensii, art. 15, 15², 41, 42 (legis.md, versiunea din 02.10.2026)", url: LEGIS(156676) }],
+  "amenzi-rutiere": [{ name: "Codul contravențional nr. 218/2008, art. 34, 36, 228–245 (legis.md, versiunea din 13.09.2026)", url: LEGIS(155852) }],
+  tva: [{ name: "Codul fiscal nr. 1163/1997, art. 96 (legis.md, versiunea din 01.07.2026)", url: LEGIS(138613) }],
+  "penalitati-intarziere": [
+    { name: "Codul civil nr. 1107/2002, art. 874, 942, 943 (legis.md, versiunea din 01.04.2026)", url: LEGIS(150498) },
+    { name: "Codul fiscal nr. 1163/1997, art. 228 (legis.md, versiunea din 01.07.2026)", url: LEGIS(138613) },
+    { name: "BNM — decizia de politică monetară din 05.12.2024 (rata de bază 3,60%)", url: BNM_DECISION("05122024") },
+    { name: "BNM — decizia din 19.06.2025 (6,50%)", url: BNM_DECISION("19062025") },
+    { name: "BNM — decizia din 06.11.2025 (6,00%)", url: BNM_DECISION("06112025") },
+    { name: "BNM — decizia din 11.12.2025 (5,00%)", url: BNM_DECISION("11122025") },
+    { name: "BNM — decizia din 18.06.2026 (7,00%)", url: BNM_DECISION("18062026") },
+  ],
+  "rca-carte-verde": [
+    { name: "Hotărârea BNM nr. 198 din 20.08.2026 privind primele de bază, coeficienții de rectificare și primele de referință RCA internă și externă (MO nr. 390-393 din 25.08.2026)", url: "https://bnm.md/files/Hot%C4%83r%C3%A2rea%20nr.%20198%20din%2020.08.2026.pdf" },
+    { name: "Legea nr. 106/2022 privind asigurarea obligatorie RCA, art. 12 (bnm.md)", url: "https://www.bnm.md/ro/content/legea-nr106-din-21-04-2022-privind-asigurarea-obligatorie-de-raspundere-civila-auto-pentru" },
+    { name: "Monitorul Fiscal FISC.md (2017) — zonele Carte Verde (sursă secundară)", url: "https://monitorul.fisc.md/editorial/de-la-inceput-de-an-creste-prima-de-baza-la-rca-si-carte-verde.html" },
+    { name: "Portalul RCA al BNM — calculatoare și clasa bonus-malus", url: "https://rca.bnm.md/online" },
   ],
 };
 
@@ -134,6 +165,23 @@ export async function loadCalculator(slug: string, lang: Lang = "ro") {
     sources = LOT3_SOURCES[slug];
   } else if (slug === "masuri-culinare") {
     body = <KitchenCalculator lang={lang} />;
+  } else if (slug === "varsta-pensionare") {
+    body = <RetirementCalculator lang={lang} />;
+    sources = LOT4_SOURCES[slug];
+  } else if (slug === "amenzi-rutiere") {
+    body = <TrafficFinesCalculator lang={lang} />;
+    sources = LOT4_SOURCES[slug];
+  } else if (slug === "tva") {
+    body = <VatCalculator lang={lang} />;
+    sources = LOT4_SOURCES[slug];
+  } else if (slug === "penalitati-intarziere") {
+    body = <LatePaymentCalculator lang={lang} />;
+    sources = LOT4_SOURCES[slug];
+  } else if (slug === "materiale-renovare") {
+    body = <RenovationCalculator lang={lang} />;
+  } else if (slug === "rca-carte-verde") {
+    body = <RcaCalculator lang={lang} />;
+    sources = LOT4_SOURCES[slug];
   } else if (slug === "salariu-net" && p?.salariu) {
     body = <SalaryCalculator p={p.salariu} lang={lang} />;
     sources = p.salariu.surse;
