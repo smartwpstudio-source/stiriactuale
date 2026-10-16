@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { getDb } from "@/lib/pipeline/db/client";
 import { articles, candidates } from "@/lib/pipeline/db/schema";
-import { put } from "@vercel/blob";
+import { putMedia } from "@/lib/media";
 import { AI_IMAGE_PREFIX, stockToBlob } from "@/lib/pipeline/image";
 import { sanitizeBody } from "@/lib/content/sanitize";
 import { fetchArticle } from "@/lib/pipeline/fulltext";
@@ -151,7 +151,7 @@ function imageMeta(formData: FormData) {
 }
 
 // După înlocuirea pozei: tot site-ul (listele) și explicit pagina articolului.
-// Poza veche rămâne în Blob (nu se șterg fișiere).
+// Poza veche rămâne în R2 (nu se șterg fișiere).
 async function refreshArticle(id: number) {
   refreshSite();
   const [a] = await getDb().select().from(articles).where(eq(articles.id, id));
@@ -182,12 +182,8 @@ export async function uploadImage(id: number, formData: FormData) {
   if (!row) redirect("/admin/");
   const { credit, alt } = imageMeta(formData);
   const prefix = formData.get("ai") && !credit ? AI_IMAGE_PREFIX : "articole/";
-  const blob = await put(`${prefix}${row.slug}.jpg`, file, {
-    access: "public",
-    contentType: file.type,
-    addRandomSuffix: true,
-  });
-  await db.update(articles).set({ imageUrl: blob.url, imageResourceId: null, imageCredit: credit, imageAltText: alt }).where(eq(articles.id, id));
+  const imageUrl = await putMedia(`${prefix}${row.slug}.jpg`, file, file.type);
+  await db.update(articles).set({ imageUrl, imageResourceId: null, imageCredit: credit, imageAltText: alt }).where(eq(articles.id, id));
   await refreshArticle(id);
   redirect(`/admin/articol/${id}/?img=1`);
 }
@@ -243,7 +239,7 @@ export async function addLink(formData: FormData) {
   const photo = formData.get("photo");
   const imageUrl =
     photo instanceof File && photo.size > 0 && photo.type.startsWith("image/")
-      ? (await put(`articole/manual-${Date.now()}.jpg`, photo, { access: "public", contentType: photo.type, addRandomSuffix: true })).url
+      ? await putMedia(`articole/manual-${Date.now()}.jpg`, photo, photo.type)
       : null;
   const imageCredit = String(formData.get("credit") ?? "").trim().slice(0, 80) || null;
   const imageAlt = String(formData.get("photo_alt") ?? "").trim().slice(0, 200) || null;

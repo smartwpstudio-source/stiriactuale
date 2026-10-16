@@ -25,6 +25,8 @@ const nextConfig: NextConfig = {
     deviceSizes: [640, 828, 1200],
     imageSizes: [128, 256, 384],
     remotePatterns: [
+      // imaginile: Cloudflare R2 (src/lib/media.ts); Blob doar pentru adresele vechi rămase
+      { protocol: "https", hostname: "media.stiriactuale.info" },
       { protocol: "https", hostname: "*.public.blob.vercel-storage.com" },
       // graficele proprii (/grafic/: cod galben, alertă 112, escrocherie)
       { protocol: "https", hostname: "stiriactuale.info", pathname: "/grafic/**" },
