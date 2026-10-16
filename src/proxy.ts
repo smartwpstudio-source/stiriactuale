@@ -32,10 +32,16 @@ function target(segments: string[]): string | null {
   const joined = segments.join("/");
   if (FIXED[joined]) return FIXED[joined];
 
-  if (segments.length === 1) return articles[first] ?? null;
-  if (segments.length === 2 && (rest[0] === "amp" || rest[0] === "feed")) return articles[first] ?? null;
+  // cheile au codificarea cu litere mici (%f0%9f…), Google cere și %F0%9F…
+  const article = articles[first] ?? articles[first.toLowerCase()];
+  if (segments.length === 1) return article ?? null;
+  if (segments.length === 2 && (rest[0] === "amp" || rest[0] === "feed")) return article ?? null;
 
-  if (first === "category") return categories[segments[segments.length - 1]] ?? "/";
+  if (first === "category") {
+    // /category/stiri-balti/feed/ -> hub-ul categoriei, nu prima pagină
+    const key = segments[segments.length - 1] === "feed" ? segments[segments.length - 2] : segments[segments.length - 1];
+    return categories[key] ?? "/";
+  }
   if (first === "tag" && rest[0]) {
     let tag = rest[0];
     try {
@@ -47,8 +53,14 @@ function target(segments: string[]): string | null {
   return null;
 }
 
+// Resturi WordPress fără echivalent (fișiere, module, firewall-ul vechiului hosting):
+// 410 îi spune lui Google că au dispărut definitiv, ca să nu le mai reverifice.
+const GONE = /^\/(wp-content|wp-includes|wp-json|link-redirect-page|imunify-bot-check|snax_item|reaction)(\/|$)|^\/(xmlrpc|wp-login|wp-cron)\.php$/;
+
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
+
+  if (GONE.test(pathname)) return new NextResponse(null, { status: 410 });
 
   if (/^\/[^/]*sitemap[^/]*\.xml$/.test(pathname) && pathname !== "/sitemap.xml" && pathname !== "/news-sitemap.xml") {
     return NextResponse.redirect(new URL("/sitemap.xml", request.url), 301);
