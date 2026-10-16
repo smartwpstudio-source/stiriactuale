@@ -26,7 +26,9 @@ export function AdSlot({ slot }: { slot: string }) {
   }, []);
 
   return (
-    <div className="my-6 w-full">
+    // min-h rezervă locul anunțului ca textul să nu sară la încărcare (CLS);
+    // dacă AdSense nu are anunț (unfilled), globals.css ascunde tot blocul.
+    <div className="ad-slot my-6 min-h-[300px] w-full">
       <p className="mb-1 text-center font-mono text-[10px] uppercase tracking-wide text-sub">Publicitate</p>
       <ins
         className="adsbygoogle"

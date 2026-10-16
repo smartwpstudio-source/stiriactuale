@@ -1,0 +1,26 @@
+name: Reparare slug-uri
+
+# Slug-urile cu emoji/chirilice importate din WordPress -> varianta ASCII
+# (scripts/pipeline/fix-slugs.ts). Pornit manual; implicit doar afișează.
+on:
+  workflow_dispatch:
+    inputs:
+      aplica:
+        description: "Aplică schimbările (altfel doar le afișează)"
+        type: boolean
+        default: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx tsx scripts/pipeline/fix-slugs.ts ${{ inputs.aplica && '--aplica' || '' }}
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
