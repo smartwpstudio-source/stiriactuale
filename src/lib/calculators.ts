@@ -119,6 +119,12 @@ export const CALCULATORS = [
   { slug: "sarcina", title: "Săptămâna de sarcină și data probabilă a nașterii", description: "Data probabilă a nașterii din prima zi a ultimei menstruații sau din data concepției: săptămâna de sarcină, trimestrul și câte zile au rămas.", needs: null, guide: "concediul-de-maternitate-si-paternal-durata-plata-acte", see: ["concediu-maternitate", "indemnizatie-nastere"] },
   { slug: "indemnizatie-nastere", title: "Indemnizația unică la nașterea copilului", description: "Cât primește mama de la stat pentru fiecare copil născut viu, după anul nașterii: gemenii — pentru fiecare copil, fără cerere.", needs: null, guide: "indemnizatia-unica-la-nasterea-copilului-suma-acte-termen", see: ["indemnizatie-crestere-copil", "concediu-maternitate"] },
   { slug: "masuri-culinare", title: "Măsuri culinare: pahar, lingură → grame", description: "Câte grame de făină, zahăr, orez, unt sau miere încap într-un pahar, o cană, o lingură sau o linguriță — și invers, din grame în linguri și pahare.", needs: null, recipes: true },
+  { slug: "varsta-pensionare", title: "Vârsta de pensionare și stagiul", description: "La ce vârstă și de la ce dată poți ieși la pensie, după data nașterii și calendarul din Legea pensiilor, plus stagiul de cotizare minim și complet și cât îți mai lipsește.", needs: null, guide: "varsta-de-pensionare-in-moldova-calendar-femei-barbati" },
+  { slug: "amenzi-rutiere", title: "Amenzi rutiere", description: "Amenda în lei pentru cele mai dese încălcări — viteza, centura, telefonul, alcoolul, semaforul, parcarea, lipsa RCA sau a permisului —, cât plătești în 3 zile lucrătoare, punctele de penalizare și suspendarea permisului.", needs: null, guide: "reguli-de-circulatie-incalcate-des-si-amenzile", see: ["rca-carte-verde", "taxa-drum", "vamuire-auto"] },
+  { slug: "tva", title: "Calculator TVA", description: "Adaugi TVA la un preț sau scoți TVA dintr-o sumă, la cota standard de 20% sau la cota redusă de 8%, după Codul fiscal.", needs: null, guide: "impozitele-firmei-mici-regimul-imm-4-la-suta-tva-dividende", see: ["penalitati-intarziere"] },
+  { slug: "penalitati-intarziere", title: "Penalități de întârziere", description: "Cât datorezi pentru o plată întârziată: dobânda de întârziere din Codul civil, penalitatea din contract sau majorarea de întârziere la impozite, după zilele de întârziere.", needs: null, guide: "cum-eviti-datoriile-microcredite-dae-restante", see: ["rata-credit", "tva"] },
+  { slug: "materiale-renovare", title: "Materiale pentru renovare", description: "Câtă vopsea, câte plăci de gresie sau faianță, câte role de tapet și câte pachete de parchet sau laminat îți trebuie, cu rezervă, după dimensiunile camerei.", needs: null, guide: "casa-si-blocul-intretinere-siguranta-drepturi", see: ["putere-calorifere"] },
+  { slug: "rca-carte-verde", title: "RCA și Carte Verde, estimativ", description: "Prima de referință a Băncii Naționale pentru RCA internă, după vehicul, localitate și șofer, și pentru Cartea Verde, după zonă, vehicul și durată.", needs: null, guide: "rca-si-cartea-verde-ce-acopera-si-cum-le-cumperi", see: ["amenzi-rutiere", "taxa-drum", "regula-90-180"] },
 ] as const;
 
 export type CalculatorSlug = (typeof CALCULATORS)[number]["slug"];
@@ -738,4 +744,343 @@ export function kitchenMeasure(ingredient: KitchenIngredient, qty: number, unit:
   const density = KITCHEN_G_ML[ingredient];
   const ml = unit === "g" ? qty / density : qty * KITCHEN_UNITS.find((u) => u.id === unit)!.ml;
   return { grams: round(ml * density), ml: round(ml), units: KITCHEN_UNITS.map((u) => ({ id: u.id, qty: round(ml / u.ml) })) };
+}
+
+// ---------------------------------------------------------------- lotul 4
+
+const isoOf = (n: number) => new Date(n * 86400000).toISOString().slice(0, 10);
+
+// data + n luni; ziua care nu există în luna nouă (31 -> februarie) trece pe ultima zi a lunii
+function addMonthsIso(iso: string, n: number) {
+  const [y, m, d] = iso.split("-").map(Number);
+  const t = y * 12 + (m - 1) + n;
+  const ny = Math.floor(t / 12);
+  const nm = t % 12;
+  const last = new Date(Date.UTC(ny, nm + 1, 0)).getUTCDate();
+  return new Date(Date.UTC(ny, nm, Math.min(d, last))).toISOString().slice(0, 10);
+}
+
+// Vârsta de pensionare: Legea nr. 156/1998 privind sistemul public de pensii, versiunea în vigoare
+// din 02.10.2026 (legis.md, citită la 16.10.2026; modificarea din 28.10.2026 nu atinge aceste
+// articole). Art. 41 alin. (1), tabelul nr. 2: vârsta standard, de la 1 iulie al fiecărui an (în
+// luni); alin. (2): femeile care au născut și educat 5 sau mai mulți copii până la 8 ani — minus
+// 3 ani. Art. 15 alin. (1): stagiul minim 15 ani. Art. 42 alin. (1), tabelul nr. 5: stagiul
+// complet (34 de ani pentru toți din 1 iulie 2024). Art. 15² alin. (1): pensia anticipată pentru
+// carieră lungă cere un stagiu contributiv cu 5 ani (bărbați) / 3 ani (femei) peste cel complet.
+// Te poți pensiona din ziua în care vârsta ta atinge vârsta standard în vigoare în ziua aceea.
+export const PENSION = {
+  verificat: "2026-10-16",
+  varste: [
+    [2017, 748, 690],
+    [2018, 752, 696],
+    [2019, 756, 702],
+    [2020, 756, 708],
+    [2021, 756, 714],
+    [2022, 756, 720],
+    [2023, 756, 726],
+    [2024, 756, 732],
+    [2025, 756, 738],
+    [2026, 756, 744],
+    [2027, 756, 750],
+    [2028, 756, 756],
+  ],
+  stagiu_complet: [
+    [2017, 402, 366],
+    [2018, 408, 372],
+    [2019, 408, 378],
+    [2020, 408, 384],
+    [2021, 408, 390],
+    [2022, 408, 396],
+    [2023, 408, 402],
+    [2024, 408, 408],
+  ],
+  reducere_5_copii_luni: 36,
+  stagiu_minim_ani: 15,
+  cariera_lunga_ani: { m: 5, f: 3 },
+} as const;
+
+const fromJuly = (rows: readonly (readonly number[])[], iso: string) => [...rows].reverse().find((r) => iso >= `${r[0]}-07-01`) ?? rows[0];
+
+export function retirement(birth: string, sex: Sex, fiveChildren: boolean, stagiuAni: number) {
+  if (!/^\d{4}-\d\d-\d\d$/.test(birth) || Number.isNaN(dayNo(birth))) return null;
+  const P = PENSION;
+  const col = sex === "m" ? 1 : 2;
+  const red = sex === "f" && fiveChildren ? P.reducere_5_copii_luni : 0;
+  for (let i = 0; i < P.varste.length; i++) {
+    const months = P.varste[i][col] - red;
+    const start = `${P.varste[i][0]}-07-01`;
+    const end = i + 1 < P.varste.length ? `${P.varste[i + 1][0]}-07-01` : "9999-12-31";
+    const reached = addMonthsIso(birth, months);
+    // vârsta atinsă înainte de calendarul din tabel (1 iulie 2017): nu calculăm după regulile vechi
+    if (i === 0 && reached < start) return { before2017: true as const };
+    const date = reached > start ? reached : start;
+    if (date < end) {
+      const complet = fromJuly(P.stagiu_complet, date)[col] / 12;
+      const s = stagiuAni > 0 ? stagiuAni : null;
+      return {
+        before2017: false as const,
+        date,
+        years: Math.floor(months / 12),
+        months: months % 12,
+        minimum: P.stagiu_minim_ani,
+        complete: complet,
+        longCareer: complet + P.cariera_lunga_ani[sex],
+        missingMin: s === null ? null : Math.max(0, round(P.stagiu_minim_ani - s)),
+        missingComplete: s === null ? null : Math.max(0, round(complet - s)),
+      };
+    }
+  }
+  return null;
+}
+
+// Amenzile rutiere: Codul contravențional nr. 218/2008, versiunea în vigoare din 13.09.2026
+// (legis.md, citită la 16.10.2026; versiunea din 09.12.2026 nu schimbă art. 228–245). Art. 34
+// alin. (1): 1 unitate convențională = 50 de lei; alin. (3): jumătate din amendă, dacă o plătești
+// în cel mult 3 zile lucrătoare de la aducerea la cunoștință a deciziei; alin. (2⁴): în 30 de zile.
+// Art. 36: la 15 puncte — suspendarea dreptului de a conduce (30 de zile prima dată); punctele se
+// anulează după 6 luni. Textele faptelor și sancțiunile complementare: i18n.ts (fines.items).
+export const UC_LEI = 50;
+export const FINES_VERIFIED = "2026-10-16";
+export type TrafficFine = { id: string; art: string; min: number; max: number; warning?: boolean; points?: number; extra?: boolean };
+export const TRAFFIC_FINES: TrafficFine[] = [
+  { id: "viteza-10", art: "art. 236 alin. (1)", min: 12, max: 18, points: 3 },
+  { id: "viteza-20", art: "art. 236 alin. (2)", min: 18, max: 24, points: 4 },
+  { id: "viteza-40", art: "art. 236 alin. (3)", min: 30, max: 36, points: 5 },
+  { id: "viteza-60", art: "art. 236 alin. (4)", min: 45, max: 50, extra: true },
+  { id: "viteza-80", art: "art. 236 alin. (5)", min: 75, max: 100, extra: true },
+  { id: "centura", art: "art. 235 alin. (1)", min: 9, max: 12, points: 3 },
+  { id: "telefon", art: "art. 235 alin. (2)", min: 9, max: 12, points: 3 },
+  { id: "copii", art: "art. 235¹", min: 12, max: 24, points: 2 },
+  { id: "alcool", art: "art. 233 alin. (1)", min: 700, max: 1000, extra: true },
+  { id: "semafor", art: "art. 240 alin. (2)", min: 15, max: 18, points: 3 },
+  { id: "pietoni", art: "art. 238 alin. (3)", min: 30, max: 36, points: 5 },
+  { id: "pietoni-repetat", art: "art. 238 alin. (3¹)", min: 45, max: 50, extra: true },
+  { id: "indicatoare", art: "art. 240 alin. (1)", min: 10, max: 12, warning: true, points: 2 },
+  { id: "depasire", art: "art. 240 alin. (1¹)", min: 12, max: 15 },
+  { id: "oprire", art: "art. 238 alin. (1)", min: 3, max: 6, warning: true },
+  { id: "parcare", art: "art. 238 alin. (2)", min: 18, max: 30 },
+  { id: "rca", art: "art. 229 alin. (3)", min: 30, max: 60, points: 3 },
+  { id: "fara-permis", art: "art. 231 alin. (2)", min: 30, max: 60 },
+  { id: "categorie", art: "art. 231 alin. (1)", min: 18, max: 30 },
+  { id: "inspectie", art: "art. 229 alin. (2¹)", min: 9, max: 12 },
+  { id: "lumini-zi", art: "art. 230 alin. (4¹)", min: 6, max: 9, warning: true },
+  { id: "geamuri", art: "art. 228 alin. (7)", min: 12, max: 24, points: 3 },
+  { id: "girofar", art: "art. 241 alin. (2)", min: 15, max: 18, points: 4 },
+  { id: "oprire-politie", art: "art. 241 alin. (1)", min: 350, max: 500, extra: true },
+  { id: "agresiv", art: "art. 241¹ alin. (1)", min: 30, max: 40, points: 5, extra: true },
+  { id: "accident-parasit", art: "art. 243 alin. (1)", min: 40, max: 50, extra: true },
+  { id: "pieton", art: "art. 245 alin. (1)", min: 6, max: 9, warning: true },
+];
+
+export function fineLei(f: TrafficFine) {
+  return { min: f.min * UC_LEI, max: f.max * UC_LEI, halfMin: (f.min * UC_LEI) / 2, halfMax: (f.max * UC_LEI) / 2 };
+}
+
+// TVA: Codul fiscal, art. 96 (legis.md, versiunile din 01.07.2026 și 01.01.2027 — același text,
+// citite la 16.10.2026): cota standard 20%, cotele reduse de 8% (pentru ce — în nota din i18n.ts).
+export const VAT = { verificat: "2026-10-16", cote: [20, 8] } as const;
+export type VatMode = "adauga" | "scoate";
+
+export function vat(amount: number, ratePct: number, mode: VatMode) {
+  if (!(amount > 0) || !(ratePct >= 0)) return null;
+  if (mode === "adauga") {
+    const tax = round((amount * ratePct) / 100);
+    return { net: round(amount), tax, gross: round(amount + tax) };
+  }
+  const net = round((amount * 100) / (100 + ratePct));
+  return { net, tax: round(amount - net), gross: round(amount) };
+}
+
+// Penalitățile de întârziere. Rata de bază BNM (bnm.md, deciziile de politică monetară, citite la
+// 16.10.2026): 3,60% (05.12.2024) -> 5,60% (10.01.2025) -> 6,50% -> 6,25% (07.08.2025) -> 6,00%
+// (18.09.2025, menținută 06.11.2025) -> 5,00% (11.12.2025) -> 6,50% (07.05.2026) -> 7,00%
+// (18.06.2026) -> 7,50% (06.08.2026) -> 9,00% (17.09.2026).
+// Codul civil (legis.md, versiunea din 01.04.2026): art. 942 alin. (2) — dobânda de întârziere =
+// rata din art. 874 + 5 puncte (debitor consumator) sau + 9 puncte (ceilalți); art. 874 alin. (2) —
+// rata BNM în vigoare la 1 ianuarie (semestrul I) și la 1 iulie (semestrul II); se datorează din
+// ziua de după scadență până la ziua plății. Codul fiscal, art. 228 alin. (2)–(3): pe fiecare zi după
+// scadență, inclusiv ziua plății; procentul pe zi = (rata BNM din noiembrie anul precedent,
+// rotunjită în sus la procent întreg, + 5) / zilele anului, cu 4 zecimale.
+export const BNM_RATES = {
+  verificat: "2026-10-16",
+  semestre: [
+    ["2025-01-01", 3.6],
+    ["2025-07-01", 6.5],
+    ["2026-01-01", 5],
+    ["2026-07-01", 7],
+  ] as [string, number][],
+  noiembrie: { 2024: 3.6, 2025: 6 } as Record<number, number>,
+};
+export type LateKind = "consumator" | "profesionist" | "contract" | "fiscal";
+
+const leapYear = (y: number) => (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0;
+
+// majorarea de întârziere la impozite, % pe zi, pentru anul `year` (null: rata BNM încă necunoscută)
+export function fiscalDailyPct(year: number) {
+  const b = BNM_RATES.noiembrie[year - 1];
+  if (b === undefined) return null;
+  return Math.round(((Math.ceil(b - 1e-9) + 5) / (leapYear(year) ? 366 : 365)) * 10000) / 10000;
+}
+
+// rata de bază BNM aplicabilă (art. 874) într-o zi; null înainte de primul semestru din tabel
+function semesterRate(iso: string) {
+  return [...BNM_RATES.semestre].reverse().find(([from]) => iso >= from)?.[1] ?? null;
+}
+
+// ponytail: dobânda civilă pe zi = rata anuală / 365 (și în anii bisecți) — convenția uzuală; legea nu fixează baza
+export function latePayment(amount: number, due: string, paid: string, kind: LateKind, contractDailyPct = 0) {
+  const a = dayNo(due);
+  const b = dayNo(paid);
+  if (!(amount > 0) || Number.isNaN(a) || Number.isNaN(b) || b < a || b - a > 3660) return null;
+  const parts: { from: string; to: string; days: number; rate: number; perDay: boolean; sum: number }[] = [];
+  let total = 0;
+  for (let d = a + 1; d <= b; d++) {
+    const iso = isoOf(d);
+    let rate: number | null;
+    let perDayPct: number;
+    if (kind === "contract") {
+      rate = contractDailyPct;
+      perDayPct = rate;
+    } else if (kind === "fiscal") {
+      rate = fiscalDailyPct(Number(iso.slice(0, 4)));
+      perDayPct = rate ?? 0;
+    } else {
+      const base = semesterRate(iso);
+      rate = base === null ? null : base + (kind === "consumator" ? 5 : 9);
+      perDayPct = (rate ?? 0) / 365;
+    }
+    if (rate === null) return { missing: iso, days: b - a, total: 0, parts: [] };
+    const sum = (amount * perDayPct) / 100;
+    total += sum;
+    const last = parts[parts.length - 1];
+    if (last && last.rate === rate) {
+      last.to = iso;
+      last.days++;
+      last.sum += sum;
+    } else parts.push({ from: iso, to: iso, days: 1, rate, perDay: kind === "contract" || kind === "fiscal", sum });
+  }
+  return { missing: null, days: b - a, total: round(total), parts: parts.map((p) => ({ ...p, sum: round(p.sum) })) };
+}
+
+// Materiale pentru renovare: valori tipice ale redacției, nu norme — consumul real e pe ambalaj.
+export const RENOVATION = {
+  vopsea_m2_l: 10, // un litru de vopsea lavabilă acoperă circa 8–12 m² într-un strat
+  straturi: 2,
+  galeata_l: 10,
+  rezerva_pct: 10,
+  placa_cm: [30, 60],
+  placi_cutie: 8,
+  rola_latime_m: 0.53,
+  rola_lungime_m: 10.05,
+  tapet_adaos_cm: 10, // 5 cm sus și 5 cm jos, pentru tăiere
+  laminat_m2_pachet: 2,
+  laminat_rezerva_pct: 7,
+} as const;
+
+const up = (n: number) => Math.ceil(n - 1e-9);
+
+export function paint(o: { length: number; width: number; height: number; openings: number; ceiling: boolean; coats: number; m2PerL: number; bucketL: number; reservePct: number }) {
+  const walls = Math.max(0, 2 * (o.length + o.width) * o.height - o.openings);
+  const area = round(walls + (o.ceiling ? o.length * o.width : 0));
+  if (!(area > 0) || !(o.m2PerL > 0) || !(o.coats >= 1)) return null;
+  const liters = round(((area * Math.floor(o.coats)) / o.m2PerL) * (1 + o.reservePct / 100));
+  return { area, liters, buckets: o.bucketL > 0 ? up(liters / o.bucketL) : null };
+}
+
+export function tiles(area: number, wCm: number, hCm: number, perBox: number, reservePct: number) {
+  const tile = (wCm * hCm) / 10000;
+  if (!(area > 0) || !(tile > 0)) return null;
+  const withReserve = round(area * (1 + reservePct / 100));
+  const count = up(withReserve / tile);
+  return { withReserve, tile: round(tile * 10000) / 10000, count, boxes: perBox > 0 ? up(count / Math.floor(perBox)) : null };
+}
+
+// ponytail: raportul de model se adaugă întreg la fiecare fâșie (estimare acoperitoare); ușile și ferestrele nu se scad
+export function wallpaper(perimeter: number, height: number, rollW: number, rollL: number, repeatCm: number, extraCm: number) {
+  const strip = height + (repeatCm + extraCm) / 100;
+  if (!(perimeter > 0) || !(height > 0) || !(rollW > 0) || !(strip > 0)) return null;
+  const perRoll = Math.floor(rollL / strip + 1e-9);
+  if (perRoll < 1) return null;
+  const strips = up(perimeter / rollW);
+  return { strip: round(strip), strips, perRoll, rolls: up(strips / perRoll) };
+}
+
+export function flooring(area: number, m2PerPack: number, reservePct: number) {
+  if (!(area > 0) || !(m2PerPack > 0)) return null;
+  const withReserve = round(area * (1 + reservePct / 100));
+  return { withReserve, packs: up(withReserve / m2PerPack) };
+}
+
+// RCA și Carte Verde: Hotărârea BNM nr. 198 din 20.08.2026 (MO nr. 390-393 din 25.08.2026, în vigoare
+// din 04.10.2026; bnm.md, citită la 16.10.2026), emisă în baza Legii nr. 106/2022, art. 12 alin. (11).
+// Anexa 1: prima de bază RCA internă 1 420 lei × coeficienții K1 (vehicul), K2 (localitatea), K3
+// (persoană fizică / juridică), K4 (vârsta și vechimea șoferului, doar la persoane fizice); taxi și
+// troleibuz: fără K3 și K4; remorca: 0,2 × prima vehiculului care o tractează — așa ies exact sumele din
+// anexa 2. Prima de referință e indicativă: asigurătorul își calculează prima, dar nu mai mică decât ea
+// (Legea nr. 106/2022, art. 12 alin. (12)); clasa bonus-malus se aplică separat.
+// Carte Verde (anexele 1 și 3, euro): prima de bază pe zonă × K1v; coeficienții pe durată de mai jos
+// reproduc exact tabelul din anexa 3 (zona 2 nu se aplică: birourile din Rusia și Belarus sunt suspendate).
+export const RCA = {
+  verificat: "2026-10-16",
+  de_la: "2026-10-04",
+  baza: 1420,
+  k1: {
+    "auto-1200": 0.88,
+    "auto-1600": 0.91,
+    "auto-2000": 1.08,
+    "auto-2400": 1.06,
+    "auto-3000": 1.23,
+    "auto-3000+": 1.17,
+    "auto-electric": 1.99,
+    taxi: 7.97,
+    "pasageri-17": 0.67,
+    "pasageri-30": 1.61,
+    "pasageri-30+": 3.24,
+    troleibuz: 10,
+    "tractor-45": 0.15,
+    "tractor-100": 0.11,
+    "tractor-100+": 0.21,
+    "camion-3500": 1.08,
+    "camion-12000": 1.53,
+    "camion-12000+": 2.18,
+    "moto-300": 0.1,
+    "moto-300+": 0.32,
+  },
+  k2: { chisinau: 1.35, alte: 0.71 },
+  k3: { pf: 0.88, pj: 1.39 },
+  k4: { "tanar-nou": 2.94, tanar: 1.74, nou: 1.75, experimentat: 0.82 },
+  remorca: 0.2,
+  externa: {
+    zona1: { baza: 16, termen: [0.15, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.85, 0.9, 1, 1, 1] },
+    zona3: { baza: 336, termen: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.85, 0.9, 1, 1, 1] },
+    k1: {
+      zona1: { A: 0.83, B: 0.91, C1: 1.01, C2: 1.78, E1: 5.99, E2: 9.03 },
+      zona3: { A: 0.94, B: 0.92, C1: 3.45, C2: 1.74, E1: 2.42, E2: 3.77 },
+    },
+    termene: ["15z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+    remorca: 0.1,
+  },
+} as const;
+export type RcaVehicle = keyof typeof RCA.k1;
+export type RcaZone = keyof typeof RCA.k2;
+export type RcaOwner = keyof typeof RCA.k3;
+export type RcaDriver = keyof typeof RCA.k4;
+export type GreenZone = keyof typeof RCA.externa.k1;
+export type GreenVehicle = keyof typeof RCA.externa.k1.zona1;
+export type GreenTerm = (typeof RCA.externa.termene)[number];
+
+export function rcaPremium(v: RcaVehicle, zone: RcaZone, owner: RcaOwner, driver: RcaDriver) {
+  const special = v === "taxi" || v === "troleibuz";
+  const k3 = special ? 1 : RCA.k3[owner];
+  const k4 = special || owner === "pj" ? 1 : RCA.k4[driver];
+  const premium = round(RCA.baza * RCA.k1[v] * RCA.k2[zone] * k3 * k4);
+  return { premium, trailer: round(premium * RCA.remorca), k1: RCA.k1[v], k2: RCA.k2[zone], k3, k4, special };
+}
+
+export function greenCard(zone: GreenZone, v: GreenVehicle, term: GreenTerm) {
+  const z = RCA.externa[zone];
+  const i = RCA.externa.termene.indexOf(term);
+  const year = round(z.baza * RCA.externa.k1[zone][v]);
+  const premium = round(year * z.termen[i]);
+  return { premium, trailer: round(premium * RCA.externa.remorca) };
 }
