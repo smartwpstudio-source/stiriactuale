@@ -21,7 +21,11 @@
   "services": [{ "binding": "WORKER_SELF_REFERENCE", "service": "stiriactuale" }],
 
   // Cache ISR (paginile generate). Bucket-ul se creează înainte de primul deploy.
-  "r2_buckets": [{ "binding": "NEXT_INC_CACHE_R2_BUCKET", "bucket_name": "stiriactuale-cache" }],
+  // MEDIA: imaginile site-ului (media.stiriactuale.info), scrise din admin (src/lib/media.ts)
+  "r2_buckets": [
+    { "binding": "NEXT_INC_CACHE_R2_BUCKET", "bucket_name": "stiriactuale-cache" },
+    { "binding": "MEDIA", "bucket_name": "stiriactuale-media" }
+  ],
 
   "durable_objects": {
     "bindings": [
