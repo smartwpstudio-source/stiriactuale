@@ -206,8 +206,8 @@ async function main() {
       if (typeof r.description !== "string" || r.description.length < 110 || r.description.length > 175) fail(file, "description 110-175 caractere");
       checkDate(file, r.updated);
       const img = r.image ?? {};
-      if (!/^https:\/\/[a-z0-9]+\.public\.blob\.vercel-storage\.com\//.test(String(img.url)) || !img.credit || !img.alt) {
-        fail(file, "image: url din Vercel Blob, credit și alt obligatorii");
+      if (!/^https:\/\/media\.stiriactuale\.info\//.test(String(img.url)) || !img.credit || !img.alt) {
+        fail(file, "image: url din R2 (media.stiriactuale.info), credit și alt obligatorii");
       }
       for (const k of ["servings", "prepMinutes", "cookMinutes"]) {
         if (!Number.isInteger(r[k]) || r[k] < (k === "servings" ? 1 : 0)) fail(file, `${k}: număr întreg`);
