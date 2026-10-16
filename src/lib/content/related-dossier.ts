@@ -35,6 +35,13 @@ const RULES: [slug: string, re: RegExp][] = [
   ["violenta-in-familie-in-moldova-cum-o-recunosti-unde-ceri-ajutor-ce-spune-legea", /violent\w* (in|din) famili|violent\w* domestic|violent\w* (impotriva|asupra) (femeilor|femeii|sotiei|partenerei)|femicid|ordin\w* de restrictie|ordonant\w* de protectie|(sot|sotul|sotia|sotie|concubin\w*|fost\w* (sot|partener|iubit)\w*)\b.{0,80}\b(lovit\w*|batut\w*|bataie|agresat\w*|ucis\w*|omor\w*|injunghiat\w*|amenint\w*|sechestrat\w*)|(lovit\w*|batut\w*|agresat\w*|ucis\w*|omor\w*|injunghiat\w*)\b.{0,60}\b(sotia|sotul|concubin\w*|fost\w* (sotie|partenera|iubita))/],
   // escrocheriile înaintea pensiilor: „pensionară păcălită” e despre escroci
   ["escrocheriile-in-moldova-cum-le-recunosti-si-ce-faci", /^(?!.*(electoral|alegeri|\bvot\b|furtul miliardului))(?=.*(escroc|\bfraud(a|e|at)\w*|phishing|pacalit\w*|inselat\w* de|investiti\w* false|schema de investitii|apel\w* fals|sms\w* fals))/],
+  // drepturile consumatorului (2026-10-16), după escrocherii („fraudă cu cardul” rămâne la escroci);
+  // fără „consumator”, „retur” sau „garanție” singure: consumatorii de gaz, meciul retur, garanțiile bancare
+  ["produse-alimentare-expirate-sau-alterate-unde-reclami", /(produs\w*|aliment\w*|carne|lactate)( alimentar\w*)? (expirat\w*|alterat\w*)|termen\w* de valabilitate (expirat|depasit)/],
+  ["plata-cu-cardul-contestare-tranzactie-chargeback", /chargeback|contest\w* (o |a )?(tranzacti|plat\w* cu cardul)|tranzacti\w* (neautorizat|contestat)\w*|debitar\w* (dubl|de doua ori)/],
+  ["cumparaturi-online-dreptul-de-retur-fara-motiv", /drept\w* de (retur|revocare)|returnar\w* (a )?(produs|marf)\w*/],
+  ["drepturile-consumatorului-returnarea-unui-produs-si-garantia", /termen\w* de garantie|garanti\w* (legal\w* )?(de conformitate|a produsului|produselor)/],
+  ["drepturile-consumatorului-in-moldova-ghid-complet", /protecti\w* (drepturilor )?consumatorilor|drepturil\w* consumator|\bapcsp\b|isspnpc|supravegherea produselor nealimentare|agenti\w* pentru protectia consumatorilor|clauz\w* abuziv|centrul unic de apel pentru consumatori/],
   // afacerea mică (2026-10-15): IMM, ODA, granturi pentru afaceri, antreprenori independenți
   ["afacerea-mica-in-moldova-imm-ghid-complet", /\bimm\b|intreprinderi\w* mici (si|și) mijlocii|organizati\w* pentru dezvoltarea antreprenoriatului|\boda\b.{0,80}(grant|program|apel|antreprenor)|(grant|program|apel)\w*.{0,80}\boda\b|crestem imm|antreprenoriat\w*|antreprenor\w* independent|regimul (fiscal )?(pentru )?imm/],
   // inteligența artificială (2026-10-15) — după escrocherii: „deepfake cu investiții false” rămâne la escrocherii
@@ -136,6 +143,11 @@ const MOLDOVA_ONLY = new Set([
   "violenta-in-familie-in-moldova-cum-o-recunosti-unde-ceri-ajutor-ce-spune-legea",
   "banii-in-familie-buget-economii-credite-ghid-complet",
   "sezonul-de-incalzire-2026-2027",
+  "drepturile-consumatorului-in-moldova-ghid-complet",
+  "drepturile-consumatorului-returnarea-unui-produs-si-garantia",
+  "cumparaturi-online-dreptul-de-retur-fara-motiv",
+  "produse-alimentare-expirate-sau-alterate-unde-reclami",
+  "plata-cu-cardul-contestare-tranzactie-chargeback",
 ]);
 
 // slug-ul dosarului / ghidului-pilon (fără citirea ghidului) — și pentru

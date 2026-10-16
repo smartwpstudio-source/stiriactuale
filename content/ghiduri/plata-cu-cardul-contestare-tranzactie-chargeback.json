@@ -1,0 +1,52 @@
+{
+  "slug": "plata-cu-cardul-contestare-tranzactie-chargeback",
+  "title": "Plata cu cardul: cum contești o tranzacție (chargeback, fraudă, debitare dublă)",
+  "description": "Produs nelivrat, sumă luată de două ori sau plată pe care n-ai făcut-o: cum contești tranzacția la bancă, ce termene ai după lege, ce e chargeback-ul și unde reclami.",
+  "category": "bani",
+  "updated": "2026-10-16",
+  "sources": [
+    {
+      "name": "Legea nr. 114/2012 cu privire la serviciile de plată și moneda electronică, art. 54–58, 104 (legis.md)",
+      "url": "https://www.legis.md/cautare/getResults?doc_id=156446&lang=ro"
+    },
+    {
+      "name": "Codul civil, art. 1052–1065 — dreptul de revocare a contractelor la distanță (legis.md)",
+      "url": "https://www.legis.md/cautare/getResults?doc_id=150561&lang=ro"
+    },
+    {
+      "name": "Visa — Updates and clarifications to dispute rule language (regulile Visa, nu lege a Moldovei)",
+      "url": "https://usa.visa.com/dam/VCOM/global/support-legal/documents/updates-and-clarifications-to-dispute-rule-language.pdf"
+    },
+    {
+      "name": "Inspectoratul pentru Protecția Consumatorilor — Lansarea Centrului Unic de Apel pentru Consumatori 022 51 51 51",
+      "url": "https://consumator.gov.md/ro/node/627"
+    },
+    {
+      "name": "Legea nr. 105/2003 privind protecția consumatorilor (legis.md, versiunea în vigoare din 25.10.2025)",
+      "url": "https://www.legis.md/cautare/getResults?doc_id=150997&lang=ro"
+    }
+  ],
+  "bodyHtml": "<p><strong>Pe scurt:</strong> dacă vezi pe card o plată pe care <strong>nu ai făcut-o</strong> sau una executată greșit (de exemplu, suma luată de două ori), anunță banca imediat. Legea nr. 114/2012 îți dă cel mult <strong>13 luni</strong> de la debitare, iar la o plată neautorizată banca trebuie să-ți întoarcă banii cel târziu la sfârșitul următoarei zile lucrătoare. Dacă plata e făcută de tine, dar comerciantul nu a livrat sau nu-ți dă banii înapoi, banca poate încerca un <strong>chargeback</strong>: o procedură a rețelelor de carduri (Visa, Mastercard), nu o regulă a legii moldovenești, cu termene proprii. În ambele cazuri, contestă cât mai repede.</p>\n<h2>Trei situații diferite</h2>\n<table>\n<thead><tr><th>Situația</th><th>Ce se aplică</th><th>Cui te adresezi întâi</th></tr></thead>\n<tbody>\n<tr><td>Plată pe care nu ai făcut-o (card furat, date furate, fraudă)</td><td>Legea nr. 114/2012, operațiune neautorizată</td><td>Banca, imediat; apoi Poliția</td></tr>\n<tr><td>Plată executată greșit: sumă dublă, sumă greșită</td><td>Legea nr. 114/2012, operațiune executată necorespunzător; uneori chargeback</td><td>Comerciantul și banca</td></tr>\n<tr><td>Ai plătit, dar produsul nu vine, e altul decât ai comandat sau nu primești banii după retur</td><td>Codul civil (contractul cu comerciantul); chargeback prin bancă</td><td>Comerciantul, apoi banca</td></tr>\n</tbody>\n</table>\n<h2>Plata pe care n-ai făcut-o: ce spune legea</h2>\n<ul>\n<li><strong>Anunță banca de îndată</strong> ce afli de pierderea, furtul sau folosirea fără drept a cardului și blochează cardul (art. 54).</li>\n<li><strong>Termenul:</strong> corectarea unei plăți neautorizate sau executate greșit o obții dacă anunți banca cât mai repede, dar <strong>nu mai târziu de 13 luni</strong> de la debitarea contului (art. 56 alin. (1)).</li>\n<li><strong>Rambursarea:</strong> la o plată neautorizată, banca îți întoarce suma <strong>imediat sau cel târziu la sfârșitul următoarei zile lucrătoare</strong> după ce a aflat. Excepție: banca are motive rezonabile să suspecteze că ai comis tu o fraudă și anunță în scris autoritățile (art. 56 alin. (2)).</li>\n<li><strong>Proba e a băncii:</strong> dacă spui că n-ai autorizat plata, banca trebuie să dovedească că a fost autentificată și înregistrată corect. Simplul fapt că s-a folosit cardul tău nu dovedește că ai autorizat plata sau că ai fost neglijent (art. 57).</li>\n<li><strong>Cât poți pierde:</strong> la un card pierdut sau furat, cel mult <strong>500 de lei</strong>. Nu pierzi nimic dacă nu puteai observa pierderea înainte de plată, dacă vina e a băncii, dacă cardul a fost folosit după ce ai anunțat banca sau dacă banca nu a cerut autentificare strictă (de exemplu, codul prin SMS sau aplicație). Pierzi tot dacă ai acționat fraudulos ori ai încălcat intenționat sau din neglijență gravă obligația de a păstra cardul și codurile în siguranță (art. 58).</li>\n</ul>\n<p><strong>Atenție:</strong> dacă i-ai dat cuiva la telefon codul din SMS sau datele cardului, banca poate susține că ai fost grav neglijent. Nu înseamnă automat că pierzi banii, dar cazul e mai greu. Ce faci după o escrocherie e explicat în ghidul <a href=\"/ghiduri/ce-faci-daca-ai-cazut-in-plasa-escrocilor-pasi/\">Ce faci dacă ai căzut în plasa escrocilor</a>.</p>\n<h2>Chargeback-ul: când comerciantul nu livrează sau nu-ți dă banii</h2>\n<p>Chargeback-ul înseamnă că banca ta (emitentul cardului) cere banii înapoi de la banca comerciantului, prin sistemul Visa sau Mastercard. Se folosește, de exemplu, când produsul nu a fost livrat, când e altul decât cel comandat, când ai returnat produsul și nu ai primit banii sau când comerciantul te-a debitat de două ori.</p>\n<ul>\n<li><strong>Nu e un drept scris în legea Moldovei.</strong> E o regulă a rețelelor de carduri, pe care banca o aplică după condițiile ei. Banca nu-ți poate garanta rezultatul: comerciantul poate contesta.</li>\n<li><strong>Termenele sunt ale rețelelor de carduri, nu ale legii.</strong> Orientativ: regulile Visa folosesc termene de ordinul a <strong>120 de zile</strong>, socotite, după caz, de la data tranzacției sau de la data la care trebuia să primești produsul. Termenul exact pentru cazul tău îl afli de la bancă. Nu aștepta până la limită.</li>\n<li><strong>Întâi comerciantul.</strong> Banca îți va cere, de obicei, dovada că i-ai scris comerciantului și nu ai primit soluție. Pentru drepturile tale față de magazin, vezi ghidurile <a href=\"/ghiduri/cumparaturi-online-colet-nelivrat-cum-reclami/\">colet nelivrat</a> și <a href=\"/ghiduri/cumparaturi-online-dreptul-de-retur-fara-motiv/\">dreptul de retur fără motiv</a>.</li>\n</ul>\n<h2>Pașii la bancă</h2>\n<ol>\n<li><strong>Blochează cardul</strong> din aplicație sau la numărul de pe spatele cardului, dacă e vorba de fraudă.</li>\n<li><strong>Strânge dovezile:</strong> extrasul cu tranzacția, comanda, confirmarea plății, corespondența cu comerciantul, dovada returului (bonul de expediere, numărul de urmărire), capturi de ecran.</li>\n<li><strong>Depune reclamația scrisă la bancă:</strong> data, suma, comerciantul, ce s-a întâmplat și ce ceri (rambursarea plății neautorizate sau inițierea unei contestări). Cere numărul reclamației. Te poți ajuta de <a href=\"/modele-reclamatii/banca-asigurator-ocn/\">modelul de reclamație la bancă</a>.</li>\n<li><strong>Așteaptă răspunsul:</strong> banca îți răspunde în cel mult <strong>15 zile lucrătoare</strong>; în situații excepționale, îți trimite un răspuns provizoriu, iar cel final vine în cel mult <strong>35 de zile lucrătoare</strong> (Legea nr. 114/2012, art. 104). Răspunsul la reclamație e una; procedura de chargeback cu banca comerciantului poate dura mai mult.</li>\n<li><strong>Dacă nu ești mulțumit,</strong> depui petiție la <strong>Comisia Națională a Pieței Financiare (CNPF)</strong>, care se ocupă de reclamațiile consumatorilor de servicii de plată. Pașii sunt în ghidul <a href=\"/ghiduri/reclamatia-la-banca-asigurator-sau-ocn-noile-reguli/\">Reclamația la bancă, asigurător sau OCN</a>. Consultație: Centrul Unic de Apel pentru Consumatori, 022 51 51 51.</li>\n<li><strong>La fraudă, depune și plângere la Poliție.</strong> Banca poate cere numărul plângerii.</li>\n</ol>\n<h2>Debitare dublă sau sumă greșită</h2>\n<p>Verifică întâi în aplicație dacă suma nu e doar <strong>blocată temporar</strong> (pre-autorizare), cum se întâmplă uneori la hoteluri, benzinării sau închirieri; dacă nu ești sigur, întreabă banca. Dacă suma a fost efectiv luată de două ori, cere comerciantului să anuleze plata în plus și, în paralel, scrie băncii. O plată executată greșit se contestă tot în cele 13 luni (art. 56). Despre comisioanele băncii la card și transferuri, vezi ghidul <a href=\"/ghiduri/comisioanele-bancare-card-transferuri-valuta/\">Comisioanele bancare</a>.</p>\n<h2>Greșeli frecvente</h2>\n<ul>\n<li>Aștepți să vezi dacă „se rezolvă singur” și ratezi termenele rețelei de carduri.</li>\n<li>Contești doar la telefon, fără reclamație scrisă cu număr.</li>\n<li>Nu blochezi cardul după fraudă, iar plățile continuă.</li>\n<li>Trimiți banca direct, fără să-i fi scris comerciantului, în cazurile de produs nelivrat.</li>\n<li>Dai codul din SMS cuiva care spune că „sună de la bancă”. Nu-l da nimănui. Vezi <a href=\"/ghiduri/escrocheriile-in-moldova-cum-le-recunosti-si-ce-faci/\">cum recunoști escrocheriile</a>.</li>\n</ul>\n<p>Toate drepturile tale de consumator sunt adunate în <a href=\"/ghiduri/drepturile-consumatorului-in-moldova-ghid-complet/\">ghidul complet al drepturilor consumatorului</a>.</p>\n<p>Informații verificate la 16 octombrie 2026.</p>",
+  "faq": [
+    {
+      "q": "În cât timp pot contesta o plată cu cardul pe care n-am făcut-o?",
+      "a": "Anunță banca imediat. Legea nr. 114/2012 îți dă cel mult 13 luni de la debitare ca să obții corectarea unei plăți neautorizate sau executate greșit."
+    },
+    {
+      "q": "În cât timp îmi întoarce banca banii furați de pe card?",
+      "a": "La o plată neautorizată, imediat sau cel târziu la sfârșitul următoarei zile lucrătoare după ce a aflat, cu excepția cazului în care suspectează rezonabil o fraudă din partea ta și anunță autoritățile."
+    },
+    {
+      "q": "Ce este chargeback-ul?",
+      "a": "Este procedura prin care banca ta cere banii înapoi de la banca comerciantului, prin Visa sau Mastercard, de exemplu când produsul nu a fost livrat. Nu e prevăzută de legea Moldovei; termenele sunt ale rețelelor de carduri."
+    },
+    {
+      "q": "Cât pierd dacă mi s-a furat cardul?",
+      "a": "Cel mult 500 de lei, iar în multe situații nimic, de exemplu dacă plata s-a făcut după ce ai anunțat banca. Pierzi tot doar la fraudă sau neglijență gravă din partea ta."
+    },
+    {
+      "q": "Unde mă plâng dacă banca refuză?",
+      "a": "La Comisia Națională a Pieței Financiare (CNPF), prin petiție, cu răspunsul băncii atașat. Poți merge și în instanță."
+    }
+  ]
+}
