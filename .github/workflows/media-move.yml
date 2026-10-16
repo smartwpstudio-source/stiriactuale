@@ -1,0 +1,38 @@
+name: Mutarea imaginilor pe R2
+
+# Vercel Blob -> Cloudflare R2 (media.stiriactuale.info), 2026-10-16.
+#   pas = copiere      -> copiază toate fișierele și verifică numărul/mărimea (reluabil)
+#   pas = baza-numara  -> numără adresele vechi din baza de date
+#   pas = baza-aplica  -> înlocuiește adresele vechi cu media.stiriactuale.info
+on:
+  workflow_dispatch:
+    inputs:
+      pas:
+        description: "copiere | baza-numara | baza-aplica"
+        type: choice
+        options: [copiere, baza-numara, baza-aplica]
+        default: copiere
+
+jobs:
+  move:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Copierea fișierelor
+        if: ${{ inputs.pas == 'copiere' }}
+        run: npx tsx scripts/migration/blob-to-r2.ts
+        env:
+          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      - name: Adresele din baza de date
+        if: ${{ inputs.pas != 'copiere' }}
+        run: npx tsx scripts/migration/blob-urls.ts ${{ inputs.pas == 'baza-aplica' && '--aplica' || '' }}
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
