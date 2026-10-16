@@ -1,4 +1,4 @@
-import { put } from "@vercel/blob";
+import { MEDIA_CONFIGURED, putMedia } from "@/lib/media";
 import { HAIKU_MODEL, structured } from "./llm";
 
 const API = "https://api.magnific.com/v1";
@@ -23,10 +23,10 @@ export interface ArticleImage {
 //    "Unlimited" (Nano Banana) e doar în aplicația web, iar Nano Banana nu
 //    există deloc în API-ul Magnific (verificat 2026-10-01).
 // URL-urile Magnific sunt semnate și expiră, așa că fișierul se copiază în
-// Vercel Blob. Fără chei sau la eroare -> articol fără imagine, nu eșec.
+// R2 (media.stiriactuale.info, src/lib/media.ts). Fără chei sau la eroare -> articol fără imagine, nu eșec.
 function magnificHeaders(): Record<string, string> | null {
   const key = process.env.MAGNIFIC_API_KEY;
-  if (!key || !process.env.BLOB_READ_WRITE_TOKEN) return null;
+  if (!key || !MEDIA_CONFIGURED()) return null;
   return { "x-magnific-api-key": key, "Content-Type": "application/json" };
 }
 
@@ -56,7 +56,7 @@ export async function searchStock(term: string, limit: number): Promise<{ id: nu
 
 export async function stockToBlob(id: number, slug: string): Promise<string> {
   const headers = magnificHeaders();
-  if (!headers) throw new Error("MAGNIFIC_API_KEY / BLOB_READ_WRITE_TOKEN lipsesc");
+  if (!headers) throw new Error("MAGNIFIC_API_KEY / cheia R2 (CLOUDFLARE_API_TOKEN) lipsesc");
   const { data } = await getJson<{ data: { url?: string; signed_url?: string } }>(
     `${API}/resources/${id}/download?image_size=small`,
     headers,
@@ -165,10 +165,5 @@ export async function copyToBlob(sourceUrl: string, path: string): Promise<strin
     signal: AbortSignal.timeout(30_000),
   });
   if (!file.ok) throw new Error(`fișier HTTP ${file.status}`);
-  const blob = await put(path, Buffer.from(await file.arrayBuffer()), {
-    access: "public",
-    contentType: file.headers.get("content-type") ?? "image/jpeg",
-    addRandomSuffix: true,
-  });
-  return blob.url;
+  return putMedia(path, new Uint8Array(await file.arrayBuffer()), file.headers.get("content-type") ?? "image/jpeg");
 }
