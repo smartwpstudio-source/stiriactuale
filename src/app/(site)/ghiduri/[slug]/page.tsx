@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { WithSideAd } from "@/components/side-ad";
 import { notFound } from "next/navigation";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { ShareButtons } from "@/components/share-buttons";
@@ -74,6 +75,7 @@ export default async function GuidePage({ params }: PageProps<"/ghiduri/[slug]">
   ];
 
   return (
+    <WithSideAd>
     <article className="mx-auto w-full max-w-[760px] px-4 py-8">
       {jsonLd.map((d, i) => (
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(d).replace(/</g, "\u003c") }} />
@@ -156,5 +158,6 @@ export default async function GuidePage({ params }: PageProps<"/ghiduri/[slug]">
 
       <TelegramCta />
     </article>
+    </WithSideAd>
   );
 }
