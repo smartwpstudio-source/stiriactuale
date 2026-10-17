@@ -4,6 +4,7 @@ import { Footer } from "@/components/footer";
 import { RegisterServiceWorker } from "@/components/register-service-worker";
 import { AdsenseScript } from "@/components/adsense-script";
 import { YandexMetrika } from "@/components/yandex-metrika";
+import { GoogleAnalytics } from "@/components/google-analytics";
 
 // Cadrul paginilor publice. Separat de root layout ca /admin să nu aibă
 // header-ul site-ului și, mai ales, scriptul AdSense (reclame pe pagini fără
@@ -18,6 +19,7 @@ export default function SiteLayout({ children }: LayoutProps<"/">) {
       <RegisterServiceWorker />
       <AdsenseScript />
       <YandexMetrika />
+      <GoogleAnalytics />
     </>
   );
 }
