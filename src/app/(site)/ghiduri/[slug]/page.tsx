@@ -84,7 +84,7 @@ export default async function GuidePage({ params }: PageProps<"/ghiduri/[slug]">
         {(await ruSlugs()).has(g.slug) && (
           <>
             {" · "}
-            <Link href={ruPath(g.slug)} lang="ru" className="text-teal underline">
+            <Link prefetch={false} href={ruPath(g.slug)} lang="ru" className="text-teal underline">
               Читать на русском
             </Link>
           </>
@@ -99,7 +99,7 @@ export default async function GuidePage({ params }: PageProps<"/ghiduri/[slug]">
         const model = modelForGuide(g.slug);
         return (
           model && (
-            <Link
+            <Link prefetch={false}
               href={`/modele-reclamatii/${model.slug}/`}
               className="mt-5 block rounded-lg border-2 border-teal/50 bg-white p-4 hover:border-teal"
             >

@@ -7,7 +7,7 @@ import type { Guide } from "@/lib/content/guides";
 export function RelatedGuide({ guide }: { guide: Guide }) {
   const dosar = guide.category === "dosare";
   return (
-    <Link
+    <Link prefetch={false}
       href={`/ghiduri/${guide.slug}/`}
       className="mt-6 flex items-start gap-3 rounded-lg border border-teal/40 bg-white p-4 hover:border-teal"
     >

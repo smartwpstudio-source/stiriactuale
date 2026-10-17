@@ -34,7 +34,7 @@ export function MobileMenu() {
               const active = pathname.startsWith(item.href);
               return (
                 <li key={item.href}>
-                  <Link
+                  <Link prefetch={false}
                     href={item.href}
                     aria-current={active ? "page" : undefined}
                     className={`block border-b border-white/10 py-3 font-sans text-lg font-medium ${active ? "text-amber" : "text-paper"}`}
@@ -45,7 +45,7 @@ export function MobileMenu() {
               );
             })}
             <li>
-              <Link href="/cautare/" className="block py-3 font-sans text-lg font-medium text-paper">
+              <Link prefetch={false} href="/cautare/" className="block py-3 font-sans text-lg font-medium text-paper">
                 Căutare
               </Link>
             </li>

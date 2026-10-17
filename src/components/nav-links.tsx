@@ -22,7 +22,7 @@ export function NavLinks({ className, itemClassName }: { className: string; item
       {NAV.map((item) => {
         const active = pathname.startsWith(item.href);
         return (
-          <Link
+          <Link prefetch={false}
             key={item.href}
             href={item.href}
             aria-current={active ? "page" : undefined}

@@ -6,7 +6,7 @@ import Link from "next/link";
 // afișările, fără cookie-uri), ca să vedem câți trec de la știre la unealtă.
 export function ToolLink({ slug, href, className, children }: { slug: string; href: string; className: string; children: React.ReactNode }) {
   return (
-    <Link
+    <Link prefetch={false}
       href={href}
       className={className}
       onClick={() => navigator.sendBeacon?.("/api/view/", JSON.stringify({ slug, impact: true }))}

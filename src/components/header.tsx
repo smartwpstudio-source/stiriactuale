@@ -14,7 +14,7 @@ export function Header() {
         </div>
         <NavLinks className="hidden gap-7 font-sans text-base font-medium lg:flex" itemClassName="" />
         <div className="flex items-center gap-2">
-          <Link href="/cautare/" aria-label="Căutare" className="text-paper hover:text-amber">
+          <Link prefetch={false} href="/cautare/" aria-label="Căutare" className="text-paper hover:text-amber">
             <IconSearch size={22} stroke={1.75} />
           </Link>
           <MobileMenu />

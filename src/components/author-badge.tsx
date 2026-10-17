@@ -9,7 +9,7 @@ export function AuthorBadge({ slug, date, size = "md" }: { slug: string; date?: 
   const px = size === "sm" ? 36 : 48;
   const initials = a.name.split(" ").map((w) => w[0]).join("");
   return (
-    <Link href={authorPath(slug)} className="flex items-center gap-3 hover:text-teal">
+    <Link prefetch={false} href={authorPath(slug)} className="flex items-center gap-3 hover:text-teal">
       {a.photo ? (
         <Image src={a.photo} alt={a.name} width={px} height={px} className="shrink-0 rounded-full object-cover" />
       ) : (

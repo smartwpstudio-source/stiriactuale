@@ -40,7 +40,7 @@ export default async function RuHomePage() {
           Важные новости для русскоязычных читателей: что меняется, кого касается и что делать.
         </p>
         <p className="mt-2 font-mono text-sm">
-          <Link href="/" lang="ro" hrefLang="ro" className="text-teal underline hover:text-amber-ink">
+          <Link prefetch={false} href="/" lang="ro" hrefLang="ro" className="text-teal underline hover:text-amber-ink">
             Știri în română
           </Link>
         </p>
@@ -54,7 +54,7 @@ export default async function RuHomePage() {
             <ul className="mt-1">
               {news.map(({ article, ru }) => (
                 <li key={article.slug} className="border-b border-line py-4 last:border-b-0">
-                  <Link href={ruNewsPath(article.slug)} className="group grid grid-cols-[1fr_96px] gap-4 sm:grid-cols-[1fr_160px]">
+                  <Link prefetch={false} href={ruNewsPath(article.slug)} className="group grid grid-cols-[1fr_96px] gap-4 sm:grid-cols-[1fr_160px]">
                     <span className="min-w-0">
                       <span className="block font-serif text-xl leading-snug text-ink group-hover:text-teal">{ru.title}</span>
                       <span className="mt-1 line-clamp-2 block text-sub">{ru.lead}</span>
@@ -72,7 +72,7 @@ export default async function RuHomePage() {
         <SectionHeading title="Полезное" />
         <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
           {BLOCKS.map(({ href, icon: Icon, title, text }) => (
-            <Link key={href} href={href} className="flex items-start gap-3 rounded-lg border border-line bg-white p-4 hover:border-teal">
+            <Link prefetch={false} key={href} href={href} className="flex items-start gap-3 rounded-lg border border-line bg-white p-4 hover:border-teal">
               <Icon size={24} stroke={1.75} className="mt-0.5 shrink-0 text-teal" aria-hidden />
               <span>
                 <span className="block font-medium text-ink">{title}</span>

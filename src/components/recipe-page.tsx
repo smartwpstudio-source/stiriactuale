@@ -136,7 +136,7 @@ function LinkList({ title, items }: { title: string; items: { href: string; titl
       <ul className="mt-2 space-y-2">
         {items.map((x) => (
           <li key={x.href}>
-            <Link href={x.href} className="font-serif text-lg leading-snug text-ink hover:text-teal">
+            <Link prefetch={false} href={x.href} className="font-serif text-lg leading-snug text-ink hover:text-teal">
               {x.title} →
             </Link>
           </li>
@@ -235,7 +235,7 @@ export async function RecipePage({ r, lang, hasOther }: { r: Recipe; lang: Lang;
         {r.fasting && <span className="rounded bg-teal px-2 py-0.5 text-xs uppercase tracking-wide text-white">{t.fasting}</span>}
         {r.region && <span>{r.region}</span>}
         {hasOther && (
-          <Link href={recipePath(r.slug, lang === "ro" ? "ru" : "ro")} lang={lang === "ro" ? "ru" : "ro"} className="text-teal underline print:hidden">
+          <Link prefetch={false} href={recipePath(r.slug, lang === "ro" ? "ru" : "ro")} lang={lang === "ro" ? "ru" : "ro"} className="text-teal underline print:hidden">
             {t.other}
           </Link>
         )}

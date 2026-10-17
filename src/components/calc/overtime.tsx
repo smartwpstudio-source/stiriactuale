@@ -31,7 +31,7 @@ export function OvertimeCalculator({ lang = "ro" }: { lang?: Lang }) {
       )}
       <div>
         <NumberField label={t.norm} value={norm} onChange={setNorm} suffix={t.hoursUnit} />
-        <Link href={calcPath("zile-lucratoare", lang)} className="mt-1 block text-xs text-teal underline">
+        <Link prefetch={false} href={calcPath("zile-lucratoare", lang)} className="mt-1 block text-xs text-teal underline">
           {t.normHint}
         </Link>
       </div>
@@ -51,7 +51,7 @@ export function OvertimeCalculator({ lang = "ro" }: { lang?: Lang }) {
         ]}
         total={[t.total, money(base + r.total, lang)]}
       />
-      <Link href={calcPath("salariu-net", lang)} className="text-sm font-medium text-teal underline">
+      <Link prefetch={false} href={calcPath("salariu-net", lang)} className="text-sm font-medium text-teal underline">
         {t.netLink}
       </Link>
     </div>

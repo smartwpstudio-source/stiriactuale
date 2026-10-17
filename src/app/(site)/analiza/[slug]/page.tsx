@@ -125,7 +125,7 @@ export default async function AnalysisPage({ params }: PageProps<"/analiza/[slug
       {tools.length > 0 && (
         <div className="mt-8 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
           {tools.map((t) => (
-            <Link key={t.id} href={t.href} className="rounded bg-teal px-3 py-2 text-sm font-medium text-white hover:bg-teal/90">
+            <Link prefetch={false} key={t.id} href={t.href} className="rounded bg-teal px-3 py-2 text-sm font-medium text-white hover:bg-teal/90">
               {t.title} →
             </Link>
           ))}

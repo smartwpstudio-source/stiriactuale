@@ -65,7 +65,7 @@ export async function OrthodoxCalendar({ year, style, basePath }: { year: number
       <div className="mt-5 flex flex-wrap items-center gap-2">
         <span className="text-sm text-sub">Stilul:</span>
         {(["vechi", "nou"] as const).map((s) => (
-          <Link
+          <Link prefetch={false}
             key={s}
             href={styleLink(s)}
             className={`rounded px-3 py-1.5 text-sm ${style === s ? "bg-ink text-white" : "border border-line text-ink hover:border-teal"}`}
@@ -110,7 +110,7 @@ export async function OrthodoxCalendar({ year, style, basePath }: { year: number
                 <span className="text-ink">
                   <span className="text-alert">✝</span>{" "}
                   {href ? (
-                    <Link href={href} className="underline hover:text-teal">
+                    <Link prefetch={false} href={href} className="underline hover:text-teal">
                       {f.name}
                     </Link>
                   ) : (
@@ -136,7 +136,7 @@ export async function OrthodoxCalendar({ year, style, basePath }: { year: number
                 </span>
                 <span className="text-ink">
                   {href ? (
-                    <Link href={href} className="underline hover:text-teal">
+                    <Link prefetch={false} href={href} className="underline hover:text-teal">
                       {f.name}
                     </Link>
                   ) : (
@@ -155,7 +155,7 @@ export async function OrthodoxCalendar({ year, style, basePath }: { year: number
           {fasts.map((f) => (
             <li key={f.name} className="px-4 py-2.5 text-ink">
               {guideHref(f.guide) ? (
-                <Link href={guideHref(f.guide)!} className="font-medium underline hover:text-teal">
+                <Link prefetch={false} href={guideHref(f.guide)!} className="font-medium underline hover:text-teal">
                   {f.name}
                 </Link>
               ) : (
@@ -220,7 +220,7 @@ export async function OrthodoxCalendar({ year, style, basePath }: { year: number
         {Array.from({ length: LAST_YEAR - FIRST_YEAR + 1 }, (_, i) => FIRST_YEAR + i)
           .filter((y) => Math.abs(y - year) <= 3 && y !== year)
           .map((y) => (
-            <Link
+            <Link prefetch={false}
               key={y}
               href={`${CALENDAR_PATH}${y}/${style === "nou" ? "?stil=nou" : ""}`}
               className="rounded border border-line px-2 py-1 text-ink hover:border-teal"

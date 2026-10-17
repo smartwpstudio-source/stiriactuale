@@ -116,7 +116,7 @@ export async function ArticlePage({
           {article.title}
         </h1>
         {previous && (
-          <Link
+          <Link prefetch={false}
             href={articleUrl({ ...previous, locality: previous.locality ?? undefined, country: previous.country ?? undefined })}
             className="mt-4 block rounded border-l-4 border-teal bg-white px-4 py-2 text-sm hover:bg-paper"
           >
@@ -134,7 +134,7 @@ export async function ArticlePage({
         </p>
         {RU_NEWS_PUBLIC && article.hasRu && (
           <p className="mt-2 font-mono text-sm">
-            <Link href={ruNewsPath(article.slug)} lang="ru" hrefLang="ru" className="text-teal underline hover:text-amber-ink">
+            <Link prefetch={false} href={ruNewsPath(article.slug)} lang="ru" hrefLang="ru" className="text-teal underline hover:text-amber-ink">
               Читать на русском
             </Link>
           </p>
@@ -185,7 +185,7 @@ export async function ArticlePage({
             <p className="mt-6 text-xl font-medium leading-relaxed text-ink">{article.lead}</p>
             {article.impact && <ImpactBlock slug={article.slug} impact={article.impact} tools={tools} source={article.sources?.[0]?.name} />}
             {analyses.map((an) => (
-              <Link key={an.slug} href={analysisPath(an)} className="mt-5 block rounded-lg border-l-4 border-ink bg-white p-3 hover:bg-paper">
+              <Link prefetch={false} key={an.slug} href={analysisPath(an)} className="mt-5 block rounded-lg border-l-4 border-ink bg-white p-3 hover:bg-paper">
                 <span className="block font-mono text-xs uppercase tracking-wide text-ink">Analiza pe acest subiect</span>
                 <span className="mt-0.5 block font-medium leading-snug text-ink">{an.title}</span>
                 <span className="mt-0.5 block text-sm italic text-sub">{an.thesis}</span>
@@ -193,7 +193,7 @@ export async function ArticlePage({
             ))}
             {dossier && (
               // dosarul-pilon al subiectului, mereu la vedere: contextul pe care știrea nu-l repetă
-              <Link
+              <Link prefetch={false}
                 href={`/ghiduri/${dossier.slug}/`}
                 className="mt-5 flex items-start gap-3 rounded-lg border-l-4 border-teal bg-white p-3 hover:bg-paper"
               >
@@ -207,7 +207,7 @@ export async function ArticlePage({
               </Link>
             )}
             {usefulTool && (
-              <Link
+              <Link prefetch={false}
                 href={usefulTool.href}
                 className="mt-5 flex items-start gap-3 rounded-lg border-l-4 border-teal bg-white p-3 hover:bg-paper"
               >

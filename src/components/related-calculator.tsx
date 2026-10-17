@@ -5,7 +5,7 @@ import { calcPath, type Lang } from "@/components/calc/i18n";
 // „Calculator util” sub știre (related-calculator.ts) — la fel ca „Ghid util”.
 export function RelatedCalculator({ calc, lang = "ro" }: { calc: { slug: string; title: string; description: string }; lang?: Lang }) {
   return (
-    <Link
+    <Link prefetch={false}
       href={calcPath(calc.slug, lang)}
       className="mt-6 flex items-start gap-3 rounded-lg border border-amber-ink/40 bg-white p-4 hover:border-amber-ink"
     >

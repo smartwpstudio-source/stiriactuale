@@ -36,7 +36,7 @@ function ruOpenGraph(title: string, description: string, url: string): Metadata[
 function OtherLanguage({ lang, href }: { lang: Lang; href: string }) {
   return (
     <p className="mt-3 font-mono text-sm">
-      <Link href={href} lang={other(lang)} className="text-teal underline">
+      <Link prefetch={false} href={href} lang={other(lang)} className="text-teal underline">
         {T[lang].page.other}
       </Link>
     </p>
@@ -66,7 +66,7 @@ export async function CalculatorsList({ lang }: { lang: Lang }) {
       <ul className="mt-8 grid max-w-5xl gap-5 md:grid-cols-2">
         {list.map((c) => (
           <li key={c.slug}>
-            <Link
+            <Link prefetch={false}
               href={calcPath(c.slug, lang)}
               className="flex h-full flex-col rounded-lg border border-line bg-white p-5 transition-shadow hover:border-teal hover:shadow-md"
             >
@@ -116,7 +116,7 @@ export async function CalculatorView({ slug, lang }: { slug: string; lang: Lang 
       {lang === "ro" && <ToolNews tool={`calc:${slug}`} />}
       <div className="mt-6">{r.body}</div>
       {guideHref && (
-        <Link href={guideHref} className="mt-6 block rounded border border-line bg-white p-4 text-ink hover:border-teal">
+        <Link prefetch={false} href={guideHref} className="mt-6 block rounded border border-line bg-white p-4 text-ink hover:border-teal">
           <span className="block font-mono text-xs uppercase tracking-wide text-teal">{t.guide}</span>
           <span className="mt-1 block font-medium">{t.guideTexts[r.calc.slug] ?? t.guideText}</span>
         </Link>
@@ -127,7 +127,7 @@ export async function CalculatorView({ slug, lang }: { slug: string; lang: Lang 
           <ul className="mt-1 space-y-1">
             {seeCalcs.map((c) => (
               <li key={c.slug}>
-                <Link href={calcPath(c.slug, lang)} className="font-medium text-ink hover:text-teal">
+                <Link prefetch={false} href={calcPath(c.slug, lang)} className="font-medium text-ink hover:text-teal">
                   {c.title} →
                 </Link>
               </li>
@@ -136,7 +136,7 @@ export async function CalculatorView({ slug, lang }: { slug: string; lang: Lang 
         </div>
       )}
       {"recipes" in r.calc && (
-        <Link href={lang === "ru" ? "/ru/retete/" : "/retete/"} className="mt-6 block rounded border border-line bg-white p-4 text-ink hover:border-teal">
+        <Link prefetch={false} href={lang === "ru" ? "/ru/retete/" : "/retete/"} className="mt-6 block rounded border border-line bg-white p-4 text-ink hover:border-teal">
           <span className="block font-mono text-xs uppercase tracking-wide text-teal">{t.recipes}</span>
           <span className="mt-1 block font-medium">{t.recipesText}</span>
         </Link>

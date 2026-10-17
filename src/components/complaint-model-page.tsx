@@ -101,7 +101,7 @@ function LangLink({ lang, href }: { lang: ComplaintLang; href: string }) {
   const t = T[lang];
   return (
     <p className="mt-2 font-mono text-sm print:hidden">
-      <Link href={href} lang={t.otherLang} hrefLang={t.otherLang} className="text-teal underline">
+      <Link prefetch={false} href={href} lang={t.otherLang} hrefLang={t.otherLang} className="text-teal underline">
         {t.other}
       </Link>
     </p>
@@ -120,7 +120,7 @@ export function ComplaintModelsList({ lang }: { lang: ComplaintLang }) {
       {t.listNote && <p className="mt-2 max-w-2xl text-sub">{t.listNote}</p>}
       <p className="mt-2 max-w-2xl text-sub">
         {t.whereLead}{" "}
-        <Link href={t.whereHref} className="underline hover:text-ink">
+        <Link prefetch={false} href={t.whereHref} className="underline hover:text-ink">
           {t.whereLink}
         </Link>
         .
@@ -130,7 +130,7 @@ export function ComplaintModelsList({ lang }: { lang: ComplaintLang }) {
           const { title, description } = modelText(m, lang);
           return (
             <li key={m.slug}>
-              <Link
+              <Link prefetch={false}
                 href={modelPath(lang, m.slug)}
                 className="flex h-full flex-col rounded-lg border border-line bg-white p-5 transition-shadow hover:border-teal hover:shadow-md"
               >
@@ -183,7 +183,7 @@ export async function ComplaintModelView({ slug, lang }: { slug: string; lang: C
             </ol>
           </section>
         )}
-        <Link href={guideHref} className="mt-8 block rounded border border-line bg-white p-4 text-ink hover:border-teal">
+        <Link prefetch={false} href={guideHref} className="mt-8 block rounded border border-line bg-white p-4 text-ink hover:border-teal">
           <span className="block font-mono text-xs uppercase tracking-wide text-teal">{t.guideLabel}</span>
           <span className="mt-1 block font-medium">{guide.title} →</span>
           <span className="mt-1 block text-sm text-sub">{t.guideText}</span>

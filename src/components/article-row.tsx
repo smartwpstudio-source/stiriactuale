@@ -11,7 +11,7 @@ import type { Article } from "@/lib/content/types";
 //  - "default": poză 160px + titlu + rezumat pe 2 rânduri (căutare, liste late);
 //  - "small": poză 96px + titlu + dată, fără rezumat (blocurile de pe prima pagină);
 //  - "compact": doar dată + titlu (coloanele laterale "Ultimele știri").
-// prefetch={false} pe linkurile spre articole (și în card-uri): zeci de linkuri pe pagină
+// prefetch={false} pe toate linkurile site-ului public (2026-10-17): zeci de linkuri pe pagină
 // = zeci de cereri în fundal la fiecare vizită, fiecare cu timp CPU pe Cloudflare.
 export function ArticleRow({
   article,

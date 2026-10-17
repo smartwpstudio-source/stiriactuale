@@ -43,11 +43,11 @@ export default async function SearchPage({ searchParams }: PageProps<"/cautare">
           ))}
           {result.pages > 1 && (
             <nav aria-label="Paginare" className="mt-8 flex justify-between font-mono text-sm">
-              {page > 1 ? <Link href={pageHref(page - 1)}>← Înapoi</Link> : <span />}
+              {page > 1 ? <Link prefetch={false} href={pageHref(page - 1)}>← Înapoi</Link> : <span />}
               <span className="text-sub">
                 {page} / {result.pages}
               </span>
-              {page < result.pages ? <Link href={pageHref(page + 1)}>Mai departe →</Link> : <span />}
+              {page < result.pages ? <Link prefetch={false} href={pageHref(page + 1)}>Mai departe →</Link> : <span />}
             </nav>
           )}
         </div>
