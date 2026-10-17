@@ -10,3 +10,7 @@ export const ADSENSE_IN_ARTICLE_SLOT = "6466968826";
 
 // Blocul grafic vertical „Lateral” (300×600, coloana laterală fixă pe ecrane late)
 export const ADSENSE_SIDE_SLOT = "1805463227";
+
+// Blocul grafic „In text” (responsiv): blocurile din corpul ghidurilor și articolelor
+// și cel de pe calculatoare — se umple mai des decât „In-article” (2026-10-17)
+export const ADSENSE_DISPLAY_SLOT = "4424896864";
