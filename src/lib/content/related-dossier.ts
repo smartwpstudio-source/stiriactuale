@@ -49,6 +49,8 @@ const RULES: [slug: string, re: RegExp][] = [
   // pilonul pensiilor („pensiune” = casă de oaspeți, nu intră)
   ["pensiile-in-moldova-tot-ce-trebuie-sa-stii", /\bpensi(a|e|i|ii|ile|ilor|onar\w*)\b|varsta de pensionare|stagiu\w* de cotizare/],
   ["preturile-la-alimente-si-inflatia-date-bns-bnm", /inflati/],
+  // cetățenia Moldovei (2026-10-17): redobândire, renunțare, examen; nu cetățenia română, rusă etc.
+  ["cetatenia-moldovei-din-rusia-redobandire-recunoastere-acte-taxe", /^(?!.*cetatenia? (romana|romaneasca|romaniei|italiana|rusa|ruseasca|rusiei|bulgara|ucraineana|americana))(?=.*(redobandir\w* (a )?cetateniei|renunt\w* la cetatenie|legea cetateniei|examen\w* (de |pentru )?cetatenie|dubla cetatenie|cetateni(a|ei) (republicii moldova|moldoveneasc\w*|moldovei)))/],
   ["migratia-si-depopularea-moldovei-cifre-oficiale", /depopular|recensamant|exodul|emigrar\w* in masa/],
   // ghidurile-pilon pentru șoferi și amenzi (după dosare: o știre despre UE rămâne la UE)
   ["alcoolul-la-volan-limite-si-sanctiuni", /(beat|baut|ebrietate|alcool\w*|alcoolemi\w*) (la volan|in trafic)|sub influenta alcoolului|alcooltest/],
