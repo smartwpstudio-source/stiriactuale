@@ -18,7 +18,7 @@ function byCountry(items: Guide[]) {
 
 const GuideLink = ({ g }: { g: Guide }) => (
   <li className="border-b border-line py-3 last:border-b-0">
-    <Link href={`/ghiduri/${g.slug}/`} className="group block">
+    <Link prefetch={false} href={`/ghiduri/${g.slug}/`} className="group block">
       <h3 className="font-serif text-lg leading-snug text-ink group-hover:text-teal">{g.title}</h3>
       <p className="mt-1 line-clamp-2 text-[0.95rem] text-sub">{g.description}</p>
     </Link>
@@ -46,7 +46,7 @@ export default async function GuidesPage() {
         sursele oficiale, cu data ultimei actualizări.
       </p>
       <p className="mt-2 font-mono text-sm">
-        <Link href="/ru/ghiduri/" lang="ru" className="text-teal underline hover:text-amber-ink">
+        <Link prefetch={false} href="/ru/ghiduri/" lang="ru" className="text-teal underline hover:text-amber-ink">
           Справочники на русском
         </Link>
       </p>
@@ -91,7 +91,7 @@ export default async function GuidesPage() {
               ))}
             </ul>
             {c === "bucatarie" && (
-              <Link href="/retete/" className="mt-2 inline-block font-mono text-sm text-teal hover:text-amber-ink">
+              <Link prefetch={false} href="/retete/" className="mt-2 inline-block font-mono text-sm text-teal hover:text-amber-ink">
                 Rețete moldovenești pas cu pas →
               </Link>
             )}

@@ -17,7 +17,7 @@ export function Hero({ article }: { article: Article }) {
         : null;
 
   return (
-    <Link
+    <Link prefetch={false}
       href={articleUrl(article)}
       className="group grid overflow-hidden rounded border border-line bg-white lg:grid-cols-[3fr_2fr]"
     >

@@ -44,7 +44,7 @@ export default function AdvertisingPage() {
         <li>Nu publicăm publicitate politică ascunsă, jocuri de noroc fără licență, produse interzise sau înșelătoare.</li>
         <li>
           Redacția decide independent ce publică în știri; un contract de publicitate nu influențează conținutul editorial
-          (vezi <Link href="/politica-editoriala/">politica editorială</Link>).
+          (vezi <Link prefetch={false} href="/politica-editoriala/">politica editorială</Link>).
         </li>
       </ul>
 

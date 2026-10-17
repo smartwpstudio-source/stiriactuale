@@ -13,7 +13,7 @@ export async function SaintOfDay() {
   // ziua populară / națională de azi (ex. Ziua Vinului), afișată separat
   const civil = civilDays(today.getUTCFullYear()).find((f) => f.date.getTime() === today.getTime());
   return (
-    <Link href={CALENDAR_PATH} className="mt-6 block rounded-lg border border-line bg-white p-4 hover:border-teal">
+    <Link prefetch={false} href={CALENDAR_PATH} className="mt-6 block rounded-lg border border-line bg-white p-4 hover:border-teal">
       <span className="block font-mono text-xs uppercase tracking-wide text-sub">
         Calendar ortodox · {weekday(today)}, {formatDay(today)}
       </span>

@@ -42,7 +42,7 @@ export default function ContactPage() {
         </li>
       </ul>
       <p>
-        Cum tratăm sesizările e descris în <Link href="/politica-editoriala/">Politica editorială</Link>.
+        Cum tratăm sesizările e descris în <Link prefetch={false} href="/politica-editoriala/">Politica editorială</Link>.
       </p>
     </StaticPage>
   );

@@ -98,14 +98,14 @@ export default async function RuNewsPage({ params }: { params: Promise<{ slug: s
     <article lang="ru" className="mx-auto w-full max-w-[760px] px-4 py-8">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       <nav className="font-mono text-xs uppercase tracking-wide text-sub">
-        <Link href="/" className="hover:text-ink">Știri Actuale</Link> ›{" "}
-        <Link href="/ru/" className="hover:text-ink">Новости</Link>
+        <Link prefetch={false} href="/" className="hover:text-ink">Știri Actuale</Link> ›{" "}
+        <Link prefetch={false} href="/ru/" className="hover:text-ink">Новости</Link>
       </nav>
       <h1 className="mt-3 font-serif text-3xl leading-tight text-ink sm:text-4xl lg:text-[2.75rem]">{ru.title}</h1>
       <p className="mt-4 font-mono text-sm text-sub">
         {new Date(article.publishedAt).toLocaleString("ru-RU", DATE)}
         {" · "}
-        <Link href={articleUrl(article)} lang="ro" hrefLang="ro" className="text-teal underline">
+        <Link prefetch={false} href={articleUrl(article)} lang="ro" hrefLang="ro" className="text-teal underline">
           Citește în română
         </Link>
       </p>
@@ -145,7 +145,7 @@ export default async function RuNewsPage({ params }: { params: Promise<{ slug: s
         </p>
       )}
       <p className="mt-8 rounded border border-line bg-white p-4 text-sm text-sub">
-        Перевод новости с румынского языка. <Link href="/ru/" className="text-teal underline">Все новости на русском</Link>
+        Перевод новости с румынского языка. <Link prefetch={false} href="/ru/" className="text-teal underline">Все новости на русском</Link>
       </p>
     </article>
   );

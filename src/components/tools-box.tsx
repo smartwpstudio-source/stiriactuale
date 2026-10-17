@@ -16,14 +16,14 @@ export async function ToolsBox() {
         <ul className="mt-2 divide-y divide-line">
           {calcs.map((c) => (
             <li key={c.slug}>
-              <Link href={`/calculatoare/${c.slug}/`} className="block py-1.5 text-[0.95rem] text-ink hover:text-teal">
+              <Link prefetch={false} href={`/calculatoare/${c.slug}/`} className="block py-1.5 text-[0.95rem] text-ink hover:text-teal">
                 {c.title}
               </Link>
             </li>
           ))}
         </ul>
       </section>
-      <Link href="/modele-reclamatii/" className="block rounded-lg border-2 border-teal/50 bg-white p-4 hover:border-teal">
+      <Link prefetch={false} href="/modele-reclamatii/" className="block rounded-lg border-2 border-teal/50 bg-white p-4 hover:border-teal">
         <span className="flex items-center gap-2 font-mono text-xs uppercase tracking-wide text-teal">
           <IconFileText size={16} stroke={1.75} aria-hidden /> Modele de reclamații
         </span>

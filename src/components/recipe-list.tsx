@@ -69,7 +69,7 @@ export async function RecipeList({ lang }: { lang: Lang }) {
       <h1 className="mt-2 font-serif text-3xl text-ink sm:text-4xl">{t.h1}</h1>
       <p className="mt-3 max-w-2xl text-lg text-sub">{t.intro}</p>
       <p className="mt-2 font-mono text-sm">
-        <Link href={LIST_PATH[other]} lang={other} className="text-teal underline hover:text-amber-ink">
+        <Link prefetch={false} href={LIST_PATH[other]} lang={other} className="text-teal underline hover:text-amber-ink">
           {t.other}
         </Link>
       </p>
@@ -91,7 +91,7 @@ export async function RecipeList({ lang }: { lang: Lang }) {
           <ul className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {items.map((r) => (
               <li key={r.slug} className={r.fasting ? "" : "group-has-[#doar-post:checked]/list:hidden"}>
-                <Link href={recipePath(r.slug, lang)} className="group block overflow-hidden rounded border border-line bg-white">
+                <Link prefetch={false} href={recipePath(r.slug, lang)} className="group block overflow-hidden rounded border border-line bg-white">
                   <div className="relative aspect-[3/2] bg-line">
                     <Image src={r.image.url} alt={r.image.alt} fill sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw" className="object-cover" />
                     {r.fasting && (

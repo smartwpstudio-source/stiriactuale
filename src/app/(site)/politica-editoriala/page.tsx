@@ -73,7 +73,7 @@ export default function EditorialPolicyPage() {
       <h2>Corecturi și drept la replică</h2>
       <p>
         Dacă găsești o greșeală de fapt sau ești vizat într-un articol, scrie-ne la{" "}
-        <ContactEmail email={CONTACT_EMAIL} /> (detalii pe pagina <Link href="/contact/">Contact</Link>). Corectăm
+        <ContactEmail email={CONTACT_EMAIL} /> (detalii pe pagina <Link prefetch={false} href="/contact/">Contact</Link>). Corectăm
         erorile cât mai repede, iar corecturile de fond sunt menționate în articol. Poziția persoanei vizate se adaugă
         în articol sau se publică separat.
       </p>

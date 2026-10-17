@@ -18,52 +18,52 @@ export function Footer() {
       <div className="mx-auto grid max-w-7xl gap-6 px-4 py-10 text-base sm:grid-cols-3 lg:px-8">
         <nav aria-label="Secțiuni" className="flex flex-col gap-2">
           {Object.entries(SECTION_LABELS).map(([slug, label]) => (
-            <Link key={slug} href={`/${slug}/`} className="hover:text-amber">
+            <Link prefetch={false} key={slug} href={`/${slug}/`} className="hover:text-amber">
               {label}
             </Link>
           ))}
           {MORE.map((i) => (
-            <Link key={i.href} href={i.href} className="hover:text-amber">
+            <Link prefetch={false} key={i.href} href={i.href} className="hover:text-amber">
               {i.label}
             </Link>
           ))}
         </nav>
         <nav aria-label="Informații" className="flex flex-col gap-2">
-          <Link href="/despre/" className="hover:text-amber">
+          <Link prefetch={false} href="/despre/" className="hover:text-amber">
             Despre noi
           </Link>
-          <Link href="/politica-editoriala/" className="hover:text-amber">
+          <Link prefetch={false} href="/politica-editoriala/" className="hover:text-amber">
             Politica editorială
           </Link>
-          <Link href="/confidentialitate/" className="hover:text-amber">
+          <Link prefetch={false} href="/confidentialitate/" className="hover:text-amber">
             Confidențialitate
           </Link>
           {/* butonul de consimțământ AdSense (GDPR) — trebuie să existe permanent */}
           <PrivacySettingsLink />
-          <Link href="/contact/" className="hover:text-amber">
+          <Link prefetch={false} href="/contact/" className="hover:text-amber">
             Contact
           </Link>
-          <Link href="/publicitate/" className="hover:text-amber">
+          <Link prefetch={false} href="/publicitate/" className="hover:text-amber">
             Publicitate
           </Link>
-          <Link href="/cautare/" className="hover:text-amber">
+          <Link prefetch={false} href="/cautare/" className="hover:text-amber">
             Căutare
           </Link>
         </nav>
         <div className="flex flex-col gap-2">
-          <Link href="/ghiduri/" className="hover:text-amber">
+          <Link prefetch={false} href="/ghiduri/" className="hover:text-amber">
             Ghiduri practice
           </Link>
-          <Link href="/calculatoare/" className="hover:text-amber">
+          <Link prefetch={false} href="/calculatoare/" className="hover:text-amber">
             Calculatoare
           </Link>
-          <Link href="/modele-reclamatii/" className="hover:text-amber">
+          <Link prefetch={false} href="/modele-reclamatii/" className="hover:text-amber">
             Modele de reclamații
           </Link>
-          <Link href="/calendar-crestin-ortodox/" className="hover:text-amber">
+          <Link prefetch={false} href="/calendar-crestin-ortodox/" className="hover:text-amber">
             Calendar ortodox
           </Link>
-          <Link href="/azi-in-istorie/" className="hover:text-amber">
+          <Link prefetch={false} href="/azi-in-istorie/" className="hover:text-amber">
             Azi în istorie
           </Link>
           <div className="mt-2 flex gap-3">

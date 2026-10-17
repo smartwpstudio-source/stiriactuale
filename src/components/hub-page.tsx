@@ -80,7 +80,7 @@ export async function HubPage({ hub, page }: { hub: Hub | null; page: number | n
       {hub.filter.section === "diaspora" && page === 1 && <ActiveAlerts diaspora country={country} />}
       {place && hub.place && <PlaceInfoBox info={place} name={hub.place.name} />}
       {cityGuide && (
-        <Link
+        <Link prefetch={false}
           href={`/ghiduri/${cityGuide.slug}/`}
           className="mt-3 flex items-center justify-between gap-3 rounded border border-teal/40 bg-white px-5 py-3 hover:border-teal"
         >
@@ -97,14 +97,14 @@ export async function HubPage({ hub, page }: { hub: Hub | null; page: number | n
           <ul className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {countryGuides.map((g) => (
               <li key={g.slug}>
-                <Link href={`/ghiduri/${g.slug}/`} className="flex h-full flex-col rounded-lg border border-line bg-white p-4 hover:border-teal">
+                <Link prefetch={false} href={`/ghiduri/${g.slug}/`} className="flex h-full flex-col rounded-lg border border-line bg-white p-4 hover:border-teal">
                   <span className="font-serif text-lg leading-snug text-ink">{g.title}</span>
                   <span className="mt-1 line-clamp-2 text-sm text-sub">{g.description}</span>
                 </Link>
               </li>
             ))}
           </ul>
-          <Link href="/ghiduri/#diaspora" className="mt-3 inline-block text-sm text-teal hover:underline">
+          <Link prefetch={false} href="/ghiduri/#diaspora" className="mt-3 inline-block text-sm text-teal hover:underline">
             Toate ghidurile pentru diaspora →
           </Link>
         </section>
@@ -115,7 +115,7 @@ export async function HubPage({ hub, page }: { hub: Hub | null; page: number | n
           <ul className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {pillars.map((g) => (
               <li key={g.slug}>
-                <Link
+                <Link prefetch={false}
                   href={`/ghiduri/${g.slug}/`}
                   className="flex h-full flex-col rounded-lg border border-line bg-white p-4 hover:border-teal"
                 >
@@ -136,7 +136,7 @@ export async function HubPage({ hub, page }: { hub: Hub | null; page: number | n
       {pages > 1 && (
         <nav aria-label="Paginare" className="mt-8 flex items-center justify-between font-mono text-sm">
           {page > 1 ? (
-            <Link href={pagePath(hub, page - 1)} className="text-ink hover:text-teal">
+            <Link prefetch={false} href={pagePath(hub, page - 1)} className="text-ink hover:text-teal">
               ← Mai noi
             </Link>
           ) : (
@@ -146,7 +146,7 @@ export async function HubPage({ hub, page }: { hub: Hub | null; page: number | n
             {page} / {pages}
           </span>
           {page < pages ? (
-            <Link href={pagePath(hub, page + 1)} className="text-ink hover:text-teal">
+            <Link prefetch={false} href={pagePath(hub, page + 1)} className="text-ink hover:text-teal">
               Mai vechi →
             </Link>
           ) : (

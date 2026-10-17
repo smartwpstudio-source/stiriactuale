@@ -17,7 +17,7 @@ export default function OfflinePage() {
         Pagina asta nu a fost salvată pe dispozitiv. Ultimele articole pe care le-ai citit rămân disponibile și fără
         internet — încearcă din nou când revine conexiunea.
       </p>
-      <Link href="/" className="mt-6 inline-block rounded bg-ink px-4 py-2 text-paper">
+      <Link prefetch={false} href="/" className="mt-6 inline-block rounded bg-ink px-4 py-2 text-paper">
         Prima pagină
       </Link>
     </div>

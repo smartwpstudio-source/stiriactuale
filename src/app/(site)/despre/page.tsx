@@ -35,7 +35,7 @@ export default function AboutPage() {
         Știrile pe subiecte sensibile — tragedii, victime, acuzații la adresa unor persoane — sunt verificate de un
         editor înainte de publicare; celelalte sunt verificate după publicare și corectate dacă e nevoie. Regulile pe
         care le respectăm sunt descrise în{" "}
-        <Link href="/politica-editoriala/">Politica editorială</Link>.
+        <Link prefetch={false} href="/politica-editoriala/">Politica editorială</Link>.
       </p>
 
       <h2>Cine răspunde de site</h2>
@@ -47,7 +47,7 @@ export default function AboutPage() {
         Telefon: {PHONE}
       </p>
       <p>
-        Pentru sesizări, corecturi sau propuneri de subiecte, vezi pagina <Link href="/contact/">Contact</Link>. Știrile
+        Pentru sesizări, corecturi sau propuneri de subiecte, vezi pagina <Link prefetch={false} href="/contact/">Contact</Link>. Știrile
         noi apar și pe canalul nostru de <a href={TELEGRAM_URL}>Telegram</a>.
       </p>
     </StaticPage>

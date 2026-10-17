@@ -11,7 +11,7 @@ export function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
       {items.map((item, i) => (
         <span key={i}>
           {item.href ? (
-            <Link href={item.href} className="hover:text-amber-ink">
+            <Link prefetch={false} href={item.href} className="hover:text-amber-ink">
               {item.label}
             </Link>
           ) : (

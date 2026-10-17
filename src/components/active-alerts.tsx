@@ -14,7 +14,7 @@ export async function ActiveAlerts({ country, urgentOnly, diaspora }: { country?
       {alerts.map((a) => {
         const urgent = a.impact?.tip === "urgent";
         return (
-          <Link
+          <Link prefetch={false}
             key={a.slug}
             href={articleUrl(a)}
             className={`flex items-start gap-3 rounded-lg border-2 p-3 ${urgent ? "border-alert bg-alert text-white" : "border-amber-ink/50 bg-white text-ink"}`}

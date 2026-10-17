@@ -12,7 +12,7 @@ export function SectionFilterChips({
   return (
     <ul className="mt-4 flex flex-wrap gap-2">
       <li>
-        <Link
+        <Link prefetch={false}
           href={basePath}
           className={`rounded border px-2.5 py-1 font-mono text-xs ${
             !active
@@ -25,7 +25,7 @@ export function SectionFilterChips({
       </li>
       {items.map((item) => (
         <li key={item.slug}>
-          <Link
+          <Link prefetch={false}
             href={`${basePath}/${item.slug}`}
             className={`rounded border px-2.5 py-1 font-mono text-xs ${
               active === item.slug

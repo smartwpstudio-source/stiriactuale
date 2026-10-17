@@ -45,9 +45,9 @@ export default async function HistoryDayPage({ params }: PageProps<"/azi-in-isto
       <p className="mt-3 text-lg text-sub">Ce s-a întâmplat pe {label}: evenimente din istoria Moldovei și a lumii, nașteri și decese, cu sursa fiecăruia.</p>
       <HistoryList events={events} />
       <nav className="mt-8 flex justify-between gap-4 text-teal">
-        <Link href={dayPath(prev.month, prev.day)} className="hover:underline">← {dayLabel(prev.month, prev.day)}</Link>
-        <Link href={HISTORY_PATH} className="hover:underline">Toate zilele</Link>
-        <Link href={dayPath(next.month, next.day)} className="hover:underline">{dayLabel(next.month, next.day)} →</Link>
+        <Link prefetch={false} href={dayPath(prev.month, prev.day)} className="hover:underline">← {dayLabel(prev.month, prev.day)}</Link>
+        <Link prefetch={false} href={HISTORY_PATH} className="hover:underline">Toate zilele</Link>
+        <Link prefetch={false} href={dayPath(next.month, next.day)} className="hover:underline">{dayLabel(next.month, next.day)} →</Link>
       </nav>
     </div>
   );

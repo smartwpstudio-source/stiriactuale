@@ -27,7 +27,7 @@ export default async function HistoryIndexPage() {
       {events.length > 0 && (
         <>
           <HistoryList events={events} />
-          <Link href={dayPath(month, day)} className="mt-4 inline-block text-teal hover:underline">
+          <Link prefetch={false} href={dayPath(month, day)} className="mt-4 inline-block text-teal hover:underline">
             Pagina zilei de {dayLabel(month, day)} →
           </Link>
         </>
@@ -42,7 +42,7 @@ export default async function HistoryIndexPage() {
               <ul className="mt-2 flex flex-wrap gap-2">
                 {inMonth.map((d) => (
                   <li key={d.day}>
-                    <Link href={dayPath(d.month, d.day)} className="block min-w-10 rounded border border-line bg-white px-2 py-1 text-center text-sm text-ink hover:border-teal">
+                    <Link prefetch={false} href={dayPath(d.month, d.day)} className="block min-w-10 rounded border border-line bg-white px-2 py-1 text-center text-sm text-ink hover:border-teal">
                       {d.day}
                     </Link>
                   </li>

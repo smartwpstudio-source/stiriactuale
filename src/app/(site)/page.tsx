@@ -65,7 +65,7 @@ export default async function HomePage() {
         <section className="mt-8 rounded-lg border-2 border-teal/40 bg-white p-4 sm:p-5">
           <div className="flex items-baseline justify-between gap-3">
             <h2 className="font-serif text-2xl text-ink">Ce te afectează acum</h2>
-            <Link href="/impact/" className="shrink-0 text-sm text-teal hover:underline">
+            <Link prefetch={false} href="/impact/" className="shrink-0 text-sm text-teal hover:underline">
               Toate →
             </Link>
           </div>
@@ -111,7 +111,7 @@ export default async function HomePage() {
                   {mostRead.map((a, i) => (
                     <li key={a.slug} className="flex gap-3 border-b border-line py-3 last:border-b-0">
                       <span className="font-serif text-3xl leading-none text-amber-ink">{i + 1}</span>
-                      <Link href={articleUrl(a)} className="font-serif text-[1.05rem] leading-snug text-ink hover:text-teal">
+                      <Link prefetch={false} href={articleUrl(a)} className="font-serif text-[1.05rem] leading-snug text-ink hover:text-teal">
                         {a.title}
                       </Link>
                     </li>

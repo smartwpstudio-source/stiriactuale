@@ -77,8 +77,8 @@ export default async function RuGuidePage({ params }: PageProps<"/ru/ghiduri/[sl
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(d).replace(/</g, "\\u003c") }} />
       ))}
       <nav className="font-mono text-xs uppercase tracking-wide text-sub">
-        <Link href="/" className="hover:text-ink">Știri Actuale</Link> ›{" "}
-        <Link href="/ru/ghiduri/" className="hover:text-ink">Справочник</Link>
+        <Link prefetch={false} href="/" className="hover:text-ink">Știri Actuale</Link> ›{" "}
+        <Link prefetch={false} href="/ru/ghiduri/" className="hover:text-ink">Справочник</Link>
       </nav>
       <h1 className="mt-3 font-serif text-3xl leading-tight text-ink sm:text-4xl lg:text-[2.75rem]">{g.title}</h1>
       <p className="mt-4 font-mono text-sm text-sub">
@@ -86,7 +86,7 @@ export default async function RuGuidePage({ params }: PageProps<"/ru/ghiduri/[sl
         {!g.ruOnly && (
           <>
             {" · "}
-            <Link href={`/ghiduri/${g.slug}/`} lang="ro" className="text-teal underline">
+            <Link prefetch={false} href={`/ghiduri/${g.slug}/`} lang="ro" className="text-teal underline">
               Citește în română
             </Link>
           </>
@@ -105,7 +105,7 @@ export default async function RuGuidePage({ params }: PageProps<"/ru/ghiduri/[sl
               <RelatedCalculator key={c.slug} calc={calcText(c, "ru")} lang="ru" />
             ))}
             {model && (
-              <Link
+              <Link prefetch={false}
                 href={modelPath("ru", model.slug)}
                 className="mt-5 block rounded-lg border-2 border-teal/50 bg-white p-4 hover:border-teal"
               >

@@ -33,7 +33,7 @@ export default async function RuGuidesPage() {
         официальным источникам, с датой последнего обновления.
       </p>
       <p className="mt-2 font-mono text-sm">
-        <Link href="/ghiduri/" lang="ro" className="text-teal underline hover:text-amber-ink">
+        <Link prefetch={false} href="/ghiduri/" lang="ro" className="text-teal underline hover:text-amber-ink">
           Ghiduri în română
         </Link>
       </p>
@@ -57,7 +57,7 @@ export default async function RuGuidesPage() {
             <ul className="mt-2">
               {items.map((g) => (
                 <li key={g.slug} className="border-b border-line py-3 last:border-b-0">
-                  <Link href={ruPath(g.slug)} className="group block">
+                  <Link prefetch={false} href={ruPath(g.slug)} className="group block">
                     <h3 className="font-serif text-lg leading-snug text-ink group-hover:text-teal">{g.title}</h3>
                     <p className="mt-1 line-clamp-2 text-[0.95rem] text-sub">{g.description}</p>
                   </Link>
@@ -65,7 +65,7 @@ export default async function RuGuidesPage() {
               ))}
             </ul>
             {c === "bucatarie" && (
-              <Link href="/ru/retete/" className="mt-2 inline-block font-mono text-sm text-teal hover:text-amber-ink">
+              <Link prefetch={false} href="/ru/retete/" className="mt-2 inline-block font-mono text-sm text-teal hover:text-amber-ink">
                 Молдавские рецепты пошагово →
               </Link>
             )}

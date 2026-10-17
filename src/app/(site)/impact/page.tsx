@@ -16,7 +16,7 @@ export default async function ImpactPage({ searchParams }: PageProps<"/impact">)
   const tip = typeof raw === "string" && raw in IMPACT_TYPES ? (raw as ImpactType) : undefined;
   const { items } = await listArticles({ impact: tip ?? true }, 1, 40);
   const chip = (href: string, label: string, on: boolean) => (
-    <Link key={href} href={href} className={`rounded-full border px-3 py-1 text-sm ${on ? "border-teal bg-teal text-white" : "border-line bg-white text-ink hover:border-teal"}`}>
+    <Link prefetch={false} key={href} href={href} className={`rounded-full border px-3 py-1 text-sm ${on ? "border-teal bg-teal text-white" : "border-line bg-white text-ink hover:border-teal"}`}>
       {label}
     </Link>
   );
