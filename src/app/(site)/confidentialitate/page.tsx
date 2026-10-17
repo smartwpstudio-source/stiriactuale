@@ -25,14 +25,14 @@ export default function PrivacyPage() {
       <ul>
         <li>
           <strong>date tehnice de acces</strong> (adresa IP, tipul browserului, pagina accesată), înregistrate
-          automat de furnizorul de găzduire (Vercel) pentru funcționarea și securitatea site-ului;
+          automat de furnizorul de găzduire (Cloudflare) pentru funcționarea și securitatea site-ului;
         </li>
         <li>
           <strong>date prelucrate de Google AdSense</strong> pentru afișarea reclamelor, prin cookie-uri și
           tehnologii similare — descrise mai jos;
         </li>
         <li>
-          <strong>statistica vizitelor</strong> prin Yandex.Metrica (Yandex): paginile vizitate, durata vizitei, de
+          <strong>statistica vizitelor</strong> prin Yandex.Metrica (Yandex) și Google Analytics (Google): paginile vizitate, durata vizitei, de
           unde vii, tipul dispozitivului și clicurile, prin cookie-uri și tehnologii similare, fără să te
           identifice după nume; o folosim doar ca să știm ce citesc oamenii și ce trebuie îmbunătățit;
         </li>
