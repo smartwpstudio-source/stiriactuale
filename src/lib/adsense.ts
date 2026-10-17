@@ -7,3 +7,6 @@ export const ADSENSE_CLIENT_ID =
 // Blocul "In-article" creat în AdSense (Ads -> By ad unit). Gol = fără blocuri
 // fixe, rămân doar Auto Ads.
 export const ADSENSE_IN_ARTICLE_SLOT = "6466968826";
+
+// Blocul grafic vertical „Lateral” (300×600, coloana laterală fixă pe ecrane late)
+export const ADSENSE_SIDE_SLOT = "1805463227";

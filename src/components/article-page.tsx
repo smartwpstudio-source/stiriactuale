@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SideAd } from "./side-ad";
 import { Breadcrumb, type BreadcrumbItem } from "./breadcrumb";
 import { TopicLabel } from "./topic-label";
 import { ArticleThumb } from "./article-thumb";
@@ -266,7 +267,7 @@ export async function ArticlePage({
       {!article.archived && <ViewBeacon slug={article.slug} />}
       </article>
       <aside className="hidden lg:block">
-        <div className="sticky top-6">
+        <div>
           <SectionHeading title="Ultimele știri" />
           <div className="mt-1">
             {latest
@@ -277,6 +278,12 @@ export async function ArticlePage({
               ))}
           </div>
         </div>
+        {/* reclama fixă rămâne la vedere cât se citește articolul (doar ≥1280 px) */}
+        {!article.archived && (
+          <div className="sticky top-6 mt-8">
+            <SideAd />
+          </div>
+        )}
       </aside>
     </div>
   );

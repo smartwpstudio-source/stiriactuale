@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { WithSideAd } from "@/components/side-ad";
 import { AdSlot } from "@/components/ad-slot";
 import { ADSENSE_IN_ARTICLE_SLOT } from "@/lib/adsense";
 import Link from "next/link";
@@ -110,6 +111,7 @@ export async function CalculatorView({ slug, lang }: { slug: string; lang: Lang 
   const guide = "guide" in r.calc ? r.calc.guide : undefined;
   const guideHref = guide && (lang === "ro" ? `/ghiduri/${guide}/` : (await ruSlugs()).has(guide) ? ruPath(guide) : undefined);
   return (
+    <WithSideAd>
     <div lang={lang} className="mx-auto w-full max-w-[640px] px-4 py-8">
       <Breadcrumb items={[{ label: t.home, href: "/" }, { label: t.list, href: calcListPath(lang) }, { label: r.calc.title }]} />
       <h1 className="mt-2 font-serif text-3xl text-ink sm:text-4xl">{r.calc.title}</h1>
@@ -159,5 +161,6 @@ export async function CalculatorView({ slug, lang }: { slug: string; lang: Lang 
       )}
       {lang === "ro" && <EmbedCode slug={slug} title={r.calc.title} siteUrl={SITE_URL} />}
     </div>
+    </WithSideAd>
   );
 }
