@@ -6,7 +6,7 @@ import { raionLabel } from "@/lib/content/geo";
 import { articleUrl } from "@/lib/content/url";
 import { absoluteUrl, articleMetadata, breadcrumbJsonLd, newsArticleJsonLd } from "@/lib/seo";
 
-export const revalidate = 86400; // la cerere din pipeline (/api/revalidate/), ceasul e doar plasă
+export const revalidate = 604800; // 7 zile; la cerere din pipeline (/api/revalidate/), ceasul e doar plasă
 
 // Listă goală = nimic la build, fiecare URL se generează la prima vizită și
 // apoi se servește din cache (ISR). Fără ea, ruta ar fi randată la FIECARE

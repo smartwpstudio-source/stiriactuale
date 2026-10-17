@@ -19,7 +19,7 @@ import type { CalculatorSlug } from "@/lib/calculators";
 
 // Știrea tradusă în rusă (src/lib/pipeline/ru-news.ts). Ca la articolele RO:
 // nimic la build, generată la prima vizită, refăcută la cerere (/api/revalidate/).
-export const revalidate = 86400;
+export const revalidate = 604800; // 7 zile: modificările vin la cerere (/api/revalidate/), fiecare regenerare costă CPU
 
 export function generateStaticParams() {
   return [];
