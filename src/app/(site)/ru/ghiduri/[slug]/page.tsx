@@ -18,7 +18,7 @@ import { modelForGuide, modelPath } from "@/lib/complaint-models";
 // Ghidurile în rusă: fără generateStaticParams — nu se construiesc la fiecare
 // push (minute de build plătite pe Vercel). Pagina se generează la prima
 // vizită și rămâne în cache o zi; un deploy nou o regenerează.
-export const revalidate = 86400;
+export const revalidate = 604800; // 7 zile: conținutul se schimbă doar la publicare; fiecare regenerare costă CPU
 
 // listă goală = nimic la build, dar pagina e statică (ISR): după prima
 // generare se servește din cache, nu se mai randează la fiecare cerere

@@ -11,6 +11,8 @@ import type { Article } from "@/lib/content/types";
 //  - "default": poză 160px + titlu + rezumat pe 2 rânduri (căutare, liste late);
 //  - "small": poză 96px + titlu + dată, fără rezumat (blocurile de pe prima pagină);
 //  - "compact": doar dată + titlu (coloanele laterale "Ultimele știri").
+// prefetch={false} pe linkurile spre articole (și în card-uri): zeci de linkuri pe pagină
+// = zeci de cereri în fundal la fiecare vizită, fiecare cu timp CPU pe Cloudflare.
 export function ArticleRow({
   article,
   variant = "default",
@@ -20,7 +22,7 @@ export function ArticleRow({
 }) {
   if (variant === "compact") {
     return (
-      <Link href={articleUrl(article)} className="group block border-b border-line py-3 last:border-b-0">
+      <Link prefetch={false} href={articleUrl(article)} className="group block border-b border-line py-3 last:border-b-0">
         <p className="font-mono text-xs text-sub"><TimeAgo iso={article.publishedAt} /></p>
         <h3 className="mt-1 font-serif text-[1.05rem] leading-snug text-ink group-hover:text-teal">{article.title}</h3>
       </Link>
@@ -28,7 +30,7 @@ export function ArticleRow({
   }
   const small = variant === "small";
   return (
-    <Link href={articleUrl(article)} className="group flex items-start gap-4 border-b border-line py-3 last:border-b-0">
+    <Link prefetch={false} href={articleUrl(article)} className="group flex items-start gap-4 border-b border-line py-3 last:border-b-0">
       {/* items-start + self-start: poza își păstrează forma, nu se întinde cât textul */}
       <ArticleThumb
         topics={article.topics}

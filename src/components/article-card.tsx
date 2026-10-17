@@ -14,7 +14,7 @@ export function ArticleCard({ article, size = "md" }: { article: Article; size?:
   const lg = size === "lg";
   const sm = size === "sm"; // grila "Știri noi": 2 coloane pe telefon, fără rezumat
   return (
-    <Link href={articleUrl(article)} className="group flex flex-col overflow-hidden rounded border border-line bg-white">
+    <Link prefetch={false} href={articleUrl(article)} className="group flex flex-col overflow-hidden rounded border border-line bg-white">
       <ArticleThumb
         topics={article.topics}
         imageUrl={article.imageUrl}

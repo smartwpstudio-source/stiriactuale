@@ -82,7 +82,7 @@ export function NewsFeed({
                 {header}
               </h3>
             )}
-            <Link href={articleUrl(a)} className="group flex items-start gap-4 border-b border-line py-4">
+            <Link prefetch={false} href={articleUrl(a)} className="group flex items-start gap-4 border-b border-line py-4">
               <ArticleThumb
                 topics={a.topics}
                 imageUrl={a.imageUrl}

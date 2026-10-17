@@ -14,7 +14,7 @@ export async function ToolNews({ tool }: { tool: string }) {
       <ul className="mt-2 space-y-2">
         {news.map((a) => (
           <li key={a.slug}>
-            <Link href={articleUrl(a)} className="font-medium leading-snug text-ink hover:text-teal">
+            <Link prefetch={false} href={articleUrl(a)} className="font-medium leading-snug text-ink hover:text-teal">
               {a.title}
             </Link>
             <span className="ml-2 font-mono text-xs text-sub"><TimeAgo iso={a.publishedAt} /></span>

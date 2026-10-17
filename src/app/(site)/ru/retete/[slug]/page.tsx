@@ -4,7 +4,7 @@ import { RecipePage, recipeMetadata } from "@/components/recipe-page";
 import { getRecipe, getRecipeRu } from "@/lib/content/recipes";
 
 // Ca /ru/ghiduri: nimic la build, pagina se generează la prima vizită.
-export const revalidate = 86400;
+export const revalidate = 604800; // 7 zile: conținutul se schimbă doar la publicare; fiecare regenerare costă CPU
 
 export async function generateStaticParams() {
   return [];
