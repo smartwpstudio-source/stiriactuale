@@ -108,6 +108,12 @@ import("../../src/lib/content/guide-country").then(({ guideCountry }) => {
     assert.equal(matchDossier("Meciul retur dintre Sheriff și Petrocub, programat sâmbătă"), undefined);
     assert.equal(matchDossier("Consumatorii de energie din Ungheni rămân fără curent"), undefined);
     assert.equal(matchDossier("Moldovenii returnați din Germania au ajuns la Chișinău"), undefined);
+    const cet = "cetatenia-moldovei-din-rusia-redobandire-recunoastere-acte-taxe";
+    assert.equal(matchDossier("Tot mai mulți moldoveni din Rusia cer redobândirea cetățeniei"), cet);
+    assert.equal(matchDossier("Examenul pentru cetățenie: ANCE anunță o nouă sesiune"), cet);
+    assert.equal(matchDossier("Președinta a semnat decretele de acordare a cetățeniei Republicii Moldova"), cet);
+    assert.equal(matchDossier("Peste 10.000 de moldoveni au depus jurământul pentru cetățenia română"), undefined);
+    assert.equal(matchDossier("Doi cetățeni ai Republicii Moldova, reținuți la frontieră"), undefined);
     console.log("impact: OK");
   });
 });
