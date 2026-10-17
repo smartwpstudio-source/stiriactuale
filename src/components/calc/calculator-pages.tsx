@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { AdSlot } from "@/components/ad-slot";
+import { ADSENSE_IN_ARTICLE_SLOT } from "@/lib/adsense";
 import Link from "next/link";
 import { IconCalculator } from "@tabler/icons-react";
 import { Breadcrumb } from "@/components/breadcrumb";
@@ -141,6 +143,8 @@ export async function CalculatorView({ slug, lang }: { slug: string; lang: Lang 
           <span className="mt-1 block font-medium">{t.recipesText}</span>
         </Link>
       )}
+      {/* reclama după calculator și legături, nu lângă butoane (clicuri accidentale) */}
+      {ADSENSE_IN_ARTICLE_SLOT && <AdSlot slot={ADSENSE_IN_ARTICLE_SLOT} />}
       {r.note && <p className="mt-6 text-sm text-sub">{r.note}</p>}
       {r.sources.length > 0 && (
         <p className="mt-2 text-sm text-sub">

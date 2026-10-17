@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ShareButtons } from "@/components/share-buttons";
-import { sanitizeBody, splitAfterParagraph } from "@/lib/content/sanitize";
+import { sanitizeBody } from "@/lib/content/sanitize";
+import { AdBody } from "@/components/ad-body";
 import { ADSENSE_IN_ARTICLE_SLOT } from "@/lib/adsense";
 import { AdSlot } from "@/components/ad-slot";
 import { getGuideRu, localizeLinks, ruPath, ruSlugs } from "@/lib/content/guides-ru";
@@ -48,7 +49,6 @@ export default async function RuGuidePage({ params }: PageProps<"/ru/ghiduri/[sl
   const url = absoluteUrl(ruPath(g.slug));
   const updated = new Date(`${g.updated}T12:00:00Z`).toLocaleDateString("ru-RU", DATE);
   const body = localizeLinks(sanitizeBody(g.bodyHtml, g.title), await ruSlugs());
-  const [head, tail] = ADSENSE_IN_ARTICLE_SLOT ? splitAfterParagraph(body, 3) : [body, ""];
   // contactele utile ale raionului / țării ghidului, în rusă (content/locuri-ru/)
   const placeRef = guidePlace(g.slug, g.category);
   const place = placeRef && (await getPlaceInfo(placeRef.kind, placeRef.slug, "ru"));
@@ -117,9 +117,8 @@ export default async function RuGuidePage({ params }: PageProps<"/ru/ghiduri/[sl
         );
       })()}
 
-      <div className="prose-article mt-4 text-ink" dangerouslySetInnerHTML={{ __html: head }} />
-      {tail && <AdSlot slot={ADSENSE_IN_ARTICLE_SLOT} />}
-      {tail && <div className="prose-article text-ink" dangerouslySetInnerHTML={{ __html: tail }} />}
+      <AdBody html={body} />
+      {ADSENSE_IN_ARTICLE_SLOT && <AdSlot slot={ADSENSE_IN_ARTICLE_SLOT} />}
 
       {g.faq && g.faq.length > 0 && (
         <section className="mt-10">

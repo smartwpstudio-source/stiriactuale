@@ -15,7 +15,8 @@ import { TOPIC_LABELS } from "@/lib/content/topic-meta";
 import { articleUrl } from "@/lib/content/url";
 import { absoluteUrl } from "@/lib/seo";
 import { AI_IMAGE_PREFIX } from "@/lib/pipeline/image";
-import { sanitizeBody, splitAfterParagraph } from "@/lib/content/sanitize";
+import { sanitizeBody } from "@/lib/content/sanitize";
+import { AdBody } from "./ad-body";
 import { ADSENSE_IN_ARTICLE_SLOT } from "@/lib/adsense";
 import { AdSlot } from "./ad-slot";
 import { RelatedGuide } from "./related-guide";
@@ -223,13 +224,10 @@ export async function ArticlePage({
             {(() => {
               const body = sanitizeBody(article.bodyHtml, article.imageAlt ?? article.title);
               const ads = !article.archived && ADSENSE_IN_ARTICLE_SLOT;
-              // primul bloc după al doilea paragraf, doar la articolele cu destul text
-              const [head, tail] = ads ? splitAfterParagraph(body, 2) : [body, ""];
+              // blocurile: după al 2-lea paragraf, apoi la fiecare 4 (AdBody)
               return (
                 <>
-                  <div className="prose-article mt-4 text-ink" dangerouslySetInnerHTML={{ __html: head }} />
-                  {ads && tail && <AdSlot slot={ADSENSE_IN_ARTICLE_SLOT} />}
-                  {tail && <div className="prose-article text-ink" dangerouslySetInnerHTML={{ __html: tail }} />}
+                  <AdBody html={body} ads={!!ads} />
                   {article.postUrl && <PostEmbed src={article.postUrl} />}
                   {ads && <AdSlot slot={ADSENSE_IN_ARTICLE_SLOT} />}
                 </>

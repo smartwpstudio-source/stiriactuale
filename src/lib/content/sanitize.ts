@@ -41,15 +41,13 @@ export function sanitizeBody(html: string, imageAlt?: string): string {
   });
 }
 
-// Împarte corpul după al n-lea paragraf; [tot, ""] dacă după el nu mai rămân
-// măcar 2 paragrafe (reclama nu stă lipită de final).
-export function splitAfterParagraph(html: string, n: number): [string, string] {
-  let idx = -1;
-  for (let i = 0; i < n; i++) {
-    idx = html.indexOf("</p>", idx + 1);
-    if (idx < 0) return [html, ""];
-  }
-  const cut = idx + 4;
-  const rest = html.slice(cut);
-  return (rest.match(/<\/p>/g) ?? []).length >= 2 ? [html.slice(0, cut), rest] : [html, ""];
+
+// Bucățile corpului între care stau reclamele (cererea proprietarului, 2026-10-17):
+// prima după al 2-lea bloc de text (paragraf, listă, tabel, citat), apoi după fiecare
+// 4 blocuri, cel mult 4 reclame; după ultima tăietură rămân măcar 2 blocuri.
+export function splitForAds(html: string): string[] {
+  const ends = [...html.matchAll(/<\/(p|ul|ol|table|blockquote)>/g)].map((m) => m.index! + m[0].length);
+  const cuts: number[] = [];
+  for (let b = 2; b <= ends.length - 2 && cuts.length < 4; b += 4) cuts.push(ends[b - 1]);
+  return [0, ...cuts].map((c, i, a) => html.slice(c, a[i + 1]));
 }

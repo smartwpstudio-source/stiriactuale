@@ -3,7 +3,8 @@ import { notFound } from "next/navigation";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { ShareButtons } from "@/components/share-buttons";
 import { TelegramCta } from "@/components/telegram-cta";
-import { sanitizeBody, splitAfterParagraph } from "@/lib/content/sanitize";
+import { sanitizeBody } from "@/lib/content/sanitize";
+import { AdBody } from "@/components/ad-body";
 import { ADSENSE_IN_ARTICLE_SLOT } from "@/lib/adsense";
 import { AdSlot } from "@/components/ad-slot";
 import { GUIDE_CATEGORIES, getGuide } from "@/lib/content/guides";
@@ -112,13 +113,10 @@ export default async function GuidePage({ params }: PageProps<"/ghiduri/[slug]">
       <ToolNews tool={`ghid:${g.slug}`} />
 
       {(() => {
-        // ghidurile sunt lungi și citite atent: un bloc după paragraful 3, unul la final
-        const [head, tail] = ADSENSE_IN_ARTICLE_SLOT ? splitAfterParagraph(sanitizeBody(g.bodyHtml, g.title), 3) : [sanitizeBody(g.bodyHtml), ""];
+        // blocuri de-a lungul ghidului (AdBody) și unul la final
         return (
           <>
-            <div className="prose-article mt-4 text-ink" dangerouslySetInnerHTML={{ __html: head }} />
-            {tail && <AdSlot slot={ADSENSE_IN_ARTICLE_SLOT} />}
-            {tail && <div className="prose-article text-ink" dangerouslySetInnerHTML={{ __html: tail }} />}
+            <AdBody html={sanitizeBody(g.bodyHtml, g.title)} />
             {ADSENSE_IN_ARTICLE_SLOT && <AdSlot slot={ADSENSE_IN_ARTICLE_SLOT} />}
           </>
         );
