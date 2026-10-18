@@ -95,8 +95,8 @@ body {
   #complaint-letter { position: absolute; inset: 0 auto auto 0; width: 100%; }
 }
 
-/* Bloc AdSense fără anunț: nu lăsăm golul rezervat (vezi ad-slot.tsx) */
-.ad-slot:has(ins[data-ad-status="unfilled"]) { display: none; }
+/* Reclama laterală fără anunț: coloana se strânge (blocurile din text: ad-slot.tsx) */
+.ad-side:has(ins[data-ad-status="unfilled"]) { display: none; }
 
 /* „Printează” la rețete: fără header, bandă, footer și reclame — doar rețeta */
 @media print {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ADSENSE_CLIENT_ID, ADSENSE_DISPLAY_SLOT } from "@/lib/adsense";
 
 declare global {
@@ -9,13 +9,16 @@ declare global {
   }
 }
 
-// Bloc AdSense fix "In-article", în corpul articolului. Auto Ads plasează
-// reclame doar la prima pagină încărcată; la navigarea în site (Next.js, fără
-// reîncărcare) articolul următor rămânea fără. Blocul fix se cere la fiecare
-// montare. push() funcționează și înainte de încărcarea scriptului (coadă).
+// Bloc AdSense fix în corpul articolului. Auto Ads plasează reclame doar la prima
+// pagină încărcată; la navigarea în site (Next.js, fără reîncărcare) articolul
+// următor rămânea fără. Blocul fix se cere la fiecare montare. push() funcționează
+// și înainte de încărcarea scriptului (coadă).
 // display: blocul grafic responsiv „In text” în locul formatului In-article.
 export function AdSlot({ slot, display = false }: { slot?: string; display?: boolean }) {
   const pushed = useRef(false);
+  const box = useRef<HTMLDivElement>(null);
+  const [hidden, setHidden] = useState(false);
+
   useEffect(() => {
     if (pushed.current) return;
     pushed.current = true;
@@ -26,10 +29,36 @@ export function AdSlot({ slot, display = false }: { slot?: string; display?: boo
     }
   }, []);
 
+  // Fără anunț (unfilled): blocul gol se strânge doar cât e sub ecran. Strâns sub
+  // ochii cititorului, ar muta textul (CLS — Search Console, 1.648 de adrese slabe
+  // pe mobil, 2026-10-18); deasupra ecranului ar împinge și el textul vizibil.
+  useEffect(() => {
+    const el = box.current;
+    const ins = el?.querySelector("ins");
+    if (!el || !ins) return;
+    let io: IntersectionObserver | undefined;
+    const check = () => {
+      if (ins.dataset.adStatus !== "unfilled" || io) return;
+      io = new IntersectionObserver(([e]) => {
+        if (!e.isIntersecting && e.boundingClientRect.top > 0) {
+          setHidden(true);
+          io?.disconnect();
+        }
+      });
+      io.observe(el);
+    };
+    const mo = new MutationObserver(check);
+    mo.observe(ins, { attributes: true, attributeFilter: ["data-ad-status"] });
+    check();
+    return () => {
+      mo.disconnect();
+      io?.disconnect();
+    };
+  }, []);
+
   return (
-    // min-h rezervă locul anunțului ca textul să nu sară la încărcare (CLS);
-    // dacă AdSense nu are anunț (unfilled), globals.css ascunde tot blocul.
-    <div className="ad-slot my-6 min-h-[300px] w-full">
+    // min-h rezervă locul anunțului ca textul să nu sară la încărcare (CLS)
+    <div ref={box} className="ad-slot my-6 min-h-[300px] w-full" hidden={hidden}>
       <p className="mb-1 text-center font-mono text-[10px] uppercase tracking-wide text-sub">Publicitate</p>
       <ins
         className="adsbygoogle"
