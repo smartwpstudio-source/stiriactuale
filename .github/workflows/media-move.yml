@@ -4,13 +4,14 @@ name: Mutarea imaginilor pe R2
 #   pas = copiere      -> copiază toate fișierele și verifică numărul/mărimea (reluabil)
 #   pas = baza-numara  -> numără adresele vechi din baza de date
 #   pas = baza-aplica  -> înlocuiește adresele vechi cu media.stiriactuale.info
+#   pas = miniaturi-arhiva -> miniaturile 384/828 px ale arhivei (2026-10-18, reluabil)
 on:
   workflow_dispatch:
     inputs:
       pas:
-        description: "copiere | baza-numara | baza-aplica"
+        description: "copiere | baza-numara | baza-aplica | miniaturi-arhiva"
         type: choice
-        options: [copiere, baza-numara, baza-aplica]
+        options: [copiere, baza-numara, baza-aplica, miniaturi-arhiva]
         default: copiere
 
 jobs:
@@ -32,7 +33,13 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       - name: Adresele din baza de date
-        if: ${{ inputs.pas != 'copiere' }}
+        if: ${{ inputs.pas == 'baza-numara' || inputs.pas == 'baza-aplica' }}
         run: npx tsx scripts/migration/blob-urls.ts ${{ inputs.pas == 'baza-aplica' && '--aplica' || '' }}
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      - name: Miniaturile arhivei
+        if: ${{ inputs.pas == 'miniaturi-arhiva' }}
+        run: npx tsx scripts/migration/archive-thumbs.ts
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
