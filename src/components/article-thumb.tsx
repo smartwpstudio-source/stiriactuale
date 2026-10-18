@@ -24,6 +24,13 @@ const ICON_CLASSES = {
   teal: "text-teal",
 } as const;
 
+// Arhiva veche are miniaturi gata făcute (384/828 px, scripts/migration/archive-thumbs.ts),
+// iar capturile YouTube sunt deja mici: ambele se servesc direct, fără transformări
+// Cloudflare Images (5.000 incluse pe lună; 3.350 consumate în 5 zile, 2026-10-18).
+const ARCHIVE = "https://media.stiriactuale.info/arhiva/";
+const archiveThumb = (src: string, w: number) =>
+  `https://media.stiriactuale.info/mini/${w}/arhiva/${src.slice(ARCHIVE.length).replace(/\.[a-z0-9]+$/i, "")}.webp`;
+
 export function ArticleThumb({
   topics,
   imageUrl,
@@ -50,15 +57,30 @@ export function ArticleThumb({
   if (imageUrl) {
     return (
       <div className={`relative overflow-hidden ${className ?? ""}`}>
-        <Image
-          src={imageUrl}
-          alt={imageAlt ?? ""}
-          fill
-          sizes={sizes}
-          loading={priority ? "eager" : "lazy"}
-          fetchPriority={priority ? "high" : undefined}
-          className="object-cover"
-        />
+        {imageUrl.startsWith(ARCHIVE) ? (
+          // eslint-disable-next-line @next/next/no-img-element -- miniaturi gata făcute, fără optimizare
+          <img
+            src={archiveThumb(imageUrl, 828)}
+            srcSet={`${archiveThumb(imageUrl, 384)} 384w, ${archiveThumb(imageUrl, 828)} 828w`}
+            sizes={sizes}
+            alt={imageAlt ?? ""}
+            loading={priority ? "eager" : "lazy"}
+            fetchPriority={priority ? "high" : undefined}
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        ) : (
+          <Image
+            src={imageUrl}
+            alt={imageAlt ?? ""}
+            fill
+            sizes={sizes}
+            unoptimized={imageUrl.startsWith("https://i.ytimg.com/")}
+            loading={priority ? "eager" : "lazy"}
+            fetchPriority={priority ? "high" : undefined}
+            className="object-cover"
+          />
+        )}
         {video && (
           <span className="absolute inset-0 flex items-center justify-center" aria-label="Articol cu video">
             <span className="flex h-11 w-11 items-center justify-center rounded-full bg-black/60 text-lg text-white">▶</span>
