@@ -23,7 +23,7 @@ export function SideAd() {
 
   if (!wide) return null;
   return (
-    <div className="ad-slot w-[300px]">
+    <div className="ad-side w-[300px]">
       <p className="mb-1 text-center font-mono text-[10px] uppercase tracking-wide text-sub">
         Publicitate
       </p>
