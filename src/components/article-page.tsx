@@ -267,6 +267,13 @@ export async function ArticlePage({
       {!article.archived && <ViewBeacon slug={article.slug} />}
       </article>
       <aside className="hidden lg:block">
+        {/* reclama sus, vizibilă de la intrarea pe pagină, și fixă la derulare (doar ≥1280 px);
+            lista de știri trece pe sub ea, de aceea fundalul paginii */}
+        {!article.archived && (
+          <div className="sticky top-6 z-10 bg-paper pb-4">
+            <SideAd />
+          </div>
+        )}
         <div>
           <SectionHeading title="Ultimele știri" />
           <div className="mt-1">
@@ -278,12 +285,6 @@ export async function ArticlePage({
               ))}
           </div>
         </div>
-        {/* reclama fixă rămâne la vedere cât se citește articolul (doar ≥1280 px) */}
-        {!article.archived && (
-          <div className="sticky top-6 mt-8">
-            <SideAd />
-          </div>
-        )}
       </aside>
     </div>
   );
