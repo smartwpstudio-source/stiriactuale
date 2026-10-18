@@ -94,8 +94,11 @@ function where(f: ArticleFilter): SQL {
   if (f.q) {
     // unaccent: "chisinau" găsește "Chișinău". ponytail: scanare secvențială,
     // ok la câteva mii de rânduri; index trigram dacă arhiva crește mult.
-    const pattern = `%${f.q.replace(/[\\%_]/g, (m) => `\\${m}`)}%`;
-    c.push(sql`(unaccent(${t.title}) ILIKE unaccent(${pattern}) OR unaccent(${t.leadText}) ILIKE unaccent(${pattern}))`);
+    // fiecare cuvânt separat: „calculator salariu” nu mai cere textul lipit exact
+    for (const w of f.q.split(/\s+/).filter((x) => x.length >= 2).slice(0, 6)) {
+      const pattern = `%${w.replace(/[\\%_]/g, (m) => `\\${m}`)}%`;
+      c.push(sql`(unaccent(${t.title}) ILIKE unaccent(${pattern}) OR unaccent(${t.leadText}) ILIKE unaccent(${pattern}))`);
+    }
   }
   return and(...c)!;
 }
