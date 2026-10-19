@@ -121,6 +121,10 @@ import("../../src/lib/content/guide-country").then(({ guideCountry }) => {
     assert.equal(matchDossier("Încă o bancă acceptă actele digitale din EVO"), "evo-aplicatia-statului-acte-digitale-servicii");
     assert.equal(matchDossier("Semnătura mobilă se scumpește de la 1 ianuarie"), "platformele-digitale-ale-statului-in-moldova-ce-face-fiecare");
     assert.equal(matchDossier("Mia Khalifa a vizitat Chișinăul"), undefined);
+    assert.equal(matchDossier("BNM a majorat rata de bază la 9%"), "leul-moldovenesc-cursul-rata-de-baza-inflatia");
+    assert.equal(matchDossier("Deficitul comercial al Moldovei a crescut cu 6%"), "comertul-exterior-al-moldovei-exporturi-importuri-parteneri");
+    assert.equal(matchDossier("PIB-ul Moldovei a crescut cu 0,9% în trimestrul II"), "economia-moldovei-explicata-pib-comert-leu-ramuri");
+    assert.equal(matchDossier("Inflația a urcat la 8,6% în septembrie"), "preturile-la-alimente-si-inflatia-date-bns-bnm");
     console.log("impact: OK");
   });
 });
