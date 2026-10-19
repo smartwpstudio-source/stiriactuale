@@ -1,0 +1,56 @@
+{
+  "slug": "evo-aplicatia-statului-acte-digitale-servicii",
+  "title": "EVO: aplicația statului cu actele digitale și serviciile publice",
+  "description": "Ce face EVO: buletinul, permisul și certificatul auto digitale, taxe, amenzi, programări, procuri. Cum intri, ce semnătură îți trebuie și unde merg actele.",
+  "category": "acte",
+  "updated": "2026-10-19",
+  "sources": [
+    {
+      "name": "EVO — portalul serviciilor publice",
+      "url": "https://evo.gov.md"
+    },
+    {
+      "name": "EVO în App Store",
+      "url": "https://apps.apple.com/us/app/evo/id6462688921"
+    },
+    {
+      "name": "EVO în Google Play",
+      "url": "https://play.google.com/store/apps/details?id=md.egov.evo"
+    },
+    {
+      "name": "Agenția de Guvernare Electronică — documentele digitale în EVO (Legea nr. 321/2023)",
+      "url": "https://www.age.gov.md/en/node/40480"
+    },
+    {
+      "name": "Agenția de Guvernare Electronică — semnătura electronică: tipuri și prețuri",
+      "url": "https://egov.md/ro/node/40930"
+    },
+    {
+      "name": "Agenția Servicii Publice — buletinul de identitate cu semnătură electronică",
+      "url": "https://www.asp.gov.md/ro/media/2026-05-21"
+    },
+    {
+      "name": "Radio Moldova — EVO 2.0 prezentat la Moldova Digital Summit",
+      "url": "https://radiomoldova.md/p/78045"
+    }
+  ],
+  "bodyHtml": "<p><strong>Pe scurt:</strong> <strong>EVO</strong> este aplicația oficială a statului (Android, iPhone și <a href=\"https://evo.gov.md\">evo.gov.md</a>). În ea ai buletinul, permisul de conducere și certificatul de înmatriculare în format digital, plătești taxe și amenzi, ceri servicii publice și faci programări. Din 2026, EVO a înlocuit portalurile vechi <strong>servicii.gov.md</strong> și <strong>MCabinet</strong>, care trimit acum direct la EVO. E gratuită și o administrează Agenția de Guvernare Electronică.</p><h2>Ce poți face în EVO</h2><ul><li><strong>Acte digitale:</strong> buletinul de identitate, permisul de conducere, certificatul de înmatriculare a mașinii.</li><li><strong>Datele tale:</strong> datele personale și istoricul contribuțiilor sociale (cu export PDF sau CSV), important pentru <a href=\"/ghiduri/pensiile-in-moldova-tot-ce-trebuie-sa-stii/\">pensie</a>.</li><li><strong>Plăți:</strong> impozite, amenzi și taxe pentru servicii publice.</li><li><strong>Servicii publice:</strong> ceri online servicii ale instituțiilor și faci programări.</li><li><strong>Procuri digitale</strong> și contul pentru primirea prestațiilor sociale.</li><li><strong>Notificări</strong> și documente primite de la instituții; zilierii își văd aici bonurile din <a href=\"/ghiduri/e-zilier-registrul-electronic-al-zilierilor-cum-functioneaza/\">e-Zilier</a>.</li></ul><p>Versiunea EVO 2.0, prezentată în iunie 2026, adaugă un portofel de identitate digitală gândit după principiile UE.</p><h2>Cum intri prima dată</h2><ol><li>Instalezi EVO din App Store sau Google Play (pe iPhone îți trebuie iOS 18 sau mai nou) ori intri pe evo.gov.md.</li><li>Pentru acces complet te autentifici cu o <strong>semnătură electronică</strong>:<ul><li><strong>semnătura mobilă</strong> de la Orange sau Moldcell: se activează gratuit la operator, cu buletinul; fiecare semnare costă circa 3 lei, iar operatorii au și pachete lunare;</li><li><strong>buletinul nou cu semnătură electronică</strong>, lansat în aprilie 2025: primul milion de cetățeni primesc semnătura gratuit, valabilă 5 ani; o ceri la orice centru multifuncțional ASP sau la ambasadă;</li><li><strong>cheia USB</strong> (token), pentru calculator: 485 de lei pentru 2 ani.</li></ul></li><li>Urmezi pașii din aplicație; actele apar apoi în portofel.</li></ol><h2>Unde sunt acceptate actele din EVO</h2><p>Conform Legii nr. 321/2023, actele digitale din EVO trebuie acceptate în relațiile din Republica Moldova, la fel ca cele fizice. Din 2026, și unele bănci le primesc la ghișeu: scanezi codul QR al băncii și confirmi transmiterea datelor (până în septembrie 2026: EuroCreditBank, Moldindconbank, FinComBank, Victoriabank). <strong>La frontieră și în străinătate ia actul fizic</strong>: actele digitale sunt pentru Moldova.</p><h2>Cum a apărut EVO</h2><p>EVO a fost lansată pentru public pe 6 iunie 2024, după trei luni de testare. În aprilie 2025, peste 60.000 de oameni aveau deja acte digitale în aplicație. În ianuarie 2026 a apărut versiunea web, care a unit portalul serviciilor publice și cabinetul personal MCabinet, iar în iunie 2026 a fost prezentată EVO 2.0, cu portofelul de identitate digitală. Din aprilie 2026, Agenția de Guvernare Electronică a deschis portofelul EVO și pentru organizații publice și private; agenția estimează cel puțin 20 de organizații conectate până la sfârșitul anului.</p><h2>Exemple din viața de zi cu zi</h2><ul><li><strong>Ai uitat buletinul acasă</strong> și ți se cere la o instituție din țară: arăți buletinul digital din EVO.</li><li><strong>Ai primit o amendă</strong>: o vezi și o plătești din aplicație, fără drum la bancă.</li><li><strong>Vrei să știi cât ai contribuit pentru pensie</strong>: descarci istoricul contribuțiilor din „Datele mele”, ca PDF sau CSV.</li><li><strong>Trebuie să dai o procură</strong>: unele procuri se pot face digital, direct din EVO.</li><li><strong>Deschizi un cont la bancă</strong>: la băncile conectate scanezi codul QR și confirmi transmiterea datelor din EVO.</li></ul><h2>Dacă ceva nu merge</h2><p>Pentru probleme cu autentificarea sau cu serviciile electronice, centrul de asistență al serviciilor guvernamentale răspunde la 022 820 000 și la servicii@egov.md. Pentru semnătura mobilă te adresezi operatorului (Orange sau Moldcell), iar pentru buletinul cu semnătură, Agenției Servicii Publice.</p><h2>Sfaturi de siguranță</h2><ul><li>Descarcă EVO doar din magazinele oficiale; editorul este statul (Agenția de Guvernare Electronică).</li><li>Nu spune nimănui codurile de confirmare și nu deschide link-uri din SMS-uri care „cer actualizarea” EVO. Despre escrocherii: <a href=\"/ghiduri/escrocheriile-in-moldova-cum-le-recunosti-si-ce-faci/\">cum le recunoști</a>.</li><li>Dacă îți pierzi telefonul, blochează semnătura mobilă la operator.</li></ul><p>Toate platformele statului, pe scurt: <a href=\"/ghiduri/platformele-digitale-ale-statului-in-moldova-ce-face-fiecare/\">ce face fiecare</a>.</p>",
+  "faq": [
+    {
+      "q": "EVO e gratuită?",
+      "a": "Da. Aplicația e gratuită. Plătești doar taxele serviciilor pe care le ceri și, dacă folosești semnătura mobilă, circa 3 lei pe semnare la operator."
+    },
+    {
+      "q": "Buletinul din EVO ține loc de buletin?",
+      "a": "În Republica Moldova, da: Legea nr. 321/2023 prevede că actele digitale din EVO trebuie acceptate. La frontieră și în străinătate ia actul fizic."
+    },
+    {
+      "q": "Ce s-a întâmplat cu servicii.gov.md și MCabinet?",
+      "a": "Au fost unite în EVO. Adresele vechi trimit acum automat la evo.gov.md."
+    },
+    {
+      "q": "Am nevoie de semnătură electronică pentru EVO?",
+      "a": "Pentru acces complet, da: semnătura mobilă (Orange, Moldcell), buletinul nou cu semnătură sau cheia USB."
+    }
+  ]
+}

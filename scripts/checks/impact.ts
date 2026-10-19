@@ -116,6 +116,11 @@ import("../../src/lib/content/guide-country").then(({ guideCountry }) => {
     assert.equal(matchDossier("Doi cetățeni ai Republicii Moldova, reținuți la frontieră"), undefined);
     assert.equal(matchDossier("Cutremur de 4,5 în Vrancea, resimțit la Chișinău"), "cutremurul-in-moldova-ce-faci-inainte-in-timpul-si-dupa");
     assert.equal(matchDossier("IGSU: exercițiu cu scenariu seismic la Briceni"), "cutremurul-in-moldova-ce-faci-inainte-in-timpul-si-dupa");
+    assert.equal(matchDossier("Peste 2.000 de zilieri, înregistrați în e-Zilier"), "e-zilier-registrul-electronic-al-zilierilor-cum-functioneaza");
+    assert.equal(matchDossier("BNM: plățile instant MIA au depășit un milion de utilizatori"), "mia-plati-instant-bani-pe-numarul-de-telefon");
+    assert.equal(matchDossier("Încă o bancă acceptă actele digitale din EVO"), "evo-aplicatia-statului-acte-digitale-servicii");
+    assert.equal(matchDossier("Semnătura mobilă se scumpește de la 1 ianuarie"), "platformele-digitale-ale-statului-in-moldova-ce-face-fiecare");
+    assert.equal(matchDossier("Mia Khalifa a vizitat Chișinăul"), undefined);
     console.log("impact: OK");
   });
 });
