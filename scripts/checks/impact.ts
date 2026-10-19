@@ -114,6 +114,8 @@ import("../../src/lib/content/guide-country").then(({ guideCountry }) => {
     assert.equal(matchDossier("Președinta a semnat decretele de acordare a cetățeniei Republicii Moldova"), cet);
     assert.equal(matchDossier("Peste 10.000 de moldoveni au depus jurământul pentru cetățenia română"), undefined);
     assert.equal(matchDossier("Doi cetățeni ai Republicii Moldova, reținuți la frontieră"), undefined);
+    assert.equal(matchDossier("Cutremur de 4,5 în Vrancea, resimțit la Chișinău"), "cutremurul-in-moldova-ce-faci-inainte-in-timpul-si-dupa");
+    assert.equal(matchDossier("IGSU: exercițiu cu scenariu seismic la Briceni"), "cutremurul-in-moldova-ce-faci-inainte-in-timpul-si-dupa");
     console.log("impact: OK");
   });
 });
