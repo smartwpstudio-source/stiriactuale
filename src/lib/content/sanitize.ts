@@ -42,12 +42,14 @@ export function sanitizeBody(html: string, imageAlt?: string): string {
 }
 
 
-// Bucățile corpului între care stau reclamele (cererea proprietarului, 2026-10-17):
-// prima după al 2-lea bloc de text (paragraf, listă, tabel, citat), apoi după fiecare
-// 4 blocuri, cel mult 4 reclame; după ultima tăietură rămân măcar 2 blocuri.
+// Bucățile corpului între care stau reclamele: una după al 2-lea bloc de text
+// (paragraf, listă, tabel, citat), dacă după ea rămân măcar 2 blocuri. Mai multe
+// (la fiecare 4 blocuri, 2026-10-17) rămâneau goale: pentru Moldova Google umple
+// una pe pagină și ocupau locurile reclamelor automate (2026-10-19). MAX_ADS le repornește.
+const MAX_ADS = 1;
 export function splitForAds(html: string): string[] {
   const ends = [...html.matchAll(/<\/(p|ul|ol|table|blockquote)>/g)].map((m) => m.index! + m[0].length);
   const cuts: number[] = [];
-  for (let b = 2; b <= ends.length - 2 && cuts.length < 4; b += 4) cuts.push(ends[b - 1]);
+  for (let b = 2; b <= ends.length - 2 && cuts.length < MAX_ADS; b += 4) cuts.push(ends[b - 1]);
   return [0, ...cuts].map((c, i, a) => html.slice(c, a[i + 1]));
 }
