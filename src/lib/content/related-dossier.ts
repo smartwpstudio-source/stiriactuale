@@ -48,6 +48,10 @@ const RULES: [slug: string, re: RegExp][] = [
   ["inteligenta-artificiala-ghid-practic-moldova", /inteligent\w* artificial|\bdeepfake|chatgpt|\bchatbot|voce\w* clonat|clonar\w* (a )?voc/],
   // pilonul pensiilor („pensiune” = casă de oaspeți, nu intră)
   ["pensiile-in-moldova-tot-ce-trebuie-sa-stii", /\bpensi(a|e|i|ii|ile|ilor|onar\w*)\b|varsta de pensionare|stagiu\w* de cotizare/],
+  // economia (2026-10-19), înaintea inflației și a banilor în familie: BNM și leul, comerțul, PIB-ul
+  ["leul-moldovenesc-cursul-rata-de-baza-inflatia", /rata de baza|politic\w* monetar|curs\w* (oficial|valutar|de schimb)|leul\w* (moldovenesc )?(s-a )?(depreciat|apreciat|slabit|intarit)|deprecier\w* (a )?leului|rezerv\w* valutar|active\w* oficiale de rezerva/],
+  ["comertul-exterior-al-moldovei-exporturi-importuri-parteneri", /comert\w* (exterior|international)|deficit\w* (comercial|balantei comerciale)|exporturil\w* (moldovei|moldovenesti|tarii|de marfuri)|importuril\w* (moldovei|tarii|de marfuri)/],
+  ["economia-moldovei-explicata-pib-comert-leu-ramuri", /\bpib\b|produs\w* intern brut|crester\w* economic\w*|economi\w* (moldovei|nationala|tarii)|recesiun/],
   ["preturile-la-alimente-si-inflatia-date-bns-bnm", /inflati/],
   // cetățenia Moldovei (2026-10-17): redobândire, renunțare, examen; nu cetățenia română, rusă etc.
   ["cetatenia-moldovei-din-rusia-redobandire-recunoastere-acte-taxe", /^(?!.*cetatenia? (romana|romaneasca|romaniei|italiana|rusa|ruseasca|rusiei|bulgara|ucraineana|americana))(?=.*(redobandir\w* (a )?cetateniei|renunt\w* la cetatenie|legea cetateniei|examen\w* (de |pentru )?cetatenie|dubla cetatenie|cetateni(a|ei) (republicii moldova|moldoveneasc\w*|moldovei)))/],
