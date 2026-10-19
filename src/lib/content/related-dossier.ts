@@ -53,6 +53,11 @@ const RULES: [slug: string, re: RegExp][] = [
   ["cetatenia-moldovei-din-rusia-redobandire-recunoastere-acte-taxe", /^(?!.*cetatenia? (romana|romaneasca|romaniei|italiana|rusa|ruseasca|rusiei|bulgara|ucraineana|americana))(?=.*(redobandir\w* (a )?cetateniei|renunt\w* la cetatenie|legea cetateniei|examen\w* (de |pentru )?cetatenie|dubla cetatenie|cetateni(a|ei) (republicii moldova|moldoveneasc\w*|moldovei)))/],
   // cutremurele (2026-10-19): orice știre despre un seism simțit sau despre pregătire
   ["cutremurul-in-moldova-ce-faci-inainte-in-timpul-si-dupa", /cutremur|seism\w*|vrancea|replic\w* seismic/],
+  // platformele statului (2026-10-19): zilieri, EVO, MIA, apoi pilonul platformelor
+  ["e-zilier-registrul-electronic-al-zilierilor-cum-functioneaza", /zilier/],
+  ["mia-plati-instant-bani-pe-numarul-de-telefon", /plati\w* instant|\bmia\b.{0,40}(plat|transfer|bnm)|(plat|transfer)\w*.{0,40}\bmia\b/],
+  ["evo-aplicatia-statului-acte-digitale-servicii", /aplicati\w* evo|\bevo\b.{0,60}(aplicat|digital|act|portofel|guvern)|acte\w* digitale|portofel\w* (digital|evo)/],
+  ["platformele-digitale-ale-statului-in-moldova-ce-face-fiecare", /\bmpass\b|\bmsign\b|\bmpay\b|semnatur\w* (electronic|mobil)|servicii\w* (publice )?(electronice|online)|guvernar\w* electronic|agenti\w* de guvernare electronica/],
   ["migratia-si-depopularea-moldovei-cifre-oficiale", /depopular|recensamant|exodul|emigrar\w* in masa/],
   // ghidurile-pilon pentru șoferi și amenzi (după dosare: o știre despre UE rămâne la UE)
   ["alcoolul-la-volan-limite-si-sanctiuni", /(beat|baut|ebrietate|alcool\w*|alcoolemi\w*) (la volan|in trafic)|sub influenta alcoolului|alcooltest/],

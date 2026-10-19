@@ -1,0 +1,52 @@
+{
+  "slug": "e-zilier-registrul-electronic-al-zilierilor-cum-functioneaza",
+  "title": "e-Zilier: registrul electronic al zilierilor, pe înțelesul tuturor",
+  "description": "Ce este e-Zilier: cine înregistrează zilierii, bonul digital pentru fiecare zi, plata, impozitul și contribuțiile, limitele și cum îți vezi zilele lucrate.",
+  "category": "afaceri",
+  "updated": "2026-10-19",
+  "sources": [
+    {
+      "name": "Guvernul Republicii Moldova — proiectul de lege pentru digitalizarea Registrului de evidență a zilierilor (141/MMPS/2026)",
+      "url": "https://gov.md/sites/default/files/media/documents/sedinte-de-guvern/2026-04/NU-141-MMPS-2026_0.pdf"
+    },
+    {
+      "name": "Guvernul Republicii Moldova — Conceptul și Regulamentul sistemului informațional e-Zilier (243/MMPS/2026)",
+      "url": "https://gov.md/sites/default/files/media/documents/sedinte-de-guvern/2026-05/NU-243-MMPS-2026.pdf"
+    },
+    {
+      "name": "e-Zilier — Registrul digital pentru zilieri în agricultură",
+      "url": "https://zilieri.gov.md"
+    },
+    {
+      "name": "Monitorul Fiscal FISC.md — Activitatea necalificată desfășurată de zilieri",
+      "url": "https://monitorul.fisc.md/en/tax_practice/activitatea-necalificata-cu-caracter-ocazional-desfasurata-de-zilieri-unele-aspecte.html"
+    },
+    {
+      "name": "Logos Press — Sistemul e-Zilier va începe la 1 iunie",
+      "url": "https://logos-pres.md/noutati/sistemul-e-zilier-va-incepe-la-1-iunie/"
+    }
+  ],
+  "bodyHtml": "<p><strong>Pe scurt:</strong> <strong>e-Zilier</strong> (<a href=\"https://zilieri.gov.md\">zilieri.gov.md</a>) este registrul electronic al zilierilor din agricultură, în locul registrului pe hârtie. Pentru fiecare zi lucrată se emite un <strong>bon digital</strong> cu cod unic, care dovedește munca și plata. Zilierul nu se înregistrează singur: îl înregistrează cel la care lucrează. Sistemul funcționează din <strong>1 iunie 2026</strong>.</p><h2>Cine este zilier</h2><p>Zilierul face o muncă necalificată, ocazională, plătită pe zi, în <strong>agricultură</strong>: la cules, prășit, sortat și alte lucrări sezoniere. Legea de bază este Legea nr. 22/2018 privind activitățile necalificate cu caracter ocazional desfășurate de zilieri. Din textul inițial al legii: cel mult 8 ore pe zi și cel mult 90 de zile pe an la același beneficiar. Dacă munca devine permanentă, se încheie contract individual de muncă.</p><h2>Cine face ce în e-Zilier</h2><ul><li><strong>Beneficiarul lucrărilor</strong> (fermierul, gospodăria țărănească, firma) înregistrează fiecare zilier <strong>înainte să înceapă lucrul</strong> și răspunde de corectitudinea datelor. Intră cu MPass și semnătură electronică. Folosirea registrului este gratuită.</li><li><strong>Zilierul</strong> nu are nimic de completat. Își vede bonurile în cabinetul său și în aplicația <a href=\"/ghiduri/evo-aplicatia-statului-acte-digitale-servicii/\">EVO</a>.</li><li>Sistemul aparține Ministerului Muncii și Protecției Sociale și preia automat datele de la ASP, Serviciul Fiscal, CNAS și ANOFM.</li></ul><h2>Cum e înregistrat zilierul, pas cu pas</h2><ol><li>Zilierul arată buletinul; în sistem e identificat după IDNP.</li><li>Beneficiarul îi explică lucrarea, riscurile și drepturile.</li><li>Se introduc ziua, numărul de ore și suma de plată.</li><li>Sistemul generează <strong>bonul digital</strong>, unul pentru fiecare zi lucrată, cu cod unic.</li><li>Zilierul primește notificare. La cerere, la sfârșitul zilei, i se poate tipări bonul pe hârtie.</li></ol><h2>Plata, impozitul și contribuțiile</h2><ul><li>Plata pentru o zi de 8 ore este <strong>cel puțin salariul minim</strong> corespunzător. Presa a relatat pentru 2026 un minim de 37 de lei pe oră.</li><li>Din plată se rețin <strong>impozitul pe venit</strong> (conform Codului fiscal) și <strong>contribuțiile de asigurări sociale</strong> (Legea nr. 489/1999). Presa a relatat 12% impozit și 6% contribuții, fără prima de asigurare medicală; procentele exacte le verifici la Serviciul Fiscal.</li><li>Bonul digital este dovada plății. Contribuțiile se declară la SFS, deci zilele lucrate contează și pentru stagiul de cotizare.</li></ul><h2>Cum își vede zilierul zilele și banii</h2><ul><li>În <strong>EVO</strong>: bonurile digitale și, la „Datele mele”, istoricul contribuțiilor sociale, care se poate descărca.</li><li>În cabinetul zilierului din e-Zilier, unde bonurile se pot vedea și tipări.</li></ul><p>Pentru EVO îți trebuie o semnătură electronică, de exemplu semnătura mobilă de la Orange sau Moldcell sau noul buletin cu semnătură. Detalii în <a href=\"/ghiduri/platformele-digitale-ale-statului-in-moldova-ce-face-fiecare/\">ghidul platformelor statului</a>.</p><h2>Ce s-a întâmplat cu registrul pe hârtie</h2><p>Proiectul de lege trece registrul în format electronic. Registrele pe hârtie ținute între 1 ianuarie și 1 iunie 2026 își păstrează valoarea de dovadă și sunt introduse în e-Zilier de Inspectoratul de Stat al Muncii. Ministerul a declarat la lansare că platforma nu introduce taxe noi, iar presa a scris că hârtia rămâne acolo unde identificarea electronică nu e posibilă. Dacă ești beneficiar, întreabă Inspectoratul de Stat al Muncii ce se aplică în cazul tău.</p><h2>Câți zilieri sunt în Moldova</h2><p>După datele Ministerului Muncii din nota la proiectul de lege, zilierii declarați la Serviciul Fiscal au fost 6.687 în 2023, 7.180 în 2024 și 10.425 în 2025. La prezentarea oficială din 15 iunie 2026, presa a relatat că în primele două săptămâni s-au înregistrat peste 2.000 de zilieri în e-Zilier, iar ținta este 6.000 până la sfârșitul anului.</p><h2>De ce e bine pentru zilier</h2><ul><li><strong>Dovada muncii.</strong> Fiecare zi lucrată are un bon digital cu cod unic. Dacă beneficiarul nu plătește, ai o dovadă clară a zilei și a sumei.</li><li><strong>Stagiul de cotizare.</strong> Contribuțiile reținute ajung în istoricul tău de asigurări sociale și contează la pensie. Le vezi în EVO, la „Datele mele”.</li><li><strong>Fără drumuri și hârtii.</strong> Nu completezi nimic; bonurile le vezi pe telefon și le poți tipări.</li></ul><h2>Ce verifică beneficiarul înainte de sezon</h2><ol><li>Că are acces la e-Zilier cu MPass și semnătură electronică (semnătura mobilă de la Orange sau Moldcell este cea mai simplă).</li><li>Că lucrările sunt agricole, necalificate și ocazionale; pentru muncă permanentă se încheie contract de muncă.</li><li>Că plătește cel puțin salariul minim pentru ziua de 8 ore și reține impozitul și contribuțiile.</li><li>Că înregistrează fiecare zilier în ziua respectivă, înainte de începerea lucrului.</li></ol><h2>Controale și amenzi</h2><p>Respectarea legii o verifică Inspectoratul de Stat al Muncii și Serviciul Fiscal de Stat; încălcările se sancționează după Codul contravențional. Munca „la negru”, fără înregistrare, îl lasă pe zilier fără dovada zilelor lucrate și fără stagiu. Dacă nu ești plătit sau ai fost pus să lucrezi fără înregistrare, vezi <a href=\"/ghiduri/plangere-la-inspectoratul-de-stat-al-muncii-cand-si-cum/\">cum depui plângere la Inspectoratul Muncii</a>.</p><p><em>Proiectele de lege și de hotărâre au fost publicate de Guvern în aprilie–mai 2026; textul final consolidat îl găsești pe legis.md.</em></p>",
+  "faq": [
+    {
+      "q": "Trebuie să mă înregistrez singur în e-Zilier?",
+      "a": "Nu. Zilierul este înregistrat de beneficiarul lucrărilor (fermier, gospodărie, firmă), înainte să înceapă lucrul. Tu doar arăți buletinul."
+    },
+    {
+      "q": "Ce este bonul digital?",
+      "a": "Dovada electronică a unei zile lucrate și a plății, cu cod unic. Se emite câte unul pentru fiecare zi. Îl vezi în EVO și îl poți primi și tipărit."
+    },
+    {
+      "q": "Cât trebuie să primească un zilier pe zi?",
+      "a": "Cel puțin salariul minim corespunzător pentru o zi de 8 ore. Din plată se rețin impozitul pe venit și contribuțiile sociale."
+    },
+    {
+      "q": "Zilele de zilier contează la pensie?",
+      "a": "Da, din plată se rețin contribuții de asigurări sociale, care se declară la Serviciul Fiscal. Istoricul contribuțiilor îl vezi în EVO, la „Datele mele”."
+    },
+    {
+      "q": "Câte zile pe an pot lucra ca zilier?",
+      "a": "Conform textului inițial al Legii nr. 22/2018, cel mult 90 de zile pe an la același beneficiar și cel mult 8 ore pe zi."
+    }
+  ]
+}

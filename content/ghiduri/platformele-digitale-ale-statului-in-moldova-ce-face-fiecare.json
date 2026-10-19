@@ -1,0 +1,72 @@
+{
+  "slug": "platformele-digitale-ale-statului-in-moldova-ce-face-fiecare",
+  "title": "Platformele digitale ale statului în Moldova: ce face fiecare",
+  "description": "EVO, MPass, MSign, MPay, MIA, e-Zilier, cabinetul SFS, CNAS, e-Rețeta și altele: ce face fiecare platformă, adresa corectă și cum intri, într-un loc.",
+  "category": "acte",
+  "updated": "2026-10-19",
+  "sources": [
+    {
+      "name": "EVO — portalul serviciilor publice",
+      "url": "https://evo.gov.md"
+    },
+    {
+      "name": "MPass — autentificare",
+      "url": "https://mpass.gov.md"
+    },
+    {
+      "name": "MPay — plăți pentru servicii publice",
+      "url": "https://mpay.gov.md"
+    },
+    {
+      "name": "Agenția de Guvernare Electronică — autentificare și semnătura electronică",
+      "url": "https://egov.md/ro/node/40930"
+    },
+    {
+      "name": "Banca Națională a Moldovei — MIA Plăți Instant",
+      "url": "https://mia.bnm.md/ro"
+    },
+    {
+      "name": "e-Zilier — Registrul digital pentru zilieri",
+      "url": "https://zilieri.gov.md"
+    },
+    {
+      "name": "Serviciul Fiscal de Stat",
+      "url": "https://sfs.md"
+    },
+    {
+      "name": "CNAM — programarea online la investigații",
+      "url": "https://sirsm.cnam.gov.md/sirsm/online"
+    },
+    {
+      "name": "ANOFM — cererea online de înregistrare ca șomer",
+      "url": "https://e-iss.anofm.md"
+    },
+    {
+      "name": "CEC — verifică unde votezi",
+      "url": "https://verifica.cec.md"
+    },
+    {
+      "name": "STISC — buletinul de identitate cu semnătură electronică calificată",
+      "url": "https://stisc.gov.md/ro/comunicate-de-presa/lansarea-noii-carti-de-identitate-cu-semnatura-electronica-calificata"
+    }
+  ],
+  "bodyHtml": "<p><strong>Pe scurt:</strong> pentru aproape tot ce ai de rezolvat cu statul, punctul de pornire este <strong>EVO</strong> (aplicație și <a href=\"https://evo.gov.md\">evo.gov.md</a>). Intri cu o <strong>semnătură electronică</strong>, prin <strong>MPass</strong>, iar plățile trec prin <strong>MPay</strong> sau <strong>MIA</strong>. Mai jos găsești fiecare platformă: ce face, adresa corectă și cum intri.</p><h2>Cheia de la toate: semnătura electronică</h2><p>Fără semnătură electronică, cele mai multe servicii online ale statului nu se deschid. Ai trei variante:</p><table><thead><tr><th>Varianta</th><th>Cost</th><th>Pentru cine</th></tr></thead><tbody><tr><td>Semnătura mobilă (Orange, Moldcell)</td><td>activare gratuită; ~3 lei pe semnare sau pachete lunare</td><td>cea mai comodă, merge de pe telefon</td></tr><tr><td>Buletinul nou cu semnătură (din aprilie 2025)</td><td>gratuită pentru primul milion de cetățeni, 5 ani</td><td>o ceri la ASP sau la ambasadă</td></tr><tr><td>Cheia USB (token)</td><td>485 de lei pentru 2 ani</td><td>doar pe calculator</td></tr></tbody></table><p>Detalii despre autentificare și semnare: <a href=\"/ghiduri/mpass-msign-e-servicii-online/\">MPass, MSign și serviciile electronice</a>.</p><h2>Platformele, una câte una</h2><table><thead><tr><th>Platforma</th><th>Ce face</th><th>Adresa</th></tr></thead><tbody><tr><td><strong>EVO</strong></td><td>acte digitale (buletin, permis, certificat auto), servicii publice, programări, plăți, istoricul contribuțiilor</td><td>evo.gov.md, aplicația EVO</td></tr><tr><td><strong>MPass</strong></td><td>intrarea unică în peste 190 de sisteme ale statului</td><td>mpass.gov.md</td></tr><tr><td><strong>MSign</strong></td><td>semnarea și verificarea documentelor electronice</td><td>msign.gov.md</td></tr><tr><td><strong>MPay</strong></td><td>plata taxelor, amenzilor și serviciilor publice, cu cardul sau MIA</td><td>mpay.gov.md</td></tr><tr><td><strong>MIA Plăți Instant</strong></td><td>transferuri între persoane pe numărul de telefon (BNM)</td><td>mia.bnm.md, din aplicația băncii</td></tr><tr><td><strong>e-Zilier</strong></td><td>registrul electronic al zilierilor din agricultură</td><td>zilieri.gov.md</td></tr><tr><td><strong>Cabinetul personal SFS</strong></td><td>declarații fiscale, e-Factura, servicii fiscale</td><td>sfs.md → Cabinet personal</td></tr><tr><td><strong>CNAS — contul personal</strong></td><td>contribuțiile din 1999 încoace, calculul pensiei, cereri online</td><td>cnas.gov.md → „Acces CPAS”; istoricul și în EVO</td></tr><tr><td><strong>e-Rețeta</strong></td><td>rețeta electronică pentru medicamente compensate; o ridici de la farmacie cu buletinul</td><td>nu ai nimic de instalat</td></tr><tr><td><strong>CNAM — programarea la investigații</strong></td><td>te programezi singur la investigații costisitoare, cu trimiterea de la medic</td><td>sirsm.cnam.gov.md</td></tr><tr><td><strong>ANOFM</strong></td><td>cererea online de înregistrare ca șomer (statutul îl primești la agenție)</td><td>e-iss.anofm.md</td></tr><tr><td><strong>CEC — unde votez</strong></td><td>verifici lista electorală și secția de votare</td><td>verifica.cec.md</td></tr></tbody></table><h2>Situații obișnuite și unde le rezolvi</h2><ul><li><strong>Vrei să vezi cât ai contribuit pentru pensie:</strong> EVO, la „Datele mele”, sau contul personal CNAS.</li><li><strong>Ai de plătit impozitul pe casă sau o amendă:</strong> EVO sau MPay; poți plăti cu cardul sau prin MIA.</li><li><strong>Depui declarația pe venit:</strong> cabinetul personal de pe sfs.md, cu semnătura electronică. Vezi și <a href=\"/ghiduri/declaratia-pe-venit-persoane-fizice-cine-depune-si-pana-cand/\">cine depune declarația și până când</a>.</li><li><strong>Ai primit trimitere la o investigație costisitoare:</strong> te programezi singur pe sirsm.cnam.gov.md, cu IDNP și codul trimiterii.</li><li><strong>Ți-ai pierdut locul de muncă:</strong> ceri online înregistrarea pe e-iss.anofm.md, apoi mergi la agenția teritorială, unde primești statutul de șomer.</li><li><strong>Lucrezi ca zilier:</strong> bonurile zilelor lucrate le vezi în EVO; te înregistrează beneficiarul în e-Zilier.</li><li><strong>Vin alegeri:</strong> verifici pe verifica.cec.md dacă ești în listă și unde votezi.</li></ul><h2>Buletinul nou cu semnătură electronică</h2><p>Din 14 aprilie 2025, buletinul de identitate poate avea semnătură electronică calificată. Primul milion de cetățeni o primesc gratuit, valabilă 5 ani. O ceri la orice centru multifuncțional al Agenției Servicii Publice sau la o ambasadă; buletinul se face în 20 de zile lucrătoare, iar livrarea este gratuită. Cu el intri în EVO și în celelalte servicii, de pe calculator (cu cititor de carduri) sau de pe telefon.</p><h2>Adrese care nu mai funcționează</h2><ul><li><strong>servicii.gov.md</strong> și <strong>mcabinet.gov.md</strong> trimit acum automat la EVO.</li><li><strong>servicii.fisc.md</strong> (vechiul portal fiscal) nu mai funcționează din 1 iunie 2025; serviciile sunt în cabinetul de pe sfs.md.</li><li>Atenție la site-urile cu nume asemănătoare: <strong>mia.md</strong> nu e BNM, iar e-Factura se folosește doar din cabinetul SFS.</li></ul><h2>Ghiduri pas cu pas</h2><ul><li><a href=\"/ghiduri/evo-aplicatia-statului-acte-digitale-servicii/\">EVO: actele digitale și serviciile publice</a></li><li><a href=\"/ghiduri/mia-plati-instant-bani-pe-numarul-de-telefon/\">MIA: banii pe numărul de telefon</a></li><li><a href=\"/ghiduri/e-zilier-registrul-electronic-al-zilierilor-cum-functioneaza/\">e-Zilier: registrul zilierilor</a></li><li><a href=\"/ghiduri/impozitele-si-taxele-platite-online-prin-mpay/\">Impozitele și taxele plătite prin MPay</a></li><li><a href=\"/ghiduri/servicii-fiscale-online-e-factura-msign-mpass-sfs/\">Serviciile fiscale online și e-Factura</a></li><li><a href=\"/ghiduri/medicamente-compensate-lista-reteta-farmacii/\">Medicamentele compensate și rețeta</a></li><li><a href=\"/ghiduri/somaj-inregistrare-anofm-si-ajutor-de-somaj/\">Înregistrarea la șomaj</a></li></ul><p>Sfat de siguranță: statul nu îți cere niciodată prin SMS sau telefon codurile de confirmare sau parola. Instalează aplicațiile doar din magazinele oficiale și scrie adresele de mână, nu din link-uri primite.</p>",
+  "faq": [
+    {
+      "q": "De unde încep dacă vreau să rezolv ceva online cu statul?",
+      "a": "De la EVO (aplicația sau evo.gov.md). Acolo sunt actele digitale, serviciile publice, programările și plățile."
+    },
+    {
+      "q": "Ce îmi trebuie ca să intru în serviciile online ale statului?",
+      "a": "O semnătură electronică: semnătura mobilă de la Orange sau Moldcell, buletinul nou cu semnătură sau cheia USB. Cu ea intri prin MPass."
+    },
+    {
+      "q": "Mai funcționează servicii.gov.md?",
+      "a": "Adresa trimite automat la EVO, unde au fost mutate serviciile. La fel și MCabinet."
+    },
+    {
+      "q": "Care e diferența dintre MPay și MIA?",
+      "a": "MPay este pentru plățile către stat (taxe, amenzi, servicii). MIA este sistemul BNM pentru transferuri instant între persoane, pe numărul de telefon; MPay acceptă și plata prin MIA."
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "slug": "platformele-digitale-ale-statului-in-moldova-ce-face-fiecare",
+  "title": "Государственные цифровые платформы Молдовы: что делает каждая",
+  "description": "EVO, MPass, MSign, MPay, MIA, e-Zilier, кабинет SFS, CNAS, e-Rețeta и другие: что делает каждая платформа, правильный адрес и как войти — в одном месте.",
+  "category": "acte",
+  "updated": "2026-10-19",
+  "sources": [
+    {
+      "name": "EVO — portalul serviciilor publice",
+      "url": "https://evo.gov.md"
+    },
+    {
+      "name": "MPass — autentificare",
+      "url": "https://mpass.gov.md"
+    },
+    {
+      "name": "MPay — plăți pentru servicii publice",
+      "url": "https://mpay.gov.md"
+    },
+    {
+      "name": "Agenția de Guvernare Electronică — autentificare și semnătura electronică",
+      "url": "https://egov.md/ro/node/40930"
+    },
+    {
+      "name": "Banca Națională a Moldovei — MIA Plăți Instant",
+      "url": "https://mia.bnm.md/ro"
+    },
+    {
+      "name": "e-Zilier — Registrul digital pentru zilieri",
+      "url": "https://zilieri.gov.md"
+    },
+    {
+      "name": "Serviciul Fiscal de Stat",
+      "url": "https://sfs.md"
+    },
+    {
+      "name": "CNAM — programarea online la investigații",
+      "url": "https://sirsm.cnam.gov.md/sirsm/online"
+    },
+    {
+      "name": "ANOFM — cererea online de înregistrare ca șomer",
+      "url": "https://e-iss.anofm.md"
+    },
+    {
+      "name": "CEC — verifică unde votezi",
+      "url": "https://verifica.cec.md"
+    },
+    {
+      "name": "STISC — buletinul de identitate cu semnătură electronică calificată",
+      "url": "https://stisc.gov.md/ro/comunicate-de-presa/lansarea-noii-carti-de-identitate-cu-semnatura-electronica-calificata"
+    }
+  ],
+  "bodyHtml": "<p><strong>Коротко:</strong> почти для всего, что нужно решить с государством, отправная точка — <strong>EVO</strong> (приложение и <a href=\"https://evo.gov.md\">evo.gov.md</a>). Вы входите с <strong>электронной подписью</strong> через <strong>MPass</strong>, а платежи проходят через <strong>MPay</strong> или <strong>MIA</strong>. Ниже — каждая платформа: что делает, правильный адрес и как войти.</p><h2>Ключ ко всему: электронная подпись</h2><p>Без электронной подписи большинство государственных онлайн-услуг не открываются. Есть три варианта:</p><table><thead><tr><th>Вариант</th><th>Стоимость</th><th>Для кого</th></tr></thead><tbody><tr><td>Мобильная подпись (Orange, Moldcell)</td><td>активация бесплатная; ~3 лея за подписание или месячные пакеты</td><td>самая удобная, работает с телефона</td></tr><tr><td>Новое удостоверение личности с подписью (с апреля 2025)</td><td>бесплатно для первого миллиона граждан, на 5 лет</td><td>запрашивается в ASP или в посольстве</td></tr><tr><td>USB-ключ (токен)</td><td>485 леев за 2 года</td><td>только на компьютере</td></tr></tbody></table><p>Подробнее об авторизации и подписании: <a href=\"/ghiduri/mpass-msign-e-servicii-online/\">MPass, MSign и электронные услуги</a>.</p><h2>Платформы по порядку</h2><table><thead><tr><th>Платформа</th><th>Что делает</th><th>Адрес</th></tr></thead><tbody><tr><td><strong>EVO</strong></td><td>цифровые документы (удостоверение, права, техпаспорт), госуслуги, запись на приём, платежи, история взносов</td><td>evo.gov.md, приложение EVO</td></tr><tr><td><strong>MPass</strong></td><td>единый вход в более чем 190 государственных систем</td><td>mpass.gov.md</td></tr><tr><td><strong>MSign</strong></td><td>подписание и проверка электронных документов</td><td>msign.gov.md</td></tr><tr><td><strong>MPay</strong></td><td>оплата налогов, штрафов и госуслуг картой или через MIA</td><td>mpay.gov.md</td></tr><tr><td><strong>MIA Plăți Instant</strong></td><td>переводы между людьми по номеру телефона (BNM)</td><td>mia.bnm.md, из приложения банка</td></tr><tr><td><strong>e-Zilier</strong></td><td>электронный реестр поденщиков в сельском хозяйстве</td><td>zilieri.gov.md</td></tr><tr><td><strong>Личный кабинет SFS</strong></td><td>налоговые декларации, e-Factura, налоговые услуги</td><td>sfs.md → Cabinet personal</td></tr><tr><td><strong>CNAS — личный счёт</strong></td><td>взносы с 1999 года, расчёт пенсии, онлайн-заявки</td><td>cnas.gov.md → «Acces CPAS»; история также в EVO</td></tr><tr><td><strong>e-Rețeta</strong></td><td>электронный рецепт на компенсируемые лекарства; лекарства по нему получаете в аптеке по удостоверению личности</td><td>ничего устанавливать не нужно</td></tr><tr><td><strong>CNAM — запись на обследования</strong></td><td>самостоятельная запись на дорогостоящие обследования по направлению врача</td><td>sirsm.cnam.gov.md</td></tr><tr><td><strong>ANOFM</strong></td><td>онлайн-заявка на регистрацию в качестве безработного (статус присваивают в агентстве)</td><td>e-iss.anofm.md</td></tr><tr><td><strong>CEC — где я голосую</strong></td><td>проверка списка избирателей и избирательного участка</td><td>verifica.cec.md</td></tr></tbody></table><h2>Обычные ситуации и где их решать</h2><ul><li><strong>Хотите узнать, сколько вы внесли на пенсию:</strong> EVO, раздел «Мои данные», или личный счёт CNAS.</li><li><strong>Нужно оплатить налог на дом или штраф:</strong> EVO или MPay; оплатить можно картой или через MIA.</li><li><strong>Подаёте декларацию о доходах:</strong> личный кабинет на sfs.md, с электронной подписью. См. также <a href=\"/ghiduri/declaratia-pe-venit-persoane-fizice-cine-depune-si-pana-cand/\">кто подаёт декларацию и до какого срока</a>.</li><li><strong>Получили направление на дорогостоящее обследование:</strong> записываетесь сами на sirsm.cnam.gov.md, с IDNP и кодом направления.</li><li><strong>Потеряли работу:</strong> подайте онлайн-заявку на регистрацию на e-iss.anofm.md, затем идите в территориальное агентство, где вам присвоят статус безработного.</li><li><strong>Работаете поденщиком:</strong> квитанции за отработанные дни видны в EVO; в e-Zilier вас регистрирует бенефициар.</li><li><strong>Скоро выборы:</strong> на verifica.cec.md проверьте, есть ли вы в списке и где голосуете.</li></ul><h2>Новое удостоверение личности с электронной подписью</h2><p>С 14 апреля 2025 года удостоверение личности может содержать квалифицированную электронную подпись. Первый миллион граждан получает её бесплатно, сроком на 5 лет. Её можно запросить в любом многофункциональном центре Агентства государственных услуг или в посольстве; удостоверение изготавливается за 20 рабочих дней, доставка бесплатная. С ним вы входите в EVO и другие услуги с компьютера (с картридером) или с телефона.</p><h2>Адреса, которые больше не работают</h2><ul><li><strong>servicii.gov.md</strong> и <strong>mcabinet.gov.md</strong> теперь автоматически перенаправляют в EVO.</li><li><strong>servicii.fisc.md</strong> (старый налоговый портал) не работает с 1 июня 2025 года; услуги перенесены в кабинет на sfs.md.</li><li>Осторожно с сайтами с похожими названиями: <strong>mia.md</strong> — это не BNM, а e-Factura используется только из кабинета SFS.</li></ul><h2>Пошаговые гиды</h2><ul><li><a href=\"/ghiduri/evo-aplicatia-statului-acte-digitale-servicii/\">EVO: цифровые документы и госуслуги</a></li><li><a href=\"/ghiduri/mia-plati-instant-bani-pe-numarul-de-telefon/\">MIA: деньги по номеру телефона</a></li><li><a href=\"/ghiduri/e-zilier-registrul-electronic-al-zilierilor-cum-functioneaza/\">e-Zilier: реестр поденщиков</a></li><li><a href=\"/ghiduri/impozitele-si-taxele-platite-online-prin-mpay/\">Налоги и сборы через MPay</a></li><li><a href=\"/ghiduri/servicii-fiscale-online-e-factura-msign-mpass-sfs/\">Налоговые онлайн-услуги и e-Factura</a></li><li><a href=\"/ghiduri/medicamente-compensate-lista-reteta-farmacii/\">Компенсируемые лекарства и рецепт</a></li><li><a href=\"/ghiduri/somaj-inregistrare-anofm-si-ajutor-de-somaj/\">Регистрация в качестве безработного</a></li></ul><p>Совет по безопасности: государство никогда не запрашивает по SMS или по телефону коды подтверждения или пароль. Устанавливайте приложения только из официальных магазинов и набирайте адреса вручную, а не переходите по присланным ссылкам.</p>",
+  "faq": [
+    {
+      "q": "С чего начать, если хочу решить что-то с государством онлайн?",
+      "a": "С EVO (приложение или evo.gov.md). Там цифровые документы, госуслуги, запись на приём и платежи."
+    },
+    {
+      "q": "Что нужно, чтобы войти в государственные онлайн-услуги?",
+      "a": "Электронная подпись: мобильная подпись от Orange или Moldcell, новое удостоверение личности с подписью или USB-ключ. С ней вы входите через MPass."
+    },
+    {
+      "q": "Работает ли ещё servicii.gov.md?",
+      "a": "Адрес автоматически перенаправляет в EVO, куда перенесены услуги. То же касается MCabinet."
+    },
+    {
+      "q": "В чём разница между MPay и MIA?",
+      "a": "MPay — для платежей государству (налоги, штрафы, услуги). MIA — система BNM для мгновенных переводов между людьми по номеру телефона; MPay принимает и оплату через MIA."
+    }
+  ]
+}
