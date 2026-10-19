@@ -19,28 +19,26 @@ import { getSaintDay } from "@/lib/calendar-data";
 import { addDays, churchDay, civilDays, isDayOff, weekday, yearFasts, yearFeasts } from "@/lib/orthodox";
 import { chisinauHour, lastRunHour, morningHour, todayChisinau } from "@/lib/schedule";
 
-// Rubrica „Util” (decizia proprietarului, 2026-10-14): 2-3 articole proprii pe
-// zi, pe lângă știri — ce nu au celelalte portaluri. Ordinea temelor:
-// 1) evenimentele din următoarele 7 zile (hramuri, sărbători, termene, ora de iarnă…);
-// 2) anotimpul (frig, gripă, anvelope, umbrela);
-// 3) calculatoarele și ghidurile site-ului, în context (cum le folosești);
-// 4) rețete; 5) sfântul zilei, la sfinții mari.
-// Fiecare articol trimite OBLIGATORIU la un ghid, calculator sau rețetă de pe site.
+// Rubrica „Util” (decizia proprietarului, 2026-10-14; 5 pe zi și fără rețete din
+// 2026-10-19 — rețetele rămân pe site, nu în lentă): articole proprii, pe lângă știri.
+// Pe zi: 2 calculatoare în context (fiecare cel mult o dată pe săptămână), 1-2 legate
+// de un pilon / ghid, 1 eveniment sau anotimp; sfântul zilei doar la sfinții mari.
+// Fiecare articol trimite OBLIGATORIU la un ghid sau calculator de pe site.
 // Planul pe săptămâna următoare (luni–duminică) îl propune AI-ul vinerea dimineața
 // (sau la cererea editorului), editorul îl aprobă în weekend în /admin/util/, iar
 // pipeline-ul scrie câte un articol aprobat la orele Util.
 
 const PLAN_DAYS = 7;
 const PLAN_WEEKDAY = 5; // vineri (decizia proprietarului, 2026-10-14: săptămâni de luni până duminică)
-const PER_DAY = 3;
+const PER_DAY = 5;
+const PLAN_TYPES = Object.keys(UTIL_TYPES).filter((t) => t !== "reteta");
 const key = (d: Date) => d.toISOString().slice(0, 10);
 
 
-// Catalogul uneltelor + rețetele (id | titlu)
+// Catalogul uneltelor (id | titlu), fără rețete: ele nu mai intră în planul Util
 async function catalog() {
-  const [{ lines, ids }, recipes] = await Promise.all([loadCatalog(), getRecipes()]);
-  const rec = recipes.map((r) => `reteta:${r.slug} | Rețetă: ${r.title}`);
-  return { lines: `${lines}\n${rec.join("\n")}`, ids: new Set([...ids, ...rec.map((r) => r.split(" | ")[0])]) };
+  const { lines, ids } = await loadCatalog();
+  return { lines, ids: new Set(ids) };
 }
 
 // Calendarul zilelor: sărbători, sfinți mari, posturi, zile libere
@@ -65,13 +63,12 @@ async function calendarLines(days: Date[]): Promise<string> {
 const PLAN_SYSTEM = [
   "Ești redactorul-șef al stiriactuale.info, site de știri din Republica Moldova cu conceptul „Știri cu soluții”.",
   "Planifici rubrica UTIL: articole proprii, practice, pe care nu le au celelalte portaluri. Fiecare răspunde la „ce fac eu concret” pentru oamenii din Moldova.",
-  "Ordinea temelor (de la cea mai importantă):",
-  "1) eveniment: ce se întâmplă în Moldova în zilele planului — hramuri de oraș, sărbători, termene la taxe și acte, începutul sezonului de încălzire, ora de iarnă/vară, vacanțe școlare, examene, schimbări anunțate în știri. Articolul apare cu 1-4 zile ÎNAINTE de eveniment. Verifică data pe internet, din surse oficiale; dacă nu e sigură, nu o planifica.",
-  "2) sezon: anotimpul și vremea (frig, gripă și răceli, anvelope de iarnă, cum citești prognoza, cum te îmbraci, casa iarna).",
-  "3) unealta: un calculator sau ghid al site-ului explicat în context („A venit factura: cum verifici dacă e corectă” + calculatorul). Promovează calculatoarele de cel puțin 3 ori pe săptămână.",
-  "4) reteta: doar cu un motiv (post, sărbătoare, sezon) — maximum 2 pe săptămână.",
-  "5) sfant: doar la sfinții mari (cruce roșie) sau foarte populari în Moldova — povestea, tradițiile, ce se face în ziua aceea. Maximum 2 pe săptămână.",
-  `Exact ${PER_DAY} articole pe zi, pentru fiecare zi cerută. Teme diferite între ele și față de cele deja planificate.`,
+  `În fiecare zi cerută, exact ${PER_DAY} articole, împărțite așa:`,
+  "- 2 de tip unealta cu un CALCULATOR (calc:…) explicat într-un context concret și actual: o factură, un termen, o schimbare de tarif sau de lege, o știre, anotimpul („A venit prima factură la căldură: cum verifici dacă e corectă” + calculatorul de încălzire). Fiecare calculator cel mult O DATĂ pe săptămână; fără motiv concret, alegi alt calculator.",
+  "- 1-2 de tip unealta legate de un GHID sau PILON al site-ului (ghid:…): economia și leul, platformele statului (EVO, MIA, e-Zilier), cutremurul, drepturile consumatorului, pensiile, cetățenia, actele, sănătatea, casa și blocul — tot cu un motiv actual.",
+  "- 1 de tip eveniment sau sezon. eveniment: ce se întâmplă în Moldova în zilele planului — hramuri de oraș, sărbători, termene la taxe și acte, începutul sezonului de încălzire, ora de iarnă/vară, vacanțe școlare, examene, schimbări anunțate în știri; apare cu 1-4 zile ÎNAINTE. Verifică data pe internet, din surse oficiale; dacă nu e sigură, nu o planifica. sezon: anotimpul și vremea (frig, gripă și răceli, anvelope de iarnă, casa iarna).",
+  "- sfant: doar la sfinții mari (cruce roșie) sau foarte populari în Moldova, în locul articolului de eveniment; maximum 2 pe săptămână.",
+  "Fără rețete. Teme diferite între ele și față de cele deja planificate; nu repeta aceeași idee cu alte cuvinte.",
   "topic = titlul de lucru, concret, cu anul unde contează („Hramul Chișinăului 2026: programul și cum petreci în siguranță”).",
   "angle = 3-6 puncte despre ce acoperă articolul, practice (pași, ce verifici, unde suni, ce eviți).",
   "tools = 1-3 id-uri EXACTE din CATALOG (ghid:…, calc:…, model:…, reteta:…) — cel puțin unul, legat real de temă. Fără unealtă potrivită, alege altă temă.",
@@ -88,7 +85,7 @@ const PLAN_SCHEMA = {
         type: "object",
         properties: {
           day: { type: "string", description: "AAAA-LL-ZZ, una dintre zilele cerute" },
-          type: { type: "string", enum: Object.keys(UTIL_TYPES) },
+          type: { type: "string", enum: PLAN_TYPES },
           topic: { type: "string" },
           angle: { type: "string" },
           tools: { type: "array", items: { type: "string" } },
@@ -142,13 +139,21 @@ export async function planWeek(): Promise<number> {
       `CATALOG:\n${cat.lines}`,
     ].join("\n\n"),
     schema: PLAN_SCHEMA,
-    maxBudgetUsd: 3,
+    maxBudgetUsd: 5,
     web: true,
   });
   const wanted = new Set(need.map(key));
+  // fiecare calculator cel mult o dată în planul săptămânii
+  const calcSeen = new Set<string>();
   const rows = r.items
     .map((i) => ({ ...i, tools: [...new Set(i.tools.filter((t) => cat.ids.has(t)))].slice(0, 3) }))
-    .filter((i) => wanted.has(i.day) && i.type in UTIL_TYPES && i.tools.length && i.topic.trim())
+    .filter((i) => wanted.has(i.day) && PLAN_TYPES.includes(i.type) && i.tools.length && i.topic.trim())
+    .filter((i) => {
+      const calcs = i.tools.filter((t) => t.startsWith("calc:"));
+      if (calcs.some((t) => calcSeen.has(t))) return false;
+      calcs.forEach((t) => calcSeen.add(t));
+      return true;
+    })
     .map((i) => ({
       day: i.day,
       type: i.type,
@@ -310,7 +315,7 @@ export async function runUtil(): Promise<string[]> {
     const due = utilHours().filter((h) => h <= hour).length;
     const todays = await db.select().from(utilPlan).where(eq(utilPlan.day, today)).orderBy(utilPlan.id);
     // în primele săptămâni se scriu doar temele aprobate de editor
-    if (todays.filter((t) => t.status === "publicat").length < due) item = todays.find((t) => t.status === "aprobat");
+    if (todays.filter((t) => t.status === "publicat").length < due) item = todays.find((t) => t.status === "aprobat" && t.type !== "reteta"); // rețetele nu mai intră în lentă
   }
   if (!item) return log;
   try {
