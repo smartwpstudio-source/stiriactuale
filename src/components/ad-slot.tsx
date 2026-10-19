@@ -29,9 +29,9 @@ export function AdSlot({ slot, display = false }: { slot?: string; display?: boo
     }
   }, []);
 
-  // Fără anunț (unfilled): blocul gol se strânge doar cât e sub ecran. Strâns sub
+  // Fără anunț (unfilled): blocul gol se strânge doar cât nu e pe ecran. Strâns sub
   // ochii cititorului, ar muta textul (CLS — Search Console, 1.648 de adrese slabe
-  // pe mobil, 2026-10-18); deasupra ecranului ar împinge și el textul vizibil.
+  // pe mobil, 2026-10-18); deasupra ecranului, browserul ține textul pe loc (scroll anchoring).
   useEffect(() => {
     const el = box.current;
     const ins = el?.querySelector("ins");
@@ -40,7 +40,7 @@ export function AdSlot({ slot, display = false }: { slot?: string; display?: boo
     const check = () => {
       if (ins.dataset.adStatus !== "unfilled" || io) return;
       io = new IntersectionObserver(([e]) => {
-        if (!e.isIntersecting && e.boundingClientRect.top > 0) {
+        if (!e.isIntersecting) {
           setHidden(true);
           io?.disconnect();
         }
