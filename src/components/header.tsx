@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { IconSearch } from "@tabler/icons-react";
+import { IconBrandTelegram, IconSearch } from "@tabler/icons-react";
+import { TELEGRAM_URL } from "@/lib/site-info";
 import { NavLinks } from "./nav-links";
 import { MobileMenu } from "./mobile-menu";
 import { Logo } from "./logo";
@@ -14,6 +15,9 @@ export function Header() {
         </div>
         <NavLinks className="hidden gap-7 font-sans text-base font-medium lg:flex" itemClassName="" />
         <div className="flex items-center gap-2">
+          <a href={TELEGRAM_URL} target="_blank" rel="noopener noreferrer" aria-label="Canalul de Telegram" className="text-paper hover:text-amber">
+            <IconBrandTelegram size={22} stroke={1.75} />
+          </a>
           <Link prefetch={false} href="/cautare/" aria-label="Căutare" className="text-paper hover:text-amber">
             <IconSearch size={22} stroke={1.75} />
           </Link>
