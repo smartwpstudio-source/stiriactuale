@@ -5,6 +5,7 @@ import { TopicLabel } from "./topic-label";
 import { ArticleThumb } from "./article-thumb";
 import { ShareButtons } from "./share-buttons";
 import { TelegramCta } from "./telegram-cta";
+import { TelegramInline } from "./telegram-inline";
 import { PushOptIn } from "./push-opt-in";
 import { SimilarArticles } from "./similar-articles";
 import { TimeAgo } from "./time-ago";
@@ -142,6 +143,7 @@ export async function ArticlePage({
           </p>
         )}
         <ShareButtons url={absoluteUrl(articleUrl(article))} title={article.title} />
+        {!article.archived && <TelegramInline />}
         {article.archived && article.sources?.[0] ? (
           <>
             <p className="mt-6 text-xl leading-relaxed text-ink">{article.lead}</p>

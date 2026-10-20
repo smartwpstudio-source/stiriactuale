@@ -56,13 +56,30 @@ export async function alertEditor(text: string) {
 }
 
 // Returnează message_id — se salvează ca retragerea să poată șterge postarea.
-export async function postToChannel(a: { title: string; lead: string; url: string; tool?: string }): Promise<number | null> {
+// Cu poză (2026-10-20): informația se vede direct în Telegram, nu doar un link;
+// fără poză sau dacă Telegram n-o poate lua, mesaj text ca înainte. silent = fără
+// sunet la abonați (știrile obișnuite); alertele și știrile mari vin cu sunet.
+export async function postToChannel(a: { title: string; lead: string; url: string; tool?: string; image?: string; silent?: boolean }): Promise<number | null> {
   const chatId = process.env.TELEGRAM_CHANNEL_ID;
   if (!chatId) return null;
+  const tail = `${a.tool ? `\n\n${a.tool}` : ""}\n\n<a href="${a.url}">Citește pe Știri Actuale →</a>`;
+  if (a.image) {
+    // legenda pozei are cel mult 1024 de caractere
+    const lead = a.lead.length > 700 ? `${a.lead.slice(0, 700).replace(/\s+\S*$/, "")}…` : a.lead;
+    const photo = await call<{ message_id: number }>("sendPhoto", {
+      chat_id: chatId,
+      photo: a.image,
+      parse_mode: "HTML",
+      caption: `<b>${esc(a.title)}</b>\n\n${esc(lead)}${tail}`,
+      disable_notification: a.silent ?? false,
+    });
+    if (photo) return photo.message_id;
+  }
   const msg = await call<{ message_id: number }>("sendMessage", {
     chat_id: chatId,
     parse_mode: "HTML",
-    text: `<b>${esc(a.title)}</b>\n\n${esc(a.lead)}${a.tool ? `\n\n${a.tool}` : ""}\n\n${a.url}`,
+    text: `<b>${esc(a.title)}</b>\n\n${esc(a.lead)}${tail}`,
+    disable_notification: a.silent ?? false,
   });
   return msg?.message_id ?? null;
 }
