@@ -21,9 +21,9 @@ const nextConfig: NextConfig = {
 
   images: {
     // puține mărimi: fiecare (poză, lățime) e o transformare separată la Cloudflare Images
-    // (5.000 incluse pe lună). Implicit erau 16 lățimi (2026-10-15).
-    deviceSizes: [640, 828, 1200],
-    imageSizes: [128, 256, 384],
+    // (5.000 incluse pe lună). Implicit erau 16 lățimi (2026-10-15); 6 → 3 din 2026-10-20.
+    deviceSizes: [640, 1200],
+    imageSizes: [256],
     remotePatterns: [
       // imaginile: Cloudflare R2 (src/lib/media.ts); Blob doar pentru adresele vechi rămase
       { protocol: "https", hostname: "media.stiriactuale.info" },

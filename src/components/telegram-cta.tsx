@@ -22,7 +22,7 @@ export function TelegramCta() {
       <span className="flex-1">
         <span className="block font-sans text-lg font-semibold leading-snug">Știrile importante, direct pe Telegram</span>
         <span className="mt-1 block font-sans text-sm text-white/90">
-          Abonează-te la canalul Reporter News: ce s-a întâmplat azi în Moldova, imediat ce apare. Gratuit, te
+          Abonează-te la canalul Știri Actuale: ce s-a întâmplat azi în Moldova, imediat ce apare. Gratuit, te
           dezabonezi oricând.
         </span>
       </span>
