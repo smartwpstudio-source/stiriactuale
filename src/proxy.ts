@@ -3,7 +3,7 @@
 //   /{slug}/ (articol)             -> /regiuni/{raion}/{slug}/ etc. (legacy-redirects.json)
 //   /{slug}/amp/, /{slug}/feed/    -> același articol
 //   /category/{...}/{slug}/        -> hub-ul echivalent (legacy-categories.json)
-//   /tag/{tag}/                    -> căutare
+//   /tag/{tag}/                    -> 410 (vezi GONE)
 //   /page/N/, /author/…            -> prima pagină / Despre
 //   *sitemap*.xml (Yoast)          -> /sitemap.xml
 // Tabelele sunt generate de scripts/migration/generate-redirects.ts — nu se editează manual.
@@ -25,6 +25,8 @@ const FIXED: Record<string, string> = {
   popular: "/",
   "frontend-submission": "/contact/",
   "comments/feed": "/feed/",
+  // articol republicat cu altă adresă (Search Console, 404, 2026-10-23)
+  "diaspora/spania/spania-cod-rosu-ploi-furtuni-alerta-moldoveni": "/diaspora/spania/spania-cod-rosu-ploi-furtuni-coasta-mediteraneana/",
 };
 
 function target(segments: string[]): string | null {
@@ -33,7 +35,8 @@ function target(segments: string[]): string | null {
   if (FIXED[joined]) return FIXED[joined];
 
   // cheile au codificarea cu litere mici (%f0%9f…), Google cere și %F0%9F…
-  const article = articles[first] ?? articles[first.toLowerCase()];
+  // varianta WordPress cu „-video” la final (ex. …-ce-inseamna-asta-video) = același articol
+  const article = articles[first] ?? articles[first.toLowerCase()] ?? articles[first.replace(/-video$/, "")];
   if (segments.length === 1) return article ?? null;
   if (segments.length === 2 && (rest[0] === "amp" || rest[0] === "feed")) return article ?? null;
 
@@ -42,20 +45,15 @@ function target(segments: string[]): string | null {
     const key = segments[segments.length - 1] === "feed" ? segments[segments.length - 2] : segments[segments.length - 1];
     return categories[key] ?? "/";
   }
-  if (first === "tag" && rest[0]) {
-    let tag = rest[0];
-    try {
-      tag = decodeURIComponent(tag); // URL malformat (%E2%8) -> se folosește brut
-    } catch {}
-    return `/cautare/?q=${encodeURIComponent(tag.replace(/-/g, " "))}`;
-  }
   if (first === "page" || first === "author") return first === "author" ? "/despre/" : "/";
   return null;
 }
 
 // Resturi WordPress fără echivalent (fișiere, module, firewall-ul vechiului hosting):
 // 410 îi spune lui Google că au dispărut definitiv, ca să nu le mai reverifice.
-const GONE = /^\/(wp-content|wp-includes|wp-json|link-redirect-page|imunify-bot-check|snax_item|reaction)(\/|$)|^\/(xmlrpc|wp-login|wp-cron)\.php$/;
+// /tag/ (2026-10-23): ~800 de etichete vechi „accesate, neindexate” în Search Console;
+// trimiteau la căutare (pagină generată la fiecare cerere, noindex) — erau mai ales roboți.
+const GONE = /^\/(wp-content|wp-includes|wp-json|link-redirect-page|imunify-bot-check|snax_item|reaction|tag)(\/|$)|^\/(xmlrpc|wp-login|wp-cron)\.php$/;
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
