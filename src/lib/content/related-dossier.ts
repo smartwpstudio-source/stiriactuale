@@ -14,7 +14,9 @@ const RULES: [slug: string, re: RegExp][] = [
   ["aderarea-moldovei-la-ue-etape-si-calendar", /aderar\w* (la ue|la uniune|moldovei|europeana)|negocier\w* de aderare|integrar\w* europe|acquis|planul de crestere/],
   ["transnistria-situatia-regiunii-si-impactul", /transnistri|tiraspol|stanga nistrului|krasnoselski/],
   ["ue-rusia-sanctiuni-dosar", /sanctiun\w* (ue |ale ue |europene )?(impotriva |pentru )?(rusi|moscov)|pachet\w* de sanctiuni/],
-  ["razboiul-din-ucraina-dosar", /razboi\w* din ucraina|invazi\w* rus|frontul? din ucraina|zelenski/],
+  ["razboiul-din-ucraina-dosar", /razboi\w* din ucraina|invazi\w* rus|frontul? din ucraina|zelenski|dron\w*.{0,80}(explozibil|cazut|prabusit|ruse|rusesc)|expulz\w* (un |a )?diplomat\w* rus/],
+  // Găgăuzia (2026-10-24): alegerile, bașcanul, Comratul
+  ["gagauzia-autonomia-ce-prevede-statutul", /gagauzi|\bcomrat|\bbascan|adunar\w* populare a gagauziei/],
   // pilonul armatei: doar termeni moldovenești („militar”, „mobilizare”, „rezerviști”
   // singure apar în știrile despre Rusia, Ucraina, Israel); MApN e ministerul român
   ["armata-nationala-a-moldovei-ghid-complet", /armat\w* national\w*\b(?! (libian|afgan|sirian|congolez|a ucrainei))|statul major al apararii|ministerul apararii(?! (nationale|al (?!republicii moldova)|din |de la (moscova|kiev|bucuresti)|rus|ucrainean|israelian|american|britanic|francez|german))|centr\w* militar\w* teritorial|sectii\w* administrativ-militar|livret\w* militar|adeverint\w* de recrutare|comisi\w* de recrutare|militar\w* moldoveni|contingent\w* (moldovenesc|al armatei nationale)|serviciu\w* civil \(?de alternativ/],
@@ -41,7 +43,7 @@ const RULES: [slug: string, re: RegExp][] = [
   ["plata-cu-cardul-contestare-tranzactie-chargeback", /chargeback|contest\w* (o |a )?(tranzacti|plat\w* cu cardul)|tranzacti\w* (neautorizat|contestat)\w*|debitar\w* (dubl|de doua ori)/],
   ["cumparaturi-online-dreptul-de-retur-fara-motiv", /drept\w* de (retur|revocare)|returnar\w* (a )?(produs|marf)\w*/],
   ["drepturile-consumatorului-returnarea-unui-produs-si-garantia", /termen\w* de garantie|garanti\w* (legal\w* )?(de conformitate|a produsului|produselor)/],
-  ["drepturile-consumatorului-in-moldova-ghid-complet", /protecti\w* (drepturilor )?consumatorilor|drepturil\w* consumator|\bapcsp\b|isspnpc|supravegherea produselor nealimentare|agenti\w* pentru protectia consumatorilor|clauz\w* abuziv|centrul unic de apel pentru consumatori/],
+  ["drepturile-consumatorului-in-moldova-ghid-complet", /taxi\w*.{0,60}(plat|card|bon fiscal)|(plat|card)\w*.{0,40}taxi|cartel|intelegeri\w* (anticoncurential|intre companii|intre firme)|consiliul concurentei|protecti\w* (drepturilor )?consumatorilor|drepturil\w* consumator|\bapcsp\b|isspnpc|supravegherea produselor nealimentare|agenti\w* pentru protectia consumatorilor|clauz\w* abuziv|centrul unic de apel pentru consumatori/],
   // afacerea mică (2026-10-15): IMM, ODA, granturi pentru afaceri, antreprenori independenți
   ["afacerea-mica-in-moldova-imm-ghid-complet", /\bimm\b|intreprinderi\w* mici (si|și) mijlocii|organizati\w* pentru dezvoltarea antreprenoriatului|\boda\b.{0,80}(grant|program|apel|antreprenor)|(grant|program|apel)\w*.{0,80}\boda\b|crestem imm|antreprenoriat\w*|antreprenor\w* independent|regimul (fiscal )?(pentru )?imm/],
   // inteligența artificială (2026-10-15) — după escrocherii: „deepfake cu investiții false” rămâne la escrocherii
@@ -49,7 +51,7 @@ const RULES: [slug: string, re: RegExp][] = [
   // pilonul pensiilor („pensiune” = casă de oaspeți, nu intră)
   ["pensiile-in-moldova-tot-ce-trebuie-sa-stii", /\bpensi(a|e|i|ii|ile|ilor|onar\w*)\b|varsta de pensionare|stagiu\w* de cotizare/],
   // economia (2026-10-19), înaintea inflației și a banilor în familie: BNM și leul, comerțul, PIB-ul
-  ["leul-moldovenesc-cursul-rata-de-baza-inflatia", /rata de baza|politic\w* monetar|curs\w* (oficial|valutar|de schimb)|leul\w* (moldovenesc )?(s-a )?(depreciat|apreciat|slabit|intarit)|deprecier\w* (a )?leului|rezerv\w* valutar|active\w* oficiale de rezerva/],
+  ["leul-moldovenesc-cursul-rata-de-baza-inflatia", /rata de baza|operatiun\w* valutar|regim\w* valutar|politic\w* monetar|curs\w* (oficial|valutar|de schimb)|leul\w* (moldovenesc )?(s-a )?(depreciat|apreciat|slabit|intarit)|deprecier\w* (a )?leului|rezerv\w* valutar|active\w* oficiale de rezerva/],
   ["comertul-exterior-al-moldovei-exporturi-importuri-parteneri", /comert\w* (exterior|international)|deficit\w* (comercial|balantei comerciale)|exporturil\w* (moldovei|moldovenesti|tarii|de marfuri)|importuril\w* (moldovei|tarii|de marfuri)/],
   ["economia-moldovei-explicata-pib-comert-leu-ramuri", /\bpib\b|produs\w* intern brut|crester\w* economic\w*|economi\w* (moldovei|nationala|tarii)|recesiun/],
   ["preturile-la-alimente-si-inflatia-date-bns-bnm", /inflati/],
@@ -106,7 +108,7 @@ const RULES: [slug: string, re: RegExp][] = [
   ["asociatia-de-proprietari-condominiu-drepturile-locatarilor", /asociati\w* de proprietari|condominiu|\bimgfl\b/],
   ["reparatiile-in-bloc-acoperis-subsol-fatada-cine-plateste", /(acoperis|subsol|fatad|ascensor|\blift)\w* (blocului|blocurilor|de bloc)|reparati\w* (a |la )?(blocului|blocurilor)/],
   ["deseurile-sortare-voluminoase-tarife-salubrizare", /deseur|\bgunoi|salubriz|autosalubritate/],
-  ["casa-si-blocul-intretinere-siguranta-drepturi", /incendi\w* (in|intr-un|intr-o) (apartament|bloc|casa|locuint)|locatari\w* (blocului|din bloc)/],
+  ["casa-si-blocul-intretinere-siguranta-drepturi", /(tavan|plafon|balcon|scar\w* blocului)\w*.{0,50}(prabusit|cazut|surpat)|(prabusit|surpat)\w*.{0,50}(tavan|plafon|balcon)|bloc\w* (nelocuibil|avariat|in stare avariata)|incendi\w* (in|intr-un|intr-o) (apartament|bloc|casa|locuint)|locatari\w* (blocului|din bloc)/],
   ["bucataria-moldoveneasca-istorie-feluri-traditii", /bucatari\w* (moldoveneasc|traditional|national)|bucate traditionale|retet\w* traditional/],
   ["moldova-turistica-ce-vizitezi-trasee-vinarii-manastiri", new RegExp(String.raw`^${NOT_ABROAD}(?!.*(bucovin|maramures|bulgari|greci|egipt|antalya|dubai|emirat|muntenegr|georgi|austri|cehi|ungari|budapest|praga|viena|cluj|brasov|sibiu|poiana))(?=.*(turism|turist|orheiul vechi|drumul vinului|iter vitis|agroturism|pensiun\w* (turistic|agroturistic)))`)],
   // escrocheriile (nu frauda electorală sau bancară mare — acelea au dosarele lor) și banii
