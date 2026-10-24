@@ -45,7 +45,10 @@ assert.equal(validatePick(city, ids, "Spitalul raional Cahul are secție nouă")
 // --- scutirea: pushWorthy ȘI urgență / lege majoră (logica din auto-push.ts)
 assert.ok(guideExempt({ pushWorthy: true, title: "Cod portocaliu de ploi torențiale", summary: "Meteorologii au emis avertizare" }));
 assert.ok(guideExempt({ pushWorthy: true, title: "Parlamentul a adoptat legea: amenzile cresc de la 1 ianuarie", summary: "" }));
-assert.ok(!guideExempt({ pushWorthy: false, title: "Cod portocaliu de ploi torențiale", summary: "" }), "fără pushWorthy nu e scutită");
+// modul „echilibrat” (2026-10-24): alertele meteo și de securitate trec și fără pushWorthy
+assert.ok(guideExempt({ pushWorthy: false, title: "Cod portocaliu de ploi torențiale", summary: "" }), "alerta meteo e scutită mereu");
+assert.ok(guideExempt({ pushWorthy: false, title: "O dronă cu explozibil s-a prăbușit lângă Telenești", summary: "" }), "drona e scutită");
+assert.ok(!guideExempt({ pushWorthy: false, title: "Parlamentul a adoptat legea: amenzile cresc de la 1 ianuarie", summary: "" }), "legea fără pushWorthy nu e scutită");
 assert.ok(!guideExempt({ pushWorthy: true, title: "Concert aniversar la Filarmonică", summary: "" }));
 assert.ok(!guideExempt({ pushWorthy: true, title: "Guvernul propune un proiect de lege privind taxele", summary: "" }), "proiectul nu e lege adoptată");
 

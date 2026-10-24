@@ -125,6 +125,11 @@ import("../../src/lib/content/guide-country").then(({ guideCountry }) => {
     assert.equal(matchDossier("Deficitul comercial al Moldovei a crescut cu 6%"), "comertul-exterior-al-moldovei-exporturi-importuri-parteneri");
     assert.equal(matchDossier("PIB-ul Moldovei a crescut cu 0,9% în trimestrul II"), "economia-moldovei-explicata-pib-comert-leu-ramuri");
     assert.equal(matchDossier("Inflația a urcat la 8,6% în septembrie"), "preturile-la-alimente-si-inflatia-date-bns-bnm");
+    assert.equal(matchDossier("R. Moldova expulzează un diplomat rus după ce o dronă cu explozibil s-a prăbușit"), "razboiul-din-ucraina-dosar");
+    assert.equal(matchDossier("Scrutinul din Găgăuzia: CEC avertizează asupra riscurilor"), "gagauzia-autonomia-ce-prevede-statutul");
+    assert.equal(matchDossier("Noi reguli pentru operațiunile valutare în R. Moldova"), "leul-moldovenesc-cursul-rata-de-baza-inflatia");
+    assert.equal(matchDossier("Platformele de taxi vor fi obligate să proceseze plățile cu cardul"), "drepturile-consumatorului-in-moldova-ghid-complet");
+    assert.equal(matchDossier("În centrul Chișinăului s-a prăbușit o parte din tavanul unui bloc"), "casa-si-blocul-intretinere-siguranta-drepturi");
     console.log("impact: OK");
   });
 });

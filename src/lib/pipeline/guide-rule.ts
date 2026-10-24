@@ -46,9 +46,16 @@ export function cityGuideAllowed(tool: string, text: string): boolean {
   return LOCAL_SERVICES.test(t) && !NOT_SERVICES.test(t);
 }
 
-// Scutirea de cerința de ghid: pushWorthy de la clasificator ȘI urgență / lege majoră.
+// Alertele care trec mereu (modul „echilibrat”, 2026-10-24): codurile meteo, alertele
+// IGSU și cele de securitate — în strict rămăseseră afară „Cod galben de ploi” și drona
+// cu explozibil căzută în Moldova.
+const ALERT = /\bcod\w* (galben|portocaliu|rosu)\b|avertizar\w* (meteo|hidrologic)|alert\w* (meteo|aerian)|\bigsu\b.{0,80}(alert|avertiz|evacu)|dron\w*.{0,80}(explozibil|cazut|prabusit|spatiul aerian)|spatiul aerian al (republicii )?moldov|expulz\w* (un |a )?diplomat/;
+
+// Scutirea de cerința de ghid: pushWorthy de la clasificator ȘI urgență / lege majoră,
+// sau o alertă din lista de mai sus.
 export function guideExempt(c: { pushWorthy: boolean; title: string; summary: string }): boolean {
-  return c.pushWorthy && isMajorNews(`${c.title} ${c.summary}`);
+  const text = `${c.title} ${c.summary}`;
+  return (c.pushWorthy && isMajorNews(text)) || ALERT.test(stripDiacritics(text).toLowerCase());
 }
 
 // Potrivirea existentă, fără AI: dosarul-pilon (related-dossier.ts), apoi calculatorul.

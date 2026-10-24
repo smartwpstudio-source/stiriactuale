@@ -142,8 +142,8 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
           </button>
         </form>
         <p className="basis-full text-xs text-sub">
-          Filtru în plus, după toate regulile de selecție. Linkurile tale nu trec prin el; urgențele, vremea periculoasă și legile
-          majore se publică și fără ghid.
+          Filtru în plus, după toate regulile de selecție. Linkurile tale nu trec prin el; urgențele, alertele meteo și de securitate,
+          legile majore și cea mai importantă știre a fiecărei rulări (nu internațională) se publică și fără ghid.
         </p>
       </section>
 

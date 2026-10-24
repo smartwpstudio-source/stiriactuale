@@ -207,7 +207,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     const toPublish = scored.filter((c) => c.group.manual);
     // linkurile editorului nu se filtrează, dar primesc și ele ghidul potrivit
     // (modul „raport” nu respinge niciodată) — 2026-10-13, știrea Moldsilva
-    for (const c of toPublish) await guideStep(c, "raport", summary).catch(() => true);
+    for (const c of toPublish) await guideStep(c, "raport", summary, false).catch(() => null);
     const bySection = new Map<Section, ScoredCandidate[]>();
     for (const c of scored) {
       if (!passesSelection(c)) continue;
@@ -224,6 +224,9 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       .filter((r) => r.publishedAt.getTime() > Date.now() - 48 * 3600_000)
       .map((r) => ({ id: r.id, title: r.title, lead: r.lead }));
     let autoTaken = 0;
+    // modul „echilibrat” (2026-10-24): în strict, cea mai importantă știre a rulării
+    // fără ghid se publică totuși (o dată pe rulare, nu și cele internaționale)
+    let topUsed = false;
     const guideMode: GuideRuleMode = await guideRuleMode().catch(() => "raport");
     for (const c of auto.sort((a, b) => b.qualityScore - a.qualityScore)) {
       if (autoTaken >= autoSlots) break;
@@ -238,7 +241,9 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       }
       // regula „știre cu ghid” (guide-rule.ts): filtru ÎN PLUS, după toate
       // regulile de mai sus; în strict, locul știrii fără ghid îl ia următoarea
-      if (!(await guideStep(c, guideMode, summary))) continue;
+      const step = await guideStep(c, guideMode, summary, !topUsed);
+      if (!step.publish) continue;
+      if (step.top) topUsed = true;
       toPublish.push(c);
       autoTaken++;
       // și știrile alese în aceeași rulare intră în comparație (2026-10-05:
@@ -376,7 +381,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
 
 // Pasul „știre cu ghid” pentru o știre care a trecut regulile vechi: caută
 // unealta (reguli, apoi AI), notează verificarea și spune dacă se publică.
-async function guideStep(c: ScoredCandidate, mode: GuideRuleMode, summary: PipelineRunSummary): Promise<boolean> {
+async function guideStep(c: ScoredCandidate, mode: GuideRuleMode, summary: PipelineRunSummary, allowTop: boolean): Promise<{ publish: boolean; top: boolean }> {
   const input = {
     title: c.group.representativeTitle,
     summary: c.group.items[0]?.summary.slice(0, 700) ?? "",
@@ -385,7 +390,11 @@ async function guideStep(c: ScoredCandidate, mode: GuideRuleMode, summary: Pipel
   };
   const exempt = guideExempt({ pushWorthy: c.classification.pushWorthy, ...input });
   const check = await checkGuide(input);
-  const { publish, wouldReject } = guideDecision(mode, check, exempt);
+  const decision = guideDecision(mode, check, exempt);
+  // știrea de top a rulării (cea cu scorul cel mai mare, lista e sortată) trece și fără ghid
+  const top = !decision.publish && allowTop && c.classification.section !== "international";
+  const publish = decision.publish || top;
+  const wouldReject = decision.wouldReject && !top;
   const [row] = await getDb()
     .insert(guideChecks)
     .values({
@@ -393,7 +402,7 @@ async function guideStep(c: ScoredCandidate, mode: GuideRuleMode, summary: Pipel
       section: input.section,
       tool: check.tool,
       via: check.via,
-      exempt: exempt ? "urgenta-lege" : null,
+      exempt: exempt ? "urgenta-lege" : top ? "top-rulare" : null,
       topic: check.topic ?? null,
       reason: check.reason ?? null,
       mode,
@@ -406,7 +415,8 @@ async function guideStep(c: ScoredCandidate, mode: GuideRuleMode, summary: Pipel
     summary.guideMissing.push(`${input.title.slice(0, 80)}${check.topic ? ` [${check.topic}]` : ""}`);
     console.log(`Fără ghid${publish ? " (raport: se publică)" : " — nepublicată"}: ${input.title.slice(0, 80)}`);
   }
-  return publish;
+  if (top) console.log(`Fără ghid, dar știrea de top a rulării — se publică: ${input.title.slice(0, 80)}`);
+  return { publish, top };
 }
 
 // Lanț same_as (3 -> 1 -> 0) până la grupul rădăcină; sameAs < i garantează terminarea.
