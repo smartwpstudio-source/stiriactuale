@@ -41,7 +41,11 @@ export default async function UtilAdminPage({ searchParams }: PageProps<"/admin/
         <strong> aprobate</strong>. Planul săptămânii următoare (luni–duminică) vine vineri dimineața; îl aprobi până duminică seara. Sau cu butonul de mai jos.
       </p>
       {run && <p className="mt-3 rounded bg-teal/10 p-3 text-ink">{MESSAGES[String(run)]}</p>}
-      {err && <p className="mt-3 rounded bg-alert/10 p-3 text-alert">Completează ziua, tema, tipul și cel puțin o unealtă (ex. calc:salariu-net).</p>}
+      {err && (
+        <p className="mt-3 rounded bg-alert/10 p-3 text-alert">
+          {err === "2" ? "N-am găsit niciun ghid sau calculator potrivit temei — scrie uneltele (ex. calc:cost-incalzire)." : "Completează ziua și tema."}
+        </p>
+      )}
       <form action={planNow} className="mt-4">
         <button className="rounded bg-ink px-4 py-2 text-white">Fă acum planul săptămânii următoare</button>
       </form>
@@ -107,9 +111,9 @@ export default async function UtilAdminPage({ searchParams }: PageProps<"/admin/
             <input name="locality" placeholder="raion (opțional, ex. chisinau)" className="rounded border border-line px-2 py-1" />
           </div>
           <input name="topic" placeholder="Tema / titlul de lucru" className="rounded border border-line px-2 py-1" />
-          <textarea name="angle" rows={3} placeholder="Ce acoperă articolul (punct cu punct)" className="rounded border border-line px-2 py-1" />
-          <input name="tools" placeholder="Unelte: ghid:slug, calc:slug, reteta:slug" className="rounded border border-line px-2 py-1 font-mono text-sm" />
-          <button className="w-fit rounded bg-ink px-4 py-2 text-white">Adaugă (aprobată)</button>
+          <textarea name="angle" rows={3} placeholder="Ce acoperă articolul (opțional)" className="rounded border border-line px-2 py-1" />
+          <input name="tools" placeholder="Unelte (opțional — fără ele le alege site-ul după temă): ghid:slug, calc:slug" className="rounded border border-line px-2 py-1 font-mono text-sm" />
+          <button className="w-fit rounded bg-ink px-4 py-2 text-white">Adaugă (aprobată; cea de azi se scrie imediat)</button>
         </form>
       </section>
     </div>

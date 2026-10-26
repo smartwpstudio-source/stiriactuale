@@ -27,7 +27,7 @@ function stems(text: string): Map<string, number> {
   return out;
 }
 
-function scored(text: string, guides: Guide[]) {
+function scored<T extends { title: string; description: string }>(text: string, guides: T[]) {
   const target = stems(text);
   return guides.map((g) => {
     let score = 0;
@@ -44,7 +44,7 @@ export function bestGuide(text: string, guides: Guide[]): Guide | undefined {
 
 // primele n ghiduri cu cuvinte comune (minim unul) — candidații din care
 // modelul alege unealta potrivită pentru blocul „Ce înseamnă pentru tine”
-export function rankGuides(text: string, guides: Guide[], n: number): Guide[] {
+export function rankGuides<T extends { title: string; description: string }>(text: string, guides: T[], n: number): T[] {
   return scored(text, guides)
     .filter((x) => x.score > 0)
     .sort((a, b) => b.score - a.score)

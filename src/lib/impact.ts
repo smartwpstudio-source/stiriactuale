@@ -1,8 +1,9 @@
 import { getGuides } from "./content/guides";
-import { rankGuides } from "./content/related-guide";
+import { bestGuide, rankGuides } from "./content/related-guide";
 import { availableCalculators } from "./calculators";
 import { getCalcParams } from "./calculators-data";
 import { COMPLAINT_MODELS } from "./complaint-models";
+import { matchDossier } from "./content/related-dossier";
 
 // Blocul „Ce înseamnă pentru tine” (concept editorial 2026-10-07): la știrile
 // cu consecință reală, cine e afectat, ce se schimbă, de când, ce faci acum și
@@ -27,6 +28,17 @@ export async function toolCandidates(text: string): Promise<Tool[]> {
     ...COMPLAINT_MODELS.map((m) => ({ id: `model:${m.slug}`, title: `Model: ${m.title}`, href: `/modele-reclamatii/${m.slug}/`, kind: "model" as const })),
     ...rankGuides(text, guides.filter((g) => g.category !== "orase"), 8).map((g) => ({ id: `ghid:${g.slug}`, title: `Ghid: ${g.title}`, href: `/ghiduri/${g.slug}/`, kind: "ghid" as const })),
   ];
+}
+
+// Uneltele unei teme adăugate de editor fără unelte (2026-10-26): dosarul după reguli
+// sau ghidul calculatorului potrivit, abia apoi ghidul cu cuvinte comune + cele 2
+// calculatoare cu cuvinte comune. Uneltele alese se văd în /admin/util/.
+// ponytail: potrivire lexicală; dacă alege des greșit, alegerea o face Claude la scriere.
+export async function autoTools(text: string): Promise<string[]> {
+  const [guides, params] = await Promise.all([getGuides(), getCalcParams()]);
+  const calcs = rankGuides(text, availableCalculators(params), 2);
+  const guide = matchDossier(text) ?? calcs.map((c) => ("guide" in c ? c.guide : undefined)).find(Boolean) ?? bestGuide(text, guides.filter((g) => g.category !== "orase"))?.slug;
+  return [...(guide ? [`ghid:${guide}`] : []), ...calcs.map((c) => `calc:${c.slug}`)];
 }
 
 // Toate uneltele existente, după id — pentru afișare și pentru admin.
