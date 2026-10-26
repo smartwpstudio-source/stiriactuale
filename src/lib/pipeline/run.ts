@@ -225,8 +225,15 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       .map((r) => ({ id: r.id, title: r.title, lead: r.lead }));
     let autoTaken = 0;
     // modul „echilibrat” (2026-10-24): în strict, cea mai importantă știre a rulării
-    // fără ghid se publică totuși (o dată pe rulare, nu și cele internaționale)
-    let topUsed = false;
+    // fără ghid se publică totuși (o dată la ~2 ore, nu și cele internaționale). Nu la
+    // fiecare rulare: rulările pornite din admin una după alta publicau fiecare câte
+    // una (Sângera de două ori, 2026-10-26).
+    const [lastTop] = await db
+      .select({ id: guideChecks.id })
+      .from(guideChecks)
+      .where(and(eq(guideChecks.exempt, "top-rulare"), gte(guideChecks.createdAt, new Date(Date.now() - 110 * 60_000))))
+      .limit(1);
+    let topUsed = Boolean(lastTop);
     const guideMode: GuideRuleMode = await guideRuleMode().catch(() => "raport");
     for (const c of auto.sort((a, b) => b.qualityScore - a.qualityScore)) {
       if (autoTaken >= autoSlots) break;

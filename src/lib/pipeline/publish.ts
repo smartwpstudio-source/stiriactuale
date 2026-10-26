@@ -2,7 +2,7 @@ import { asciiSlug } from "@/lib/ascii-slug";
 import crypto from "node:crypto";
 import { eq, gte, isNotNull } from "drizzle-orm";
 import { getDb } from "./db/client";
-import { articles } from "./db/schema";
+import { appSettings, articles } from "./db/schema";
 import { normalizeTitle } from "./dedup";
 import type { ArticleImage } from "./image";
 import { mediaTag } from "./media-tag";
@@ -19,12 +19,35 @@ function titleHash(title: string): string {
 // Contra republicării aceluiași eveniment în rulările următoare: hash de
 // titlu SAU un URL sursă comun cu un articol din ultimele 72h (două rulări pot
 // alege titluri reprezentative diferite pentru aceeași știre).
+// Amprentele articolelor șterse din admin (2026-10-26): fără ele, sursele încă
+// colectate refăceau articolul la rularea următoare (Adrian Ursu, de 3 ori).
+const DELETED_KEY = "deleted_fingerprints";
+type DeletedFp = { hash: string; urls: string[]; at: number };
+
+async function loadDeleted(): Promise<DeletedFp[]> {
+  const [r] = await getDb().select({ v: appSettings.value }).from(appSettings).where(eq(appSettings.key, DELETED_KEY));
+  try {
+    const all = JSON.parse(r?.v ?? "[]") as DeletedFp[];
+    return all.filter((f) => f.at > Date.now() - RECENT_WINDOW_HOURS * 3600_000);
+  } catch {
+    return [];
+  }
+}
+
+export async function rememberDeleted(fp: { hash: string; urls: string[] }) {
+  const value = JSON.stringify([...(await loadDeleted()), { ...fp, at: Date.now() }]);
+  await getDb().insert(appSettings).values({ key: DELETED_KEY, value }).onConflictDoUpdate({ target: appSettings.key, set: { value } });
+}
+
 export async function loadRecentFingerprints() {
   const since = new Date(Date.now() - RECENT_WINDOW_HOURS * 3600_000);
-  const rows = await getDb()
-    .select({ hash: articles.normalizedTitleHash, urls: articles.sourceUrls })
-    .from(articles)
-    .where(gte(articles.createdAt, since));
+  const rows = [
+    ...(await getDb()
+      .select({ hash: articles.normalizedTitleHash, urls: articles.sourceUrls })
+      .from(articles)
+      .where(gte(articles.createdAt, since))),
+    ...(await loadDeleted()),
+  ];
   return {
     hashes: new Set(rows.map((r) => r.hash)),
     urls: new Set(rows.flatMap((r) => r.urls)),
