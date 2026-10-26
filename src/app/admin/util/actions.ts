@@ -8,6 +8,8 @@ import { requireAdmin } from "@/lib/admin/auth";
 import { dispatchPipeline } from "@/lib/pipeline-dispatch";
 import { requestPlan, requestWrite, UTIL_TYPES } from "@/lib/pipeline/util-plan";
 import { RAION_NAMES } from "@/lib/content/geo";
+import { autoTools } from "@/lib/impact";
+import { todayChisinau } from "@/lib/schedule";
 
 // Planul rubricii Util (src/lib/pipeline/util.ts), din /admin/util/.
 
@@ -30,22 +32,29 @@ export async function addUtilTopic(formData: FormData) {
   const day = String(formData.get("day") ?? "");
   const topic = String(formData.get("topic") ?? "").trim();
   const type = String(formData.get("type") ?? "unealta");
-  const tools = String(formData.get("tools") ?? "")
+  const angle = String(formData.get("angle") ?? "").trim().slice(0, 2000);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(day) || !topic || !(type in UTIL_TYPES)) redirect("/admin/util/?err=1");
+  // uneltele sunt opționale (2026-10-26): fără ele, le alege site-ul după temă
+  let tools = String(formData.get("tools") ?? "")
     .split(/[\s,]+/)
     .filter((t) => /^(ghid|calc|model|reteta):[a-z0-9-]+$/.test(t));
+  if (!tools.length) tools = await autoTools(`${topic} ${angle}`);
+  if (!tools.length) redirect("/admin/util/?err=2");
   const locality = String(formData.get("locality") ?? "");
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(day) || !topic || !(type in UTIL_TYPES) || !tools.length) redirect("/admin/util/?err=1");
-  await getDb()
+  const [row] = await getDb()
     .insert(utilPlan)
     .values({
       day,
       type,
       topic: topic.slice(0, 300),
-      angle: String(formData.get("angle") ?? "").trim().slice(0, 2000) || topic,
+      angle: angle || topic,
       tools,
       locality: locality in RAION_NAMES ? locality : null,
       status: "aprobat",
-    });
+    })
+    .returning({ id: utilPlan.id });
+  // tema de azi se scrie imediat: în plan ar fi a 6-a și n-ar mai intra la orele Util
+  if (day === todayChisinau().toISOString().slice(0, 10)) return writeNow(row.id);
   redirect("/admin/util/");
 }
 

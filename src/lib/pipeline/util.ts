@@ -313,7 +313,8 @@ export async function runUtil(): Promise<string[]> {
     [item] = await db.select().from(utilPlan).where(and(eq(utilPlan.id, asked), inArray(utilPlan.status, ["propus", "aprobat", "esuat"])));
   } else if ((await pipelineEnabled()) && hour >= morningHour() && hour <= lastRunHour()) {
     const due = utilHours().filter((h) => h <= hour).length;
-    const todays = await db.select().from(utilPlan).where(eq(utilPlan.day, today)).orderBy(utilPlan.id);
+    // temele adăugate de editor (mai noi decât planul) au întâietate
+    const todays = await db.select().from(utilPlan).where(eq(utilPlan.day, today)).orderBy(desc(utilPlan.createdAt), utilPlan.id);
     // în primele săptămâni se scriu doar temele aprobate de editor
     if (todays.filter((t) => t.status === "publicat").length < due) item = todays.find((t) => t.status === "aprobat" && t.type !== "reteta"); // rețetele nu mai intră în lentă
   }
