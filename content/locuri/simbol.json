@@ -591,5 +591,355 @@
         "alt": "Ilustrație: tractor pe câmp și spic de grâu"
       }
     ]
+  },
+  {
+    "id": "card-guvernul",
+    "name": "TEMĂ (card instituție/regiune): Guvernul: decizii, ședințe, prim-ministrul și miniștrii",
+    "keywords": "Guvernul, Executivul, prim-ministrul, premierul, ședința Guvernului, hotărâre de Guvern, ministerele, Cabinetul de miniștri",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/guvernul-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Guvernul — Ședința Guvernului"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/guvernul-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Guvernul — Decizii ale Executivului"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/guvernul-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Guvernul — Prim-ministrul"
+      }
+    ]
+  },
+  {
+    "id": "card-parlamentul",
+    "name": "TEMĂ (card instituție/regiune): Parlamentul: legi, ședințe, deputați",
+    "keywords": "Parlamentul, legislativul, deputații, ședința plenară, proiect de lege, legea votată, fracțiunea, președintele Parlamentului",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/parlamentul-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Parlamentul — Ședința plenară"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/parlamentul-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Parlamentul — Legi votate"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/parlamentul-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Parlamentul — Deputații"
+      }
+    ]
+  },
+  {
+    "id": "card-presedintia",
+    "name": "TEMĂ (card instituție/regiune): Președinția: președintele țării, decrete, declarații",
+    "keywords": "Președinția, președintele țării, șefa statului, decret prezidențial, Consiliul Suprem de Securitate, declarația președintelui",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/presedintia-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Președinția — Președintele Republicii Moldova"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/presedintia-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Președinția — Decrete și declarații"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/presedintia-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Președinția — Consiliul Suprem de Securitate"
+      }
+    ]
+  },
+  {
+    "id": "card-transnistria",
+    "name": "TEMĂ (card instituție/regiune): Transnistria: regiunea transnistreană, Tiraspolul, liderii și negocierile",
+    "keywords": "Transnistria, regiunea transnistreană, Tiraspol, liderul de la Tiraspol, Krasnoselski, malul stâng, reglementarea transnistreană, 5+2, separatist",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/transnistria-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Transnistria — Regiunea transnistreană"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/transnistria-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Transnistria — Procesul de reglementare"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/transnistria-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Transnistria — Malul stâng al Nistrului"
+      }
+    ]
+  },
+  {
+    "id": "card-gagauzia",
+    "name": "TEMĂ (card instituție/regiune): Găgăuzia: autonomia, Comratul, bașcanul, Adunarea Populară",
+    "keywords": "Găgăuzia, UTA Găgăuzia, autonomia găgăuză, Comrat, bașcanul, Adunarea Populară, guvernatorul Găgăuziei",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/gagauzia-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Găgăuzia — UTA Găgăuzia"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/gagauzia-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Găgăuzia — Adunarea Populară de la Comrat"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/gagauzia-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Găgăuzia — Alegerile bașcanului"
+      }
+    ]
+  },
+  {
+    "id": "card-alegeri",
+    "name": "TEMĂ (card instituție/regiune): Alegeri: CEC, campanie, vot, rezultate",
+    "keywords": "alegeri, scrutin, vot, CEC, Comisia Electorală Centrală, candidați, campanie electorală, referendum, secții de votare, rezultate",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/alegeri-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Alegeri — Comisia Electorală Centrală"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/alegeri-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Alegeri — Ziua votului"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/alegeri-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Alegeri — Rezultatele scrutinului"
+      }
+    ]
+  },
+  {
+    "id": "card-uniunea-europeana",
+    "name": "TEMĂ (card instituție/regiune): Uniunea Europeană: integrarea, aderarea, fondurile UE",
+    "keywords": "Uniunea Europeană, UE, integrare europeană, aderare, Bruxelles, Comisia Europeană, negocieri de aderare, fonduri europene, Consiliul European",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/uniunea-europeana-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Uniunea Europeană — Integrarea europeană"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/uniunea-europeana-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Uniunea Europeană — Negocierile de aderare"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/uniunea-europeana-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Uniunea Europeană — Fonduri și proiecte europene"
+      }
+    ]
+  },
+  {
+    "id": "card-justitie",
+    "name": "TEMĂ (card instituție/regiune): Justiție: instanțe, judecători, procuratura, sentințe",
+    "keywords": "justiție, instanța, judecătoria, Curtea de Apel, Curtea Supremă, judecători, CSM, procuratura, sentința, dosar în instanță, reforma justiției, vetting",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/justitie-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Justiție — Instanța de judecată"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/justitie-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Justiție — Procuratura"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/justitie-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Justiție — Reforma justiției"
+      }
+    ]
+  },
+  {
+    "id": "card-diplomatie",
+    "name": "TEMĂ (card instituție/regiune): Diplomație: vizite oficiale, ambasade, relații externe",
+    "keywords": "diplomație, MAEIE, ministrul de Externe, ambasador, ambasada, vizită oficială, relații bilaterale, parteneri externi, întâlnire oficială",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/diplomatie-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Diplomație — Relații externe"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/diplomatie-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Diplomație — Vizită oficială"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/diplomatie-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Diplomație — Ministerul Afacerilor Externe"
+      }
+    ]
+  },
+  {
+    "id": "card-primaria-chisinau",
+    "name": "TEMĂ (card instituție/regiune): Primăria Chișinău: Consiliul Municipal, primarul, decizii pentru capitală",
+    "keywords": "Primăria Chișinău, primăria capitalei, Consiliul Municipal Chișinău, CMC, primarul general, Ceban, municipiul Chișinău, decizia primăriei",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/primaria-chisinau-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Primăria Chișinău — Consiliul Municipal"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/primaria-chisinau-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Primăria Chișinău — Decizii pentru capitală"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/primaria-chisinau-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Primăria Chișinău — Primarul general"
+      }
+    ]
+  },
+  {
+    "id": "card-banca-nationala",
+    "name": "TEMĂ (card instituție/regiune): Banca Națională: rata de bază, cursul leului, inflația",
+    "keywords": "BNM, Banca Națională a Moldovei, rata de bază, politica monetară, cursul leului, inflația, rezervele valutare",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/banca-nationala-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Banca Națională — Rata de bază"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/banca-nationala-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Banca Națională — Cursul leului"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/banca-nationala-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Banca Națională — Inflația"
+      }
+    ]
+  },
+  {
+    "id": "card-aparare",
+    "name": "TEMĂ (card instituție/regiune): Apărare și securitate: armata, SIS, spațiul aerian",
+    "keywords": "apărare, Armata Națională, Ministerul Apărării, militari, securitate, SIS, spațiul aerian, exerciții militare, neutralitate",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/aparare-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Apărare și securitate — Armata Națională"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/aparare-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Apărare și securitate — Securitatea statului"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/aparare-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Apărare și securitate — Spațiul aerian"
+      }
+    ]
+  },
+  {
+    "id": "card-ucraina",
+    "name": "TEMĂ (card instituție/regiune): Ucraina: relațiile cu Moldova, vizite, războiul",
+    "keywords": "Ucraina, Kiev, Kyiv, relațiile moldo-ucrainene, Zelenski, războiul din Ucraina, Odesa, vizită în Ucraina",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/ucraina-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Ucraina — Relațiile cu Ucraina"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/ucraina-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Ucraina — Vizită la Kiev"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/ucraina-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Ucraina — Războiul din Ucraina"
+      }
+    ]
+  },
+  {
+    "id": "card-diaspora",
+    "name": "TEMĂ (card instituție/regiune): Diaspora: moldovenii de peste hotare, consulate, votul din străinătate",
+    "keywords": "diaspora, moldovenii de peste hotare, cetățenii din străinătate, consulat, servicii consulare, votul din diaspora, emigranți, migrație",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Diaspora — Moldovenii de peste hotare"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Diaspora — Votul din diaspora"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Diaspora — Servicii consulare"
+      }
+    ]
   }
 ]
