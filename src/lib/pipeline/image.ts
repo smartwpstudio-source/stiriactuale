@@ -64,15 +64,20 @@ export async function stockToBlob(id: number, slug: string): Promise<string> {
   return copyToBlob(data.url ?? data.signed_url!, `articole/${slug}.jpg`);
 }
 
+// Pozele care trădează altă țară sau alt context (2026-10-26: „alegeri” cu steaguri
+// SUA la Găgăuzia, tineri dintr-un grup tipic altor regiuni la Anenii Noi): ies înainte de alegere.
+const FOREIGN = /\b(americans?|usa|u\.s\.?|united states|us (election|flag|vote|capitol)|uk|british|african|afro|black (man|woman|men|women|people|person|girl|boy|family|student)|diverse|diversity|multi-?(ethnic|racial|cultural)|asian|indian|latin[oa]?|hispanic|mexican|chinese|japanese|korean|arab|arabic|muslim|hijab|thanksgiving|halloween)\b/i;
+
 // Haiku alege, după titlurile pozelor, pe cea care arată subiectul principal
 // al știrii (drona, nu câmpul). Niciuna potrivită -> poza generată.
 async function pickStock(subject: string, results: { id: number; title: string }[]): Promise<{ id: number; title: string }[]> {
+  results = results.filter((r) => !FOREIGN.test(r.title));
   if (!results.length) return [];
   try {
     const { best } = await structured<{ best: number[] }>({
       model: HAIKU_MODEL,
       system:
-        "Alegi fotografia ilustrativă pentru o știre. Potrivită = arată SUBIECTUL PRINCIPAL al știrii (obiectul, evenimentul), nu doar decorul sau o temă vagă. Răspunzi cu numerele pozelor potrivite, cea mai bună prima; listă goală dacă niciuna nu arată subiectul.",
+        "Alegi fotografia ilustrativă pentru o știre din Republica Moldova. Potrivită = arată SUBIECTUL PRINCIPAL al știrii (obiectul, evenimentul), nu doar decorul sau o temă vagă. Respingi orice poză care trădează altă țară: steaguri, simboluri, uniforme, inscripții sau sărbători străine (alegeri americane, poliție americană). Oamenii din poză trebuie să poată fi din Moldova (Europa de Est). Răspunzi cu numerele pozelor potrivite, cea mai bună prima; listă goală dacă niciuna nu arată subiectul.",
       prompt: `Știrea: ${subject}\n\nPoze:\n${results.map((r, i) => `${i}. ${r.title}`).join("\n")}`,
       schema: { type: "object", properties: { best: { type: "array", items: { type: "integer" } } }, required: ["best"] },
       maxBudgetUsd: 0.05,
