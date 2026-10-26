@@ -66,7 +66,7 @@ export async function stockToBlob(id: number, slug: string): Promise<string> {
 
 // Pozele care trădează altă țară sau alt context (2026-10-26: „alegeri” cu steaguri
 // SUA la Găgăuzia, tineri dintr-un grup tipic altor regiuni la Anenii Noi): ies înainte de alegere.
-const FOREIGN = /\b(americans?|usa|u\.s\.?|united states|us (election|flag|vote|capitol)|uk|british|african|afro|black (man|woman|men|women|people|person|girl|boy|family|student)|diverse|diversity|multi-?(ethnic|racial|cultural)|asian|indian|latin[oa]?|hispanic|mexican|chinese|japanese|korean|arab|arabic|muslim|hijab|thanksgiving|halloween)\b/i;
+const FOREIGN = /\b(americans?|usa|u\.s\.?|united states|us (election|flag|vote|capitol)|uk|british|african|afro|black (man|woman|men|women|people|person|girl|boy|family|student)|diverse|diversity|multi-?(ethnic|racial|cultural)|asian|indian|latin[oa]?|hispanic|mexican|chinese|japanese|korean|arab|arabic|muslim|hijab|thanksgiving|halloween|trump|putin|zelensk\w*|biden|harris|macron|merz|scholz|erdogan|orban|netanyahu|xi jinping|kim jong|lukashenk\w*|president|politician|celebrity)\b/i;
 
 // Haiku alege, după titlurile pozelor, pe cea care arată subiectul principal
 // al știrii (drona, nu câmpul). Niciuna potrivită -> poza generată.
@@ -143,7 +143,7 @@ async function generate(prompt: string, headers: Record<string, string>): Promis
     headers,
     signal: AbortSignal.timeout(30_000),
     body: JSON.stringify({
-      prompt: `${prompt}. Realistic editorial news photograph, natural light, no text, no logos, no identifiable faces.`,
+      prompt: `${prompt}. Realistic editorial news photograph, natural light, no text, no logos, no identifiable faces, no real or famous people, no politicians.`,
       image_size: { width: 1280, height: 720 },
       enable_safety_checker: true,
       output_format: "jpeg",
