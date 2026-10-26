@@ -25,12 +25,12 @@ export const SCHEMA = {
     stock_query: {
       type: "string",
       description:
-        "2-4 cuvinte în ENGLEZĂ pentru o fotografie de stock care arată SUBIECTUL PRINCIPAL al știrii, nu locul sau decorul (drona căzută într-o vie -> 'military drone wreckage', nu 'vineyard'; zborurile anulate -> 'airport departures board', nu 'city'). Fără nume proprii. La accidente, crime, victime, boli: DOAR obiecte și locuri (bandă de poliție, ambulanță, sală de judecată), niciodată oameni.",
+        "2-4 cuvinte în ENGLEZĂ pentru o fotografie de stock care arată SUBIECTUL PRINCIPAL al știrii, nu locul sau decorul (drona căzută într-o vie -> 'military drone wreckage', nu 'vineyard'; zborurile anulate -> 'airport departures board', nu 'city'). Fără nume proprii. La accidente, crime, victime, boli: DOAR obiecte și locuri (bandă de poliție, ambulanță, sală de judecată), niciodată oameni. Fără cuvinte de țară străină (american, US). La alegeri: 'ballot box' sau 'voting booth', fără steaguri. Dacă subiectul cere oameni (tineri, elevi, pensionari), adaugă 'european' (ex. 'european teenagers meeting').",
     },
     image_prompt: {
       type: "string",
       description:
-        "O propoziție în ENGLEZĂ pentru generarea unei fotografii editoriale realiste a SUBIECTULUI PRINCIPAL al știrii, folosită doar dacă stock-ul nu are nimic. Aceleași reguli: fără persoane identificabile, fără text, fără logo-uri, fără steaguri.",
+        "O propoziție în ENGLEZĂ pentru generarea unei fotografii editoriale realiste a SUBIECTULUI PRINCIPAL al știrii, folosită doar dacă stock-ul nu are nimic. Aceleași reguli: fără persoane identificabile, fără text, fără logo-uri, fără steaguri; oamenii, dacă apar, din Europa de Est, decor din Republica Moldova.",
     },
     impact: {
       type: "object",
