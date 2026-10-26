@@ -20,6 +20,7 @@ import { toEmbedUrl, toPostEmbedUrl } from "@/lib/video";
 import { readVideoSource } from "@/lib/video-source";
 import { absoluteUrl } from "@/lib/seo";
 import { announcePublished, pushNow } from "@/lib/publish-effects";
+import { rememberDeleted } from "@/lib/pipeline/publish";
 import type { Section } from "@/lib/content/types";
 import { IMPACT_TYPES, resolveTools, type Impact, type ImpactType } from "@/lib/impact";
 
@@ -135,7 +136,12 @@ export async function postToFacebookNow(id: number) {
 
 export async function deleteArticle(id: number) {
   await requireAdmin();
-  const [a] = await getDb().delete(articles).where(eq(articles.id, id)).returning({ tg: articles.telegramMessageId, fb: articles.facebookPostId });
+  const [a] = await getDb()
+    .delete(articles)
+    .where(eq(articles.id, id))
+    .returning({ tg: articles.telegramMessageId, fb: articles.facebookPostId, hash: articles.normalizedTitleHash, urls: articles.sourceUrls });
+  // pipeline-ul nu-l mai refăcea din aceleași surse
+  if (a) await rememberDeleted({ hash: a.hash, urls: a.urls });
   if (a?.tg) await deleteFromChannel(a.tg);
   if (a?.fb) await deleteFromPage(a.fb);
   refreshSite();
