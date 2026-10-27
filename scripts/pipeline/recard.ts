@@ -8,6 +8,7 @@ import { articles } from "../../src/lib/pipeline/db/schema";
 import { HAIKU_MODEL, structured } from "../../src/lib/pipeline/llm";
 import { SCHEMA } from "../../src/lib/pipeline/generate";
 import { flagCardImage } from "../../src/lib/pipeline/flag-card";
+import { loadPlaces, matchPlacePhoto } from "../../src/lib/pipeline/places";
 import { requestRevalidate } from "../../src/lib/revalidate";
 
 const { card_eticheta, card_tari } = SCHEMA.properties;
@@ -29,6 +30,8 @@ const { card_eticheta, card_tari } = SCHEMA.properties;
       ),
     );
   console.log(`${rows.length} articole cu stoc / AI`);
+  const cards = loadPlaces().filter((p) => p.id.startsWith("card-"));
+  const used: string[] = [];
   let changed = 0;
   for (const r of rows) {
     const { card_eticheta: label, card_tari: tari } = await structured<{ card_eticheta: string; card_tari: string[] }>({
@@ -39,10 +42,18 @@ const { card_eticheta, card_tari } = SCHEMA.properties;
       maxBudgetUsd: 0.05,
     }).catch(() => ({ card_eticheta: "", card_tari: [] as string[] }));
     if (!label.trim()) continue;
-    console.log(`${r.slug}: ${label} [${tari.join(", ")}]`);
+    const codes = tari.map((t) => t.toLowerCase());
+    // ca în pipeline: cu un stat străin, steagurile; doar Moldova: cardul instituției
+    // sau al regiunii (Transnistria, Găgăuzia…), altfel poza rămâne
+    const foreign = codes.some((t) => t !== "md");
+    // rotația celor 3 variante: ultimele 2 folosite nu se repetă
+    const card = foreign ? null : await matchPlacePhoto(`${r.title}. ${r.lead}`, cards, undefined, used.slice(0, 2));
+    if (card) used.unshift(card.url);
+    if (!foreign && !card) continue;
+    console.log(`${r.slug}: ${foreign ? `${label} [${codes.join(", ")}]` : card!.alt}`);
     changed++;
     if (!apply) continue;
-    const img = await flagCardImage(tari.map((t) => t.toLowerCase()), label.trim().slice(0, 40), r.slug);
+    const img = foreign ? await flagCardImage(codes, label.trim().slice(0, 40), r.slug) : { url: card!.url, credit: card!.credit, alt: card!.alt ?? null };
     await db
       .update(articles)
       .set({ imageUrl: img.url, imageResourceId: null, imageCredit: img.credit, imageAltText: img.alt, updatedAt: new Date() })
@@ -50,4 +61,5 @@ const { card_eticheta, card_tari } = SCHEMA.properties;
   }
   console.log(`${changed} ${apply ? "schimbate" : "de schimbat"}`);
   if (apply && changed) console.log((await requestRevalidate({ since })) ? "site reîmprospătat" : "reîmprospătarea a eșuat");
+  process.exit(0); // conexiunea la bază ține procesul deschis
 })();
