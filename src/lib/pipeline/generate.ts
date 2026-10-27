@@ -27,6 +27,16 @@ export const SCHEMA = {
       description:
         "2-4 cuvinte în ENGLEZĂ pentru o fotografie de stock care arată SUBIECTUL PRINCIPAL al știrii, nu locul sau decorul (drona căzută într-o vie -> 'military drone wreckage', nu 'vineyard'; zborurile anulate -> 'airport departures board', nu 'city'). Fără nume proprii. La accidente, crime, victime, boli: DOAR obiecte și locuri (bandă de poliție, ambulanță, sală de judecată), niciodată oameni. Fără cuvinte de țară străină (american, US). La alegeri: 'ballot box' sau 'voting booth', fără steaguri. Dacă subiectul cere oameni (tineri, elevi, pensionari), adaugă 'european' (ex. 'european teenagers meeting').",
     },
+    card_eticheta: {
+      type: "string",
+      description:
+        "Card în loc de poză: dacă știrea e despre politicieni sau lideri reali, state și relațiile dintre ele, instituții sau clădiri cunoscute (ambasade, ministere, Parlament, Kremlinul) — orice poză de stoc sau generată cu oameni ori clădiri ar fi un fals. Atunci: subiectul în 2-4 cuvinte, în română („Convorbire telefonică”, „Unirea cu România”, „Vizită oficială”, „Sancțiuni”, „Negocieri de pace”, „Alegeri prezidențiale”). Altfel (accident, vreme, prețuri, obiecte, întâmplări): șir gol.",
+    },
+    card_tari: {
+      type: "array",
+      items: { type: "string" },
+      description: "Statele cardului: 1-3 coduri ISO 3166-1 alpha-2, litere mici, cel mai important primul (Moldova = md, Uniunea Europeană = eu). Doar instituții din Moldova: [\"md\"]. Fără card: [].",
+    },
     image_prompt: {
       type: "string",
       description:
@@ -47,7 +57,7 @@ export const SCHEMA = {
       required: ["tip", "cine", "ce", "pasi", "unelte"],
     },
   },
-  required: ["titlu", "slug", "meta_description", "lead", "corp_html", "tag_uri", "alt_text_imagine", "stock_query", "image_prompt"],
+  required: ["titlu", "slug", "meta_description", "lead", "corp_html", "tag_uri", "alt_text_imagine", "stock_query", "image_prompt", "card_eticheta", "card_tari"],
 };
 
 export const SYSTEM_PROMPT = [

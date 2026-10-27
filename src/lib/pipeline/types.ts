@@ -56,6 +56,8 @@ export interface GeneratedArticle {
   alt_text_imagine: string;
   stock_query: string;
   image_prompt: string;
+  card_tari?: string[]; // cardul cu steaguri (flag-card.ts): statele implicate, coduri ISO
+  card_eticheta?: string; // subiectul cardului; gol = poză obișnuită
   video_url?: string; // nu vine de la model: primul video găsit în surse
   impact?: unknown; // brut de la model; validat în generate.ts -> Impact | undefined
 }
