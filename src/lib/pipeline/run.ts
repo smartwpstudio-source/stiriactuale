@@ -16,6 +16,7 @@ import { guideRuleMode, pipelineEnabled } from "./settings";
 import { checkGuide, guideDecision, guideExempt, type GuideRuleMode } from "./guide-rule";
 import { toEmbedUrl, youtubeThumb } from "@/lib/video";
 import { shortVideoArticle } from "./video-article";
+import { flagCardImage } from "./flag-card";
 import { isDuplicate, loadRecentFingerprints, loadUsedImageIds, publishArticle, updateBriefArticle } from "./publish";
 import { mapWithConcurrency } from "./concurrency";
 import { spentUsd } from "./llm";
@@ -308,14 +309,22 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
           ? null
           : await matchOfficialPhoto(subject, officialItems.filter((o) => !usedOfficial.has(o.photo))).then((m) => m && { url: m.photo, credit: m.credit });
         if (official) usedOfficial.add(official.url);
-        const place = editor || official ? null : await matchPlacePhoto(subject, places, c.classification.locality, recentImages);
+        // cardul cu steaguri (2026-10-27): la state, politicieni și instituții, niciodată
+        // stoc sau AI (un om oarecare / o clădire inventată = fals). Cu un stat străin,
+        // cardul bate și ilustrațiile; doar Moldova: întâi cardurile instituțiilor (Guvernul…)
+        const label = generated.card_eticheta?.trim().slice(0, 40) ?? "";
+        const tari = (generated.card_tari ?? []).map((t) => t.toLowerCase());
+        const card = () => flagCardImage(tari, label, generated.slug).catch((err) => (console.error(`Card: ${err instanceof Error ? err.message : err}`), null));
+        const foreign = !!label && tari.some((t) => t !== "md");
+        const place = editor || official || foreign ? null : await matchPlacePhoto(subject, places, c.classification.locality, recentImages);
         const image = editor
           ? editor
           : youtubeThumb(generated.video_url)
           ? null
-          : (place && { url: place.url, resourceId: null, credit: place.credit, alt: place.alt }) ??
-            ((official && (await sourcePhoto(official, generated.slug))) ??
-            (await findArticleImage(generated.stock_query, generated.image_prompt, generated.slug, usedImageIds, subject)));
+          : (official && (await sourcePhoto(official, generated.slug))) ??
+            (foreign ? await card() : null) ??
+            (place && { url: place.url, resourceId: null, credit: place.credit, alt: place.alt }) ??
+            (label ? await card() : await findArticleImage(generated.stock_query, generated.image_prompt, generated.slug, usedImageIds, subject));
         // (VIDEO) / (FOTO) la sfârșitul titlului: cititorul știe din listă ce găsește
         generated.titlu = mediaTag(generated.titlu, !!generated.video_url, c.group.items.some((i) => i.sourceUrl.includes("?foto=1")));
         const articleId = await publishArticle(c, generated, image, kind);
