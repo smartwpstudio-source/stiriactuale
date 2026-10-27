@@ -9,7 +9,12 @@ name: Pipeline stiri
 # CLAUDE_CODE_OAUTH_TOKEN. Oprire de urgență: Actions -> "Pipeline stiri" ->
 # ... -> Disable workflow.
 on:
-  workflow_dispatch: {} # Vercel cron + rulare manuală
+  workflow_dispatch: # cron + rulare manuală
+    inputs:
+      util_toate:
+        description: "Scrie acum toate temele Util de azi încă nepublicate"
+        type: boolean
+        default: false
 
 # Două rulări suprapuse ar produce duplicate — a doua așteaptă.
 concurrency: pipeline
@@ -17,7 +22,7 @@ concurrency: pipeline
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 40 # linkurile editorului n-au plafon
+    timeout-minutes: 70 # linkurile editorului n-au plafon; „util_toate” scrie mai multe articole
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -27,6 +32,7 @@ jobs:
       - run: npm ci
       - run: npm run pipeline:run
         env:
+          UTIL_ALL: ${{ inputs.util_toate && '1' || '' }}
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           MAGNIFIC_API_KEY: ${{ secrets.MAGNIFIC_API_KEY }}

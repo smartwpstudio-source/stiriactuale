@@ -305,6 +305,23 @@ export async function runUtil(): Promise<string[]> {
     }
   }
 
+  // rularea manuală „toate temele de azi” (pipeline.yml, util_toate): tot ce n-a ieșit încă
+  if (process.env.UTIL_ALL === "1") {
+    const rest = await db.select().from(utilPlan).where(and(eq(utilPlan.day, today), inArray(utilPlan.status, ["propus", "aprobat", "esuat"]))).orderBy(utilPlan.id);
+    for (const item of rest.filter((t) => t.type !== "reteta")) {
+      try {
+        const articleId = await writeItem(item);
+        await db.update(utilPlan).set({ status: "publicat", articleId, note: null }).where(eq(utilPlan.id, item.id));
+        log.push(`Util publicat: ${item.topic}`);
+      } catch (e) {
+        const note = e instanceof Error ? e.message : String(e);
+        await db.update(utilPlan).set({ status: "esuat", note: note.slice(0, 500) }).where(eq(utilPlan.id, item.id));
+        log.push(`Util eșuat (${item.topic}): ${note}`);
+      }
+    }
+    return log;
+  }
+
   // tema cerută de editor („Scrie acum”) sau cea a orei
   const asked = Number(await getSetting(WRITE_REQUEST)) || 0;
   let item: Row | undefined;
