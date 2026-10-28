@@ -11,6 +11,7 @@ import { SCHEMA } from "../../src/lib/pipeline/generate";
 import { countryName, flagCardImage } from "../../src/lib/pipeline/flag-card";
 import { findArticleImage } from "../../src/lib/pipeline/image";
 import { loadPlaces, matchPlacePhoto } from "../../src/lib/pipeline/places";
+import { slugify } from "../../src/lib/pipeline/video-article";
 import { requestRevalidate } from "../../src/lib/revalidate";
 
 const { card_eticheta, card_tari, card_tema, stock_query, image_prompt } = SCHEMA.properties;
@@ -36,6 +37,31 @@ export const mentioned = (code: string, text: string) =>
   const since = process.env.RECARD_SINCE || new Date().toISOString();
   const db = getDb();
   const cols = { id: articles.id, slug: articles.slug, title: articles.title, lead: articles.leadText, url: articles.imageUrl };
+
+  // „--muta slug,slug”: articolul rescris cu altă știre (Apă-Canal -> Starlink) primește
+  // adresa după titlul real, rubrica Internațional și cardul; tot site-ul se reface,
+  // ca adresa veche să nu mai arate textul greșit
+  const move = process.argv[process.argv.indexOf("--muta") + 1]?.split(",") ?? [];
+  if (process.argv.includes("--muta")) {
+    for (const r of await db.select(cols).from(articles).where(inArray(articles.slug, move))) {
+      const slug = slugify(r.title.replace(/[(](VIDEO|FOTO)[)]/g, ""));
+      const { card_eticheta: label, card_tari: tari, card_tema: tema } = await structured<{ card_eticheta: string; card_tari: string[]; card_tema: string }>({
+        model: HAIKU_MODEL,
+        system: "Decizi dacă știrea primește card în loc de poză. Răspunzi doar cu câmpurile cerute.",
+        prompt: `${r.title}\n\n${r.lead}`,
+        schema: { type: "object", properties: { card_eticheta, card_tari, card_tema }, required: ["card_eticheta", "card_tari", "card_tema"] },
+        maxBudgetUsd: 0.05,
+      });
+      const img = await flagCardImage(tari.map((t) => t.toLowerCase()), label.trim().slice(0, 40) || "Știri internaționale", slug, tema);
+      await db
+        .update(articles)
+        .set({ slug, section: "international", locality: null, imageUrl: img.url, imageResourceId: null, imageCredit: img.credit, imageAltText: img.alt, updatedAt: new Date() })
+        .where(eq(articles.id, r.id));
+      console.log(`${r.slug} -> international/${slug}: ${img.alt}`);
+    }
+    console.log((await requestRevalidate({ all: true })) ? "site reîmprospătat" : "reîmprospătarea a eșuat");
+    process.exit(0);
+  }
 
   if (process.argv.includes("--repara")) {
     for (const r of await db.select(cols).from(articles).where(inArray(articles.slug, fix))) {

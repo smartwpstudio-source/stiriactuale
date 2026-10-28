@@ -19,7 +19,7 @@ import { shortVideoArticle } from "./video-article";
 import { flagCardImage, INSTITUTIONS } from "./flag-card";
 import { isDuplicate, loadRecentFingerprints, loadUsedImageIds, publishArticle, updateBriefArticle } from "./publish";
 import { mapWithConcurrency } from "./concurrency";
-import { spentUsd } from "./llm";
+import { HAIKU_MODEL, spentUsd, structured } from "./llm";
 import { autoPush } from "./auto-push";
 import { translatePendingRu } from "./ru-news";
 import { alertEditor } from "@/lib/telegram";
@@ -354,6 +354,20 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       try {
         const [old] = await db.select({ sources: articles.sources, lead: articles.leadText, title: articles.title }).from(articles).where(eq(articles.id, u.articleId));
         if (!old) continue;
+        // clasificatorul a legat uneori o știre străină de un „pe scurt” vechi (Apă-Canal
+        // -> Starlink, semaforul de la Hîncești -> atacuri în Dnipropetrovsk): rescrierea
+        // păstra adresa și rubrica vechi. Doar același eveniment se completează.
+        const same = await structured<{ acelasi: boolean }>({
+          model: HAIKU_MODEL,
+          system: "Spui dacă două texte de știri relatează ACELAȘI eveniment concret (același loc, aceiași oameni, aceeași întâmplare). Doar aceeași temă generală nu ajunge.",
+          prompt: `A: ${old.title}. ${old.lead}\n\nB: ${u.group.items.map((i) => `${i.title}. ${i.summary ?? ""}`.slice(0, 400)).join("\n")}`,
+          schema: { type: "object", properties: { acelasi: { type: "boolean" } }, required: ["acelasi"] },
+          maxBudgetUsd: 0.05,
+        }).catch(() => ({ acelasi: false }));
+        if (!same.acelasi) {
+          console.log(`Actualizare respinsă (alt eveniment): ${old.title.slice(0, 60)} <- ${u.group.representativeTitle.slice(0, 60)}`);
+          continue;
+        }
         const group = {
           ...u.group,
           items: [
