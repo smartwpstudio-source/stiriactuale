@@ -37,6 +37,11 @@ export const SCHEMA = {
       items: { type: "string" },
       description: "Statele cardului: 1-3 coduri ISO 3166-1 alpha-2, litere mici, cel mai important primul (Moldova = md, Uniunea Europeană = eu). Doar instituții din Moldova: [\"md\"]. Fără card: [].",
     },
+    card_tema: {
+      type: "string",
+      enum: ["diplomatie", "ue", "razboi", "economie", "politica", "justitie", "social"],
+      description: "Ramura cardului (culoarea lui): diplomatie = vizite, întâlniri, relații bilaterale; ue = integrarea europeană; razboi = război, securitate, armată, sancțiuni; economie = energie, bani, comerț, ajutoare financiare; politica = decizii și conflicte politice, alegeri, expulzări; justitie = instanțe, anchete; social = muncă, migrație, sănătate, educație. Fără card: diplomatie.",
+    },
     image_prompt: {
       type: "string",
       description:
@@ -57,7 +62,7 @@ export const SCHEMA = {
       required: ["tip", "cine", "ce", "pasi", "unelte"],
     },
   },
-  required: ["titlu", "slug", "meta_description", "lead", "corp_html", "tag_uri", "alt_text_imagine", "stock_query", "image_prompt", "card_eticheta", "card_tari"],
+  required: ["titlu", "slug", "meta_description", "lead", "corp_html", "tag_uri", "alt_text_imagine", "stock_query", "image_prompt", "card_eticheta", "card_tari", "card_tema"],
 };
 
 export const SYSTEM_PROMPT = [

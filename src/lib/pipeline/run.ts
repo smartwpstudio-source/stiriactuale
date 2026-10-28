@@ -314,7 +314,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
         // cardul bate și ilustrațiile; doar Moldova: întâi cardurile instituțiilor (Guvernul…)
         const label = generated.card_eticheta?.trim().slice(0, 40) ?? "";
         const tari = (generated.card_tari ?? []).map((t) => t.toLowerCase());
-        const card = () => flagCardImage(tari, label, generated.slug).catch((err) => (console.error(`Card: ${err instanceof Error ? err.message : err}`), null));
+        const card = () => flagCardImage(tari, label, generated.slug, generated.card_tema).catch((err) => (console.error(`Card: ${err instanceof Error ? err.message : err}`), null));
         const foreign = !!label && tari.some((t) => t !== "md");
         const place = editor || official || foreign ? null : await matchPlacePhoto(subject, places, c.classification.locality, recentImages);
         const image = editor
