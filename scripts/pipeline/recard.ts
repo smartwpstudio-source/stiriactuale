@@ -66,6 +66,17 @@ export const mentioned = (code: string, text: string) =>
     process.exit(0);
   }
 
+  // „--simbol slug url”: un card-simbol anume (Irina Rîngaci -> Lupte, nu steaguri)
+  if (process.argv.includes("--simbol")) {
+    const [slug, url] = process.argv.slice(process.argv.indexOf("--simbol") + 1);
+    const place = loadPlaces().flatMap((p) => p.photos).find((p) => p.url === url);
+    if (!place) throw new Error(`nu e în content/locuri: ${url}`);
+    await db.update(articles).set({ imageUrl: url, imageResourceId: null, imageCredit: place.credit, imageAltText: place.alt ?? null, updatedAt: new Date() }).where(eq(articles.slug, slug));
+    console.log(`${slug}: ${place.alt}`);
+    console.log((await requestRevalidate({ since })) ? "site reîmprospătat" : "reîmprospătarea a eșuat");
+    process.exit(0);
+  }
+
   // „--foto slug link”: postarea Telegram avea doar poze, iar articolul primise video
   // din altă poveste și „(VIDEO)”: prima poză sus, celelalte la sfârșitul textului
   if (process.argv.includes("--foto")) {
