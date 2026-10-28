@@ -6,6 +6,7 @@ import {
   FALLBACK_COLOR,
 } from "@/lib/content/topic-meta";
 import type { Topic } from "@/lib/content/types";
+import { miniUrl } from "@/lib/media-url";
 
 // Thumb cu tentă de culoare pe subiect (10-15% opacitate) + icon Tabler centrat —
 // vezi sistem-design-ui.md secțiunea 5. Când articolul are o imagine (stock
@@ -24,12 +25,9 @@ const ICON_CLASSES = {
   teal: "text-teal",
 } as const;
 
-// Arhiva veche are miniaturi gata făcute (384/828 px, scripts/migration/archive-thumbs.ts),
-// iar capturile YouTube sunt deja mici: ambele se servesc direct, fără transformări
-// Cloudflare Images (5.000 incluse pe lună; 3.350 consumate în 5 zile, 2026-10-18).
-const ARCHIVE = "https://media.stiriactuale.info/arhiva/";
-const archiveThumb = (src: string, w: number) =>
-  `https://media.stiriactuale.info/mini/${w}/arhiva/${src.slice(ARCHIVE.length).replace(/\.[a-z0-9]+$/i, "")}.webp`;
+// Toate pozele din R2 au miniaturi gata făcute (384/828 px: putMedia din lib/media.ts,
+// cele vechi prin scripts/migration/archive-thumbs.ts), iar capturile YouTube sunt deja
+// mici: se servesc direct, fără transformări Cloudflare Images (5.000 incluse pe lună).
 
 export function ArticleThumb({
   topics,
@@ -57,20 +55,28 @@ export function ArticleThumb({
   const Icon = topic ? TOPIC_ICONS[topic] : FALLBACK_ICON;
 
   if (imageUrl) {
+    const mini = miniUrl(imageUrl, 828);
+    const fit = contain ? "object-contain" : "object-cover";
     return (
       <div className={`relative overflow-hidden ${className ?? ""}`}>
-        {imageUrl.startsWith(ARCHIVE) ? (
-          // eslint-disable-next-line @next/next/no-img-element -- miniaturi gata făcute, fără optimizare
-          <img
-            src={archiveThumb(imageUrl, 828)}
-            srcSet={`${archiveThumb(imageUrl, 384)} 384w, ${archiveThumb(imageUrl, 828)} 828w`}
-            sizes={sizes}
-            alt={imageAlt ?? ""}
-            loading={priority ? "eager" : "lazy"}
-            fetchPriority={priority ? "high" : undefined}
-            decoding="async"
-            className="absolute inset-0 h-full w-full object-cover"
-          />
+        {mini ? (
+          <>
+            {contain && (
+              // eslint-disable-next-line @next/next/no-img-element -- miniaturi gata făcute, fără optimizare
+              <img src={miniUrl(imageUrl, 384)!} alt="" aria-hidden decoding="async" className="absolute inset-0 h-full w-full scale-110 object-cover blur-2xl" />
+            )}
+            {/* eslint-disable-next-line @next/next/no-img-element -- miniaturi gata făcute, fără optimizare */}
+            <img
+              src={mini}
+              srcSet={`${miniUrl(imageUrl, 384)} 384w, ${mini} 828w`}
+              sizes={sizes}
+              alt={imageAlt ?? ""}
+              loading={priority ? "eager" : "lazy"}
+              fetchPriority={priority ? "high" : undefined}
+              decoding="async"
+              className={`absolute inset-0 h-full w-full ${fit}`}
+            />
+          </>
         ) : (
           <>
             {contain && (
@@ -84,7 +90,7 @@ export function ArticleThumb({
               unoptimized={imageUrl.startsWith("https://i.ytimg.com/")}
               loading={priority ? "eager" : "lazy"}
               fetchPriority={priority ? "high" : undefined}
-              className={contain ? "object-contain" : "object-cover"}
+              className={fit}
             />
           </>
         )}

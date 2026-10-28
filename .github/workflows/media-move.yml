@@ -4,7 +4,8 @@ name: Mutarea imaginilor pe R2
 #   pas = copiere      -> copiază toate fișierele și verifică numărul/mărimea (reluabil)
 #   pas = baza-numara  -> numără adresele vechi din baza de date
 #   pas = baza-aplica  -> înlocuiește adresele vechi cu media.stiriactuale.info
-#   pas = miniaturi-arhiva -> miniaturile 384/828 px ale arhivei (2026-10-18, reluabil)
+#   pas = miniaturi-arhiva -> miniaturile 384/828 px ale arhivei (2026-10-18), din 2026-10-28 și
+#                             ale pozelor din articole/, locuri/, retete/ (reluabil)
 on:
   workflow_dispatch:
     inputs:
@@ -37,7 +38,7 @@ jobs:
         run: npx tsx scripts/migration/blob-urls.ts ${{ inputs.pas == 'baza-aplica' && '--aplica' || '' }}
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-      - name: Miniaturile arhivei
+      - name: Miniaturile pozelor
         if: ${{ inputs.pas == 'miniaturi-arhiva' }}
         run: npx tsx scripts/migration/archive-thumbs.ts
         env:

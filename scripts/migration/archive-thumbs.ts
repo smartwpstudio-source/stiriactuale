@@ -3,15 +3,19 @@
 // Site-ul le servește direct (loader-ul din article-thumb.tsx), fără transformări
 // Cloudflare Images (5.000 incluse pe lună). Rulează în GitHub Actions (media-move.yml,
 // pas = miniaturi-arhiva). Reluabil: sare peste miniaturile care există deja.
+// Din 2026-10-28 și pozele din articole/, locuri/, retete/ (cele noi le primesc la
+// încărcare, putMedia din src/lib/media.ts).
 import sharp from "sharp";
 import { MEDIA_BUCKET, MEDIA_ORIGIN, putMediaExact } from "../../src/lib/media";
+import { MINI_WIDTHS, miniKey } from "../../src/lib/media-url";
 
 const ACCOUNT = process.env.CLOUDFLARE_ACCOUNT_ID!;
 const TOKEN = process.env.CLOUDFLARE_API_TOKEN!;
-const WIDTHS = [384, 828];
+const WIDTHS = MINI_WIDTHS;
+const PREFIXES = ["arhiva/", "articole/", "locuri/", "retete/"];
 const CONCURRENCY = 6;
 
-const thumbKey = (key: string, w: number) => `mini/${w}/${key.replace(/\.[a-z0-9]+$/i, "")}.webp`;
+const thumbKey = miniKey;
 
 async function keys(prefix: string): Promise<Set<string>> {
   const out = new Set<string>();
@@ -29,10 +33,10 @@ async function keys(prefix: string): Promise<Set<string>> {
 }
 
 (async () => {
-  const sources = [...(await keys("arhiva/"))].filter((k) => /\.(jpe?g|png|webp|gif)$/i.test(k));
+  const sources = (await Promise.all(PREFIXES.map(keys))).flatMap((s) => [...s]).filter((k) => /\.(jpe?g|png|webp|gif)$/i.test(k));
   const done = await keys("mini/");
   const todo = sources.filter((k) => WIDTHS.some((w) => !done.has(thumbKey(k, w))));
-  console.log(`arhiva: ${sources.length} imagini, de făcut: ${todo.length}`);
+  console.log(`${PREFIXES.join(" ")}: ${sources.length} imagini, de făcut: ${todo.length}`);
 
   let n = 0;
   const failed: string[] = [];
