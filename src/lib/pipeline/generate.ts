@@ -1,3 +1,4 @@
+import { INSTITUTIONS } from "./flag-card";
 import { structured, OPUS_MODEL } from "./llm";
 import { fetchArticle } from "./fulltext";
 import { toEmbedUrl } from "@/lib/video";
@@ -42,6 +43,12 @@ export const SCHEMA = {
       enum: ["diplomatie", "ue", "razboi", "economie", "politica", "justitie", "social"],
       description: "Ramura cardului (culoarea lui): diplomatie = vizite, întâlniri, relații bilaterale; ue = integrarea europeană; razboi = război, securitate, armată, sancțiuni; economie = energie, bani, comerț, ajutoare financiare; politica = decizii și conflicte politice, alegeri, expulzări; justitie = instanțe, anchete; social = muncă, migrație, sănătate, educație. Fără card: diplomatie.",
     },
+    card_institutie: {
+      type: "string",
+      enum: ["", ...Object.keys(INSTITUTIONS)],
+      description:
+        "Sigla de pe card: instituția din Moldova care DĂ anunțul, legea, decizia, comunicatul sau informația (cine e sursa): guvernul, parlamentul, presedintia, cec, anre, ansa, anta, bnm, cna, cnam, procuratura, politia, frontiera, igsu, ministerele (mae, mai, agricultura, aparare, cultura, economie, educatie, energie, finante, infrastructura, justitie, mediu, munca, sanatate). Relațiile cu alte state (vizite, convorbiri, acorduri, război) rămân cu steaguri: șir gol, chiar dacă anunță MAE. Instituția doar pomenită, nu sursa: șir gol. Fără card: șir gol.",
+    },
     image_prompt: {
       type: "string",
       description:
@@ -62,7 +69,7 @@ export const SCHEMA = {
       required: ["tip", "cine", "ce", "pasi", "unelte"],
     },
   },
-  required: ["titlu", "slug", "meta_description", "lead", "corp_html", "tag_uri", "alt_text_imagine", "stock_query", "image_prompt", "card_eticheta", "card_tari", "card_tema"],
+  required: ["titlu", "slug", "meta_description", "lead", "corp_html", "tag_uri", "alt_text_imagine", "stock_query", "image_prompt", "card_eticheta", "card_tari", "card_tema", "card_institutie"],
 };
 
 export const SYSTEM_PROMPT = [

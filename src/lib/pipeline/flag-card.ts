@@ -28,23 +28,69 @@ export const CARD_THEMES = {
 } as const;
 export type CardTheme = keyof typeof CARD_THEMES;
 
-export async function renderFlagCard(codes: string[], label: string, theme: string = "diplomatie"): Promise<Buffer> {
+// Sigla instituției care dă anunțul (2026-10-28): legea, decizia, comunicatul unei
+// instituții din Moldova primesc sigla ei în locul steagurilor; relațiile dintre
+// state rămân cu steaguri. Siglele: de pe site-urile oficiale (content/sigle/);
+// Președinția și ministerele folosesc stema de stat. Denumirile: gov.md/ro/ministere.
+const SIGLE = path.join(process.cwd(), "content", "sigle");
+export const INSTITUTIONS: Record<string, [name: string, logo: string]> = {
+  guvernul: ["Guvernul Republicii Moldova", "guvernul"],
+  parlamentul: ["Parlamentul Republicii Moldova", "parlamentul"],
+  presedintia: ["Președinția Republicii Moldova", "stema"],
+  cec: ["Comisia Electorală Centrală", "cec"],
+  anre: ["Agenția Națională pentru Reglementare în Energetică", "anre"],
+  ansa: ["Agenția Națională pentru Siguranța Alimentelor", "ansa"],
+  anta: ["Agenția Națională Transport Auto", "stema"],
+  bnm: ["Banca Națională a Moldovei", "bnm"],
+  cna: ["Centrul Național Anticorupție", "cna"],
+  cnam: ["Compania Națională de Asigurări în Medicină", "cnam"],
+  procuratura: ["Procuratura Generală", "procuratura"],
+  politia: ["Inspectoratul General al Poliției", "politia"],
+  frontiera: ["Inspectoratul General al Poliției de Frontieră", "frontiera"],
+  igsu: ["Inspectoratul General pentru Situații de Urgență", "igsu"],
+  mae: ["Ministerul Afacerilor Externe", "stema"],
+  mai: ["Ministerul Afacerilor Interne", "stema"],
+  agricultura: ["Ministerul Agriculturii și Industriei Alimentare", "stema"],
+  aparare: ["Ministerul Apărării", "stema"],
+  cultura: ["Ministerul Culturii", "stema"],
+  economie: ["Ministerul Dezvoltării Economice și Digitalizării", "stema"],
+  educatie: ["Ministerul Educației și Cercetării", "stema"],
+  energie: ["Ministerul Energiei", "stema"],
+  finante: ["Ministerul Finanțelor", "stema"],
+  infrastructura: ["Ministerul Infrastructurii și Dezvoltării Regionale", "stema"],
+  justitie: ["Ministerul Justiției", "stema"],
+  mediu: ["Ministerul Mediului", "stema"],
+  munca: ["Ministerul Muncii și Protecției Sociale", "stema"],
+  sanatate: ["Ministerul Sănătății", "stema"],
+};
+
+export async function renderFlagCard(codes: string[], label: string, theme: string = "diplomatie", institution?: string): Promise<Buffer> {
   const t = CARD_THEMES[theme as CardTheme] ?? CARD_THEMES.diplomatie;
-  const flags = [...new Set(codes.map((c) => c.toLowerCase()))].filter(hasFlag).slice(0, 3);
-  if (!flags.length) flags.push("md");
+  const inst = institution ? INSTITUTIONS[institution] : undefined;
+  const flags = inst ? [] : [...new Set(codes.map((c) => c.toLowerCase()))].filter(hasFlag).slice(0, 3);
+  if (!inst && !flags.length) flags.push("md");
   const W = 1200;
   const H = 675;
-  const fw = flags.length === 1 ? 280 : 220;
-  const fh = (fw * 3) / 4;
+  // sigla: cel mult 210 înălțime, 480 lățime; siglele mici de pe site-uri
+  // (CEC, ANSA ~100 px) nu se măresc peste 2,2x — altfel ies încețoșate
+  const logo = inst && (await sharp(path.join(SIGLE, `${inst[1]}.png`)).metadata());
+  const k = logo ? Math.min(210 / logo.height!, 480 / logo.width!, 2.2) : 0;
+  const lw = logo ? Math.round(logo.width! * k) : 0;
+  const lh = logo ? Math.round(logo.height! * k) : 0;
+  const fw = inst ? lw + 48 : flags.length === 1 ? 280 : 220;
+  const fh = inst ? 210 + 32 : (fw * 3) / 4;
   const gap = 40;
-  const rowW = flags.length * fw + (flags.length - 1) * gap;
+  const n = inst ? 1 : flags.length;
+  const rowW = n * fw + (n - 1) * gap;
   const x0 = t.light ? (W - rowW) / 2 : 80;
   const y0 = 110;
-  const context = flags.map(countryName).join(" · ");
+  const context = inst ? inst[0] : flags.map(countryName).join(" · ");
   const size = Math.min(t.light ? 70 : 84, Math.floor((t.light ? 940 : 1060) / (label.length * 0.58)));
-  const frames = flags
-    .map((_, i) => `<rect x="${x0 + i * (fw + gap) - 4}" y="${y0 - 4}" width="${fw + 8}" height="${fh + 8}" rx="14" fill="${t.light ? "#9AA9C2" : "#FFFFFF"}" fill-opacity="${t.light ? 0.6 : 0.9}"/>`)
-    .join("");
+  const frames = inst
+    ? `<rect x="${x0}" y="${y0}" width="${fw}" height="${fh}" rx="18" fill="#FFFFFF"${t.light ? ` stroke="#9AA9C2" stroke-opacity="0.6" stroke-width="3"` : ""}/>`
+    : flags
+        .map((_, i) => `<rect x="${x0 + i * (fw + gap) - 4}" y="${y0 - 4}" width="${fw + 8}" height="${fh + 8}" rx="14" fill="${t.light ? "#9AA9C2" : "#FFFFFF"}" fill-opacity="${t.light ? 0.6 : 0.9}"/>`)
+        .join("");
   const ty = y0 + fh;
   const body = t.light
     ? `<rect width="${W}" height="${H}" fill="#FFFFFF"/>
@@ -65,7 +111,9 @@ export async function renderFlagCard(codes: string[], label: string, theme: stri
   <text x="${W - 60}" y="${H - 44}" text-anchor="end" font-family="${FONT}" font-size="20" font-weight="700" letter-spacing="3" fill="#FFFFFF" fill-opacity="0.55">ȘTIRI ACTUALE</text>`;
   const bg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">${body}</svg>`;
   const mask = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${fw}" height="${fh}"><rect width="${fw}" height="${fh}" rx="10"/></svg>`);
-  const layers = await Promise.all(
+  const layers = inst
+    ? [{ input: await sharp(path.join(SIGLE, `${inst[1]}.png`)).resize(lw, lh).png().toBuffer(), left: Math.round(x0 + (fw - lw) / 2), top: Math.round(y0 + (fh - lh) / 2) }]
+    : await Promise.all(
     flags.map(async (code, i) => ({
       input: await sharp(readFileSync(path.join(FLAGS, `${code}.svg`)), { density: 300 })
         .resize(fw, fh, { fit: "fill" })
@@ -79,8 +127,9 @@ export async function renderFlagCard(codes: string[], label: string, theme: stri
   return sharp(Buffer.from(bg)).composite(layers).jpeg({ quality: 86 }).toBuffer();
 }
 
-export async function flagCardImage(codes: string[], label: string, slug: string, theme?: string) {
-  const buf = await renderFlagCard(codes, label, theme);
+export async function flagCardImage(codes: string[], label: string, slug: string, theme?: string, institution?: string) {
+  const buf = await renderFlagCard(codes, label, theme, institution);
   const url = await putMedia(`articole/${slug}-card.jpg`, new Uint8Array(buf), "image/jpeg");
-  return { url, resourceId: null, credit: "Grafică: Știri Actuale", alt: `${codes.map(countryName).join(", ")}: ${label}` };
+  const who = institution && INSTITUTIONS[institution] ? INSTITUTIONS[institution][0] : codes.map(countryName).join(", ");
+  return { url, resourceId: null, credit: "Grafică: Știri Actuale", alt: `${who}: ${label}` };
 }

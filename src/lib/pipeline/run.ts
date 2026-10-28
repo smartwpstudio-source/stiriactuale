@@ -16,7 +16,7 @@ import { guideRuleMode, pipelineEnabled } from "./settings";
 import { checkGuide, guideDecision, guideExempt, type GuideRuleMode } from "./guide-rule";
 import { toEmbedUrl, youtubeThumb } from "@/lib/video";
 import { shortVideoArticle } from "./video-article";
-import { flagCardImage } from "./flag-card";
+import { flagCardImage, INSTITUTIONS } from "./flag-card";
 import { isDuplicate, loadRecentFingerprints, loadUsedImageIds, publishArticle, updateBriefArticle } from "./publish";
 import { mapWithConcurrency } from "./concurrency";
 import { spentUsd } from "./llm";
@@ -316,13 +316,19 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
         const tari = (generated.card_tari ?? []).map((t) => t.toLowerCase());
         const card = () => flagCardImage(tari, label, generated.slug, generated.card_tema).catch((err) => (console.error(`Card: ${err instanceof Error ? err.message : err}`), null));
         const foreign = !!label && tari.some((t) => t !== "md");
-        const place = editor || official || foreign ? null : await matchPlacePhoto(subject, places, c.classification.locality, recentImages);
+        // anunțul, legea, decizia unei instituții din Moldova: sigla ei (relațiile
+        // dintre state rămân cu steaguri, de aceea cardul străin vine întâi)
+        const inst = generated.card_institutie && generated.card_institutie in INSTITUTIONS ? generated.card_institutie : "";
+        const logoCard = () =>
+          flagCardImage(["md"], label || "Anunț oficial", generated.slug, generated.card_tema, inst).catch((err) => (console.error(`Card: ${err instanceof Error ? err.message : err}`), null));
+        const place = editor || official || foreign || inst ? null : await matchPlacePhoto(subject, places, c.classification.locality, recentImages);
         const image = editor
           ? editor
           : youtubeThumb(generated.video_url)
           ? null
           : (official && (await sourcePhoto(official, generated.slug))) ??
             (foreign ? await card() : null) ??
+            (inst ? await logoCard() : null) ??
             (place && { url: place.url, resourceId: null, credit: place.credit, alt: place.alt }) ??
             (label ? await card() : await findArticleImage(generated.stock_query, generated.image_prompt, generated.slug, usedImageIds, subject));
         // (VIDEO) / (FOTO) la sfârșitul titlului: cititorul știe din listă ce găsește
