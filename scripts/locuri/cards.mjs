@@ -43,7 +43,42 @@ const THEMES = [
     "Ucraina, Kiev, Kyiv, relațiile moldo-ucrainene, Zelenski, războiul din Ucraina, Odesa, vizită în Ucraina", "Ucraina: relațiile cu Moldova, vizite, războiul"],
   ["diaspora", "Diaspora", ["Moldovenii de peste hotare", "Votul din diaspora", "Servicii consulare"], "plane-departure", ["#3B5DA6", "#16264F"], "#FFFFFF",
     "diaspora, moldovenii de peste hotare, cetățenii din străinătate, consulat, servicii consulare, votul din diaspora, emigranți, migrație", "Diaspora: moldovenii de peste hotare, consulate, votul din străinătate"],
+  // sport (2026-10-28): pictogramele olimpice din domeniul public (Wikimedia Commons,
+  // scripts/locuri/sport/); o sportivă nu primește steaguri și nici doi bărbați din stoc
+  ["lupte", "Lupte", ["Lupte libere", "Lupte greco-romane", "Campionate și turnee"], "pic:lupte", ["#8A2B2B", "#3D0F0F"], "#FFD43B",
+    "lupte, lupte libere, lupte greco-romane, luptător, luptătoare, wrestling, campionatul mondial de lupte, campionatul european de lupte", "Sport, lupte: lupte libere și greco-romane, luptătorii moldoveni, medalii"],
+  ["judo", "Judo", ["Turnee de judo", "Medalii la judo", "Judocanii moldoveni"], "pic:judo", ["#2C4A8A", "#101F42"], "#FFFFFF",
+    "judo, judocan, judocană, tatami, Grand Slam, Grand Prix de judo", "Sport, judo: turnee, judocanii moldoveni, medalii"],
+  ["box", "Box", ["Gala de box", "Pugiliștii moldoveni", "Meciuri și titluri"], "pic:box", ["#6B1F4F", "#2E0A21"], "#FFFFFF",
+    "box, boxer, pugilist, pugilistă, ring, meci de box, gală de box, kickboxing", "Sport, box: meciuri, gale, pugiliștii moldoveni"],
+  ["fotbal", "Fotbal", ["Meciul echipei naționale", "Super Liga", "Cupe europene"], "pic:fotbal", ["#2F7445", "#123520"], "#FFFFFF",
+    "fotbal, meci, echipa națională de fotbal, naționala, Super Liga, Sheriff, Zimbru, Petrocub, Milsami, FMF, gol, antrenor, UEFA, Liga Conferințelor", "Sport, fotbal: naționala, campionatul Moldovei, cupele europene"],
+  ["atletism", "Atletism", ["Concursuri de atletism", "Alergare și sărituri", "Maraton"], "pic:atletism", ["#B0582A", "#4F220C"], "#FFFFFF",
+    "atletism, alergare, maraton, semimaraton, sprint, săritura, aruncarea, atlet, atletă", "Sport, atletism: concursuri, maraton, atleții moldoveni"],
+  ["haltere", "Haltere", ["Haltere", "Campionate de haltere", "Haltrofilii moldoveni"], "pic:haltere", ["#4A4F57", "#1C1F24"], "#E2B84B",
+    "haltere, haltere, haltrofil, haltrofilă, ridicarea greutăților, powerlifting", "Sport, haltere: campionate, haltrofilii moldoveni"],
+  ["sport", "Sport", ["Sportivii moldoveni", "Medalii și competiții", "Campionate internaționale"], "medal", ["#1F5F8A", "#0B2A40"], "#FFD43B",
+    "sport, sportiv, sportivă, medalie, campionat, competiție, olimpiadă, jocurile olimpice, turneu, campion, campioană, lot național", "Sport: sportivii moldoveni, medalii, competiții (când nu e altă temă de sport)"],
 ];
+
+// pictogramele sportive: silueta albă (fundal) și în culoarea accentului (sus)
+const PIC = {};
+async function loadPics() {
+  for (const t of THEMES) {
+    if (!t[3].startsWith("pic:")) continue;
+    const name = t[3].slice(4);
+    const png = await sharp(readFileSync(path.join(process.cwd(), "scripts/locuri/sport", `${name}.svg`)), { density: 300 })
+      .resize(512, 512, { fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } })
+      .ensureAlpha()
+      .toBuffer();
+    const alpha = await sharp(png).extractChannel("alpha").toBuffer();
+    const tint = async (hex) => {
+      const buf = await sharp({ create: { width: 512, height: 512, channels: 3, background: hex } }).joinChannel(alpha).png().toBuffer();
+      return `data:image/png;base64,${buf.toString("base64")}`;
+    };
+    PIC[name] = { white: await tint("#FFFFFF"), accent: await tint(t[5]) };
+  }
+}
 
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
 const FONT = "Segoe UI, Arial, Helvetica, sans-serif";
@@ -65,6 +100,10 @@ function euStars(cx, cy, r, size, color, opacity) {
 }
 
 function icon(name, x, y, size, color, width, opacity) {
+  if (name.startsWith("pic:")) {
+    const p = PIC[name.slice(4)];
+    return `<image x="${x}" y="${y}" width="${size}" height="${size}" opacity="${opacity}" href="${color === "#FFFFFF" ? p.white : p.accent}"/>`;
+  }
   if (name === "stars-eu") return euStars(x + size / 2, y + size / 2, size * 0.36, size * 0.075, color, opacity);
   return `<svg x="${x}" y="${y}" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="${width}" stroke-linecap="round" stroke-linejoin="round" opacity="${opacity}">${iconPaths(name)}</svg>`;
 }
@@ -95,6 +134,7 @@ function card([id, title, subs, ic, [c1, c2], accent], v) {
 </svg>`;
 }
 
+await loadPics();
 const only = process.argv[2];
 const out = [];
 for (const t of THEMES) {

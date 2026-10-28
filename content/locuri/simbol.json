@@ -941,5 +941,180 @@
         "alt": "Card: Diaspora — Servicii consulare"
       }
     ]
+  },
+  {
+    "id": "card-lupte",
+    "name": "TEMĂ (card instituție/regiune): Sport, lupte: lupte libere și greco-romane, luptătorii moldoveni, medalii",
+    "keywords": "lupte, lupte libere, lupte greco-romane, luptător, luptătoare, wrestling, campionatul mondial de lupte, campionatul european de lupte",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/lupte-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Lupte — Lupte libere"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/lupte-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Lupte — Lupte greco-romane"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/lupte-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Lupte — Campionate și turnee"
+      }
+    ]
+  },
+  {
+    "id": "card-judo",
+    "name": "TEMĂ (card instituție/regiune): Sport, judo: turnee, judocanii moldoveni, medalii",
+    "keywords": "judo, judocan, judocană, tatami, Grand Slam, Grand Prix de judo",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/judo-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Judo — Turnee de judo"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/judo-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Judo — Medalii la judo"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/judo-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Judo — Judocanii moldoveni"
+      }
+    ]
+  },
+  {
+    "id": "card-box",
+    "name": "TEMĂ (card instituție/regiune): Sport, box: meciuri, gale, pugiliștii moldoveni",
+    "keywords": "box, boxer, pugilist, pugilistă, ring, meci de box, gală de box, kickboxing",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/box-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Box — Gala de box"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/box-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Box — Pugiliștii moldoveni"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/box-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Box — Meciuri și titluri"
+      }
+    ]
+  },
+  {
+    "id": "card-fotbal",
+    "name": "TEMĂ (card instituție/regiune): Sport, fotbal: naționala, campionatul Moldovei, cupele europene",
+    "keywords": "fotbal, meci, echipa națională de fotbal, naționala, Super Liga, Sheriff, Zimbru, Petrocub, Milsami, FMF, gol, antrenor, UEFA, Liga Conferințelor",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/fotbal-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Fotbal — Meciul echipei naționale"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/fotbal-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Fotbal — Super Liga"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/fotbal-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Fotbal — Cupe europene"
+      }
+    ]
+  },
+  {
+    "id": "card-atletism",
+    "name": "TEMĂ (card instituție/regiune): Sport, atletism: concursuri, maraton, atleții moldoveni",
+    "keywords": "atletism, alergare, maraton, semimaraton, sprint, săritura, aruncarea, atlet, atletă",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/atletism-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Atletism — Concursuri de atletism"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/atletism-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Atletism — Alergare și sărituri"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/atletism-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Atletism — Maraton"
+      }
+    ]
+  },
+  {
+    "id": "card-haltere",
+    "name": "TEMĂ (card instituție/regiune): Sport, haltere: campionate, haltrofilii moldoveni",
+    "keywords": "haltere, haltere, haltrofil, haltrofilă, ridicarea greutăților, powerlifting",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/haltere-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Haltere — Haltere"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/haltere-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Haltere — Campionate de haltere"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/haltere-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Haltere — Haltrofilii moldoveni"
+      }
+    ]
+  },
+  {
+    "id": "card-sport",
+    "name": "TEMĂ (card instituție/regiune): Sport: sportivii moldoveni, medalii, competiții (când nu e altă temă de sport)",
+    "keywords": "sport, sportiv, sportivă, medalie, campionat, competiție, olimpiadă, jocurile olimpice, turneu, campion, campioană, lot național",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/sport-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Sport — Sportivii moldoveni"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/sport-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Sport — Medalii și competiții"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/sport-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Sport — Campionate internaționale"
+      }
+    ]
   }
 ]
