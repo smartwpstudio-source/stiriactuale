@@ -31,7 +31,7 @@ export const SCHEMA = {
     card_eticheta: {
       type: "string",
       description:
-        "Card în loc de poză: dacă știrea e despre politicieni sau lideri reali, state și relațiile dintre ele, instituții sau clădiri cunoscute (ambasade, ministere, Parlament, Kremlinul) — orice poză de stoc sau generată cu oameni ori clădiri ar fi un fals. Atunci: subiectul în 2-4 cuvinte, în română („Convorbire telefonică”, „Unirea cu România”, „Vizită oficială”, „Sancțiuni”, „Negocieri de pace”, „Alegeri prezidențiale”). Altfel (accident, vreme, prețuri, obiecte, întâmplări): șir gol.",
+        "Card în loc de poză: dacă știrea e despre o persoană reală numită (politicieni, lideri, sportivi, artiști, oficiali — o sportivă nu poate apărea ca doi bărbați dintr-o poză de stoc), state și relațiile dintre ele, instituții sau clădiri cunoscute (ambasade, ministere, Parlament, Kremlinul) — orice poză de stoc sau generată cu oameni ori clădiri ar fi un fals. Atunci: subiectul în 2-4 cuvinte, în română („Convorbire telefonică”, „Unirea cu România”, „Vizită oficială”, „Sancțiuni”, „Negocieri de pace”, „Alegeri prezidențiale”). Altfel (accident, vreme, prețuri, obiecte, întâmplări): șir gol.",
     },
     card_tari: {
       type: "array",

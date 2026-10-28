@@ -98,6 +98,10 @@ body {
 /* Reclama laterală fără anunț: coloana se strânge (blocurile din text: ad-slot.tsx) */
 .ad-side:has(ins[data-ad-status="unfilled"]) { display: none; }
 
+/* Auto ads AdSense intră uneori într-o grilă („Ce te afectează acum”): ocupa o
+   celulă și împingea știrile — acum ia rândul întreg, grila rămâne în perechi */
+.grid > .google-auto-placed { grid-column: 1 / -1; }
+
 /* „Printează” la rețete: fără header, bandă, footer și reclame — doar rețeta */
 @media print {
   body:has(#recipe) > :not(main),

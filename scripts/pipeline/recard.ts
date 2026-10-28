@@ -9,7 +9,7 @@ import { articles } from "../../src/lib/pipeline/db/schema";
 import { HAIKU_MODEL, structured } from "../../src/lib/pipeline/llm";
 import { SCHEMA } from "../../src/lib/pipeline/generate";
 import { countryName, flagCardImage } from "../../src/lib/pipeline/flag-card";
-import { findArticleImage } from "../../src/lib/pipeline/image";
+import { copyToBlob, findArticleImage } from "../../src/lib/pipeline/image";
 import { loadPlaces, matchPlacePhoto } from "../../src/lib/pipeline/places";
 import { slugify } from "../../src/lib/pipeline/video-article";
 import { requestRevalidate } from "../../src/lib/revalidate";
@@ -41,10 +41,13 @@ export const mentioned = (code: string, text: string) =>
   // „--muta slug,slug”: articolul rescris cu altă știre (Apă-Canal -> Starlink) primește
   // adresa după titlul real, rubrica Internațional și cardul; tot site-ul se reface,
   // ca adresa veche să nu mai arate textul greșit
-  const move = process.argv[process.argv.indexOf("--muta") + 1]?.split(",") ?? [];
-  if (process.argv.includes("--muta")) {
+  // „--card slug,slug”: doar cardul, fără mutare (o sportivă cu poză de stoc cu doi bărbați)
+  const cardOnly = process.argv.includes("--card");
+  const flag = cardOnly ? "--card" : "--muta";
+  const move = process.argv[process.argv.indexOf(flag) + 1]?.split(",") ?? [];
+  if (process.argv.includes(flag)) {
     for (const r of await db.select(cols).from(articles).where(inArray(articles.slug, move))) {
-      const slug = slugify(r.title.replace(/[(](VIDEO|FOTO)[)]/g, ""));
+      const slug = cardOnly ? r.slug : slugify(r.title.replace(/[(](VIDEO|FOTO)[)]/g, ""));
       const { card_eticheta: label, card_tari: tari, card_tema: tema } = await structured<{ card_eticheta: string; card_tari: string[]; card_tema: string }>({
         model: HAIKU_MODEL,
         system: "Decizi dacă știrea primește card în loc de poză. Răspunzi doar cu câmpurile cerute.",
@@ -55,11 +58,33 @@ export const mentioned = (code: string, text: string) =>
       const img = await flagCardImage(tari.map((t) => t.toLowerCase()), label.trim().slice(0, 40) || "Știri internaționale", slug, tema);
       await db
         .update(articles)
-        .set({ slug, section: "international", locality: null, imageUrl: img.url, imageResourceId: null, imageCredit: img.credit, imageAltText: img.alt, updatedAt: new Date() })
+        .set({ ...(!cardOnly && { slug, section: "international" as const, locality: null }), imageUrl: img.url, imageResourceId: null, imageCredit: img.credit, imageAltText: img.alt, updatedAt: new Date() })
         .where(eq(articles.id, r.id));
-      console.log(`${r.slug} -> international/${slug}: ${img.alt}`);
+      console.log(`${r.slug} -> ${cardOnly ? "card" : `international/${slug}`}: ${img.alt}`);
     }
     console.log((await requestRevalidate({ all: true })) ? "site reîmprospătat" : "reîmprospătarea a eșuat");
+    process.exit(0);
+  }
+
+  // „--foto slug link”: postarea Telegram avea doar poze, iar articolul primise video
+  // din altă poveste și „(VIDEO)”: prima poză sus, celelalte la sfârșitul textului
+  if (process.argv.includes("--foto")) {
+    const [slug, link] = process.argv.slice(process.argv.indexOf("--foto") + 1);
+    const [r] = await db.select({ id: articles.id, title: articles.title, body: articles.bodyHtml }).from(articles).where(eq(articles.slug, slug));
+    const html = await fetch(`${link.replace("/s/", "/")}?embed=1`).then((x) => x.text());
+    const channel = html.match(/tgme_widget_message_owner_name"[^>]*><span[^>]*>([^<]*)/)?.[1] ?? "Telegram";
+    const photos = await Promise.all(
+      [...html.matchAll(/tgme_widget_message_photo_wrap[^>]+background-image:url\('([^']+)'\)/g)].map((m, i) => copyToBlob(m[1], `articole/${slug}-foto-${i + 1}.jpg`)),
+    );
+    if (!r || !photos.length) throw new Error("fără articol sau fără poze");
+    const title = r.title.replace("(VIDEO)", "(FOTO)");
+    const extra = photos.slice(1).map((u) => `<figure><img src="${u}" alt="${title.replace(/"/g, "")}" loading="lazy"><figcaption>Foto: ${channel}</figcaption></figure>`).join("");
+    await db
+      .update(articles)
+      .set({ title, videoUrl: null, imageUrl: photos[0], imageResourceId: null, imageCredit: `Foto: ${channel}`, imageAltText: null, bodyHtml: r.body + extra, updatedAt: new Date() })
+      .where(eq(articles.id, r.id));
+    console.log(`${slug}: ${title}, ${photos.length} poze`);
+    console.log((await requestRevalidate({ since })) ? "site reîmprospătat" : "reîmprospătarea a eșuat");
     process.exit(0);
   }
 
