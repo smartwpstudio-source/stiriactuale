@@ -40,6 +40,7 @@ export function ArticleThumb({
   sizes = "(max-width: 640px) 100vw, 600px",
   priority = false,
   video = false,
+  contain = false,
 }: {
   topics: Topic[];
   imageUrl?: string;
@@ -49,6 +50,7 @@ export function ArticleThumb({
   sizes?: string;
   priority?: boolean; // poza principală a paginii: se încarcă imediat, nu leneș (LCP)
   video?: boolean; // articol cu video: semnul ▶ peste imagine
+  contain?: boolean; // cardul (steaguri, sigle, simboluri) întreg, pe fundal din el estompat — nu tăiat
 }) {
   const topic = topics[0];
   const color = topic ? TOPIC_COLORS[topic] : FALLBACK_COLOR;
@@ -70,16 +72,21 @@ export function ArticleThumb({
             className="absolute inset-0 h-full w-full object-cover"
           />
         ) : (
-          <Image
-            src={imageUrl}
-            alt={imageAlt ?? ""}
-            fill
-            sizes={sizes}
-            unoptimized={imageUrl.startsWith("https://i.ytimg.com/")}
-            loading={priority ? "eager" : "lazy"}
-            fetchPriority={priority ? "high" : undefined}
-            className="object-cover"
-          />
+          <>
+            {contain && (
+              <Image src={imageUrl} alt="" aria-hidden fill sizes={sizes} className="scale-110 object-cover blur-2xl" />
+            )}
+            <Image
+              src={imageUrl}
+              alt={imageAlt ?? ""}
+              fill
+              sizes={sizes}
+              unoptimized={imageUrl.startsWith("https://i.ytimg.com/")}
+              loading={priority ? "eager" : "lazy"}
+              fetchPriority={priority ? "high" : undefined}
+              className={contain ? "object-contain" : "object-cover"}
+            />
+          </>
         )}
         {video && (
           <span className="absolute inset-0 flex items-center justify-center" aria-label="Articol cu video">

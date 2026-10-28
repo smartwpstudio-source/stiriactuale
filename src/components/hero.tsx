@@ -25,6 +25,8 @@ export function Hero({ article }: { article: Article }) {
         topics={article.topics}
         imageUrl={article.imageUrl}
         video={!!article.videoUrl}
+        // cardurile (1200×630) tăiate în coloana înaltă pierdeau stema și textul
+        contain={/-card\.jpg$|\/simbol\//.test(article.imageUrl ?? "")}
         imageAlt={article.imageAlt}
         className="aspect-video w-full lg:aspect-auto lg:h-full lg:min-h-[360px]"
         iconSize={64}
