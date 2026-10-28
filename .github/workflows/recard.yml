@@ -10,11 +10,17 @@ on:
         description: "Aplică schimbările (altfel doar le afișează)"
         type: boolean
         default: false
+      repara:
+        description: "Slug-uri (cu virgulă) care primesc înapoi o poză de stoc"
+        default: ""
+      de_la:
+        description: "Reîmprospătează articolele schimbate de la (ISO), ex. 2026-10-28T11:00:00Z"
+        default: ""
 
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 300
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -22,10 +28,12 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
-      - run: npx tsx scripts/pipeline/recard.ts ${{ inputs.aplica && '--aplica' || '' }}
+      - run: npx tsx scripts/pipeline/recard.ts ${{ inputs.aplica && '--aplica' || '' }} ${{ inputs.repara && format('--repara {0}', inputs.repara) || '' }}
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          MAGNIFIC_API_KEY: ${{ secrets.MAGNIFIC_API_KEY }}
+          RECARD_SINCE: ${{ inputs.de_la }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
