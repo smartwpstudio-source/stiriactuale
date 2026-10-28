@@ -15,6 +15,12 @@ on:
         description: "Scrie acum toate temele Util de azi încă nepublicate"
         type: boolean
         default: false
+      link:
+        description: "Link de publicat acum (ca „Adaugă și publică acum” din admin)"
+        default: ""
+      continuare:
+        description: "Slug-ul articolului pe care linkul îl continuă (opțional)"
+        default: ""
 
 # Două rulări suprapuse ar produce duplicate — a doua așteaptă.
 concurrency: pipeline
@@ -30,9 +36,17 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      - if: inputs.link != ''
+        run: npx tsx scripts/pipeline/add-link.ts
+        env:
+          LINK: ${{ inputs.link }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       - run: npm run pipeline:run
         env:
           UTIL_ALL: ${{ inputs.util_toate && '1' || '' }}
+          CONTINUE_SLUG: ${{ inputs.continuare }}
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           MAGNIFIC_API_KEY: ${{ secrets.MAGNIFIC_API_KEY }}

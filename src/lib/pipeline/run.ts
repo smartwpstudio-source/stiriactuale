@@ -197,8 +197,14 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     });
     const scored: ScoredCandidate[] = [];
     const updates: (ScoredCandidate & { articleId: number })[] = [];
+    // „continuare” din rularea manuală (CONTINUE_SLUG): linkul editorului devine
+    // continuarea acelui articol, nu completarea lui și nici o știre separată
+    const [forced] = process.env.CONTINUE_SLUG
+      ? await db.select({ id: articles.id, title: articles.title }).from(articles).where(eq(articles.slug, process.env.CONTINUE_SLUG))
+      : [];
     classifications.forEach((classification, i) => {
       if (!classification || classification.sameAs !== undefined) return;
+      if (forced && fresh[i].manual) Object.assign(classification, { updateOf: undefined, continuesId: forced.id, continuesTitle: forced.title });
       const c = { group: fresh[i], classification, qualityScore: computeQualityScore(fresh[i], classification) };
       if (classification.updateOf !== undefined && !classification.reject) updates.push({ ...c, articleId: classification.updateOf });
       else scored.push(c);
