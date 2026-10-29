@@ -10,9 +10,9 @@ on:
   workflow_dispatch:
     inputs:
       pas:
-        description: "copiere | hyperdrive | verificare"
+        description: "copiere | hyperdrive | verificare | migrare"
         type: choice
-        options: [copiere, hyperdrive, hyperdrive-limita, verificare, cron]
+        options: [copiere, hyperdrive, hyperdrive-limita, verificare, cron, migrare]
         default: copiere
 
 jobs:
@@ -73,6 +73,21 @@ jobs:
             echo "$t | $a | $b"; [ "$a" = "$b" ] || { echo "DIFERENȚĂ la $t"; exit 1; }
           done
           echo "copiere: OK"
+
+      # migrațiile noi din drizzle/ (ex. 0027: pozele din corpul articolului), doar în
+      # schema site-ului — același control ca la copiere, proiectul Supabase e comun
+      - name: Migrarea
+        if: ${{ inputs.pas == 'migrare' }}
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          set -euo pipefail
+          case "$DATABASE_URL" in *supabase*) ;; *) echo "STOP: DATABASE_URL nu e Supabase"; exit 1;; esac
+          SCHEMA=$(node -e 'const s=require("postgres")(process.env.DATABASE_URL,{max:1});s`select current_schema() as c`.then(r=>{console.log(r[0].c);return s.end()})')
+          [ "$SCHEMA" = "stiriactuale" ] || { echo "STOP: schema curentă e „$SCHEMA”, nu „stiriactuale”"; exit 1; }
+          sed -i 's/"public"\.//g' drizzle/*.sql
+          npx drizzle-kit migrate
+          echo "migrare: OK"
 
       - name: Hyperdrive
         if: ${{ inputs.pas == 'hyperdrive' }}
