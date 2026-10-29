@@ -170,8 +170,10 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
           />
           {/* poza și postarea intră în articol de la publicare — nu după, când e deja în cache */}
           <fieldset className="flex basis-full flex-wrap items-center gap-3 rounded border border-line bg-white px-3 py-2 text-sm">
-            <span className="text-sub">Poză (opțional):</span>
+            <span className="text-sub">Poză de titlu (opțional):</span>
             <PhotoField />
+            <span className="text-sub">Poze în text (opțional, max 6; titlul primește „(FOTO)”):</span>
+            <PhotoField name="photos" multiple />
             <input
               name="credit"
               placeholder="Foto: autorul (ex. IGSU); gol = foto ilustrativă"

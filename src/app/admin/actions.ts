@@ -23,6 +23,7 @@ import { announcePublished, pushNow } from "@/lib/publish-effects";
 import { rememberDeleted } from "@/lib/pipeline/publish";
 import type { Section } from "@/lib/content/types";
 import { IMPACT_TYPES, resolveTools, type Impact, type ImpactType } from "@/lib/impact";
+import { dropPhotoTag, hasBodyPhotos, mediaTag, photoFigures } from "@/lib/pipeline/media-tag";
 
 // Fiecare action verifică sesiunea — sunt endpoint-uri POST publice.
 
@@ -201,6 +202,43 @@ export async function removeImage(id: number) {
   redirect(`/admin/articol/${id}/`);
 }
 
+// Pozele din corpul articolului (la sfârșitul textului), și la articolele publicate:
+// cu poze în text titlul primește „(FOTO)”, fără ele îl pierde.
+export async function addBodyPhotos(id: number, formData: FormData) {
+  await requireAdmin();
+  const db = getDb();
+  const [a] = await db.select({ slug: articles.slug, title: articles.title, body: articles.bodyHtml }).from(articles).where(eq(articles.id, id));
+  if (!a) redirect("/admin/");
+  const credit = String(formData.get("credit") ?? "").trim().slice(0, 80);
+  const files = formData.getAll("photos").filter((f): f is File => f instanceof File && f.size > 0 && f.type.startsWith("image/"));
+  const photos = await Promise.all(
+    files.slice(0, 6).map((f, i) => putMedia(`articole/${a.slug}-text-${i + 1}.jpg`, f, f.type).then((url) => ({ url, credit: credit ? `Foto: ${credit.replace(/^foto:\s*/i, "")}` : null }))),
+  );
+  if (photos.length) {
+    const title = dropPhotoTag(a.title);
+    await db
+      .update(articles)
+      .set({ bodyHtml: a.body + photoFigures(photos, title), title: mediaTag(title, false, true), updatedAt: new Date() })
+      .where(eq(articles.id, id));
+    await refreshArticle(id);
+  }
+  redirect(`/admin/articol/${id}/`);
+}
+
+export async function removeBodyPhoto(id: number, src: string) {
+  await requireAdmin();
+  const db = getDb();
+  const [a] = await db.select({ title: articles.title, body: articles.bodyHtml }).from(articles).where(eq(articles.id, id));
+  if (!a) redirect("/admin/");
+  const body = a.body.replace(/<figure\b[^>]*>[\s\S]*?<\/figure>/gi, (f) => (f.includes(`src="${src}"`) ? "" : f));
+  await db
+    .update(articles)
+    .set({ bodyHtml: body, title: hasBodyPhotos(body) ? a.title : dropPhotoTag(a.title), updatedAt: new Date() })
+    .where(eq(articles.id, id));
+  await refreshArticle(id);
+  redirect(`/admin/articol/${id}/`);
+}
+
 // Butonul "Publică acum": rularea pornește în ~1 minut, nu la următoarea
 // rulare programată. Scrie linkurile adăugate și, ziua, știrile noi din fluxuri.
 // Pornit/Oprit: colectarea și știrile automate (linkurile editorului merg oricum)
@@ -249,7 +287,12 @@ export async function addLink(formData: FormData) {
       : null;
   const imageCredit = String(formData.get("credit") ?? "").trim().slice(0, 80) || null;
   const imageAlt = String(formData.get("photo_alt") ?? "").trim().slice(0, 200) || null;
-  const attached = { postUrl, ...(imageUrl && { imageUrl, imageCredit, imageAlt }) };
+  // pozele pentru text: la sfârșitul articolului, cu aceeași semnătură „Foto”
+  const files = formData.getAll("photos").filter((f): f is File => f instanceof File && f.size > 0 && f.type.startsWith("image/"));
+  const bodyPhotos = await Promise.all(
+    files.slice(0, 6).map((f, i) => putMedia(`articole/manual-${Date.now()}-text-${i + 1}.jpg`, f, f.type).then((url) => ({ url, credit: imageCredit }))),
+  );
+  const attached = { postUrl, ...(imageUrl && { imageUrl, imageCredit, imageAlt }), ...(bodyPhotos.length && { bodyPhotos }) };
 
   // link video (YouTube/Facebook): titlul, canalul și descrierea video-ului;
   // la Facebook titlul îl scrie editorul (câmpul opțional din formular)

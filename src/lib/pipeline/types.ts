@@ -19,6 +19,7 @@ export interface CandidateGroup {
   manual: boolean; // adăugat de editor din /admin — sare peste scor și plafoane
   photo?: { url: string; credit: string | null; alt?: string | null }; // poza încărcată de editor la adăugarea linkului
   postUrl?: string; // postarea cu poze lipită de editor la adăugarea linkului
+  bodyPhotos?: { url: string; credit: string | null }[]; // pozele pentru text încărcate de editor (deja în R2)
   candidateIds: number[];
 }
 
@@ -61,5 +62,6 @@ export interface GeneratedArticle {
   card_tema?: string; // culoarea și forma cardului (CARD_THEMES)
   card_institutie?: string; // sigla instituției-sursă (INSTITUTIONS)
   video_url?: string; // nu vine de la model: primul video găsit în surse
+  photos?: { url: string; credit: string }[]; // nici acestea: pozele din corpul surselor, pentru sfârșitul textului
   impact?: unknown; // brut de la model; validat în generate.ts -> Impact | undefined
 }
