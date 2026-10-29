@@ -190,6 +190,13 @@
       "when": 1791931610844,
       "tag": "0026_material_mister_sinister",
       "breakpoints": true
+    },
+    {
+      "idx": 27,
+      "version": "7",
+      "when": 1793309061233,
+      "tag": "0027_clear_nico_minoru",
+      "breakpoints": true
     }
   ]
 }
