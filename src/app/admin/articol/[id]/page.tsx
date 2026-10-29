@@ -20,8 +20,11 @@ import {
   setFeatured,
   setStatus,
   uploadImage,
+  addBodyPhotos,
+  removeBodyPhoto,
 } from "../../actions";
 import { ConfirmButton } from "../../confirm-button";
+import { PhotoField } from "../../photo-field";
 import { UploadImage } from "../../upload-image";
 import { IMPACT_TYPES } from "@/lib/impact";
 import { pushAudience } from "@/lib/push";
@@ -266,6 +269,26 @@ export default async function EditArticlePage({ params, searchParams }: PageProp
             />
             <button className="self-start rounded bg-teal px-4 py-2 text-sm text-white">Salvează blocul</button>
           </form>
+          <section>
+            <h2 className="mb-2 font-medium text-ink">Poze în text</h2>
+            <p className="mb-2 text-xs text-sub">
+              La sfârșitul articolului, una sub alta. Cu poze în text titlul primește „(FOTO)”; când le scoți pe toate, îl pierde.
+            </p>
+            {[...a.bodyHtml.matchAll(/<figure\b[^>]*>\s*<img\b[^>]*\ssrc="([^"]+)"/gi)].map(([, src]) => (
+              <div key={src} className="mb-2 flex items-center gap-3">
+                {/* eslint-disable-next-line @next/next/no-img-element -- previzualizare admin */}
+                <img src={src} alt="" className="h-16 w-24 rounded object-cover" />
+                <form action={removeBodyPhoto.bind(null, id, src)}>
+                  <button className="text-sm text-alert underline">Scoate</button>
+                </form>
+              </div>
+            ))}
+            <form action={addBodyPhotos.bind(null, id)} className="flex flex-col gap-2 text-sm">
+              <input name="credit" placeholder="Foto: sursa / autorul (ex. Poliția, IGSU)" className={input} />
+              <PhotoField name="photos" multiple />
+              <button className="self-start rounded bg-teal px-4 py-2 text-white">Adaugă pozele (max 6)</button>
+            </form>
+          </section>
           <section>
             <h2 className="mb-2 font-medium text-ink">Imagine</h2>
             <p className="mb-2 text-xs text-sub">

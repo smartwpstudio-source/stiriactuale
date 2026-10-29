@@ -8,6 +8,7 @@ export type StoredCandidate = RawCandidate & {
   imageCredit?: string | null;
   imageAlt?: string | null;
   postUrl?: string | null;
+  bodyPhotos?: { url: string; credit: string | null }[] | null;
 };
 import { stripDiacritics } from "./text-normalize";
 
@@ -70,12 +71,14 @@ function jaccardSimilarity(a: Set<string>, b: Set<string>): number {
 }
 
 // Poza / postarea puse de editor pe linkul lui (admin) trec pe grup.
-function photoOf(items: StoredCandidate[]): Pick<CandidateGroup, "photo" | "postUrl"> {
+function photoOf(items: StoredCandidate[]): Pick<CandidateGroup, "photo" | "postUrl" | "bodyPhotos"> {
   const withPhoto = items.find((i) => i.manual && i.imageUrl);
   const withPost = items.find((i) => i.manual && i.postUrl);
+  const withBody = items.find((i) => i.manual && i.bodyPhotos?.length);
   return {
     ...(withPhoto && { photo: { url: withPhoto.imageUrl!, credit: withPhoto.imageCredit ?? null, alt: withPhoto.imageAlt ?? null } }),
     ...(withPost && { postUrl: withPost.postUrl! }),
+    ...(withBody && { bodyPhotos: withBody.bodyPhotos! }),
   };
 }
 

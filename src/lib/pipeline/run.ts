@@ -7,11 +7,11 @@ import { groupCandidates } from "./dedup";
 import { classifyGroups } from "./classify";
 import { generateArticle } from "./generate";
 import { computeQualityScore } from "./scoring";
-import { findArticleImage, sourcePhoto } from "./image";
+import { copyToBlob, findArticleImage, sourcePhoto } from "./image";
 import { loadOfficialItems, matchOfficialPhoto } from "./official-photos";
 import { loadPlaces, loadSymbolPhotos, matchPlacePhoto } from "./places";
 import { checkRecent } from "./recent-duplicate";
-import { mediaTag } from "./media-tag";
+import { mediaTag, photoFigures, type BodyPhoto } from "./media-tag";
 import { guideRuleMode, pipelineEnabled } from "./settings";
 import { checkGuide, guideDecision, guideExempt, type GuideRuleMode } from "./guide-rule";
 import { toEmbedUrl, youtubeThumb } from "@/lib/video";
@@ -337,8 +337,22 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
             (inst ? await logoCard() : null) ??
             (place && { url: place.url, resourceId: null, credit: place.credit, alt: place.alt }) ??
             (label ? await card() : await findArticleImage(generated.stock_query, generated.image_prompt, generated.slug, usedImageIds, subject));
-        // (VIDEO) / (FOTO) la sfârșitul titlului: cititorul știe din listă ce găsește
-        generated.titlu = mediaTag(generated.titlu, !!generated.video_url, c.group.items.some((i) => i.sourceUrl.includes("?foto=1")));
+        // pozele din text: ale editorului (deja în R2), altfel cele din corpul surselor,
+        // copiate în R2 (fără poza de titlu luată din comunicat); o poză care nu se
+        // descarcă e sărită, articolul nu
+        const body: BodyPhoto[] = c.group.bodyPhotos?.length
+          ? c.group.bodyPhotos
+          : (
+              await Promise.all(
+                (generated.photos ?? [])
+                  .filter((p) => p.url !== official?.url)
+                  .map((p, i) => copyToBlob(p.url, `articole/${generated.slug}-foto-${i + 1}.jpg`).then((url) => ({ url, credit: p.credit }), () => null)),
+              )
+            ).filter((p) => p !== null);
+        if (body.length) generated.corp_html += photoFigures(body, generated.titlu);
+        // (VIDEO) / (FOTO) la sfârșitul titlului: cititorul știe din listă ce găsește;
+        // (FOTO) doar cu poze în text, poza de titlu nu contează
+        generated.titlu = mediaTag(generated.titlu, !!generated.video_url, body.length > 0);
         const articleId = await publishArticle(c, generated, image, kind);
         publishedIds.push(articleId);
         if (c.guide?.checkId) await db.update(guideChecks).set({ articleId }).where(eq(guideChecks.id, c.guide.checkId)).catch(() => {});

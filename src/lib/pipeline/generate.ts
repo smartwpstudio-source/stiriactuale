@@ -1,6 +1,6 @@
 import { INSTITUTIONS } from "./flag-card";
 import { structured, OPUS_MODEL } from "./llm";
-import { fetchArticle } from "./fulltext";
+import { fetchArticle, telegramPhotos } from "./fulltext";
 import { toEmbedUrl } from "@/lib/video";
 import { countryLabel, raionLabel } from "@/lib/content/geo";
 import type { CandidateGroup, ClassificationResult, GeneratedArticle } from "./types";
@@ -209,8 +209,16 @@ export async function generateArticle(
     maxBudgetUsd: 0.5,
   });
   const video = items.map((i) => toEmbedUrl(i.sourceUrl)).find(Boolean) ?? texts.find((t) => t?.video)?.video;
+  // pozele din corpul surselor, cu sursa sub fiecare; la postarea Telegram adăugată de
+  // editor prima poză e deja poza de titlu (add-link.ts)
+  const tg = await Promise.all(
+    items.map((i) => (i.sourceUrl.startsWith("https://t.me/") ? telegramPhotos(i.sourceUrl).then((p) => p.slice(group.photo ? 1 : 0)) : [])),
+  );
+  const photos = items
+    .flatMap((i, k) => [...(texts[k]?.photos ?? []), ...tg[k]].map((url) => ({ url, credit: `Foto: ${i.sourceName}` })))
+    .slice(0, 6);
   // blocul rămâne doar dacă e complet și fiecare cifră din el e în surse
   const impact = validateImpact(article.impact, `${digest} ${group.representativeTitle}`, tools.map((t) => t.id)) ?? undefined;
   if (article.impact && !impact) console.log(`Bloc de impact respins (incomplet sau cifre care nu sunt în surse): ${article.titlu}`);
-  return { ...article, impact, ...(video ? { video_url: video } : {}) };
+  return { ...article, impact, ...(video ? { video_url: video } : {}), photos };
 }

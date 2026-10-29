@@ -82,7 +82,61 @@ function articleVideo(html: string): string | null {
   return direct ?? findVideo(nextFlightChunks(html).join(""));
 }
 
-export function extractArticle(html: string) {
+// Pozele din corpul știrii (2026-10-29, cererea proprietarului: intră la sfârșitul
+// articolului, cu sursa): doar între primul și ultimul paragraf al știrii (plus puțin
+// după, unde stau galeriile) — în rest pagina are logo-uri, reclame, alte știri; fără
+// poza principală (og:image, a titlului), fără cele din linkuri spre alte pagini
+// („citește și”) și fără iconițe.
+const MAX_PHOTOS = 6;
+const TAIL = 1500;
+const JUNK = /\.(svg|gif)([?#]|$)|logo|icon|avatar|author|banner|pixel|emoji|placeholder|sprite/i;
+const stem = (u: string) => u.split(/[?#]/)[0].replace(/-\d+x\d+(?=\.\w+$)/, "").replace(/\.\w+$/, "");
+
+function articlePhotos(body: string, html: string, base: string, paragraphs: string[]): string[] {
+  const story = new Set(paragraphs);
+  const spots = [...body.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)].filter((m) => story.has(text(m[1])));
+  if (!spots.length) return [];
+  const last = spots[spots.length - 1];
+  const article = body.slice(spots[0].index, last.index! + last[0].length + TAIL);
+  const main = meta(html, "og:image");
+  const out = new Map<string, string>();
+  for (const m of article.matchAll(/<img\b[^>]*>/gi)) {
+    const tag = m[0];
+    const attr = (n: string) => tag.match(new RegExp(`\\s${n}=["']([^"']+)["']`, "i"))?.[1];
+    const src = attr("data-src") ?? attr("data-lazy-src") ?? attr("src");
+    if (!src || src.startsWith("data:") || JUNK.test(src) || JUNK.test(attr("class") ?? "")) continue;
+    if (Number(attr("width") ?? 999) < 300) continue;
+    // în interiorul unui <a> spre altă pagină (nu spre poza mare): o știre recomandată
+    const before = article.slice(0, m.index);
+    const open = before.lastIndexOf("<a ");
+    if (open > before.lastIndexOf("</a>")) {
+      const href = before.slice(open).match(/href=["']([^"']+)["']/i)?.[1] ?? "";
+      if (!/\.(jpe?g|png|webp)([?#]|$)/i.test(href)) continue;
+    }
+    let url: string;
+    try {
+      url = new URL(decodeEntities(src), base).href;
+    } catch {
+      continue;
+    }
+    if (!/^https?:/.test(url) || (main && stem(url) === stem(new URL(main, base).href))) continue;
+    if (!out.has(stem(url))) out.set(stem(url), url);
+  }
+  return [...out.values()].slice(0, MAX_PHOTOS);
+}
+
+// Pozele unei postări Telegram (t.me/canal/123, cu sau fără /s/ și parametri)
+export async function telegramPhotos(link: string): Promise<string[]> {
+  const embed = `${link.replace("/s/", "/").split("?")[0]}?embed=1`;
+  try {
+    const html = await fetch(embed, { signal: AbortSignal.timeout(15_000) }).then((r) => r.text());
+    return [...html.matchAll(/tgme_widget_message_photo_wrap[^>]+background-image:url\('([^']+)'\)/g)].map((m) => m[1]).slice(0, MAX_PHOTOS + 1);
+  } catch {
+    return [];
+  }
+}
+
+export function extractArticle(html: string, url?: string) {
   const clean = html.replace(/<(script|style|noscript|nav|footer|aside|form|header)\b[\s\S]*?<\/\1>/gi, " ");
   // <article> când există, altfel toată pagina — paragrafele scurte (meniuri, legende) cad la filtru
   const body = clean.match(/<article\b[\s\S]*<\/article>/i)?.[0] ?? clean;
@@ -98,6 +152,7 @@ export function extractArticle(html: string) {
     description: meta(html, "og:description"),
     text: paragraphs.join("\n").slice(0, MAX_CHARS),
     video: articleVideo(html),
+    photos: url ? articlePhotos(body, html, url, paragraphs) : [],
   };
 }
 
@@ -115,7 +170,7 @@ export async function fetchArticle(url: string, timeoutMs = 15_000) {
       signal: AbortSignal.timeout(timeoutMs),
     });
     if (!res.ok) return null;
-    return extractArticle(await res.text());
+    return extractArticle(await res.text(), res.url || url);
   } catch {
     return null;
   }

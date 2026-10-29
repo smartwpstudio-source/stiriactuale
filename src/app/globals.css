@@ -81,6 +81,15 @@ body {
   color: var(--color-teal);
   text-decoration: underline;
 }
+/* pozele din text (la sfârșitul articolului), sursa dedesubt */
+.prose-article figure { margin-top: 1.5rem; }
+.prose-article figure img { width: 100%; height: auto; border-radius: 0.25rem; }
+.prose-article figcaption {
+  margin-top: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-sub);
+}
 .prose-article blockquote {
   margin-top: 0.75rem;
   border-left: 3px solid var(--color-line);
