@@ -6,7 +6,7 @@ import { receives, parsePrefs, type PushPrefs } from "../../src/lib/push-segment
 import type { Impact } from "../../src/lib/impact-types";
 
 const impact: Impact = { tip: "bani", cine: "toți", ce: "tariful crește la 15,5 lei", pasi: ["verifică factura"], unelte: [], verificat: "2026-10-11" };
-const base: RuCandidate = { section: "national", kind: "stire", archived: false, impact: null, pushWorthy: false, locality: null, country: null, title: "Ședință la primărie", leadText: "Consilierii s-au întrunit." };
+const base: RuCandidate = { section: "national", kind: "stire", archived: false, impact: null, pushWorthy: false, locality: null, country: null, title: "Ședință la primărie", leadText: "Consilierii s-au întrunit.", topics: [] };
 const tr = (o: Partial<RuCandidate>) => shouldTranslateRu({ ...base, ...o });
 
 // --- traducerea în rusă: pozitive, câte una pe regulă
@@ -22,8 +22,15 @@ assert.ok(tr({ leadText: "Autoritățile din stânga Nistrului au anunțat" }), 
 assert.ok(tr({ title: "Regiunea transnistreană fără apă" }), "(c) transnistreană");
 assert.ok(tr({ section: "diaspora", country: "rusia" }), "(d) Rusia");
 assert.ok(tr({ section: "diaspora", country: "israel" }), "(d) Israel");
+assert.ok(tr({ topics: ["economic"] }), "(e) scumpiri, taxe");
+assert.ok(tr({ topics: ["accidente", "criza-energetica"] }), "(e) gaz, curent");
+assert.ok(tr({ topics: ["social"] }), "(e) pensii, ajutoare");
+assert.ok(tr({ topics: ["sanatate"] }), "(e) medicamente");
+assert.ok(tr({ kind: "util" }), "(f) articol propriu Util");
 // negative
 assert.ok(!tr({}), "știre obișnuită");
+assert.ok(!tr({ topics: ["accidente", "criminal"] }), "accident fără temă socială");
+assert.ok(!tr({ section: "international", topics: ["economic"] }), "Lumea, chiar economică");
 assert.ok(!tr({ section: "regiuni", locality: "orhei" }), "Orhei");
 assert.ok(!tr({ section: "diaspora", country: "italia" }), "Italia");
 assert.ok(!tr({ section: "international", pushWorthy: true, impact }), "Lumea nu se traduce niciodată");
