@@ -11,6 +11,10 @@ import { submitIndexNow } from "@/lib/indexnow";
 // știre publicată dacă are bloc de impact, e importantă la nivel național
 // (pushWorthy), e din regiunile vorbitoare de rusă sau din diaspora din
 // Rusia / Israel. Niciodată: Lumea, „pe scurt”, analizele, arhiva.
+// Din 2026-10-30 și toate știrile sociale (temele de mai jos: scumpiri, carburanți,
+// gaz, curent, taxe, pensii, ajutoare, legi și reguli noi) și articolele proprii din Util
+// — jumătate din ele rămâneau netraduse fiindcă n-aveau bloc de impact.
+const RU_TOPICS = new Set(["economic", "criza-energetica", "social", "sanatate"]);
 
 // slug-urile reale din RAION_NAMES (geo.ts): Găgăuzia are doar gagauzia și
 // ceadir-lunga; malul stâng: transnistria și rabnita
@@ -29,6 +33,7 @@ export interface RuCandidate {
   country: string | null;
   title: string;
   leadText: string;
+  topics: string[];
 }
 
 const plain = (s: string) => stripDiacritics(s).toLowerCase();
@@ -38,6 +43,8 @@ export function shouldTranslateRu(a: RuCandidate): boolean {
   return (
     a.impact != null ||
     a.pushWorthy ||
+    a.kind === "util" ||
+    a.topics.some((t) => RU_TOPICS.has(t)) ||
     (a.locality != null && RU_LOCALITIES.has(a.locality)) ||
     // doar titlul și leadul: în corp, Transnistria apare des doar ca fundal
     TRANSNISTRIA.test(plain(`${a.title} ${a.leadText}`)) ||
