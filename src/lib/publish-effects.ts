@@ -8,6 +8,7 @@ import { postToPage } from "@/lib/facebook";
 import { pushBlockedReason, sendPush } from "@/lib/push";
 import { resolveTools } from "@/lib/impact";
 import { countryLabel } from "@/lib/content/geo";
+import { submitIndexNow } from "@/lib/indexnow";
 
 const TOOL_LINE = { calc: "🧮 Calculează", ghid: "📘 Ghid", model: "📝 Model de reclamație" };
 
@@ -40,6 +41,7 @@ export async function announcePublished(id: number, how: "manual" | "auto"): Pro
   const path = articleUrl({ ...a, locality: a.locality ?? undefined, country: a.country ?? undefined });
 
   await notifyEditor(how === "auto" ? "publicat-auto" : "publicat", { id, title: a.title, lead: a.leadText });
+  await submitIndexNow([path]);
   if (!a.telegramMessageId && (await goesToChannel(a, how))) {
     // continuarea unei știri deja postate: marcată, să nu pară aceeași știre de două ori
     const title = a.continuesId ? `🔄 Continuare: ${a.title}` : a.title;

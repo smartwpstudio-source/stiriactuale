@@ -15,6 +15,10 @@ export function Header() {
         </div>
         <NavLinks className="hidden gap-7 font-sans text-base font-medium lg:flex" itemClassName="" />
         <div className="flex items-center gap-2">
+          {/* știrile, ghidurile și calculatoarele în rusă (/ru/) */}
+          <Link prefetch={false} href="/ru/" lang="ru" aria-label="Новости на русском" className="px-1 font-mono text-sm font-medium text-paper hover:text-amber">
+            RU
+          </Link>
           <a href={TELEGRAM_URL} target="_blank" rel="noopener noreferrer" aria-label="Canalul de Telegram" className="text-paper hover:text-amber">
             <IconBrandTelegram size={22} stroke={1.75} />
           </a>

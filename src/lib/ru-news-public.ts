@@ -1,8 +1,8 @@
-// Știrile în rusă (/ru/novosti/, /ru/): vizibile pentru Google și legate din
-// articolele românești abia după primele 10–20 de știri traduse (decizia
-// proprietarului, 2026-10-11). Cât e false: paginile rusești au noindex, nu
-// intră în sitemap, articolele RO n-au hreflang spre ele și nici comutator.
-export const RU_NEWS_PUBLIC: boolean = false;
+// Știrile în rusă (/ru/novosti/, /ru/): publice din 2026-10-30 (decizia proprietarului,
+// după primele zeci de știri traduse) — indexate de la traducere, în sitemap și în
+// news-sitemap, cu hreflang și comutator în articolele RO, trimise prin IndexNow.
+// Cu false: paginile rusești au noindex, nu intră în sitemap, fără hreflang și comutator.
+export const RU_NEWS_PUBLIC: boolean = true;
 
 // Varianta rusă a unei știri (coloana articles.ru) — fără importuri de server.
 export interface RuNews {

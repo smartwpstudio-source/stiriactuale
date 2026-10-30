@@ -4,7 +4,8 @@ import { articles } from "./db/schema";
 import { structured, OPUS_MODEL } from "./llm";
 import { stripDiacritics } from "./text-normalize";
 import type { Impact } from "@/lib/impact-types";
-import type { RuNews } from "@/lib/ru-news-public";
+import { RU_NEWS_PUBLIC, ruNewsPath, type RuNews } from "@/lib/ru-news-public";
+import { submitIndexNow } from "@/lib/indexnow";
 
 // Știrile în rusă, selectiv (decizia proprietarului, 2026-10-11): se traduce o
 // știre publicată dacă are bloc de impact, e importantă la nivel național
@@ -144,11 +145,15 @@ export async function translatePendingRu(limit = 10): Promise<{ done: number; fa
   const todo = rows.filter(shouldTranslateRu).slice(0, limit);
   let done = 0;
   const failed: string[] = [];
+  const fresh: string[] = [];
   for (const a of todo) {
     try {
       const { ru, why } = await translateRu(a);
       await db.update(articles).set({ ru, ruUpdatedAt: new Date() }).where(eq(articles.id, a.id));
-      if (ru) done++;
+      if (ru) {
+        done++;
+        fresh.push(ruNewsPath(a.slug));
+      }
       else {
         failed.push(`${a.id}: ${why}`);
         console.log(`Traducere RU respinsă (${a.id}): ${why}`);
@@ -159,5 +164,7 @@ export async function translatePendingRu(limit = 10): Promise<{ done: number; fa
       console.error(`Traducere RU eșuată (${a.id}): ${err instanceof Error ? err.message : String(err)}`);
     }
   }
+  // știrile rusești sunt publice de la traducere (2026-10-30): Bing, Yandex… le află imediat
+  if (RU_NEWS_PUBLIC) await submitIndexNow(fresh);
   return { done, failed };
 }
