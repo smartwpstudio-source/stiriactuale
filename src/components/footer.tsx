@@ -66,6 +66,9 @@ export function Footer() {
           <Link prefetch={false} href="/azi-in-istorie/" className="hover:text-amber">
             Azi în istorie
           </Link>
+          <Link prefetch={false} href="/ru/" lang="ru" className="hover:text-amber">
+            Новости на русском
+          </Link>
           <div className="mt-2 flex gap-3">
             <a href={TELEGRAM_URL} target="_blank" rel="noopener" aria-label="Telegram" className="flex h-11 w-11 items-center justify-center rounded-full bg-[#229ED9] text-white hover:opacity-85">
               <IconBrandTelegram size={24} stroke={1.75} aria-hidden />
