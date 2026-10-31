@@ -11,7 +11,7 @@ export async function photosMatch(images: Uint8Array[], subject: string): Promis
   const { keep } = await structured<{ keep: boolean[] }>({
     model: HAIKU_MODEL,
     system: "Verifici pozele pentru un articol de știri. Răspunzi doar cu câmpurile cerute.",
-    prompt: `Știrea: ${subject}\n\nPentru fiecare dintre cele ${images.length} poze, în ordine: true doar dacă e o fotografie reală care arată subiectul acestei știri (locul, oamenii, obiectele, documentul despre care e vorba). false pentru: bannere, reclame, afișe de evenimente sau premii, portretul unui prezentator / autor, sigle, capturi cu titlul altei știri, poze despre alt subiect.`,
+    prompt: `Știrea: ${subject}\n\nPentru fiecare dintre cele ${images.length} poze, în ordine: true doar dacă e o fotografie reală, de reportaj, care arată subiectul acestei știri (locul, oamenii, obiectele, documentul despre care e vorba). false pentru: bannere, reclame, afișe de evenimente sau premii, afișe / coperte de emisiuni TV (prezentatori pozând, siglă de emisiune, oră de difuzare — ex. „Cutia Neagră, duminică 19:45”), orice poză cu text promoțional sau siglă suprapusă, portretul unui prezentator / autor, sigle, capturi cu titlul altei știri, poze despre alt subiect. La orice dubiu: false.`,
     schema: { type: "object", properties: { keep: { type: "array", items: { type: "boolean" } } }, required: ["keep"] },
     maxBudgetUsd: 0.1,
     images: previews,
