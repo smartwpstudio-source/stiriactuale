@@ -7,7 +7,11 @@ import { groupCandidates } from "./dedup";
 import { classifyGroups } from "./classify";
 import { generateArticle } from "./generate";
 import { computeQualityScore } from "./scoring";
-import { copyToBlob, findArticleImage, sourcePhoto } from "./image";
+import { findArticleImage, sourcePhoto } from "./image";
+import { MIN_WIDTH } from "./fulltext";
+import { putMedia } from "@/lib/media";
+import sharp from "sharp";
+import { photosMatch } from "./photo-check";
 import { loadOfficialItems, matchOfficialPhoto } from "./official-photos";
 import { loadPlaces, loadSymbolPhotos, matchPlacePhoto } from "./places";
 import { checkRecent } from "./recent-duplicate";
@@ -342,13 +346,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
         // descarcă e sărită, articolul nu
         const body: BodyPhoto[] = c.group.bodyPhotos?.length
           ? c.group.bodyPhotos
-          : (
-              await Promise.all(
-                (generated.photos ?? [])
-                  .filter((p) => p.url !== official?.url)
-                  .map((p, i) => copyToBlob(p.url, `articole/${generated.slug}-foto-${i + 1}.jpg`).then((url) => ({ url, credit: p.credit }), () => null)),
-              )
-            ).filter((p) => p !== null);
+          : await sourceBodyPhotos((generated.photos ?? []).filter((p) => p.url !== official?.url), generated.slug, subject).catch(() => []);
         if (body.length) generated.corp_html += photoFigures(body, generated.titlu);
         // (VIDEO) / (FOTO) la sfârșitul titlului: cititorul știe din listă ce găsește;
         // (FOTO) doar cu poze în text, poza de titlu nu contează
@@ -433,6 +431,25 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       .where(eq(pipelineRuns.id, run.id));
     throw err;
   }
+}
+
+// Pozele din corpul surselor: întâi mărimea reală (miniaturile „alte știri” scapă
+// uneori filtrului din fulltext.ts), apoi verificarea că arată subiectul (photo-check.ts).
+async function sourceBodyPhotos(photos: { url: string; credit: string }[], slug: string, subject: string): Promise<BodyPhoto[]> {
+  const got = (
+    await Promise.all(
+      photos.map(async (p) => {
+        const res = await fetch(p.url, { headers: { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/130 Safari/537.36" }, signal: AbortSignal.timeout(30_000) });
+        if (!res.ok) return null;
+        const data = new Uint8Array(await res.arrayBuffer());
+        if (((await sharp(data).metadata()).width ?? 0) < MIN_WIDTH) return null;
+        return { ...p, data, type: res.headers.get("content-type") ?? "image/jpeg" };
+      }).map((x) => x.catch(() => null)),
+    )
+  ).filter((p) => p !== null);
+  const keep = await photosMatch(got.map((p) => p.data), subject);
+  const ok = got.filter((_, i) => keep[i]);
+  return Promise.all(ok.map(async (p, i) => ({ url: await putMedia(`articole/${slug}-foto-${i + 1}.jpg`, p.data, p.type), credit: p.credit })));
 }
 
 // Pasul „știre cu ghid” pentru o știre care a trecut regulile vechi: caută
