@@ -6,7 +6,7 @@
 //   - ultimele N articole citite                -> rămân disponibile offline
 //   - notificări push (handler la final) — doar știrile de rezonanță, vezi src/lib/push.ts
 
-const VERSION = "v4"; // v4: iconițele noi (Ș) — șterge cache-ul cu cele vechi
+const VERSION = "v5"; // v5: pagina offline e fișier static (offline.html), nu pagina Next /offline/
 const STATIC_CACHE = `stiriactuale-static-${VERSION}`;
 const PAGES_CACHE = `stiriactuale-pages-${VERSION}`;
 const ARTICLE_CACHE = `stiriactuale-articles-${VERSION}`;
@@ -17,7 +17,7 @@ const MAX_STATIC_ENTRIES = 150;
 
 const CURRENT_CACHES = [STATIC_CACHE, PAGES_CACHE, ARTICLE_CACHE];
 
-const OFFLINE_URL = "/offline/";
+const OFFLINE_URL = "/offline.html";
 
 self.addEventListener("install", (event) => {
   // pagina "fără conexiune" e salvată de la instalare, ca să existe chiar dacă

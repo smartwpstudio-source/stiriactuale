@@ -5,7 +5,19 @@ import { font } from "@/lib/og-font";
 // titlul pe fundalul site-ului. /og/?t=Titlu&s=Secțiune — URL-ul conține tot
 // conținutul, deci răspunsul se poate cache-ui permanent.
 
+// Pe Workers, răspunsul rutei nu intră singur în cache-ul Cloudflare: fără Cache API,
+// fiecare distribuire redesena imaginea (~370 ms de procesor, 2026-10-31).
+const edge = () => (globalThis as { caches?: { default?: Cache } }).caches?.default;
+
 export async function GET(request: Request) {
+  const hit = await edge()?.match(request.url);
+  if (hit) return hit;
+  const res = await draw(request);
+  await edge()?.put(request.url, res.clone());
+  return res;
+}
+
+async function draw(request: Request) {
   const params = new URL(request.url).searchParams;
   const title = (params.get("t") ?? "Stiri actuale").slice(0, 160);
   const section = (params.get("s") ?? "").slice(0, 40);

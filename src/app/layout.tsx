@@ -47,7 +47,8 @@ export const metadata: Metadata = {
   openGraph: {
     siteName: "Știri Actuale",
     locale: "ro_MD",
-    images: [{ url: "/og/?t=%C8%98tiri%20din%20Moldova%20%E2%80%94%20regiuni%2C%20na%C8%9Bional%2C%20interna%C8%9Bional%2C%20diaspora", width: 1200, height: 630 }],
+    // fișier static (public/og-implicit.png, desenat o dată de /og/): fără Worker la fiecare distribuire
+    images: [{ url: "/og-implicit.png", width: 1200, height: 630 }],
   },
   icons: {
     icon: [

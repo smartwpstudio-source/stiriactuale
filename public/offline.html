@@ -1,0 +1,31 @@
+<!doctype html>
+<!-- Servită de service worker (sw.js, OFFLINE_URL) când cititorul e fără internet și
+     pagina cerută nu e în cache. Fișier static (2026-10-31): fiecare cititor nou o
+     descărca la instalarea service worker-ului, iar ca pagină Next pornea Worker-ul. -->
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Fără conexiune | Știri Actuale</title>
+<style>
+  body { margin: 0; background: #eaeeea; color: #141820; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  header { background: #141820; padding: 14px 16px; }
+  header span { color: #eaeeea; font: 900 20px/1 Georgia, serif; letter-spacing: 0.02em; }
+  main { max-width: 36rem; margin: 0 auto; padding: 96px 16px; text-align: center; }
+  p.k { font: 12px/1.4 ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.05em; color: #5c6259; }
+  h1 { font: 500 30px/1.2 Georgia, serif; margin: 12px 0 0; }
+  p { line-height: 1.6; }
+  a { display: inline-block; margin-top: 24px; background: #141820; color: #eaeeea; padding: 8px 16px; border-radius: 4px; text-decoration: none; }
+</style>
+</head>
+<body>
+<header><span>ȘTIRI ACTUALE</span></header>
+<main>
+  <p class="k">fără conexiune</p>
+  <h1>Nu ai internet acum</h1>
+  <p>Pagina asta nu a fost salvată pe dispozitiv. Ultimele articole pe care le-ai citit rămân disponibile și fără internet — încearcă din nou când revine conexiunea.</p>
+  <a href="/">Prima pagină</a>
+</main>
+</body>
+</html>
