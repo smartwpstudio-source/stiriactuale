@@ -1,4 +1,5 @@
 import { decodeEntities } from "@/lib/html-entities";
+import { stripDiacritics } from "./text-normalize";
 import { findVideo } from "@/lib/video";
 
 // Textul integral al unei știri de pe pagina sursei. RSS-ul dă doar 2-3 fraze;
@@ -88,9 +89,20 @@ function articleVideo(html: string): string | null {
 // poza principală (og:image, a titlului), fără cele din linkuri spre alte pagini
 // („citește și”) și fără iconițe.
 const MAX_PHOTOS = 6;
+export const MIN_WIDTH = 500;
 const TAIL = 1500;
 const JUNK = /\.(svg|gif)([?#]|$)|logo|icon|avatar|author|banner|pixel|emoji|placeholder|sprite/i;
 const stem = (u: string) => u.split(/[?#]/)[0].replace(/-\d+x\d+(?=\.\w+$)/, "").replace(/\.\w+$/, "");
+
+// Descrierea lungă a pozei care nu are aproape nimic comun cu titlul știrii = titlul
+// altei știri (blocurile promo). Descrierile scurte („Petru Pelivan”) trec.
+const words = (s: string) => new Set(stripDiacritics(decodeEntities(s)).toLowerCase().split(/[^a-z0-9]+/).filter((w) => w.length > 3).map((w) => w.slice(0, 5)));
+function otherHeadline(alt: string, title: string): boolean {
+  const a = words(alt);
+  if (a.size < 6) return false;
+  const t = words(title);
+  return [...a].filter((w) => t.has(w)).length / a.size < 0.3;
+}
 
 function articlePhotos(body: string, html: string, base: string, paragraphs: string[]): string[] {
   const story = new Set(paragraphs);
@@ -99,13 +111,20 @@ function articlePhotos(body: string, html: string, base: string, paragraphs: str
   const last = spots[spots.length - 1];
   const article = body.slice(spots[0].index, last.index! + last[0].length + TAIL);
   const main = meta(html, "og:image");
+  const title = meta(html, "og:title") || text(html.match(/<title>([^<]*)<\/title>/i)?.[1] ?? "");
   const out = new Map<string, string>();
   for (const m of article.matchAll(/<img\b[^>]*>/gi)) {
     const tag = m[0];
     const attr = (n: string) => tag.match(new RegExp(`\\s${n}=["']([^"']+)["']`, "i"))?.[1];
     const src = attr("data-src") ?? attr("data-lazy-src") ?? attr("src");
     if (!src || src.startsWith("data:") || JUNK.test(src) || JUNK.test(attr("class") ?? "")) continue;
-    if (Number(attr("width") ?? 999) < 300) continue;
+    // miniaturile „alte știri” dintre paragrafe (Radio Chișinău 235x132, TV8 ?width=204):
+    // mărimea din atribute sau din adresă; poza reală se verifică și după descărcare (run.ts)
+    if (Number(attr("width") ?? 999) < MIN_WIDTH || Number(attr("height") ?? 999) < 250) continue;
+    const sized = src.match(/\/(\d{2,4})x\d{2,4}\//)?.[1] ?? src.match(/[?&](?:w|width)=(\d+)/i)?.[1];
+    if (sized && Number(sized) < MIN_WIDTH) continue;
+    // descrierea pozei e titlul altei știri („Breaking news” la TV8, poza de 828 px)
+    if (otherHeadline(attr("alt") ?? "", title)) continue;
     // în interiorul unui <a> spre altă pagină (nu spre poza mare): o știre recomandată
     const before = article.slice(0, m.index);
     const open = before.lastIndexOf("<a ");
@@ -119,7 +138,8 @@ function articlePhotos(body: string, html: string, base: string, paragraphs: str
     } catch {
       continue;
     }
-    if (!/^https?:/.test(url) || (main && stem(url) === stem(new URL(main, base).href))) continue;
+    // fără adresă proprie, poza ajunge la adresa paginii
+    if (!/^https?:/.test(url) || stem(url) === stem(base) || (main && stem(url) === stem(new URL(main, base).href))) continue;
     if (!out.has(stem(url))) out.set(stem(url), url);
   }
   return [...out.values()].slice(0, MAX_PHOTOS);

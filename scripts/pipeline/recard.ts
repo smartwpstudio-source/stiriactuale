@@ -13,6 +13,8 @@ import { copyToBlob, findArticleImage } from "../../src/lib/pipeline/image";
 import { loadPlaces, matchPlacePhoto } from "../../src/lib/pipeline/places";
 import { slugify } from "../../src/lib/pipeline/video-article";
 import { requestRevalidate } from "../../src/lib/revalidate";
+import { photosMatch } from "../../src/lib/pipeline/photo-check";
+import { dropPhotoTag, hasBodyPhotos } from "../../src/lib/pipeline/media-tag";
 
 const { card_eticheta, card_tari, card_tema, stock_query, image_prompt } = SCHEMA.properties;
 
@@ -96,6 +98,43 @@ export const mentioned = (code: string, text: string) =>
       .where(eq(articles.id, r.id));
     console.log(`${slug}: ${title}, ${photos.length} poze`);
     console.log((await requestRevalidate({ since })) ? "site reîmprospătat" : "reîmprospătarea a eșuat");
+    process.exit(0);
+  }
+
+  // „--verifica-poze”: pozele din text luate din surse după 2026-10-29, trecute prin
+  // verificarea din photo-check.ts; cele fără legătură ies (și din varianta rusă),
+  // titlul pierde „(FOTO)” dacă nu mai rămâne niciuna. Fără „--aplica” doar afișează.
+  if (process.argv.includes("--verifica-poze")) {
+    const rows = await db
+      .select({ id: articles.id, slug: articles.slug, title: articles.title, lead: articles.leadText, body: articles.bodyHtml, ru: articles.ru })
+      .from(articles)
+      .where(and(eq(articles.status, "published"), gte(articles.publishedAt, new Date("2026-10-29T21:00:00Z")), ilike(articles.bodyHtml, "%<figure>%")));
+    let removed = 0;
+    for (const r of rows) {
+      const figs = [...r.body.matchAll(/<figure\b[^>]*>[\s\S]*?<\/figure>/gi)].map((m) => m[0]).filter((f) => /src="https:\/\/media\.stiriactuale\.info\/[^"]*-foto-/.test(f));
+      if (!figs.length) continue;
+      const data = await Promise.all(
+        figs.map((f) => fetch(f.match(/src="([^"]+)"/)![1]).then(async (x) => (x.ok ? new Uint8Array(await x.arrayBuffer()) : null), () => null)),
+      );
+      const ok = await photosMatch(data.filter((d) => d !== null), `${r.title}. ${r.lead}`);
+      let k = 0;
+      const bad = figs.filter((_, i) => !(data[i] && ok[k++]));
+      console.log(`${r.slug}: ${figs.length} poze, ${bad.length} scoase`);
+      if (!bad.length) continue;
+      removed += bad.length;
+      if (!apply) continue;
+      // după adresa pozei: în varianta rusă descrierea e tradusă
+      const badSrc = new Set(bad.map((f) => f.match(/src="([^"]+)"/)![1]));
+      const strip = (html: string) => html.replace(/<figure\b[^>]*>[\s\S]*?<\/figure>/gi, (f) => (badSrc.has(f.match(/src="([^"]+)"/)?.[1] ?? "") ? "" : f));
+      const body = strip(r.body);
+      const ru = r.ru && { ...r.ru, bodyHtml: strip(r.ru.bodyHtml), title: hasBodyPhotos(body) ? r.ru.title : r.ru.title.replace(/\s*[(]ФОТО[)]\s*$/i, "") };
+      await db
+        .update(articles)
+        .set({ bodyHtml: body, title: hasBodyPhotos(body) ? r.title : dropPhotoTag(r.title), ...(ru && { ru }), updatedAt: new Date() })
+        .where(eq(articles.id, r.id));
+    }
+    console.log(`${removed} poze ${apply ? "scoase" : "de scos"}`);
+    if (apply) console.log((await requestRevalidate({ since })) ? "site reîmprospătat" : "reîmprospătarea a eșuat");
     process.exit(0);
   }
 

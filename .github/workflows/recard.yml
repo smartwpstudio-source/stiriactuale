@@ -25,6 +25,10 @@ on:
       simbol:
         description: "slug + spațiu + adresa cardului-simbol (https://stiriactuale.info/simbol/...)"
         default: ""
+      verifica_poze:
+        description: "Pozele din text luate din surse: scoate-le pe cele fără legătură cu știrea"
+        type: boolean
+        default: false
       de_la:
         description: "Reîmprospătează articolele schimbate de la (ISO), ex. 2026-10-28T11:00:00Z"
         default: ""
@@ -40,7 +44,7 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
-      - run: npx tsx scripts/pipeline/recard.ts ${{ inputs.aplica && '--aplica' || '' }} ${{ inputs.repara && format('--repara {0}', inputs.repara) || '' }} ${{ inputs.muta && format('--muta {0}', inputs.muta) || '' }} ${{ inputs.card && format('--card {0}', inputs.card) || '' }} ${{ inputs.foto && format('--foto {0}', inputs.foto) || '' }} ${{ inputs.simbol && format('--simbol {0}', inputs.simbol) || '' }}
+      - run: npx tsx scripts/pipeline/recard.ts ${{ inputs.aplica && '--aplica' || '' }} ${{ inputs.repara && format('--repara {0}', inputs.repara) || '' }} ${{ inputs.muta && format('--muta {0}', inputs.muta) || '' }} ${{ inputs.card && format('--card {0}', inputs.card) || '' }} ${{ inputs.foto && format('--foto {0}', inputs.foto) || '' }} ${{ inputs.simbol && format('--simbol {0}', inputs.simbol) || '' }} ${{ inputs.verifica_poze && '--verifica-poze' || '' }}
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}

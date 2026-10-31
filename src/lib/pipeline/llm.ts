@@ -33,9 +33,27 @@ export async function structured<T>(opts: {
   maxBudgetUsd: number;
   // căutare și citire pe internet (rubrica Util: fapte doar din surse citite)
   web?: boolean;
+  // poze JPEG (base64) puse înaintea textului — verificarea pozelor din text (run.ts)
+  images?: string[];
 }): Promise<T> {
+  const prompt = opts.images?.length
+    ? (async function* () {
+        yield {
+          type: "user" as const,
+          parent_tool_use_id: null,
+          session_id: "",
+          message: {
+            role: "user" as const,
+            content: [
+              ...opts.images!.map((data) => ({ type: "image" as const, source: { type: "base64" as const, media_type: "image/jpeg" as const, data } })),
+              { type: "text" as const, text: opts.prompt },
+            ],
+          },
+        };
+      })()
+    : opts.prompt;
   for await (const m of query({
-    prompt: opts.prompt,
+    prompt,
     options: {
       model: opts.model,
       systemPrompt: opts.system,
