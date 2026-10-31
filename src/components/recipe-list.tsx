@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import { ArticleThumb } from "./article-thumb";
 import Link from "next/link";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { SectionHeading } from "@/components/section-heading";
@@ -93,7 +93,7 @@ export async function RecipeList({ lang }: { lang: Lang }) {
               <li key={r.slug} className={r.fasting ? "" : "group-has-[#doar-post:checked]/list:hidden"}>
                 <Link prefetch={false} href={recipePath(r.slug, lang)} className="group block overflow-hidden rounded border border-line bg-white">
                   <div className="relative aspect-[3/2] bg-line">
-                    <Image src={r.image.url} alt={r.image.alt} fill sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw" className="object-cover" />
+                    <ArticleThumb topics={[]} imageUrl={r.image.url} imageAlt={r.image.alt} sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw" className="h-full w-full" />
                     {r.fasting && (
                       <span className="absolute left-2 top-2 rounded bg-teal px-2 py-0.5 font-mono text-xs uppercase tracking-wide text-white">{t.fasting}</span>
                     )}

@@ -154,3 +154,4 @@ if (!only) {
   writeFileSync(file, `${JSON.stringify([...all, ...out], null, 2)}\n`);
 }
 console.log(`carduri: ${out.length * 3}`);
+await import("./simbol-mini.mjs");

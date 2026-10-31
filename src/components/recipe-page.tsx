@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import { ArticleThumb } from "./article-thumb";
 import Link from "next/link";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { ShareButtons } from "@/components/share-buttons";
@@ -243,7 +243,7 @@ export async function RecipePage({ r, lang, hasOther }: { r: Recipe; lang: Lang;
 
       <figure className="mt-5 print:hidden">
         <div className="relative aspect-[3/2] overflow-hidden rounded bg-line">
-          <Image src={r.image.url} alt={r.image.alt} fill sizes="(min-width: 760px) 728px, 100vw" loading="eager" fetchPriority="high" className="object-cover" />
+          <ArticleThumb topics={[]} imageUrl={r.image.url} imageAlt={r.image.alt} sizes="(min-width: 760px) 728px, 100vw" priority className="h-full w-full" />
         </div>
         <figcaption className="mt-1.5 font-mono text-xs text-sub">
           {r.image.alt}. {t.photo}: {r.image.credit}
