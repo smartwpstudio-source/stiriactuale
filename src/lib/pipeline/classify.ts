@@ -73,7 +73,7 @@ const SYSTEM_PROMPT = [
   "",
   "public_tinta — cine ar citi știrea, după experiența editorului (asta decide ce se publică):",
   "- grupuri: impact social major, valoare informativă pentru oameni din ORICE localitate, și din Drochia, și din Ialoveni, și din Chișinău: prețuri, carburanți, tarife, facturi, pensii, salarii, ajutoare, taxe, legi și reguli noi care schimbă ceva concret, sănătate, siguranță, alerte; cazuri de rezonanță națională, scandaluri politice mari.",
-  "- local: legată de o localitate concretă din raioane, iar oamenii de acolo vor să o citească: accident, incendiu, furt, bătaie, crimă, tragedie, drum, apă, școală, spital, primărie, oameni de acolo. NU se aplică pentru Chișinău, Bălți, Găgăuzia (Comrat, Ceadîr-Lunga, Vulcănești) și Transnistria.",
+  "- local: legată de o localitate concretă din raioane, iar oamenii de acolo vor să o citească: accident, incendiu, furt, bătaie, crimă, tragedie, drum, apă, școală, spital, primărie, oameni de acolo. NU se aplică pentru Chișinău, Bălți, Găgăuzia (Comrat, Ceadîr-Lunga, Vulcănești) și Transnistria. Intră aici și o decizie sau un proiect de nivel național cu efect concret asupra unor raioane, chiar dacă nu le numește: o vamă nouă pentru camioane înseamnă drumuri încărcate în raioanele de pe traseu (Costești–Stânca: Soroca, Drochia, Râșcani); la fel un drum, un apeduct, o linie electrică.",
   "- Chișinău, Bălți, Găgăuzia, Transnistria: grupuri DOAR dacă au impact național, scandal politic sau caz de rezonanță. Accidentele, faptele penale și noutățile locale obișnuite de acolo sunt pagina.",
   "- pagina: restul, fără un public clar: politică de rutină, declarații, protocol, majoritatea știrilor internaționale, război fără legătură directă cu Moldova.",
   "",
