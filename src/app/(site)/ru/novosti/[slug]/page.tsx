@@ -15,6 +15,7 @@ import { calcText } from "@/components/calc/i18n";
 import { COMPLAINT_MODELS, modelText } from "@/lib/complaint-models";
 import { AI_IMAGE_PREFIX } from "@/lib/pipeline/image";
 import { RU_NEWS_PUBLIC, ruNewsPath } from "@/lib/ru-news-public";
+import { ViewBeacon } from "@/components/view-beacon";
 import type { CalculatorSlug } from "@/lib/calculators";
 
 // Știrea tradusă în rusă (src/lib/pipeline/ru-news.ts). Ca la articolele RO:
@@ -147,6 +148,7 @@ export default async function RuNewsPage({ params }: { params: Promise<{ slug: s
       <p className="mt-8 rounded border border-line bg-white p-4 text-sm text-sub">
         Перевод новости с румынского языка. <Link prefetch={false} href="/ru/" className="text-teal underline">Все новости на русском</Link>
       </p>
+      <ViewBeacon slug={article.slug} lang="ru" />
     </article>
   );
 }

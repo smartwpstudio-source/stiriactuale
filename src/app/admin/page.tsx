@@ -39,13 +39,13 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
     section: articles.section,
     locality: articles.locality,
     country: articles.country,
-    score: articles.qualityScore,
     image: articles.imageUrl,
     video: articles.videoUrl,
     push: articles.pushWorthy,
     pushSentAt: articles.pushSentAt,
     status: articles.status,
     views: articles.views,
+    ruViews: articles.ruViews,
     createdAt: articles.createdAt,
     publishedAt: articles.publishedAt,
   };
@@ -76,7 +76,7 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
             {r.video && <span title="are video din sursă">▶</span>}
             {!r.image && !r.video && <span className="font-mono text-xs text-alert">fără foto</span>}
             <span className="w-16 text-right font-mono text-xs text-sub" title="afișări pe site">{r.views} viz.</span>
-            <span className="font-mono text-xs text-sub" title="scor pipeline">{Math.round(r.score)}</span>
+            <span className="w-14 text-right font-mono text-xs text-sub" title="afișări ale variantei în rusă">RU {r.ruViews}</span>
           </Link>
           {/* alerta push: automat pentru urgențe/legi (auto-push.ts) sau manual cu clopoțelul de la fiecare știre */}
           {r.status === "published" &&
