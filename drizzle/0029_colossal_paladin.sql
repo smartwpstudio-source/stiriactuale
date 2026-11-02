@@ -1,0 +1,1 @@
+ALTER TABLE "articles" ADD COLUMN "ru_views" integer DEFAULT 0 NOT NULL;
