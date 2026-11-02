@@ -105,6 +105,7 @@ export async function publishArticle(
         normalizedTitleHash: titleHash(candidate.group.representativeTitle),
         sourceCount: candidate.group.sourceNames.length,
         qualityScore: candidate.qualityScore,
+        audience: candidate.classification.audience,
         imageUrl: image?.url,
         imageResourceId: image?.resourceId,
         imageCredit: image?.credit,

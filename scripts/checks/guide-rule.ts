@@ -10,7 +10,7 @@ import {
   validatePick,
   type GuideCheck,
 } from "../../src/lib/pipeline/guide-rule";
-import { passesSelection } from "../../src/lib/pipeline/run";
+import { passesSelection, reviewRank } from "../../src/lib/pipeline/run";
 import { missingGuidesReport, NO_PRACTICAL_NEED } from "../../src/lib/admin/guide-report";
 import type { ScoredCandidate } from "../../src/lib/pipeline/types";
 
@@ -106,6 +106,16 @@ assert.deepEqual(r.topics[0], { topic: "Sezonul de încălzire", count: 2, examp
 assert.equal(r.topics[1].topic, NO_PRACTICAL_NEED, "„fără nevoie practică” la final, deși are mai multe știri");
 assert.deepEqual(r.days[0], { day: "2026-10-12", published: 1, checked: 5, withoutGuide: 5, rejected: 1 });
 assert.deepEqual(r.days[1], { day: "2026-10-11", published: 1, checked: 2, withoutGuide: 0, rejected: 0 });
+
+// --- algoritmul editorului: publicul țintă trece fără prag de scor și fără ghid
+assert.ok(passesSelection(cand({ audience: "local" }, 10)), "local, scor mic: trece");
+assert.ok(passesSelection(cand({ audience: "grupuri" }, 10)), "grupuri, scor mic: trece");
+assert.ok(!passesSelection(cand({ audience: "pagina" }, 10)), "pagina, scor mic: nu trece");
+assert.ok(passesSelection(cand({ audience: "pagina" }, 80)), "pagina, scor mare: trece");
+assert.ok(!passesSelection(cand({ audience: "local", reject: true }, 90)), "respinsă rămâne respinsă");
+assert.equal(reviewRank("Accident la Drochia: un mort"), 2);
+assert.equal(reviewRank("Prețul la motorină crește mâine"), 1);
+assert.equal(reviewRank("Accident la Bălți"), 0);
 
 console.log("guide-rule: OK");
 process.exit(0);

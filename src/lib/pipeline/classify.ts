@@ -32,6 +32,7 @@ const SCHEMA = {
           locality: { type: "string", enum: Object.keys(RAION_NAMES), description: "DOAR dacă section=regiuni." },
           country: { type: "string", enum: Object.keys(COUNTRY_NAMES), description: "DOAR dacă section=diaspora." },
           topics: { type: "array", items: { type: "string", enum: TOPICS }, description: "0-3 subiecte." },
+          public_tinta: { type: "string", enum: ["grupuri", "local", "pagina"], description: "Publicul știrii, după criteriile din instrucțiuni." },
           impact: { type: "number", description: "0-100, după criteriile editoriale din instrucțiuni." },
           factual_richness: { type: "number", description: "0-100: cifre, nume, locație clară vs. titlu vag." },
           confidence: { type: "number", description: "0-100: știre confirmată vs. speculație/sursă unică nesigură." },
@@ -51,7 +52,7 @@ const SCHEMA = {
             description: "Numărul N al unui articol recent [RN] din aceeași poveste, dacă grupul e o continuare (evenimentul acela s-a încheiat; acum: reacții, anchetă, consecințe, descoperiri noi).",
           },
         },
-        required: ["id", "section", "topics", "impact", "factual_richness", "confidence", "reject", "push_alert", "sensitive"],
+        required: ["id", "section", "topics", "public_tinta", "impact", "factual_richness", "confidence", "reject", "push_alert", "sensitive"],
       },
     },
   },
@@ -69,6 +70,12 @@ const SYSTEM_PROMPT = [
   "- national: R. Moldova la nivel de țară, inclusiv relatat de presa străină.",
   "- international: fără legătură centrală cu R. Moldova.",
   "În caz de dubiu pentru regiuni/diaspora, alege national sau international.",
+  "",
+  "public_tinta — cine ar citi știrea, după experiența editorului (asta decide ce se publică):",
+  "- grupuri: impact social major, valoare informativă pentru oameni din ORICE localitate, și din Drochia, și din Ialoveni, și din Chișinău: prețuri, carburanți, tarife, facturi, pensii, salarii, ajutoare, taxe, legi și reguli noi care schimbă ceva concret, sănătate, siguranță, alerte; cazuri de rezonanță națională, scandaluri politice mari.",
+  "- local: legată de o localitate concretă din raioane, iar oamenii de acolo vor să o citească: accident, incendiu, furt, bătaie, crimă, tragedie, drum, apă, școală, spital, primărie, oameni de acolo. NU se aplică pentru Chișinău, Bălți, Găgăuzia (Comrat, Ceadîr-Lunga, Vulcănești) și Transnistria.",
+  "- Chișinău, Bălți, Găgăuzia, Transnistria: grupuri DOAR dacă au impact național, scandal politic sau caz de rezonanță. Accidentele, faptele penale și noutățile locale obișnuite de acolo sunt pagina.",
+  "- pagina: restul, fără un public clar: politică de rutină, declarații, protocol, majoritatea știrilor internaționale, război fără legătură directă cu Moldova.",
   "",
   "Impact (0-100) — cât contează pentru un cititor obișnuit. Mare (70-100):",
   "- accidente, crime, corupție, scandaluri, acuzații publice grave, cazuri de rezonanță;",
@@ -96,6 +103,8 @@ const SYSTEM_PROMPT = [
   "reject=true când SUBIECTUL PRINCIPAL al știrii sunt drogurile (consum, trafic, capturi, laboratoare, plantații de cânepă, droguri sintetice/etnobotanice); dacă drogurile apar doar ca detaliu într-un caz mai larg (un proces, o persoană publică), NU respinge pentru asta — decizia redacției, risc de penalizare Google.",
   "reject=true pentru: horoscop, publicitate/advertorial/promoții, monden și vedete fără interes public, rețete, sfaturi generale, sondaje de opinie online, rezultate sportive fără legătură cu Moldova, știri vechi reluate.",
 ].join("\n");
+
+const BIG_PLACES = new Set(["chisinau", "balti", "gagauzia", "ceadir-lunga", "transnistria", "rabnita"]);
 
 // "interes Telegram ×2.4, 5.370 vizualizări" — semnal real de la public, nu doar al nostru
 function interestLine(g: CandidateGroup): string {
@@ -135,6 +144,7 @@ export async function classifyGroups(
       locality?: string;
       country?: string;
       topics?: Topic[];
+      public_tinta?: "grupuri" | "local" | "pagina";
       impact: number;
       factual_richness: number;
       confidence: number;
@@ -159,6 +169,8 @@ export async function classifyGroups(
       locality: section === "regiuni" ? it.locality : undefined,
       country: section === "diaspora" ? it.country : undefined,
       topics: it.topics ?? [],
+      // orașele mari și autonomiile n-au public „local” (AI-ul mai greșește, testat 2026-11-03)
+      audience: it.public_tinta === "local" && BIG_PLACES.has(it.locality ?? "") ? "pagina" : (it.public_tinta ?? "pagina"),
       impact: it.impact,
       factualRichness: it.factual_richness,
       confidence: it.confidence,

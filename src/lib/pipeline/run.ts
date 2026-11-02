@@ -16,9 +16,11 @@ import { loadOfficialItems, matchOfficialPhoto } from "./official-photos";
 import { loadPlaces, loadSymbolPhotos, matchPlacePhoto } from "./places";
 import { checkRecent } from "./recent-duplicate";
 import { mediaTag, photoFigures, type BodyPhoto } from "./media-tag";
-import { guideRuleMode, pipelineEnabled } from "./settings";
+import { pipelineEnabled } from "./settings";
 import { checkGuide, guideDecision, guideExempt, type GuideRuleMode } from "./guide-rule";
 import { toEmbedUrl, youtubeThumb } from "@/lib/video";
+import { RAION_NAMES } from "@/lib/content/geo";
+import { stripDiacritics } from "./text-normalize";
 import { shortVideoArticle } from "./video-article";
 import { flagCardImage, INSTITUTIONS } from "./flag-card";
 import { isDuplicate, loadRecentFingerprints, loadUsedImageIds, publishArticle, updateBriefArticle } from "./publish";
@@ -58,9 +60,28 @@ const MAX_ARTICLES_PER_RUN = 4;
 
 // Regulile vechi de selecție automată (reject de la clasificator, pragul de
 // scor al secțiunii). Regula „știre cu ghid” vine abia DUPĂ ele (guideStep).
+// Algoritmul editorului (2026-11-03): știrile cu public clar (grupuri, local) trec fără
+// prag de scor și sunt alese primele; restul doar țin site-ul viu, cu pragul de scor.
+export const hasAudience = (c: ScoredCandidate) => c.classification.audience === "grupuri" || c.classification.audience === "local";
 export function passesSelection(c: ScoredCandidate): boolean {
   const { section, reject } = c.classification;
-  return !c.group.manual && !reject && c.qualityScore >= SECTION_CONFIG[section].minScore;
+  return !c.group.manual && !reject && (hasAudience(c) || c.qualityScore >= SECTION_CONFIG[section].minScore);
+}
+const byAudience = (a: ScoredCandidate, b: ScoredCandidate) => Number(hasAudience(b)) - Number(hasAudience(a)) || b.qualityScore - a.qualityScore;
+
+// Doar MAX_GROUPS_TO_CLASSIFY grupuri ajung la evaluare: ordinea decide cine e văzut. Înainte,
+// cele cu multe surse treceau primele și știrea locală cu o sursă rămânea pe dinafară.
+const BIG_PLACES = new Set(["chisinau", "balti", "gagauzia", "ceadir-lunga", "transnistria", "rabnita"]);
+const SMALL_PLACE = new RegExp(
+  `\\b(${Object.entries(RAION_NAMES)
+    .filter(([slug]) => !BIG_PLACES.has(slug))
+    .map(([, name]) => stripDiacritics(name).toLowerCase())
+    .join("|")})\\b`,
+);
+const MONEY = /\b(benzina|motorina|carburant|scump|ieftin|pret|preturi|tarif|factur|pensi|salari|compensat|ajutor|indemniz|impozit|tva|gaz|curent)/;
+export function reviewRank(title: string): number {
+  const t = stripDiacritics(title).toLowerCase();
+  return SMALL_PLACE.test(t) ? 2 : MONEY.test(t) ? 1 : 0;
 }
 
 export interface PipelineRunSummary {
@@ -170,7 +191,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       .sort(
         (a, b) =>
           Number(b.manual) - Number(a.manual) ||
-          b.sourceNames.length - a.sourceNames.length ||
+          reviewRank(b.representativeTitle) - reviewRank(a.representativeTitle) ||
           b.items[0].publishedAt.getTime() - a.items[0].publishedAt.getTime(),
       )
       .slice(0, MAX_GROUPS_TO_CLASSIFY);
@@ -229,7 +250,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     }
     const auto = [...bySection].flatMap(([section, list]) =>
       // dimineața (06:00), Lumea are prioritate: noaptea Moldova doarme, știrile vin din lume
-      list.sort((a, b) => b.qualityScore - a.qualityScore).slice(0, section === "international" && hour === firstHour ? 4 : SECTION_CONFIG[section].cap),
+      list.sort(byAudience).slice(0, section === "international" && hour === firstHour ? 4 : SECTION_CONFIG[section].cap),
     );
     // a doua verificare de dubluri, per știre, față de articolele din ultimele
     // 48h (recent-duplicate.ts) — locul unei dubluri îl ia următoarea știre
@@ -237,19 +258,12 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       .filter((r) => r.publishedAt.getTime() > Date.now() - 48 * 3600_000)
       .map((r) => ({ id: r.id, title: r.title, lead: r.lead }));
     let autoTaken = 0;
-    // modul „echilibrat” (2026-10-24): în strict, cea mai importantă știre a rulării
-    // fără ghid se publică totuși (o dată la ~2 ore, nu și cele internaționale). Nu la
-    // fiecare rulare: rulările pornite din admin una după alta publicau fiecare câte
-    // una (Sângera de două ori, 2026-10-26).
-    const [lastTop] = await db
-      .select({ id: guideChecks.id })
-      .from(guideChecks)
-      .where(and(eq(guideChecks.exempt, "top-rulare"), gte(guideChecks.createdAt, new Date(Date.now() - 110 * 60_000))))
-      .limit(1);
-    let topUsed = Boolean(lastTop);
-    const guideMode: GuideRuleMode = await guideRuleMode().catch(() => "raport");
-    for (const c of auto.sort((a, b) => b.qualityScore - a.qualityScore)) {
+    // știrile fără public clar: puține, doar ca site-ul să rămână viu și reprezentativ
+    const maxPageOnly = hour === firstHour ? 3 : 1;
+    let pageOnly = 0;
+    for (const c of auto.sort(byAudience)) {
       if (autoTaken >= autoSlots) break;
+      if (!hasAudience(c) && pageOnly >= maxPageOnly) continue;
       const v = await checkRecent(c.group, recent48);
       if (v.duplicateOf) {
         console.log(`Dublură a articolului ${v.duplicateOf}, nescrisă: ${c.group.representativeTitle.slice(0, 80)}`);
@@ -259,13 +273,13 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
         c.classification.continuesId = v.continuesId;
         c.classification.continuesTitle = recent48.find((r) => r.id === v.continuesId)?.title;
       }
-      // regula „știre cu ghid” (guide-rule.ts): filtru ÎN PLUS, după toate
-      // regulile de mai sus; în strict, locul știrii fără ghid îl ia următoarea
-      const step = await guideStep(c, guideMode, summary, !topUsed);
-      if (!step.publish) continue;
-      if (step.top) topUsed = true;
+      // ghidul nu mai oprește nicio știre (decizia editorului, 2026-11-03: se publicau știri
+      // slabe pentru că aveau ghid, iar accidentul de la Marianca de Jos, respins aici, a adunat
+      // 1.036 de vizualizări la editor). Calitatea știrii decide; ghidul se pune dacă există.
+      await guideStep(c, "raport", summary, false).catch(() => null);
       toPublish.push(c);
       autoTaken++;
+      if (!hasAudience(c)) pageOnly++;
       // și știrile alese în aceeași rulare intră în comparație (2026-10-05:
       // două articole despre aceeași tranșă UE, scrise în aceeași rulare)
       recent48.unshift({ id: -autoTaken, title: c.group.representativeTitle, lead: c.group.items[0]?.summary.slice(0, 300) ?? "" });
