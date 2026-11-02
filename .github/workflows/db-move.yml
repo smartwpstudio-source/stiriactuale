@@ -12,7 +12,7 @@ on:
       pas:
         description: "copiere | hyperdrive | verificare | migrare"
         type: choice
-        options: [copiere, hyperdrive, hyperdrive-limita, verificare, cron, migrare]
+        options: [copiere, hyperdrive, hyperdrive-limita, verificare, cron, migrare, vizualizari, raport-vizualizari]
         default: copiere
 
 jobs:
@@ -88,6 +88,20 @@ jobs:
           sed -i 's/"public"\.//g' drizzle/*.sql
           npx drizzle-kit migrate
           echo "migrare: OK"
+
+      # doar citire: crește contorul de vizualizări? (două fotografii la 5 minute)
+      - name: Contorul de vizualizări
+        if: ${{ inputs.pas == 'vizualizari' }}
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: node scripts/checks/views-probe.mjs
+
+      # doar citire: vizualizările după cine a adus articolul (editor, Util, automat)
+      - name: Raportul vizualizărilor
+        if: ${{ inputs.pas == 'raport-vizualizari' }}
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: node scripts/checks/views-report.mjs
 
       - name: Hyperdrive
         if: ${{ inputs.pas == 'hyperdrive' }}
