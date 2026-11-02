@@ -4,8 +4,10 @@ import { TRUSTED_SOURCES } from "./sources";
 // Scor 0-100. Impactul editorial (criteriile redacției, evaluate de Haiku)
 // cântărește cel mai mult; numărul de surse contează, dar nu mai decide
 // singur — o știre din raion are adesea o singură sursă, și asta e normal.
+// Din 2026-11-03 numărul de surse nu mai contează: știrile cu 3+ surse nu sunt mai citite
+// decât cele cu una, iar ce au toți oamenii au citit deja (decizia editorului).
 // interest = interesul public de pe Telegram (vizualizări față de media canalului)
-const WEIGHTS = { impact: 30, interest: 20, popularity: 15, factualRichness: 15, confidence: 10, recency: 5, trusted: 5 };
+const WEIGHTS = { impact: 45, interest: 20, factualRichness: 15, confidence: 10, recency: 5, trusted: 5 };
 
 // ×1 (obișnuit) -> 0,33; ×3 sau mai mult -> 1. Fără semnal (sursa n-are canal,
 // postarea e prea nouă) -> neutru, ca o știre obișnuită — nu se penalizează.
@@ -28,7 +30,6 @@ export function computeQualityScore(group: CandidateGroup, c: ClassificationResu
   const score =
     (c.impact / 100) * WEIGHTS.impact +
     interestScore(group) * WEIGHTS.interest +
-    (Math.min(group.sourceNames.length, 4) / 4) * WEIGHTS.popularity +
     (c.factualRichness / 100) * WEIGHTS.factualRichness +
     (c.confidence / 100) * WEIGHTS.confidence +
     recencyScore(group) * WEIGHTS.recency +

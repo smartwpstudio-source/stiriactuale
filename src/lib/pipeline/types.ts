@@ -28,6 +28,9 @@ export interface ClassificationResult {
   locality?: string;
   country?: string;
   topics: Topic[];
+  // publicul țintă, algoritmul editorului (2026-11-03): „grupuri” = interesează pe oricine,
+  // din orice localitate; „local” = o localitate din raioane; „pagina” = fără public clar
+  audience?: "grupuri" | "local" | "pagina";
   impact: number; // 0-100, criteriile editoriale ale redacției
   factualRichness: number; // 0-100
   confidence: number; // 0-100

@@ -12,9 +12,9 @@ export const SCHEMA = {
     titlu: {
       type: "string",
       description:
-        "50-75 de caractere. Concret și viu: cine/ce + faptul cel mai important sau surprinzător (o cifră, o consecință pentru oameni, o decizie). Stârnește interesul fără clickbait. Interzis titlul-etichetă vag („Situația la Palanca”, „Declarații despre drone”) și formulele de tabloid („Șoc”, „Incredibil”, întrebări retorice goale).",
+        "55-90 de caractere. O propoziție firească în română, cu verb și cuvinte de legătură, care stârnește interesul prin miza reală a știrii. Regulile complete sunt în instrucțiuni.",
     },
-    slug: { type: "string", description: "Slug URL, minuscule, fără diacritice, cuvinte separate prin cratimă, max 8 cuvinte." },
+    slug: { type: "string", description: "Slug URL, minuscule, fără diacritice, cuvinte separate prin cratimă, max 8 cuvinte, fără an (decât dacă faptul chiar ține de acel an)." },
     meta_description: { type: "string", description: "140-160 caractere." },
     lead: { type: "string", description: "1-2 propoziții: cine, ce, unde, când." },
     corp_html: {
@@ -91,12 +91,16 @@ export const SYSTEM_PROMPT = [
   "5. Relatările pot fi în rusă sau altă limbă — scrii exclusiv în română.",
   "",
   "Titlul — prima și uneori singura frază pe care o citește omul (în listă, pe Telegram, pe Facebook):",
-  "- spune faptul concret și miza lui: cine, ce s-a întâmplat, cifra sau consecința care contează pentru cititor;",
-  "- alege detaliul cel mai neobișnuit sau mai important din material, nu rezumatul general;",
-  "- verbe active, cuvinte simple; fără etichete vagi și fără senzaționalism.",
-  "  Slab: „Situația la vama Palanca” → Bun: „Vama Palanca, închisă după ce un proiectil a lovit un autobuz”.",
-  "  Slab: „Noi tarife la gaz” → Bun: „Gazul se scumpește cu 18% din noiembrie: cât va costa metrul cub”.",
-  "  Slab: „Declarațiile lui Grosu despre Nistru” → Bun: „Grosu: nordul nu rămâne fără apă, deși Nistrul a scăzut la minim record”.",
+  "- scrie cum ar spune un om vecinului: o propoziție firească, completă, cu verb, prepoziții și cuvinte de legătură. Citește-l cu voce tare: dacă sună a telegramă sau a text scris de AI, rescrie-l;",
+  "- are miză: intrigă, o întrebare reală la care articolul răspunde, impactul pentru cititor sau emoția faptului, ce se potrivește subiectului. Alege detaliul cel mai omenesc, neobișnuit sau important, nu rezumatul general;",
+  "- maximum 90 de caractere: un singur fapt și miza lui, nu tot articolul;",
+  "- fără an în titlu (nu „Polei 2026”, „Iarna 2026”), decât dacă faptul chiar ține de acel an (o lege, un tarif, o sumă);",
+  "- interzis stilul telegrafic: înșiruiri de substantive, virgule în loc de verbe, două puncte de două ori, formula rigidă „Subiect: fapt, fapt”;",
+  "- onest: titlul promite doar ce este în articol. Fără „Șoc”, „Incredibil”, „Nu o să-ți vină să crezi”, fără să ascunzi faptul esențial doar ca omul să dea click. La morți și tragedii: emoție reținută, cu respect pentru familii, fără detalii morbide și fără întrebări despre victime.",
+  "  Slab: „Marianca de Jos, Ștefan Vodă: tată și fiu de 17 ani, morți sub tractor” → Bun: „Un tată și fiul lui de 17 ani au murit sub tractor la Marianca de Jos, Ștefan Vodă”.",
+  "  Slab: „Gaz: tarif nou din noiembrie, plus 18%” → Bun: „Gazul se scumpește cu 18% din noiembrie. Cât vei plăti în plus la factură?”.",
+  "  Slab: „Situația la vama Palanca” → Bun: „Vama Palanca s-a închis după ce un proiectil a lovit un autobuz”.",
+  "  Slab: „Spațiul aerian, încălcat de 104 ori din 2022: 67 doar în 2026” → Bun: „De ce vin tot mai multe drone peste Moldova: 67 de cazuri doar anul acesta”.",
   "",
   'Blocul "Ce înseamnă pentru tine" (câmpul impact, afișat separat, sus): DOAR când știrea schimbă concret ceva pentru o categorie de oameni:',
   '- tip "bani": un preț, tarif, impozit, taxă, amendă, salariu, pensie, ajutor, compensație;',
@@ -108,7 +112,7 @@ export const SYSTEM_PROMPT = [
   '- pasi: 1-3 acțiuni scurte și sigure (ex. „verifică suma pe factura din noiembrie”, „depune cererea la CNAS până la …”); fără sfaturi medicale sau juridice individuale — la subiecte medicale/juridice: „urmează indicațiile oficiale ale <instituția>”;',
   '- unelte: 0-2 id-uri din lista UNELTE DISPONIBILE, doar dacă unealta chiar ajută la această știre (calculatorul cu care omul își face socoteala, ghidul care explică pașii, modelul de reclamație). Fără unealtă potrivită: listă goală.',
   '- pana: doar la alerta/urgent, data până la care e valabilă, dacă materialul o dă (azi e ' + new Date().toISOString().slice(0, 10) + ').',
-  'Când există blocul, titlul pornește de la consecința pentru cititor („Gazul se scumpește de luni: cât plătești în plus la factură”), tot fără clickbait. NU mai scrie în corp o secțiune „Ce înseamnă pentru tine” — blocul o înlocuiește.',
+  'Când există blocul, titlul pornește de la consecința pentru cititor („Gazul se scumpește de luni. Cât plătești în plus la factură?”). NU mai scrie în corp o secțiune „Ce înseamnă pentru tine” — blocul o înlocuiește.',
   "",
   "Reguli juridice (obligatorii):",
   '- Prezumția de nevinovăție: până la o sentință definitivă, persoana e "bănuită", "învinuită", "acuzată" — niciodată "criminalul", "hoțul", "corupătorul".',
@@ -159,15 +163,15 @@ function schemaFor(mode: ArticleMode) {
 const MAX_SOURCES = 4;
 
 // Titlul după publicul știrii: cea regională circulă în grupurile locale
-// (localitatea la început, ca omul de acolo să se recunoască), cea din
+// (localitatea în primele cuvinte, ca omul de acolo să se recunoască), cea din
 // diaspora la comunitatea din țara respectivă, cea națională / din Lumea se
-// caută pe Google (cuvintele de căutare la început, fără clickbait).
+// caută pe Google (cuvintele de căutare devreme). Mereu propoziție firească, nu formulă.
 function titleRule(c: ClassificationResult): string {
   if (c.section === "regiuni" && c.locality)
-    return `Titlul începe cu localitatea, urmată de două puncte: cea mai precisă din material (satul sau orașul), altfel raionul „${raionLabel(c.locality)}” (ex. „Telenești: un șofer de 29 de ani a murit pe traseu”). Dacă e un sat sau alt oraș decât centrul raional, în titlu pune și raionul, după virgulă: „Ignăței, Rezina: …”. În acest caz, prima propoziție din lead și meta_description numesc satul și raionul („în satul Ignăței, raionul Rezina”), ca omul să știe unde e.`;
+    return `Localitatea apare în primele cuvinte ale titlului, într-o propoziție firească, ca omul de acolo să se recunoască: cea mai precisă din material (satul sau orașul), altfel raionul „${raionLabel(c.locality)}” (ex. „La Telenești, un șofer de 29 de ani a murit pe traseu”). Dacă e un sat sau alt oraș decât centrul raional, pune și raionul („În Ignăței, Rezina, …”). În acest caz, prima propoziție din lead și meta_description numesc satul și raionul („în satul Ignăței, raionul Rezina”), ca omul să știe unde e.`;
   if (c.section === "diaspora" && c.country)
-    return `Titlul începe cu țara sau orașul din ${countryLabel(c.country)} unde s-a întâmplat (ex. „Italia: …”, „Londra: …”), ca moldovenii de acolo să se recunoască.`;
-  return "Titlul începe cu cuvintele pe care oamenii le-ar căuta pe Google despre acest subiect (ex. „RCA se scumpește din 4 octombrie: …”), concret, fără clickbait.";
+    return `Țara sau orașul din ${countryLabel(c.country)} apare în primele cuvinte, într-o propoziție firească (ex. „În Italia, o moldoveancă …”), ca moldovenii de acolo să se recunoască.`;
+  return "Cuvintele pe care oamenii le-ar căuta pe Google apar cât mai devreme, într-o propoziție firească (ex. „RCA se scumpește din 4 octombrie. Cât vei plăti în plus?”).";
 }
 
 // Continuarea unei povești deja publicate: cititorul trebuie să vadă din titlu

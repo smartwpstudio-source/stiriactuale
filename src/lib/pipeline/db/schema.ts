@@ -105,6 +105,8 @@ export const articles = pgTable("articles", {
 
   // notificare push: propusă de clasificator (știri de rezonanță națională),
   // editabilă în /admin; trimisă o singură dată, la publicare
+  // publicul țintă, ales de clasificator: pagina | grupuri | local (algoritmul editorului, 2026-11-03)
+  audience: varchar("audience", { length: 10 }),
   // afișări pe site (beacon din pagina de articol) — "Cele mai citite"
   views: integer("views").notNull().default(0),
   // fixat de editor în prim-planul primei pagini până la această oră
