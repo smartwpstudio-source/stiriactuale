@@ -70,7 +70,7 @@ const FOREIGN = /\b(americans?|usa|u\.s\.?|united states|us (election|flag|vote|
 
 // Haiku alege, după titlurile pozelor, pe cea care arată subiectul principal
 // al știrii (drona, nu câmpul). Niciuna potrivită -> poza generată.
-async function pickStock(subject: string, results: { id: number; title: string }[]): Promise<{ id: number; title: string }[]> {
+async function pickStock<T extends { id: number; title: string }>(subject: string, results: T[]): Promise<T[]> {
   results = results.filter((r) => !FOREIGN.test(r.title));
   if (!results.length) return [];
   try {
@@ -86,6 +86,40 @@ async function pickStock(subject: string, results: { id: number; title: string }
   } catch (err) {
     logImageError(err);
     return results.slice(0, 3); // fără verdict: primele, ca înainte
+  }
+}
+
+// Poza de stoc nu are voie să inducă în eroare despre locul știrii (2026-11-02, regula
+// proprietarului: la maternitatea din Criuleni, un cadru medical dintr-un stoc străin, care
+// nu poate fi luat drept personalul spitalului). Titlul pozei nu ajunge („Caucasian couple…”
+// avea în imagine și altă persoană), așa că Haiku vede pozele. Fără verdict, nicio poză.
+const PEOPLE_CHECK = 5;
+async function fitsPlace<T extends { id: number; preview: string }>(photos: T[], subject: string): Promise<T[]> {
+  const got = (
+    await Promise.all(
+      photos.slice(0, PEOPLE_CHECK).map(async (p) => {
+        const res = await fetch(p.preview, { signal: AbortSignal.timeout(20_000) });
+        if (!res.ok || res.headers.get("content-type") !== "image/jpeg") return null;
+        return { p, data: Buffer.from(await res.arrayBuffer()).toString("base64") };
+      }).map((x) => x.catch(() => null)),
+    )
+  ).filter((x) => x !== null);
+  if (!got.length) return [];
+  try {
+    const { clean } = await structured<{ clean: boolean[] }>({
+      model: HAIKU_MODEL,
+      system: "Verifici fotografii de stoc. Răspunzi doar cu câmpurile cerute.",
+      prompt: `Știrea: ${subject}
+
+Pentru fiecare dintre cele ${got.length} poze, în ordine: true dacă poza poate fi luată drept fotografie făcută la locul știrii, fără să inducă în eroare. La o știre din Republica Moldova: fără oameni în poză, sau toți oamenii au aspect european, ca populația locală, iar decorul și inscripțiile pot fi din Europa de Est. La o știre din altă țară: oamenii și decorul se potrivesc acelei țări. La orice dubiu: false.`,
+      schema: { type: "object", properties: { clean: { type: "array", items: { type: "boolean" } } }, required: ["clean"] },
+      maxBudgetUsd: 0.1,
+      images: got.map((x) => x.data),
+    });
+    return got.filter((_, i) => clean[i] === true).map((x) => x.p);
+  } catch (err) {
+    logImageError(err);
+    return [];
   }
 }
 
@@ -112,7 +146,7 @@ export async function findArticleImage(
   // unei poze anume — trecem la următoarea, apoi la generare.
   try {
     const fresh = (await searchStock(stockQuery, STOCK_RESULTS)).filter((r) => !usedIds.has(r.id));
-    for (const { id } of await pickStock(subject, fresh)) {
+    for (const { id } of await fitsPlace(await pickStock(subject, fresh), subject)) {
       usedIds.add(id); // înainte de primul await — rulările paralele văd rezervarea
       try {
         return { url: await stockToBlob(id, slug), resourceId: id };
@@ -124,7 +158,10 @@ export async function findArticleImage(
     logImageError(err);
   }
   try {
-    return { url: await copyToBlob(await generate(imagePrompt, headers), `${AI_IMAGE_PREFIX}${slug}.jpg`), resourceId: null };
+    // aceeași verificare și pentru poza generată: dacă nu trece, articolul rămâne fără poză
+    const generated = await generate(imagePrompt, headers);
+    if (!(await fitsPlace([{ id: 0, preview: generated }], subject)).length) return null;
+    return { url: await copyToBlob(generated, `${AI_IMAGE_PREFIX}${slug}.jpg`), resourceId: null };
   } catch (err) {
     logImageError(err);
     return null;
