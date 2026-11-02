@@ -84,6 +84,7 @@ const SYSTEM = [
   "4. HTML-ul corpului rămâne cu aceeași structură (<p>, <h2>, <ul>, <li>, <a>); fiecare href rămâne EXACT același. Fără <h1>, fără stiluri.",
   "5. „(VIDEO)” / „(FOTO)” de la sfârșitul titlului devin „(ВИДЕО)” / „(ФОТО)”.",
   "6. metaDescription: 140-160 de caractere, în rusă.",
+  "7. Titlul nu se traduce cuvânt cu cuvânt, ci se scrie cum l-ar spune firesc un vorbitor de rusă, cu aceleași fapte și cifre. Regula de bază: are sens, e clar despre ce e, are cuvintele de legătură necesare, iar cuvintele fără de care nu își pierde sensul se scot. Maximum 90 de caractere, are verb, fără stil telegrafic și fără tabloid. Model: „Россия вышла из конвенции против пыток! Никто больше не сможет проверять её тюрьмы”.",
 ].join("\n");
 
 function schema(withImpact: boolean) {
