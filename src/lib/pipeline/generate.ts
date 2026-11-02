@@ -179,11 +179,13 @@ function continuationRule(c: ClassificationResult): string {
 
 // Video-ul din pagina sursei poate fi al altui material (2026-11-02: jurnalul NewsMaker la
 // spațiul aerian și la avionul din Florida, un video ZdG despre altceva la Tofan–Costiuc).
-// YouTube: titlul public, comparat cu știrea; la eroare, fără video.
-// ponytail: Facebook n-are titlu public, rămâne neverificat; verificare dacă apar greșeli și acolo.
+// Regula proprietarului: dacă nu se poate confirma că video-ul e al știrii, știrea automată
+// nu se publică. YouTube: titlul public, comparat cu știrea. Facebook n-are titlu public,
+// deci nu se poate confirma. Eroare la verificare = neconfirmat.
+export class VideoNotConfirmed extends Error {}
 export async function videoFits(embed: string, subject: string): Promise<boolean> {
   const id = embed.match(/youtube(?:-nocookie)?\.com\/embed\/([\w-]{11})/)?.[1];
-  if (!id) return true;
+  if (!id) return false;
   try {
     const res = await fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${id}&format=json`, { signal: AbortSignal.timeout(15_000) });
     if (!res.ok) return false;
@@ -228,6 +230,24 @@ export async function generateArticle(
     mode === "brief" ? MIN_MATERIAL_BRIEF : mode === "video" ? MIN_MATERIAL_VIDEO : group.manual ? MIN_MATERIAL_CHARS_MANUAL : MIN_MATERIAL_CHARS;
   if (digest.length < min) return null;
 
+  // linkul-sursă e chiar video-ul; linkurile editorului coincid sigur cu știrea. Altfel,
+  // video-ul din pagina sursei trebuie confirmat, înainte de scrierea (scumpă) a articolului
+  let video = items.map((i) => toEmbedUrl(i.sourceUrl)).find(Boolean);
+  if (!video) {
+    const found = [...new Set(texts.map((t) => t?.video).filter((x): x is string => !!x))];
+    if (group.manual) video = found[0];
+    else if (found.length) {
+      const subject = `${group.representativeTitle}. ${items[0]?.summary.slice(0, 300) ?? ""}`;
+      for (const v of found) {
+        if (await videoFits(v, subject)) {
+          video = v;
+          break;
+        }
+      }
+      if (!video) throw new VideoNotConfirmed("video neconfirmat");
+    }
+  }
+
   // uneltele site-ului pe care blocul de impact le poate recomanda
   const tools = await toolCandidates(`${group.representativeTitle} ${items.map((i) => i.summary).join(" ")}`);
   const toolList = tools.map((t) => `${t.id} — ${t.title}`).join("\n");
@@ -238,16 +258,6 @@ export async function generateArticle(
     schema: schemaFor(mode),
     maxBudgetUsd: 0.5,
   });
-  // linkul-sursă e chiar video-ul; cel găsit în pagina sursei poate fi al altui material
-  let video = items.map((i) => toEmbedUrl(i.sourceUrl)).find(Boolean);
-  if (!video) {
-    for (const v of new Set(texts.map((t) => t?.video).filter((x): x is string => !!x))) {
-      if (await videoFits(v, `${article.titlu}. ${article.lead}`)) {
-        video = v;
-        break;
-      }
-    }
-  }
   // pozele din corpul surselor, cu sursa sub fiecare; la postarea Telegram adăugată de
   // editor prima poză e deja poza de titlu (add-link.ts)
   const tg = await Promise.all(

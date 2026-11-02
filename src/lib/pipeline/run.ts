@@ -5,7 +5,7 @@ import { articles, candidates, guideChecks, pipelineRuns } from "./db/schema";
 import { collectCandidates } from "./collect";
 import { groupCandidates } from "./dedup";
 import { classifyGroups } from "./classify";
-import { generateArticle } from "./generate";
+import { generateArticle, VideoNotConfirmed } from "./generate";
 import { computeQualityScore } from "./scoring";
 import { findArticleImage, sourcePhoto } from "./image";
 import { MIN_WIDTH } from "./fulltext";
@@ -68,6 +68,7 @@ export interface PipelineRunSummary {
   failedFeeds: string[];
   failedArticles: string[];
   skippedThin: string[]; // material prea puțin chiar și din textele integrale — nescrise
+  videoRejected: string[]; // video-ul din sursă nu s-a putut confirma ca fiind al știrii — nepublicate
   groupsFormed: number;
   candidatesClassified: number;
   articlesPublished: number;
@@ -88,6 +89,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     failedFeeds: [],
     failedArticles: [],
     skippedThin: [],
+    videoRejected: [],
     groupsFormed: 0,
     candidatesClassified: 0,
     articlesPublished: 0,
@@ -359,6 +361,10 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
         }
         return c.classification.section;
       } catch (err) {
+        if (err instanceof VideoNotConfirmed) {
+          summary.videoRejected.push(c.group.representativeTitle.slice(0, 80));
+          return null;
+        }
         const msg = `${c.group.representativeTitle.slice(0, 80)}: ${err instanceof Error ? err.message : String(err)}`;
         summary.failedArticles.push(msg);
         console.error(`Articol eșuat: ${msg}`);
@@ -402,6 +408,8 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
           await db.update(candidates).set({ processedAt: new Date() }).where(inArray(candidates.id, u.group.candidateIds));
         }
       } catch (err) {
+        // știrea pe scurt rămâne cum e
+        if (err instanceof VideoNotConfirmed) continue;
         summary.failedArticles.push(`actualizare ${u.articleId}: ${err instanceof Error ? err.message : String(err)}`);
       }
     }
