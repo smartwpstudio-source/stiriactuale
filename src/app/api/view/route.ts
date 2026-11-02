@@ -13,10 +13,12 @@ const BOTS =
 export async function POST(request: Request) {
   let slug: unknown;
   let impact = false; // click din blocul de impact spre o unealtă
+  let ru = false; // afișarea variantei ruse, numărată separat
   try {
     const body = JSON.parse(await request.text());
     slug = body.slug;
     impact = body.impact === true;
+    ru = body.lang === "ru";
   } catch {
     return new Response(null, { status: 400 });
   }
@@ -27,7 +29,7 @@ export async function POST(request: Request) {
 
   await getDb()
     .update(articles)
-    .set(impact ? { impactClicks: sql`${articles.impactClicks} + 1` } : { views: sql`${articles.views} + 1` })
+    .set(impact ? { impactClicks: sql`${articles.impactClicks} + 1` } : ru ? { ruViews: sql`${articles.ruViews} + 1` } : { views: sql`${articles.views} + 1` })
     .where(and(eq(articles.slug, slug), eq(articles.status, "published")));
   return new Response(null, { status: 204 });
 }
