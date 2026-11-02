@@ -49,6 +49,20 @@ function report(title, list) {
   for (const t of ["accidente", "criminal", "coruptie", "alerta-112", "economic", "criza-energetica", "sanatate", "social", "cultura", "sport"]) line(`tema ${t}`, auto.filter((r) => r.topics.includes(t)), all);
   for (const [a, b] of [[0, 50], [50, 65], [65, 80], [80, 101]]) line(`scor ${a}-${b}`, auto.filter((r) => r.quality_score >= a && r.quality_score < b), all);
 }
+// aceeași rubrică și temă: toate merg pe Facebook, cele locale și pe grupuri (spus de editor)
+function compare(title, list) {
+  const all = list.reduce((s, r) => s + r.views, 0);
+  console.log(`\n=== Editor față de Automat, ${title}`);
+  for (const o of ["Editor", "Automat"]) {
+    const l = list.filter((r) => origin(r) === o);
+    for (const s of ["national", "regiuni", "international", "diaspora"]) line(`${o} ${s}`, l.filter((r) => r.section === s), all);
+    for (const t of ["accidente", "alerta-112", "criminal", "coruptie", "economic", "criza-energetica", "social", "sanatate", "cultura"]) line(`${o} ${t}`, l.filter((r) => r.topics.includes(t)), all);
+    line(`${o} regiuni+accidente`, l.filter((r) => r.section === "regiuni" && (r.topics.includes("accidente") || r.topics.includes("alerta-112"))), all);
+    line(`${o} regiuni, altele`, l.filter((r) => r.section === "regiuni" && !r.topics.includes("accidente") && !r.topics.includes("alerta-112")), all);
+  }
+}
+compare("de la 5 octombrie", rows);
+compare("ultimele 10 zile", rows.filter((r) => r.published_at >= new Date(Date.now() - 10 * 86400_000)));
 report("De la 5 octombrie", rows);
 report("Ultimele 10 zile", rows.filter((r) => r.published_at >= new Date(Date.now() - 10 * 86400_000)));
 
