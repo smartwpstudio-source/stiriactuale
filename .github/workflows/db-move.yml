@@ -12,7 +12,7 @@ on:
       pas:
         description: "copiere | hyperdrive | verificare | migrare"
         type: choice
-        options: [copiere, hyperdrive, hyperdrive-limita, verificare, cron, migrare, vizualizari, raport-vizualizari]
+        options: [copiere, hyperdrive, hyperdrive-limita, verificare, cron, migrare, vizualizari, raport-vizualizari, raport-invatare]
         default: copiere
 
 jobs:
@@ -102,6 +102,13 @@ jobs:
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: node scripts/checks/views-report.mjs
+
+      # doar citire: ce trăsături merg cu vizualizările + test pe date vechi
+      - name: Raportul de învățare
+        if: ${{ inputs.pas == 'raport-invatare' }}
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: node scripts/checks/views-learn.mjs
 
       - name: Hyperdrive
         if: ${{ inputs.pas == 'hyperdrive' }}
