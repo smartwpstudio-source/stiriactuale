@@ -204,6 +204,13 @@
       "when": 1793661327378,
       "tag": "0028_first_bloodscream",
       "breakpoints": true
+    },
+    {
+      "idx": 29,
+      "version": "7",
+      "when": 1793663911152,
+      "tag": "0029_colossal_paladin",
+      "breakpoints": true
     }
   ]
 }
