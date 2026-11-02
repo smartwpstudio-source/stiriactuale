@@ -138,6 +138,33 @@ export const mentioned = (code: string, text: string) =>
     process.exit(0);
   }
 
+  // „--fara-video slug,slug”: video-ul era al altui material: iese, cu tot cu „(VIDEO)”,
+  // iar articolul primește o poză (imaginea era captura din video)
+  if (process.argv.includes("--fara-video")) {
+    const slugs = process.argv[process.argv.indexOf("--fara-video") + 1].split(",");
+    for (const r of await db.select({ id: articles.id, slug: articles.slug, title: articles.title, lead: articles.leadText, ru: articles.ru }).from(articles).where(inArray(articles.slug, slugs))) {
+      const title = r.title.replace(/\s*[(]VIDEO[)]\s*$/i, "");
+      const ru = r.ru && { ...r.ru, title: r.ru.title.replace(/\s*[(]ВИДЕО[)]\s*$/i, "") };
+      const q = await structured<{ stock_query: string; image_prompt: string }>({
+        model: HAIKU_MODEL,
+        system: "Alegi căutarea de poză pentru o știre. Răspunzi doar cu câmpurile cerute.",
+        prompt: `${title}
+
+${r.lead}`,
+        schema: { type: "object", properties: { stock_query, image_prompt }, required: ["stock_query", "image_prompt"] },
+        maxBudgetUsd: 0.05,
+      });
+      const img = await findArticleImage(q.stock_query, q.image_prompt, r.slug, new Set(), `${title}. ${r.lead}`);
+      await db
+        .update(articles)
+        .set({ title, videoUrl: null, ...(ru && { ru }), imageUrl: img?.url ?? null, imageResourceId: img?.resourceId ?? null, imageCredit: null, imageAltText: null, updatedAt: new Date() })
+        .where(eq(articles.id, r.id));
+      console.log(`${r.slug}: fără video, ${img?.url ?? "fără poză"}`);
+    }
+    console.log((await requestRevalidate({ since })) ? "site reîmprospătat" : "reîmprospătarea a eșuat");
+    process.exit(0);
+  }
+
   if (process.argv.includes("--repara")) {
     for (const r of await db.select(cols).from(articles).where(inArray(articles.slug, fix))) {
       const q = await structured<{ stock_query: string; image_prompt: string }>({

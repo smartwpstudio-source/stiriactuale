@@ -1,5 +1,5 @@
 import { INSTITUTIONS } from "./flag-card";
-import { structured, OPUS_MODEL } from "./llm";
+import { HAIKU_MODEL, structured, OPUS_MODEL } from "./llm";
 import { fetchArticle, telegramPhotos } from "./fulltext";
 import { toEmbedUrl } from "@/lib/video";
 import { countryLabel, raionLabel } from "@/lib/content/geo";
@@ -177,6 +177,36 @@ function continuationRule(c: ClassificationResult): string {
   return `\n\nE CONTINUAREA articolului deja publicat „${c.continuesTitle}”. Titlul trebuie să se deosebească clar de el: începe cu NOUTATEA (faptul nou), nu cu subiectul deja cunoscut, și nu repeta cuvintele principale ale titlului vechi (ex. publicat „Palanca: proiectil căzut lângă vamă” → continuare „Autobuz lovit de schijele de la Palanca, vama rămâne închisă”; publicat „Dronele explodate în Moldova” → continuare „Ministerul Apărării: dronele căzute erau de tip Gerbera”). Lead-ul începe cu ce s-a schimbat față de ce se știa, apoi detaliile noi; evenimentul inițial doar pe scurt, la final.`;
 }
 
+// Video-ul din pagina sursei poate fi al altui material (2026-11-02: jurnalul NewsMaker la
+// spațiul aerian și la avionul din Florida, un video ZdG despre altceva la Tofan–Costiuc).
+// YouTube: titlul public, comparat cu știrea; la eroare, fără video.
+// ponytail: Facebook n-are titlu public, rămâne neverificat; verificare dacă apar greșeli și acolo.
+export async function videoFits(embed: string, subject: string): Promise<boolean> {
+  const id = embed.match(/youtube(?:-nocookie)?\.com\/embed\/([\w-]{11})/)?.[1];
+  if (!id) return true;
+  try {
+    const res = await fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${id}&format=json`, { signal: AbortSignal.timeout(15_000) });
+    if (!res.ok) return false;
+    const { title, author_name } = (await res.json()) as { title: string; author_name: string };
+    const { same } = await structured<{ same: boolean }>({
+      model: HAIKU_MODEL,
+      system: "Verifici dacă un video e despre aceeași știre. Răspunzi doar cu câmpurile cerute.",
+      prompt: `Știrea: ${subject}
+
+Video: ${author_name}: ${title}
+
+true doar dacă titlul arată că video-ul e despre subiectul acestei știri. false pentru jurnale cu alte subiecte și pentru alte materiale. La dubiu: false.`,
+      schema: { type: "object", properties: { same: { type: "boolean" } }, required: ["same"] },
+      maxBudgetUsd: 0.05,
+    });
+    if (!same) console.log(`Video respins (alt subiect): ${title.slice(0, 80)}`);
+    return same;
+  } catch (err) {
+    console.error(`Verificarea video: ${err instanceof Error ? err.message : err}`);
+    return false;
+  }
+}
+
 export async function generateArticle(
   group: CandidateGroup,
   classification: ClassificationResult,
@@ -208,7 +238,16 @@ export async function generateArticle(
     schema: schemaFor(mode),
     maxBudgetUsd: 0.5,
   });
-  const video = items.map((i) => toEmbedUrl(i.sourceUrl)).find(Boolean) ?? texts.find((t) => t?.video)?.video;
+  // linkul-sursă e chiar video-ul; cel găsit în pagina sursei poate fi al altui material
+  let video = items.map((i) => toEmbedUrl(i.sourceUrl)).find(Boolean);
+  if (!video) {
+    for (const v of new Set(texts.map((t) => t?.video).filter((x): x is string => !!x))) {
+      if (await videoFits(v, `${article.titlu}. ${article.lead}`)) {
+        video = v;
+        break;
+      }
+    }
+  }
   // pozele din corpul surselor, cu sursa sub fiecare; la postarea Telegram adăugată de
   // editor prima poză e deja poza de titlu (add-link.ts)
   const tg = await Promise.all(
