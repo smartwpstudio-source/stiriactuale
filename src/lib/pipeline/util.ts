@@ -241,7 +241,7 @@ async function writeItem(item: Row): Promise<number> {
       `Azi e ${key(todayChisinau())}. Tipul: ${UTIL_TYPES[item.type as keyof typeof UTIL_TYPES] ?? item.type}.${item.locality ? ` Local: ${RAION_NAMES[item.locality]}.` : ""}`,
       `TEMA: ${item.topic}`,
       `CE ACOPERĂ:\n${item.angle}`,
-      "Titlul: o propoziție firească, cu verb și cuvinte de legătură, care spune de ce merită citit (o întrebare reală, impactul pentru cititor). Cuvintele căutate pe Google apar devreme. Maximum 90 de caractere. FĂRĂ an în titlu și în slug, chiar dacă tema de lucru are unul: poleiul e polei în orice an, iar articolul trebuie să rămână bun și la anul. Anul doar dacă faptul chiar ține de acel an (un tarif, o lege, o sumă). Fără stil telegrafic, fără tabloid.",
+      "Titlul: are sens, e clar despre ce e, are cuvintele de legătură necesare, iar cuvintele fără de care nu își pierde sensul se scot. Spune de ce merită citit (o întrebare reală, impactul pentru cititor). Cuvintele căutate pe Google apar devreme. Maximum 90 de caractere. FĂRĂ an în titlu și în slug, chiar dacă tema de lucru are unul: poleiul e polei în orice an, iar articolul trebuie să rămână bun și la anul. Anul doar dacă faptul chiar ține de acel an (un tarif, o lege, o sumă). Fără stil telegrafic, fără tabloid.",
       `MATERIAL DE LA SITE:\n${text}`,
     ].join("\n\n"),
     schema: WRITE_SCHEMA,

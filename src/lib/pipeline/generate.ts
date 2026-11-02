@@ -12,7 +12,7 @@ export const SCHEMA = {
     titlu: {
       type: "string",
       description:
-        "55-90 de caractere. O propoziție firească în română, cu verb și cuvinte de legătură, care stârnește interesul prin miza reală a știrii. Regulile complete sunt în instrucțiuni.",
+        "Maximum 90 de caractere. Are sens, e clar despre ce e, are cuvintele de legătură necesare, fără nicio vorbă în plus. Regulile și modelele sunt în instrucțiuni.",
     },
     slug: { type: "string", description: "Slug URL, minuscule, fără diacritice, cuvinte separate prin cratimă, max 8 cuvinte, fără an (decât dacă faptul chiar ține de acel an)." },
     meta_description: { type: "string", description: "140-160 caractere." },
@@ -91,16 +91,19 @@ export const SYSTEM_PROMPT = [
   "5. Relatările pot fi în rusă sau altă limbă — scrii exclusiv în română.",
   "",
   "Titlul — prima și uneori singura frază pe care o citește omul (în listă, pe Telegram, pe Facebook):",
-  "- scrie cum ar spune un om vecinului: o propoziție firească, completă, cu verb, prepoziții și cuvinte de legătură. Citește-l cu voce tare: dacă sună a telegramă sau a text scris de AI, rescrie-l;",
-  "- are miză: intrigă, o întrebare reală la care articolul răspunde, impactul pentru cititor sau emoția faptului, ce se potrivește subiectului. Alege detaliul cel mai omenesc, neobișnuit sau important, nu rezumatul general;",
-  "- maximum 90 de caractere: un singur fapt și miza lui, nu tot articolul;",
+  "REGULA DE BAZĂ (a editorului): titlul are sens, e clar despre ce e, are cuvintele de legătură necesare, iar cuvintele fără de care titlul nu își pierde sensul se scot.",
+  "- nici telegramă, nici frază lungă: are verb și se citește firesc, dar fără nicio vorbă în plus. Citește-l cu voce tare și taie tot ce nu schimbă sensul;",
+  "- are miză: faptul care contează pentru om, impactul, intriga sau emoția, ce se potrivește subiectului. Alege detaliul cel mai omenesc, neobișnuit sau important;",
+  "- maximum 90 de caractere. Două propoziții scurte sunt bune când a doua aduce miza. Semnul exclamării doar când faptul chiar e puternic;",
   "- fără an în titlu (nu „Polei 2026”, „Iarna 2026”), decât dacă faptul chiar ține de acel an (o lege, un tarif, o sumă);",
-  "- interzis stilul telegrafic: înșiruiri de substantive, virgule în loc de verbe, două puncte de două ori, formula rigidă „Subiect: fapt, fapt”;",
-  "- onest: titlul promite doar ce este în articol. Fără „Șoc”, „Incredibil”, „Nu o să-ți vină să crezi”, fără să ascunzi faptul esențial doar ca omul să dea click. La morți și tragedii: emoție reținută, cu respect pentru familii, fără detalii morbide și fără întrebări despre victime.",
-  "  Slab: „Marianca de Jos, Ștefan Vodă: tată și fiu de 17 ani, morți sub tractor” → Bun: „Un tată și fiul lui de 17 ani au murit sub tractor la Marianca de Jos, Ștefan Vodă”.",
-  "  Slab: „Gaz: tarif nou din noiembrie, plus 18%” → Bun: „Gazul se scumpește cu 18% din noiembrie. Cât vei plăti în plus la factură?”.",
-  "  Slab: „Situația la vama Palanca” → Bun: „Vama Palanca s-a închis după ce un proiectil a lovit un autobuz”.",
-  "  Slab: „Spațiul aerian, încălcat de 104 ori din 2022: 67 doar în 2026” → Bun: „De ce vin tot mai multe drone peste Moldova: 67 de cazuri doar anul acesta”.",
+  "- interzis: înșiruiri de substantive, virgule în loc de verbe, „Subiect: fapt, fapt”;",
+  "- onest: titlul promite doar ce este în articol. Fără „Șoc”, „Incredibil”, „Nu o să-ți vină să crezi”, fără să ascunzi faptul esențial. La morți și tragedii: emoție reținută, cu respect pentru familii, fără detalii morbide.",
+  "Modele aprobate de editor:",
+  "- „La Răzeni, Ialoveni, oamenii au gaz, dar se încălzesc la sobe: metrul cub, mai scump de 26 de lei”;",
+  "- „Motorina din rezerve mai ajunge doar pentru 11 zile. Starea de urgență poate fi prelungită”;",
+  "- „Rusia a ieșit din convenția anti-tortură! Nimeni nu mai poate inspecta închisorile ei”;",
+  "- „Găgăuzia: Alegerile din 15 noiembrie vor fi urmărite de 12 observatori din Turcia”.",
+  "Prea sec: „Răzeni, Ialoveni: cu gazul la 26 de lei, sătenii revin la sobă”. Prea lung: „La Răzeni, în Ialoveni, oamenii au gaz la poartă, dar se încălzesc iar cu soba: metrul cub a trecut de 26 de lei”.",
   "",
   'Blocul "Ce înseamnă pentru tine" (câmpul impact, afișat separat, sus): DOAR când știrea schimbă concret ceva pentru o categorie de oameni:',
   '- tip "bani": un preț, tarif, impozit, taxă, amendă, salariu, pensie, ajutor, compensație;',
@@ -168,7 +171,7 @@ const MAX_SOURCES = 4;
 // caută pe Google (cuvintele de căutare devreme). Mereu propoziție firească, nu formulă.
 function titleRule(c: ClassificationResult): string {
   if (c.section === "regiuni" && c.locality)
-    return `Localitatea apare în primele cuvinte ale titlului, într-o propoziție firească, ca omul de acolo să se recunoască: cea mai precisă din material (satul sau orașul), altfel raionul „${raionLabel(c.locality)}” (ex. „La Telenești, un șofer de 29 de ani a murit pe traseu”). Dacă e un sat sau alt oraș decât centrul raional, pune și raionul („În Ignăței, Rezina, …”). În acest caz, prima propoziție din lead și meta_description numesc satul și raionul („în satul Ignăței, raionul Rezina”), ca omul să știe unde e.`;
+    return `Localitatea apare în primele cuvinte, ca omul de acolo să se recunoască: cea mai precisă din material (satul sau orașul), altfel raionul „${raionLabel(c.locality)}” (ex. „La Telenești, un șofer de 29 de ani a murit pe traseu” sau „Telenești: Un șofer de 29 de ani a murit pe traseu”). Dacă e un sat sau alt oraș decât centrul raional, pune și raionul („La Ignăței, Rezina, …”). În acest caz, prima propoziție din lead și meta_description numesc satul și raionul („în satul Ignăței, raionul Rezina”), ca omul să știe unde e.`;
   if (c.section === "diaspora" && c.country)
     return `Țara sau orașul din ${countryLabel(c.country)} apare în primele cuvinte, într-o propoziție firească (ex. „În Italia, o moldoveancă …”), ca moldovenii de acolo să se recunoască.`;
   return "Cuvintele pe care oamenii le-ar căuta pe Google apar cât mai devreme, într-o propoziție firească (ex. „RCA se scumpește din 4 octombrie. Cât vei plăti în plus?”).";
