@@ -264,7 +264,14 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     for (const c of auto.sort(byAudience)) {
       if (autoTaken >= autoSlots) break;
       if (!hasAudience(c) && pageOnly >= maxPageOnly) continue;
-      const v = await checkRecent(c.group, recent48);
+      // între știrile aceleiași rulări nu există „continuare”: e același fapt, din alte surse
+      // (2026-11-03: Dodon la CSJ de două ori, ambele luate drept continuări ale știrii de dimineață)
+      const sameRun = await checkRecent(c.group, recent48.filter((r) => r.id < 0));
+      if (sameRun.duplicateOf || sameRun.continuesId) {
+        console.log(`Aceeași știre în rulare, nescrisă: ${c.group.representativeTitle.slice(0, 80)}`);
+        continue;
+      }
+      const v = await checkRecent(c.group, recent48.filter((r) => r.id > 0));
       if (v.duplicateOf) {
         console.log(`Dublură a articolului ${v.duplicateOf}, nescrisă: ${c.group.representativeTitle.slice(0, 80)}`);
         continue;
