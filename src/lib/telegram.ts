@@ -55,6 +55,14 @@ export async function alertEditor(text: string) {
   if (chatId) await call("sendMessage", { chat_id: chatId, text: `⚠️ Pipeline\n\n${text}`.slice(0, 4000) });
 }
 
+// Raportul săptămânal pentru editor (scripts/pipeline/weekly-report.ts).
+export async function reportToEditor(text: string) {
+  const chatId = process.env.TELEGRAM_ADMIN_CHAT_ID;
+  if (chatId) await call("sendMessage", { chat_id: chatId, text: text.slice(0, 4000) });
+}
+
+export const channelMembers = () => call<number>("getChatMemberCount", { chat_id: process.env.TELEGRAM_CHANNEL_ID });
+
 // Returnează message_id — se salvează ca retragerea să poată șterge postarea.
 // Cu poză (2026-10-20): informația se vede direct în Telegram, nu doar un link;
 // fără poză sau dacă Telegram n-o poate lua, mesaj text ca înainte. silent = fără
