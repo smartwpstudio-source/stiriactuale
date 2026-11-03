@@ -10,7 +10,7 @@ import type { PushPrefs, PushScope } from "@/lib/push-segment";
 // Pe iPhone, Web Push merge doar cu site-ul adăugat pe ecranul principal.
 // După abonare: întrebare opțională (raion / țară) — segmentarea din
 // src/lib/push-segment.ts. Alegerea se ține și în localStorage, doar pentru afișare.
-type State = "loading" | "hidden" | "ios-install" | "denied" | "off" | "on" | "busy";
+type State = "loading" | "hidden" | "ios-install" | "fb-android" | "denied" | "off" | "on" | "busy";
 
 const KEY = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY ?? "";
 const PREFS_KEY = "push-prefs";
@@ -40,13 +40,20 @@ function storedPrefs(): PushPrefs {
 
 const box = "mt-6 rounded-xl border border-amber bg-amber/[0.08] p-5 font-sans text-ink";
 
-export function PushOptIn() {
+export function PushOptIn({ place, section }: { place?: string; section?: string } = {}) {
+  // articol dintr-un raion sau din diaspora: abonarea pornește direct cu acel loc
+  const placePrefs: PushPrefs | null =
+    place && section === "regiuni" ? { scope: "raion", raion: place, country: null } : place && section === "diaspora" ? { scope: "tara", raion: null, country: place } : null;
+  const placeName = place ? (RAION_NAMES[place] ?? COUNTRY_NAMES[place]) : undefined;
   const [state, setState] = useState<State>("loading");
   const [prefs, setPrefs] = useState<PushPrefs>(DEFAULT);
   const [saved, setSaved] = useState<"" | "ok" | "err" | "busy">("");
 
   useEffect(() => {
     (async () => {
+      // 91% dintre cititorii din Moldova vin din aplicația Facebook (2026-11-03), unde notificările
+      // nu există: pe Android pot deschide pagina în Chrome; pe iPhone rămâne canalul de Telegram.
+      if (/FBAN|FBAV|FB_IAB|FB4A/.test(navigator.userAgent)) return setState(/Android/.test(navigator.userAgent) ? "fb-android" : "hidden");
       const ios = /iPhone|iPad|iPod/.test(navigator.userAgent);
       const standalone = window.matchMedia("(display-mode: standalone)").matches;
       if (!("PushManager" in window) || !("Notification" in window)) {
@@ -75,6 +82,7 @@ export function PushOptIn() {
       setPrefs(DEFAULT); // abonament nou: pe server pornește cu „toată țara”
       setSaved("");
       setState(res.ok ? "on" : "off");
+      if (res.ok && placePrefs) await choose(placePrefs);
     } catch {
       setState("off");
     }
@@ -128,6 +136,18 @@ export function PushOptIn() {
       </div>
     );
   }
+  if (state === "fb-android") {
+    const { host, pathname, search } = window.location;
+    return (
+      <div className={box}>
+        <p className="text-base font-semibold">{placeName ? `Vrei alerte din ${placeName}?` : "Vrei alerte importante pe telefon?"}</p>
+        <p className="mt-1 text-sm text-sub">În aplicația Facebook alertele nu merg. Deschide pagina în Chrome și apasă „Activează alertele”. E gratuit.</p>
+        <a href={`intent://${host}${pathname}${search}#Intent;scheme=https;package=com.android.chrome;end`} className="mt-3 inline-block rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-paper">
+          Deschide în Chrome
+        </a>
+      </div>
+    );
+  }
   if (state === "denied") {
     return (
       <p className="mt-6 text-sm text-sub">
@@ -164,7 +184,7 @@ export function PushOptIn() {
           {on ? <IconBellRinging size={24} aria-hidden /> : <IconBell size={24} aria-hidden />}
         </span>
         <div className="flex-1">
-          <p className="text-lg font-semibold leading-snug">{on ? "Alertele sunt active" : "Activează alertele importante"}</p>
+          <p className="text-lg font-semibold leading-snug">{on ? "Alertele sunt active" : placeName ? `Activează alertele din ${placeName}` : "Activează alertele importante"}</p>
           <p className="mt-1 text-sm text-sub">{PROMISE}</p>
         </div>
         <button

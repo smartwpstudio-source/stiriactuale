@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-// Butonul spre unealtă din blocul de impact: numără click-ul (aceeași rută ca
+// Linkul din articol spre o unealtă (bloc de impact, calculator, ghid): numără click-ul (aceeași rută ca
 // afișările, fără cookie-uri), ca să vedem câți trec de la știre la unealtă.
 export function ToolLink({ slug, href, className, children }: { slug: string; href: string; className: string; children: React.ReactNode }) {
   return (
