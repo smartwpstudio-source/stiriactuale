@@ -22,7 +22,7 @@ import { AdBody } from "./ad-body";
 import { ADSENSE_IN_ARTICLE_SLOT } from "@/lib/adsense";
 import { AdSlot } from "./ad-slot";
 import { RelatedGuide } from "./related-guide";
-import { RelatedCalculator } from "./related-calculator";
+import { ToolLink } from "./tool-link";
 import { getRelatedCalculator } from "@/lib/content/related-calculator";
 import { VideoEmbed } from "./video-embed";
 import { TelegramVideo } from "./telegram-video";
@@ -31,7 +31,7 @@ import { KindBadge } from "./kind-badge";
 import { getRelatedGuide } from "@/lib/content/related-guide";
 import { getRelatedDossier } from "@/lib/content/related-dossier";
 import { analysesForArticle, analysisPath } from "@/lib/content/analyses";
-import { IconFolder } from "@tabler/icons-react";
+import { IconCalculator, IconFolder } from "@tabler/icons-react";
 import { ImpactBlock } from "./impact-block";
 import { GooglePreferred } from "./google-preferred";
 import { resolveTools } from "@/lib/impact";
@@ -103,6 +103,7 @@ export async function ArticlePage({
     guideTool.href !== (guide && `/ghiduri/${guide.slug}/`)
       ? guideTool
       : undefined;
+  const topCalc = calculator && !shown.has(`/calculatoare/${calculator.slug}/`) ? calculator : null;
 
   return (
     <div className="mx-auto grid w-full max-w-7xl gap-12 px-4 py-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:px-8">
@@ -197,7 +198,8 @@ export async function ArticlePage({
             ))}
             {dossier && (
               // dosarul-pilon al subiectului, mereu la vedere: contextul pe care știrea nu-l repetă
-              <Link prefetch={false}
+              <ToolLink
+                slug={article.slug}
                 href={`/ghiduri/${dossier.slug}/`}
                 className="mt-5 flex items-start gap-3 rounded-lg border-l-4 border-teal bg-white p-3 hover:bg-paper"
               >
@@ -208,10 +210,22 @@ export async function ArticlePage({
                   </span>
                   <span className="mt-0.5 block font-medium leading-snug text-ink">{dossier.title}</span>
                 </span>
-              </Link>
+              </ToolLink>
+            )}
+            {/* calculatorul, sus și ca acțiune: jos îl vedeau puțini (2026-11-03: 8 clickuri la 1.417 vizualizări) */}
+            {topCalc && (
+              <ToolLink
+                slug={article.slug}
+                href={`/calculatoare/${topCalc.slug}/`}
+                className="mt-5 flex items-center gap-3 rounded-lg bg-teal p-3 font-medium leading-snug text-white hover:opacity-90"
+              >
+                <IconCalculator size={24} stroke={1.75} className="shrink-0" aria-hidden />
+                <span>Calculează pentru tine: {topCalc.title}</span>
+              </ToolLink>
             )}
             {usefulTool && (
-              <Link prefetch={false}
+              <ToolLink
+                slug={article.slug}
                 href={usefulTool.href}
                 className="mt-5 flex items-start gap-3 rounded-lg border-l-4 border-teal bg-white p-3 hover:bg-paper"
               >
@@ -222,7 +236,7 @@ export async function ArticlePage({
                   </span>
                   <span className="mt-0.5 block font-medium leading-snug text-ink">{usefulTool.title}</span>
                 </span>
-              </Link>
+              </ToolLink>
             )}
             {(() => {
               const body = sanitizeBody(article.bodyHtml, article.imageAlt ?? article.title);
@@ -260,11 +274,10 @@ export async function ArticlePage({
             ))}
           </div>
         )}
-        {calculator && !shown.has(`/calculatoare/${calculator.slug}/`) && <RelatedCalculator calc={calculator} />}
-        {guide && !shown.has(`/ghiduri/${guide.slug}/`) && <RelatedGuide guide={guide} />}
+        {guide && !shown.has(`/ghiduri/${guide.slug}/`) && <RelatedGuide guide={guide} articleSlug={article.slug} />}
         <GooglePreferred className="mt-6" />
         <TelegramCta />
-        <PushOptIn />
+        <PushOptIn place={article.section === "regiuni" ? article.locality : article.section === "diaspora" ? article.country : undefined} section={article.section} />
         <SimilarArticles articles={similar} />
       {!article.archived && <ViewBeacon slug={article.slug} />}
       </article>
