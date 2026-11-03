@@ -12,7 +12,6 @@ import { raionLabel } from "@/lib/content/geo";
 // Fără (site)/layout: fără reclame pe o pagină fără conținut editorial; noindex, nu e pentru Google.
 const CAMPAIGN = ["drochia"];
 
-export const dynamicParams = false;
 export const generateStaticParams = () => CAMPAIGN.map((raion) => ({ raion }));
 
 export async function generateMetadata({ params }: { params: Promise<{ raion: string }> }): Promise<Metadata> {
