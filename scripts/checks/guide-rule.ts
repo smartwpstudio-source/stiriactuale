@@ -119,10 +119,12 @@ assert.equal(reviewRank("Prețul la motorină crește mâine"), 1);
 assert.equal(reviewRank("Accident la Bălți"), 0);
 
 // --- cardul de rezervă: tema, apoi rubrica; varianta nefolosită recent
-const cardPlaces = ["card-justitie", "card-diaspora", "ilustratie-acte-asp"].map((id) => ({ id, name: id, keywords: [], photos: [1, 2].map((n) => ({ url: `${id}-${n}`, credit: "Imagine simbol", source: "", alt: id })) })) as never;
+const cardPlaces = ["card-justitie", "card-diaspora", "card-judo", "card-sport"].map((id) => ({ id, name: id, keywords: [], photos: [1, 2].map((n) => ({ url: `${id}-${n}`, credit: "Imagine simbol", source: "", alt: id })) })) as never;
 assert.equal(fallbackCard(["criminal"], "diaspora", cardPlaces, [])?.url, "card-justitie-1");
 assert.equal(fallbackCard([], "diaspora", cardPlaces, ["card-diaspora-1"])?.url, "card-diaspora-2");
-assert.equal(fallbackCard([], "national", cardPlaces, [])?.url, "ilustratie-acte-asp-1");
+assert.equal(fallbackCard([], "national", cardPlaces, []), null, "fără temă: niciun card la nimereală");
+assert.equal(fallbackCard(["sport"], "national", cardPlaces, [], "Judocana Alexandra Chiron, bronz")?.url, "card-judo-1");
+assert.equal(fallbackCard(["sport"], "national", cardPlaces, [], "Înot: medalie")?.url, "card-sport-1");
 assert.equal(fallbackCard([], "national", [], []), null);
 
 console.log("guide-rule: OK");
