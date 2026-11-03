@@ -47,7 +47,7 @@ export default async function SubscribePage({ params }: { params: Promise<{ raio
             <li>Noaptea, între 22:00 și 07:00, nu trimitem nimic.</li>
             <li>Te dezabonezi oricând, cu un singur buton, de pe această pagină.</li>
           </ul>
-          <PushOptIn place={raion} section="regiuni" />
+          <PushOptIn place={raion} section="regiuni" campaign />
           <p className="mt-4 text-sm text-sub">
             Ai iPhone? Alertele merg doar cu site-ul adăugat pe ecran: deschide pagina în Safari, apasă Partajează → Adaugă pe ecranul principal, intră de acolo și
             activează alertele.
