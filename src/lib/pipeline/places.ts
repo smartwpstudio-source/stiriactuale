@@ -38,6 +38,27 @@ export function loadPlaces(): Place[] {
 // Pozele pe aceeași temă (aceeași descriere a editorului, sau foarte apropiată)
 // formează un singur loc cu mai multe poze, ca pickRotated să le rotească.
 // ponytail: ultimele 300; o arhivă separată pe teme dacă devin sute.
+// Cardul-simbol după temă, când nu rămâne nicio poză: fără imagine rămăseseră moldoveanul
+// condamnat la Moscova și minorii pe ATV (2026-11-03). Varianta nefolosită recent. Fără temă,
+// cardul neutru cu acte: un card de instituție ar sugera o legătură care nu există.
+const TOPIC_CARDS: Record<string, string> = {
+  criminal: "card-justitie",
+  coruptie: "card-justitie",
+  accidente: "ilustratie-accident-rutier",
+  "alerta-112": "ilustratie-urgenta-112",
+  sanatate: "ilustratie-spital-sanatate",
+  "criza-energetica": "ilustratie-factura-curent",
+  economic: "ilustratie-preturi-scumpiri",
+  social: "ilustratie-pensii-salarii",
+};
+const SECTION_CARDS: Record<string, string> = { diaspora: "card-diaspora", international: "card-diplomatie" };
+export function fallbackCard(topics: string[], section: string, places: Place[], recent: string[]) {
+  const id = topics.map((t) => TOPIC_CARDS[t]).find(Boolean) ?? SECTION_CARDS[section] ?? "ilustratie-acte-asp";
+  const photos = places.find((p) => p.id === id)?.photos ?? [];
+  const photo = photos.find((p) => !recent.includes(p.url)) ?? photos[0];
+  return photo ? { url: photo.url, resourceId: null, credit: photo.credit, alt: photo.alt } : null;
+}
+
 export interface SymbolRow {
   id: number;
   title: string;
