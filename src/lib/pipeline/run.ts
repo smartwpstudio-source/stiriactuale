@@ -13,7 +13,7 @@ import { putMedia } from "@/lib/media";
 import sharp from "sharp";
 import { photosMatch } from "./photo-check";
 import { loadOfficialItems, matchOfficialPhoto } from "./official-photos";
-import { loadPlaces, loadSymbolPhotos, matchPlacePhoto } from "./places";
+import { fallbackCard, loadPlaces, loadSymbolPhotos, matchPlacePhoto } from "./places";
 import { checkRecent } from "./recent-duplicate";
 import { mediaTag, photoFigures, type BodyPhoto } from "./media-tag";
 import { pipelineEnabled } from "./settings";
@@ -455,26 +455,6 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       .where(eq(pipelineRuns.id, run.id));
     throw err;
   }
-}
-
-// Cardul-simbol după temă, când nu rămâne nicio poză (2026-11-03: moldoveanul condamnat la
-// Moscova a ieșit fără imagine). Varianta nefolosită recent, ca la celelalte carduri.
-const TOPIC_CARDS: Record<string, string> = {
-  criminal: "card-justitie",
-  coruptie: "card-justitie",
-  accidente: "ilustratie-accident-rutier",
-  "alerta-112": "ilustratie-urgenta-112",
-  sanatate: "ilustratie-spital-sanatate",
-  "criza-energetica": "ilustratie-factura-curent",
-  economic: "ilustratie-preturi-scumpiri",
-  social: "ilustratie-pensii-salarii",
-};
-const SECTION_CARDS: Record<string, string> = { diaspora: "card-diaspora", international: "card-diplomatie", national: "card-guvernul", regiuni: "card-guvernul" };
-export function fallbackCard(topics: string[], section: string, places: ReturnType<typeof loadPlaces>, recent: string[]) {
-  const id = topics.map((t) => TOPIC_CARDS[t]).find(Boolean) ?? SECTION_CARDS[section];
-  const photos = places.find((p) => p.id === id)?.photos ?? [];
-  const photo = photos.find((p) => !recent.includes(p.url)) ?? photos[0];
-  return photo ? { url: photo.url, resourceId: null, credit: photo.credit, alt: photo.alt } : null;
 }
 
 // Pozele din corpul surselor: întâi mărimea reală (miniaturile „alte știri” scapă
