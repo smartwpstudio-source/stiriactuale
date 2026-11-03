@@ -27,7 +27,11 @@ function keyBytes(base64: string): Uint8Array<ArrayBuffer> {
 }
 
 async function registration() {
-  return "serviceWorker" in navigator ? navigator.serviceWorker.getRegistration() : undefined;
+  if (!("serviceWorker" in navigator)) return undefined;
+  // prima vizită (omul venit din Facebook în Chrome): înregistrarea nu există încă și butonul
+  // n-ar apărea; register e sigur de repetat. În dezvoltare, SW-ul lipsește intenționat.
+  if (process.env.NODE_ENV === "production") return navigator.serviceWorker.register("/sw.js").catch(() => undefined);
+  return navigator.serviceWorker.getRegistration();
 }
 
 function storedPrefs(): PushPrefs {
@@ -185,7 +189,7 @@ export function PushOptIn({ place, section }: { place?: string; section?: string
         </span>
         <div className="flex-1">
           <p className="text-lg font-semibold leading-snug">{on ? "Alertele sunt active" : placeName ? `Activează alertele din ${placeName}` : "Activează alertele importante"}</p>
-          <p className="mt-1 text-sm text-sub">{PROMISE}</p>
+          <p className="mt-1 text-sm text-sub">{section === "regiuni" && placeName ? `Primești fiecare știre din ${placeName} și știrile importante din toată țara. Gratuit; noaptea nu trimitem nimic.` : PROMISE}</p>
         </div>
         <button
           onClick={on ? disable : enable}
