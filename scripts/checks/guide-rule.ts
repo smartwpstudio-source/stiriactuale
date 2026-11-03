@@ -10,7 +10,7 @@ import {
   validatePick,
   type GuideCheck,
 } from "../../src/lib/pipeline/guide-rule";
-import { passesSelection, reviewRank } from "../../src/lib/pipeline/run";
+import { fallbackCard, passesSelection, reviewRank } from "../../src/lib/pipeline/run";
 import { missingGuidesReport, NO_PRACTICAL_NEED } from "../../src/lib/admin/guide-report";
 import type { ScoredCandidate } from "../../src/lib/pipeline/types";
 
@@ -116,6 +116,12 @@ assert.ok(!passesSelection(cand({ audience: "local", reject: true }, 90)), "resp
 assert.equal(reviewRank("Accident la Drochia: un mort"), 2);
 assert.equal(reviewRank("Prețul la motorină crește mâine"), 1);
 assert.equal(reviewRank("Accident la Bălți"), 0);
+
+// --- cardul de rezervă: tema, apoi rubrica; varianta nefolosită recent
+const cardPlaces = ["card-justitie", "card-diaspora"].map((id) => ({ id, name: id, keywords: [], photos: [1, 2].map((n) => ({ url: `${id}-${n}`, credit: "Imagine simbol", source: "", alt: id })) })) as never;
+assert.equal(fallbackCard(["criminal"], "diaspora", cardPlaces, [])?.url, "card-justitie-1");
+assert.equal(fallbackCard([], "diaspora", cardPlaces, ["card-diaspora-1"])?.url, "card-diaspora-2");
+assert.equal(fallbackCard([], "national", cardPlaces, []), null);
 
 console.log("guide-rule: OK");
 process.exit(0);
