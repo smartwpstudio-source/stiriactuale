@@ -358,7 +358,9 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
             (place && { url: place.url, resourceId: null, credit: place.credit, alt: place.alt }) ??
             (label ? await card() : await findArticleImage(generated.stock_query, generated.image_prompt, generated.slug, usedImageIds, subject)) ??
             // nicio poză n-a trecut verificarea (image.ts): cardul temei, nu articol fără imagine
-            fallbackCard(c.classification.topics, c.classification.section, places, recentImages);
+            fallbackCard(c.classification.topics, c.classification.section, places, recentImages, subject) ??
+            // fără temă potrivită: steagul Moldovei, care nu sugerează nimic fals
+            (await flagCardImage(["md"], "Știri din Moldova", generated.slug, generated.card_tema).catch(() => null));
         // pozele din text: ale editorului (deja în R2), altfel cele din corpul surselor,
         // copiate în R2 (fără poza de titlu luată din comunicat); o poză care nu se
         // descarcă e sărită, articolul nu

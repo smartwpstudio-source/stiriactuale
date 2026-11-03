@@ -6,7 +6,8 @@ import { OPUS_MODEL, structured } from "./llm";
 import { SCHEMA } from "./generate";
 import { loadCatalog } from "./guide-rule";
 import { findArticleImage } from "./image";
-import { fallbackCard, loadPlaces, loadSymbolPhotos, matchPlacePhoto } from "./places";
+import { flagCardImage } from "./flag-card";
+import { loadPlaces, loadSymbolPhotos, matchPlacePhoto } from "./places";
 import { loadUsedImageIds, publishArticle } from "./publish";
 import type { GeneratedArticle, ScoredCandidate } from "./types";
 import { pipelineEnabled } from "./settings";
@@ -260,7 +261,7 @@ async function writeItem(item: Row): Promise<number> {
   const place = await matchPlacePhoto(subject, places, item.locality ?? undefined, recent);
   const image = place
     ? { url: place.url, resourceId: null, credit: place.credit, alt: place.alt }
-    : ((await findArticleImage(gen.stock_query, gen.image_prompt, gen.slug, await loadUsedImageIds(), subject)) ?? fallbackCard([], "national", places, recent));
+    : ((await findArticleImage(gen.stock_query, gen.image_prompt, gen.slug, await loadUsedImageIds(), subject)) ?? (await flagCardImage(["md"], "Util", gen.slug).catch(() => null)));
   const now = new Date();
   const candidate: ScoredCandidate = {
     group: {

@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { HAIKU_MODEL, structured } from "./llm";
+import { stripDiacritics } from "./text-normalize";
 import { and, desc, ilike, isNotNull } from "drizzle-orm";
 import { getDb } from "./db/client";
 import { articles } from "./db/schema";
@@ -39,8 +40,9 @@ export function loadPlaces(): Place[] {
 // formează un singur loc cu mai multe poze, ca pickRotated să le rotească.
 // ponytail: ultimele 300; o arhivă separată pe teme dacă devin sute.
 // Cardul-simbol după temă, când nu rămâne nicio poză: fără imagine rămăseseră moldoveanul
-// condamnat la Moscova și minorii pe ATV (2026-11-03). Varianta nefolosită recent. Fără temă,
-// cardul neutru cu acte: un card de instituție ar sugera o legătură care nu există.
+// condamnat la Moscova și minorii pe ATV (2026-11-03). Varianta nefolosită recent. Fără temă
+// potrivită, null: un card luat „la nimereală” e fals (actele de identitate la judocana
+// Alexandra Chiron, Guvernul la orice știre).
 const TOPIC_CARDS: Record<string, string> = {
   criminal: "card-justitie",
   coruptie: "card-justitie",
@@ -50,10 +52,20 @@ const TOPIC_CARDS: Record<string, string> = {
   "criza-energetica": "ilustratie-factura-curent",
   economic: "ilustratie-preturi-scumpiri",
   social: "ilustratie-pensii-salarii",
+  sport: "card-sport",
 };
+const SPORT_CARDS: [RegExp, string][] = [
+  [/judo|judocan/i, "card-judo"],
+  [/lupte|luptator|luptatoare/i, "card-lupte"],
+  [/box|boxer/i, "card-box"],
+  [/fotbal/i, "card-fotbal"],
+  [/atletism|atlet/i, "card-atletism"],
+  [/haltere|halterofil/i, "card-haltere"],
+];
 const SECTION_CARDS: Record<string, string> = { diaspora: "card-diaspora", international: "card-diplomatie" };
-export function fallbackCard(topics: string[], section: string, places: Place[], recent: string[]) {
-  const id = topics.map((t) => TOPIC_CARDS[t]).find(Boolean) ?? SECTION_CARDS[section] ?? "ilustratie-acte-asp";
+export function fallbackCard(topics: string[], section: string, places: Place[], recent: string[], subject = "") {
+  const sport = topics.includes("sport") ? SPORT_CARDS.find(([re]) => re.test(stripDiacritics(subject)))?.[1] : undefined;
+  const id = sport ?? topics.map((t) => TOPIC_CARDS[t]).find(Boolean) ?? SECTION_CARDS[section];
   const photos = places.find((p) => p.id === id)?.photos ?? [];
   const photo = photos.find((p) => !recent.includes(p.url)) ?? photos[0];
   return photo ? { url: photo.url, resourceId: null, credit: photo.credit, alt: photo.alt } : null;
