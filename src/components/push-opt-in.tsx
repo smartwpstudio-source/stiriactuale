@@ -44,7 +44,7 @@ function storedPrefs(): PushPrefs {
 
 const box = "mt-6 rounded-xl border border-amber bg-amber/[0.08] p-5 font-sans text-ink";
 
-export function PushOptIn({ place, section }: { place?: string; section?: string } = {}) {
+export function PushOptIn({ place, section, campaign }: { place?: string; section?: string; campaign?: boolean } = {}) {
   // articol dintr-un raion sau din diaspora: abonarea pornește direct cu acel loc
   const placePrefs: PushPrefs | null =
     place && section === "regiuni" ? { scope: "raion", raion: place, country: null } : place && section === "diaspora" ? { scope: "tara", raion: null, country: place } : null;
@@ -69,6 +69,9 @@ export function PushOptIn({ place, section }: { place?: string; section?: string
       const on = !!(await reg.pushManager.getSubscription());
       if (on) setPrefs(storedPrefs());
       setState(on ? "on" : "off");
+      // pagina de campanie: cine era abonat pe toată țara și a venit pentru Drochia primește
+      // Drochia (știrile importante din țară le primește în continuare); alte alegeri rămân
+      if (on && campaign && placePrefs && storedPrefs().scope === "all") await choose(placePrefs);
     })();
   }, []);
 
@@ -211,7 +214,7 @@ export function PushOptIn({ place, section }: { place?: string; section?: string
           </legend>
           <div className="mt-2 flex flex-col gap-2">
             {radio("all", "Toată țara")}
-            {radio("raion", "Și știrile importante din raionul meu")}
+            {radio("raion", "Și toate știrile din raionul meu")}
             {prefs.scope === "raion" && (
               <select
                 aria-label="Raionul tău"
