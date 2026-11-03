@@ -60,6 +60,7 @@ assert.ok(p("Parlamentul a modificat Codul fiscal: scutirea crește de la 1 ianu
 assert.ok(p("Inundații în sudul țării: oamenii, evacuați"));
 assert.ok(p("Guvernul a aprobat majorarea pensiilor de la 1 aprilie"));
 assert.ok(p("Accident grav pe traseul Chișinău–Hîncești: trei morți"));
+assert.ok(p("Accident la Drochia: un rănit", { section: "regiuni", locality: "drochia", pushWorthy: false }), "abonații pe raion primesc toate știrile raionului");
 // negative
 assert.ok(!p("Președintele a declarat că opoziția minte"), "declarație politică");
 assert.ok(!p("Accident la Orhei: un rănit"), "accident cu un rănit");

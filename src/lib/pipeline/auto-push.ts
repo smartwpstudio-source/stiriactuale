@@ -50,7 +50,11 @@ export function isMajorNews(text: string): boolean {
   return ADOPTED.test(t) && SUBJECT.test(t) && (!NOT_YET.test(t) || FINAL.test(t));
 }
 
-export function shouldAutoPush(a: { pushWorthy: boolean; section: string; kind: string; title: string; leadText: string }): boolean {
+// Abonatul pe raion a cerut știrile din raionul lui (campania de abonare, decizia editorului,
+// 2026-11-03): le primește pe toate. Pleacă doar la cei care au ales acel raion (push-segment.ts);
+// abonații pe toată țara și diaspora rămân cu regulile stricte.
+export function shouldAutoPush(a: { pushWorthy: boolean; section: string; locality?: string | null; kind: string; title: string; leadText: string }): boolean {
+  if (a.section === "regiuni" && a.locality && a.kind !== "analiza") return true;
   if (!a.pushWorthy || a.section === "international" || a.kind === "pe-scurt" || a.kind === "analiza") return false;
   return isMajorNews(`${a.title} ${a.leadText}`);
 }
