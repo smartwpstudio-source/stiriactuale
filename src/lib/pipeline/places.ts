@@ -57,7 +57,7 @@ const TOPIC_CARDS: Record<string, string> = {
 const SPORT_CARDS: [RegExp, string][] = [
   [/judo|judocan/i, "card-judo"],
   [/lupte|luptator|luptatoare/i, "card-lupte"],
-  [/box|boxer/i, "card-box"],
+  [/\bbox\b|boxer/i, "card-box"],
   [/fotbal/i, "card-fotbal"],
   [/atletism|atlet/i, "card-atletism"],
   [/haltere|halterofil/i, "card-haltere"],
