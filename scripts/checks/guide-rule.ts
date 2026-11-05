@@ -129,7 +129,7 @@ assert.equal(fallbackCard(["accidente"], "regiuni", cardPlaces, [], "Pieton mort
 assert.equal(fallbackCard(["accidente"], "regiuni", cardPlaces, [], "Două mașini s-au ciocnit la Orhei")?.url, "ilustratie-accident-rutier-1");
 assert.equal(fallbackCard([], "international", cardPlaces, [], "Atac rusesc asupra energiei Ucrainei: drone și rachete")?.url, "card-razboi-1");
 assert.equal(fallbackCard([], "util", cardPlaces, [], "Seria VIN nu se potrivește cu actele: cum verifici mașina din UE")?.url, "card-auto-1");
-assert.equal(fallbackCard([], "util", cardPlaces, [], "Plată pe card pe care n-ai făcut-o: cum contești tranzacția")?.url, "card-bani-card-1");
+assert.equal(fallbackCard([], "util", cardPlaces, [], "Plată pe card pe care n-ai făcut-o: cum o contești la bancă")?.url, "card-bani-card-1");
 assert.equal(fallbackCard([], "util", cardPlaces, [], "Datorii la gaz și curent iarna: când poți fi deconectat")?.url, undefined, "factura nu e pană de curent");
 assert.equal(fallbackCard([], "national", cardPlaces, [], "Autobuzul nou de la Bălți"), null, "autobuz nu e auto");
 assert.equal(fallbackCard([], "diaspora", cardPlaces, ["card-diaspora-1"])?.url, "card-diaspora-2");

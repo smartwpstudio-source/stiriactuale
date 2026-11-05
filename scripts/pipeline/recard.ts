@@ -68,13 +68,19 @@ export const mentioned = (code: string, text: string) =>
     process.exit(0);
   }
 
-  // „--simbol slug url”: un card-simbol anume (Irina Rîngaci -> Lupte, nu steaguri)
+  // „--simbol slug url [slug url …]”: un card-simbol anume (Irina Rîngaci -> Lupte, nu steaguri);
+  // mai multe perechi într-o rulare (cele 27 cu steag/stemă, 2026-11-05)
   if (process.argv.includes("--simbol")) {
-    const [slug, url] = process.argv.slice(process.argv.indexOf("--simbol") + 1);
-    const place = loadPlaces().flatMap((p) => p.photos).find((p) => p.url === url);
-    if (!place) throw new Error(`nu e în content/locuri: ${url}`);
-    await db.update(articles).set({ imageUrl: url, imageResourceId: null, imageCredit: place.credit, imageAltText: place.alt ?? null, updatedAt: new Date() }).where(eq(articles.slug, slug));
-    console.log(`${slug}: ${place.alt}`);
+    const args = process.argv.slice(process.argv.indexOf("--simbol") + 1);
+    const pairs = args.slice(0, (args.findIndex((a) => a.startsWith("--")) + 1 || args.length + 1) - 1);
+    const photos = loadPlaces().flatMap((p) => p.photos);
+    for (let i = 0; i + 1 < pairs.length; i += 2) {
+      const [slug, url] = [pairs[i], pairs[i + 1]];
+      const place = photos.find((p) => p.url === url);
+      if (!place) throw new Error(`nu e în content/locuri: ${url}`);
+      const done = await db.update(articles).set({ imageUrl: url, imageResourceId: null, imageCredit: place.credit, imageAltText: place.alt ?? null, updatedAt: new Date() }).where(eq(articles.slug, slug)).returning({ id: articles.id });
+      console.log(`${slug}: ${done.length ? place.alt : "ARTICOL NEGĂSIT"}`);
+    }
     console.log((await requestRevalidate({ since })) ? "site reîmprospătat" : "reîmprospătarea a eșuat");
     process.exit(0);
   }
