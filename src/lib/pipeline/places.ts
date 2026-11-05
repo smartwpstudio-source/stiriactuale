@@ -44,8 +44,8 @@ export function loadPlaces(): Place[] {
 // potrivită, null: un card luat „la nimereală” e fals (actele de identitate la judocana
 // Alexandra Chiron, Guvernul la orice știre).
 const TOPIC_CARDS: Record<string, string> = {
-  criminal: "card-justitie",
-  coruptie: "card-justitie",
+  criminal: "ilustratie-politia",
+  coruptie: "ilustratie-politia",
   accidente: "ilustratie-accident-rutier",
   "alerta-112": "ilustratie-urgenta-112",
   sanatate: "ilustratie-spital-sanatate",
@@ -63,9 +63,14 @@ const SPORT_CARDS: [RegExp, string][] = [
   [/haltere|halterofil/i, "card-haltere"],
 ];
 const SECTION_CARDS: Record<string, string> = { diaspora: "card-diaspora", international: "card-diplomatie" };
+// Crima e fapta, justiția e consecința (editorul, 2026-11-05: alertele false cu bombă primiseră
+// „Instanța de judecată”): cardul Justiție doar când știrea chiar vorbește despre asta.
+const COURT = /instant[ae]|judecat|\bproces(ul|e)?\b|procuror|procuratur|sentint|condamn|arest|\bcna\b|dosar penal/i;
 export function fallbackCard(topics: string[], section: string, places: Place[], recent: string[], subject = "") {
-  const sport = topics.includes("sport") ? SPORT_CARDS.find(([re]) => re.test(stripDiacritics(subject)))?.[1] : undefined;
-  const id = sport ?? topics.map((t) => TOPIC_CARDS[t]).find(Boolean) ?? SECTION_CARDS[section];
+  const plain = stripDiacritics(subject);
+  const sport = topics.includes("sport") ? SPORT_CARDS.find(([re]) => re.test(plain))?.[1] : undefined;
+  const court = (topics.includes("criminal") || topics.includes("coruptie")) && COURT.test(plain) ? "card-justitie" : undefined;
+  const id = sport ?? court ?? topics.map((t) => TOPIC_CARDS[t]).find(Boolean) ?? SECTION_CARDS[section];
   const photos = places.find((p) => p.id === id)?.photos ?? [];
   const photo = photos.find((p) => !recent.includes(p.url)) ?? photos[0];
   return photo ? { url: photo.url, resourceId: null, credit: photo.credit, alt: photo.alt } : null;
