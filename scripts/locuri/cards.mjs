@@ -58,6 +58,9 @@ const THEMES = [
     "atletism, alergare, maraton, semimaraton, sprint, săritura, aruncarea, atlet, atletă", "Sport, atletism: concursuri, maraton, atleții moldoveni"],
   ["haltere", "Haltere", ["Sport", "Sport", "Sport"], "pic:haltere", ["#4A4F57", "#1C1F24"], "#E2B84B",
     "haltere, haltere, haltrofil, haltrofilă, ridicarea greutăților, powerlifting", "Sport, haltere: campionate, haltrofilii moldoveni"],
+  // pietonul lovit (2026-11-05): ilustrația cu două mașini ciocnite era falsă la Stăuceni
+  ["pieton", "Accident cu pieton", ["Siguranța pietonilor", "Siguranța rutieră", "Siguranța pietonilor"], "walk", ["#B5452B", "#4F1A0E"], "#FFD43B",
+    "pieton, pietonă, pietoni, trecere de pietoni, lovit de mașină, lovit de autobuz, lovit de camion, tamponat pe trotuar, accident cu pieton", "Accident cu pieton: pieton lovit de mașină, autobuz sau camion"],
   ["sport", "Sport", ["Competiții și medalii", "Competiții și medalii", "Competiții și medalii"], "medal", ["#1F5F8A", "#0B2A40"], "#FFD43B",
     "sport, sportiv, sportivă, medalie, campionat, competiție, olimpiadă, jocurile olimpice, turneu, campion, campioană, lot național", "Sport: sportivii moldoveni, medalii, competiții (când nu e altă temă de sport)"],
 ];

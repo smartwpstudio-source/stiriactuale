@@ -119,11 +119,13 @@ assert.equal(reviewRank("Prețul la motorină crește mâine"), 1);
 assert.equal(reviewRank("Accident la Bălți"), 0);
 
 // --- cardul de rezervă: tema, apoi rubrica; varianta nefolosită recent
-const cardPlaces = ["card-justitie", "ilustratie-politia", "card-diaspora", "card-judo", "card-sport"].map((id) => ({ id, name: id, keywords: [], photos: [1, 2].map((n) => ({ url: `${id}-${n}`, credit: "Imagine simbol", source: "", alt: id })) })) as never;
+const cardPlaces = ["card-justitie", "ilustratie-politia", "card-pieton", "ilustratie-accident-rutier", "card-diaspora", "card-judo", "card-sport"].map((id) => ({ id, name: id, keywords: [], photos: [1, 2].map((n) => ({ url: `${id}-${n}`, credit: "Imagine simbol", source: "", alt: id })) })) as never;
 assert.equal(fallbackCard(["criminal"], "international", cardPlaces, [], "Val de alerte false cu bombă la zboruri din Europa")?.url, "ilustratie-politia-1", "fapta: fără instanță");
 assert.equal(fallbackCard(["criminal"], "diaspora", cardPlaces, [], "Moldovean condamnat la Moscova")?.url, "card-justitie-1");
 assert.equal(fallbackCard(["coruptie"], "national", cardPlaces, [], "Percheziții CNA la primărie")?.url, "card-justitie-1");
 assert.equal(fallbackCard(["criminal"], "national", cardPlaces, [], "Tâlhărie în instanța de judecată")?.url, "card-justitie-1");
+assert.equal(fallbackCard(["accidente"], "regiuni", cardPlaces, [], "Pieton mort, lovit de autobuz la Stăuceni")?.url, "card-pieton-1");
+assert.equal(fallbackCard(["accidente"], "regiuni", cardPlaces, [], "Două mașini s-au ciocnit la Orhei")?.url, "ilustratie-accident-rutier-1");
 assert.equal(fallbackCard([], "diaspora", cardPlaces, ["card-diaspora-1"])?.url, "card-diaspora-2");
 assert.equal(fallbackCard([], "national", cardPlaces, []), null, "fără temă: niciun card la nimereală");
 assert.equal(fallbackCard(["sport"], "national", cardPlaces, [], "Judocana Alexandra Chiron, bronz")?.url, "card-judo-1");

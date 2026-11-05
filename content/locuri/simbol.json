@@ -1093,6 +1093,31 @@
     ]
   },
   {
+    "id": "card-pieton",
+    "name": "TEMĂ (card instituție/regiune): Accident cu pieton: pieton lovit de mașină, autobuz sau camion",
+    "keywords": "pieton, pietonă, pietoni, trecere de pietoni, lovit de mașină, lovit de autobuz, lovit de camion, tamponat pe trotuar, accident cu pieton",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/pieton-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Accident cu pieton — Siguranța pietonilor"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/pieton-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Accident cu pieton — Siguranța rutieră"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/pieton-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Accident cu pieton — Siguranța pietonilor"
+      }
+    ]
+  },
+  {
     "id": "card-sport",
     "name": "TEMĂ (card instituție/regiune): Sport: sportivii moldoveni, medalii, competiții (când nu e altă temă de sport)",
     "keywords": "sport, sportiv, sportivă, medalie, campionat, competiție, olimpiadă, jocurile olimpice, turneu, campion, campioană, lot național",
