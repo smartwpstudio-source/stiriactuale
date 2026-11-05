@@ -61,6 +61,21 @@ const THEMES = [
   // pietonul lovit (2026-11-05): ilustrația cu două mașini ciocnite era falsă la Stăuceni
   ["pieton", "Accident cu pieton", ["Siguranța pietonilor", "Siguranța rutieră", "Siguranța pietonilor"], "walk", ["#B5452B", "#4F1A0E"], "#FFD43B",
     "pieton, pietonă, pietoni, trecere de pietoni, lovit de mașină, lovit de autobuz, lovit de camion, tamponat pe trotuar, accident cu pieton", "Accident cu pieton: pieton lovit de mașină, autobuz sau camion"],
+  // teme fără poză potrivită (2026-11-05): 33 din 181 de articole primeau steagul sau stema
+  ["razboi", "Război", ["Atacuri și bombardamente", "Conflict armat", "Atacuri și bombardamente"], "bomb", ["#5A2A2A", "#1F0D0D"], "#FF8A65",
+    "război, atac, atacuri, bombardament, bombardat, drone, rachete, front, ofensivă, armata rusă, victime civile, raid aerian", "Război și atacuri: bombardamente, drone, rachete, victime"],
+  ["energie", "Energie", ["Aprovizionarea cu energie", "Curent și gaz", "Aprovizionarea cu energie"], "bolt", ["#B07A0E", "#4A3104"], "#FFFFFF",
+    "energie, energetic, pană de curent, fără curent, deconectări, rețea electrică, aprovizionare cu gaz, Energocom, Moldelectrica, centrală, infrastructură energetică", "Energie: pane de curent, aprovizionarea cu gaz și curent, rețeaua"],
+  ["bani-card", "Bani și carduri", ["Plăți și conturi bancare", "Siguranța plăților", "Plăți și conturi bancare"], "credit-card", ["#1F5F8A", "#0B2A40"], "#FFD43B",
+    "card bancar, plata cu cardul, cont bancar, bancomat, transfer, tranzacție, comision bancar, plată online, contestarea unei plăți", "Bani și carduri: plăți, conturi bancare, tranzacții contestate"],
+  ["auto", "Mașini și acte auto", ["Mașina ta", "Acte și reguli auto", "Mașina ta"], "car", ["#3D4A5C", "#151B24"], "#FFD43B",
+    "mașină, automobil, auto, înmatriculare, permis de conducere, RCA, carte verde, ASP auto, VIN, mașină din UE, inspecția tehnică, numere de înmatriculare", "Mașini și acte auto: înmatriculare, permis, asigurare, cumpărarea unei mașini"],
+  ["violenta-familie", "Violență în familie", ["Ajutor și protecție", "Drepturile victimelor", "Ajutor și protecție"], "home-shield", ["#6B2E5E", "#2A0F25"], "#FFFFFF",
+    "violență în familie, violență domestică, agresor, ordin de protecție, victimă, abuz, centru pentru victime, linia de încredere", "Violență în familie: ordinul de protecție, ajutor pentru victime"],
+  ["munca", "Locuri de muncă", ["Joburi și salarii", "Piața muncii", "Joburi și salarii"], "briefcase", ["#2E6B5E", "#0F2A24"], "#FFFFFF",
+    "locuri de muncă, joburi, angajare, angajator, târg de joburi, șomaj, ANOFM, contract de muncă, Inspecția Muncii, piața muncii", "Locuri de muncă: joburi, angajare, drepturile angajaților"],
+  ["aeroport", "Aeroport și zboruri", ["Zboruri și pasageri", "Transport aerian", "Zboruri și pasageri"], "plane", ["#2A5FA8", "#0D2654"], "#FFFFFF",
+    "aeroport, zbor, zboruri, avion, pasageri, cursă aeriană, companie aeriană, Wizz Air, bilete de avion, aterizare, decolare, alertă cu bombă la zbor", "Aeroport și zboruri: zboruri, pasageri, companii aeriene"],
   ["sport", "Sport", ["Competiții și medalii", "Competiții și medalii", "Competiții și medalii"], "medal", ["#1F5F8A", "#0B2A40"], "#FFD43B",
     "sport, sportiv, sportivă, medalie, campionat, competiție, olimpiadă, jocurile olimpice, turneu, campion, campioană, lot național", "Sport: sportivii moldoveni, medalii, competiții (când nu e altă temă de sport)"],
 ];
@@ -139,10 +154,11 @@ function card([id, title, subs, ic, [c1, c2], accent], v) {
 }
 
 await loadPics();
-const only = process.argv[2];
+// „node scripts/locuri/cards.mjs a,b”: doar acele carduri, restul listei rămâne neatins
+const only = process.argv[2]?.split(",");
 const out = [];
 for (const t of THEMES) {
-  if (only && t[0] !== only) continue;
+  if (only && !only.includes(t[0])) continue;
   const photos = [];
   for (let v = 0; v < 3; v++) {
     const file = `${t[0]}-${v + 1}.png`;
@@ -151,10 +167,12 @@ for (const t of THEMES) {
   }
   out.push({ id: `card-${t[0]}`, name: `TEMĂ (card instituție/regiune): ${t[7]}`, keywords: t[6], photos });
 }
-if (!only) {
+{
   const file = "content/locuri/simbol.json";
-  const all = JSON.parse(readFileSync(file, "utf8")).filter((p) => !p.id.startsWith("card-"));
-  writeFileSync(file, `${JSON.stringify([...all, ...out], null, 2)}\n`);
+  const all = JSON.parse(readFileSync(file, "utf8"));
+  const ids = new Set(out.map((p) => p.id));
+  const kept = only ? all.filter((p) => !ids.has(p.id)) : all.filter((p) => !p.id.startsWith("card-"));
+  writeFileSync(file, `${JSON.stringify([...kept, ...out], null, 2)}\n`);
 }
 console.log(`carduri: ${out.length * 3}`);
 await import("./simbol-mini.mjs");

@@ -62,6 +62,16 @@ const SPORT_CARDS: [RegExp, string][] = [
   [/atletism|atlet/i, "card-atletism"],
   [/haltere|halterofil/i, "card-haltere"],
 ];
+// subiectul spune tema și când clasificatorul n-a dat-o (Util n-are teme deloc)
+const SUBJECT_CARDS: [RegExp, string][] = [
+  [/razboi|bombard|\bdron|rachet|atac (rusesc|aerian|cu drone)/i, "card-razboi"],
+  [/violent\w* (in|din) familie|violenta domestica|ordin\w* de protectie|agresor/i, "card-violenta-familie"],
+  [/plat\w* cu cardul|card\w* bancar|cont\w* bancar|bancomat|tranzacti/i, "card-bani-card"],
+  [/masin|\bauto\b|permis\w* de conducere|inmatricul|\bvin\b|\brca\b/i, "card-auto"],
+  [/aeroport|\bzbor|avion|pasageri/i, "card-aeroport"],
+  [/locuri de munca|\bjobur|angajator|somaj|anofm/i, "card-munca"],
+  [/pan\w* de curent|fara curent|energetic|energie|electricitat/i, "card-energie"],
+];
 const SECTION_CARDS: Record<string, string> = { diaspora: "card-diaspora", international: "card-diplomatie" };
 // Crima e fapta, justiția e consecința (editorul, 2026-11-05: alertele false cu bombă primiseră
 // „Instanța de judecată”): cardul Justiție doar când știrea chiar vorbește despre asta.
@@ -72,7 +82,9 @@ export function fallbackCard(topics: string[], section: string, places: Place[],
   // pietonul lovit nu e „două mașini ciocnite” (Stăuceni, 2026-11-05)
   const pedestrian = topics.includes("accidente") && /pieton/i.test(plain) ? "card-pieton" : undefined;
   const court = (topics.includes("criminal") || topics.includes("coruptie")) && COURT.test(plain) ? "card-justitie" : undefined;
-  const id = sport ?? pedestrian ?? court ?? topics.map((t) => TOPIC_CARDS[t]).find(Boolean) ?? SECTION_CARDS[section];
+  // mașinile ciocnite rămân la ilustrația accidentului, nu la „Mașini și acte auto”
+  const bySubject = SUBJECT_CARDS.find(([re, id]) => re.test(plain) && !(id === "card-auto" && topics.includes("accidente")))?.[1];
+  const id = sport ?? pedestrian ?? court ?? bySubject ?? topics.map((t) => TOPIC_CARDS[t]).find(Boolean) ?? SECTION_CARDS[section];
   const photos = places.find((p) => p.id === id)?.photos ?? [];
   const photo = photos.find((p) => !recent.includes(p.url)) ?? photos[0];
   return photo ? { url: photo.url, resourceId: null, credit: photo.credit, alt: photo.alt } : null;
@@ -170,7 +182,7 @@ export async function matchPlacePhoto(
     const { match } = await structured<{ match: number }>({
       model: HAIKU_MODEL,
       system:
-        "Alegi poza pentru o știre; poza trebuie să arate SUBIECTUL PRINCIPAL. Lista are două feluri de intrări. (1) LOCURI și INSTITUȚII reale (Aeroportul Chișinău, Parlamentul, vama Leușeni, spitalul din Fălești): le alegi doar dacă subiectul principal ESTE acel loc sau acea instituție (zborurile de pe aeroport, o decizie a Parlamentului, cozile la vamă); locul unde s-a întâmplat un accident sau un incendiu NU e subiectul. (2) TEME ilustrative (accident rutier, incendiu, pompieri, poliție, ambulanță, vreme, bani, prețuri, vot, grafice de avertizare, escrocherie): le alegi când știrea e despre acel tip de întâmplare (orice accident rutier -> accident rutier, dar pieton lovit de mașină, autobuz sau camion -> Accident cu pieton; ninsoarea -> ninsoare). Graficele de avertizare (cod galben/portocaliu/roșu) doar dacă știrea E acea avertizare, cu același cod și fenomen. (3) CARDURI de instituție sau regiune (Guvernul, Parlamentul, Președinția, Transnistria, Găgăuzia, Alegeri, Uniunea Europeană, Justiție, Diplomație, Primăria Chișinău, Banca Națională, Apărare, Ucraina, Diaspora): le alegi când CONTEXTUL PRINCIPAL al știrii e acea instituție sau regiune — declarațiile, cererile, deciziile, vizitele liderilor ei. Contextul bate obiectul: liderul de la Tiraspol cere gaz -> Transnistria, nu factura la gaz; Guvernul aprobă o lege -> Guvernul; candidații la bașcan -> Găgăuzia (sau Alegeri); premierul în vizită la Kiev -> Ucraina sau Diplomație. Accidentele, crimele, vremea și prețurile rămân la temele lor din (2), chiar dacă s-au întâmplat în Găgăuzia sau Transnistria. (4) SPORT (Lupte, Judo, Box, Fotbal, Atletism, Haltere, Sport): orice știre despre sportivi, medalii, meciuri, campionate primește cardul sportului ei (lupte libere sau greco-romane -> Lupte); alt sport decât cele din listă -> Sport. Drona, racheta, obiectele care nu sunt în listă: -1 (se caută altă poză). În caz de dubiu: -1.",
+        "Alegi poza pentru o știre; poza trebuie să arate SUBIECTUL PRINCIPAL. Lista are două feluri de intrări. (1) LOCURI și INSTITUȚII reale (Aeroportul Chișinău, Parlamentul, vama Leușeni, spitalul din Fălești): le alegi doar dacă subiectul principal ESTE acel loc sau acea instituție (zborurile de pe aeroport, o decizie a Parlamentului, cozile la vamă); locul unde s-a întâmplat un accident sau un incendiu NU e subiectul. (2) TEME ilustrative (accident rutier, incendiu, pompieri, poliție, ambulanță, vreme, bani, prețuri, vot, grafice de avertizare, escrocherie): le alegi când știrea e despre acel tip de întâmplare (orice accident rutier -> accident rutier, dar pieton lovit de mașină, autobuz sau camion -> Accident cu pieton; ninsoarea -> ninsoare). Graficele de avertizare (cod galben/portocaliu/roșu) doar dacă știrea E acea avertizare, cu același cod și fenomen. (3) CARDURI de instituție sau regiune (Guvernul, Parlamentul, Președinția, Transnistria, Găgăuzia, Alegeri, Uniunea Europeană, Justiție, Diplomație, Primăria Chișinău, Banca Națională, Apărare, Ucraina, Diaspora): le alegi când CONTEXTUL PRINCIPAL al știrii e acea instituție sau regiune — declarațiile, cererile, deciziile, vizitele liderilor ei. Contextul bate obiectul: liderul de la Tiraspol cere gaz -> Transnistria, nu factura la gaz; Guvernul aprobă o lege -> Guvernul; candidații la bașcan -> Găgăuzia (sau Alegeri); premierul în vizită la Kiev -> Ucraina sau Diplomație. Accidentele, crimele, vremea și prețurile rămân la temele lor din (2), chiar dacă s-au întâmplat în Găgăuzia sau Transnistria. Atacurile, bombardamentele, dronele și rachetele -> Război (nu Ucraina, care e pentru relațiile cu Ucraina). Pana de curent, aprovizionarea cu energie -> Energie (facturile rămân la ilustrațiile cu factura). Plățile cu cardul, conturile, tranzacțiile -> Bani și carduri (escrocheriile rămân la escrocherii). Mașinile, actele auto, permisul -> Mașini și acte auto. Violența în familie -> Violență în familie. Joburile, angajatorii, șomajul -> Locuri de muncă. Zborurile, aeroporturile, pasagerii avioanelor -> Aeroport și zboruri. Pietonul lovit -> Accident cu pieton. (4) SPORT (Lupte, Judo, Box, Fotbal, Atletism, Haltere, Sport): orice știre despre sportivi, medalii, meciuri, campionate primește cardul sportului ei (lupte libere sau greco-romane -> Lupte); alt sport decât cele din listă -> Sport. Drona, racheta, obiectele care nu sunt în listă: -1 (se caută altă poză). În caz de dubiu: -1.",
       prompt: `Știrea: ${subject}\n\nLocuri:\n${places.map((p, i) => `${i}. ${p.name} (${p.keywords})`).join("\n")}`,
       schema: { type: "object", properties: { match: { type: "integer" } }, required: ["match"] },
       maxBudgetUsd: 0.05,
