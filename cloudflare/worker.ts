@@ -51,7 +51,8 @@ const worker = {
     // adresele vechi /_next/image (din Google Images, pagini salvate) pentru poze care au
     // miniatură gata făcută: redirect spre ea, fără transformare Cloudflare Images plătită
     // (noiembrie 2026: toate cele 768 de transformări veneau prin legătura IMAGES)
-    if (url.pathname === "/_next/image") {
+    // cu bară la final: așa le cere site-ul (trailingSlash)
+    if (url.pathname === "/_next/image/" || url.pathname === "/_next/image") {
       const src = url.searchParams.get("url") ?? "";
       const mini = miniUrl(src, Number(url.searchParams.get("w")) > 384 ? 828 : 384);
       if (mini) return Response.redirect(new URL(mini, url).toString(), 301);
