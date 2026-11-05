@@ -1141,5 +1141,180 @@
         "alt": "Card: Sport — Competiții și medalii"
       }
     ]
+  },
+  {
+    "id": "card-razboi",
+    "name": "TEMĂ (card instituție/regiune): Război și atacuri: bombardamente, drone, rachete, victime",
+    "keywords": "război, atac, atacuri, bombardament, bombardat, drone, rachete, front, ofensivă, armata rusă, victime civile, raid aerian",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/razboi-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Război — Atacuri și bombardamente"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/razboi-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Război — Conflict armat"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/razboi-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Război — Atacuri și bombardamente"
+      }
+    ]
+  },
+  {
+    "id": "card-energie",
+    "name": "TEMĂ (card instituție/regiune): Energie: pane de curent, aprovizionarea cu gaz și curent, rețeaua",
+    "keywords": "energie, energetic, pană de curent, fără curent, deconectări, rețea electrică, aprovizionare cu gaz, Energocom, Moldelectrica, centrală, infrastructură energetică",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/energie-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Energie — Aprovizionarea cu energie"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/energie-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Energie — Curent și gaz"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/energie-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Energie — Aprovizionarea cu energie"
+      }
+    ]
+  },
+  {
+    "id": "card-bani-card",
+    "name": "TEMĂ (card instituție/regiune): Bani și carduri: plăți, conturi bancare, tranzacții contestate",
+    "keywords": "card bancar, plata cu cardul, cont bancar, bancomat, transfer, tranzacție, comision bancar, plată online, contestarea unei plăți",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/bani-card-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Bani și carduri — Plăți și conturi bancare"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/bani-card-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Bani și carduri — Siguranța plăților"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/bani-card-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Bani și carduri — Plăți și conturi bancare"
+      }
+    ]
+  },
+  {
+    "id": "card-auto",
+    "name": "TEMĂ (card instituție/regiune): Mașini și acte auto: înmatriculare, permis, asigurare, cumpărarea unei mașini",
+    "keywords": "mașină, automobil, auto, înmatriculare, permis de conducere, RCA, carte verde, ASP auto, VIN, mașină din UE, inspecția tehnică, numere de înmatriculare",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/auto-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Mașini și acte auto — Mașina ta"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/auto-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Mașini și acte auto — Acte și reguli auto"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/auto-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Mașini și acte auto — Mașina ta"
+      }
+    ]
+  },
+  {
+    "id": "card-violenta-familie",
+    "name": "TEMĂ (card instituție/regiune): Violență în familie: ordinul de protecție, ajutor pentru victime",
+    "keywords": "violență în familie, violență domestică, agresor, ordin de protecție, victimă, abuz, centru pentru victime, linia de încredere",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/violenta-familie-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Violență în familie — Ajutor și protecție"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/violenta-familie-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Violență în familie — Drepturile victimelor"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/violenta-familie-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Violență în familie — Ajutor și protecție"
+      }
+    ]
+  },
+  {
+    "id": "card-munca",
+    "name": "TEMĂ (card instituție/regiune): Locuri de muncă: joburi, angajare, drepturile angajaților",
+    "keywords": "locuri de muncă, joburi, angajare, angajator, târg de joburi, șomaj, ANOFM, contract de muncă, Inspecția Muncii, piața muncii",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/munca-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Locuri de muncă — Joburi și salarii"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/munca-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Locuri de muncă — Piața muncii"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/munca-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Locuri de muncă — Joburi și salarii"
+      }
+    ]
+  },
+  {
+    "id": "card-aeroport",
+    "name": "TEMĂ (card instituție/regiune): Aeroport și zboruri: zboruri, pasageri, companii aeriene",
+    "keywords": "aeroport, zbor, zboruri, avion, pasageri, cursă aeriană, companie aeriană, Wizz Air, bilete de avion, aterizare, decolare, alertă cu bombă la zbor",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/aeroport-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Aeroport și zboruri — Zboruri și pasageri"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/aeroport-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Aeroport și zboruri — Transport aerian"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/aeroport-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Aeroport și zboruri — Zboruri și pasageri"
+      }
+    ]
   }
 ]

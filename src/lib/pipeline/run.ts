@@ -354,16 +354,21 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
         const inst = generated.card_institutie && generated.card_institutie in INSTITUTIONS ? generated.card_institutie : "";
         const logoCard = () =>
           flagCardImage(["md"], label || "Anunț oficial", generated.slug, generated.card_tema, inst).catch((err) => (console.error(`Card: ${err instanceof Error ? err.message : err}`), null));
-        const place = editor || official || foreign || inst ? null : await matchPlacePhoto(subject, places, c.classification.locality, recentImages);
+        // coperta spune subiectul (editorul, 2026-11-05): cardul temei înaintea steagului și a
+        // siglei; steagurile vin întâi doar la relațiile dintre state (vizite, acorduri)
+        const diplomacy = foreign && generated.card_tema === "diplomatie";
+        const place = editor || official || diplomacy ? null : await matchPlacePhoto(subject, places, c.classification.locality, recentImages);
         const image = editor
           ? editor
           : youtubeThumb(generated.video_url)
           ? null
           : (official && (await sourcePhoto(official, generated.slug))) ??
+            (diplomacy ? await card() : null) ??
+            (place && { url: place.url, resourceId: null, credit: place.credit, alt: place.alt }) ??
             (foreign ? await card() : null) ??
             (inst ? await logoCard() : null) ??
-            (place && { url: place.url, resourceId: null, credit: place.credit, alt: place.alt }) ??
-            (label ? await card() : await findArticleImage(generated.stock_query, generated.image_prompt, generated.slug, usedImageIds, subject)) ??
+            (label ? fallbackCard(c.classification.topics, c.classification.section, places, recentImages, subject) ?? (await card()) : null) ??
+            (label ? null : await findArticleImage(generated.stock_query, generated.image_prompt, generated.slug, usedImageIds, subject)) ??
             // nicio poză n-a trecut verificarea (image.ts): cardul temei, nu articol fără imagine
             fallbackCard(c.classification.topics, c.classification.section, places, recentImages, subject) ??
             // fără temă potrivită: steagul Moldovei, care nu sugerează nimic fals
