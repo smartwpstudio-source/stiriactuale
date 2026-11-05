@@ -8,6 +8,7 @@ import type { ArticleImage } from "./image";
 import { mediaTag } from "./media-tag";
 import type { Impact } from "@/lib/impact";
 import { announcePublished } from "@/lib/publish-effects";
+import { notifyEditor } from "@/lib/telegram";
 import type { CandidateGroup, GeneratedArticle, ScoredCandidate } from "./types";
 
 const RECENT_WINDOW_HOURS = 72;
@@ -173,4 +174,6 @@ export async function updateBriefArticle(
       ruUpdatedAt: null,
     })
     .where(eq(articles.id, articleId));
+  // fără postare nouă pe canal, dar editorul află: în admin se vedea schimbarea, în bot nu
+  await notifyEditor("actualizat", { id: articleId, title: generated.titlu, lead: generated.lead });
 }

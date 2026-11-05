@@ -12,20 +12,32 @@ const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replac
 async function call<T>(method: string, body: Record<string, unknown>): Promise<T | null> {
   const token = process.env.TELEGRAM_BOT_TOKEN;
   if (!token) return null;
-  try {
-    const res = await fetch(`https://api.telegram.org/bot${token}/${method}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-      signal: AbortSignal.timeout(10_000),
-    });
-    const json = (await res.json()) as { ok: boolean; result?: T; description?: string };
-    if (!json.ok) throw new Error(json.description);
-    return json.result ?? null;
-  } catch (err) {
-    // niciodată URL-ul în log — conține token-ul
-    console.error(`Telegram ${method}: ${err instanceof Error ? err.message : String(err)}`);
-    return null;
+  // o singură încercare pierdea mesaje: 3 „fetch failed” într-o zi (2026-11-05), articolul era în
+  // admin, dar nu și în bot. Se reia doar la rețea și la 429; restul (400) n-ar reuși a doua oară.
+  for (let attempt = 1; ; attempt++) {
+    let waitSeconds = attempt * 2;
+    try {
+      const res = await fetch(`https://api.telegram.org/bot${token}/${method}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+        signal: AbortSignal.timeout(10_000),
+      });
+      const json = (await res.json()) as { ok: boolean; result?: T; description?: string; parameters?: { retry_after?: number } };
+      if (json.ok) return json.result ?? null;
+      if (res.status !== 429 || attempt === 3) {
+        console.error(`Telegram ${method}: ${json.description}`);
+        return null;
+      }
+      waitSeconds = Math.min(json.parameters?.retry_after ?? waitSeconds, 30);
+    } catch (err) {
+      // niciodată URL-ul în log — conține token-ul
+      if (attempt === 3) {
+        console.error(`Telegram ${method}: ${err instanceof Error ? err.message : String(err)}`);
+        return null;
+      }
+    }
+    await new Promise((r) => setTimeout(r, waitSeconds * 1000));
   }
 }
 
@@ -34,6 +46,7 @@ const HEADS = {
   "draft-alerta": "📝🔔 Draft — subiect sensibil, așteaptă aprobarea ta (propus și pentru notificare push)",
   publicat: "✅ Publicat",
   "publicat-auto": "✅ Publicat automat — verifică-l când poți",
+  actualizat: "✏️ Știre completată automat — verifică-o când poți",
   "push-auto": "🔔 Push automat trimis",
 };
 
