@@ -66,7 +66,7 @@ const SPORT_CARDS: [RegExp, string][] = [
 const SUBJECT_CARDS: [RegExp, string][] = [
   [/razboi|bombard|\bdron|rachet|atac (rusesc|aerian|cu drone)/i, "card-razboi"],
   [/violent\w* (in|din) familie|violenta domestica|ordin\w* de protectie|agresor/i, "card-violenta-familie"],
-  [/plat\w* cu cardul|card\w* bancar|cont\w* bancar|bancomat|tranzacti/i, "card-bani-card"],
+  [/plat\w* (cu|pe) card|card\w* bancar|cont\w* bancar|bancomat|tranzacti/i, "card-bani-card"],
   [/masin|\bauto\b|permis\w* de conducere|inmatricul|\bvin\b|\brca\b/i, "card-auto"],
   [/aeroport|\bzbor|avion|pasageri/i, "card-aeroport"],
   [/locuri de munca|\bjobur|angajator|somaj|anofm/i, "card-munca"],
