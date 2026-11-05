@@ -8,6 +8,7 @@
 // îl verifică esbuild-ul din wrangler la deploy/preview.
 
 import { default as openNext } from "../.open-next/worker.js";
+import { miniUrl } from "../src/lib/media-url";
 
 // Durable Objects folosite de cache (queue ISR, tag cache, purge) — trebuie
 // re-exportate din worker-ul principal.
@@ -46,6 +47,14 @@ const worker = {
     if (url.hostname === "www.stiriactuale.info") {
       url.hostname = "stiriactuale.info";
       return Response.redirect(url.toString(), 301);
+    }
+    // adresele vechi /_next/image (din Google Images, pagini salvate) pentru poze care au
+    // miniatură gata făcută: redirect spre ea, fără transformare Cloudflare Images plătită
+    // (noiembrie 2026: toate cele 768 de transformări veneau prin legătura IMAGES)
+    if (url.pathname === "/_next/image") {
+      const src = url.searchParams.get("url") ?? "";
+      const mini = miniUrl(src, Number(url.searchParams.get("w")) > 384 ? 828 : 384);
+      if (mini) return Response.redirect(new URL(mini, url).toString(), 301);
     }
     if (url.pathname.startsWith("/_continut/")) {
       return new Response("Not Found", { status: 404, headers: { "x-robots-tag": "noindex" } });
