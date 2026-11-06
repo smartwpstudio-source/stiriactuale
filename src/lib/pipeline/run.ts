@@ -367,7 +367,9 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
             (place && { url: place.url, resourceId: null, credit: place.credit, alt: place.alt }) ??
             (foreign ? await card() : null) ??
             (inst ? await logoCard() : null) ??
-            (label ? fallbackCard(c.classification.topics, c.classification.section, places, recentImages, subject) ?? (await card()) : null) ??
+            // știre despre oameni și instituții: doar cardul spus de subiect, nu cel al temei
+            // („presiuni” la Primărie = criminal -> girofar, 2026-11-06)
+            (label ? fallbackCard([], c.classification.section, places, recentImages, subject) ?? (await card()) : null) ??
             (label ? null : await findArticleImage(generated.stock_query, generated.image_prompt, generated.slug, usedImageIds, subject)) ??
             // nicio poză n-a trecut verificarea (image.ts): cardul temei, nu articol fără imagine
             fallbackCard(c.classification.topics, c.classification.section, places, recentImages, subject) ??
