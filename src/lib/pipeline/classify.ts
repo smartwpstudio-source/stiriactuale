@@ -33,6 +33,7 @@ const SCHEMA = {
           country: { type: "string", enum: Object.keys(COUNTRY_NAMES), description: "DOAR dacă section=diaspora." },
           topics: { type: "array", items: { type: "string", enum: TOPICS }, description: "0-3 subiecte." },
           public_tinta: { type: "string", enum: ["grupuri", "local", "pagina"], description: "Publicul știrii, după criteriile din instrucțiuni." },
+          schimba: { type: "boolean", description: "true DOAR dacă știrea schimbă ceva concret pentru cititor sau comunitatea lui (criteriile „Ce se schimbă pentru cititor”)." },
           impact: { type: "number", description: "0-100, după criteriile editoriale din instrucțiuni." },
           factual_richness: { type: "number", description: "0-100: cifre, nume, locație clară vs. titlu vag." },
           confidence: { type: "number", description: "0-100: știre confirmată vs. speculație/sursă unică nesigură." },
@@ -52,7 +53,7 @@ const SCHEMA = {
             description: "Numărul N al unui articol recent [RN] din aceeași poveste, dacă grupul e o continuare (evenimentul acela s-a încheiat; acum: reacții, anchetă, consecințe, descoperiri noi).",
           },
         },
-        required: ["id", "section", "topics", "public_tinta", "impact", "factual_richness", "confidence", "reject", "push_alert", "sensitive"],
+        required: ["id", "section", "topics", "public_tinta", "schimba", "impact", "factual_richness", "confidence", "reject", "push_alert", "sensitive"],
       },
     },
   },
@@ -71,8 +72,12 @@ const SYSTEM_PROMPT = [
   "- international: fără legătură centrală cu R. Moldova.",
   "În caz de dubiu pentru regiuni/diaspora, alege national sau international.",
   "",
+  "Ce se schimbă pentru cititor (schimba) — politica editorială (editorul, 2026-11-07): publicăm știri cu soluții, știri utile și știri cu impact; zgomotul informațional nu se publică.",
+  "- schimba=true: știrea schimbă ceva concret în viața, cheltuielile sau regulile oamenilor ori ale unei comunități: prețuri, scumpiri, ieftiniri, tarife, facturi, carburanți, pensii, salarii, ajutoare, compensații, taxe, amenzi, legi și reguli noi, termene, servicii (apă, curent, gaz, drumuri, transport, școli, spitale), siguranță, alerte și avertizări, vremea severă. Și schimbările anunțate sau pregătite care îi vor atinge (un proiect care scumpește, o regulă care vine), ca oamenii să fie pregătiți. Și deciziile politice, instituționale sau internaționale cu efect real asupra oamenilor din Moldova (mobilizarea moldovenilor din străinătate, o amendă uriașă dată unui creditor, regulile UE care ne privesc, războiul cu efect direct asupra Moldovei).",
+  "- schimba=false: declarații și opinii („X a spus”, „X crede”, „X acuză”), certuri și replici politice, demiteri, numiri și demisii fără efect concret pentru oameni, vizite, întâlniri, protocol, ceremonii, sondaje, bilanțuri și știri de război fără legătură directă cu Moldova, politică internă a altor țări. Întrebarea de test: ce face cititorul diferit după ce a citit? Dacă nimic, schimba=false.",
+  "",
   "public_tinta — cine ar citi știrea, după experiența editorului (asta decide ce se publică):",
-  "- grupuri: impact social major, valoare informativă pentru oameni din ORICE localitate, și din Drochia, și din Ialoveni, și din Chișinău: prețuri, carburanți, tarife, facturi, pensii, salarii, ajutoare, taxe, legi și reguli noi care schimbă ceva concret, sănătate, siguranță, alerte; cazuri de rezonanță națională, scandaluri politice mari.",
+  "- grupuri: DOAR cu schimba=true și valoare pentru oameni din ORICE localitate, și din Drochia, și din Ialoveni, și din Chișinău: prețuri, carburanți, tarife, facturi, pensii, salarii, ajutoare, taxe, legi și reguli noi care schimbă ceva concret, sănătate, siguranță, alerte. Scandalurile și declarațiile politice NU sunt grupuri.",
   "- local: legată de o localitate concretă din raioane, iar oamenii de acolo vor să o citească: accident, incendiu, furt, bătaie, crimă, tragedie, drum, apă, școală, spital, primărie, oameni de acolo. NU se aplică pentru Chișinău, Bălți, Găgăuzia (Comrat, Ceadîr-Lunga, Vulcănești) și Transnistria. Intră aici și o decizie sau un proiect de nivel național cu efect concret asupra unor raioane, chiar dacă nu le numește: o vamă nouă pentru camioane înseamnă drumuri încărcate în raioanele de pe traseu (Costești–Stânca: Soroca, Drochia, Râșcani); la fel un drum, un apeduct, o linie electrică.",
   "- Chișinău, Bălți, Găgăuzia, Transnistria: grupuri DOAR dacă au impact național, scandal politic sau caz de rezonanță. Accidentele, faptele penale și noutățile locale obișnuite de acolo sunt pagina.",
   "- pagina: restul, fără un public clar: politică de rutină, declarații, protocol, majoritatea știrilor internaționale, război fără legătură directă cu Moldova.",
@@ -145,6 +150,7 @@ export async function classifyGroups(
       country?: string;
       topics?: Topic[];
       public_tinta?: "grupuri" | "local" | "pagina";
+      schimba?: boolean;
       impact: number;
       factual_richness: number;
       confidence: number;
@@ -171,6 +177,7 @@ export async function classifyGroups(
       topics: it.topics ?? [],
       // orașele mari și autonomiile n-au public „local” (AI-ul mai greșește, testat 2026-11-03)
       audience: it.public_tinta === "local" && BIG_PLACES.has(it.locality ?? "") ? "pagina" : (it.public_tinta ?? "pagina"),
+      concreteEffect: it.schimba === true,
       impact: it.impact,
       factualRichness: it.factual_richness,
       confidence: it.confidence,
