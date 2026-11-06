@@ -135,6 +135,7 @@ assert.equal(fallbackCard([], "national", cardPlaces, [], "Autobuzul nou de la B
 assert.equal(fallbackCard([], "national", cardPlaces, [], "Ceban și-a demis șefa de cabinet, care îl acuzase de presiuni")?.url, "card-primaria-chisinau-1");
 assert.equal(fallbackCard([], "national", cardPlaces, [], "Ședința de guvern de miercuri"), null, "persoane fără subiect: niciun card de temă");
 assert.equal(fallbackCard([], "util", cardPlaces, [], "Compensațiile la energie în sezonul rece: cine le primește")?.url, "card-compensatii-1", "compensațiile bat energia");
+assert.equal(fallbackCard([], "national", cardPlaces, [], "Medicamente compensate: reguli noi la farmacie")?.url, undefined, "medicamentele compensate nu sunt compensații");
 assert.equal(fallbackCard([], "diaspora", cardPlaces, ["card-diaspora-1"])?.url, "card-diaspora-2");
 assert.equal(fallbackCard([], "national", cardPlaces, []), null, "fără temă: niciun card la nimereală");
 assert.equal(fallbackCard(["sport"], "national", cardPlaces, [], "Judocana Alexandra Chiron, bronz")?.url, "card-judo-1");

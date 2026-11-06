@@ -64,7 +64,7 @@ const SPORT_CARDS: [RegExp, string][] = [
 ];
 // subiectul spune tema și când clasificatorul n-a dat-o (Util n-are teme deloc)
 const SUBJECT_CARDS: [RegExp, string][] = [
-  [/compensat|compensar|despagubir/i, "card-compensatii"],
+  [/compensati|compensar|despagubir/i, "card-compensatii"], // nu „medicamente compensate”
   [/primar\w* (general|chisinaului|capitalei)|primari\w* (municipiului )?chisinau|\bceban\b|consiliul municipal/i, "card-primaria-chisinau"],
   [/razboi|bombard|\bdron|rachet|atac (rusesc|aerian|cu drone)/i, "card-razboi"],
   [/violent\w* (in|din) familie|violenta domestica|ordin\w* de protectie|agresor/i, "card-violenta-familie"],
