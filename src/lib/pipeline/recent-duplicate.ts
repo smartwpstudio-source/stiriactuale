@@ -45,7 +45,7 @@ export async function checkRecent(group: CandidateGroup, recent: RecentArticle[]
     const { verdict, index } = await structured<{ verdict: "dublura" | "continuare" | "diferit"; index: number }>({
       model: HAIKU_MODEL,
       system:
-        "Compari o știre nouă cu articole deja publicate pe site. dublura = același fapt, fără nimic nou important (altă formulare, altă sursă, alte detalii mărunte, actualizări de stare fără schimbare reală: „rămâne închis”, „starea victimei e stabilă”, „ancheta continuă”). continuare = același subiect, dar cu informații noi importante (reacții oficiale, cifre noi, decizii, consecințe). diferit = alt eveniment. index = numărul articolului publicat la care se referă verdictul (-1 la diferit).",
+        "Compari o știre nouă cu articole deja publicate pe site. dublura = același fapt, fără nimic nou important (altă formulare, altă sursă, alte detalii mărunte, actualizări de stare fără schimbare reală: „rămâne închis”, „starea victimei e stabilă”, „ancheta continuă”). continuare = același subiect, dar cu informații noi importante (reacții oficiale, cifre noi, decizii, consecințe). Tot dublura e și relatarea târzie a aceluiași fapt (o sursă care îl preia după o zi-două), chiar dacă îl pune lângă alt fapt deja știut sau adaugă o recapitulare (2026-11-06: drona de la Gordinești, a treia oară, „la o zi după ce alta a survolat Soroca”). diferit = alt eveniment. index = numărul articolului publicat la care se referă verdictul (-1 la diferit).",
       prompt: `Știrea nouă:\n${group.items.slice(0, 3).map((i) => `- ${i.title}: ${i.summary.slice(0, 400)}`).join("\n")}\n\nArticole publicate:\n${similar.map((r, i) => `${i}. ${r.title} — ${r.lead}`).join("\n")}`,
       schema: {
         type: "object",

@@ -175,5 +175,7 @@ export async function updateBriefArticle(
     })
     .where(eq(articles.id, articleId));
   // fără postare nouă pe canal, dar editorul află: în admin se vedea schimbarea, în bot nu
-  await notifyEditor("actualizat", { id: articleId, title: generated.titlu, lead: generated.lead });
+  // data publicării, ca mesajul să nu pară o știre nouă (editorul, 2026-11-06)
+  const when = old.publishedAt?.toLocaleString("ro-RO", { timeZone: "Europe/Chisinau", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" });
+  await notifyEditor("actualizat", { id: articleId, title: generated.titlu, lead: `Publicat inițial: ${when}. ${generated.lead}` });
 }
