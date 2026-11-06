@@ -55,8 +55,8 @@ const FEED_ALERT_MIN = 3; // feed-uri căzute deodată, din 14
 // rulări între 06 și 22), ca să rămână articole și pentru știrile de seară.
 // Consumul îl controlează editorul cu butonul Pornit/Oprit din admin.
 // Linkurile manuale nu intră în plafon: editorul a decis explicit.
-// 22 (editorul, 2026-11-07): la ~56 de articole pe zi, chiar și cele bune luau 0-1 vizualizări
-const DAILY_ARTICLE_LIMIT = 22;
+// plafon de siguranță, nu țintă (editorul, 2026-11-07): câte se publică decide filtrul de calitate
+const DAILY_ARTICLE_LIMIT = 50;
 const MAX_ARTICLES_PER_RUN = 4;
 
 // Regulile vechi de selecție automată (reject de la clasificator, pragul de
