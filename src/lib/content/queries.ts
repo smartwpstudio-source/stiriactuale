@@ -103,7 +103,9 @@ function where(f: ArticleFilter): SQL {
   return and(...c)!;
 }
 
-export async function listArticles(f: ArticleFilter, page = 1, pageSize = PAGE_SIZE) {
+// withTotal=false: fără numărătoarea tuturor articolelor, pentru listele fără paginare
+// (prima pagină, „recente” din articol, feed; 2026-11-07: ~380.000 de numărători inutile)
+export async function listArticles(f: ArticleFilter, page = 1, pageSize = PAGE_SIZE, withTotal = true) {
   const db = getDb();
   const [rows, [{ total }]] = await Promise.all([
     db
@@ -113,13 +115,21 @@ export async function listArticles(f: ArticleFilter, page = 1, pageSize = PAGE_S
       .orderBy(desc(t.publishedAt))
       .limit(pageSize)
       .offset((page - 1) * pageSize),
-    db.select({ total: count() }).from(t).where(where(f)),
+    withTotal ? db.select({ total: count() }).from(t).where(where(f)) : [{ total: 0 }],
   ]);
   return { items: rows.map(mapRow), total, pages: Math.max(1, Math.ceil(total / pageSize)) };
 }
 
-export async function getLatestArticle(): Promise<Article | null> {
-  return (await listArticles({}, 1, 1)).items[0] ?? null;
+// banda „ultima știre publicată” e pe fiecare pagină: un minut în memoria Worker-ului,
+// nu o citire din bază la fiecare pagină refăcută
+let latest: { at: number; article: Promise<Article | null> } | null = null;
+export function getLatestArticle(): Promise<Article | null> {
+  if (!latest || Date.now() - latest.at > 60_000) {
+    const article = listArticles({}, 1, 1, false).then((r) => r.items[0] ?? null);
+    latest = { at: Date.now(), article };
+    article.catch(() => (latest = null));
+  }
+  return latest.article;
 }
 
 // Știrea din prim-plan — trebuie să se schimbe odată cu știrile (cea mai

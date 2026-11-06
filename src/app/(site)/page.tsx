@@ -36,11 +36,11 @@ export default async function HomePage() {
     );
   }
 
-  const [{ items: latest }, { items: feedFirst, pages }, mostRead, { items: impact }] = await Promise.all([
-    listArticles({}, 1, 9),
-    listArticles({}, 1, 20),
+  const [{ items: latest }, { items: feedFirst }, mostRead, { items: impact }] = await Promise.all([
+    listArticles({}, 1, 9, false),
+    listArticles({}, 1, 20, false),
     getMostRead(6),
-    listArticles({ impact: true }, 1, 4),
+    listArticles({ impact: true }, 1, 4, false),
   ]);
   const analysis = await recentAnalysis();
   const fresh = latest.filter((a) => a.slug !== hero.slug).slice(0, 8);
@@ -95,7 +95,7 @@ export default async function HomePage() {
             <NewsFeed
               initial={feed}
               exclude={exclude}
-              hasMore={pages > 1}
+              hasMore={feedFirst.length === 20 /* fără numărătoare: pagina plină = mai sunt */}
               today={new Date().toLocaleDateString("en-CA", { timeZone: "Europe/Chisinau" })}
             />
           </div>

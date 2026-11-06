@@ -8,34 +8,13 @@ import { revalidateKey } from "@/lib/revalidate";
 import { ruNewsPath } from "@/lib/ru-news-public";
 import type { Article } from "@/lib/content/types";
 
-// Listele (prima pagină, secțiunile, raioanele, țările, subiectele) și
-// articolele noi sau actualizate se refac imediat; restul paginilor, după ceas
-// (articolele o dată pe zi, listele o dată pe oră).
-// rutele cu [param] se invalidează după fișierul paginii, cu grupul (site)
-// inclus — fără el revalidatePath nu atingea nimic (vezi docs revalidatePath).
-const LISTS = [
-  "/",
-  "/national",
-  "/international",
-  "/diaspora",
-  "/regiuni",
-  "/video",
-  "/util",
-  "/(site)/national/pagina/[n]",
-  "/(site)/international/pagina/[n]",
-  "/(site)/diaspora/pagina/[n]",
-  "/(site)/regiuni/pagina/[n]",
-  "/(site)/video/pagina/[n]",
-  "/(site)/util/pagina/[n]",
-  "/(site)/regiuni/[raion]",
-  "/(site)/regiuni/[raion]/pagina/[n]",
-  "/(site)/diaspora/[tara]",
-  "/(site)/diaspora/[tara]/pagina/[n]",
-  "/(site)/subiect/[topic]",
-  "/(site)/subiect/[topic]/pagina/[n]",
-  "/ru",
-];
-
+// Prima pagină, secțiunile și /ru se refac la fiecare rulare; din raioane, țări și subiecte
+// doar prima pagină a celor în care a apărut sau s-a schimbat ceva. Paginile 2..N și restul,
+// după ceas (listele o dată pe oră, articolele o dată pe săptămână).
+// Până pe 2026-11-07 se invalidau TOATE listele cu [param], cu toate paginile lor, la fiecare
+// rulare: orice vizită a unui robot pe sute de pagini de arhivă refăcea pagina din bază, iar
+// traficul Supabase a urcat la ~0,35 GB pe zi (limita gratuită: 5 GB pe lună).
+const ALWAYS = ["/", "/national", "/international", "/diaspora", "/regiuni", "/video", "/util", "/ru"];
 export async function POST(request: Request) {
   const key = revalidateKey();
   const auth = request.headers.get("authorization") ?? "";
@@ -48,7 +27,7 @@ export async function POST(request: Request) {
     revalidatePath("/", "layout");
     return Response.json({ all: true });
   }
-  for (const p of LISTS) revalidatePath(p, p.includes("[") ? "page" : undefined);
+  for (const p of ALWAYS) revalidatePath(p);
   const since = body.since ? new Date(body.since) : null;
   let paths: string[] = [];
   if (since && !Number.isNaN(since.getTime())) {
@@ -59,6 +38,7 @@ export async function POST(request: Request) {
       locality: articles.locality,
       country: articles.country,
       continuesId: articles.continuesId,
+      topics: articles.topics,
       hasRu: sql<boolean>`${articles.ru} is not null`,
     };
     const db = getDb();
@@ -74,9 +54,15 @@ export async function POST(request: Request) {
         ...[...changed, ...prev].map((a) => articleUrl(a as Pick<Article, "section" | "slug" | "locality" | "country">)),
         // varianta rusă: și cea ștearsă la editare se reface (devine 404)
         ...changed.map((a) => ruNewsPath(a.slug)),
+        // prima pagină a raionului, a țării și a subiectelor știrii
+        ...changed.flatMap((a) => [
+          ...(a.section === "regiuni" && a.locality ? [`/regiuni/${a.locality}`] : []),
+          ...(a.section === "diaspora" && a.country ? [`/diaspora/${a.country}`] : []),
+          ...a.topics.map((topic) => `/subiect/${topic}`),
+        ]),
       ]),
     ];
     for (const p of paths) revalidatePath(p);
   }
-  return Response.json({ lists: LISTS.length, articles: paths.length });
+  return Response.json({ lists: ALWAYS.length, paths: paths.length });
 }
