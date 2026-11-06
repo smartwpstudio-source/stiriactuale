@@ -74,19 +74,28 @@ assert.ok(!finalPublish(passesSelection(rejected), "strict", none, true), "scuti
 const lowScore = cand({ pushWorthy: true }, 30); // sub pragul de 55 al secțiunii
 assert.ok(!finalPublish(passesSelection(lowScore), "strict", none, true), "urgentă sub prag: tot respinsă");
 // urgentă care trece regulile vechi: trece și fără ghid, și în strict
-const urgent = cand({ pushWorthy: true }, 80);
+const urgent = cand({ pushWorthy: true, concreteEffect: true }, 80);
 const urgentExempt = guideExempt({ pushWorthy: true, title: "Cod roșu de inundații: evacuări în nordul țării", summary: "" });
 assert.ok(passesSelection(urgent) && urgentExempt);
 assert.ok(finalPublish(passesSelection(urgent), "strict", none, urgentExempt));
 // obișnuită care trece regulile vechi, fără ghid: cade doar în strict
-const plain = cand({}, 80);
+const plain = cand({ concreteEffect: true }, 80);
 assert.ok(finalPublish(passesSelection(plain), "raport", none, false));
 assert.ok(!finalPublish(passesSelection(plain), "strict", none, false));
 assert.ok(finalPublish(passesSelection(plain), "strict", found, false));
 // linkurile editorului nu trec prin selecția automată (și nici prin regula ghidului)
 assert.ok(!passesSelection(cand({}, 80, true)));
 // sensitive nu e o poartă: nu schimbă nimic
-assert.equal(passesSelection(cand({ sensitive: true }, 80)), true);
+assert.equal(passesSelection(cand({ sensitive: true, concreteEffect: true }, 80)), true);
+// politica editorială (2026-11-07): ce nu schimbă nimic nu trece, oricât de mare scorul
+assert.ok(!passesSelection(cand({}, 95)), "declarație națională, scor mare: nu");
+assert.ok(!passesSelection(cand({ section: "international", audience: "grupuri" }, 95)), "Lumea fără efect: nu");
+assert.ok(passesSelection(cand({ section: "international", concreteEffect: true }, 40)), "Lumea cu efect asupra Moldovei: da");
+assert.ok(passesSelection(cand({ section: "regiuni", locality: "drochia", audience: "local" }, 20)), "accidentul din raion: da");
+assert.ok(passesSelection(cand({ section: "regiuni", locality: "chisinau", audience: "pagina" }, 60)), "Chișinău peste prag: da");
+assert.ok(!passesSelection(cand({ section: "regiuni", locality: "chisinau", audience: "pagina" }, 30)), "Chișinău sub prag: nu");
+assert.ok(passesSelection(cand({ section: "diaspora", country: "italia" }, 50)), "diaspora: da");
+assert.ok(!passesSelection(cand({ concreteEffect: true, reject: true }, 90)), "respinsă rămâne respinsă");
 
 // --- raportul „Ghiduri care lipsesc”
 const d = (iso: string) => new Date(iso);
@@ -108,11 +117,11 @@ assert.equal(r.topics[1].topic, NO_PRACTICAL_NEED, "„fără nevoie practică�
 assert.deepEqual(r.days[0], { day: "2026-10-12", published: 1, checked: 5, withoutGuide: 5, rejected: 1 });
 assert.deepEqual(r.days[1], { day: "2026-10-11", published: 1, checked: 2, withoutGuide: 0, rejected: 0 });
 
-// --- algoritmul editorului: publicul țintă trece fără prag de scor și fără ghid
+// --- algoritmul editorului: ce schimbă ceva și știrile locale trec fără prag de scor și fără ghid
 assert.ok(passesSelection(cand({ audience: "local" }, 10)), "local, scor mic: trece");
-assert.ok(passesSelection(cand({ audience: "grupuri" }, 10)), "grupuri, scor mic: trece");
+assert.ok(passesSelection(cand({ concreteEffect: true }, 10)), "schimbă ceva, scor mic: trece");
 assert.ok(!passesSelection(cand({ audience: "pagina" }, 10)), "pagina, scor mic: nu trece");
-assert.ok(passesSelection(cand({ audience: "pagina" }, 80)), "pagina, scor mare: trece");
+assert.ok(!passesSelection(cand({ audience: "pagina" }, 80)), "pagina națională fără efect, scor mare: nu trece");
 assert.ok(!passesSelection(cand({ audience: "local", reject: true }, 90)), "respinsă rămâne respinsă");
 assert.equal(reviewRank("Accident la Drochia: un mort"), 2);
 assert.equal(reviewRank("Prețul la motorină crește mâine"), 1);

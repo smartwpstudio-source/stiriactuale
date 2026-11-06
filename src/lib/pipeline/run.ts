@@ -55,17 +55,25 @@ const FEED_ALERT_MIN = 3; // feed-uri căzute deodată, din 14
 // rulări între 06 și 22), ca să rămână articole și pentru știrile de seară.
 // Consumul îl controlează editorul cu butonul Pornit/Oprit din admin.
 // Linkurile manuale nu intră în plafon: editorul a decis explicit.
-const DAILY_ARTICLE_LIMIT = 50;
+// 22 (editorul, 2026-11-07): la ~56 de articole pe zi, chiar și cele bune luau 0-1 vizualizări
+const DAILY_ARTICLE_LIMIT = 22;
 const MAX_ARTICLES_PER_RUN = 4;
 
 // Regulile vechi de selecție automată (reject de la clasificator, pragul de
 // scor al secțiunii). Regula „știre cu ghid” vine abia DUPĂ ele (guideStep).
 // Algoritmul editorului (2026-11-03): știrile cu public clar (grupuri, local) trec fără
 // prag de scor și sunt alese primele; restul doar țin site-ul viu, cu pragul de scor.
-export const hasAudience = (c: ScoredCandidate) => c.classification.audience === "grupuri" || c.classification.audience === "local";
+// Politica editorială (2026-11-07): o știre automată trece doar dacă schimbă ceva concret pentru
+// cititor sau comunitate (bani, reguli, prețuri, termene, servicii, siguranță, alerte) sau dacă
+// e din raioane / despre moldovenii din diaspora. Politica și Lumea, doar cu efect concret: în
+// 8 zile, politica automată avea mediana 2 vizualizări, Lumea 2, banii și regulile 10.
+// Linkurile editorului nu trec pe aici: se publică oricum.
+export const hasAudience = (c: ScoredCandidate) => c.classification.concreteEffect === true || c.classification.audience === "local";
 export function passesSelection(c: ScoredCandidate): boolean {
   const { section, reject } = c.classification;
-  return !c.group.manual && !reject && (hasAudience(c) || c.qualityScore >= SECTION_CONFIG[section].minScore);
+  if (c.group.manual || reject) return false;
+  if (hasAudience(c)) return true;
+  return (section === "regiuni" || section === "diaspora") && c.qualityScore >= SECTION_CONFIG[section].minScore;
 }
 const byAudience = (a: ScoredCandidate, b: ScoredCandidate) => Number(hasAudience(b)) - Number(hasAudience(a)) || b.qualityScore - a.qualityScore;
 
@@ -316,7 +324,9 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
         const isShortPost = c.group.manual && c.group.items.some((i) => toEmbedUrl(i.sourceUrl) || i.sourceUrl.startsWith("https://t.me/"));
         if (!generated && isShortPost) generated = await generateArticle(c.group, c.classification, "video");
         if (!generated && c.group.manual) generated = shortVideoArticle(c.group);
-        if (!generated) {
+        // „pe scurt” doar pentru linkurile editorului: automat, o știre fără material nu ajută pe
+        // nimeni (mediana 2 vizualizări, 2026-11-07)
+        if (!generated && c.group.manual) {
           generated = await generateArticle(c.group, c.classification, "brief");
           if (generated) kind = "pe-scurt";
         }

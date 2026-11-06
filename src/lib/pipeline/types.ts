@@ -31,6 +31,8 @@ export interface ClassificationResult {
   // publicul țintă, algoritmul editorului (2026-11-03): „grupuri” = interesează pe oricine,
   // din orice localitate; „local” = o localitate din raioane; „pagina” = fără public clar
   audience?: "grupuri" | "local" | "pagina";
+  // schimbă ceva concret pentru cititor sau comunitate (politica editorială, 2026-11-07)
+  concreteEffect?: boolean;
   impact: number; // 0-100, criteriile editoriale ale redacției
   factualRichness: number; // 0-100
   confidence: number; // 0-100
