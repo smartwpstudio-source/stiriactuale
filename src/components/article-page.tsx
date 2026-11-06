@@ -83,7 +83,7 @@ export async function ArticlePage({
 }) {
   const [similar, { items: latest }, guide, previous, calculator, tools, dossier, analyses, [guideTool]] = await Promise.all([
     getSimilarArticles(article),
-    listArticles({}, 1, 9),
+    listArticles({}, 1, 9, false),
     article.archived ? undefined : getRelatedGuide(article.title, article.lead, article.locality),
     article.continuesId ? getArticleLink(article.continuesId) : null,
     article.archived ? undefined : getRelatedCalculator(article.title, article.lead),
