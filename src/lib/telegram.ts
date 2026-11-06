@@ -46,7 +46,7 @@ const HEADS = {
   "draft-alerta": "📝🔔 Draft — subiect sensibil, așteaptă aprobarea ta (propus și pentru notificare push)",
   publicat: "✅ Publicat",
   "publicat-auto": "✅ Publicat automat — verifică-l când poți",
-  actualizat: "✏️ Știre completată automat — verifică-o când poți",
+  actualizat: "✏️ NU e știre nouă: un articol publicat deja a fost completat automat cu detalii",
   "push-auto": "🔔 Push automat trimis",
 };
 
