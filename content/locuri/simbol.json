@@ -1316,5 +1316,30 @@
         "alt": "Card: Aeroport și zboruri — Zboruri și pasageri"
       }
     ]
+  },
+  {
+    "id": "card-compensatii",
+    "name": "TEMĂ (card instituție/regiune): Compensații: la facturi, la zboruri, plăți compensatorii de la stat",
+    "keywords": "compensații, compensație, compensare, compensații la gaz, compensații la curent, compensații la încălzire, sezonul rece, Energie Vulnerabilitate, plată compensatorie, despăgubire, compensații pentru zbor",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/compensatii-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Compensații — Plăți compensatorii"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/compensatii-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Compensații — Cine primește și cât"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/compensatii-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Compensații — Plăți compensatorii"
+      }
+    ]
   }
 ]

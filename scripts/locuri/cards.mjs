@@ -76,6 +76,9 @@ const THEMES = [
     "locuri de muncă, joburi, angajare, angajator, târg de joburi, șomaj, ANOFM, contract de muncă, Inspecția Muncii, piața muncii", "Locuri de muncă: joburi, angajare, drepturile angajaților"],
   ["aeroport", "Aeroport și zboruri", ["Zboruri și pasageri", "Transport aerian", "Zboruri și pasageri"], "plane", ["#2A5FA8", "#0D2654"], "#FFFFFF",
     "aeroport, zbor, zboruri, avion, pasageri, cursă aeriană, companie aeriană, Wizz Air, bilete de avion, aterizare, decolare, alertă cu bombă la zbor", "Aeroport și zboruri: zboruri, pasageri, companii aeriene"],
+  // compensațiile (editorul, 2026-11-06): la facturi, la zboruri, plăți de la stat
+  ["compensatii", "Compensații", ["Plăți compensatorii", "Cine primește și cât", "Plăți compensatorii"], "receipt-refund", ["#1F7A5C", "#0A3326"], "#FFD43B",
+    "compensații, compensație, compensare, compensații la gaz, compensații la curent, compensații la încălzire, sezonul rece, Energie Vulnerabilitate, plată compensatorie, despăgubire, compensații pentru zbor", "Compensații: la facturi, la zboruri, plăți compensatorii de la stat"],
   ["sport", "Sport", ["Competiții și medalii", "Competiții și medalii", "Competiții și medalii"], "medal", ["#1F5F8A", "#0B2A40"], "#FFD43B",
     "sport, sportiv, sportivă, medalie, campionat, competiție, olimpiadă, jocurile olimpice, turneu, campion, campioană, lot național", "Sport: sportivii moldoveni, medalii, competiții (când nu e altă temă de sport)"],
 ];
