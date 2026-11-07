@@ -1341,5 +1341,30 @@
         "alt": "Card: Compensații — Plăți compensatorii"
       }
     ]
+  },
+  {
+    "id": "card-drona",
+    "name": "TEMĂ (card instituție/regiune): Drone: drone și baloane în spațiul aerian al Moldovei, drone căzute",
+    "keywords": "dronă, drone, dronă căzută, fragmente de dronă, Gerbera, Shahed, Gheran, aerostat, balon, spațiul aerian, survol neautorizat, obiect zburător, alertă aeriană",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/drona-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Drone — Spațiul aerian"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/drona-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Drone — Obiecte în spațiul aerian"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/drona-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Drone — Spațiul aerian"
+      }
+    ]
   }
 ]
