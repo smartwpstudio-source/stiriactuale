@@ -36,27 +36,27 @@ export function similarRecent(group: CandidateGroup, recent: RecentArticle[], ma
     .map((x) => x.r);
 }
 
-export type RecentVerdict = { duplicateOf?: number; continuesId?: number };
+export type RecentVerdict = { duplicateOf?: number; continuesId?: number; updateOf?: number };
 
 export async function checkRecent(group: CandidateGroup, recent: RecentArticle[]): Promise<RecentVerdict> {
   const similar = similarRecent(group, recent);
   if (!similar.length) return {};
   try {
-    const { verdict, index } = await structured<{ verdict: "dublura" | "continuare" | "diferit"; index: number }>({
+    const { verdict, index } = await structured<{ verdict: "dublura" | "actualizare" | "continuare" | "diferit"; index: number }>({
       model: HAIKU_MODEL,
       system:
-        "Compari o știre nouă cu articole deja publicate pe site. dublura = același fapt, fără nimic nou important (altă formulare, altă sursă, alte detalii mărunte, actualizări de stare fără schimbare reală: „rămâne închis”, „starea victimei e stabilă”, „ancheta continuă”). continuare = același subiect, dar cu informații noi importante (reacții oficiale, cifre noi, decizii, consecințe). Tot dublura e și relatarea târzie a aceluiași fapt (o sursă care îl preia după o zi-două), chiar dacă îl pune lângă alt fapt deja știut sau adaugă o recapitulare (2026-11-06: drona de la Gordinești, a treia oară, „la o zi după ce alta a survolat Soroca”). diferit = alt eveniment. index = numărul articolului publicat la care se referă verdictul (-1 la diferit).",
+        "Compari o știre nouă cu articole deja publicate pe site. dublura = același fapt, fără nimic nou important (altă formulare, altă sursă, alte detalii mărunte, actualizări de stare fără schimbare reală: „rămâne închis”, „starea victimei e stabilă”, „ancheta continuă”). actualizare = ACEEAȘI situație care continuă (aceleași lucrări, aceeași închidere, același caz, aceeași campanie), iar noutatea e doar un detaliu: altă zi sau oră, alt program, o rută ocolitoare, o cifră actualizată, un sfat pentru oameni — se completează articolul existent, nu se scrie altul (2026-11-07: vama Costești–Stânca, trei articole în două zile: „îngreunată vineri”, „închisă sâmbătă”, „transportatorii trimiși la Cahul și Leușeni”). continuare = s-a întâmplat ceva NOU în aceeași poveste: o decizie, o reținere, o reacție oficială importantă, o consecință. Tot dublura e și relatarea târzie a aceluiași fapt (o sursă care îl preia după o zi-două), chiar dacă îl pune lângă alt fapt deja știut sau adaugă o recapitulare (2026-11-06: drona de la Gordinești, a treia oară, „la o zi după ce alta a survolat Soroca”). diferit = alt eveniment. index = numărul articolului publicat la care se referă verdictul (-1 la diferit).",
       prompt: `Știrea nouă:\n${group.items.slice(0, 3).map((i) => `- ${i.title}: ${i.summary.slice(0, 400)}`).join("\n")}\n\nArticole publicate:\n${similar.map((r, i) => `${i}. ${r.title} — ${r.lead}`).join("\n")}`,
       schema: {
         type: "object",
-        properties: { verdict: { type: "string", enum: ["dublura", "continuare", "diferit"] }, index: { type: "integer" } },
+        properties: { verdict: { type: "string", enum: ["dublura", "actualizare", "continuare", "diferit"] }, index: { type: "integer" } },
         required: ["verdict", "index"],
       },
       maxBudgetUsd: 0.05,
     });
     const hit = similar[index];
     if (!hit) return {};
-    return verdict === "dublura" ? { duplicateOf: hit.id } : verdict === "continuare" ? { continuesId: hit.id } : {};
+    return verdict === "dublura" ? { duplicateOf: hit.id } : verdict === "actualizare" ? { updateOf: hit.id } : verdict === "continuare" ? { continuesId: hit.id } : {};
   } catch (err) {
     console.error(`Verificare dubluri eșuată: ${err instanceof Error ? err.message : String(err)}`);
     return {}; // fără verdict: rămâne decizia clasificatorului
