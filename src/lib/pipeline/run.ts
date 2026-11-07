@@ -284,6 +284,12 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
         console.log(`Dublură a articolului ${v.duplicateOf}, nescrisă: ${c.group.representativeTitle.slice(0, 80)}`);
         continue;
       }
+      // aceeași situație, doar un detaliu nou (altă oră, altă rută): se completează articolul publicat
+      if (v.updateOf) {
+        console.log(`Completează articolul ${v.updateOf}: ${c.group.representativeTitle.slice(0, 80)}`);
+        updates.push({ ...c, articleId: v.updateOf });
+        continue;
+      }
       if (v.continuesId && c.classification.continuesId === undefined) {
         c.classification.continuesId = v.continuesId;
         c.classification.continuesTitle = recent48.find((r) => r.id === v.continuesId)?.title;
@@ -425,7 +431,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
         // păstra adresa și rubrica vechi. Doar același eveniment se completează.
         const same = await structured<{ acelasi: boolean }>({
           model: HAIKU_MODEL,
-          system: "Spui dacă două texte de știri relatează ACELAȘI eveniment concret (același loc, aceiași oameni, aceeași întâmplare). Doar aceeași temă generală nu ajunge.",
+          system: "Spui dacă două texte de știri relatează ACELAȘI eveniment concret (același loc, aceiași oameni, aceeași întâmplare) sau aceeași situație care continuă (aceleași lucrări, aceeași închidere, același caz), chiar dacă s-a schimbat ziua, ora sau un detaliu. Doar aceeași temă generală nu ajunge.",
           prompt: `A: ${old.title}. ${old.lead}\n\nB: ${u.group.items.map((i) => `${i.title}. ${i.summary ?? ""}`.slice(0, 400)).join("\n")}`,
           schema: { type: "object", properties: { acelasi: { type: "boolean" } }, required: ["acelasi"] },
           maxBudgetUsd: 0.05,
