@@ -80,7 +80,7 @@ const THEMES = [
   ["compensatii", "Compensații", ["Plăți compensatorii", "Cine primește și cât", "Plăți compensatorii"], "receipt-refund", ["#1F7A5C", "#0A3326"], "#FFD43B",
     "compensații, compensație, compensare, compensații la gaz, compensații la curent, compensații la încălzire, sezonul rece, Energie Vulnerabilitate, plată compensatorie, despăgubire, compensații pentru zbor", "Compensații: la facturi, la zboruri, plăți compensatorii de la stat"],
   // dronele și baloanele în spațiul aerian al Moldovei (editorul, 2026-11-07: subiect frecvent)
-  ["drona", "Drone", ["Spațiul aerian", "Obiecte în spațiul aerian", "Spațiul aerian"], "drone", ["#34495E", "#121A22"], "#FFB74D",
+  ["drona", "Drone", ["Spațiul aerian", "Obiecte în spațiul aerian", "Spațiul aerian"], "pic:drona", ["#34495E", "#121A22"], "#FFB74D",
     "dronă, drone, dronă căzută, fragmente de dronă, Gerbera, Shahed, Gheran, aerostat, balon, spațiul aerian, survol neautorizat, obiect zburător, alertă aeriană", "Drone: drone și baloane în spațiul aerian al Moldovei, drone căzute"],
   ["sport", "Sport", ["Competiții și medalii", "Competiții și medalii", "Competiții și medalii"], "medal", ["#1F5F8A", "#0B2A40"], "#FFD43B",
     "sport, sportiv, sportivă, medalie, campionat, competiție, olimpiadă, jocurile olimpice, turneu, campion, campioană, lot național", "Sport: sportivii moldoveni, medalii, competiții (când nu e altă temă de sport)"],

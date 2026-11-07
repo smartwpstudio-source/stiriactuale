@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- drona de tip avion cu aripă delta (Gerbera / Shahed), văzută de sus: așa arată cele care ajung în Moldova -->
+  <path fill="#000" d="M50 5 C53.5 5 55 9 55 14 L55 38 L92 76 L92 83 L55 79 L55 90 L59 90 L59 94 L41 94 L41 90 L45 90 L45 79 L8 83 L8 76 L45 38 L45 14 C45 9 46.5 5 50 5 Z"/>
+  <!-- derivele de la capetele aripii -->
+  <rect fill="#000" x="5" y="70" width="5" height="17" rx="1.5"/>
+  <rect fill="#000" x="90" y="70" width="5" height="17" rx="1.5"/>
+  <!-- elicea din spate -->
+  <rect fill="#000" x="36" y="95" width="28" height="3" rx="1.5"/>
+</svg>
