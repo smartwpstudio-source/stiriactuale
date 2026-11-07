@@ -106,6 +106,7 @@ const SYSTEM_PROMPT = [
   "- niciuna: subiect diferit.",
   "reject=true dacă grupul relatează ACELAȘI fapt ca un articol recent [RN], fără nimic nou (altă formulare, altă sursă, alt titlu — ex. „contract de 23 mil. pentru drumul R13” și „23 mil. investiți în drumul R13”): e dublură, nu publicăm de două ori.",
   "reject=true când SUBIECTUL PRINCIPAL al știrii sunt drogurile (consum, trafic, capturi, laboratoare, plantații de cânepă, droguri sintetice/etnobotanice); dacă drogurile apar doar ca detaliu într-un caz mai larg (un proces, o persoană publică), NU respinge pentru asta — decizia redacției, risc de penalizare Google.",
+  "reject=true pentru anunțurile cu termen (închidere, restricție, întrerupere de apă, curent, gaz, trafic „de la ... până la ...”) al căror interval s-a încheiat deja sau se încheie în mai puțin de o oră față de „Acum” din mesaj: publicate atunci, ar duce oamenii în eroare. Excepție: anunțul spune că starea s-a schimbat (s-a redeschis, s-a prelungit).",
   "reject=true pentru: horoscop, publicitate/advertorial/promoții, monden și vedete fără interes public, rețete, sfaturi generale, sondaje de opinie online, rezultate sportive fără legătură cu Moldova, știri vechi reluate.",
 ].join("\n");
 
@@ -129,7 +130,9 @@ export async function classifyGroups(
   const briefList = recent.length
     ? `Articole recente (ultimele 7 zile):\n${recent.map((r, n) => `[R${n}]${r.open ? " (pe scurt)" : ""} ${r.title}`).join("\n")}\n\n`
     : "";
+  // ora rulării: anunțurile „închis până la 15:00” nu se mai publică la 14:30 (2026-11-07)
   const prompt =
+    `Acum: ${new Date().toLocaleString("ro-RO", { timeZone: "Europe/Chisinau", weekday: "long", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" })}.\n\n` +
     briefList +
     groups
     .map(
