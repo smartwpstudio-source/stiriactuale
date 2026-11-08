@@ -12,6 +12,18 @@ const rows = await sql`
   from articles a
   where a.status = 'published' and a.wp_id is null and a.published_at >= now() - interval '8 days'
   order by a.views desc`;
+// publicate pe zile (ora Chișinăului): editor / automate / Util
+const perDay = await sql`
+  select to_char(a.published_at at time zone 'Europe/Chisinau', 'YYYY-MM-DD') as day,
+    count(*) filter (where exists (select 1 from candidates c where c.manual and jsonb_exists(a.source_urls, c.url))) as editor,
+    count(*) filter (where a.kind = 'util') as util,
+    count(*) as total
+  from articles a
+  where a.status = 'published' and a.wp_id is null and a.published_at >= now() - interval '14 days'
+  group by 1 order by 1`;
+console.log("PUBLICATE PE ZILE (zi | total | ale editorului | Util | automate):");
+for (const d of perDay) console.log(`${d.day} | ${String(d.total).padStart(3)} | ${String(d.editor).padStart(3)} | ${String(d.util).padStart(3)} | ${String(d.total - d.editor - d.util).padStart(3)}`);
+console.log("");
 await sql.end();
 
 const norm = (s) => s.normalize("NFD").replace(/\p{M}/gu, "").toLowerCase();
