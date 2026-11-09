@@ -10,18 +10,47 @@ import { getRecipes, recipePath } from "@/lib/content/recipes";
 import { listPlaces } from "@/lib/content/places";
 import { articleUrl } from "@/lib/content/url";
 import { SITE_URL } from "@/lib/seo";
+import { SITEMAP_PARTS } from "@/lib/sitemap-parts";
 import { availableCalculators } from "@/lib/calculators";
 import { getCalcParams } from "@/lib/calculators-data";
 
 // Se regenerează o dată pe oră, nu la fiecare cerere.
 export const revalidate = 3600;
 
+// Sitemap-ul împărțit (2026-11-09): cel unic, de 4.500 de adrese, apărea în Search Console
+// „Nu s-a putut prelua” din 23 octombrie, deși se descărca normal. Părțile sunt adunate în
+// indexul /sitemap.xml (app/sitemap.xml/route.ts): /harta/sitemap/<parte>.xml.
+// pagini = ghiduri, unelte, hub-uri; stiri = ultimele 90 de zile; arhiva = restul; ru = știrile în rusă.
+
+const RECENT_DAYS = 90;
+
+export async function generateSitemaps() {
+  return SITEMAP_PARTS.map((id) => ({ id }));
+}
+
 // Doar hub-urile cu articole — cele goale au noindex (vezi hub-page.tsx).
-// ponytail: un singur sitemap; Google acceptă max 50.000 URL-uri, împarte
-// cu generateSitemaps() când arhiva se apropie de limită.
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [articles, counts, guides, raioane, tari, calcParams, recipes, recipesRu] = await Promise.all([
-    getSitemapArticles(),
+export default async function sitemap(props: { id: Promise<string> }): Promise<MetadataRoute.Sitemap> {
+  const part = await props.id;
+  if (part === "ru") {
+    // știrile în rusă: abia după activare (ru-news-public.ts)
+    return (RU_NEWS_PUBLIC ? await listRuArticles(5000) : []).map(({ article }) => ({
+      url: `${SITE_URL}${ruNewsPath(article.slug)}`,
+      lastModified: article.publishedAt,
+      priority: 0.6,
+    }));
+  }
+  if (part === "stiri" || part === "arhiva") {
+    const since = Date.now() - RECENT_DAYS * 86400_000;
+    // slug-uri cu "%" (emoji codat la migrare) dau 404 — nu le punem în sitemap
+    return (await getSitemapArticles())
+      .filter((a) => !a.slug.includes("%") && (new Date(a.publishedAt).getTime() >= since) === (part === "stiri"))
+      .map((a) => ({
+        url: `${SITE_URL}${articleUrl({ ...a, locality: a.locality ?? undefined, country: a.country ?? undefined })}`,
+        lastModified: a.publishedAt,
+        priority: 0.6,
+      }));
+  }
+  const [counts, guides, raioane, tari, calcParams, recipes, recipesRu] = await Promise.all([
     getHubCounts(),
     getGuides(),
     listPlaces("raioane"),
@@ -74,17 +103,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...recipes.map((r) => ({ url: `${SITE_URL}${recipePath(r.slug)}`, lastModified: r.updated, priority: 0.7 })),
     ...recipesRu.map((r) => ({ url: `${SITE_URL}${recipePath(r.slug, "ru")}`, lastModified: r.updated, priority: 0.7 })),
     ...hubs.map((h) => ({ url: `${SITE_URL}${h.url}`, changeFrequency: "hourly" as const, priority: h.priority })),
-    // știrile în rusă: abia după activare (ru-news-public.ts)
-    ...(RU_NEWS_PUBLIC ? await listRuArticles(5000) : []).map(({ article }) => ({
-      url: `${SITE_URL}${ruNewsPath(article.slug)}`,
-      lastModified: article.publishedAt,
-      priority: 0.6,
-    })),
-    // slug-uri cu "%" (emoji codat la migrare) dau 404 — nu le punem în sitemap
-    ...articles.filter((a) => !a.slug.includes("%")).map((a) => ({
-      url: `${SITE_URL}${articleUrl({ ...a, locality: a.locality ?? undefined, country: a.country ?? undefined })}`,
-      lastModified: a.publishedAt,
-      priority: 0.6,
-    })),
   ];
 }
