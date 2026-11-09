@@ -92,7 +92,8 @@ assert.ok(!passesSelection(cand({}, 95)), "declarație națională, scor mare: n
 assert.ok(!passesSelection(cand({ section: "international", audience: "grupuri" }, 95)), "Lumea fără efect: nu");
 assert.ok(passesSelection(cand({ section: "international", concreteEffect: true }, 40)), "Lumea cu efect asupra Moldovei: da");
 assert.ok(passesSelection(cand({ section: "regiuni", locality: "drochia", audience: "local" }, 20)), "accidentul din raion: da");
-assert.ok(passesSelection(cand({ section: "regiuni", locality: "chisinau", audience: "pagina" }, 60)), "Chișinău peste prag: da");
+assert.ok(!passesSelection(cand({ section: "regiuni", locality: "chisinau", audience: "pagina" }, 90)), "Chișinău fără impact, oricât scor: nu");
+assert.ok(passesSelection(cand({ section: "regiuni", locality: "gagauzia", concreteEffect: true }, 30)), "Găgăuzia cu impact: da");
 assert.ok(!passesSelection(cand({ section: "regiuni", locality: "chisinau", audience: "pagina" }, 30)), "Chișinău sub prag: nu");
 assert.ok(passesSelection(cand({ section: "diaspora", country: "italia" }, 50)), "diaspora: da");
 assert.ok(!passesSelection(cand({ concreteEffect: true, reject: true }, 90)), "respinsă rămâne respinsă");
