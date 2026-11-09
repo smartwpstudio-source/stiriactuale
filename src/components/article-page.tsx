@@ -110,7 +110,7 @@ export async function ArticlePage({
       {/* data-no-ads: AdSense nu se încarcă pe arhiva preluată (vezi adsense-script.tsx) */}
       <article className="min-w-0 max-w-[720px]" data-no-ads={article.archived || undefined}>
         <Breadcrumb items={breadcrumbItems} />
-        {(article.topics[0] || article.kind === "pe-scurt" || article.kind === "analiza" || article.continuesId) && (
+        {(article.topics[0] || article.kind === "pe-scurt" || article.kind === "analiza" || article.kind === "comunicat" || article.continuesId) && (
           <div className="mt-3 flex items-center gap-2">
             <KindBadge kind={article.kind} continues={!!article.continuesId} />
             {article.topics[0] && <TopicLabel topic={article.topics[0]} />}
@@ -239,11 +239,19 @@ export async function ArticlePage({
               </ToolLink>
             )}
             {(() => {
-              const body = sanitizeBody(article.bodyHtml, article.imageAlt ?? article.title);
+              const clean = sanitizeBody(article.bodyHtml, article.imageAlt ?? article.title);
+              // comunicat plătit: orice link e „sponsored” (regula Google pentru linkurile plătite)
+              const press = article.kind === "comunicat";
+              const body = press ? clean.replace(/<a\b([^>]*)>/gi, (_, a: string) => `<a${a.replace(/\srel="[^"]*"/i, "")} rel="sponsored noopener">`) : clean;
               const ads = !article.archived && ADSENSE_IN_ARTICLE_SLOT;
               // blocurile: după al 2-lea paragraf, apoi la fiecare 4 (AdBody)
               return (
                 <>
+                  {press && (
+                    <p className="mt-5 rounded border-l-4 border-amber bg-amber/10 px-4 py-2 text-sm text-ink">
+                      Comunicat de presă · material plătit. Textul aparține autorului; redacția Știri Actuale nu răspunde de conținutul lui.
+                    </p>
+                  )}
                   <AdBody html={body} ads={!!ads} />
                   {article.postUrl && <PostEmbed src={article.postUrl} />}
                   {ads && <AdSlot slot={ADSENSE_IN_ARTICLE_SLOT} />}

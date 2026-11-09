@@ -1,4 +1,4 @@
-import { and, desc, eq, gte } from "drizzle-orm";
+import { and, desc, eq, gte, ne } from "drizzle-orm";
 import { getDb } from "@/lib/pipeline/db/client";
 import { articles } from "@/lib/pipeline/db/schema";
 import { articleUrl } from "@/lib/content/url";
@@ -32,7 +32,8 @@ const cols = {
   locality: articles.locality,
   country: articles.country,
 };
-const published = (since: Date) => and(eq(articles.status, "published"), eq(articles.archived, false), gte(articles.publishedAt, since));
+const published = (since: Date) =>
+  and(eq(articles.status, "published"), eq(articles.archived, false), ne(articles.kind, "comunicat"), gte(articles.publishedAt, since));
 
 export async function morningDigest(): Promise<string> {
   const today = todayChisinau();

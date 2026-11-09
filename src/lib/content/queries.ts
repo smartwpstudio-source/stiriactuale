@@ -74,6 +74,7 @@ export interface ArticleFilter {
   country?: string;
   topic?: Topic;
   kind?: string; // rubrica Util: articolele proprii (kind = "util")
+  includePress?: boolean; // comunicatele de presă plătite: altfel doar pe pagina lor (/comunicate/)
   video?: boolean; // rubrica Video: articolele cu player (YouTube, Facebook, Telegram)
   q?: string;
   includeArchived?: boolean; // doar căutarea — arhiva preluată nu apare în liste
@@ -88,6 +89,7 @@ function where(f: ArticleFilter): SQL {
   if (f.country) c.push(eq(t.country, f.country));
   if (f.topic) c.push(sql`${t.topics} @> ${JSON.stringify([f.topic])}::jsonb`);
   if (f.kind) c.push(eq(t.kind, f.kind));
+  else if (!f.includePress) c.push(ne(t.kind, "comunicat"));
   if (f.video) c.push(isNotNull(t.videoUrl));
   if (f.impact === true) c.push(isNotNull(t.impact));
   else if (f.impact) c.push(sql`${t.impact}->>'tip' = ${f.impact}`);
@@ -242,7 +244,7 @@ export async function getSitemapArticles() {
   return getDb()
     .select({ slug: t.slug, section: t.section, locality: t.locality, country: t.country, publishedAt: t.publishedAt })
     .from(t)
-    .where(where({}))
+    .where(where({ includePress: true }))
     .orderBy(desc(t.publishedAt));
 }
 

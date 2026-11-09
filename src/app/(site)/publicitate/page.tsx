@@ -36,6 +36,10 @@ export default function AdvertisingPage() {
         <li>
           <strong>Distribuire</strong> pe pagina de Facebook și pe canalul de Telegram.
         </li>
+        <li>
+          <strong>Comunicate de presă</strong> — publicare pe site, pe Facebook și pe Telegram, 500 de lei:{" "}
+          <Link prefetch={false} href="/comunicate-de-presa/">vezi oferta și trimite comunicatul</Link>.
+        </li>
       </ul>
 
       <h2>Reguli</h2>

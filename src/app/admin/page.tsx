@@ -4,7 +4,7 @@ import { getDb } from "@/lib/pipeline/db/client";
 import { articles, candidates, pipelineRuns } from "@/lib/pipeline/db/schema";
 import { requireAdmin } from "@/lib/admin/auth";
 import { SECTION_LABELS } from "@/lib/content/geo";
-import { addLink, logoutAction, sendPushNow, setGuideRule, togglePipeline } from "./actions";
+import { addLink, createPressRelease, logoutAction, sendPushNow, setGuideRule, togglePipeline } from "./actions";
 import { guideRuleMode, pipelineEnabled } from "@/lib/pipeline/settings";
 import { loadMissingGuidesReport } from "@/lib/admin/guide-report";
 import { pushAudience } from "@/lib/push";
@@ -221,6 +221,22 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
             ))}
           </ul>
         )}
+      </section>
+
+      <section>
+        <h2 className="mb-2 font-medium text-ink">Comunicat de presă (plătit)</h2>
+        <p className="mb-2 text-sm text-sub">
+          Textul clientului, fără AI. Se salvează ca ciornă: verifici, pui poza și publici din pagina articolului (pleacă și pe
+          Telegram, marcat „material plătit”). Nu apare în fluxul de știri, doar pe /comunicate/.
+        </p>
+        <form action={createPressRelease} className="flex flex-wrap gap-2">
+          <input name="title" required placeholder="Titlu" className="basis-full rounded border border-line bg-white px-3 py-2 text-ink" />
+          <input name="lead" required placeholder="Primul paragraf (rezumat)" className="basis-full rounded border border-line bg-white px-3 py-2 text-ink" />
+          <textarea name="body" required rows={6} placeholder="Textul comunicatului (paragrafele despărțite de un rând gol)" className="basis-full rounded border border-line bg-white px-3 py-2 text-sm text-ink" />
+          <input name="link" type="url" placeholder="Linkul clientului (https://…)" className="flex-1 rounded border border-line bg-white px-3 py-2 text-ink" />
+          <input name="client" placeholder="Cine trimite (firma / organizația)" className="flex-1 rounded border border-line bg-white px-3 py-2 text-ink" />
+          <button className="rounded bg-ink px-4 py-2 text-sm font-semibold text-paper">Salvează ciorna</button>
+        </form>
       </section>
 
       <section>
