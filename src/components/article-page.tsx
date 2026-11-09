@@ -9,7 +9,7 @@ import { TelegramInline } from "./telegram-inline";
 import { PushOptIn } from "./push-opt-in";
 import { SimilarArticles } from "./similar-articles";
 import { TimeAgo } from "./time-ago";
-import { getArticleLink, getSimilarArticles, listArticles } from "@/lib/content/queries";
+import { getArticleLink, getRecentArticles, getSimilarArticles } from "@/lib/content/queries";
 import { ArticleRow } from "./article-row";
 import { SectionHeading } from "./section-heading";
 import { ViewBeacon } from "./view-beacon";
@@ -83,7 +83,7 @@ export async function ArticlePage({
 }) {
   const [similar, { items: latest }, guide, previous, calculator, tools, dossier, analyses, [guideTool]] = await Promise.all([
     getSimilarArticles(article),
-    listArticles({}, 1, 9, false),
+    getRecentArticles().then((items) => ({ items })),
     article.archived ? undefined : getRelatedGuide(article.title, article.lead, article.locality),
     article.continuesId ? getArticleLink(article.continuesId) : null,
     article.archived ? undefined : getRelatedCalculator(article.title, article.lead),
