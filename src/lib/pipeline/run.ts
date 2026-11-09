@@ -82,7 +82,9 @@ export function passesSelection(c: ScoredCandidate): boolean {
   const { section, reject } = c.classification;
   if (c.group.manual || reject || isDeclaration(c.group.representativeTitle)) return false;
   if (hasAudience(c)) return true;
-  return (section === "regiuni" || section === "diaspora") && c.qualityScore >= SECTION_CONFIG[section].minScore;
+  // Chișinău, Bălți, Găgăuzia, Transnistria: doar cu impact (le relatează toată lumea; nișa noastră
+  // sunt celelalte raioane, care trec prin „local”) — editorul, 2026-11-09. Diaspora rămâne.
+  return section === "diaspora" && c.qualityScore >= SECTION_CONFIG[section].minScore;
 }
 const byAudience = (a: ScoredCandidate, b: ScoredCandidate) => Number(hasAudience(b)) - Number(hasAudience(a)) || b.qualityScore - a.qualityScore;
 
