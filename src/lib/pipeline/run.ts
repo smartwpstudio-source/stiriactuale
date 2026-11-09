@@ -68,10 +68,19 @@ const MAX_ARTICLES_PER_RUN = 4;
 // e din raioane / despre moldovenii din diaspora. Politica și Lumea, doar cu efect concret: în
 // 8 zile, politica automată avea mediana 2 vizualizări, Lumea 2, banii și regulile 10.
 // Linkurile editorului nu trec pe aici: se publică oricum.
+// „X spune / acuză / neagă”: declarația nu trece, oricum ar fi clasificată (2026-11-09: „PSRM spune
+// că oferta de 100 de dolari e un fals”, „Marta Kos: negocierile se pot încheia în 2028”), doar dacă
+// titlul are și un efect concret pentru oameni (bani, reguli, termene, servicii)
+const DECLARATION = /\b(spune|spun|a spus|au spus|declara|a declarat|afirma|sustine|crede|considera|acuza|acuzat|replica|raspunde|neaga|dezminte|critica|cere demisia|un fals|o minciuna|denigrare|atac la adresa)\b/;
+const CONCRETE = /\blei\b|%|\beuro\b|tarif|pret|factur|pensi|salari|compensa|ajutor|indemniz|impozit|tax|tva|amend|lege|regul|obligator|interzis|termen|gratuit|inchis|sistat|deconect|scump|ieftin/;
+export function isDeclaration(title: string): boolean {
+  const t = title.normalize("NFD").replace(/\p{M}/gu, "").toLowerCase();
+  return DECLARATION.test(t) && !CONCRETE.test(t);
+}
 export const hasAudience = (c: ScoredCandidate) => c.classification.concreteEffect === true || c.classification.audience === "local";
 export function passesSelection(c: ScoredCandidate): boolean {
   const { section, reject } = c.classification;
-  if (c.group.manual || reject) return false;
+  if (c.group.manual || reject || isDeclaration(c.group.representativeTitle)) return false;
   if (hasAudience(c)) return true;
   return (section === "regiuni" || section === "diaspora") && c.qualityScore >= SECTION_CONFIG[section].minScore;
 }
