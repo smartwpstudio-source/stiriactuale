@@ -36,6 +36,21 @@ export function similarRecent(group: CandidateGroup, recent: RecentArticle[], ma
     .map((x) => x.r);
 }
 
+// „Continuare” doar pentru aceeași poveste (editorul, 2026-11-09): legătura propusă de clasificator
+// se verifică separat; altfel articolul apare ca știre obișnuită, fără „Continuare” și „Context”.
+export async function sameStory(oldTitle: string, group: CandidateGroup): Promise<boolean> {
+  return structured<{ aceeasi: boolean }>({
+    model: HAIKU_MODEL,
+    system:
+      "Spui dacă știrea nouă e CONTINUAREA aceleiași povești concrete ca articolul publicat: același caz, aceleași persoane, același proiect sau aceeași decizie. Doar același domeniu (energie, politică, vreme) sau o mențiune în trecere NU ajunge.",
+    prompt: `Publicat: ${oldTitle}\n\nȘtirea nouă:\n${group.items.slice(0, 3).map((i) => `- ${i.title}: ${i.summary.slice(0, 300)}`).join("\n")}`,
+    schema: { type: "object", properties: { aceeasi: { type: "boolean" } }, required: ["aceeasi"] },
+    maxBudgetUsd: 0.05,
+  })
+    .then((r) => r.aceeasi)
+    .catch(() => false);
+}
+
 export type RecentVerdict = { duplicateOf?: number; continuesId?: number; updateOf?: number };
 
 export async function checkRecent(group: CandidateGroup, recent: RecentArticle[]): Promise<RecentVerdict> {
