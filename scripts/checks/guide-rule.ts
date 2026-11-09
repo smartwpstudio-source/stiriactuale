@@ -10,7 +10,7 @@ import {
   validatePick,
   type GuideCheck,
 } from "../../src/lib/pipeline/guide-rule";
-import { passesSelection, reviewRank } from "../../src/lib/pipeline/run";
+import { isDeclaration, passesSelection, reviewRank } from "../../src/lib/pipeline/run";
 import { fallbackCard } from "../../src/lib/pipeline/places";
 import { missingGuidesReport, NO_PRACTICAL_NEED } from "../../src/lib/admin/guide-report";
 import type { ScoredCandidate } from "../../src/lib/pipeline/types";
@@ -96,6 +96,14 @@ assert.ok(passesSelection(cand({ section: "regiuni", locality: "chisinau", audie
 assert.ok(!passesSelection(cand({ section: "regiuni", locality: "chisinau", audience: "pagina" }, 30)), "Chișinău sub prag: nu");
 assert.ok(passesSelection(cand({ section: "diaspora", country: "italia" }, 50)), "diaspora: da");
 assert.ok(!passesSelection(cand({ concreteEffect: true, reject: true }, 90)), "respinsă rămâne respinsă");
+// declarațiile: oprite și când clasificatorul le scapă
+assert.ok(isDeclaration("Găgăuzia: PSRM spune că oferta de 100 de dolari pentru votul lui Gagauz e un fals (FOTO)"));
+assert.ok(isDeclaration("Moldova poate încheia negocierile de aderare la UE în 2028, spune Marta Kos (VIDEO)"));
+assert.ok(isDeclaration("Tofan îl acuză pe Costiuc de minciună după intrarea în portul Giurgiulești"));
+assert.ok(!isDeclaration("Pensiile mici ar putea fi indexate integral, iar cele mari mai puțin, spune Tofan"), "pensiile: efect concret");
+assert.ok(!isDeclaration("ANRE propune scumpirea cu 63% a energiei de la Energocom"), "fără verb de declarație");
+assert.ok(!isDeclaration("Accident la Drochia: un mort"));
+assert.ok(!passesSelection({ ...cand({ concreteEffect: true, section: "regiuni", locality: "gagauzia" }, 90), group: { representativeTitle: "PSRM spune că oferta e un fals", items: [], sourceNames: ["a"], manual: false, candidateIds: [] } }), "declarația nu trece nici cu efect marcat");
 
 // --- raportul „Ghiduri care lipsesc”
 const d = (iso: string) => new Date(iso);
