@@ -14,7 +14,7 @@ import sharp from "sharp";
 import { photosMatch } from "./photo-check";
 import { loadOfficialItems, matchOfficialPhoto } from "./official-photos";
 import { fallbackCard, loadPlaces, loadSymbolPhotos, matchPlacePhoto } from "./places";
-import { checkRecent } from "./recent-duplicate";
+import { checkRecent, sameStory } from "./recent-duplicate";
 import { mediaTag, photoFigures, type BodyPhoto } from "./media-tag";
 import { pipelineEnabled } from "./settings";
 import { checkGuide, guideDecision, guideExempt, type GuideRuleMode } from "./guide-rule";
@@ -261,6 +261,16 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     // linkurile editorului nu se filtrează, dar primesc și ele ghidul potrivit
     // (modul „raport” nu respinge niciodată) — 2026-10-13, știrea Moldsilva
     for (const c of toPublish) await guideStep(c, "raport", summary, false).catch(() => null);
+    // „Continuare” doar pentru aceeași poveste; legătura impusă din admin (CONTINUE_SLUG) rămâne
+    const checkContinuation = async (c: ScoredCandidate) => {
+      const { continuesId, continuesTitle } = c.classification;
+      if (continuesId === undefined || (forced && continuesId === forced.id) || !continuesTitle) return;
+      if (await sameStory(continuesTitle, c.group)) return;
+      console.log(`Fără „Continuare” (altă poveste): ${c.group.representativeTitle.slice(0, 60)} ≠ ${continuesTitle.slice(0, 60)}`);
+      c.classification.continuesId = undefined;
+      c.classification.continuesTitle = undefined;
+    };
+    for (const c of toPublish) await checkContinuation(c);
     const bySection = new Map<Section, ScoredCandidate[]>();
     for (const c of scored) {
       if (!passesSelection(c)) continue;
@@ -305,6 +315,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
         c.classification.continuesId = v.continuesId;
         c.classification.continuesTitle = recent48.find((r) => r.id === v.continuesId)?.title;
       }
+      await checkContinuation(c);
       // ghidul nu mai oprește nicio știre (decizia editorului, 2026-11-03: se publicau știri
       // slabe pentru că aveau ghid, iar accidentul de la Marianca de Jos, respins aici, a adunat
       // 1.036 de vizualizări la editor). Calitatea știrii decide; ghidul se pune dacă există.
