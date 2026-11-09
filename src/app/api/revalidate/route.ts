@@ -1,5 +1,6 @@
 import crypto from "node:crypto";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
+import { RECENT_TAG } from "@/lib/content/queries";
 import { gte, inArray, or, sql } from "drizzle-orm";
 import { getDb } from "@/lib/pipeline/db/client";
 import { articles } from "@/lib/pipeline/db/schema";
@@ -28,6 +29,8 @@ export async function POST(request: Request) {
     return Response.json({ all: true });
   }
   for (const p of ALWAYS) revalidatePath(p);
+  // „Recente” și ultima știre: fără conținut vechi după o publicare
+  revalidateTag(RECENT_TAG, { expire: 0 });
   const since = body.since ? new Date(body.since) : null;
   let paths: string[] = [];
   if (since && !Number.isNaN(since.getTime())) {

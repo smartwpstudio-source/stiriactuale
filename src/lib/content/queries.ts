@@ -4,6 +4,7 @@ import { articles as t } from "@/lib/pipeline/db/schema";
 import type { Article, Section, Topic } from "./types";
 import type { ImpactType } from "@/lib/impact-types";
 import { youtubeThumb } from "@/lib/video";
+import { unstable_cache } from "next/cache";
 
 // Doar articole "published" — draft-urile stau în /admin. Listele nu citesc
 // corpul articolului (bodyHtml): cu arhiva WordPress sunt mii de rânduri, iar
@@ -122,16 +123,17 @@ export async function listArticles(f: ArticleFilter, page = 1, pageSize = PAGE_S
   return { items: rows.map(mapRow), total, pages: Math.max(1, Math.ceil(total / pageSize)) };
 }
 
-// banda „ultima știre publicată” e pe fiecare pagină: un minut în memoria Worker-ului,
-// nu o citire din bază la fiecare pagină refăcută
-let latest: { at: number; article: Promise<Article | null> } | null = null;
-export function getLatestArticle(): Promise<Article | null> {
-  if (!latest || Date.now() - latest.at > 60_000) {
-    const article = listArticles({}, 1, 1, false).then((r) => r.items[0] ?? null);
-    latest = { at: Date.now(), article };
-    article.catch(() => (latest = null));
-  }
-  return latest.article;
+// „Recente” din articol și banda „ultima știre publicată” sunt aceleași pe toate paginile: stau
+// în cache-ul comun (R2) 5 minute și se golesc la fiecare publicare (tag „recente”, /api/revalidate/).
+// Înainte, fiecare articol refăcut de un robot le citea din bază: ~2/3 din traficul Supabase (2026-11-10).
+export const RECENT_TAG = "recente";
+export const getRecentArticles = unstable_cache(async () => (await listArticles({}, 1, 9, false)).items, ["recente-9"], {
+  revalidate: 300,
+  tags: [RECENT_TAG],
+});
+
+export async function getLatestArticle(): Promise<Article | null> {
+  return (await getRecentArticles())[0] ?? null;
 }
 
 // Știrea din prim-plan — trebuie să se schimbe odată cu știrile (cea mai
