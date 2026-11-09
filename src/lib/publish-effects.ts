@@ -44,7 +44,7 @@ export async function announcePublished(id: number, how: "manual" | "auto"): Pro
   await submitIndexNow([path]);
   if (!a.telegramMessageId && (await goesToChannel(a, how))) {
     // continuarea unei știri deja postate: marcată, să nu pară aceeași știre de două ori
-    const title = a.continuesId ? `🔄 Continuare: ${a.title}` : a.title;
+    const title = a.kind === "comunicat" ? `📢 Comunicat de presă (material plătit): ${a.title}` : a.continuesId ? `🔄 Continuare: ${a.title}` : a.title;
     // unealta din blocul de impact, direct în postare: omul ajunge la calculator fără ocol
     const [tool] = await resolveTools(a.impact?.unelte ?? []);
     const toolLine = tool && `${TOOL_LINE[tool.kind]}: <a href="${absoluteUrl(tool.href)}">${tool.title.replace(/&/g, "&amp;").replace(/</g, "&lt;")}</a>`;

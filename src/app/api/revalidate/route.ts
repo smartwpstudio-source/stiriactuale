@@ -14,7 +14,7 @@ import type { Article } from "@/lib/content/types";
 // Până pe 2026-11-07 se invalidau TOATE listele cu [param], cu toate paginile lor, la fiecare
 // rulare: orice vizită a unui robot pe sute de pagini de arhivă refăcea pagina din bază, iar
 // traficul Supabase a urcat la ~0,35 GB pe zi (limita gratuită: 5 GB pe lună).
-const ALWAYS = ["/", "/national", "/international", "/diaspora", "/regiuni", "/video", "/util", "/ru"];
+const ALWAYS = ["/", "/national", "/international", "/diaspora", "/regiuni", "/video", "/util", "/ru", "/comunicate"];
 export async function POST(request: Request) {
   const key = revalidateKey();
   const auth = request.headers.get("authorization") ?? "";

@@ -24,6 +24,8 @@ import { rememberDeleted } from "@/lib/pipeline/publish";
 import type { Section } from "@/lib/content/types";
 import { IMPACT_TYPES, resolveTools, type Impact, type ImpactType } from "@/lib/impact";
 import { dropPhotoTag, hasBodyPhotos, mediaTag, photoFigures } from "@/lib/pipeline/media-tag";
+import { asciiSlug } from "@/lib/ascii-slug";
+import crypto from "node:crypto";
 
 // Fiecare action verifică sesiunea — sunt endpoint-uri POST publice.
 
@@ -361,6 +363,45 @@ export async function addLink(formData: FormData) {
     redirect(ok ? "/admin/?run=ok" : "/admin/?run=fail");
   }
   redirect("/admin/?link=ok");
+}
+
+// Comunicat de presă plătit (oferta /comunicate-de-presa/, 500 lei, 2026-11-09): textul clientului,
+// fără AI, salvat ca ciornă. Editorul îl verifică, pune poza și îl publică din pagina articolului;
+// la publicare pleacă pe Telegram, marcat „material plătit”. Linkurile devin „sponsored” la afișare.
+export async function createPressRelease(formData: FormData) {
+  await requireAdmin();
+  const field = (k: string) => String(formData.get(k) ?? "").trim();
+  const title = field("title").slice(0, 200);
+  const lead = field("lead").slice(0, 500);
+  const text = field("body");
+  const link = /^https?:\/\//i.test(field("link")) ? field("link") : "";
+  const client = field("client").slice(0, 120);
+  if (!title || !lead || !text) redirect("/admin/?comunicat=gol");
+  const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  // text simplu: paragrafele despărțite de un rând gol; HTML lipit rămâne cum e (curățat)
+  const paragraphs = /<p[\s>]/i.test(text) ? text : text.split(/\n\s*\n/).map((p) => `<p>${esc(p.trim()).replace(/\n/g, "<br>")}</p>`).join("");
+  const bodyHtml = sanitizeBody(
+    paragraphs +
+      (link ? `<p>Mai multe: <a href="${esc(link)}">${esc(link.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, ""))}</a></p>` : "") +
+      (client ? `<p><em>Comunicat transmis de ${esc(client)}.</em></p>` : ""),
+  );
+  const [row] = await getDb()
+    .insert(articles)
+    .values({
+      slug: `${asciiSlug(title).slice(0, 80).replace(/-+$/, "")}-${Date.now().toString(36)}`,
+      title,
+      leadText: lead,
+      bodyHtml,
+      metaDescription: lead.slice(0, 200),
+      section: "national",
+      kind: "comunicat",
+      status: "draft",
+      normalizedTitleHash: crypto.createHash("sha256").update(title.toLowerCase()).digest("hex"),
+      sourceCount: 0,
+      qualityScore: 0,
+    })
+    .returning({ id: articles.id });
+  redirect(`/admin/articol/${row.id}/`);
 }
 
 // Blocul „Ce înseamnă pentru tine”: tip gol = fără bloc. Uneltele: id-uri

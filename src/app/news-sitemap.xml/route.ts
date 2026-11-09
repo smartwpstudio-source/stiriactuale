@@ -1,4 +1,4 @@
-import { and, desc, eq, gte } from "drizzle-orm";
+import { and, desc, eq, gte, ne } from "drizzle-orm";
 import { getDb } from "@/lib/pipeline/db/client";
 import { articles } from "@/lib/pipeline/db/schema";
 import { articleUrl } from "@/lib/content/url";
@@ -28,6 +28,8 @@ export async function GET() {
       and(
         eq(articles.status, "published"),
         eq(articles.archived, false),
+        // Google News nu acceptă materialele plătite ca știri
+        ne(articles.kind, "comunicat"),
         gte(articles.publishedAt, new Date(Date.now() - 48 * 3600_000)),
       ),
     )

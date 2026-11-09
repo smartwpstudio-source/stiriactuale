@@ -39,7 +39,7 @@ export interface RuCandidate {
 const plain = (s: string) => stripDiacritics(s).toLowerCase();
 
 export function shouldTranslateRu(a: RuCandidate): boolean {
-  if (a.archived || a.section === "international" || a.kind === "pe-scurt" || a.kind === "analiza") return false;
+  if (a.archived || a.section === "international" || a.kind === "pe-scurt" || a.kind === "analiza" || a.kind === "comunicat") return false;
   return (
     a.impact != null ||
     a.pushWorthy ||

@@ -46,6 +46,9 @@ export function Footer() {
           <Link prefetch={false} href="/publicitate/" className="hover:text-amber">
             Publicitate
           </Link>
+          <Link prefetch={false} href="/comunicate-de-presa/" className="hover:text-amber">
+            Comunicate de presă
+          </Link>
           <Link prefetch={false} href="/cautare/" className="hover:text-amber">
             Căutare
           </Link>
