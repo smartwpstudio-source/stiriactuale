@@ -25,7 +25,7 @@ const ROUTES = new Set([
   "analiza", "autor", "azi-in-istorie", "calculatoare", "calendar-crestin-ortodox", "cautare", "confidentialitate",
   "contact", "despre", "diaspora", "ghiduri", "impact", "international", "modele-reclamatii", "national", "offline",
   "politica-editoriala", "publicitate", "regiuni", "retete", "ru", "subiect", "util", "video",
-  "admin", "api", "embed", "feed", "grafic", "og", "llms.txt", "news-sitemap.xml", "comunicate", "comunicate-de-presa",
+  "admin", "api", "embed", "feed", "grafic", "og", "llms.txt", "news-sitemap.xml", "comunicate", "comunicate-de-presa", "harta",
 ]);
 
 type Assets = { fetch(url: URL): Promise<Response> };
