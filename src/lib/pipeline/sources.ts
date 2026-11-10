@@ -1,4 +1,5 @@
 import { fetchRssFeed } from "./rss";
+import { TELEGRAM_FEEDS, fetchTelegramChannel } from "./telegram-source";
 import type { RawCandidate } from "./types";
 
 // Doar RSS-uri directe ale redacțiilor, verificate live (2026-09). Excluse:
@@ -33,14 +34,19 @@ export const FEEDS: { id: string; name: string; url: string; trusted: boolean; t
 
 export const TRUSTED_SOURCES = new Set(FEEDS.filter((f) => f.trusted).map((f) => f.name));
 
-// Fiecare feed e citit independent — unul căzut nu oprește colectarea.
+// Fiecare feed e citit independent — unul căzut nu oprește colectarea. Plus canalele
+// Telegram (telegram-source.ts), după RSS-uri.
 export async function fetchAllSources() {
-  const results = await Promise.allSettled(FEEDS.map((f) => fetchRssFeed(f.url, f.id, f.name)));
+  const sources = [
+    ...FEEDS.map((f) => ({ id: f.id, read: () => fetchRssFeed(f.url, f.id, f.name) })),
+    ...TELEGRAM_FEEDS.map((f) => ({ id: f.id, read: () => fetchTelegramChannel(f.channel, f.id, f.name) })),
+  ];
+  const results = await Promise.allSettled(sources.map((s) => s.read()));
   const candidates: RawCandidate[] = [];
   const failedFeeds: string[] = [];
   results.forEach((r, i) => {
     if (r.status === "fulfilled") candidates.push(...r.value);
-    else failedFeeds.push(`${FEEDS[i].id}: ${r.reason instanceof Error ? r.reason.message : String(r.reason)}`);
+    else failedFeeds.push(`${sources[i].id}: ${r.reason instanceof Error ? r.reason.message : String(r.reason)}`);
   });
   return { candidates, failedFeeds };
 }
