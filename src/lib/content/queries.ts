@@ -36,6 +36,15 @@ const listColumns = {
   guideTool: t.guideTool,
 };
 
+// Cardurile (liste, „similare”) nu arată sursele și din blocul de impact folosesc doar tipul,
+// prima unealtă și termenul: restul nu mai vine din bază. ~40% din octeții unui rând de listă
+// (2026-11-10: articolele refăcute de roboți sunt aproape tot traficul Supabase).
+const cardColumns = {
+  ...listColumns,
+  sources: sql<typeof t.$inferSelect.sources>`'[]'::jsonb`,
+  impact: sql<typeof t.$inferSelect.impact>`case when ${t.impact} is null then null else jsonb_build_object('tip', ${t.impact}->'tip', 'pana', ${t.impact}->'pana', 'unelte', jsonb_path_query_array(${t.impact}, '$.unelte[0]')) end`,
+};
+
 type ListRow = { [K in keyof typeof listColumns]: (typeof t.$inferSelect)[K] };
 
 function mapRow(row: ListRow & { bodyHtml?: string; hasRu?: boolean }): Article {
@@ -112,7 +121,7 @@ export async function listArticles(f: ArticleFilter, page = 1, pageSize = PAGE_S
   const db = getDb();
   const [rows, [{ total }]] = await Promise.all([
     db
-      .select(listColumns)
+      .select(cardColumns)
       .from(t)
       .where(where(f))
       .orderBy(desc(t.publishedAt))
@@ -217,7 +226,7 @@ export async function getSimilarArticles(article: Article, limit = 3): Promise<A
   if (!related.length) related.push(eq(t.section, article.section));
 
   const rows = await getDb()
-    .select(listColumns)
+    .select(cardColumns)
     .from(t)
     .where(and(where({}), ne(t.slug, article.slug), or(...related)))
     .orderBy(desc(t.publishedAt))
