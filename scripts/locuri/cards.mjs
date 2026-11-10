@@ -82,6 +82,9 @@ const THEMES = [
   // dronele și baloanele în spațiul aerian al Moldovei (editorul, 2026-11-07: subiect frecvent)
   ["drona", "Drone", ["Spațiul aerian", "Obiecte în spațiul aerian", "Spațiul aerian"], "pic:drona", ["#34495E", "#121A22"], "#FFB74D",
     "dronă, drone, dronă căzută, fragmente de dronă, Gerbera, Shahed, Gheran, aerostat, balon, spațiul aerian, survol neautorizat, obiect zburător, alertă aeriană", "Drone: drone și baloane în spațiul aerian al Moldovei, drone căzute"],
+  // apa oprită, avariile și lucrările la rețea (editorul, 2026-11-10: Hulboaca primise „pensii și salarii”)
+  ["apa", "Apă și canalizare", ["Sistări de apă", "Lucrări la rețeaua de apă", "Apă potabilă"], "droplet", ["#1F6FA8", "#0A2C47"], "#7FD3FF",
+    "apă, fără apă, sistarea apei, apa potabilă, Apă-Canal, apeduct, canalizare, rețeaua de apă, avarie la apeduct, deconectări de la apă", "Apă și canalizare: sistări, avarii, lucrări la rețea, apa potabilă"],
   // prețurile la carburanți (editorul, 2026-11-10): panoul de prețuri al benzinăriei, cu cifre în schimbare
   ["carburanti", "Carburanți", ["Prețuri la benzină și motorină", "Prețurile carburanților", "Prețuri la benzinării"], "gas-station", ["#2B3340", "#0D1117"], "#FFB300",
     "carburanți, benzină, motorină, GPL, prețuri la carburanți, benzinării, prețul benzinei, prețul motorinei, ANRE carburanți, scumpiri la pompă, ieftiniri", "Carburanți: prețurile la benzină, motorină și GPL, benzinării"],

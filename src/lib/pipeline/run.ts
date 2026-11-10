@@ -257,7 +257,23 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     });
     summary.candidatesClassified = scored.length;
 
+    // a doua verificare de dubluri, per știre, față de articolele din ultimele
+    // 48h (recent-duplicate.ts) — locul unei dubluri îl ia următoarea știre
+    const recent48 = recentRows
+      .filter((r) => r.publishedAt.getTime() > Date.now() - 48 * 3600_000)
+      .map((r) => ({ id: r.id, title: r.title, lead: r.lead }));
     const toPublish = scored.filter((c) => c.group.manual);
+    // Linkul editorului cu o știre deja publicată nu se scrie a doua oară: completează articolul
+    // (2026-11-10: drumul spre piața din Strășeni, publicat automat la 20:46 și din link la 20:57)
+    for (const c of [...toPublish]) {
+      if (forced) break;
+      const v = await checkRecent(c.group, recent48);
+      const id = v.duplicateOf ?? v.updateOf;
+      if (id === undefined) continue;
+      console.log(`Linkul editorului e deja publicat, completează articolul ${id}: ${c.group.representativeTitle.slice(0, 80)}`);
+      toPublish.splice(toPublish.indexOf(c), 1);
+      updates.push({ ...c, articleId: id });
+    }
     // linkurile editorului nu se filtrează, dar primesc și ele ghidul potrivit
     // (modul „raport” nu respinge niciodată) — 2026-10-13, știrea Moldsilva
     for (const c of toPublish) await guideStep(c, "raport", summary, false).catch(() => null);
@@ -281,11 +297,6 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       // dimineața (06:00), Lumea are prioritate: noaptea Moldova doarme, știrile vin din lume
       list.sort(byAudience).slice(0, section === "international" && hour === firstHour ? 4 : SECTION_CONFIG[section].cap),
     );
-    // a doua verificare de dubluri, per știre, față de articolele din ultimele
-    // 48h (recent-duplicate.ts) — locul unei dubluri îl ia următoarea știre
-    const recent48 = recentRows
-      .filter((r) => r.publishedAt.getTime() > Date.now() - 48 * 3600_000)
-      .map((r) => ({ id: r.id, title: r.title, lead: r.lead }));
     let autoTaken = 0;
     // știrile fără public clar: puține, doar ca site-ul să rămână viu și reprezentativ
     const maxPageOnly = hour === firstHour ? 3 : 1;
@@ -451,7 +462,8 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
         // clasificatorul a legat uneori o știre străină de un „pe scurt” vechi (Apă-Canal
         // -> Starlink, semaforul de la Hîncești -> atacuri în Dnipropetrovsk): rescrierea
         // păstra adresa și rubrica vechi. Doar același eveniment se completează.
-        const same = await structured<{ acelasi: boolean }>({
+        // linkul editorului: checkRecent a găsit deja articolul; respins aici, s-ar relua la nesfârșit
+        const same = u.group.manual ? { acelasi: true } : await structured<{ acelasi: boolean }>({
           model: HAIKU_MODEL,
           system: "Spui dacă două texte de știri relatează ACELAȘI eveniment concret (același loc, aceiași oameni, aceeași întâmplare) sau aceeași situație care continuă (aceleași lucrări, aceeași închidere, același caz), chiar dacă s-a schimbat ziua, ora sau un detaliu. Doar aceeași temă generală nu ajunge.",
           prompt: `A: ${old.title}. ${old.lead}\n\nB: ${u.group.items.map((i) => `${i.title}. ${i.summary ?? ""}`.slice(0, 400)).join("\n")}`,
