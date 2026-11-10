@@ -218,20 +218,32 @@ export async function listRuArticles(limit: number) {
 }
 
 // Același subiect sau, pentru regiuni/diaspora, același raion/țară.
-export async function getSimilarArticles(article: Article, limit = 3): Promise<Article[]> {
-  const related: SQL[] = [];
-  for (const topic of article.topics) related.push(sql`${t.topics} @> ${JSON.stringify([topic])}::jsonb`);
-  if (article.locality) related.push(eq(t.locality, article.locality));
-  if (article.country) related.push(eq(t.country, article.country));
-  if (!related.length) related.push(eq(t.section, article.section));
+// „Similare” depind doar de teme/raion/țară/rubrică, nu de articol: aceeași listă servește toate
+// articolele cu aceleași teme, din cache-ul comun (golit la publicare, tag „recente”). Înainte, fiecare
+// articol refăcut de un robot o citea din bază (2026-11-10: OAI-SearchBot, ~6.000 de cereri pe zi).
+const similarFor = unstable_cache(
+  async (topics: string[], locality: string | null, country: string | null, section: string, n: number) => {
+    const related: SQL[] = [];
+    for (const topic of topics) related.push(sql`${t.topics} @> ${JSON.stringify([topic])}::jsonb`);
+    if (locality) related.push(eq(t.locality, locality));
+    if (country) related.push(eq(t.country, country));
+    if (!related.length) related.push(eq(t.section, section as Section));
+    const rows = await getDb()
+      .select(cardColumns)
+      .from(t)
+      .where(and(where({}), or(...related)))
+      .orderBy(desc(t.publishedAt))
+      .limit(n);
+    return rows.map(mapRow);
+  },
+  ["similare"],
+  { revalidate: 3600, tags: [RECENT_TAG] },
+);
 
-  const rows = await getDb()
-    .select(cardColumns)
-    .from(t)
-    .where(and(where({}), ne(t.slug, article.slug), or(...related)))
-    .orderBy(desc(t.publishedAt))
-    .limit(limit);
-  return rows.map(mapRow);
+export async function getSimilarArticles(article: Article, limit = 3): Promise<Article[]> {
+  // un rând în plus: articolul însuși poate fi în listă
+  const rows = await similarFor([...article.topics].sort(), article.locality ?? null, article.country ?? null, article.section, limit + 1);
+  return rows.filter((a) => a.slug !== article.slug).slice(0, limit);
 }
 
 // Câte articole are fiecare raion/țară — hub-urile goale primesc noindex,
