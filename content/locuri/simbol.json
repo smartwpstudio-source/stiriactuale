@@ -1391,5 +1391,30 @@
         "alt": "Card: Carburanți — Prețuri la benzinării"
       }
     ]
+  },
+  {
+    "id": "card-apa",
+    "name": "TEMĂ (card instituție/regiune): Apă și canalizare: sistări, avarii, lucrări la rețea, apa potabilă",
+    "keywords": "apă, fără apă, sistarea apei, apa potabilă, Apă-Canal, apeduct, canalizare, rețeaua de apă, avarie la apeduct, deconectări de la apă",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/apa-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Apă și canalizare — Sistări de apă"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/apa-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Apă și canalizare — Lucrări la rețeaua de apă"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/apa-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Apă și canalizare — Apă potabilă"
+      }
+    ]
   }
 ]
