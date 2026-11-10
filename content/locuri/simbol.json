@@ -1366,5 +1366,30 @@
         "alt": "Card: Drone — Spațiul aerian"
       }
     ]
+  },
+  {
+    "id": "card-carburanti",
+    "name": "TEMĂ (card instituție/regiune): Carburanți: prețurile la benzină, motorină și GPL, benzinării",
+    "keywords": "carburanți, benzină, motorină, GPL, prețuri la carburanți, benzinării, prețul benzinei, prețul motorinei, ANRE carburanți, scumpiri la pompă, ieftiniri",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/carburanti-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Carburanți — Prețuri la benzină și motorină"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/carburanti-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Carburanți — Prețurile carburanților"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/carburanti-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Carburanți — Prețuri la benzinării"
+      }
+    ]
   }
 ]

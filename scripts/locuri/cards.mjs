@@ -82,6 +82,9 @@ const THEMES = [
   // dronele și baloanele în spațiul aerian al Moldovei (editorul, 2026-11-07: subiect frecvent)
   ["drona", "Drone", ["Spațiul aerian", "Obiecte în spațiul aerian", "Spațiul aerian"], "pic:drona", ["#34495E", "#121A22"], "#FFB74D",
     "dronă, drone, dronă căzută, fragmente de dronă, Gerbera, Shahed, Gheran, aerostat, balon, spațiul aerian, survol neautorizat, obiect zburător, alertă aeriană", "Drone: drone și baloane în spațiul aerian al Moldovei, drone căzute"],
+  // prețurile la carburanți (editorul, 2026-11-10): panoul de prețuri al benzinăriei, cu cifre în schimbare
+  ["carburanti", "Carburanți", ["Prețuri la benzină și motorină", "Prețurile carburanților", "Prețuri la benzinării"], "gas-station", ["#2B3340", "#0D1117"], "#FFB300",
+    "carburanți, benzină, motorină, GPL, prețuri la carburanți, benzinării, prețul benzinei, prețul motorinei, ANRE carburanți, scumpiri la pompă, ieftiniri", "Carburanți: prețurile la benzină, motorină și GPL, benzinării"],
   ["sport", "Sport", ["Competiții și medalii", "Competiții și medalii", "Competiții și medalii"], "medal", ["#1F5F8A", "#0B2A40"], "#FFD43B",
     "sport, sportiv, sportivă, medalie, campionat, competiție, olimpiadă, jocurile olimpice, turneu, campion, campioană, lot național", "Sport: sportivii moldoveni, medalii, competiții (când nu e altă temă de sport)"],
 ];
@@ -133,6 +136,44 @@ function icon(name, x, y, size, color, width, opacity) {
   return `<svg x="${x}" y="${y}" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="${width}" stroke-linecap="round" stroke-linejoin="round" opacity="${opacity}">${iconPaths(name)}</svg>`;
 }
 
+// panoul de prețuri al benzinăriei: cifre LED în celule, săgeți de creștere/scădere; valorile
+// diferă de la o variantă la alta, ca să nu treacă drept prețul zilei
+const FUEL = [
+  [["Benzină 95", "25.49", 1], ["Motorină", "21.87", 1], ["GPL", "13.20", -1]],
+  [["Benzină 95", "24.96", -1], ["Motorină", "21.35", -1], ["GPL", "13.45", 1]],
+  [["Benzină 95", "25.18", 1], ["Motorină", "21.62", -1], ["GPL", "13.32", 1]],
+];
+function pylon(v, accent) {
+  const x = 735, w = 385;
+  let rows = "";
+  FUEL[v].forEach(([name, price, dir], i) => {
+    const y = 175 + i * 150;
+    rows += `<text x="${x + 28}" y="${y + 6}" font-family="${FONT}" font-size="27" font-weight="600" fill="#FFFFFF">${esc(name)}</text>`;
+    let cx = x + 28;
+    for (const ch of price) {
+      if (ch === ".") {
+        rows += `<circle cx="${cx + 6}" cy="${y + 92}" r="5" fill="${accent}"/>`;
+        cx += 14;
+        continue;
+      }
+      rows += `<rect x="${cx}" y="${y + 24}" width="58" height="78" rx="6" fill="#050608" stroke="#FFFFFF" stroke-opacity="0.08"/>
+      <text x="${cx + 29}" y="${y + 89}" text-anchor="middle" font-family="Consolas, monospace" font-size="72" font-weight="700" fill="${accent}">${ch}</text>
+      <line x1="${cx}" y1="${y + 63}" x2="${cx + 58}" y2="${y + 63}" stroke="#000000" stroke-width="3"/>`;
+      cx += 66;
+    }
+    const ay = y + 63;
+    rows += dir > 0
+      ? `<polygon points="${x + w - 52},${ay + 18} ${x + w - 22},${ay + 18} ${x + w - 37},${ay - 16}" fill="#FF4D4D"/>`
+      : `<polygon points="${x + w - 52},${ay - 16} ${x + w - 22},${ay - 16} ${x + w - 37},${ay + 18}" fill="#3DDC84"/>`;
+  });
+  return `<rect x="${x + w / 2 - 30}" y="600" width="60" height="80" fill="#1A1F27"/>
+  <rect x="${x}" y="40" width="${w}" height="570" rx="22" fill="#151A22" stroke="#FFFFFF" stroke-opacity="0.18" stroke-width="3"/>
+  <path d="M${x} 62 a22 22 0 0 1 22 -22 h${w - 44} a22 22 0 0 1 22 22 v58 h-${w} z" fill="${accent}"/>
+  ${icon("gas-station", x + 24, 52, 56, "#151A22", 2, 1)}
+  <text x="${x + 96}" y="98" font-family="${FONT}" font-size="34" font-weight="800" letter-spacing="2" fill="#151A22">PREȚURI · LEI/L</text>
+  ${rows}`;
+}
+
 function card([id, title, subs, ic, [c1, c2], accent], v) {
   const sub = subs[v];
   const titleSize = Math.min(104, Math.floor(1180 / (title.length * 0.6)));
@@ -146,9 +187,9 @@ function card([id, title, subs, ic, [c1, c2], accent], v) {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
   <defs><linearGradient id="g" x1="${angle[0]}" y1="${angle[1]}" x2="${angle[2]}" y2="${angle[3]}"><stop offset="0" stop-color="${c1}"/><stop offset="1" stop-color="${c2}"/></linearGradient></defs>
   <rect width="1200" height="675" fill="url(#g)"/>
-  <circle cx="${wm[0] + wm[2] / 2}" cy="${wm[1] + wm[2] / 2}" r="${wm[2] * 0.62}" fill="none" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="3"/>
+  ${id === "carburanti" ? pylon(v, accent) : `<circle cx="${wm[0] + wm[2] / 2}" cy="${wm[1] + wm[2] / 2}" r="${wm[2] * 0.62}" fill="none" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="3"/>
   <circle cx="${wm[0] + wm[2] / 2}" cy="${wm[1] + wm[2] / 2}" r="${wm[2] * 0.7}" fill="none" stroke="#FFFFFF" stroke-opacity="0.05" stroke-width="2"/>
-  ${icon(ic, wm[0], wm[1], wm[2], "#FFFFFF", 1.1, 0.1)}
+  ${icon(ic, wm[0], wm[1], wm[2], "#FFFFFF", 1.1, 0.1)}`}
   <circle cx="132" cy="140" r="52" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFFFFF" stroke-opacity="0.5" stroke-width="2"/>
   ${icon(ic, 100, 108, 64, accent, 1.6, 1)}
   <text x="206" y="132" font-family="${FONT}" font-size="22" font-weight="600" letter-spacing="3" fill="#FFFFFF" fill-opacity="0.85">ȘTIRI ACTUALE</text>
