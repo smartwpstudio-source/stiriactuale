@@ -1,0 +1,51 @@
+[
+  {
+    "day": "2026-11-16",
+    "type": "eveniment",
+    "topic": "Black Friday se apropie: salvează prețurile de acum ca să recunoști reducerile false",
+    "angle": "Black Friday 2026 e pe 27 noiembrie, magazinele încep mai devreme. Legea 231/2010, art. 21¹³: reducerea se calculează de la cel mai mic preț din ultimele 30 de zile. Ce faci acum: lista de produse, capturi de ecran cu prețul, compararea între magazine. Semnele unei reduceri umflate. Unde reclami: Telefonul Consumatorului 022 51 51 51, petiție pe consumator.gov.md.",
+    "tools": ["ghid:black-friday-in-moldova-cum-cumperi-ieftin-fara-sa-te-pacalesti", "ghid:cum-compari-preturile-la-alimente-si-promotiile"]
+  },
+  {
+    "day": "2026-11-17",
+    "type": "eveniment",
+    "topic": "SMS „de la curier” înainte de Black Friday: cum arată escrocheria cu plata livrării",
+    "angle": "Mesaje false pe SMS, Viber, Telegram: „coletul nu a putut fi livrat, plătește câțiva lei”. Cum arată pagina falsă și ce date cere (card, CVV, cod SMS). Poșta Moldovei nu cere date bancare prin mesaje, verifici la 1310; Poliția a semnalat 86 de cazuri în 10 luni din 2024. Urmărești coletul doar pe site-ul curierului. Ce faci dacă ai dat datele: blochezi cardul, anunți banca, plângere la Poliție.",
+    "tools": ["ghid:black-friday-escrocherii-magazine-false-si-mesaje-de-la-curier", "ghid:vanzari-online-999-marketplace-cum-nu-te-pacalesti"]
+  },
+  {
+    "day": "2026-11-18",
+    "type": "eveniment",
+    "topic": "Rate „0%” de Black Friday: cum calculezi cât plătești de fapt",
+    "angle": "„0% dobândă” nu înseamnă 0 lei în plus: comisioane, asigurare atașată, DAE. Exemplu concret cu un produs de 10.000 de lei: suma ratelor față de plata integrală. Ce ceri în scris înainte să semnezi. Când rata e o economie și când nu (facturile de iarnă). Calculatorul ratei de credit.",
+    "tools": ["ghid:creditul-de-consum-ce-verifici-inainte-sa-semnezi", "ghid:cum-compari-doua-credite-dae-cost-total", "calc:rata-credit"]
+  },
+  {
+    "day": "2026-11-19",
+    "type": "eveniment",
+    "topic": "Magazine false și reclame cu prețuri incredibile: semnele că un site de reduceri e o capcană",
+    "angle": "Site-uri care copiază magazinele cunoscute: adresa diferită, prețuri la jumătate, lipsa datelor firmei (Legea 105/2003, art. 28 cere adresa și contactele pentru retur), plata doar prin transfer, cronometre. Reclamele de pe Facebook și concursurile false cu vouchere. Cum verifici: scrii singur adresa, suni la magazin. Unde raportezi site-ul fals.",
+    "tools": ["ghid:black-friday-escrocherii-magazine-false-si-mesaje-de-la-curier", "ghid:escrocheriile-in-moldova-cum-le-recunosti-si-ce-faci"]
+  },
+  {
+    "day": "2026-11-20",
+    "type": "eveniment",
+    "topic": "Cumperi la reducere și te răzgândești: returul în 14 zile, garanția și ce nu se returnează",
+    "angle": "Reducerea nu îți ia drepturile. Online: 14 zile de la primire fără motiv (Codul civil, art. 1060), cine plătește transportul, când primești banii. În magazin: schimb în 14 zile la produsele nealimentare fără defect, cu bonul. Ce nu se returnează. Garanția la defecte, excepția defectului anunțat. Ce păstrezi: bonul, confirmarea, capturile.",
+    "tools": ["ghid:cumparaturi-online-dreptul-de-retur-fara-motiv", "ghid:drepturile-consumatorului-returnarea-unui-produs-si-garantia"]
+  },
+  {
+    "day": "2026-11-21",
+    "type": "eveniment",
+    "topic": "Plătești online la reduceri: cardul separat, limita și codurile pe care nu le dai nimănui",
+    "angle": "Plata cu cardul pe pagina magazinului, nu transfer către o persoană. CVV și codurile din SMS nu se dau nimănui (BNM). Citești SMS-ul de confirmare: suma și comerciantul. Card separat sau limită pentru internet, notificări la fiecare plată. Ce faci la o plată străină: blochezi cardul, contestare în cel mult 13 luni (Legea 114/2012), chargeback când magazinul nu livrează.",
+    "tools": ["ghid:plata-cu-cardul-contestare-tranzactie-chargeback", "ghid:black-friday-escrocherii-magazine-false-si-mesaje-de-la-curier"]
+  },
+  {
+    "day": "2026-11-22",
+    "type": "eveniment",
+    "topic": "Ce merită cumpărat de Black Friday și ce nu: lista înainte de reduceri",
+    "angle": "Unde apar reducerile reale: electronice și electrocasnice (mai ales modelele de anul trecut), haine de iarnă, cadouri planificate. Ce nu merită: produse noi, lucruri de impuls, pachete la produse care expiră, „doar azi”. Lista cu prețul maxim, livrarea inclusă în calcul. Lista de verificare înainte de plată. Vorbește cu părinții despre mesajele false.",
+    "tools": ["ghid:black-friday-in-moldova-cum-cumperi-ieftin-fara-sa-te-pacalesti", "ghid:escrocheriile-care-vizeaza-varstnicii-cum-iti-protejezi-parintii"]
+  }
+]

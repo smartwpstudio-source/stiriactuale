@@ -1,3 +1,5 @@
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 import { and, desc, eq, gte, inArray } from "drizzle-orm";
 import { getDb } from "./db/client";
 import { articles, utilPlan } from "./db/schema";
@@ -114,11 +116,24 @@ export async function planWeek(): Promise<number> {
   const today = todayChisinau();
   const monday = addDays(today, (8 - today.getUTCDay()) % 7 || 7);
   const days = Array.from({ length: PLAN_DAYS }, (_, i) => addDays(monday, i));
+  // temele fixate de editor (content/util-fixe.json, ex. seria Black Friday): intră aprobate și țin
+  // locul articolului de eveniment din ziua lor
+  const fixed = (JSON.parse(await readFile(path.join(process.cwd(), "content", "util-fixe.json"), "utf8").catch(() => "[]")) as PlanItem[]).filter((f) =>
+    days.some((d) => key(d) === f.day),
+  );
+  if (fixed.length) {
+    const have = await db.select({ day: utilPlan.day, topic: utilPlan.topic }).from(utilPlan).where(inArray(utilPlan.day, fixed.map((f) => f.day)));
+    const add = fixed.filter((f) => !have.some((h) => h.day === f.day && h.topic === f.topic));
+    if (add.length) {
+      await db.insert(utilPlan).values(add.map((f) => ({ day: f.day, type: f.type, topic: f.topic, angle: f.angle, tools: f.tools, locality: f.locality ?? null, status: "aprobat" })));
+    }
+  }
   const existing = await db
-    .select({ day: utilPlan.day })
+    .select({ day: utilPlan.day, topic: utilPlan.topic })
     .from(utilPlan)
     .where(and(inArray(utilPlan.day, days.map(key)), inArray(utilPlan.status, ["propus", "aprobat", "publicat"])));
-  const need = days.filter((d) => existing.filter((e) => e.day === key(d)).length < PER_DAY);
+  const taken = (day: string) => existing.filter((e) => e.day === day).length;
+  const need = days.filter((d) => taken(key(d)) < PER_DAY);
   if (!need.length) return 0;
 
   const since = new Date(Date.now() - 7 * 86400_000);
@@ -135,6 +150,7 @@ export async function planWeek(): Promise<number> {
       `Azi: ${key(today)}. Planifică zilele: ${need.map(key).join(", ")}.`,
       `CALENDARUL ZILELOR:\n${cal}`,
       `ȘTIRILE PUBLICATE ÎN ULTIMELE 7 ZILE (caută în ele evenimente viitoare, termene, schimbări):\n${news.map((n) => `- ${n.t}`).join("\n")}`,
+      `ZILE CU TEME DEJA FIXATE (în ziua lor planifici doar locurile rămase, fără alt articol de eveniment sau sezon):\n${need.filter((d) => taken(key(d))).map((d) => `${key(d)}: ${PER_DAY - taken(key(d))} locuri rămase; fixat: ${existing.filter((e) => e.day === key(d)).map((e) => e.topic).join(" | ")}`).join("\n") || "—"}`,
       `TEME DEJA PLANIFICATE (nu le repeta):\n${done.map((d) => `- ${d.t}`).join("\n") || "—"}`,
       `RAIOANE (slug): ${Object.keys(RAION_NAMES).join(", ")}`,
       `CATALOG:\n${cat.lines}`,
@@ -149,6 +165,8 @@ export async function planWeek(): Promise<number> {
   const rows = r.items
     .map((i) => ({ ...i, tools: [...new Set(i.tools.filter((t) => cat.ids.has(t)))].slice(0, 3) }))
     .filter((i) => wanted.has(i.day) && PLAN_TYPES.includes(i.type) && i.tools.length && i.topic.trim())
+    // nu peste PER_DAY pe zi, cu tot cu temele fixate
+    .filter((i, n, all) => taken(i.day) + all.slice(0, n).filter((x) => x.day === i.day).length < PER_DAY)
     .filter((i) => {
       const calcs = i.tools.filter((t) => t.startsWith("calc:"));
       if (calcs.some((t) => calcSeen.has(t))) return false;
