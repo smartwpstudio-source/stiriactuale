@@ -24,6 +24,7 @@ import("../../src/lib/content/guide-country").then(({ guideCountry }) => {
     assert.equal(matchDossier("Aderarea la UE fără drept de veto: cum reacționează partidele"), "aderarea-moldovei-la-ue-etape-si-calendar");
     assert.equal(matchDossier("Trupele ruse din Transnistria: Ambasada Rusiei susține că UE le-a acceptat"), "transnistria-situatia-regiunii-si-impactul");
     assert.equal(matchDossier("Ignăței, Rezina: un fermier vinde roșii la 5 lei"), undefined);
+    assert.equal(matchDossier("Black Friday 2026: magazinele din Chișinău anunță reduceri de până la 70%"), "black-friday-in-moldova-cum-cumperi-ieftin-fara-sa-te-pacalesti");
     // Vulcănești = orașul; doar linia electrică Vulcănești–Chișinău ține de energie
     assert.equal(matchDossier("Vulcănești: un bărbat de 58 de ani, găsit mort lângă câinele său"), undefined);
     assert.equal(matchDossier("Linia Vulcănești–Chișinău a fost pusă în funcțiune"), "independenta-energetica-gaz-si-curent-moldova");

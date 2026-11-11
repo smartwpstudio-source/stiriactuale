@@ -15,6 +15,8 @@ const RULES: [slug: string, re: RegExp][] = [
   ["transnistria-situatia-regiunii-si-impactul", /transnistri|tiraspol|stanga nistrului|krasnoselski/],
   ["ue-rusia-sanctiuni-dosar", /sanctiun\w* (ue |ale ue |europene )?(impotriva |pentru )?(rusi|moscov)|pachet\w* de sanctiuni/],
   ["razboiul-din-ucraina-dosar", /razboi\w* din ucraina|invazi\w* rus|frontul? din ucraina|zelenski|dron\w*.{0,80}(explozibil|cazut|prabusit|ruse|rusesc)|expulz\w* (un |a )?diplomat\w* rus/],
+  // Black Friday (2026-11-11): reducerile, ofertele, escrocheriile din jurul lui
+  ["black-friday-in-moldova-cum-cumperi-ieftin-fara-sa-te-pacalesti", /black friday|vinerea neagra|cyber monday|black week/],
   // Găgăuzia (2026-10-24): alegerile, bașcanul, Comratul
   ["gagauzia-autonomia-ce-prevede-statutul", /gagauzi|\bcomrat|\bbascan|adunar\w* populare a gagauziei/],
   // pilonul armatei: doar termeni moldovenești („militar”, „mobilizare”, „rezerviști”
