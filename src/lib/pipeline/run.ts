@@ -30,7 +30,7 @@ import { autoPush } from "./auto-push";
 import { translatePendingRu } from "./ru-news";
 import { alertEditor } from "@/lib/telegram";
 import type { Section } from "@/lib/content/types";
-import type { ScoredCandidate } from "./types";
+import type { CandidateGroup, ScoredCandidate } from "./types";
 
 // Prag minim + plafon per rulare, independente pe secțiuni. Regiunile și
 // diaspora au prag mai mic — prioritatea redacției.
@@ -270,6 +270,13 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       const v = await checkRecent(c.group, recent48);
       const id = v.duplicateOf ?? v.updateOf;
       if (id === undefined) continue;
+      // verificat separat: Haiku a arătat odată spre alt articol din listă și apeductul de la
+      // Gîrbova a rescris știrea despre e-mailurile false de la Fisc (2026-11-11)
+      const old = recent48.find((r) => r.id === id);
+      if (!old || !(await sameEvent(old, c.group))) {
+        console.log(`Linkul editorului NU e articolul ${id} (alt eveniment), se publică: ${c.group.representativeTitle.slice(0, 80)}`);
+        continue;
+      }
       console.log(`Linkul editorului e deja publicat, completează articolul ${id}: ${c.group.representativeTitle.slice(0, 80)}`);
       toPublish.splice(toPublish.indexOf(c), 1);
       updates.push({ ...c, articleId: id });
@@ -462,15 +469,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
         // clasificatorul a legat uneori o știre străină de un „pe scurt” vechi (Apă-Canal
         // -> Starlink, semaforul de la Hîncești -> atacuri în Dnipropetrovsk): rescrierea
         // păstra adresa și rubrica vechi. Doar același eveniment se completează.
-        // linkul editorului: checkRecent a găsit deja articolul; respins aici, s-ar relua la nesfârșit
-        const same = u.group.manual ? { acelasi: true } : await structured<{ acelasi: boolean }>({
-          model: HAIKU_MODEL,
-          system: "Spui dacă două texte de știri relatează ACELAȘI eveniment concret (același loc, aceiași oameni, aceeași întâmplare) sau aceeași situație care continuă (aceleași lucrări, aceeași închidere, același caz), chiar dacă s-a schimbat ziua, ora sau un detaliu. Doar aceeași temă generală nu ajunge.",
-          prompt: `A: ${old.title}. ${old.lead}\n\nB: ${u.group.items.map((i) => `${i.title}. ${i.summary ?? ""}`.slice(0, 400)).join("\n")}`,
-          schema: { type: "object", properties: { acelasi: { type: "boolean" } }, required: ["acelasi"] },
-          maxBudgetUsd: 0.05,
-        }).catch(() => ({ acelasi: false }));
-        if (!same.acelasi) {
+        if (!(await sameEvent(old, u.group))) {
           console.log(`Actualizare respinsă (alt eveniment): ${old.title.slice(0, 60)} <- ${u.group.representativeTitle.slice(0, 60)}`);
           continue;
         }
@@ -521,6 +520,19 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       .where(eq(pipelineRuns.id, run.id));
     throw err;
   }
+}
+
+// Același eveniment concret sau aceeași situație care continuă? Doar atunci se completează un
+// articol publicat; o temă comună nu ajunge (Apă-Canal -> Starlink, Gîrbova -> e-mailurile Fiscului).
+async function sameEvent(old: { title: string; lead: string | null }, group: CandidateGroup): Promise<boolean> {
+  const r = await structured<{ acelasi: boolean }>({
+    model: HAIKU_MODEL,
+    system: "Spui dacă două texte de știri relatează ACELAȘI eveniment concret (același loc, aceiași oameni, aceeași întâmplare) sau aceeași situație care continuă (aceleași lucrări, aceeași închidere, același caz), chiar dacă s-a schimbat ziua, ora sau un detaliu. Doar aceeași temă generală nu ajunge.",
+    prompt: `A: ${old.title}. ${old.lead ?? ""}\n\nB: ${group.items.map((i) => `${i.title}. ${i.summary ?? ""}`.slice(0, 400)).join("\n")}`,
+    schema: { type: "object", properties: { acelasi: { type: "boolean" } }, required: ["acelasi"] },
+    maxBudgetUsd: 0.05,
+  }).catch(() => ({ acelasi: false }));
+  return r.acelasi;
 }
 
 // Pozele din corpul surselor: întâi mărimea reală (miniaturile „alte știri” scapă
