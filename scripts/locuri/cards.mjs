@@ -85,6 +85,9 @@ const THEMES = [
   // apa oprită, avariile și lucrările la rețea (editorul, 2026-11-10: Hulboaca primise „pensii și salarii”)
   ["apa", "Apă și canalizare", ["Sistări de apă", "Lucrări la rețeaua de apă", "Apă potabilă"], "droplet", ["#1F6FA8", "#0A2C47"], "#7FD3FF",
     "apă, fără apă, sistarea apei, apa potabilă, Apă-Canal, apeduct, canalizare, rețeaua de apă, avarie la apeduct, deconectări de la apă", "Apă și canalizare: sistări, avarii, lucrări la rețea, apa potabilă"],
+  // producția, fabricile, industria (editorul, 2026-11-12: producția de rachete antigrindină primise „Război”)
+  ["industrie", "Producție și industrie", ["Economia Moldovei", "Fabrici și investiții", "Producție locală"], "building-factory-2", ["#4B5563", "#1F2937"], "#F59E0B",
+    "producție, fabrică, uzină, industrie, întreprindere, parc industrial, zonă economică liberă, investiții în producție, export, linie de producție, producție locală", "Producție și industrie: fabrici, uzine, investiții în producție, economia reală"],
   // prețurile la carburanți (editorul, 2026-11-10): panoul de prețuri al benzinăriei, cu cifre în schimbare
   ["carburanti", "Carburanți", ["Prețuri la benzină și motorină", "Prețurile carburanților", "Prețuri la benzinării"], "gas-station", ["#2B3340", "#0D1117"], "#FFB300",
     "carburanți, benzină, motorină, GPL, prețuri la carburanți, benzinării, prețul benzinei, prețul motorinei, ANRE carburanți, scumpiri la pompă, ieftiniri", "Carburanți: prețurile la benzină, motorină și GPL, benzinării"],
