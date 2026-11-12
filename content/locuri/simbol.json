@@ -1466,5 +1466,180 @@
         "alt": "Card: Educație și învățământ — Învățământ profesional"
       }
     ]
+  },
+  {
+    "id": "card-vremea",
+    "name": "TEMĂ (card instituție/regiune): Vremea: prognoza meteo pentru Moldova",
+    "keywords": "vremea, prognoza meteo, temperaturi, ploi, ninsori, vânt, Serviciul Hidrometeorologic de Stat",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/vremea-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Vremea — Prognoza meteo"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/vremea-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Vremea — Vremea în Moldova"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/vremea-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Vremea — Prognoza meteo"
+      }
+    ]
+  },
+  {
+    "id": "card-incendii",
+    "name": "TEMĂ (card instituție/regiune): Incendii: case, depozite, mașini și vegetație cuprinse de flăcări",
+    "keywords": "incendiu, a luat foc, a ars, pompieri, IGSU, flăcări, incendiu de vegetație, casă arsă",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/incendii-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Incendii — Pompierii au intervenit"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/incendii-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Incendii — Incendiu"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/incendii-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Incendii — Salvatorii IGSU"
+      }
+    ]
+  },
+  {
+    "id": "card-mediu",
+    "name": "TEMĂ (card instituție/regiune): Mediul: poluare, păduri, deșeuri, inspecții de mediu",
+    "keywords": "mediu, protecția mediului, poluare, tăieri ilegale, arbori, păduri, deșeuri, gunoi, arderea frunzelor, Inspectoratul pentru Protecția Mediului, Agenția de Mediu",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/mediu-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Mediul — Protecția mediului"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/mediu-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Mediul — Natură și poluare"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/mediu-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Mediul — Inspecția de mediu"
+      }
+    ]
+  },
+  {
+    "id": "card-locuinta",
+    "name": "TEMĂ (card instituție/regiune): Locuința: apartamente, case, Prima Casă, credite ipotecare, chirii, blocuri",
+    "keywords": "locuință, apartament, casă, Prima Casă, credit ipotecar, chirie, bloc, renovare energetică, asociația de proprietari",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/locuinta-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Locuința — Case și apartamente"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/locuinta-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Locuința — Credite pentru locuință"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/locuinta-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Locuința — Blocuri și renovare"
+      }
+    ]
+  },
+  {
+    "id": "card-ajutoare-sociale",
+    "name": "TEMĂ (card instituție/regiune): Ajutoare sociale: dizabilități, vârstnici, veterani, asistență socială",
+    "keywords": "ajutor social, asistență socială, persoane cu dizabilități, veterani, vârstnici, asistenți sociali, cantine sociale, indemnizații",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/ajutoare-sociale-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Ajutoare sociale — Sprijin de la stat"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/ajutoare-sociale-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Ajutoare sociale — Persoane cu dizabilități"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/ajutoare-sociale-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Ajutoare sociale — Asistență socială"
+      }
+    ]
+  },
+  {
+    "id": "card-curs-valutar",
+    "name": "TEMĂ (card instituție/regiune): Cursul valutar: cursul oficial al leului față de euro și dolar",
+    "keywords": "cursul valutar, cursul oficial, BNM, euro, dolar, leu, leul moldovenesc, schimb valutar, case de schimb",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/curs-valutar-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Cursul valutar — Cursul oficial al leului"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/curs-valutar-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Cursul valutar — Euro, dolar și leu"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/curs-valutar-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Cursul valutar — Cursul oficial al leului"
+      }
+    ]
+  },
+  {
+    "id": "card-traditii",
+    "name": "TEMĂ (card instituție/regiune): Sărbători și tradiții: posturi, sărbători creștine, hramuri, obiceiuri",
+    "keywords": "sărbători, tradiții, post, Crăciun, Paște, biserică, hram, obiceiuri, credință, Mitropolia",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/traditii-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Sărbători și tradiții — Credință și obiceiuri"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/traditii-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Sărbători și tradiții — Sărbători creștine"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/traditii-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Sărbători și tradiții — Hramuri și obiceiuri"
+      }
+    ]
   }
 ]
