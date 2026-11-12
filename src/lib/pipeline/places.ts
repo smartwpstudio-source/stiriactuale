@@ -97,6 +97,17 @@ export function fallbackCard(topics: string[], section: string, places: Place[],
   return photo ? { url: photo.url, resourceId: null, credit: photo.credit, alt: photo.alt } : null;
 }
 
+// Doar cardul spus de subiect (carburanți, compensații, drone...): bate sigla instituției, pentru că
+// coperta spune despre ce e știrea (editorul, 2026-11-12: prețurile ANRE la benzină primiseră
+// „ANRE: Anunț oficial” în loc de panoul cu prețuri)
+export function subjectCard(places: Place[], recent: string[], subject: string) {
+  const plain = stripDiacritics(subject);
+  const id = SUBJECT_CARDS.find(([re, id]) => re.test(plain) && id !== "card-auto")?.[1];
+  const photos = places.find((p) => p.id === id)?.photos ?? [];
+  const photo = photos.find((p) => !recent.includes(p.url)) ?? photos[0];
+  return photo ? { url: photo.url, resourceId: null, credit: photo.credit, alt: photo.alt } : null;
+}
+
 export interface SymbolRow {
   id: number;
   title: string;
