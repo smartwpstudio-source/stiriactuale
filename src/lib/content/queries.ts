@@ -4,7 +4,6 @@ import { articles as t } from "@/lib/pipeline/db/schema";
 import type { Article, Section, Topic } from "./types";
 import type { ImpactType } from "@/lib/impact-types";
 import { youtubeThumb } from "@/lib/video";
-import { unstable_cache } from "next/cache";
 
 // Doar articole "published" — draft-urile stau în /admin. Listele nu citesc
 // corpul articolului (bodyHtml): cu arhiva WordPress sunt mii de rânduri, iar
@@ -132,14 +131,26 @@ export async function listArticles(f: ArticleFilter, page = 1, pageSize = PAGE_S
   return { items: rows.map(mapRow), total, pages: Math.max(1, Math.ceil(total / pageSize)) };
 }
 
-// „Recente” din articol și banda „ultima știre publicată” sunt aceleași pe toate paginile: stau
-// în cache-ul comun (R2) 5 minute și se golesc la fiecare publicare (tag „recente”, /api/revalidate/).
-// Înainte, fiecare articol refăcut de un robot le citea din bază: ~2/3 din traficul Supabase (2026-11-10).
-export const RECENT_TAG = "recente";
-export const getRecentArticles = unstable_cache(async () => (await listArticles({}, 1, 9, false)).items, ["recente-9"], {
-  revalidate: 300,
-  tags: [RECENT_TAG],
-});
+// Memorie scurtă în Worker (per instanță), NU unstable_cache: durata lui coboară revalidarea întregii
+// pagini (2026-11-12: unstable_cache de 300 s a făcut ca articolele să se refacă la 5 minute în loc de
+// 7 zile — ~14.000 de pagini refăcute pe zi și traficul Supabase n-a scăzut deloc).
+// ponytail: o hartă per instanță; un cache comun doar dacă instanțele devin multe.
+function memo<A extends unknown[], T>(ms: number, fn: (...a: A) => Promise<T>) {
+  const store = new Map<string, { at: number; value: Promise<T> }>();
+  return (...a: A): Promise<T> => {
+    const k = JSON.stringify(a);
+    const hit = store.get(k);
+    if (hit && Date.now() - hit.at < ms) return hit.value;
+    if (store.size > 500) store.clear();
+    const value = fn(...a);
+    store.set(k, { at: Date.now(), value });
+    value.catch(() => store.delete(k));
+    return value;
+  };
+}
+
+// „Recente” din articol și banda „ultima știre publicată” sunt aceleași pe toate paginile
+export const getRecentArticles = memo(120_000, async () => (await listArticles({}, 1, 9, false)).items);
 
 export async function getLatestArticle(): Promise<Article | null> {
   return (await getRecentArticles())[0] ?? null;
@@ -219,9 +230,9 @@ export async function listRuArticles(limit: number) {
 
 // Același subiect sau, pentru regiuni/diaspora, același raion/țară.
 // „Similare” depind doar de teme/raion/țară/rubrică, nu de articol: aceeași listă servește toate
-// articolele cu aceleași teme, din cache-ul comun (golit la publicare, tag „recente”). Înainte, fiecare
-// articol refăcut de un robot o citea din bază (2026-11-10: OAI-SearchBot, ~6.000 de cereri pe zi).
-const similarFor = unstable_cache(
+// articolele cu aceleași teme (memorie de 10 minute în Worker, vezi memo).
+const similarFor = memo(
+  600_000,
   async (topics: string[], locality: string | null, country: string | null, section: string, n: number) => {
     const related: SQL[] = [];
     for (const topic of topics) related.push(sql`${t.topics} @> ${JSON.stringify([topic])}::jsonb`);
@@ -236,8 +247,6 @@ const similarFor = unstable_cache(
       .limit(n);
     return rows.map(mapRow);
   },
-  ["similare"],
-  { revalidate: 3600, tags: [RECENT_TAG] },
 );
 
 export async function getSimilarArticles(article: Article, limit = 3): Promise<Article[]> {
