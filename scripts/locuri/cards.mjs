@@ -92,6 +92,21 @@ const THEMES = [
   // producția, fabricile, industria (editorul, 2026-11-12: producția de rachete antigrindină primise „Război”)
   ["industrie", "Producție și industrie", ["Economia Moldovei", "Fabrici și investiții", "Producție locală"], "building-factory-2", ["#4B5563", "#1F2937"], "#F59E0B",
     "producție, fabrică, uzină, industrie, întreprindere, parc industrial, zonă economică liberă, investiții în producție, export, linie de producție, producție locală", "Producție și industrie: fabrici, uzine, investiții în producție, economia reală"],
+  // temele stabile fără card (2026-11-12, analiza ultimelor ~120 de coperte)
+  ["curs-valutar", "Cursul valutar", ["Cursul oficial al leului", "Euro, dolar și leu", "Cursul oficial al leului"], "currency-euro", ["#14532D", "#052E16"], "#4ADE80",
+    "cursul valutar, cursul oficial, BNM, euro, dolar, leu, leul moldovenesc, schimb valutar, case de schimb", "Cursul valutar: cursul oficial al leului față de euro și dolar"],
+  ["vremea", "Vremea", ["Prognoza meteo", "Vremea în Moldova", "Prognoza meteo"], "sun-wind", ["#2563EB", "#1E3A8A"], "#FDE047",
+    "vremea, prognoza meteo, temperaturi, ploi, ninsori, vânt, Serviciul Hidrometeorologic de Stat", "Vremea: prognoza meteo pentru Moldova"],
+  ["incendii", "Incendii", ["Pompierii au intervenit", "Incendiu", "Salvatorii IGSU"], "flame", ["#B91C1C", "#450A0A"], "#FDBA74",
+    "incendiu, a luat foc, a ars, pompieri, IGSU, flăcări, incendiu de vegetație, casă arsă", "Incendii: case, depozite, mașini și vegetație cuprinse de flăcări"],
+  ["mediu", "Mediul", ["Protecția mediului", "Natură și poluare", "Inspecția de mediu"], "trees", ["#15803D", "#14532D"], "#BEF264",
+    "mediu, protecția mediului, poluare, tăieri ilegale, arbori, păduri, deșeuri, gunoi, arderea frunzelor, Inspectoratul pentru Protecția Mediului, Agenția de Mediu", "Mediul: poluare, păduri, deșeuri, inspecții de mediu"],
+  ["locuinta", "Locuința", ["Case și apartamente", "Credite pentru locuință", "Blocuri și renovare"], "home", ["#9A3412", "#431407"], "#FDE68A",
+    "locuință, apartament, casă, Prima Casă, credit ipotecar, chirie, bloc, renovare energetică, asociația de proprietari", "Locuința: apartamente, case, Prima Casă, credite ipotecare, chirii, blocuri"],
+  ["ajutoare-sociale", "Ajutoare sociale", ["Sprijin de la stat", "Persoane cu dizabilități", "Asistență socială"], "heart-handshake", ["#0E7490", "#083344"], "#FBCFE8",
+    "ajutor social, asistență socială, persoane cu dizabilități, veterani, vârstnici, asistenți sociali, cantine sociale, indemnizații", "Ajutoare sociale: dizabilități, vârstnici, veterani, asistență socială"],
+  ["traditii", "Sărbători și tradiții", ["Credință și obiceiuri", "Sărbători creștine", "Hramuri și obiceiuri"], "building-church", ["#7C2D12", "#3B0A0A"], "#FCD34D",
+    "sărbători, tradiții, post, Crăciun, Paște, biserică, hram, obiceiuri, credință, Mitropolia", "Sărbători și tradiții: posturi, sărbători creștine, hramuri, obiceiuri"],
   // prețurile la carburanți (editorul, 2026-11-10): panoul de prețuri al benzinăriei, cu cifre în schimbare
   ["carburanti", "Carburanți", ["Prețuri la benzină și motorină", "Prețurile carburanților", "Prețuri la benzinării"], "gas-station", ["#2B3340", "#0D1117"], "#FFB300",
     "carburanți, benzină, motorină, GPL, prețuri la carburanți, benzinării, prețul benzinei, prețul motorinei, ANRE carburanți, scumpiri la pompă, ieftiniri", "Carburanți: prețurile la benzină, motorină și GPL, benzinării"],
@@ -184,6 +199,58 @@ function pylon(v, accent) {
   ${rows}`;
 }
 
+// cursul valutar: panou de case de schimb, cifre LED în schimbare (nu cursul zilei)
+const RATES = [
+  [["EUR", "20.12", 1], ["USD", "17.94", -1], ["RON", "3.95", 1]],
+  [["EUR", "19.87", -1], ["USD", "17.61", -1], ["RON", "3.91", -1]],
+  [["EUR", "20.34", 1], ["USD", "18.06", 1], ["RON", "4.02", 1]],
+];
+function ratesBoard(v, accent) {
+  const x = 735, w = 385;
+  let rows = "";
+  RATES[v].forEach(([cur, val, dir], i) => {
+    const y = 160 + i * 150;
+    rows += `<circle cx="${x + 62}" cy="${y + 63}" r="40" fill="#FFFFFF" fill-opacity="0.1" stroke="${accent}" stroke-width="3"/>
+    <text x="${x + 62}" y="${y + 74}" text-anchor="middle" font-family="${FONT}" font-size="27" font-weight="800" fill="#FFFFFF">${cur}</text>`;
+    let cx = x + 122;
+    for (const ch of val) {
+      if (ch === ".") { rows += `<circle cx="${cx + 6}" cy="${y + 92}" r="5" fill="${accent}"/>`; cx += 14; continue; }
+      rows += `<rect x="${cx}" y="${y + 24}" width="46" height="78" rx="6" fill="#050608" stroke="#FFFFFF" stroke-opacity="0.08"/>
+      <text x="${cx + 23}" y="${y + 87}" text-anchor="middle" font-family="Consolas, monospace" font-size="62" font-weight="700" fill="${accent}">${ch}</text>
+      <line x1="${cx}" y1="${y + 63}" x2="${cx + 46}" y2="${y + 63}" stroke="#000000" stroke-width="3"/>`;
+      cx += 52;
+    }
+    const ay = y + 63;
+    rows += dir > 0
+      ? `<polygon points="${x + w - 46},${ay + 16} ${x + w - 18},${ay + 16} ${x + w - 32},${ay - 15}" fill="#FF4D4D"/>`
+      : `<polygon points="${x + w - 46},${ay - 15} ${x + w - 18},${ay - 15} ${x + w - 32},${ay + 16}" fill="#4ADE80"/>`;
+  });
+  return `<rect x="${x}" y="40" width="${w}" height="590" rx="22" fill="#0B1410" stroke="#FFFFFF" stroke-opacity="0.18" stroke-width="3"/>
+  <path d="M${x} 62 a22 22 0 0 1 22 -22 h${w - 44} a22 22 0 0 1 22 22 v58 h-${w} z" fill="${accent}"/>
+  <text x="${x + w / 2}" y="98" text-anchor="middle" font-family="${FONT}" font-size="34" font-weight="800" letter-spacing="2" fill="#0B1410">CURS · LEI</text>
+  ${rows}`;
+}
+
+// vremea: trei zile de prognoză, cu pictograme și temperaturi
+const FORECAST = [
+  [["sun", "+12°"], ["cloud-rain", "+7°"], ["cloud", "+5°"]],
+  [["cloud-snow", "-2°"], ["snowflake", "-5°"], ["cloud", "+1°"]],
+  [["sun-wind", "+18°"], ["sun", "+22°"], ["cloud-rain", "+15°"]],
+];
+function forecast(v, accent) {
+  const x = 700, w = 450;
+  let cols = "";
+  FORECAST[v].forEach(([ic, t], i) => {
+    const cx = x + 20 + i * 140;
+    cols += `<rect x="${cx}" y="170" width="130" height="330" rx="18" fill="#FFFFFF" fill-opacity="${i === 0 ? 0.2 : 0.1}"/>
+    ${icon(ic, cx + 25, 210, 80, i === 0 ? accent : "#FFFFFF", 1.6, 1)}
+    <text x="${cx + 65}" y="400" text-anchor="middle" font-family="${FONT}" font-size="48" font-weight="800" fill="#FFFFFF">${t}</text>
+    <rect x="${cx + 35}" y="440" width="60" height="8" rx="4" fill="${i === 0 ? accent : "#FFFFFF"}" fill-opacity="${i === 0 ? 1 : 0.4}"/>`;
+  });
+  return `<rect x="${x}" y="130" width="${w}" height="410" rx="26" fill="#FFFFFF" fill-opacity="0.08" stroke="#FFFFFF" stroke-opacity="0.3" stroke-width="3"/>
+  ${cols}`;
+}
+
 // urna de vot: buletinul cu ștampila „VOTAT” intră prin fantă; variantele mută buletinul
 function ballotBox(v, accent) {
   // buletinul (îngust cât fanta) e desenat întâi; urna și capacul îl acoperă, ca și cum ar intra
@@ -207,7 +274,8 @@ function ballotBox(v, accent) {
 
 function card([id, title, subs, ic, [c1, c2], accent], v) {
   const sub = subs[v];
-  const titleSize = Math.min(104, Math.floor(1180 / (title.length * 0.6)));
+  // cu panou în dreapta (carburanți, curs, urnă), titlul încape în ~640 px
+  const titleSize = Math.min(104, Math.floor((["carburanti", "curs-valutar", "alegeri"].includes(id) ? 640 : 1180) / (title.length * 0.6)));
   // trei variante: watermark în dreapta / jos-dreapta / dreapta-sus, gradient diferit
   const wm = [
     [640, 70, 560],
@@ -218,7 +286,7 @@ function card([id, title, subs, ic, [c1, c2], accent], v) {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
   <defs><linearGradient id="g" x1="${angle[0]}" y1="${angle[1]}" x2="${angle[2]}" y2="${angle[3]}"><stop offset="0" stop-color="${c1}"/><stop offset="1" stop-color="${c2}"/></linearGradient></defs>
   <rect width="1200" height="675" fill="url(#g)"/>
-  ${id === "carburanti" ? pylon(v, accent) : id === "alegeri" ? ballotBox(v, accent) : `<circle cx="${wm[0] + wm[2] / 2}" cy="${wm[1] + wm[2] / 2}" r="${wm[2] * 0.62}" fill="none" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="3"/>
+  ${id === "carburanti" ? pylon(v, accent) : id === "alegeri" ? ballotBox(v, accent) : id === "curs-valutar" ? ratesBoard(v, accent) : id === "vremea" ? forecast(v, accent) : `<circle cx="${wm[0] + wm[2] / 2}" cy="${wm[1] + wm[2] / 2}" r="${wm[2] * 0.62}" fill="none" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="3"/>
   <circle cx="${wm[0] + wm[2] / 2}" cy="${wm[1] + wm[2] / 2}" r="${wm[2] * 0.7}" fill="none" stroke="#FFFFFF" stroke-opacity="0.05" stroke-width="2"/>
   ${icon(ic, wm[0], wm[1], wm[2], "#FFFFFF", 1.1, 0.1)}`}
   <circle cx="132" cy="140" r="52" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFFFFF" stroke-opacity="0.5" stroke-width="2"/>

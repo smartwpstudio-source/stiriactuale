@@ -137,7 +137,7 @@ assert.equal(reviewRank("Prețul la motorină crește mâine"), 1);
 assert.equal(reviewRank("Accident la Bălți"), 0);
 
 // --- cardul de rezervă: tema, apoi rubrica; varianta nefolosită recent
-const cardPlaces = ["card-justitie", "ilustratie-politia", "card-pieton", "ilustratie-accident-rutier", "card-razboi", "card-auto", "card-bani-card", "card-aeroport", "card-energie", "card-primaria-chisinau", "card-compensatii", "card-drona", "card-carburanti", "card-apa", "card-industrie", "card-alegeri", "card-educatie", "card-diaspora", "card-judo", "card-sport"].map((id) => ({ id, name: id, keywords: [], photos: [1, 2].map((n) => ({ url: `${id}-${n}`, credit: "Imagine simbol", source: "", alt: id })) })) as never;
+const cardPlaces = ["card-justitie", "ilustratie-politia", "card-pieton", "ilustratie-accident-rutier", "card-razboi", "card-auto", "card-bani-card", "card-aeroport", "card-energie", "card-primaria-chisinau", "card-compensatii", "card-drona", "card-carburanti", "card-apa", "card-industrie", "card-alegeri", "card-educatie", "card-incendii", "card-curs-valutar", "card-locuinta", "card-mediu", "card-ajutoare-sociale", "card-traditii", "card-vremea", "card-diaspora", "card-judo", "card-sport"].map((id) => ({ id, name: id, keywords: [], photos: [1, 2].map((n) => ({ url: `${id}-${n}`, credit: "Imagine simbol", source: "", alt: id })) })) as never;
 assert.equal(fallbackCard(["criminal"], "international", cardPlaces, [], "Val de alerte false cu bombă la zboruri din Europa")?.url, "card-aeroport-1", "subiectul (zborurile) bate tema");
 assert.equal(fallbackCard(["criminal"], "national", cardPlaces, [], "Furt dintr-un magazin din Ungheni")?.url, "ilustratie-politia-1", "fapta: fără instanță");
 assert.equal(fallbackCard(["criminal"], "diaspora", cardPlaces, [], "Moldovean condamnat la Moscova")?.url, "card-justitie-1");
@@ -166,6 +166,15 @@ assert.equal(electionCard(cardPlaces, [], "Parlamentul a votat legea bugetului �
 assert.equal(fallbackCard([], "regiuni", cardPlaces, [], "Ungheni: Colegiul agroindustrial are un laborator nou de mecanică agricolă")?.url, "card-educatie-1", "colegiul e educație");
 assert.notEqual(fallbackCard([], "regiuni", cardPlaces, [], "Un elev a fost lovit de o mașină la Orhei")?.url, "card-educatie-1", "lângă tragedie, fără cardul educației");
 assert.equal(fallbackCard([], "national", cardPlaces, [], "Colegii lui spun că era un om bun"), null, "colegii nu sunt colegiu");
+assert.equal(fallbackCard([], "national", cardPlaces, [], "La Brăviceni, Orhei, a ars o fabrică de mezeluri. Pompierii au salvat 80% din clădire")?.url, "card-incendii-1");
+assert.equal(fallbackCard([], "national", cardPlaces, [], "Cursul BNM de azi: euro urcă cu cinci bani, la 20,12 lei")?.url, "card-curs-valutar-1");
+assert.equal(fallbackCard([], "national", cardPlaces, [], "Prima Casă PLUS: cât poate crește rata și ce riscuri vede Comisia Europeană")?.url, "card-locuinta-1");
+assert.equal(fallbackCard([], "national", cardPlaces, [], "Inspectorii de mediu primesc drone noi pentru a depista poluarea")?.url, "card-drona-1");
+assert.equal(fallbackCard([], "national", cardPlaces, [], "La Baiuș, Leova, 86 de stejari au fost tăiați ilegal")?.url, "card-mediu-1");
+assert.equal(fallbackCard([], "national", cardPlaces, [], "Persoane cu dizabilități vor primi scaune rulante și proteze")?.url, "card-ajutoare-sociale-1");
+assert.equal(fallbackCard([], "national", cardPlaces, [], "Postul Crăciunului începe pe 15 sau pe 28 noiembrie: ce stil ții")?.url, "card-traditii-1");
+assert.equal(fallbackCard([], "national", cardPlaces, [], "Vremea azi, 12 noiembrie: plouă în toată țara")?.url, "card-vremea-1");
+assert.notEqual(fallbackCard([], "national", cardPlaces, [], "Un bărbat a fost găsit mort în apartamentul său")?.url, "card-locuinta-1", "tragedia nu e locuință");
 assert.equal(fallbackCard([], "national", cardPlaces, [], "MAE condamnă survolul celor două rachete rusești")?.url, "card-razboi-1");
 assert.equal(subjectCard(cardPlaces, [], "Guvernul a aprobat un regulament nou"), null);
 assert.equal(fallbackCard(["social"], "national", cardPlaces, [], "Fără apă miercuri la Hulboaca, Bîc și pe mai multe străzi din Chișinău")?.url, "card-apa-1", "apa oprită nu e pensii");
