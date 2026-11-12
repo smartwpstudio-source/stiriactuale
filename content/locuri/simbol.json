@@ -718,31 +718,6 @@
     ]
   },
   {
-    "id": "card-alegeri",
-    "name": "TEMĂ (card instituție/regiune): Alegeri: CEC, campanie, vot, rezultate",
-    "keywords": "alegeri, scrutin, vot, CEC, Comisia Electorală Centrală, candidați, campanie electorală, referendum, secții de votare, rezultate",
-    "photos": [
-      {
-        "url": "https://stiriactuale.info/simbol/alegeri-1.png",
-        "credit": "Imagine simbol",
-        "source": "",
-        "alt": "Card: Alegeri — Comisia Electorală Centrală"
-      },
-      {
-        "url": "https://stiriactuale.info/simbol/alegeri-2.png",
-        "credit": "Imagine simbol",
-        "source": "",
-        "alt": "Card: Alegeri — Ziua votului"
-      },
-      {
-        "url": "https://stiriactuale.info/simbol/alegeri-3.png",
-        "credit": "Imagine simbol",
-        "source": "",
-        "alt": "Card: Alegeri — Rezultatele scrutinului"
-      }
-    ]
-  },
-  {
     "id": "card-uniunea-europeana",
     "name": "TEMĂ (card instituție/regiune): Uniunea Europeană: integrarea, aderarea, fondurile UE",
     "keywords": "Uniunea Europeană, UE, integrare europeană, aderare, Bruxelles, Comisia Europeană, negocieri de aderare, fonduri europene, Consiliul European",
@@ -1439,6 +1414,31 @@
         "credit": "Imagine simbol",
         "source": "",
         "alt": "Card: Producție și industrie — Producție locală"
+      }
+    ]
+  },
+  {
+    "id": "card-alegeri",
+    "name": "TEMĂ (card instituție/regiune): Alegeri: CEC, campanie, vot, rezultate",
+    "keywords": "alegeri, scrutin, vot, CEC, Comisia Electorală Centrală, candidați, campanie electorală, referendum, secții de votare, rezultate",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/alegeri-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Alegeri — Ziua votului"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/alegeri-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Alegeri — Campania electorală"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/alegeri-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Alegeri — Rezultatele votului"
       }
     ]
   }

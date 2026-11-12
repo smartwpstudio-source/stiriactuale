@@ -13,7 +13,7 @@ import { putMedia } from "@/lib/media";
 import sharp from "sharp";
 import { photosMatch } from "./photo-check";
 import { loadOfficialItems, matchOfficialPhoto } from "./official-photos";
-import { fallbackCard, loadPlaces, loadSymbolPhotos, matchPlacePhoto, subjectCard } from "./places";
+import { fallbackCard, loadPlaces, loadSymbolPhotos, matchPlacePhoto, electionCard, subjectCard } from "./places";
 import { checkRecent, sameStory } from "./recent-duplicate";
 import { mediaTag, photoFigures, type BodyPhoto } from "./media-tag";
 import { pipelineEnabled } from "./settings";
@@ -419,6 +419,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
           : youtubeThumb(generated.video_url)
           ? null
           : (official && (await sourcePhoto(official, generated.slug))) ??
+            electionCard(places, recentImages, subject) ??
             (diplomacy ? await card() : null) ??
             (place && { url: place.url, resourceId: null, credit: place.credit, alt: place.alt }) ??
             subjectCard(places, recentImages, subject) ??
