@@ -86,6 +86,9 @@ const THEMES = [
   // apa oprită, avariile și lucrările la rețea (editorul, 2026-11-10: Hulboaca primise „pensii și salarii”)
   ["apa", "Apă și canalizare", ["Sistări de apă", "Lucrări la rețeaua de apă", "Apă potabilă"], "droplet", ["#1F6FA8", "#0A2C47"], "#7FD3FF",
     "apă, fără apă, sistarea apei, apa potabilă, Apă-Canal, apeduct, canalizare, rețeaua de apă, avarie la apeduct, deconectări de la apă", "Apă și canalizare: sistări, avarii, lucrări la rețea, apa potabilă"],
+  // școala, colegiul, universitatea (editorul, 2026-11-12: colegiul agroindustrial de la Ungheni primise „Industrie”)
+  ["educatie", "Educație și învățământ", ["Școli și grădinițe", "Elevi și profesori", "Învățământ profesional"], "school", ["#1F6F8B", "#0B2F3D"], "#FFD43B",
+    "educație, învățământ, școală, liceu, gimnaziu, grădiniță, colegiu, universitate, elevi, studenți, profesori, bacalaureat, Ministerul Educației, an de studii", "Educație și învățământ: școli, grădinițe, colegii, universități, elevi și profesori"],
   // producția, fabricile, industria (editorul, 2026-11-12: producția de rachete antigrindină primise „Război”)
   ["industrie", "Producție și industrie", ["Economia Moldovei", "Fabrici și investiții", "Producție locală"], "building-factory-2", ["#4B5563", "#1F2937"], "#F59E0B",
     "producție, fabrică, uzină, industrie, întreprindere, parc industrial, zonă economică liberă, investiții în producție, export, linie de producție, producție locală", "Producție și industrie: fabrici, uzine, investiții în producție, economia reală"],

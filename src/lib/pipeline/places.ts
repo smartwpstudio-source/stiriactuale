@@ -66,9 +66,12 @@ const SPORT_CARDS: [RegExp, string][] = [
 const SUBJECT_CARDS: [RegExp, string][] = [
   [/compensati|compensar|despagubir/i, "card-compensatii"], // nu „medicamente compensate”
   [/primar\w* (general|chisinaului|capitalei)|primari\w* (municipiului )?chisinau|\bceban\b|consiliul municipal/i, "card-primaria-chisinau"],
+  // școala, colegiul, universitatea: educație, nu „industrie” sau „agricultură” (colegiul agroindustrial
+  // din Ungheni, 2026-11-12); lângă o tragedie (elev lovit, copil dispărut) nu se pune
+  [/^(?!.*(a murit|au murit|deced\w*|mortal\w*|lovit\w*|accident\w*|agres\w*|violat\w*|ucis\w*|disparut\w*|spitaliz\w*|intoxica\w*|inec\w*|batut\w*|bataie))(?=.*(\bscoal|\bliceu|gimnazi|gradinit|\bcolegiu|\bcolegiile|\bcolegiilor|universit|\belev|\bstudent|\bprofesor|invatamant|educati|bacalaureat|ministerul educatiei|an\w* de studii))/i, "card-educatie"],
   // producția, fabricile, industria: economie (editorul, 2026-11-12: producția de rachete
   // antigrindină primise „Război”, apoi „Agricultură”)
-  [/antigrindin|produc\w* (de )?rachet|\bfabric(a|i|ii|ile|ilor)\b|\buzin\w*|industri\w*|parc\w* industrial|zon\w* economic\w* liber|linie de productie|capacitat\w* de productie/i, "card-industrie"],
+  [/antigrindin|produc\w* (de )?rachet|\bfabric(a|i|ii|ile|ilor)\b|\buzin\w*|\bindustri\w*|parc\w* industrial|zon\w* economic\w* liber|linie de productie|capacitat\w* de productie/i, "card-industrie"],
   // producția de rachete e economie, nu război
   [/^(?!.*(produc|fabric)\w* (de )?rachet)(?=.*(razboi|bombard|rachet|atac (rusesc|aerian|cu drone)))/i, "card-razboi"],
   // drona căzută, survolul: cardul dronei; atacul cu drone rămâne la Război (regula de deasupra)
@@ -120,6 +123,21 @@ export function electionCard(places: Place[], recent: string[], subject: string)
   const photos = places.find((p) => p.id === "card-alegeri")?.photos ?? [];
   const photo = photos.find((p) => !recent.includes(p.url)) ?? photos[0];
   return photo ? { url: photo.url, resourceId: null, credit: photo.credit, alt: photo.alt } : null;
+}
+
+// Cardurile noi sunt în repo înainte să fie pe site (până la deploy): fără verificare, articolul
+// rămânea fără poză (colegiul din Ungheni, 2026-11-12). Se păstrează doar pozele care răspund.
+export async function onlyLive(places: Place[]): Promise<Place[]> {
+  const ok = new Map<string, Promise<boolean>>();
+  const live = (url: string) => {
+    if (!url.startsWith("https://stiriactuale.info/simbol/")) return Promise.resolve(true);
+    if (!ok.has(url)) ok.set(url, fetch(url, { method: "HEAD", signal: AbortSignal.timeout(10_000) }).then((r) => r.ok).catch(() => true));
+    return ok.get(url)!;
+  };
+  const checked = await Promise.all(
+    places.map(async (p) => ({ ...p, photos: (await Promise.all(p.photos.map(async (ph) => ((await live(ph.url)) ? ph : null)))).filter((ph) => ph !== null) })),
+  );
+  return checked.filter((p) => p.photos.length);
 }
 
 export interface SymbolRow {

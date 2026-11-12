@@ -9,7 +9,7 @@ import { SCHEMA } from "./generate";
 import { loadCatalog } from "./guide-rule";
 import { findArticleImage } from "./image";
 import { flagCardImage } from "./flag-card";
-import { fallbackCard, loadPlaces, loadSymbolPhotos, matchPlacePhoto } from "./places";
+import { fallbackCard, loadPlaces, loadSymbolPhotos, matchPlacePhoto, onlyLive } from "./places";
 import { loadUsedImageIds, publishArticle } from "./publish";
 import type { GeneratedArticle, ScoredCandidate } from "./types";
 import { pipelineEnabled } from "./settings";
@@ -275,7 +275,7 @@ async function writeItem(item: Row): Promise<number> {
   // ilustrația-simbol pe temă (rotită), apoi stocul / AI-ul — ca la știri
   const subject = `${gen.titlu}. ${gen.lead}`;
   const recent = (await getDb().select({ url: articles.imageUrl }).from(articles).orderBy(desc(articles.publishedAt)).limit(80)).flatMap((r) => (r.url ? [r.url] : []));
-  const places = [...loadPlaces(), ...(await loadSymbolPhotos().catch(() => []))];
+  const places = await onlyLive([...loadPlaces(), ...(await loadSymbolPhotos().catch(() => []))]);
   const place = await matchPlacePhoto(subject, places, item.locality ?? undefined, recent);
   const image = place
     ? { url: place.url, resourceId: null, credit: place.credit, alt: place.alt }

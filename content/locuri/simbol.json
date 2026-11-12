@@ -1441,5 +1441,30 @@
         "alt": "Card: Alegeri — Rezultatele votului"
       }
     ]
+  },
+  {
+    "id": "card-educatie",
+    "name": "TEMĂ (card instituție/regiune): Educație și învățământ: școli, grădinițe, colegii, universități, elevi și profesori",
+    "keywords": "educație, învățământ, școală, liceu, gimnaziu, grădiniță, colegiu, universitate, elevi, studenți, profesori, bacalaureat, Ministerul Educației, an de studii",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/educatie-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Educație și învățământ — Școli și grădinițe"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/educatie-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Educație și învățământ — Elevi și profesori"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/educatie-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Educație și învățământ — Învățământ profesional"
+      }
+    ]
   }
 ]
