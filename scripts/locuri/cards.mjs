@@ -25,7 +25,8 @@ const THEMES = [
     "Transnistria, regiunea transnistreană, Tiraspol, liderul de la Tiraspol, Krasnoselski, malul stâng, reglementarea transnistreană, 5+2, separatist", "Transnistria: regiunea transnistreană, Tiraspolul, liderii și negocierile"],
   ["gagauzia", "Găgăuzia", ["UTA Găgăuzia", "Adunarea Populară de la Comrat", "Alegerile bașcanului"], "map-pin", ["#2F7445", "#123520"], "#FFFFFF",
     "Găgăuzia, UTA Găgăuzia, autonomia găgăuză, Comrat, bașcanul, Adunarea Populară, guvernatorul Găgăuziei", "Găgăuzia: autonomia, Comratul, bașcanul, Adunarea Populară"],
-  ["alegeri", "Alegeri", ["Comisia Electorală Centrală", "Ziua votului", "Rezultatele scrutinului"], "checkbox", ["#6141A8", "#2A1957"], "#FFFFFF",
+  // urna de vot (editorul, 2026-11-12): orice alegeri, oricare regiune — naționale, locale, Găgăuzia
+  ["alegeri", "Alegeri", ["Ziua votului", "Campania electorală", "Rezultatele votului"], "checkbox", ["#4B3A9E", "#1E1650"], "#FFD43B",
     "alegeri, scrutin, vot, CEC, Comisia Electorală Centrală, candidați, campanie electorală, referendum, secții de votare, rezultate", "Alegeri: CEC, campanie, vot, rezultate"],
   ["uniunea-europeana", "Uniunea Europeană", ["Integrarea europeană", "Negocierile de aderare", "Fonduri și proiecte europene"], "stars-eu", ["#1E44A6", "#0A1E5E"], "#FFD43B",
     "Uniunea Europeană, UE, integrare europeană, aderare, Bruxelles, Comisia Europeană, negocieri de aderare, fonduri europene, Consiliul European", "Uniunea Europeană: integrarea, aderarea, fondurile UE"],
@@ -180,6 +181,27 @@ function pylon(v, accent) {
   ${rows}`;
 }
 
+// urna de vot: buletinul cu ștampila „VOTAT” intră prin fantă; variantele mută buletinul
+function ballotBox(v, accent) {
+  // buletinul (îngust cât fanta) e desenat întâi; urna și capacul îl acoperă, ca și cum ar intra
+  const [by, rot] = [[96, -4], [70, 3], [120, -9]][v];
+  const bx = 860;
+  const stamp = (cx, cy) => `<circle cx="${cx}" cy="${cy}" r="40" fill="none" stroke="#2E5BBA" stroke-width="5"/>
+    <circle cx="${cx}" cy="${cy}" r="31" fill="none" stroke="#2E5BBA" stroke-width="2"/>
+    <text x="${cx}" y="${cy + 8}" text-anchor="middle" font-family="${FONT}" font-size="17" font-weight="800" fill="#2E5BBA">VOTAT</text>`;
+  return `<g transform="rotate(${rot} ${bx + 80} 330)">
+    <rect x="${bx}" y="${by}" width="160" height="300" rx="6" fill="#FFFFFF"/>
+    <rect x="${bx + 18}" y="${by + 24}" width="90" height="11" rx="5" fill="#C9CCD6"/>
+    <rect x="${bx + 18}" y="${by + 48}" width="124" height="9" rx="4" fill="#E2E4EA"/>
+    <rect x="${bx + 18}" y="${by + 68}" width="108" height="9" rx="4" fill="#E2E4EA"/>
+    ${stamp(bx + 100, by + 150)}
+  </g>
+  <rect x="730" y="330" width="420" height="345" rx="18" fill="#5B4CB8" stroke="#FFFFFF" stroke-opacity="0.45" stroke-width="4"/>
+  <rect x="700" y="306" width="480" height="48" rx="10" fill="${accent}"/>
+  <rect x="845" y="322" width="190" height="16" rx="8" fill="#1E1650"/>
+  <text x="940" y="520" text-anchor="middle" font-family="${FONT}" font-size="64" font-weight="800" fill="#FFFFFF" fill-opacity="0.92" letter-spacing="6">VOT</text>`;
+}
+
 function card([id, title, subs, ic, [c1, c2], accent], v) {
   const sub = subs[v];
   const titleSize = Math.min(104, Math.floor(1180 / (title.length * 0.6)));
@@ -193,7 +215,7 @@ function card([id, title, subs, ic, [c1, c2], accent], v) {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
   <defs><linearGradient id="g" x1="${angle[0]}" y1="${angle[1]}" x2="${angle[2]}" y2="${angle[3]}"><stop offset="0" stop-color="${c1}"/><stop offset="1" stop-color="${c2}"/></linearGradient></defs>
   <rect width="1200" height="675" fill="url(#g)"/>
-  ${id === "carburanti" ? pylon(v, accent) : `<circle cx="${wm[0] + wm[2] / 2}" cy="${wm[1] + wm[2] / 2}" r="${wm[2] * 0.62}" fill="none" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="3"/>
+  ${id === "carburanti" ? pylon(v, accent) : id === "alegeri" ? ballotBox(v, accent) : `<circle cx="${wm[0] + wm[2] / 2}" cy="${wm[1] + wm[2] / 2}" r="${wm[2] * 0.62}" fill="none" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="3"/>
   <circle cx="${wm[0] + wm[2] / 2}" cy="${wm[1] + wm[2] / 2}" r="${wm[2] * 0.7}" fill="none" stroke="#FFFFFF" stroke-opacity="0.05" stroke-width="2"/>
   ${icon(ic, wm[0], wm[1], wm[2], "#FFFFFF", 1.1, 0.1)}`}
   <circle cx="132" cy="140" r="52" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFFFFF" stroke-opacity="0.5" stroke-width="2"/>
