@@ -137,7 +137,7 @@ assert.equal(reviewRank("Prețul la motorină crește mâine"), 1);
 assert.equal(reviewRank("Accident la Bălți"), 0);
 
 // --- cardul de rezervă: tema, apoi rubrica; varianta nefolosită recent
-const cardPlaces = ["card-justitie", "ilustratie-politia", "card-pieton", "ilustratie-accident-rutier", "card-razboi", "card-auto", "card-bani-card", "card-aeroport", "card-energie", "card-primaria-chisinau", "card-compensatii", "card-drona", "card-carburanti", "card-apa", "ilustratie-agricultura", "card-diaspora", "card-judo", "card-sport"].map((id) => ({ id, name: id, keywords: [], photos: [1, 2].map((n) => ({ url: `${id}-${n}`, credit: "Imagine simbol", source: "", alt: id })) })) as never;
+const cardPlaces = ["card-justitie", "ilustratie-politia", "card-pieton", "ilustratie-accident-rutier", "card-razboi", "card-auto", "card-bani-card", "card-aeroport", "card-energie", "card-primaria-chisinau", "card-compensatii", "card-drona", "card-carburanti", "card-apa", "card-industrie", "card-diaspora", "card-judo", "card-sport"].map((id) => ({ id, name: id, keywords: [], photos: [1, 2].map((n) => ({ url: `${id}-${n}`, credit: "Imagine simbol", source: "", alt: id })) })) as never;
 assert.equal(fallbackCard(["criminal"], "international", cardPlaces, [], "Val de alerte false cu bombă la zboruri din Europa")?.url, "card-aeroport-1", "subiectul (zborurile) bate tema");
 assert.equal(fallbackCard(["criminal"], "national", cardPlaces, [], "Furt dintr-un magazin din Ungheni")?.url, "ilustratie-politia-1", "fapta: fără instanță");
 assert.equal(fallbackCard(["criminal"], "diaspora", cardPlaces, [], "Moldovean condamnat la Moscova")?.url, "card-justitie-1");
@@ -157,8 +157,9 @@ assert.equal(fallbackCard([], "national", cardPlaces, [], "Medicamente compensat
 assert.equal(fallbackCard([], "national", cardPlaces, [], "Fragmente de dronă găsite la Rezina")?.url, "card-drona-1");
 assert.equal(fallbackCard([], "economie", cardPlaces, [], "Benzina și motorina se scumpesc de mâine, anunță ANRE")?.url, "card-carburanti-1");
 assert.equal(subjectCard(cardPlaces, [], "Benzina și motorina se ieftinesc vineri. ANRE a stabilit prețurile")?.url, "card-carburanti-1", "subiectul bate sigla ANRE");
-assert.equal(fallbackCard([], "national", cardPlaces, [], "Moldova vrea să producă rachete antigrindină din 2027")?.url, "ilustratie-agricultura-1", "antigrindina nu e război");
-assert.equal(fallbackCard([], "national", cardPlaces, [], "Uzina din Ucraina va produce rachete pentru armată")?.url, undefined, "producția de rachete nu e război");
+assert.equal(fallbackCard([], "national", cardPlaces, [], "Moldova vrea să producă rachete antigrindină din 2027")?.url, "card-industrie-1", "antigrindina e producție");
+assert.equal(fallbackCard([], "national", cardPlaces, [], "Uzina din Ucraina va produce rachete pentru armată")?.url, "card-industrie-1", "producția de rachete nu e război");
+assert.equal(fallbackCard([], "national", cardPlaces, [], "Dosarul fabricat împotriva primarului a ajuns în instanță")?.url, undefined, "„fabricat” nu e fabrică");
 assert.equal(fallbackCard([], "national", cardPlaces, [], "MAE condamnă survolul celor două rachete rusești")?.url, "card-razboi-1");
 assert.equal(subjectCard(cardPlaces, [], "Guvernul a aprobat un regulament nou"), null);
 assert.equal(fallbackCard(["social"], "national", cardPlaces, [], "Fără apă miercuri la Hulboaca, Bîc și pe mai multe străzi din Chișinău")?.url, "card-apa-1", "apa oprită nu e pensii");

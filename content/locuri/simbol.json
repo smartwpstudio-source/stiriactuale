@@ -1416,5 +1416,30 @@
         "alt": "Card: Apă și canalizare — Apă potabilă"
       }
     ]
+  },
+  {
+    "id": "card-industrie",
+    "name": "TEMĂ (card instituție/regiune): Producție și industrie: fabrici, uzine, investiții în producție, economia reală",
+    "keywords": "producție, fabrică, uzină, industrie, întreprindere, parc industrial, zonă economică liberă, investiții în producție, export, linie de producție, producție locală",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/industrie-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Producție și industrie — Economia Moldovei"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/industrie-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Producție și industrie — Fabrici și investiții"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/industrie-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Producție și industrie — Producție locală"
+      }
+    ]
   }
 ]
