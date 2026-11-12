@@ -1,5 +1,6 @@
 import { fetchRssFeed } from "./rss";
 import { TELEGRAM_FEEDS, fetchTelegramChannel } from "./telegram-source";
+import { SITEMAP_FEEDS, fetchNewsSitemap } from "./sitemap-source";
 import type { RawCandidate } from "./types";
 
 // Doar RSS-uri directe ale redacțiilor, verificate live (2026-09). Excluse:
@@ -40,6 +41,7 @@ export async function fetchAllSources() {
   const sources = [
     ...FEEDS.map((f) => ({ id: f.id, read: () => fetchRssFeed(f.url, f.id, f.name) })),
     ...TELEGRAM_FEEDS.map((f) => ({ id: f.id, read: () => fetchTelegramChannel(f.channel, f.id, f.name) })),
+    ...SITEMAP_FEEDS.map((f) => ({ id: f.id, read: () => fetchNewsSitemap(f.url, f.id, f.name, f.language) })),
   ];
   const results = await Promise.allSettled(sources.map((s) => s.read()));
   const candidates: RawCandidate[] = [];
