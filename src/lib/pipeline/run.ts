@@ -4,6 +4,7 @@ import { getDb } from "./db/client";
 import { articles, candidates, guideChecks, pipelineRuns } from "./db/schema";
 import { collectCandidates } from "./collect";
 import { COURT_HOST, fetchCourtDecisions } from "./court-source";
+import { getSetting, setSetting } from "./util-plan";
 import { groupCandidates } from "./dedup";
 import { classifyGroups } from "./classify";
 import { generateArticle, VideoNotConfirmed } from "./generate";
@@ -59,6 +60,7 @@ const FEED_ALERT_MIN = 3; // feed-uri căzute deodată, din 14
 // plafon de siguranță, nu țintă (editorul, 2026-11-07): câte se publică decide filtrul de calitate
 const DAILY_ARTICLE_LIMIT = 50;
 const MAX_COURT_PER_DAY = 3;
+const COURT_DAY_KEY = "court_last_day"; // ziua (Chișinău) în care s-au citit hotărârile
 const MAX_ARTICLES_PER_RUN = 4;
 
 // Regulile vechi de selecție automată (reject de la clasificator, pragul de
@@ -150,10 +152,18 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     // lucrăm pe date vechi.
     if (autoOn) {
       try {
-        // hotărârile instanțelor (court-source.ts): doar aici, în GitHub; o eroare nu oprește colectarea
-        const court = await fetchCourtDecisions(async (urls) =>
-          new Set(urls.length ? (await db.select({ url: candidates.url }).from(candidates).where(inArray(candidates.url, urls))).map((r) => r.url) : []),
-        ).catch((err) => (summary.failedFeeds.push(`instanțe: ${err instanceof Error ? err.message : String(err)}`), []));
+        // hotărârile instanțelor (court-source.ts): doar aici, în GitHub, o dată pe zi, la prima rulare
+        // de după 12:00 (editorul, 2026-11-12: cele de după-amiază se publică a doua zi); o eroare nu
+        // oprește colectarea și se reîncearcă la rularea următoare
+        const courtDay = new Date().toLocaleDateString("sv-SE", { timeZone: "Europe/Chisinau" });
+        const courtDue = chisinauHour() >= 12 && (await getSetting(COURT_DAY_KEY)) !== courtDay;
+        const court = courtDue
+          ? await fetchCourtDecisions(async (urls) =>
+              new Set(urls.length ? (await db.select({ url: candidates.url }).from(candidates).where(inArray(candidates.url, urls))).map((r) => r.url) : []),
+            )
+              .then(async (r) => (await setSetting(COURT_DAY_KEY, courtDay), r))
+              .catch((err) => (summary.failedFeeds.push(`instanțe: ${err instanceof Error ? err.message : String(err)}`), []))
+          : [];
         const c = await collectCandidates(court);
         summary.collected = c.inserted;
         summary.failedFeeds = c.failedFeeds;
