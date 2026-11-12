@@ -216,6 +216,19 @@ true doar dacă titlul arată că video-ul e despre subiectul acestei știri. fa
   }
 }
 
+// Știrile din hotărârile instanțelor (court-source.ts): ca la Studio-L, fără nume (editorul, 2026-11-12)
+// (constanta e aici, nu importată: court-source.ts aduce cititorul de PDF, care nu are ce căuta în admin)
+const COURT_HOST = "instante.justice.md";
+const COURT_RULES = [
+  "MATERIALUL E O HOTĂRÂRE JUDECĂTOREASCĂ PUBLICĂ. Reguli obligatorii:",
+  "- NU scrie niciun nume de persoană: nici al făptuitorului sau inculpatului, nici al victimei, martorilor, polițiștilor, avocaților, judecătorului, grefierului. Nici numere de telefon, de dosar, de proces-verbal, IDNP.",
+  "- Persoanele se descriu așa: „un bărbat de 39 de ani din satul Plop, raionul Dondușeni”. Vârsta, satul, raionul doar dacă reies clar din hotărâre (ce e ascuns cu ***** rămâne necunoscut, nu ghici).",
+  "- Spui ce s-a întâmplat (când, unde, cum, pe scurt), apoi ce a decis instanța: sancțiunea exactă (amenda în lei, orele de muncă, pedeapsa, suspendarea, permisul).",
+  "- Sursa, în primul paragraf: „potrivit hotărârii Judecătoriei Drochia, sediul ..., din 9 noiembrie 2026”. Dacă hotărârea poate fi atacată (recurs, apel), spune-o la final: nu e definitivă.",
+  "- Fără considerentele juridice, fără citate din articolele de lege, fără jurisprudența CEDO. Limbaj simplu, ca o știre locală.",
+  "- Nu adăuga detalii care nu sunt în hotărâre. Titlul începe cu raionul („Dondușeni: ...”) și spune fapta și sancțiunea.",
+].join("\n");
+
 export async function generateArticle(
   group: CandidateGroup,
   classification: ClassificationResult,
@@ -226,7 +239,9 @@ export async function generateArticle(
   // linkurile video (YouTube/Facebook) nu au text de citit — materialul e descrierea din summary
   // (postările Telegram, cu sau fără video: textul postării e în summary)
   const texts = await Promise.all(
-    items.map((i) => (toEmbedUrl(i.sourceUrl) || i.sourceUrl.startsWith("https://t.me/") ? null : fetchArticle(i.sourceUrl, 60_000))),
+    items.map((i) =>
+      toEmbedUrl(i.sourceUrl) || i.sourceUrl.startsWith("https://t.me/") || i.sourceUrl.includes(COURT_HOST) ? null : fetchArticle(i.sourceUrl, 60_000),
+    ),
   );
   const blocks = items.map((i, k) => {
     const body = texts[k]?.text && texts[k]!.text.length > i.summary.length ? texts[k]!.text : i.summary;
@@ -260,7 +275,7 @@ export async function generateArticle(
   const toolList = tools.map((t) => `${t.id} — ${t.title}`).join("\n");
   const article = await structured<GeneratedArticle>({
     model: OPUS_MODEL,
-    system: mode === "full" ? SYSTEM_PROMPT : `${SYSTEM_PROMPT}\n\n${MODE_RULES[mode]}`,
+    system: `${mode === "full" ? SYSTEM_PROMPT : `${SYSTEM_PROMPT}\n\n${MODE_RULES[mode]}`}${items.some((i) => i.sourceUrl.includes(COURT_HOST)) ? `\n\n${COURT_RULES}` : ""}`,
     prompt: `${titleRule(classification)}${continuationRule(classification)}\n\nSecțiune: ${classification.section}. Subiecte: ${classification.topics.join(", ") || "—"}.\n\nUNELTE DISPONIBILE pe site (id — titlu):\n${toolList}\n\nRelatări despre același eveniment (text integral):\n\n${digest}`,
     schema: schemaFor(mode),
     maxBudgetUsd: 0.5,

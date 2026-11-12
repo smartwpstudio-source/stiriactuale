@@ -2,6 +2,7 @@ import { and, eq, lt } from "drizzle-orm";
 import { getDb } from "./db/client";
 import { candidates } from "./db/schema";
 import { fetchAllSources } from "./sources";
+import type { RawCandidate } from "./types";
 import { updateTelegramSignals } from "./telegram-signal";
 
 const MAX_ITEM_AGE_HOURS = 24;
@@ -9,9 +10,11 @@ const KEEP_DAYS = 7;
 
 // RSS -> tabelul candidates, fără AI. Rulează la 30 de minute (cron Vercel)
 // și la începutul fiecărei generări, ca rezervă. Idempotent: URL-ul e unic.
-export async function collectCandidates() {
+// extra: surse citite doar în pipeline-ul din GitHub (hotărârile instanțelor, court-source.ts)
+export async function collectCandidates(extra: RawCandidate[] = []) {
   const db = getDb();
-  const { candidates: fetched, failedFeeds } = await fetchAllSources();
+  const { candidates: fromFeeds, failedFeeds } = await fetchAllSources();
+  const fetched = [...fromFeeds, ...extra];
   const minDate = Date.now() - MAX_ITEM_AGE_HOURS * 3600_000;
 
   const rows = fetched

@@ -3,6 +3,7 @@ import { and, count, desc, eq, gte, inArray, isNotNull, isNull, or, sql } from "
 import { getDb } from "./db/client";
 import { articles, candidates, guideChecks, pipelineRuns } from "./db/schema";
 import { collectCandidates } from "./collect";
+import { COURT_HOST, fetchCourtDecisions } from "./court-source";
 import { groupCandidates } from "./dedup";
 import { classifyGroups } from "./classify";
 import { generateArticle, VideoNotConfirmed } from "./generate";
@@ -57,6 +58,7 @@ const FEED_ALERT_MIN = 3; // feed-uri căzute deodată, din 14
 // Linkurile manuale nu intră în plafon: editorul a decis explicit.
 // plafon de siguranță, nu țintă (editorul, 2026-11-07): câte se publică decide filtrul de calitate
 const DAILY_ARTICLE_LIMIT = 50;
+const MAX_COURT_PER_DAY = 3;
 const MAX_ARTICLES_PER_RUN = 4;
 
 // Regulile vechi de selecție automată (reject de la clasificator, pragul de
@@ -148,7 +150,11 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     // lucrăm pe date vechi.
     if (autoOn) {
       try {
-        const c = await collectCandidates();
+        // hotărârile instanțelor (court-source.ts): doar aici, în GitHub; o eroare nu oprește colectarea
+        const court = await fetchCourtDecisions(async (urls) =>
+          new Set(urls.length ? (await db.select({ url: candidates.url }).from(candidates).where(inArray(candidates.url, urls))).map((r) => r.url) : []),
+        ).catch((err) => (summary.failedFeeds.push(`instanțe: ${err instanceof Error ? err.message : String(err)}`), []));
+        const c = await collectCandidates(court);
         summary.collected = c.inserted;
         summary.failedFeeds = c.failedFeeds;
       } catch (err) {
@@ -308,8 +314,16 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     // știrile fără public clar: puține, doar ca site-ul să rămână viu și reprezentativ
     const maxPageOnly = hour === firstHour ? 3 : 1;
     let pageOnly = 0;
+    // hotărârile instanțelor: cel mult 3 pe zi, ca site-ul să nu se umple de „amenzi” (editorul, 2026-11-12)
+    const isCourt = (c: ScoredCandidate) => c.group.items.some((i) => i.sourceUrl.includes(COURT_HOST));
+    const [{ courtToday }] = await db
+      .select({ courtToday: count() })
+      .from(articles)
+      .where(and(gte(articles.createdAt, dayStart), sql`${articles.sourceUrls}::text like ${`%${COURT_HOST}%`}`));
+    let courtLeft = MAX_COURT_PER_DAY - courtToday;
     for (const c of auto.sort(byAudience)) {
       if (autoTaken >= autoSlots) break;
+      if (isCourt(c) && courtLeft <= 0) continue;
       if (!hasAudience(c) && pageOnly >= maxPageOnly) continue;
       // între știrile aceleiași rulări nu există „continuare”: e același fapt, din alte surse
       // (2026-11-03: Dodon la CSJ de două ori, ambele luate drept continuări ale știrii de dimineață)
@@ -340,6 +354,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       await guideStep(c, "raport", summary, false).catch(() => null);
       toPublish.push(c);
       autoTaken++;
+      if (isCourt(c)) courtLeft--;
       if (!hasAudience(c)) pageOnly++;
       // și știrile alese în aceeași rulare intră în comparație (2026-10-05:
       // două articole despre aceeași tranșă UE, scrise în aceeași rulare)
