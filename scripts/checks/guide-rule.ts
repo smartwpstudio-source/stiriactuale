@@ -11,7 +11,7 @@ import {
   type GuideCheck,
 } from "../../src/lib/pipeline/guide-rule";
 import { isDeclaration, passesSelection, reviewRank } from "../../src/lib/pipeline/run";
-import { fallbackCard } from "../../src/lib/pipeline/places";
+import { fallbackCard, subjectCard } from "../../src/lib/pipeline/places";
 import { missingGuidesReport, NO_PRACTICAL_NEED } from "../../src/lib/admin/guide-report";
 import type { ScoredCandidate } from "../../src/lib/pipeline/types";
 
@@ -156,6 +156,8 @@ assert.equal(fallbackCard([], "util", cardPlaces, [], "Compensațiile la energie
 assert.equal(fallbackCard([], "national", cardPlaces, [], "Medicamente compensate: reguli noi la farmacie")?.url, undefined, "medicamentele compensate nu sunt compensații");
 assert.equal(fallbackCard([], "national", cardPlaces, [], "Fragmente de dronă găsite la Rezina")?.url, "card-drona-1");
 assert.equal(fallbackCard([], "economie", cardPlaces, [], "Benzina și motorina se scumpesc de mâine, anunță ANRE")?.url, "card-carburanti-1");
+assert.equal(subjectCard(cardPlaces, [], "Benzina și motorina se ieftinesc vineri. ANRE a stabilit prețurile")?.url, "card-carburanti-1", "subiectul bate sigla ANRE");
+assert.equal(subjectCard(cardPlaces, [], "Guvernul a aprobat un regulament nou"), null);
 assert.equal(fallbackCard(["social"], "national", cardPlaces, [], "Fără apă miercuri la Hulboaca, Bîc și pe mai multe străzi din Chișinău")?.url, "card-apa-1", "apa oprită nu e pensii");
 assert.equal(fallbackCard([], "regiuni", cardPlaces, [], "Două baloane au survolat neautorizat spațiul aerian")?.url, "card-drona-1");
 assert.equal(fallbackCard([], "international", cardPlaces, [], "Atac cu drone asupra Kievului: trei morți")?.url, "card-razboi-1", "atacul rămâne la Război");
