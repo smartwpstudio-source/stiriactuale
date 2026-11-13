@@ -1,0 +1,84 @@
+{
+  "slug": "cat-costa-chatgpt-claude-gemini-in-lei-moldovenesti",
+  "title": "Cât costă ChatGPT, Claude și Gemini în lei și cum plătești cu card moldovenesc",
+  "description": "Prețurile oficiale ChatGPT, Claude și Gemini, transformate în lei la cursul BNM, cum plătești cu un card din Moldova, ce e cu TVA-ul și ce capcane eviți.",
+  "category": "bani",
+  "updated": "2026-11-14",
+  "sources": [
+    {
+      "name": "BNM — cursul oficial de schimb al leului moldovenesc, 14.11.2026",
+      "url": "https://www.bnm.md/ro/official_exchange_rates?get_xml=1&date=14.11.2026"
+    },
+    {
+      "name": "BNM — cursul valutar și plata cu cardul în lei peste hotare",
+      "url": "https://www.bnm.md/ro/content/combaterea-falsului-cursul-valutar-este-format-si-modificat-de-bnm"
+    },
+    {
+      "name": "BNM — întrebări și răspunsuri în domeniul reglementării valutare",
+      "url": "https://www.bnm.md/ro/content/intrebari-si-raspunsuri-domeniul-reglementarii-valutare"
+    },
+    {
+      "name": "SFS — Baza generalizată a practicii fiscale: TVA la serviciile electronice prestate de nerezidenți (e-Commerce VAT)",
+      "url": "https://sfs.md/ro/intrebare-baza-de-date-generalizare/31"
+    },
+    {
+      "name": "OpenAI — prețurile planurilor ChatGPT",
+      "url": "https://learn.chatgpt.com/docs/pricing"
+    },
+    {
+      "name": "OpenAI — țările și teritoriile suportate",
+      "url": "https://developers.openai.com/api/docs/supported-countries"
+    },
+    {
+      "name": "Anthropic — prețurile Claude",
+      "url": "https://claude.com/pricing"
+    },
+    {
+      "name": "Anthropic — regiunile suportate",
+      "url": "https://www.anthropic.com/supported-countries"
+    },
+    {
+      "name": "Anthropic — întrebări despre plata planurilor",
+      "url": "https://support.claude.com/en/articles/8325618-paid-plan-billing-faqs"
+    },
+    {
+      "name": "Google — abonamentele Google AI",
+      "url": "https://gemini.google/subscriptions/"
+    },
+    {
+      "name": "Google — țările în care e disponibil Google AI Pro",
+      "url": "https://support.google.com/googleone/answer/16476811?hl=en"
+    },
+    {
+      "name": "Google — disponibilitatea aplicației Gemini",
+      "url": "https://support.google.com/gemini/answer/13575153?hl=en"
+    },
+    {
+      "name": "Google — anunțul despre abonamentele Google AI (mai 2026)",
+      "url": "https://blog.google/products-and-platforms/products/google-one/google-ai-subscriptions/"
+    }
+  ],
+  "bodyHtml": "<p><strong>Pe scurt:</strong> ChatGPT, Claude și Gemini au variante gratuite, iar abonamentele plătite pentru o persoană încep de la circa 5 dolari pe lună (Google AI Plus) și ajung la sute de dolari pentru planurile cele mai mari. Prețurile sunt afișate în dolari americani (USD), așa că în lei moldovenești suma depinde de curs și de banca ta. La cursul oficial al Băncii Naționale a Moldovei (BNM) din 14 noiembrie 2026, <strong>1 USD = 18,1762 lei</strong>, iar un abonament de 20 de dolari înseamnă aproximativ <strong>363,52 lei</strong> pe lună, înainte de comisioanele băncii și de eventuale taxe. Plătești cu un card bancar emis în Moldova, direct pe site-ul oficial sau prin App Store ori Google Play. Mai jos ai tabelul cu prețuri, pașii de plată și greșelile de evitat.</p>\n<h2>Cât costă, în dolari și în lei</h2>\n<p>Prețurile sunt cele de pe paginile oficiale ale celor trei firme, verificate pe 14 noiembrie 2026. Suma în lei e calculată de noi la cursul BNM de 18,1762 lei pentru 1 USD (curs stabilit vineri, 13 noiembrie, și valabil și sâmbătă, 14 noiembrie). E orientativă: banca ta convertește la cursul ei, nu la cel oficial.</p>\n<table>\n<thead><tr><th>Serviciu și plan</th><th>Preț oficial pe lună</th><th>Aproximativ în lei</th></tr></thead>\n<tbody>\n<tr><td>ChatGPT Free</td><td>0</td><td>0</td></tr>\n<tr><td>ChatGPT Go</td><td>8 USD</td><td>145,41 lei</td></tr>\n<tr><td>ChatGPT Plus</td><td>20 USD</td><td>363,52 lei</td></tr>\n<tr><td>ChatGPT Pro</td><td>100, 200 sau 500 USD</td><td>1.817,62 / 3.635,24 / 9.088,10 lei</td></tr>\n<tr><td>Claude Free</td><td>0</td><td>0</td></tr>\n<tr><td>Claude Pro, plată lunară</td><td>20 USD</td><td>363,52 lei</td></tr>\n<tr><td>Claude Pro, plată anuală</td><td>200 USD pe an (17 USD pe lună)</td><td>3.635,24 lei pe an</td></tr>\n<tr><td>Claude Max</td><td>de la 100 USD</td><td>de la 1.817,62 lei</td></tr>\n<tr><td>Gemini (aplicația gratuită)</td><td>0</td><td>0</td></tr>\n<tr><td>Google AI Plus</td><td>4,99 USD</td><td>90,70 lei</td></tr>\n<tr><td>Google AI Pro</td><td>19,99 USD</td><td>363,34 lei</td></tr>\n</tbody>\n</table>\n<p>Ce trebuie să știi despre tabel:</p>\n<ul>\n<li><strong>Prețul final îl vezi la plată.</strong> Paginile de prețuri pot afișa sume diferite în funcție de țară, iar la ChatGPT prețul se încarcă abia în pagina de abonare. Ce scrie în pasul de plată, pe site-ul oficial, e prețul real pentru tine.</li>\n<li><strong>Anthropic scrie explicit că prețurile Claude nu includ taxele aplicabile</strong>, care se calculează după adresa de facturare a cardului.</li>\n<li><strong>Google AI Ultra</strong>, planul cel mai mare de la Google, nu apare cu preț pe pagina de abonamente. În mai 2026, Google a anunțat un plan Ultra de 100 de dolari pe lună și reducerea planului Ultra de top de la 250 la 200 de dolari. Verifică prețul actual înainte să te abonezi.</li>\n<li><strong>Cursul se schimbă zilnic.</strong> Cursul de azi îl vezi pe bnm.md, la „Cursul oficial de schimb”. BNM precizează că cursul oficial se folosește doar în scopuri contabile; băncile își stabilesc singure cursurile.</li>\n</ul>\n<h2>Sunt disponibile în Moldova?</h2>\n<ul>\n<li><strong>Claude:</strong> Moldova apare în lista oficială a țărilor și regiunilor în care Anthropic își oferă produsele.</li>\n<li><strong>Gemini:</strong> Google spune că aplicația Gemini e disponibilă în peste 230 de țări și teritorii, printre care Moldova, și în română. Moldova apare și în lista țărilor în care e disponibil abonamentul Google AI Pro.</li>\n<li><strong>ChatGPT:</strong> Moldova apare în lista oficială a țărilor suportate de OpenAI (lista e publicată pe platforma pentru dezvoltatori). Planul Go, spune OpenAI, e disponibil doar „în anumite regiuni”: dacă nu ți-l afișează, nu e încă oferit pentru țara ta.</li>\n<li><strong>Google AI Plus:</strong> Google spune că planul e disponibil în peste 160 de țări, dar nu am găsit o listă oficială care să confirme Moldova. Dacă nu apare în contul tău, nu e oferit aici.</li>\n</ul>\n<h2>Cum plătești cu un card moldovenesc</h2>\n<ol>\n<li><strong>Încearcă întâi varianta gratuită</strong> câteva zile. Dacă rar dai de limite, nu-ți trebuie abonamentul. Ce poți face gratuit și unde greșesc chatboturile afli în <a href=\"/ghiduri/cum-folosesti-ai-gratuit-in-romana/\">ghidul despre AI gratuit în română</a>.</li>\n<li><strong>Verifică cardul.</strong> Cardul trebuie să fie activat pentru plăți pe internet și în valută. Asta se face din aplicația băncii sau la bancă. Unele bănci au limite separate pentru plățile online.</li>\n<li><strong>Abonează-te doar din locul oficial:</strong> chatgpt.com, claude.ai sau gemini.google, ori din aplicația oficială, prin App Store sau Google Play. La Claude, pe site se acceptă doar carduri de credit sau de debit, iar în aplicații metodele de plată le stabilesc Apple și Google.</li>\n<li><strong>Citește suma înainte să confirmi:</strong> moneda, perioada (lunar sau anual) și dacă taxele sunt incluse.</li>\n<li><strong>Confirmă plata în aplicația băncii</strong> (codul 3-D Secure sau notificarea). Codul îl introduci doar în pagina de plată pe care ai deschis-o tu, nu îl spui nimănui.</li>\n<li><strong>Verifică extrasul</strong> după prima plată: vezi cât ai plătit în lei, cu tot cu comisioane. Așa știi cât te costă de fapt luna următoare.</li>\n</ol>\n<p>Cum se transformă dolarii în lei: BNM explică faptul că poți plăti peste hotare direct cu cardul în lei, iar banca convertește leii din cont în moneda necesară la cursul ei de schimb. La asta se pot adăuga comisioane pentru plăți în valută. Cât percepe banca ta scrie în documentul ei de tarife; vezi și <a href=\"/ghiduri/comisioanele-bancare-card-transferuri-valuta/\">ghidul despre comisioanele bancare la card și valută</a>. Un card în dolari sau în euro poate ieși mai ieftin dacă plătești des în valută, dar compară întâi tarifele.</p>\n<h2>TVA și taxe: ce plătești tu</h2>\n<p>Potrivit practicii fiscale publicate de Serviciul Fiscal de Stat (SFS), firmele străine fără sediu în Moldova care prestează servicii electronice persoanelor fizice din Moldova (de exemplu dreptul de a folosi programe pe calculator sau accesul la conținut online) sunt plătitoare de TVA în Moldova, prin sistemul „e-Commerce VAT”. TVA-ul se include în preț, iar SFS precizează că, din prețul cu TVA, cota este de 16,67%. Obligația de a declara și a plăti TVA-ul este a firmei străine, nu a ta: tu nu depui nimic.</p>\n<p>Ce nu am putut confirma: dacă fiecare dintre cele trei firme e înregistrată în acest sistem și dacă TVA-ul apare separat pe factura ta. De aceea, suma reală o vezi în pasul de plată și pe chitanța primită pe e-mail. Dacă ai întrebări despre TVA-ul la servicii electronice, informațiile oficiale sunt pe sfs.md.</p>\n<h2>Merită să plătești?</h2>\n<p>Abonamentul are sens dacă folosești AI-ul zilnic, de exemplu la muncă, și dai des de limitele variantei gratuite: număr de mesaje, fișiere mari, imagini. Pentru câteva scrisori sau traduceri pe săptămână, varianta gratuită ajunge. Un test detaliat al planului gratuit ChatGPT, cu limitele lui, găsești pe site-ul Upgrade Digital (din România): <a href=\"https://upgradedigital.ro/articole/chatgpt-gratis-in-romana\">ChatGPT gratis în română: ce poți face fără să plătești</a>.</p>\n<p>Plătește un singur abonament, nu trei. Cele trei servicii fac în mare aceleași lucruri; alege-l pe cel care îți răspunde cel mai bine în varianta gratuită.</p>\n<h2>Greșeli frecvente și capcane</h2>\n<ul>\n<li><strong>Conturi „premium” ieftine de la revânzători</strong> pe Telegram, OLX sau 999.md: încalcă regulile serviciului, pot fi blocate oricând și îți pot cere datele cardului sau ale contului. Plătește doar pe site-ul sau în aplicația oficială.</li>\n<li><strong>Site-uri și aplicații copiate</strong>, cu nume asemănătoare și „AI gratuit nelimitat”: înainte să introduci cardul, verifică adresa din bara browserului și numele dezvoltatorului în magazinul de aplicații.</li>\n<li><strong>Uiți de reînnoirea automată.</strong> Abonamentele se reînnoiesc singure. Dacă nu-l mai vrei, îl anulezi din setările contului sau din App Store ori Google Play cu câteva zile înainte de data plății. Despre renunțarea la abonamente, vezi <a href=\"/ghiduri/abonamente-si-contracte-cum-renunti-penalitati-legale/\">ghidul despre abonamente și contracte</a>.</li>\n<li><strong>Calculezi la cursul oficial și uiți comisionul.</strong> Suma din extras poate fi mai mare decât cea din tabel.</li>\n</ul>\n<h2>Ce faci dacă...</h2>\n<ul>\n<li><strong>...plata e refuzată:</strong> verifică în aplicația băncii dacă plățile online și în valută sunt activate și dacă ai depășit limita; apoi încearcă din nou sau prin App Store ori Google Play.</li>\n<li><strong>...ți s-a luat bani după ce ai anulat sau ți s-a luat de două ori:</strong> scrii întâi serviciului de asistență al firmei. Dacă nu rezolvă, ceri băncii să conteste tranzacția: vezi <a href=\"/ghiduri/plata-cu-cardul-contestare-tranzactie-chargeback/\">cum contești o plată cu cardul</a>.</li>\n<li><strong>...ai dat datele cardului pe un site fals:</strong> blochezi imediat cardul din aplicația băncii sau sunând la bancă, apoi anunți Poliția. Pașii sunt în <a href=\"/ghiduri/ce-faci-daca-ai-cazut-in-plasa-escrocilor-pasi/\">ghidul despre ce faci dacă ai căzut în plasa escrocilor</a>.</li>\n</ul>\n<p>Toată rubrica despre inteligența artificială: <a href=\"/ghiduri/inteligenta-artificiala-ghid-practic-moldova/\">Inteligența artificială pe înțelesul tuturor</a>.</p>\n<p>Prețuri și curs verificate la 14 noiembrie 2026. Prețurile se schimbă; înainte să plătești, verifică pagina oficială.</p>",
+  "faq": [
+    {
+      "q": "Cât costă ChatGPT Plus în lei moldovenești?",
+      "a": "ChatGPT Plus costă 20 USD pe lună, adică aproximativ 363,52 lei la cursul BNM din 14 noiembrie 2026. Suma reală depinde de cursul și comisioanele băncii tale și de eventualele taxe."
+    },
+    {
+      "q": "Pot plăti ChatGPT sau Claude cu un card moldovenesc?",
+      "a": "Da, cu un card bancar activat pentru plăți online și în valută. La Claude, pe site se acceptă carduri de credit sau de debit; în aplicații plătești prin App Store sau Google Play."
+    },
+    {
+      "q": "Se plătește TVA la abonamentele AI în Moldova?",
+      "a": "Potrivit SFS, firmele străine care prestează servicii electronice persoanelor din Moldova datorează TVA prin sistemul e-Commerce VAT, inclus în preț. Obligația e a firmei, nu a ta. Suma finală o vezi la plată."
+    },
+    {
+      "q": "Este Gemini disponibil în Moldova?",
+      "a": "Da. Google spune că aplicația Gemini e disponibilă în Moldova și în română, iar abonamentul Google AI Pro (19,99 USD pe lună) apare în lista țărilor unde e oferit."
+    },
+    {
+      "q": "Merită să cumpăr un cont ChatGPT ieftin de pe Telegram?",
+      "a": "Nu. Conturile revândute încalcă regulile serviciului, pot fi blocate oricând și sunt o cale prin care escrocii îți iau banii sau datele. Plătește doar pe site-ul sau în aplicația oficială."
+    }
+  ]
+}
