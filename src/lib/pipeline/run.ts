@@ -10,12 +10,12 @@ import { classifyGroups } from "./classify";
 import { generateArticle, VideoNotConfirmed } from "./generate";
 import { computeQualityScore } from "./scoring";
 import { findArticleImage, sourcePhoto } from "./image";
-import { MIN_WIDTH } from "./fulltext";
+import { fetchArticle, MIN_WIDTH } from "./fulltext";
 import { putMedia } from "@/lib/media";
 import sharp from "sharp";
 import { photosMatch } from "./photo-check";
 import { loadOfficialItems, matchOfficialPhoto } from "./official-photos";
-import { fallbackCard, loadPlaces, loadSymbolPhotos, matchPlacePhoto, onlyLive, electionCard, subjectCard } from "./places";
+import { fallbackCard, loadPlaces, loadSymbolPhotos, matchPlacePhoto, onlyLive, chooseCard } from "./places";
 import { checkRecent, sameStory } from "./recent-duplicate";
 import { mediaTag, photoFigures, type BodyPhoto } from "./media-tag";
 import { pipelineEnabled } from "./settings";
@@ -27,10 +27,10 @@ import { shortVideoArticle } from "./video-article";
 import { flagCardImage, INSTITUTIONS } from "./flag-card";
 import { isDuplicate, loadRecentFingerprints, loadUsedImageIds, publishArticle, updateBriefArticle } from "./publish";
 import { mapWithConcurrency } from "./concurrency";
-import { HAIKU_MODEL, spentUsd, structured } from "./llm";
+import { HAIKU_MODEL, OPUS_MODEL, spentUsd, structured } from "./llm";
 import { autoPush } from "./auto-push";
 import { translatePendingRu } from "./ru-news";
-import { alertEditor } from "@/lib/telegram";
+import { alertEditor, reportToEditor } from "@/lib/telegram";
 import type { Section } from "@/lib/content/types";
 import type { CandidateGroup, ScoredCandidate } from "./types";
 
@@ -444,10 +444,10 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
           : youtubeThumb(generated.video_url)
           ? null
           : (official && (await sourcePhoto(official, generated.slug))) ??
-            electionCard(places, recentImages, subject) ??
             (diplomacy ? await card() : null) ??
             (place && { url: place.url, resourceId: null, credit: place.credit, alt: place.alt }) ??
-            subjectCard(places, recentImages, subject) ??
+            // cardul ales de AI după subiectul principal (chooseCard), înaintea steagului și a siglei
+            (await chooseCard(subject, places, recentImages)) ??
             (foreign ? await card() : null) ??
             (inst ? await logoCard() : null) ??
             // știre despre oameni și instituții: doar cardul spus de subiect, nu cel al temei
@@ -491,7 +491,10 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     // destul; altfel rămân cum sunt (următoarea rulare mai încearcă)
     for (const u of updates) {
       try {
-        const [old] = await db.select({ sources: articles.sources, lead: articles.leadText, title: articles.title }).from(articles).where(eq(articles.id, u.articleId));
+        const [old] = await db
+          .select({ sources: articles.sources, lead: articles.leadText, title: articles.title, body: articles.bodyHtml })
+          .from(articles)
+          .where(eq(articles.id, u.articleId));
         if (!old) continue;
         // clasificatorul a legat uneori o știre străină de un „pe scurt” vechi (Apă-Canal
         // -> Starlink, semaforul de la Hîncești -> atacuri în Dnipropetrovsk): rescrierea
@@ -500,6 +503,20 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
           console.log(`Actualizare respinsă (alt eveniment): ${old.title.slice(0, 60)} <- ${u.group.representativeTitle.slice(0, 60)}`);
           continue;
         }
+        // Regula editorului (2026-11-13): aceeași știre fără nimic nou nu se publică și nu se rescrie;
+        // se completează doar cu informații concrete care lipsesc din articolul publicat
+        const noi = await newFacts(old, u.group);
+        if (!noi.length) {
+          console.log(`Fără informații noi, nescrisă: ${u.group.representativeTitle.slice(0, 80)} (deja în articolul ${u.articleId})`);
+          if (u.group.manual) {
+            await db.update(candidates).set({ processedAt: new Date() }).where(inArray(candidates.id, u.group.candidateIds));
+            await reportToEditor(`ℹ️ Linkul tău nu a fost publicat: știrea e deja pe site, fără informații noi.
+„${old.title}”
+${u.group.items[0]?.sourceUrl ?? ""}`);
+          }
+          continue;
+        }
+        console.log(`Informații noi pentru articolul ${u.articleId}: ${noi.join(" | ").slice(0, 200)}`);
         const group = {
           ...u.group,
           items: [
@@ -547,6 +564,25 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       .where(eq(pipelineRuns.id, run.id));
     throw err;
   }
+}
+
+// Ce aduce nou știrea față de articolul publicat: fapte concrete (cifre, decizii, nume de locuri, ore,
+// consecințe) care NU sunt deja în text. Reformulările, altă sursă, detaliile mărunte nu contează.
+async function newFacts(old: { title: string; body: string }, group: CandidateGroup): Promise<string[]> {
+  const texts = await Promise.all(group.items.slice(0, 2).map((i) => (i.sourceUrl.startsWith("http") ? fetchArticle(i.sourceUrl, 30_000) : null)));
+  const fresh = group.items
+    .slice(0, 2)
+    .map((i, k) => `- ${i.title}: ${(texts[k]?.text && texts[k]!.text.length > i.summary.length ? texts[k]!.text : i.summary).slice(0, 2500)}`)
+    .join("\n");
+  const r = await structured<{ noi: string[] }>({
+    model: OPUS_MODEL,
+    system:
+      "Compari o relatare nouă cu un articol deja publicat despre aceeași întâmplare. Enumeri în „noi” DOAR faptele concrete și importante care NU sunt deja în articol: o cifră nouă, o decizie, o reținere, o consecință, starea victimei schimbată, un termen nou, o reacție oficială nouă. NU sunt noi: aceleași fapte spuse altfel, aceeași sursă citată, detalii mărunte (culoarea mașinii, ora aproximativă), comentarii, repetarea apelului la prudență. Dacă relatarea nouă nu aduce nimic important în plus, „noi” = [] (listă goală).",
+    prompt: `ARTICOL PUBLICAT: ${old.title}\n${old.body.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").slice(0, 5000)}\n\nRELATAREA NOUĂ:\n${fresh}`,
+    schema: { type: "object", properties: { noi: { type: "array", items: { type: "string" } } }, required: ["noi"] },
+    maxBudgetUsd: 0.2,
+  }).catch(() => ({ noi: [] as string[] }));
+  return r.noi.filter((x) => x.trim());
 }
 
 // Același eveniment concret sau aceeași situație care continuă? Doar atunci se completează un
