@@ -10,7 +10,7 @@ import { HAIKU_MODEL, structured } from "../../src/lib/pipeline/llm";
 import { SCHEMA } from "../../src/lib/pipeline/generate";
 import { countryName, flagCardImage } from "../../src/lib/pipeline/flag-card";
 import { copyToBlob, findArticleImage } from "../../src/lib/pipeline/image";
-import { loadPlaces, matchPlacePhoto } from "../../src/lib/pipeline/places";
+import { chooseCard, loadPlaces } from "../../src/lib/pipeline/places";
 import { slugify } from "../../src/lib/pipeline/video-article";
 import { requestRevalidate } from "../../src/lib/revalidate";
 import { photosMatch } from "../../src/lib/pipeline/photo-check";
@@ -222,7 +222,7 @@ ${r.lead}`,
     // sau al regiunii (Transnistria, Găgăuzia…), altfel poza rămâne
     const foreign = codes.some((t) => t !== "md");
     // rotația celor 3 variante: ultimele 2 folosite nu se repetă
-    const card = foreign ? null : await matchPlacePhoto(`${r.title}. ${r.lead}`, cards, undefined, used.slice(0, 2));
+    const card = foreign ? null : await chooseCard(`${r.title}. ${r.lead}`, cards, used.slice(0, 2));
     if (card) used.unshift(card.url);
     if (!foreign && !card) return;
     console.log(`${r.slug}: ${foreign ? `${label} [${codes.join(", ")}] ${tema}` : card!.alt}`);
