@@ -107,6 +107,9 @@ const THEMES = [
     "ajutor social, asistență socială, persoane cu dizabilități, veterani, vârstnici, asistenți sociali, cantine sociale, indemnizații", "Ajutoare sociale: dizabilități, vârstnici, veterani, asistență socială"],
   ["traditii", "Sărbători și tradiții", ["Credință și obiceiuri", "Sărbători creștine", "Hramuri și obiceiuri"], "building-church", ["#7C2D12", "#3B0A0A"], "#FCD34D",
     "sărbători, tradiții, post, Crăciun, Paște, biserică, hram, obiceiuri, credință, Mitropolia", "Sărbători și tradiții: posturi, sărbători creștine, hramuri, obiceiuri"],
+  // hackerii, atacurile informatice (editorul, 2026-11-13: legea despre hackeri primise „Energie”)
+  ["cibernetic", "Securitate cibernetică", ["Atacuri informatice", "Date și sisteme protejate", "Hackeri și pedepse"], "shield-lock", ["#0F766E", "#042F2E"], "#5EEAD4",
+    "hackeri, atac cibernetic, atacuri informatice, securitate cibernetică, sisteme informatice, date personale, virus, ransomware, STISC, CERT", "Securitate cibernetică: hackeri, atacuri informatice, protecția datelor și a sistemelor"],
   // prețurile la carburanți (editorul, 2026-11-10): panoul de prețuri al benzinăriei, cu cifre în schimbare
   ["carburanti", "Carburanți", ["Prețuri la benzină și motorină", "Prețurile carburanților", "Prețuri la benzinării"], "gas-station", ["#2B3340", "#0D1117"], "#FFB300",
     "carburanți, benzină, motorină, GPL, prețuri la carburanți, benzinării, prețul benzinei, prețul motorinei, ANRE carburanți, scumpiri la pompă, ieftiniri", "Carburanți: prețurile la benzină, motorină și GPL, benzinării"],

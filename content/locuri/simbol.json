@@ -1641,5 +1641,30 @@
         "alt": "Card: Sărbători și tradiții — Hramuri și obiceiuri"
       }
     ]
+  },
+  {
+    "id": "card-cibernetic",
+    "name": "TEMĂ (card instituție/regiune): Securitate cibernetică: hackeri, atacuri informatice, protecția datelor și a sistemelor",
+    "keywords": "hackeri, atac cibernetic, atacuri informatice, securitate cibernetică, sisteme informatice, date personale, virus, ransomware, STISC, CERT",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/cibernetic-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Securitate cibernetică — Atacuri informatice"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/cibernetic-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Securitate cibernetică — Date și sisteme protejate"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/cibernetic-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Securitate cibernetică — Hackeri și pedepse"
+      }
+    ]
   }
 ]
