@@ -1,39 +1,14 @@
-import { HAIKU_MODEL, structured } from "./llm";
-import { stripDiacritics } from "./text-normalize";
+import { HAIKU_MODEL, OPUS_MODEL, structured } from "./llm";
 import type { CandidateGroup } from "./types";
 
-// A doua verificare de dubluri, după clasificator: în lotul mare (40 de grupuri
-// x 80 de articole) Haiku ratează uneori că știrea a fost deja publicată altfel
-// formulată (2026-10-04: „cod roșu în Spania” de două ori). Aici, per grup, se
-// aleg articolele din ultimele 48h cu cuvinte-cheie comune și se întreabă AI-ul
-// doar despre ele.
+// A doua verificare de dubluri, după clasificator, per grup, față de TOATE articolele din
+// ultimele 48h. Până pe 2026-11-14 un filtru pe cuvinte comune (min. 3) alegea ce vede AI-ul și
+// rata repetările formulate altfel („Pâinea Milina se scumpește” -> „Pâinea se scumpește cu
+// până la 12%”, prognoza meteo pe aceeași săptămână): AI-ul nici nu le vedea.
 export interface RecentArticle {
   id: number;
   title: string;
   lead: string;
-}
-
-const STOP = new Set("pentru care este sunt fost dupa despre intre catre pana cand unde cine acest aceasta acum doar spune anul astazi moldova republica republicii chisinau poate trebuie foarte multe noua noul".split(" "));
-const MIN_SHARED = 3;
-
-function stems(text: string): Set<string> {
-  return new Set(
-    stripDiacritics(text)
-      .toLowerCase()
-      .split(/[^a-z0-9]+/)
-      .filter((w) => w.length >= 4 && !STOP.has(w))
-      .map((w) => w.slice(0, 6)),
-  );
-}
-
-export function similarRecent(group: CandidateGroup, recent: RecentArticle[], max = 3): RecentArticle[] {
-  const g = stems(group.items.slice(0, 3).map((i) => `${i.title} ${i.summary.slice(0, 300)}`).join(" "));
-  return recent
-    .map((r) => ({ r, n: [...stems(`${r.title} ${r.lead}`)].filter((s) => g.has(s)).length }))
-    .filter((x) => x.n >= MIN_SHARED)
-    .sort((a, b) => b.n - a.n)
-    .slice(0, max)
-    .map((x) => x.r);
 }
 
 // „Continuare” doar pentru aceeași poveste (editorul, 2026-11-09): legătura propusă de clasificator
@@ -54,20 +29,20 @@ export async function sameStory(oldTitle: string, group: CandidateGroup): Promis
 export type RecentVerdict = { duplicateOf?: number; continuesId?: number; updateOf?: number };
 
 export async function checkRecent(group: CandidateGroup, recent: RecentArticle[]): Promise<RecentVerdict> {
-  const similar = similarRecent(group, recent);
+  const similar = recent.slice(0, 80);
   if (!similar.length) return {};
   try {
     const { verdict, index } = await structured<{ verdict: "dublura" | "actualizare" | "continuare" | "diferit"; index: number }>({
-      model: HAIKU_MODEL,
+      model: OPUS_MODEL,
       system:
-        "Compari o știre nouă cu articole deja publicate pe site. dublura = același fapt, fără nimic nou important (altă formulare, altă sursă, alte detalii mărunte, actualizări de stare fără schimbare reală: „rămâne închis”, „starea victimei e stabilă”, „ancheta continuă”). Situațiile cu termen (o vamă, un drum, apa sau curentul închise ori oprite „de la ... până la ...”): știrea nouă e actualizare DOAR dacă starea s-a schimbat — s-a redeschis, închiderea s-a prelungit, s-a mutat intervalul. Altfel, chiar dacă dă un sfat nou („ocoliți prin ...”), e dublura: repetată spre finalul intervalului, ar duce oamenii în eroare (2026-11-07: „vama Costești, ocoliți-o” publicat la 14:30, când vama se redeschidea la 15:00). actualizare = ACEEAȘI situație care continuă (aceleași lucrări, aceeași închidere, același caz, aceeași campanie), iar noutatea e doar un detaliu: altă zi sau oră, alt program, o rută ocolitoare, o cifră actualizată, un sfat pentru oameni — se completează articolul existent, nu se scrie altul (2026-11-07: vama Costești–Stânca, trei articole în două zile: „îngreunată vineri”, „închisă sâmbătă”, „transportatorii trimiși la Cahul și Leușeni”). Tot actualizare e bilanțul care adună cazul publicat cu altele de același fel („șase mistreți împușcați în trei zile, doi bărbați reținuți” după „trei mistreți la Sîngerei”, 2026-11-10): se completează articolul publicat. Tot actualizare e declarația sau prezentarea care reia o decizie deja publicată și adaugă etape sau detalii (ministrul Energiei despre etapele liberalizării pieței, după articolul despre amânarea liberalizării de către ANRE, 2026-11-10). continuare = s-a întâmplat ceva NOU în aceeași poveste (o decizie, o reținere, o reacție oficială importantă, o consecință) SAU știrea are un unghi, un aspect nou al subiectului (ce înseamnă pentru oameni, altă latură) — se scrie articol nou. Regula editorului (2026-11-13): aceeași știre fără nimic nou nu se publică a doua oară (dublura); aceeași știre cu informații noi se completează (actualizare); un unghi nou = articol nou (continuare). Tot dublura e și relatarea târzie a aceluiași fapt (o sursă care îl preia după o zi-două), chiar dacă îl pune lângă alt fapt deja știut sau adaugă o recapitulare (2026-11-06: drona de la Gordinești, a treia oară, „la o zi după ce alta a survolat Soroca”). diferit = alt eveniment. În caz de dubiu între dublura, actualizare și continuare: dublura — repetările sunt excluse (editorul, 2026-11-07); continuare doar când faptul nou se poate spune clar într-un titlu diferit. index = numărul articolului publicat la care se referă verdictul (-1 la diferit).",
-      prompt: `Acum: ${new Date().toLocaleString("ro-RO", { timeZone: "Europe/Chisinau", weekday: "long", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" })}.\n\nȘtirea nouă:\n${group.items.slice(0, 3).map((i) => `- ${i.title}: ${i.summary.slice(0, 400)}`).join("\n")}\n\nArticole publicate:\n${similar.map((r, i) => `${i}. ${r.title} — ${r.lead}`).join("\n")}`,
+        "Compari o știre nouă cu articole deja publicate pe site. dublura = același fapt, fără nimic nou important (altă formulare, altă sursă, alte detalii mărunte, actualizări de stare fără schimbare reală: „rămâne închis”, „starea victimei e stabilă”, „ancheta continuă”). Situațiile cu termen (o vamă, un drum, apa sau curentul închise ori oprite „de la ... până la ...”): știrea nouă e actualizare DOAR dacă starea s-a schimbat — s-a redeschis, închiderea s-a prelungit, s-a mutat intervalul. Altfel, chiar dacă dă un sfat nou („ocoliți prin ...”), e dublura: repetată spre finalul intervalului, ar duce oamenii în eroare (2026-11-07: „vama Costești, ocoliți-o” publicat la 14:30, când vama se redeschidea la 15:00). actualizare = ACEEAȘI situație care continuă (aceleași lucrări, aceeași închidere, același caz, aceeași campanie), iar noutatea e doar un detaliu: altă zi sau oră, alt program, o rută ocolitoare, o cifră actualizată, un sfat pentru oameni — se completează articolul existent, nu se scrie altul (2026-11-07: vama Costești–Stânca, trei articole în două zile: „îngreunată vineri”, „închisă sâmbătă”, „transportatorii trimiși la Cahul și Leușeni”). Tot actualizare e bilanțul care adună cazul publicat cu altele de același fel („șase mistreți împușcați în trei zile, doi bărbați reținuți” după „trei mistreți la Sîngerei”, 2026-11-10): se completează articolul publicat. Tot actualizare e declarația sau prezentarea care reia o decizie deja publicată și adaugă etape sau detalii (ministrul Energiei despre etapele liberalizării pieței, după articolul despre amânarea liberalizării de către ANRE, 2026-11-10). continuare = s-a întâmplat ceva NOU în aceeași poveste (o decizie, o reținere, o reacție oficială importantă, o consecință) SAU știrea are un unghi, un aspect nou al subiectului (ce înseamnă pentru oameni, altă latură) — se scrie articol nou. Regula editorului (2026-11-13): aceeași știre fără nimic nou nu se publică a doua oară (dublura); aceeași știre cu informații noi se completează (actualizare); un unghi nou = articol nou (continuare). Tot dublura e și relatarea târzie a aceluiași fapt (o sursă care îl preia după o zi-două), chiar dacă îl pune lângă alt fapt deja știut sau adaugă o recapitulare (2026-11-06: drona de la Gordinești, a treia oară, „la o zi după ce alta a survolat Soroca”). Tot dublura e același mesaj reluat de altă instituție sau sursă la o zi-două, fără fapt nou (2026-11-14: „Diabetul poate duce la pierderea vederii, controale la ochi” după „Diabetul poate fura vederea, tomograf nou la Urgență”; „Pâinea se scumpește cu până la 12%, statul nu intervine” după „Pâinea Milina se scumpește, Guvernul nu sprijină producătorii”) și prognoza meteo pentru aproape aceeași perioadă, dacă nu aduce o avertizare nouă sau un fenomen nou. diferit = alt eveniment. În caz de dubiu între dublura, actualizare și continuare: dublura — repetările sunt excluse (editorul, 2026-11-07); continuare doar când faptul nou se poate spune clar într-un titlu diferit. index = numărul articolului publicat la care se referă verdictul (-1 la diferit).",
+      prompt: `Acum: ${new Date().toLocaleString("ro-RO", { timeZone: "Europe/Chisinau", weekday: "long", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" })}.\n\nȘtirea nouă:\n${group.items.slice(0, 3).map((i) => `- ${i.title}: ${i.summary.slice(0, 400)}`).join("\n")}\n\nArticole publicate:\n${similar.map((r, i) => `${i}. ${r.title} — ${(r.lead ?? "").slice(0, 200)}`).join("\n")}`,
       schema: {
         type: "object",
         properties: { verdict: { type: "string", enum: ["dublura", "actualizare", "continuare", "diferit"] }, index: { type: "integer" } },
         required: ["verdict", "index"],
       },
-      maxBudgetUsd: 0.05,
+      maxBudgetUsd: 0.3,
     });
     const hit = similar[index];
     if (!hit) return {};
