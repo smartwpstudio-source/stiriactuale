@@ -2,6 +2,8 @@
 
 Format: ca ghidurile (`docs/cloud/ghiduri.md`, secțiunea Format), în `content/ghiduri/<slug>.json`, cu `"category": "sarbatori"`. Un PR per lot. Înainte de PR: `npm ci && npm run check:content` → `conținut: OK`. Commit doar cu `content/ghiduri/`. Nu faci commit pe `master`.
 
+**Ramura:** pornești din `cf-migration` și deschizi PR-ul cu baza `cf-migration`, nu `master`: site-ul live se publică doar din `cf-migration` (detalii în `docs/cloud/ghiduri.md`, „Ramura și publicarea”).
+
 ## Structura unei pagini de sărbătoare (900–1.500 de cuvinte)
 1. Pe scurt: ce se sărbătorește și **când — pe stil vechi și pe stil nou** (ex. „19 decembrie pe stil vechi, 6 decembrie pe stil nou”). Pentru sărbătorile legate de Paști: „la N zile după Paști” — fără date fixe.
 2. `<h2>` Semnificația religioasă (după surse bisericești).

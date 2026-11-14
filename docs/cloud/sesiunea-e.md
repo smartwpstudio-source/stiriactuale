@@ -2,6 +2,8 @@
 
 Două sarcini, două Pull Request-uri. Înainte de fiecare: `npm ci && npm run check:content` → `conținut: OK`. Doar fișiere în `content/ghiduri/`. Nu faci commit pe `master`.
 
+**Ramura:** pornești din `cf-migration` și deschizi PR-ul cu baza `cf-migration`, nu `master`: site-ul live se publică doar din `cf-migration` (detalii în `docs/cloud/ghiduri.md`, „Ramura și publicarea”).
+
 ## Sarcina 1 — Dosare, lot 2
 
 Urmezi exact `docs/cloud/dosare.md` (structură, surse, reguli juridice). Branch `dosare-lot-2`, PR „Dosare — lot 2”:

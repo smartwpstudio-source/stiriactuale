@@ -6,6 +6,8 @@ Pagina `/regiuni/<raion>/` și `/diaspora/<tara>/` arată acum doar știrile. Ad
 
 Câte un fișier `content/locuri/raioane/<slug>.json` sau `content/locuri/tari/<slug>.json`. Slug-urile valide sunt cele din `src/lib/content/geo.ts` (`RAION_NAMES`, `COUNTRY_NAMES`). Un PR pe lot („Informații utile — raioane 1-12” etc.). Înainte de PR: `npm ci && npm run check:content` → `conținut: OK`.
 
+**Ramura:** pornești din `cf-migration` și deschizi PR-ul cu baza `cf-migration`, nu `master`: site-ul live se publică doar din `cf-migration` (detalii în `docs/cloud/ghiduri.md`, „Ramura și publicarea”).
+
 ## Format
 
 ```json

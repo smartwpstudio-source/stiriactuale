@@ -10,6 +10,12 @@ Fiecare ghid nou are și varianta rusă în `content/ghiduri-ru/<slug>.json`, du
 
 Înainte de PR: `npm ci && npm run check:content` — trebuie să afișeze `conținut: OK`.
 
+## Ramura și publicarea
+
+- Pornești ramura din `cf-migration` (`git switch -c ghiduri-lot-N origin/cf-migration`) și deschizi PR-ul cu **baza `cf-migration`** (`gh pr create --base cf-migration`). Nu deschizi PR spre `master`: `master` e ramura veche de dinainte de Cloudflare și nu se mai publică.
+- Merge-ul îl face doar proprietarul sau o sesiune căreia proprietarul îi spune explicit „Fa merge #N”.
+- Merge-ul **nu publică singur**. Site-ul se publică manual, cu workflow-ul „Deploy Cloudflare Workers” rulat pe `cf-migration`: `gh workflow run cloudflare-deploy.yml --ref cf-migration -f dry_run=false -f production=true`. Deploy-ul îl pornește proprietarul; sesiunea dă comanda și apoi verifică paginile live (RO și RU).
+
 ## Format
 
 ```json

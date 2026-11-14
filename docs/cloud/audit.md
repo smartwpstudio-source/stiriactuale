@@ -16,6 +16,8 @@ Site de știri din Moldova, Next.js 16 (App Router, `src/app`), Tailwind v4, Pos
 ## Ce livrezi
 
 - **Un Pull Request** „Audit tehnic — reparații”, cu reparațiile sigure și mici (meta, JSON-LD, alt, linkuri, atribute de imagine). Fiecare commit = o problemă. Rulează `npm ci && npx next typegen && npx tsc --noEmit -p . && npm run lint` înainte de PR — totul verde.
+
+**Ramura:** pornești din `cf-migration` și deschizi PR-ul cu baza `cf-migration`, nu `master`: site-ul live se publică doar din `cf-migration` (detalii în `docs/cloud/ghiduri.md`, „Ramura și publicarea”).
 - În descrierea PR-ului: **tabel cu toate problemele găsite** (gravitate, unde, reparată în PR sau doar semnalată) și, separat, recomandările care cer decizia editorului.
 
 ## Nu faci
