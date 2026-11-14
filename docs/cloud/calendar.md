@@ -30,6 +30,8 @@ Data din fișier e **data din calendarul bisericesc** (ex. Sf. Nicolae = 6 decem
 
 Calendarele oficiale publicate de Biserica Ortodoxă: mitropolia.md (Mitropolia Moldovei), mitropoliabasarabiei.md, basilica.ro / doxologia.ro (calendarul Patriarhiei Române). Minim 1 sursă oficială, verificată acum. Dacă sursele diferă la un sfânt secundar, urmează Mitropolia Moldovei și notează diferența în PR.
 
+**Ramura:** pornești din `cf-migration` și deschizi PR-ul cu baza `cf-migration`, nu `master`: site-ul live se publică doar din `cf-migration` (detalii în `docs/cloud/ghiduri.md`, „Ramura și publicarea”).
+
 ## Livrare
 
 Înainte de PR: `npm ci && npm run check:content` → `conținut: OK`. Commit doar cu fișierele din `content/calendar/sfinti/`. Nu faci commit pe `master`.

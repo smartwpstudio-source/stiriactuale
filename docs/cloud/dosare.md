@@ -6,6 +6,8 @@ Un „dosar” e o pagină de fond despre un subiect care revine mereu în știr
 
 Același format ca ghidurile (vezi `docs/cloud/ghiduri.md`, secțiunea Format), în `content/ghiduri/<slug>.json`, cu `"category": "dosare"`. Un singur Pull Request, titlu „Dosare — lot 1”. Nu modifici alte fișiere, nu faci commit pe `master`. Înainte de PR: `npm ci && npm run check:content` → `conținut: OK`.
 
+**Ramura:** pornești din `cf-migration` și deschizi PR-ul cu baza `cf-migration`, nu `master`: site-ul live se publică doar din `cf-migration` (detalii în `docs/cloud/ghiduri.md`, „Ramura și publicarea”).
+
 ## Structura unui dosar (1.000–2.000 de cuvinte)
 
 1. **Pe scurt** (3–4 fraze): ce e subiectul și de ce îl afectează pe cititor.

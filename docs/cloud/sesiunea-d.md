@@ -2,6 +2,8 @@
 
 Formatul ghidurilor: `docs/cloud/ghiduri.md` (secțiunea Format și regulile de conținut). Fiecare sarcină = un Pull Request separat. Înainte de fiecare PR: `npm ci && npm run check:content` → `conținut: OK`. Nu modifici alte fișiere decât cele indicate. Nu faci commit pe `master`. Doar informații verificate acum, pe surse oficiale.
 
+**Ramura:** pornești din `cf-migration` și deschizi PR-ul cu baza `cf-migration`, nu `master`: site-ul live se publică doar din `cf-migration` (detalii în `docs/cloud/ghiduri.md`, „Ramura și publicarea”).
+
 ## Sarcina 1 — Lot 16: Israel, siguranță (URGENT, prima)
 
 Situația de securitate din regiune e actuală; diaspora din Israel e numeroasă. 3 ghiduri, `category: "diaspora"`, branch `ghiduri-lot-16`, PR „Ghiduri — lot 16 (Israel, siguranță)”:

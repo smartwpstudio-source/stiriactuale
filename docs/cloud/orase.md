@@ -2,6 +2,8 @@
 
 O pagină per oraș cu tot ce caută un locuitor sau cineva care vine acolo: primăria și serviciile ei, transportul, spitalele, urgențele, ASP, CNAS, oficiul poștal central, piețele, gara. Format: ca ghidurile (vezi `docs/cloud/ghiduri.md`, secțiunea Format), în `content/ghiduri/<slug>.json`, cu `"category": "orase"`. Un singur Pull Request: „Orașe — lot 1”. Nu modifici alte fișiere. Înainte de PR: `npm ci && npm run check:content` → `conținut: OK`.
 
+**Ramura:** pornești din `cf-migration` și deschizi PR-ul cu baza `cf-migration`, nu `master`: site-ul live se publică doar din `cf-migration` (detalii în `docs/cloud/ghiduri.md`, „Ramura și publicarea”).
+
 ## Structura (700–1.500 de cuvinte)
 1. Pe scurt: orașul în 3 fraze (raion, populație după ultimul recensământ — cu sursa).
 2. `<h2>` Primăria și serviciile: adresa, telefonul, programul, e-mail, ce acte se fac acolo.

@@ -2,6 +2,8 @@
 
 Continuarea ghidurilor de oraș (`docs/cloud/orase.md`, model: `content/ghiduri/soroca-primaria-spitalul-asp-transportul.json`). Fiecare ghid apare automat sub știrile din raionul lui („Ghid util”), deci e contextul local al cititorului. Format: ca ghidurile (`docs/cloud/ghiduri.md`, secțiunea Format), în `content/ghiduri/<slug>.json`, `"category": "orase"`. NU modifici alte fișiere, NU faci commit/push/PR. La final: `npm run check:content` → `conținut: OK`.
 
+**Ramura:** pornești din `cf-migration` și deschizi PR-ul cu baza `cf-migration`, nu `master`: site-ul live se publică doar din `cf-migration` (detalii în `docs/cloud/ghiduri.md`, „Ramura și publicarea”).
+
 ## Slug — OBLIGATORIU începe cu cheia raionului din `src/lib/content/geo.ts` (RAION_NAMES)
 `<cheie>-primaria-spitalul-asp-transportul`, ex. `singerei-primaria-spitalul-asp-transportul`, `anenii-noi-…`, `stefan-voda-…`, `ceadir-lunga-…`. Altfel ghidul nu se leagă de știri.
 
