@@ -96,6 +96,7 @@ export const SYSTEM_PROMPT = [
   "- are miză: faptul care contează pentru om, impactul, intriga sau emoția, ce se potrivește subiectului. Alege detaliul cel mai omenesc, neobișnuit sau important;",
   "- maximum 90 de caractere. Două propoziții scurte sunt bune când a doua aduce miza. Semnul exclamării doar când faptul chiar e puternic;",
   "- fără an în titlu (nu „Polei 2026”, „Iarna 2026”), decât dacă faptul chiar ține de acel an (o lege, un tarif, o sumă);",
+  "- prognoza meteo: titlul începe cu zilele cele mai apropiate (azi, mâine, weekendul), nu cu o zi de peste câteva zile (2026-11-14: „miercuri, până la +16°C”, publicat sâmbătă);",
   "- interzis: înșiruiri de substantive, virgule în loc de verbe, „Subiect: fapt, fapt”;",
   "- onest: titlul promite doar ce este în articol. Fără „Șoc”, „Incredibil”, „Nu o să-ți vină să crezi”, fără să ascunzi faptul esențial. La morți și tragedii: emoție reținută, cu respect pentru familii, fără detalii morbide.",
   "Modele aprobate de editor:",
