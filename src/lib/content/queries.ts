@@ -4,6 +4,7 @@ import { articles as t } from "@/lib/pipeline/db/schema";
 import type { Article, Section, Topic } from "./types";
 import type { ImpactType } from "@/lib/impact-types";
 import { youtubeThumb } from "@/lib/video";
+import type { RuNews } from "@/lib/ru-news-public";
 
 // Doar articole "published" — draft-urile stau în /admin. Listele nu citesc
 // corpul articolului (bodyHtml): cu arhiva WordPress sunt mii de rânduri, iar
@@ -218,9 +219,11 @@ export async function getRuArticle(slug: string) {
   return row?.ru ? { article: mapRow(row), ru: row.ru } : undefined;
 }
 
+// Doar titlul și lead-ul traducerii, nu tot textul rusesc (2026-11-15: harta ru.xml cerea 5.000 de
+// traduceri întregi — ~7 MB din Supabase la fiecare refacere, de câteva ori pe oră)
 export async function listRuArticles(limit: number) {
   const rows = await getDb()
-    .select({ ...listColumns, ru: t.ru, ruUpdatedAt: t.ruUpdatedAt })
+    .select({ ...cardColumns, ru: sql<RuNews>`jsonb_build_object('title', ${t.ru}->'title', 'lead', ${t.ru}->'lead')`, ruUpdatedAt: t.ruUpdatedAt })
     .from(t)
     .where(and(where({}), isNotNull(t.ru)))
     .orderBy(desc(t.publishedAt))
@@ -270,6 +273,14 @@ export async function getHubCounts() {
     if (r.country) countries[r.country] = (countries[r.country] ?? 0) + r.n;
   }
   return { localities, countries };
+}
+
+export async function getRuSitemapArticles() {
+  return getDb()
+    .select({ slug: t.slug, publishedAt: t.publishedAt })
+    .from(t)
+    .where(and(where({}), isNotNull(t.ru)))
+    .orderBy(desc(t.publishedAt));
 }
 
 export async function getSitemapArticles() {
