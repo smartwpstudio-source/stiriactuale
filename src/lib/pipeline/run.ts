@@ -239,8 +239,9 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       .from(articles)
       .where(and(isNull(articles.wpId), eq(articles.status, "published"), gte(articles.publishedAt, new Date(Date.now() - 7 * 86400_000))))
       .orderBy(desc(articles.publishedAt))
-      .limit(80);
-    const recentArticles = recentRows.map((r) => ({
+      .limit(400);
+    // clasificatorul (lot mare) vede doar ultimele 80; verificarea per știre de mai jos, toată săptămâna
+    const recentArticles = recentRows.slice(0, 80).map((r) => ({
       id: r.id,
       title: r.title,
       // doar „pe scurt” se completează (48h); știrea completă primește continuări
@@ -273,22 +274,22 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     });
     summary.candidatesClassified = scored.length;
 
-    // a doua verificare de dubluri, per știre, față de articolele din ultimele
-    // 48h (recent-duplicate.ts) — locul unei dubluri îl ia următoarea știre
-    const recent48 = recentRows
-      .filter((r) => r.publishedAt.getTime() > Date.now() - 48 * 3600_000)
-      .map((r) => ({ id: r.id, title: r.title, lead: r.lead }));
+    // a doua verificare de dubluri, per știre, față de articolele din ultimele 7 zile
+    // (recent-duplicate.ts) — locul unei dubluri îl ia următoarea știre. Până pe 2026-11-15
+    // doar 48h: Novosiolovca (13 nov, 10:00) a ieșit din fereastră la 10:00 și s-a scris din nou
+    // la 10:06; operațiunea „Pieton” (3 și 10 nov) s-a publicat a treia oară.
+    const recentWeek = recentRows.map((r) => ({ id: r.id, title: r.title, lead: r.lead }));
     const toPublish = scored.filter((c) => c.group.manual);
     // Linkul editorului cu o știre deja publicată nu se scrie a doua oară: completează articolul
     // (2026-11-10: drumul spre piața din Strășeni, publicat automat la 20:46 și din link la 20:57)
     for (const c of [...toPublish]) {
       if (forced) break;
-      const v = await checkRecent(c.group, recent48);
+      const v = await checkRecent(c.group, recentWeek);
       const id = v.duplicateOf ?? v.updateOf;
       if (id === undefined) continue;
       // verificat separat: Haiku a arătat odată spre alt articol din listă și apeductul de la
       // Gîrbova a rescris știrea despre e-mailurile false de la Fisc (2026-11-11)
-      const old = recent48.find((r) => r.id === id);
+      const old = recentWeek.find((r) => r.id === id);
       if (!old || !(await sameEvent(old, c.group))) {
         console.log(`Linkul editorului NU e articolul ${id} (alt eveniment), se publică: ${c.group.representativeTitle.slice(0, 80)}`);
         continue;
@@ -337,12 +338,12 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       if (!hasAudience(c) && pageOnly >= maxPageOnly) continue;
       // între știrile aceleiași rulări nu există „continuare”: e același fapt, din alte surse
       // (2026-11-03: Dodon la CSJ de două ori, ambele luate drept continuări ale știrii de dimineață)
-      const sameRun = await checkRecent(c.group, recent48.filter((r) => r.id < 0));
+      const sameRun = await checkRecent(c.group, recentWeek.filter((r) => r.id < 0));
       if (sameRun.duplicateOf || sameRun.continuesId) {
         console.log(`Aceeași știre în rulare, nescrisă: ${c.group.representativeTitle.slice(0, 80)}`);
         continue;
       }
-      const v = await checkRecent(c.group, recent48.filter((r) => r.id > 0));
+      const v = await checkRecent(c.group, recentWeek.filter((r) => r.id > 0));
       if (v.duplicateOf) {
         console.log(`Dublură a articolului ${v.duplicateOf}, nescrisă: ${c.group.representativeTitle.slice(0, 80)}`);
         continue;
@@ -355,7 +356,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       }
       if (v.continuesId && c.classification.continuesId === undefined) {
         c.classification.continuesId = v.continuesId;
-        c.classification.continuesTitle = recent48.find((r) => r.id === v.continuesId)?.title;
+        c.classification.continuesTitle = recentWeek.find((r) => r.id === v.continuesId)?.title;
       }
       await checkContinuation(c);
       // ghidul nu mai oprește nicio știre (decizia editorului, 2026-11-03: se publicau știri
@@ -368,7 +369,7 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       if (!hasAudience(c)) pageOnly++;
       // și știrile alese în aceeași rulare intră în comparație (2026-10-05:
       // două articole despre aceeași tranșă UE, scrise în aceeași rulare)
-      recent48.unshift({ id: -autoTaken, title: c.group.representativeTitle, lead: c.group.items[0]?.summary.slice(0, 300) ?? "" });
+      recentWeek.unshift({ id: -autoTaken, title: c.group.representativeTitle, lead: c.group.items[0]?.summary.slice(0, 300) ?? "" });
     }
 
     const [usedImageIds, officialItems] = await Promise.all([loadUsedImageIds(), toPublish.length ? loadOfficialItems() : []]);
