@@ -16,6 +16,7 @@ import { setGuideRuleMode, setPipelineEnabled } from "@/lib/pipeline/settings";
 import { deleteFromChannel } from "@/lib/telegram";
 import { deleteFromPage, lastFacebookError, postToPage } from "@/lib/facebook";
 import { articleUrl } from "@/lib/content/url";
+import { ALWAYS, articlePaths } from "@/lib/content/revalidate-paths";
 import { toEmbedUrl, toPostEmbedUrl } from "@/lib/video";
 import { readVideoSource } from "@/lib/video-source";
 import { absoluteUrl } from "@/lib/seo";
@@ -39,10 +40,17 @@ export async function logoutAction() {
   redirect("/admin/login/");
 }
 
-// Paginile publice au ISR (60-300s); la orice schimbare se regenerează tot —
-// volumul (zeci de articole/zi) face asta ieftin.
-function refreshSite() {
-  revalidatePath("/", "layout");
+// După o schimbare: listele principale și paginile articolului (RO, RU, raion, țară, subiecte).
+// NU tot site-ul: revalidatePath("/", "layout") făcea ca fiecare articol din arhivă să se refacă
+// din bază la vizita următoare a unui robot (traficul Supabase, 2026-11-15).
+type Paths = Parameters<typeof articlePaths>[0];
+function refreshSite(...changed: (Paths | undefined)[]) {
+  for (const p of new Set([...ALWAYS, ...changed.flatMap((a) => (a ? articlePaths(a) : []))])) revalidatePath(p);
+}
+const pathCols = { slug: articles.slug, section: articles.section, locality: articles.locality, country: articles.country, topics: articles.topics };
+async function refreshById(id: number) {
+  const [a] = await getDb().select(pathCols).from(articles).where(eq(articles.id, id));
+  refreshSite(a);
 }
 
 export async function saveArticle(id: number, formData: FormData) {
@@ -62,7 +70,7 @@ export async function saveArticle(id: number, formData: FormData) {
   const title = String(formData.get("title")).trim();
   const leadText = String(formData.get("lead")).trim();
   const bodyHtml = sanitizeBody(String(formData.get("body")));
-  const [old] = await getDb().select({ title: articles.title, leadText: articles.leadText, bodyHtml: articles.bodyHtml }).from(articles).where(eq(articles.id, id));
+  const [old] = await getDb().select({ ...pathCols, title: articles.title, leadText: articles.leadText, bodyHtml: articles.bodyHtml }).from(articles).where(eq(articles.id, id));
   // textul s-a schimbat: varianta rusă dispare și se retraduce la rularea următoare
   const ruReset = old && (old.title !== title || old.leadText !== leadText || old.bodyHtml !== bodyHtml) ? { ru: null, ruUpdatedAt: null } : {};
 
@@ -82,7 +90,8 @@ export async function saveArticle(id: number, formData: FormData) {
       country: section === "diaspora" ? country : null,
     })
     .where(eq(articles.id, id));
-  refreshSite();
+  // și adresa veche, dacă s-a schimbat raionul sau rubrica
+  refreshSite(old, old && { ...old, section, locality: section === "regiuni" ? locality : null, country: section === "diaspora" ? country : null });
   redirect(`/admin/articol/${id}/?ok=1`);
 }
 
@@ -100,7 +109,7 @@ export async function setStatus(id: number, status: "draft" | "published") {
     // aprobat după 5 ore apare îngropat în listă
     .set(status === "published" ? { status, publishedAt: new Date() } : { status, telegramMessageId: null, facebookPostId: null })
     .where(eq(articles.id, id));
-  refreshSite();
+  await refreshById(id);
 
   if (status === "published") await announcePublished(id, "manual");
   redirect(`/admin/articol/${id}/`);
@@ -113,7 +122,7 @@ export async function setFeatured(id: number, on: boolean) {
     .update(articles)
     .set({ featuredUntil: on ? new Date(Date.now() + 6 * 3600_000) : null })
     .where(eq(articles.id, id));
-  refreshSite();
+  await refreshById(id);
   redirect(`/admin/articol/${id}/`);
 }
 
@@ -142,12 +151,12 @@ export async function deleteArticle(id: number) {
   const [a] = await getDb()
     .delete(articles)
     .where(eq(articles.id, id))
-    .returning({ tg: articles.telegramMessageId, fb: articles.facebookPostId, hash: articles.normalizedTitleHash, urls: articles.sourceUrls });
+    .returning({ ...pathCols, tg: articles.telegramMessageId, fb: articles.facebookPostId, hash: articles.normalizedTitleHash, urls: articles.sourceUrls });
   // pipeline-ul nu-l mai refăcea din aceleași surse
   if (a) await rememberDeleted({ hash: a.hash, urls: a.urls });
   if (a?.tg) await deleteFromChannel(a.tg);
   if (a?.fb) await deleteFromPage(a.fb);
-  refreshSite();
+  refreshSite(a);
   redirect("/admin/");
 }
 
@@ -161,11 +170,7 @@ function imageMeta(formData: FormData) {
 
 // După înlocuirea pozei: tot site-ul (listele) și explicit pagina articolului.
 // Poza veche rămâne în R2 (nu se șterg fișiere).
-async function refreshArticle(id: number) {
-  refreshSite();
-  const [a] = await getDb().select().from(articles).where(eq(articles.id, id));
-  if (a) revalidatePath(articleUrl({ ...a, locality: a.locality ?? undefined, country: a.country ?? undefined }));
-}
+const refreshArticle = refreshById;
 
 // Poză din stoc (Magnific), și la articolele deja publicate.
 export async function replaceImage(id: number, formData: FormData) {
@@ -200,7 +205,7 @@ export async function uploadImage(id: number, formData: FormData) {
 export async function removeImage(id: number) {
   await requireAdmin();
   await getDb().update(articles).set({ imageUrl: null, imageResourceId: null, imageCredit: null, imageAltText: null }).where(eq(articles.id, id));
-  refreshSite();
+  await refreshById(id);
   redirect(`/admin/articol/${id}/`);
 }
 
@@ -427,6 +432,6 @@ export async function saveImpact(id: number, formData: FormData) {
       : null;
   // blocul tradus ar rămâne vechi: varianta rusă se reface la rularea următoare
   await getDb().update(articles).set({ impact, ru: null, ruUpdatedAt: null }).where(eq(articles.id, id));
-  refreshSite();
+  await refreshById(id);
   redirect(`/admin/articol/${id}/?ok=1`);
 }

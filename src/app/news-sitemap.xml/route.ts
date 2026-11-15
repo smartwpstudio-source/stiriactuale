@@ -1,4 +1,4 @@
-import { and, desc, eq, gte, ne } from "drizzle-orm";
+import { and, desc, eq, gte, ne, sql } from "drizzle-orm";
 import { getDb } from "@/lib/pipeline/db/client";
 import { articles } from "@/lib/pipeline/db/schema";
 import { articleUrl } from "@/lib/content/url";
@@ -21,7 +21,8 @@ export async function GET() {
       country: articles.country,
       title: articles.title,
       publishedAt: articles.publishedAt,
-      ru: articles.ru,
+      // doar titlul rusesc, nu toată traducerea (refăcut la 10 minute, 2026-11-15)
+      ruTitle: sql<string | null>`${articles.ru}->>'title'`,
     })
     .from(articles)
     .where(
@@ -50,7 +51,7 @@ ${rows
   .flatMap((a) => [
     entry(articleUrl({ ...a, locality: a.locality ?? undefined, country: a.country ?? undefined }), "ro", a.publishedAt, a.title),
     // varianta rusă, când există și știrile rusești sunt publice
-    ...(RU_NEWS_PUBLIC && a.ru ? [entry(ruNewsPath(a.slug), "ru", a.publishedAt, a.ru.title)] : []),
+    ...(RU_NEWS_PUBLIC && a.ruTitle ? [entry(ruNewsPath(a.slug), "ru", a.publishedAt, a.ruTitle)] : []),
   ])
   .join("\n")}
 </urlset>`;

@@ -3,7 +3,7 @@ import { AUTHORS, analysisPath, authorPath, getAnalyses } from "@/lib/content/an
 import { HISTORY_PATH, dayPath, historyDays } from "@/lib/history";
 import { COMPLAINT_MODELS } from "@/lib/complaint-models";
 import type { MetadataRoute } from "next";
-import { getHubCounts, getSitemapArticles, listRuArticles } from "@/lib/content/queries";
+import { getHubCounts, getRuSitemapArticles, getSitemapArticles } from "@/lib/content/queries";
 import { RU_NEWS_PUBLIC, ruNewsPath } from "@/lib/ru-news-public";
 import { getGuides } from "@/lib/content/guides";
 import { getRecipes, recipePath } from "@/lib/content/recipes";
@@ -33,9 +33,9 @@ export default async function sitemap(props: { id: Promise<string> }): Promise<M
   const part = await props.id;
   if (part === "ru") {
     // știrile în rusă: abia după activare (ru-news-public.ts)
-    return (RU_NEWS_PUBLIC ? await listRuArticles(5000) : []).map(({ article }) => ({
-      url: `${SITE_URL}${ruNewsPath(article.slug)}`,
-      lastModified: article.publishedAt,
+    return (RU_NEWS_PUBLIC ? await getRuSitemapArticles() : []).map((a) => ({
+      url: `${SITE_URL}${ruNewsPath(a.slug)}`,
+      lastModified: a.publishedAt,
       priority: 0.6,
     }));
   }
