@@ -1,6 +1,3 @@
-import { and, desc, gte, isNull } from "drizzle-orm";
-import { getDb } from "@/lib/pipeline/db/client";
-import { articles, guideChecks } from "@/lib/pipeline/db/schema";
 import { stripDiacritics } from "@/lib/pipeline/text-normalize";
 
 // „Ghiduri care lipsesc” din /admin (regula „știre cu ghid”, guide-rule.ts):
@@ -55,15 +52,4 @@ export function missingGuidesReport(checks: GuideCheckRow[], publishedAt: Date[]
     if (c.rejected) r.rejected++;
   }
   return { topics, days: [...days.values()].sort((a, b) => b.day.localeCompare(a.day)) };
-}
-
-// ultimele 7 zile: verificările și articolele pipeline-ului (fără arhiva WordPress)
-export async function loadMissingGuidesReport() {
-  const since = new Date(Date.now() - 7 * 86400_000);
-  const db = getDb();
-  const [checks, published] = await Promise.all([
-    db.select().from(guideChecks).where(gte(guideChecks.createdAt, since)).orderBy(desc(guideChecks.createdAt)),
-    db.select({ createdAt: articles.createdAt }).from(articles).where(and(isNull(articles.wpId), gte(articles.createdAt, since))),
-  ]);
-  return missingGuidesReport(checks, published.map((a) => a.createdAt));
 }

@@ -12,7 +12,7 @@ import { fetchArticle } from "@/lib/pipeline/fulltext";
 import { COUNTRY_NAMES, RAION_NAMES } from "@/lib/content/geo";
 import { logIn, logOut, requireAdmin } from "@/lib/admin/auth";
 import { dispatchPipeline } from "@/lib/pipeline-dispatch";
-import { setGuideRuleMode, setPipelineEnabled } from "@/lib/pipeline/settings";
+import { setPipelineEnabled } from "@/lib/pipeline/settings";
 import { deleteFromChannel } from "@/lib/telegram";
 import { deleteFromPage, lastFacebookError, postToPage } from "@/lib/facebook";
 import { articleUrl } from "@/lib/content/url";
@@ -252,13 +252,6 @@ export async function removeBodyPhoto(id: number, src: string) {
 export async function togglePipeline(on: boolean) {
   await requireAdmin();
   await setPipelineEnabled(on);
-  redirect("/admin/");
-}
-
-// Regula „știre cu ghid”: raport (se publică tot, se notează) / strict
-export async function setGuideRule(mode: "raport" | "strict") {
-  await requireAdmin();
-  await setGuideRuleMode(mode === "strict" ? "strict" : "raport");
   redirect("/admin/");
 }
 
