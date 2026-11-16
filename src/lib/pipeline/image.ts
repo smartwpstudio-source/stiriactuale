@@ -20,7 +20,9 @@ export interface ArticleImage {
 // 1. Stoc gratuit: Pexels, apoi Pixabay (din 2026-11-16; Magnific s-a suspendat, cheia
 //    merge până pe 30 noiembrie). Primul nefolosit încă pe site — aceeași poză pe două
 //    articole arată a șablon. Id-ul Pixabay se ține negativ, ca să nu se ciocnească cu Pexels.
-// 2. Altfel, generare Flux 2 Turbo prin Magnific, doar cât mai există cheia.
+// 2. Altfel, generare cu Gemini („Nano Banana 2 Lite”, creditul Google din 2026-11-16, ~3 cenți
+//    poza; fără limită pe zi — e ultima variantă, după poza reală, carduri și stoc). Fără cheia
+//    Gemini, Flux 2 Turbo prin Magnific, cât mai există cheia (până pe 30 noiembrie).
 // Fișierul se copiază în R2 (media.stiriactuale.info, src/lib/media.ts): licențele cer
 // descărcarea, nu linkul direct. Fără chei sau la eroare -> articol fără imagine, nu eșec.
 function magnificHeaders(): Record<string, string> | null {
@@ -112,10 +114,11 @@ async function pickStock<T extends { id: number; title: string }>(subject: strin
 // nu poate fi luat drept personalul spitalului). Titlul pozei nu ajunge („Caucasian couple…”
 // avea în imagine și altă persoană), așa că Haiku vede pozele. Fără verdict, nicio poză.
 const PEOPLE_CHECK = 5;
-async function fitsPlace<T extends { id: number; preview: string }>(photos: T[], subject: string): Promise<T[]> {
+async function fitsPlace<T extends { id: number; preview: string; data?: string }>(photos: T[], subject: string): Promise<T[]> {
   const got = (
     await Promise.all(
       photos.slice(0, PEOPLE_CHECK).map(async (p) => {
+        if (p.data) return { p, data: p.data }; // poza generată, deja în memorie
         const res = await fetch(p.preview, { signal: AbortSignal.timeout(20_000) });
         if (!res.ok || res.headers.get("content-type") !== "image/jpeg") return null;
         return { p, data: Buffer.from(await res.arrayBuffer()).toString("base64") };
@@ -174,10 +177,20 @@ export async function findArticleImage(
   } catch (err) {
     logImageError(err);
   }
+  if (process.env.GEMINI_API_KEY) {
+    try {
+      // aceeași verificare și pentru poza generată: dacă nu trece, se trece la cardul temei
+      const jpeg = await generateGemini(imagePrompt);
+      if (!(await fitsPlace([{ id: 0, preview: "", data: jpeg.toString("base64") }], subject)).length) return null;
+      return { url: await putMedia(`${AI_IMAGE_PREFIX}${slug}.jpg`, jpeg, "image/jpeg"), resourceId: null };
+    } catch (err) {
+      logImageError(err);
+      return null;
+    }
+  }
   const headers = magnificHeaders();
   if (!headers) return null;
   try {
-    // aceeași verificare și pentru poza generată: dacă nu trece, articolul rămâne fără poză
     const generated = await generate(imagePrompt, headers);
     if (!(await fitsPlace([{ id: 0, preview: generated }], subject)).length) return null;
     return { url: await copyToBlob(generated, `${AI_IMAGE_PREFIX}${slug}.jpg`), resourceId: null };
@@ -190,6 +203,27 @@ export async function findArticleImage(
 // Niciodată cheia sau header-ele în log — doar mesajul.
 function logImageError(err: unknown) {
   console.error(`Poză: eșuată — ${err instanceof Error ? err.message : String(err)}`);
+}
+
+const GEMINI_IMAGE_MODEL = "gemini-3.1-flash-lite-image";
+const NO_TEXT =
+  "Realistic editorial news photograph, natural light. Absolutely no text, letters, numbers, signs, posters with writing or logos anywhere in the image. No identifiable faces, no real or famous people, no politicians.";
+
+async function generateGemini(prompt: string): Promise<Buffer> {
+  const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_IMAGE_MODEL}:generateContent`, {
+    method: "POST",
+    headers: { "x-goog-api-key": process.env.GEMINI_API_KEY!, "Content-Type": "application/json" },
+    signal: AbortSignal.timeout(GENERATION_TIMEOUT_MS),
+    body: JSON.stringify({
+      contents: [{ parts: [{ text: `${prompt}. ${NO_TEXT}` }] }],
+      generationConfig: { responseModalities: ["IMAGE"], imageConfig: { aspectRatio: "16:9" } },
+    }),
+  });
+  if (!res.ok) throw new Error(`Gemini HTTP ${res.status}`);
+  const r = (await res.json()) as { candidates?: { content?: { parts?: { inlineData?: { data?: string } }[] } }[] };
+  const b64 = r.candidates?.[0]?.content?.parts?.find((p) => p.inlineData?.data)?.inlineData?.data;
+  if (!b64) throw new Error("Gemini: fără imagine în răspuns");
+  return Buffer.from(b64, "base64");
 }
 
 async function generate(prompt: string, headers: Record<string, string>): Promise<string> {
