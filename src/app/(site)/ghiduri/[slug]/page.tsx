@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: PageProps<"/ghiduri/[slug]">)
   const g = await getGuide((await params).slug);
   if (!g) return {};
   const url = `/ghiduri/${g.slug}/`;
-  const image = `/og/?${new URLSearchParams({ t: g.title, s: "Ghid" })}`;
+  const image = g.image ?? `/og/?${new URLSearchParams({ t: g.title, s: "Ghid" })}`;
   const ru = (await ruSlugs()).has(g.slug);
   return {
     title: g.title,
@@ -83,7 +83,7 @@ export default async function GuidePage({ params }: PageProps<"/ghiduri/[slug]">
       <Breadcrumb items={[{ label: "Acasă", href: "/" }, { label: "Ghiduri", href: "/ghiduri/" }, { label: GUIDE_CATEGORIES[g.category] }]} />
       <h1 className="mt-3 font-serif text-3xl leading-tight text-ink sm:text-4xl lg:text-[2.75rem]">{g.title}</h1>
       <p className="mt-4 font-mono text-sm text-sub">
-        Ghid · actualizat la {updated}
+        {g.partner ? `Material de partener · ${g.partner}` : `Ghid · actualizat la ${updated}`}
         {(await ruSlugs()).has(g.slug) && (
           <>
             {" · "}
@@ -95,6 +95,10 @@ export default async function GuidePage({ params }: PageProps<"/ghiduri/[slug]">
       </p>
       <ShareButtons url={url} title={g.title} />
       <p className="mt-6 text-xl font-medium leading-relaxed text-ink">{g.description}</p>
+      {g.image && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={g.image} alt={g.title} width={1200} height={675} className="mt-6 w-full rounded" />
+      )}
       {(await getGuideCalculators(g.slug, g.title, g.description)).map((c) => (
         <RelatedCalculator key={c.slug} calc={c} />
       ))}
@@ -138,6 +142,11 @@ export default async function GuidePage({ params }: PageProps<"/ghiduri/[slug]">
         </section>
       )}
 
+      {g.partner ? (
+        <aside className="mt-8 rounded border border-line bg-white p-4 text-sm text-sub">
+          Material de partener, realizat împreună cu {g.partner}.
+        </aside>
+      ) : (
       <aside className="mt-8 rounded border border-line bg-white p-4 text-sm text-sub">
         <p>
           Informațiile sunt verificate la data actualizării, pe sursele oficiale de mai jos. Regulile, taxele și
@@ -155,6 +164,7 @@ export default async function GuidePage({ params }: PageProps<"/ghiduri/[slug]">
           ))}
         </p>
       </aside>
+      )}
 
       <TelegramCta />
     </article>

@@ -68,10 +68,12 @@ async function main() {
     }
     if (!(g.category in GUIDE_CATEGORIES)) fail(file, `categorie necunoscută: ${g.category}`);
     checkDate(file, g.updated);
-    checkSources(file, g.sources, 2, true);
+    // materialul de partener: sursa e partenerul, fără minimul de 600 de cuvinte al ghidurilor redacției
+    if (g.partner) checkSources(file, g.sources, 1, false);
+    else checkSources(file, g.sources, 2, true);
     const body = String(g.bodyHtml ?? "");
     const words = body.replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;
-    if (words < 600) fail(file, `prea scurt: ${words} cuvinte (minim 600)`);
+    if (words < (g.partner ? 300 : 600)) fail(file, `prea scurt: ${words} cuvinte (minim ${g.partner ? 300 : 600})`);
     if ((body.match(/<h2>/g) ?? []).length < 3) fail(file, "minim 3 subtitluri <h2>");
     if (/<h1|<script|<style|<iframe|style=|onclick|<img/i.test(body)) {
       fail(file, "HTML nepermis (h1, script, style, iframe, img, atribute inline)");
@@ -95,7 +97,8 @@ async function main() {
     if (!(g.category in GUIDE_CATEGORIES)) fail(file, `categorie necunoscută: ${g.category}`);
     if (!/[а-яё]/i.test(String(g.bodyHtml))) fail(file, "textul nu e în rusă");
     checkDate(file, g.updated);
-    checkSources(file, g.sources, 2, true);
+    if (g.partner) checkSources(file, g.sources, 1, false);
+    else checkSources(file, g.sources, 2, true);
     const body = String(g.bodyHtml ?? "");
     if ((body.match(/<h2>/g) ?? []).length < 3) fail(file, "minim 3 subtitluri <h2>");
     if (/<h1|<script|<style|<iframe|style=|onclick|<img/i.test(body)) fail(file, "HTML nepermis");

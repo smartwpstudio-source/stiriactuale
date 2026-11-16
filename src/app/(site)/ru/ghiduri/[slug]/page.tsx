@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: PageProps<"/ru/ghiduri/[slug]
   const g = await getGuideRu((await params).slug);
   if (!g) return {};
   const url = ruPath(g.slug);
-  const image = `/og/?${new URLSearchParams({ t: g.title, s: "Справочник" })}`;
+  const image = g.image ?? `/og/?${new URLSearchParams({ t: g.title, s: "Справочник" })}`;
   return {
     title: g.title,
     description: g.description,
@@ -84,7 +84,7 @@ export default async function RuGuidePage({ params }: PageProps<"/ru/ghiduri/[sl
       </nav>
       <h1 className="mt-3 font-serif text-3xl leading-tight text-ink sm:text-4xl lg:text-[2.75rem]">{g.title}</h1>
       <p className="mt-4 font-mono text-sm text-sub">
-        Справочник · обновлено {updated}
+        {g.partner ? `Партнёрский материал · ${g.partner}` : `Справочник · обновлено ${updated}`}
         {!g.ruOnly && (
           <>
             {" · "}
@@ -96,6 +96,10 @@ export default async function RuGuidePage({ params }: PageProps<"/ru/ghiduri/[sl
       </p>
       <ShareButtons url={url} title={g.title} />
       <p className="mt-6 text-xl font-medium leading-relaxed text-ink">{g.description}</p>
+      {g.image && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={g.image} alt={g.title} width={1200} height={675} className="mt-6 w-full rounded" />
+      )}
       {/* calculatorul și modelul de reclamație, ca la ghidul românesc (potrivirea după textul RO) */}
       {await (async () => {
         const ro = g.ruOnly ? undefined : await getGuide(g.slug);
@@ -138,6 +142,11 @@ export default async function RuGuidePage({ params }: PageProps<"/ru/ghiduri/[sl
 
       {place && <PlaceInfoBox info={place} lang="ru" />}
 
+      {g.partner ? (
+        <aside className="mt-8 rounded border border-line bg-white p-4 text-sm text-sub">
+          Партнёрский материал, подготовлен совместно с {g.partner}.
+        </aside>
+      ) : (
       <aside className="mt-8 rounded border border-line bg-white p-4 text-sm text-sub">
         <p>
           Информация проверена на дату обновления по официальным источникам ниже. Правила, сборы и сроки могут меняться —
@@ -155,6 +164,7 @@ export default async function RuGuidePage({ params }: PageProps<"/ru/ghiduri/[sl
           ))}
         </p>
       </aside>
+      )}
     </article>
     </WithSideAd>
   );

@@ -12,9 +12,14 @@ export type GuideRu = Guide & { ruOnly?: boolean };
 // o dată pe proces în producție, citite pe rând (EMFILE — vezi guides.ts)
 let cache: Promise<GuideRu[]> | undefined;
 
-export function getGuidesRu(): Promise<GuideRu[]> {
+export function getAllGuidesRu(): Promise<GuideRu[]> {
   if (process.env.NODE_ENV !== "production") return loadGuidesRu();
   return (cache ??= loadGuidesRu().catch((e) => ((cache = undefined), Promise.reject(e))));
+}
+
+// fără materialele de partener (vezi Guide.partner)
+export async function getGuidesRu(): Promise<GuideRu[]> {
+  return (await getAllGuidesRu()).filter((g) => !g.partner);
 }
 
 function loadGuidesRu(): Promise<GuideRu[]> {
