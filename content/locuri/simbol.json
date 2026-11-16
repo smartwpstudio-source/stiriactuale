@@ -1666,5 +1666,3059 @@
         "alt": "Card: Securitate cibernetică — Hackeri și pedepse"
       }
     ]
+  },
+  {
+    "id": "ilustratie-foto-politia-control",
+    "name": "TEMĂ (foto simbol): Poliția la control în trafic: polițist care oprește o mașină, filtru pe drum, patrulă",
+    "keywords": "politia, politist, control in trafic, filtru, patrula, INP, oprit de politie, permis, amenda, sofer oprit",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-politia-control-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Polițist care verifică un șofer oprit pe un drum de țară, lângă mașina de patrulă"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-politia-control-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Polițist care verifică un șofer oprit pe un drum de țară, lângă mașina de patrulă"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-accident-rutier",
+    "name": "TEMĂ (foto simbol): Accident rutier: mașini avariate pe șosea, coliziune, intervenția poliției și a ambulanței",
+    "keywords": "accident rutier, accident, coliziune, tamponare, masini avariate, sosea, traseu, victime, impact",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-accident-rutier-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Două mașini avariate după un accident pe șosea, cu triunghi reflectorizant"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-accident-rutier-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Două mașini avariate după un accident pe șosea, cu triunghi reflectorizant"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-incendiu-casa",
+    "name": "TEMĂ (foto simbol): Incendiu la o casă: pompieri care sting o casă cuprinsă de flăcări, autospecială",
+    "keywords": "incendiu, casa arsa, a luat foc, pompieri, IGSU, flacari, incendiu la gospodarie, acoperis ars",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-incendiu-casa-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Pompieri care sting o casă de la țară cuprinsă de flăcări"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-incendiu-casa-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Pompieri care sting o casă de la țară cuprinsă de flăcări"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-incendiu-vegetatie",
+    "name": "TEMĂ (foto simbol): Incendiu de vegetație: iarbă uscată și margine de pădure în flăcări, fum",
+    "keywords": "incendiu de vegetatie, iarba uscata, arderea vegetatiei, incendiu de padure, foc in camp, fum, miristi",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-incendiu-vegetatie-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Iarbă uscată și marginea unei păduri în flăcări"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-incendiu-vegetatie-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Iarbă uscată și marginea unei păduri în flăcări"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-inundatie",
+    "name": "TEMĂ (foto simbol): Inundații: sat sau stradă sub apă, gospodării inundate după ploi",
+    "keywords": "inundatie, inundatii, apa a inundat, gospodarii inundate, ploi torentiale, viitura, revarsare, sat sub apa",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-inundatie-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Uliță de sat inundată, case și garduri în apă"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-inundatie-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Uliță de sat inundată, case și garduri în apă"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-cautari-salvatori",
+    "name": "TEMĂ (foto simbol): Căutări: salvatori care caută o persoană dispărută în pădure sau pe malul unui râu",
+    "keywords": "cautari, persoana disparuta, salvatori, IGSU, pompieri, cautare, disparut, a disparut, voluntari",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-cautari-salvatori-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Salvatori care caută o persoană dispărută pe malul unui râu"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-cautari-salvatori-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Salvatori care caută o persoană dispărută pe malul unui râu"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-ambulanta",
+    "name": "TEMĂ (foto simbol): Ambulanța: ambulanță în drum spre o urgență, medici de urgență",
+    "keywords": "ambulanta, urgenta, medici, serviciul de urgenta, 112, transportat la spital, echipaj medical, SAMU",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-ambulanta-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Ambulanță cu girofarul aprins pe un drum de țară"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-ambulanta-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Ambulanță cu girofarul aprins pe un drum de țară"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-inec-lac",
+    "name": "TEMĂ (foto simbol): Înec: salvatori și barcă de salvare pe un lac sau râu",
+    "keywords": "inec, s-a inecat, a murit inecat, lac, rau, iaz, scafandri, barca de salvare, salvatori, apa",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-inec-lac-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Salvatori pe malul unui lac, cu o barcă de salvare pe apă"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-inec-lac-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Salvatori pe malul unui lac, cu o barcă de salvare pe apă"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-explozie-gaz",
+    "name": "TEMĂ (foto simbol): Explozie de gaz: casă avariată după explozia unei butelii, pompieri",
+    "keywords": "explozie, explozie de gaz, butelie, scurgere de gaz, casa avariata, a explodat, gaz",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-explozie-gaz-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Casă cu peretele dărâmat după o explozie de gaz, butelie și pompieri"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-explozie-gaz-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Casă cu peretele dărâmat după o explozie de gaz, butelie și pompieri"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-furt-spargere",
+    "name": "TEMĂ (foto simbol): Furt prin spargere: ușă forțată la o casă, polițist care cercetează locul",
+    "keywords": "furt, spargere, hot, hoti, a furat, usa fortata, casa jefuita, furt din locuinta, jaf",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-furt-spargere-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Polițist cu lanterna la o ușă forțată a unei case"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-furt-spargere-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Polițist cu lanterna la o ușă forțată a unei case"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-braconaj-pescuit",
+    "name": "TEMĂ (foto simbol): Braconaj și pescuit ilegal: inspector care scoate plase de pescuit ilegale din râu",
+    "keywords": "braconaj, pescuit ilegal, plase, setci, inspectoratul pentru protectia mediului, vanat ilegal, braconier",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-braconaj-pescuit-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Inspector de mediu care scoate o plasă de pescuit ilegală de pe malul râului"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-braconaj-pescuit-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Inspector de mediu care scoate o plasă de pescuit ilegală de pe malul râului"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-taieri-ilegale",
+    "name": "TEMĂ (foto simbol): Tăieri ilegale de pădure: copaci tăiați, cioturi proaspete, urme de tractor",
+    "keywords": "taieri ilegale, defrisare, padure taiata, copaci taiati, Moldsilva, lemne, braconaj de lemn",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-taieri-ilegale-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Copaci tăiați ilegal într-o pădure, cioturi proaspete"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-taieri-ilegale-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Copaci tăiați ilegal într-o pădure, cioturi proaspete"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-caini-fara-stapan",
+    "name": "TEMĂ (foto simbol): Câini fără stăpân: haită de câini pe o stradă de sat sau de la periferie",
+    "keywords": "caini fara stapan, caini vagabonzi, haita, muscat de caine, atac de caini, maidanezi",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-caini-fara-stapan-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Haită de câini fără stăpân pe o stradă de sat"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-caini-fara-stapan-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Haită de câini fără stăpân pe o stradă de sat"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-contrabanda-tigari",
+    "name": "TEMĂ (foto simbol): Contrabandă de țigări: țigări descoperite la vamă într-un camion",
+    "keywords": "contrabanda, tigari de contrabanda, vama, Serviciul Vamal, camion, frontiera, marfuri nedeclarate",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-contrabanda-tigari-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Vameș care verifică baxuri cu țigări de contrabandă într-un camion"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-contrabanda-tigari-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Vameș care verifică baxuri cu țigări de contrabandă într-un camion"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-varstnici-singuri",
+    "name": "TEMĂ (foto simbol): Vârstnici singuri la sat: bătrâni rămași singuri acasă, îngrijire, singurătate",
+    "keywords": "varstnici, batrani, pensionari singuri, batrana, batranul, singuratate, ingrijire la domiciliu, sat, persoane in etate",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-varstnici-singuri-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Bătrână singură pe o bancă în curtea casei de la țară, toamna"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-varstnici-singuri-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Bătrână singură pe o bancă în curtea casei de la țară, toamna"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-centru-plasament",
+    "name": "TEMĂ (foto simbol): Copii în centre de plasament: copii lăsați fără grija părinților, internate, protecția copilului",
+    "keywords": "centru de plasament, copii orfani, copii fara ingrijire parinteasca, internat, protectia copilului, asistenta sociala",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-centru-plasament-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Copii într-o cameră a unui centru de plasament, văzuți din spate"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-centru-plasament-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Copii într-o cameră a unui centru de plasament, văzuți din spate"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-dizabilitati",
+    "name": "TEMĂ (foto simbol): Persoane cu dizabilități: accesibilitate, scaun cu rotile, drepturile persoanelor cu dizabilități",
+    "keywords": "dizabilitati, persoane cu dizabilitati, scaun cu rotile, accesibilitate, handicap, rampa, grad de dizabilitate",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-dizabilitati-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Bărbat în scaun cu rotile pe un trotuar cu borduri înalte"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-dizabilitati-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Bărbat în scaun cu rotile pe un trotuar cu borduri înalte"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-somaj-anofm",
+    "name": "TEMĂ (foto simbol): Șomaj și locuri de muncă: agenția de ocupare a forței de muncă, șomeri, angajare",
+    "keywords": "somaj, someri, ANOFM, locuri de munca, angajare, agentia de ocupare, ajutor de somaj, cautare de lucru",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-somaj-anofm-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Oameni care așteaptă într-o sală a agenției de ocupare a forței de muncă"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-somaj-anofm-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Oameni care așteaptă într-o sală a agenției de ocupare a forței de muncă"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-zilieri",
+    "name": "TEMĂ (foto simbol): Zilieri și muncă sezonieră: oameni la cules în vie sau la câmp, plata pe zi",
+    "keywords": "zilieri, munca sezoniera, cules, vie, struguri, muncitori agricoli, e-Zilier, munca la negru, munca pe zi",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-zilieri-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Zilieri care culeg struguri într-o vie"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-zilieri-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Zilieri care culeg struguri într-o vie"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-santier-constructii",
+    "name": "TEMĂ (foto simbol): Șantier și construcții: muncitori pe șantier, blocuri noi, accidente de muncă, inspecția muncii",
+    "keywords": "santier, constructii, muncitori, bloc nou, constructor, accident de munca, inspectia muncii, munca la negru",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-santier-constructii-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Muncitori cu căști pe un șantier de construcții, în oraș"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-santier-constructii-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Muncitori cu căști pe un șantier de construcții, în oraș"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-pensii-posta",
+    "name": "TEMĂ (foto simbol): Pensii la poștă: pensionari care primesc pensia la oficiul poștal, plata pensiilor",
+    "keywords": "pensii, pensionari, plata pensiei, posta, oficiul postal, Posta Moldovei, indexare, CNAS, pensia",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-pensii-posta-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Pensionari la ghișeul unui oficiu poștal de la sat"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-pensii-posta-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Pensionari la ghișeul unui oficiu poștal de la sat"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-spital-salon",
+    "name": "TEMĂ (foto simbol): Spital raional: salon de spital, pacienți internați, asistentă medicală",
+    "keywords": "spital, spital raional, pacienti, internat, salon, asistenta medicala, medici, sanatate, spitalizare",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-spital-salon-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Asistentă medicală într-un salon de spital raional, cu perfuzie"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-spital-salon-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Asistentă medicală într-un salon de spital raional, cu perfuzie"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-medic-de-familie",
+    "name": "TEMĂ (foto simbol): Medicul de familie: cabinet medical la sat, consultație, tensiometru, centrul de sănătate",
+    "keywords": "medic de familie, centrul de sanatate, cabinet medical, consultatie, tensiune, asistenta medicala, sat",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-medic-de-familie-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Cabinetul unui medic de familie de la sat, cu tensiometru pe masă"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-medic-de-familie-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Cabinetul unui medic de familie de la sat, cu tensiometru pe masă"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-farmacie",
+    "name": "TEMĂ (foto simbol): Farmacii și medicamente: prețuri la medicamente, medicamente compensate, farmacii",
+    "keywords": "farmacie, medicamente, medicamente compensate, preturi la medicamente, reteta, farmacist, CNAM",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-farmacie-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Rafturi de farmacie cu cutii de medicamente"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-farmacie-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Rafturi de farmacie cu cutii de medicamente"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-vaccinare",
+    "name": "TEMĂ (foto simbol): Vaccinare: vaccinuri, campanii de imunizare, asistentă care pregătește o seringă",
+    "keywords": "vaccin, vaccinare, imunizare, seringa, rujeola, gripa, vaccinul, campanie de vaccinare, ANSP",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-vaccinare-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Asistentă medicală care pregătește o seringă de vaccin"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-vaccinare-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Asistentă medicală care pregătește o seringă de vaccin"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-gripa-virusuri",
+    "name": "TEMĂ (foto simbol): Gripă și viroze: răceli, epidemie de gripă, bolnav la pat",
+    "keywords": "gripa, viroza, raceala, infectii respiratorii, epidemie, febra, bolnav, ANSP, cod de gripa, covid",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-gripa-virusuri-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Om bolnav de gripă în pat, cu ceai și șervețele"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-gripa-virusuri-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Om bolnav de gripă în pat, cu ceai și șervețele"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-stomatologie",
+    "name": "TEMĂ (foto simbol): Stomatologie: cabinet stomatologic, dentist, servicii stomatologice",
+    "keywords": "stomatolog, dentist, cabinet stomatologic, dinti, stomatologie, servicii stomatologice",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-stomatologie-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Cabinet stomatologic cu scaunul dentistului"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-stomatologie-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Cabinet stomatologic cu scaunul dentistului"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-maternitate",
+    "name": "TEMĂ (foto simbol): Maternitate și nou-născuți: nașteri, maternitate, mame și bebeluși",
+    "keywords": "maternitate, nou-nascut, nastere, bebelus, mama, nasteri, perinatal, sarcina, maternitatea",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-maternitate-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Nou-născut în pătuț, în salonul unei maternități"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-maternitate-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Nou-născut în pătuț, în salonul unei maternități"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-locul-crimei",
+    "name": "TEMĂ (foto simbol): Locul crimei: bandă de delimitare a poliției, polițiști la fața locului, omor, cadavru găsit",
+    "keywords": "omor, crima, locul crimei, cadavru, decedat gasit, banda politiei, ancheta, a ucis, a fost ucis, moarte suspecta",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-locul-crimei-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Bandă de delimitare a poliției în fața unui bloc, polițiști la fața locului"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-locul-crimei-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Bandă de delimitare a poliției în fața unui bloc, polițiști la fața locului"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-patrula-noaptea",
+    "name": "TEMĂ (foto simbol): Patrula poliției noaptea: polițiști în patrulare pe stradă, ordine publică",
+    "keywords": "patrula, patrulare, politisti, noaptea, ordine publica, siguranta pe strazi, inspectoratul de politie",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-patrula-noaptea-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Doi polițiști în patrulare noaptea pe o stradă din oraș"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-patrula-noaptea-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Doi polițiști în patrulare noaptea pe o stradă din oraș"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-masina-politiei-oras",
+    "name": "TEMĂ (foto simbol): Mașina poliției în oraș: echipaj de poliție, intervenție în oraș",
+    "keywords": "masina politiei, echipaj de politie, politia, interventie, oras, chisinau, patrula auto",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-masina-politiei-oras-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Mașină de poliție albă cu dungi albastre parcată pe o stradă din oraș"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-masina-politiei-oras-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Mașină de poliție albă cu dungi albastre parcată pe o stradă din oraș"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-masini-politie-noaptea",
+    "name": "TEMĂ (foto simbol): Mașini de poliție cu girofar noaptea: operațiune a poliției, filtru, urmărire",
+    "keywords": "masini de politie, girofar, noaptea, operatiune, urmarire, filtru, razie, interventie",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-masini-politie-noaptea-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Mai multe mașini de poliție cu girofarele aprinse noaptea pe un drum"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-masini-politie-noaptea-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Mai multe mașini de poliție cu girofarele aprinse noaptea pe un drum"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-catuse-retinere",
+    "name": "TEMĂ (foto simbol): Reținere: bărbat cu cătușe condus de un polițist, arest, reținut",
+    "keywords": "retinut, retinere, catuse, arestat, arest, banuit, suspect, a fost retinut, escortat",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-catuse-retinere-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Bărbat cu cătușe la mâini, condus de un polițist"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-catuse-retinere-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Bărbat cu cătușe la mâini, condus de un polițist"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-mascati-perchezitie",
+    "name": "TEMĂ (foto simbol): Percheziții cu mascați: forțe speciale la o casă, descinderi, operațiune",
+    "keywords": "perchezitii, mascati, forte speciale, descindere, operatiune, Fulger, CNA, procuratura, perchezitie",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-mascati-perchezitie-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Mascați din forțele speciale la o percheziție la o casă de la țară"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-mascati-perchezitie-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Mascați din forțele speciale la o percheziție la o casă de la țară"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-penitenciar",
+    "name": "TEMĂ (foto simbol): Penitenciar: celule cu gratii, deținuți, închisoare, condamnare",
+    "keywords": "penitenciar, inchisoare, detentie, detinuti, gratii, celula, condamnat, ani de inchisoare, puscarie",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-penitenciar-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Coridor de penitenciar cu celule cu gratii"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-penitenciar-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Coridor de penitenciar cu celule cu gratii"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-jaf-magazin",
+    "name": "TEMĂ (foto simbol): Jaf: magazin spart, vitrină distrusă, casa de marcat golită, tâlhărie",
+    "keywords": "jaf, talharie, magazin jefuit, spargere, vitrina sparta, casa de marcat, hoti, furt din magazin",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-jaf-magazin-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Magazin cu vitrina spartă și sertarul casei de marcat gol"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-jaf-magazin-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Magazin cu vitrina spartă și sertarul casei de marcat gol"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-escrocherie-telefon",
+    "name": "TEMĂ (foto simbol): Escrocherii telefonice: bătrâni păcăliți la telefon, rude în pericol, falși polițiști",
+    "keywords": "escrocherie, escroci, telefon, apel, inselaciune, pacalit, bani, ruda in pericol, falsi politisti, frauda",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-escrocherie-telefon-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Bătrână îngrijorată care vorbește la telefon în bucătăria ei"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-escrocherie-telefon-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Bătrână îngrijorată care vorbește la telefon în bucătăria ei"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-violenta-familie",
+    "name": "TEMĂ (foto simbol): Violență în familie: femeie agresată acasă, agresor, ordin de protecție",
+    "keywords": "violenta in familie, violenta domestica, agresor, sotie batuta, ordin de protectie, victima, a batut-o",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-violenta-familie-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Femeie ghemuită pe podea, umbra unui bărbat pe perete"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-violenta-familie-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Femeie ghemuită pe podea, umbra unui bărbat pe perete"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-coruptie-mita",
+    "name": "TEMĂ (foto simbol): Corupție: mită, bani dați în plic, funcționari corupți, CNA, Procuratura Anticorupție",
+    "keywords": "coruptie, mita, spaga, bani in plic, CNA, Procuratura Anticoruptie, functionar, trafic de influenta",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-coruptie-mita-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Plic cu bani dat pe sub masă într-un birou"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-coruptie-mita-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Plic cu bani dat pe sub masă într-un birou"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-droguri",
+    "name": "TEMĂ (foto simbol): Droguri: substanțe confiscate, trafic de droguri, polițiști care examinează probe",
+    "keywords": "droguri, stupefiante, trafic de droguri, marijuana, cocaina, confiscate, psihotrope, substante interzise",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-droguri-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Polițist care examinează pachete cu droguri confiscate"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-droguri-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Polițist care examinează pachete cu droguri confiscate"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-criminalist",
+    "name": "TEMĂ (foto simbol): Criminaliști la locul faptei: ridicarea probelor, expertiză, cercetare",
+    "keywords": "criminalist, probe, expertiza, cercetare la fata locului, ancheta, urme, ADN, locul faptei",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-criminalist-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Criminalist în combinezon alb care ridică probe la locul faptei"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-criminalist-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Criminalist în combinezon alb care ridică probe la locul faptei"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-inculpat-instanta",
+    "name": "TEMĂ (foto simbol): Proces în instanță: inculpat în boxa cu gratii, judecată, sentință",
+    "keywords": "inculpat, proces, instanta, judecata, sentinta, boxa, condamnat, judecatoria, dosar penal",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-inculpat-instanta-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Inculpat văzut din spate în boxa cu gratii a unei săli de judecată"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-inculpat-instanta-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Inculpat văzut din spate în boxa cu gratii a unei săli de judecată"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-pensionari-bani",
+    "name": "TEMĂ (foto simbol): Pensionari și bani: bătrâni care își numără pensia, venituri mici, cheltuieli",
+    "keywords": "pensie, pensionari, pensia minima, bani, venituri, cheltuieli, indexare, pensia medie, saracie, bugetul familiei",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-pensionari-bani-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Doi bătrâni care își numără banii la masa din bucătărie"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-pensionari-bani-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Doi bătrâni care își numără banii la masa din bucătărie"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-bani-in-palme",
+    "name": "TEMĂ (foto simbol): Bani puțini: mâini bătrâne cu bancnote și monede, sărăcie, ajutoare",
+    "keywords": "bani, bancnote, monede, saracie, ajutor social, compensatii, salariu mic, pensie mica, lei",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-bani-in-palme-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Mâini bătrâne care țin câteva bancnote și monede"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-bani-in-palme-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Mâini bătrâne care țin câteva bancnote și monede"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-pensie-dizabilitate",
+    "name": "TEMĂ (foto simbol): Pensii și indemnizații de dizabilitate: persoană în scaun cu rotile care își primește banii",
+    "keywords": "pensie de dizabilitate, indemnizatie, persoane cu dizabilitati, grad de dizabilitate, CNAS, alocatie, scaun cu rotile",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-pensie-dizabilitate-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Bărbat în scaun cu rotile la ghișeul unui oficiu poștal"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-pensie-dizabilitate-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Bărbat în scaun cu rotile la ghișeul unui oficiu poștal"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-indemnizatie-copii",
+    "name": "TEMĂ (foto simbol): Indemnizații pentru copii: mame cu copii mici la ghișeul de plăți sociale, alocații",
+    "keywords": "indemnizatie copil, alocatie, indemnizatie unica la nastere, concediu de ingrijire, mame, copii, CNAS, plati sociale",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-indemnizatie-copii-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Mamă cu un copil mic în brațe la un ghișeu de plăți sociale"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-indemnizatie-copii-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Mamă cu un copil mic în brațe la un ghișeu de plăți sociale"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-bancomat",
+    "name": "TEMĂ (foto simbol): Bancomat și card bancar: pensia pe card, retragere de bani, bănci",
+    "keywords": "bancomat, card bancar, pensia pe card, retragere, banca, numerar, comisioane, plata cu cardul",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-bancomat-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Pensionar care scoate bani de la un bancomat într-un oraș mic"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-bancomat-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Pensionar care scoate bani de la un bancomat într-un oraș mic"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-portofel-gol",
+    "name": "TEMĂ (foto simbol): Portofel gol: lipsă de bani, scumpiri, facturi greu de plătit, sărăcie",
+    "keywords": "portofel gol, fara bani, scumpiri, inflatie, facturi, datorii, saracie, cos de consum, minimul de existenta",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-portofel-gol-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Portofel aproape gol și câteva monede pe o masă de bucătărie"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-portofel-gol-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Portofel aproape gol și câteva monede pe o masă de bucătărie"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-scrisoare-oficiala",
+    "name": "TEMĂ (foto simbol): Scrisoare oficială: decizie, notificare sau factură primită acasă, citită de un vârstnic",
+    "keywords": "scrisoare, notificare, decizie, instiintare, recalculare pensie, CNAS, Fisc, citatie, document oficial",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-scrisoare-oficiala-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Bătrân cu ochelari care citește o scrisoare oficială la masă"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-scrisoare-oficiala-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Bătrân cu ochelari care citește o scrisoare oficială la masă"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-scoala-oras",
+    "name": "TEMĂ (foto simbol): Școala din oraș: elevi de liceu în clasă, profesoară la tablă, lecții",
+    "keywords": "scoala, liceu, elevi, profesori, lectie, clasa, invatamant, educatie, ministerul educatiei",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-scoala-oras-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Elevi de liceu într-o clasă, profesoara la tablă"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-scoala-oras-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Elevi de liceu într-o clasă, profesoara la tablă"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-gradinita",
+    "name": "TEMĂ (foto simbol): Grădinița: copii mici la joacă, educație timpurie, locuri în grădinițe",
+    "keywords": "gradinita, gradinite, copii prescolari, educatori, educatie timpurie, locuri in gradinita",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-gradinita-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Copii mici care se joacă pe covor într-o sală de grădiniță"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-gradinita-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Copii mici care se joacă pe covor într-o sală de grădiniță"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-studenti",
+    "name": "TEMĂ (foto simbol): Studenți și universități: admitere, burse, cămine, viața de student",
+    "keywords": "studenti, universitate, facultate, admitere, burse, camin, USM, UTM, invatamant superior",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-studenti-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Studenți pe holul unei universități"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-studenti-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Studenți pe holul unei universități"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-examen-bac",
+    "name": "TEMĂ (foto simbol): Examenul de bacalaureat: elevi care scriu la examen, absolvenți, note",
+    "keywords": "bacalaureat, BAC, examen, absolventi, note, rezultate, testare, examene de absolvire, gimnaziu",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-examen-bac-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Elevi care scriu la un examen într-o sală, profesoara supraveghează"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-examen-bac-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Elevi care scriu la un examen într-o sală, profesoara supraveghează"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-autobuz-scolar",
+    "name": "TEMĂ (foto simbol): Autobuzul școlar: transportul elevilor de la sat la școală",
+    "keywords": "autobuz scolar, transportul elevilor, elevi, sat, drum spre scoala, microbuz scolar",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-autobuz-scolar-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Copii care urcă într-un autobuz școlar galben în fața unei școli de la sat"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-autobuz-scolar-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Copii care urcă într-un autobuz școlar galben în fața unei școli de la sat"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-cantina-scolii",
+    "name": "TEMĂ (foto simbol): Cantina școlii: alimentația elevilor, prânzul la școală, meniuri",
+    "keywords": "cantina, alimentatia elevilor, pranz la scoala, meniu scolar, hrana, elevi, gradinite, intoxicatie",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-cantina-scolii-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Elevi la prânz în cantina școlii"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-cantina-scolii-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Elevi la prânz în cantina școlii"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-inceput-an-scolar",
+    "name": "TEMĂ (foto simbol): Începutul anului școlar: festivitate în curtea școlii, flori, elevi și părinți",
+    "keywords": "1 septembrie, inceputul anului scolar, festivitate, prima zi de scoala, elevi, parinti, flori, ultimul sunet",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-inceput-an-scolar-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Festivitate de început de an școlar în curtea unei școli de la sat"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-lemne-de-foc",
+    "name": "TEMĂ (foto simbol): Lemne de foc: încălzirea cu lemne la sat, prețul lemnelor, pregătirea de iarnă",
+    "keywords": "lemne de foc, lemne, incalzire, iarna, soba, Moldsilva, pret lemne, gospodarie, sezonul rece",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-lemne-de-foc-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Lemne de foc stivuite lângă o casă de la țară, iarna"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-lemne-de-foc-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Lemne de foc stivuite lângă o casă de la țară, iarna"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-panouri-solare",
+    "name": "TEMĂ (foto simbol): Panouri solare: energie solară pe case, prosumatori, energie verde",
+    "keywords": "panouri solare, energie solara, fotovoltaice, prosumator, energie regenerabila, energie verde, compensare",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-panouri-solare-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Panouri solare pe acoperișul unei case de la sat"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-panouri-solare-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Panouri solare pe acoperișul unei case de la sat"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-linii-electrice",
+    "name": "TEMĂ (foto simbol): Rețeaua electrică: linii de înaltă tensiune, importul de energie, Moldelectrica",
+    "keywords": "linii electrice, inalta tensiune, Moldelectrica, retea electrica, import de energie, interconectare, LEA, energie electrica",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-linii-electrice-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Linii electrice de înaltă tensiune peste un câmp înzăpezit"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-linii-electrice-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Linii electrice de înaltă tensiune peste un câmp înzăpezit"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-aer-conditionat",
+    "name": "TEMĂ (foto simbol): Aer condiționat: consum de energie vara, caniculă, aparate pe blocuri",
+    "keywords": "aer conditionat, conditioner, consum energie, canicula, racire, caldura, bloc, electricitate",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-aer-conditionat-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Aparate de aer condiționat pe fațada unui bloc vechi"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-aer-conditionat-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Aparate de aer condiționat pe fațada unui bloc vechi"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-brichete-peleti",
+    "name": "TEMĂ (foto simbol): Brichete și peleți: combustibil pentru iarnă, biomasă, compensații",
+    "keywords": "brichete, peleti, biomasa, combustibil solid, incalzire, iarna, compensatii, pret brichete",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-brichete-peleti-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Saci cu peleți și brichete într-o curte, pregătiți pentru iarnă"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-brichete-peleti-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Saci cu peleți și brichete într-o curte, pregătiți pentru iarnă"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-carbune",
+    "name": "TEMĂ (foto simbol): Cărbune: încălzirea cu cărbune, combustibil solid la sat",
+    "keywords": "carbune, combustibil solid, incalzire, soba, iarna, pret carbune, compensatii",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-carbune-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Cărbune descărcat în curte și o găleată cu cărbune lângă sobă"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-carbune-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Cărbune descărcat în curte și o găleată cu cărbune lângă sobă"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-contoare-curent",
+    "name": "TEMĂ (foto simbol): Curent electric și contoare: rețeaua din bloc, deconectări, consum",
+    "keywords": "curent electric, contor, electrician, deconectare, consum, Premier Energy, FEE Nord, tablou electric, bloc",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-contoare-curent-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Electrician la tabloul cu contoare de pe scara unui bloc"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-contoare-curent-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Electrician la tabloul cu contoare de pe scara unui bloc"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-electrocasnice",
+    "name": "TEMĂ (foto simbol): Electrocasnice și consum: frigider, mașină de spălat, consumul de energie acasă",
+    "keywords": "electrocasnice, frigider, masina de spalat, consum energie, eficienta energetica, aparate, economie de energie",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-electrocasnice-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Bucătărie de bloc cu frigider, mașină de spălat și fierbător"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-electrocasnice-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Bucătărie de bloc cu frigider, mașină de spălat și fierbător"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-flacara-gaz",
+    "name": "TEMĂ (foto simbol): Gazele naturale: flacăra de gaz la aragaz, prețul gazului, consum",
+    "keywords": "gaze naturale, gaz, aragaz, pret gaz, tarif gaz, Moldovagaz, Energocom, ANRE, consum gaz",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-flacara-gaz-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Flacăra albastră a gazului la un aragaz"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-flacara-gaz-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Flacăra albastră a gazului la un aragaz"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-facturi-utilitati",
+    "name": "TEMĂ (foto simbol): Facturi la utilități: plata facturilor, tarife, calcule la bugetul familiei",
+    "keywords": "facturi, utilitati, tarife, plata facturilor, intretinere, gaz, lumina, apa, caldura, datorii",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-facturi-utilitati-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Facturi la utilități pe masă, cu un calculator și ochelari"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-facturi-utilitati-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Facturi la utilități pe masă, cu un calculator și ochelari"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-calorifer",
+    "name": "TEMĂ (foto simbol): Căldura în apartament: calorifere, termoficare, apartamente reci",
+    "keywords": "calorifer, caldura, termoficare, agent termic, Termoelectrica, apartament rece, sezonul de incalzire",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-calorifer-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Mâini care se încălzesc la caloriferul unui apartament"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-calorifer-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Mâini care se încălzesc la caloriferul unui apartament"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-soba-teracota",
+    "name": "TEMĂ (foto simbol): Soba de teracotă: încălzirea tradițională la sat, iarna în casă",
+    "keywords": "soba, teracota, incalzire, sat, iarna, lemne, foc, casa traditionala",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-soba-teracota-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Sobă de teracotă cu foc într-o casă de la țară"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-soba-teracota-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Sobă de teracotă cu foc într-o casă de la țară"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-pana-de-curent",
+    "name": "TEMĂ (foto simbol): Pană de curent: deconectări, blackout, case fără lumină",
+    "keywords": "pana de curent, deconectare, blackout, fara lumina, fara curent, deconectari programate, avarie, lumanare",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-pana-de-curent-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Lumânare aprinsă pe masă în timpul unei pene de curent"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-pana-de-curent-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Lumânare aprinsă pe masă în timpul unei pene de curent"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-conducta-gaz",
+    "name": "TEMĂ (foto simbol): Gazificarea satelor: conducta de gaz, rețeaua de distribuție",
+    "keywords": "conducta de gaz, gazificare, retea de gaz, Moldovagaz, distributie, sat, racordare la gaz",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-conducta-gaz-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Țeavă galbenă de gaz de-a lungul gardurilor dintr-un sat"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-conducta-gaz-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Țeavă galbenă de gaz de-a lungul gardurilor dintr-un sat"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-razboi-explozie",
+    "name": "TEMĂ (foto simbol): Război în Ucraina: explozii în orașe, atacuri nocturne, bombardamente",
+    "keywords": "razboi, Ucraina, explozie, atac, bombardament, Kiev, Odesa, atac nocturn, lovitura, rachete, drone",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-razboi-explozie-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Explozie noaptea deasupra blocurilor unui oraș"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-razboi-explozie-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Explozie noaptea deasupra blocurilor unui oraș"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-razboi-front",
+    "name": "TEMĂ (foto simbol): Război în Ucraina: soldați pe front, tranșee, lupte",
+    "keywords": "front, soldati, transee, lupte, armata, Ucraina, Rusia, razboi, ofensiva, linia frontului",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-razboi-front-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Soldați într-o tranșee pe front, văzuți din spate"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-razboi-front-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Soldați într-o tranșee pe front, văzuți din spate"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-razboi-bloc-distrus",
+    "name": "TEMĂ (foto simbol): Război în Ucraina: clădiri de locuit distruse după atacuri",
+    "keywords": "bloc distrus, cladiri distruse, atac, Ucraina, razboi, victime civile, daramaturi, lovitura",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-razboi-bloc-distrus-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Bloc de locuințe cu fațada distrusă după un atac"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-razboi-bloc-distrus-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Bloc de locuințe cu fațada distrusă după un atac"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-razboi-rafinarie",
+    "name": "TEMĂ (foto simbol): Atacuri asupra rafinăriilor și depozitelor de petrol: incendii, fum",
+    "keywords": "rafinarie, depozit de petrol, incendiu, drone, atac, Rusia, Ucraina, petrol, carburanti, fum",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-razboi-rafinarie-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Rafinărie în flăcări, fum negru gros"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-razboi-rafinarie-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Rafinărie în flăcări, fum negru gros"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-razboi-tancuri",
+    "name": "TEMĂ (foto simbol): Război: tancuri distruse pe câmpul de luptă",
+    "keywords": "tanc, tancuri distruse, tehnica militara, blindat, razboi, Ucraina, front",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-razboi-tancuri-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Tanc distrus și ars pe un câmp"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-razboi-tancuri-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Tanc distrus și ars pe un câmp"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-razboi-blindate",
+    "name": "TEMĂ (foto simbol): Război: blindate și tehnică militară distrusă pe drum",
+    "keywords": "blindate, tehnica militara distrusa, vehicule militare, coloana, razboi, Ucraina",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-razboi-blindate-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Vehicule blindate distruse pe un drum de țară"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-razboi-blindate-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Vehicule blindate distruse pe un drum de țară"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-razboi-racheta",
+    "name": "TEMĂ (foto simbol): Rachete: rachete balistice și de croazieră în zbor, atacuri cu rachete",
+    "keywords": "racheta, rachete balistice, racheta de croaziera, atac cu rachete, spatiul aerian, Ucraina, Rusia",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-razboi-racheta-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Rachetă în zbor, cu dâră de fum pe cer"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-razboi-racheta-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Rachetă în zbor, cu dâră de fum pe cer"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-razboi-antiaeriana",
+    "name": "TEMĂ (foto simbol): Apărare antiaeriană: interceptări noaptea deasupra orașelor",
+    "keywords": "aparare antiaeriana, interceptare, atac aerian, noaptea, drone, rachete, alerta aeriana",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-razboi-antiaeriana-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Trasoare ale apărării antiaeriene noaptea deasupra unui oraș"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-razboi-antiaeriana-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Trasoare ale apărării antiaeriene noaptea deasupra unui oraș"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-razboi-refugiati",
+    "name": "TEMĂ (foto simbol): Refugiați din Ucraina: oameni cu valize și copii la frontieră",
+    "keywords": "refugiati, Ucraina, frontiera, Palanca, Otaci, refugiati ucraineni, valize, copii, adapost",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-razboi-refugiati-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Refugiați cu valize și copii la un punct de trecere a frontierei"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-razboi-refugiati-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Refugiați cu valize și copii la un punct de trecere a frontierei"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-razboi-adapost",
+    "name": "TEMĂ (foto simbol): Alertă aeriană: oameni adăpostiți în metrou, adăposturi",
+    "keywords": "alerta aeriana, adapost, metrou, sirena, atac, Kiev, civili, adapostiti",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-razboi-adapost-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Oameni adăpostiți într-o stație de metrou în timpul unei alerte"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-razboi-adapost-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Oameni adăpostiți într-o stație de metrou în timpul unei alerte"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-drona-cazuta",
+    "name": "TEMĂ (foto simbol): Dronă căzută: resturi de dronă găsite pe un câmp, geniști și polițiști",
+    "keywords": "drona cazuta, resturi de drona, Shahed, Gherani, genisti, spatiul aerian, Moldova, camp, drona prabusita",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-drona-cazuta-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Geniști și polițiști lângă resturile unei drone căzute pe un câmp"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-piata-agricola",
+    "name": "TEMĂ (foto simbol): Piața agricolă: tarabe cu legume și fructe, prețuri în piață, vânzători și cumpărători",
+    "keywords": "piata, piata centrala, legume, fructe, preturi, producatori, vanzatori, taraba, comert, cumparaturi",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-piata-agricola-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Oameni la cumpărături într-o piață agricolă din oraș"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-piata-agricola-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Oameni la cumpărături într-o piață agricolă din oraș"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-supermarket",
+    "name": "TEMĂ (foto simbol): Supermarket: prețuri la alimente, coșul de cumpărături, raft de magazin",
+    "keywords": "supermarket, magazin, preturi alimente, cosul de consum, scumpiri, ieftiniri, raft, produse, inflatie",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-supermarket-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Coș de cumpărături plin lângă rafturile unui supermarket"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-supermarket-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Coș de cumpărături plin lângă rafturile unui supermarket"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-banca",
+    "name": "TEMĂ (foto simbol): Bănci: ghișeul băncii, credite, depozite, dobânzi, clienți",
+    "keywords": "banca, banci, credit, depozit, dobanda, BNM, imprumut, ghiseu, client, rata",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-banca-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Client la ghișeul unei bănci"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-banca-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Client la ghișeul unei bănci"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-fabrica",
+    "name": "TEMĂ (foto simbol): Fabrică și producție: muncitori la linia de producție, industrie, locuri de muncă",
+    "keywords": "fabrica, uzina, productie, industrie, muncitori, export, zona economica libera, investitii",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-fabrica-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Muncitori în hala unei fabrici"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-fabrica-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Muncitori în hala unei fabrici"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-birou-it",
+    "name": "TEMĂ (foto simbol): IT și tehnologie: programatori într-un birou, sectorul IT, salarii în IT",
+    "keywords": "IT, programatori, tehnologie, Moldova IT Park, start-up, salarii IT, digitalizare, birou",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-birou-it-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Tineri care lucrează la calculatoare într-un birou IT"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-birou-it-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Tineri care lucrează la calculatoare într-un birou IT"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-bloc-in-constructie",
+    "name": "TEMĂ (foto simbol): Construcții de locuințe: bloc nou cu macara, piața imobiliară, apartamente noi",
+    "keywords": "bloc nou, constructii, imobiliare, apartamente, pret apartament, chirii, dezvoltator, macara, santier",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-bloc-in-constructie-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Bloc nou de locuințe în construcție, cu macara, într-un oraș"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-bloc-in-constructie-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Bloc nou de locuințe în construcție, cu macara, într-un oraș"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-colete",
+    "name": "TEMĂ (foto simbol): Colete și comenzi online: livrări, curierat, cumpărături de pe internet",
+    "keywords": "colete, comenzi online, livrare, curier, Temu, AliExpress, posta, cumparaturi online, vama colete",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-colete-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Colete de carton la ușa unui apartament de bloc"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-colete-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Colete de carton la ușa unui apartament de bloc"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-reduceri-magazin",
+    "name": "TEMĂ (foto simbol): Reduceri și cumpărături: magazine de haine, oferte, Black Friday",
+    "keywords": "reduceri, Black Friday, oferte, magazin de haine, cumparaturi, preturi, promotii, mall",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-reduceri-magazin-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Cumpărători cu pungi într-un magazin de haine"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-reduceri-magazin-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Cumpărători cu pungi într-un magazin de haine"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-drona-shahed-oras",
+    "name": "TEMĂ (foto simbol): Drone de atac (Shahed / Gheran) deasupra orașelor: atacuri cu drone",
+    "keywords": "drona, Shahed, Gheran, drone de atac, atac cu drone, Ucraina, Odesa, Kiev, spatiul aerian, oras",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-drona-shahed-oras-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Dronă de atac cu aripi delta deasupra unui cartier de blocuri"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-drona-shahed-oras-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Dronă de atac cu aripi delta deasupra unui cartier de blocuri"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-pompieri-ucraina",
+    "name": "TEMĂ (foto simbol): Pompieri după un atac: incendii la clădiri lovite, intervenții după bombardamente",
+    "keywords": "pompieri, incendiu, bloc lovit, atac, Ucraina, salvatori, interventie, bombardament",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-pompieri-ucraina-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Pompieri care sting un bloc lovit după un atac"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-pompieri-ucraina-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Pompieri care sting un bloc lovit după un atac"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-sala-judecata",
+    "name": "TEMĂ (foto simbol): Instanța de judecată: sala de ședințe a judecătoriei, procese",
+    "keywords": "instanta, judecatoria, sala de judecata, proces, sedinta de judecata, judecator, CSJ, curtea de apel",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-sala-judecata-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Sala goală a unei judecătorii, cu boxa și băncile de lemn"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-dosare-justitie",
+    "name": "TEMĂ (foto simbol): Dosare și justiție: dosare penale, ciocanul judecătorului, sentințe",
+    "keywords": "dosar, dosare penale, justitie, sentinta, judecator, ciocan, arhiva, procuratura, cauza",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-dosare-justitie-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Dosare legate cu sfoară și ciocanul judecătorului pe o masă"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-avocat",
+    "name": "TEMĂ (foto simbol): Avocați: avocat și client pe holul instanței, apărare, consultanță juridică",
+    "keywords": "avocat, avocati, aparare, client, consultanta juridica, instanta, Uniunea Avocatilor",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-avocat-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Avocat care vorbește cu un client pe holul unei instanțe"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-avocat-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Avocat care vorbește cu un client pe holul unei instanțe"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-recolta-cereale",
+    "name": "TEMĂ (foto simbol): Recolta de cereale: combine pe câmpul de grâu, campania de recoltare",
+    "keywords": "recolta, recoltare, grau, cereale, combina, campania agricola, productie, agricultori, fermieri, orz",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-recolta-cereale-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Combină care recoltează grâu pe un câmp mare"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-recolta-cereale-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Combină care recoltează grâu pe un câmp mare"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-tractor-aratura",
+    "name": "TEMĂ (foto simbol): Lucrări agricole: tractor la arat, semănat, fermieri",
+    "keywords": "tractor, arat, aratura, lucrari agricole, semanat, fermieri, agricultura, campanie de toamna, subventii",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-tractor-aratura-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Tractor care ară un câmp toamna"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-tractor-aratura-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Tractor care ară un câmp toamna"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-livada-mere",
+    "name": "TEMĂ (foto simbol): Livezi și mere: recolta de fructe, export de mere, culegători",
+    "keywords": "mere, livada, fructe, recolta de mere, export, pomicultura, culegatori, prune, cirese",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-livada-mere-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Culegători care duc lăzi cu mere într-o livadă"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-livada-mere-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Culegători care duc lăzi cu mere într-o livadă"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-seceta",
+    "name": "TEMĂ (foto simbol): Seceta: câmpuri uscate, culturi compromise, pagube pentru fermieri",
+    "keywords": "seceta, arsita, culturi compromise, porumb uscat, pagube, fermieri, stare de urgenta, irigare, recolta slaba",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-seceta-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Câmp de porumb uscat, cu pământ crăpat de secetă"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-seceta-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Câmp de porumb uscat, cu pământ crăpat de secetă"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-grindina",
+    "name": "TEMĂ (foto simbol): Grindina: culturi distruse, pagube în agricultură după furtună",
+    "keywords": "grindina, culturi distruse, pagube, furtuna, fermieri, despagubiri, rachete antigrindina, calamitate",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-grindina-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Culturi de porumb culcate și boabe de grindină pe pământ"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-grindina-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Culturi de porumb culcate și boabe de grindină pe pământ"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-animale-pasune",
+    "name": "TEMĂ (foto simbol): Zootehnie: vaci și oi la pășune, crescători de animale",
+    "keywords": "vaci, oi, animale, pasune, cioban, crescatori de animale, lapte, zootehnie, ferma, pesta porcina",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-animale-pasune-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Cioban cu vaci și oi la pășune lângă un sat"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-animale-pasune-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Cioban cu vaci și oi la pășune lângă un sat"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-apicultura",
+    "name": "TEMĂ (foto simbol): Apicultura: stupi de albine, prisăcari, miere",
+    "keywords": "apicultura, albine, stupi, prisacar, miere, stuparit, intoxicarea albinelor, pesticide",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-apicultura-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Apicultor la stupii din livada înflorită"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-apicultura-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Apicultor la stupii din livada înflorită"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-silozuri",
+    "name": "TEMĂ (foto simbol): Cereale și export: silozuri, camioane cu grâu, prețul cerealelor",
+    "keywords": "silozuri, cereale, export, grau, pret grau, depozitare, camioane, porumb, comertul cu cereale",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-silozuri-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Silozuri de cereale și camioane cu grâu"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-silozuri-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Silozuri de cereale și camioane cu grâu"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-irigare",
+    "name": "TEMĂ (foto simbol): Irigarea: sisteme de irigare, apă pentru culturi, legumicultură",
+    "keywords": "irigare, irigatie, sistem de irigare, apa, legume, culturi, seceta, subventii irigare",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-irigare-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Sistem de irigare care udă un câmp de legume"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-irigare-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Sistem de irigare care udă un câmp de legume"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-floarea-soarelui",
+    "name": "TEMĂ (foto simbol): Floarea-soarelui: culturi de vară, ulei, recolta",
+    "keywords": "floarea-soarelui, ulei, seminte, recolta, culturi, agricultura, camp, pret ulei",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-floarea-soarelui-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Câmp de floarea-soarelui vara"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-floarea-soarelui-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Câmp de floarea-soarelui vara"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-ninsoare",
+    "name": "TEMĂ (foto simbol): Ninsori: zăpadă în sate, drumuri înzăpezite, iarna",
+    "keywords": "ninsoare, zapada, ninsori, drumuri inzapezite, iarna, cod galben ninsori, viscol, deszapezire",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-ninsoare-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Uliță de sat acoperită de zăpadă"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-ninsoare-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Uliță de sat acoperită de zăpadă"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-ploaie-oras",
+    "name": "TEMĂ (foto simbol): Ploi: averse în oraș, străzi ude, vreme rea",
+    "keywords": "ploaie, ploi, averse, vreme rea, cod galben ploi, strazi inundate, umbrele, prognoza",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-ploaie-oras-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Oameni cu umbrele pe o stradă din oraș, pe ploaie"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-ploaie-oras-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Oameni cu umbrele pe o stradă din oraș, pe ploaie"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-ceata",
+    "name": "TEMĂ (foto simbol): Ceață: vizibilitate redusă pe drumuri, cod galben de ceață",
+    "keywords": "ceata, vizibilitate redusa, cod galben ceata, drum, trafic, soferi, atentionare",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-ceata-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Mașini cu farurile aprinse pe un drum în ceață densă"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-ceata-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Mașini cu farurile aprinse pe un drum în ceață densă"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-furtuna-copaci",
+    "name": "TEMĂ (foto simbol): Furtună și vânt puternic: copaci căzuți peste mașini și străzi",
+    "keywords": "furtuna, vant puternic, copaci cazuti, rafale, cod portocaliu, pagube, masini avariate, intemperii",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-furtuna-copaci-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Copac căzut peste o mașină parcată după o furtună"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-furtuna-copaci-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Copac căzut peste o mașină parcată după o furtună"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-drum-gropi",
+    "name": "TEMĂ (foto simbol): Drumuri proaste: drumuri de țară cu gropi, reparații promise",
+    "keywords": "drum cu gropi, drumuri proaste, drum de tara, reparatie drum, asfaltare, gropi, sat",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-drum-gropi-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Mașină care ocolește gropile pline cu apă pe un drum de țară"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-drum-gropi-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Mașină care ocolește gropile pline cu apă pe un drum de țară"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-pod-reparatie",
+    "name": "TEMĂ (foto simbol): Poduri: reparația și reconstrucția podurilor",
+    "keywords": "pod, poduri, reparatie pod, reconstructie, infrastructura, drum, rau, lucrari",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-pod-reparatie-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Muncitori care repară un pod de beton peste un râu"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-pod-reparatie-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Muncitori care repară un pod de beton peste un râu"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-troleibuz-autobuz",
+    "name": "TEMĂ (foto simbol): Transport public urban: troleibuze, autobuze, stații, tarife",
+    "keywords": "troleibuz, autobuz, transport public, calatorie, tarif, statie, Chisinau, Balti, RTEC",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-troleibuz-autobuz-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Oameni care urcă în troleibuz într-o stație din oraș"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-troleibuz-autobuz-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Oameni care urcă în troleibuz într-o stație din oraș"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-microbuz-ruta",
+    "name": "TEMĂ (foto simbol): Microbuze de rută: transport interurban, rute, tarife",
+    "keywords": "microbuz, rutiera, transport interurban, ruta, tarif, calatori, autogara, transport de pasageri",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-microbuz-ruta-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Oameni care urcă într-un microbuz de rută"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-microbuz-ruta-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Oameni care urcă într-un microbuz de rută"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-tren-gara",
+    "name": "TEMĂ (foto simbol): Calea ferată: tren de călători, gară, CFM",
+    "keywords": "tren, gara, cale ferata, CFM, calatori, trenul, ruta feroviara, Ungheni, Iasi",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-tren-gara-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Tren de călători la peronul unei gări vechi"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-tren-gara-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Tren de călători la peronul unei gări vechi"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-apeduct",
+    "name": "TEMĂ (foto simbol): Apeduct și canalizare: lucrări la rețeaua de apă în sate",
+    "keywords": "apeduct, apa, canalizare, retea de apa, lucrari, sat, apa potabila, investitii",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-apeduct-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Șanț cu țevi albastre de apeduct pe o stradă de sat"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-apeduct-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Șanț cu țevi albastre de apeduct pe o stradă de sat"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-fantana",
+    "name": "TEMĂ (foto simbol): Apă din fântână: sate fără apeduct, calitatea apei",
+    "keywords": "fantana, apa, apa potabila, sat, calitatea apei, nitrati, fara apeduct, galeti",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-fantana-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Femeie cu găleți pe drumul de la fântâna satului"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-fantana-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Femeie cu găleți pe drumul de la fântâna satului"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-iluminat-stradal",
+    "name": "TEMĂ (foto simbol): Iluminat stradal: felinare noi în sate, investiții locale",
+    "keywords": "iluminat stradal, felinare, iluminare, strada, sat, investitii, primarie, lumina",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-iluminat-stradal-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Felinare aprinse seara pe o stradă de sat"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-iluminat-stradal-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Felinare aprinse seara pe o stradă de sat"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-gunoi",
+    "name": "TEMĂ (foto simbol): Deșeuri: tomberoane pline, gunoi neridicat, salubrizare",
+    "keywords": "gunoi, deseuri, tomberoane, salubrizare, gunoiste, Regia Autosalubritate, colectarea deseurilor",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-gunoi-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Tomberoane pline de gunoi lângă un bloc"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-gunoi-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Tomberoane pline de gunoi lângă un bloc"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-casa-parasita",
+    "name": "TEMĂ (foto simbol): Sate părăsite: case abandonate, depopulare, migrație",
+    "keywords": "casa parasita, sat parasit, depopulare, migratie, case abandonate, sate pustii, batrani",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-casa-parasita-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Casă veche părăsită într-un sat"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-casa-parasita-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Casă veche părăsită într-un sat"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-primaria-satului",
+    "name": "TEMĂ (foto simbol): Primăria satului: administrația locală, primar, decizii locale",
+    "keywords": "primaria, primar, administratia locala, sat, comuna, consiliu local, autoritati locale",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-primaria-satului-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Clădirea primăriei unui sat"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-primaria-satului-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Clădirea primăriei unui sat"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-consiliu-local",
+    "name": "TEMĂ (foto simbol): Consiliul local: ședințe, consilieri, decizii ale consiliului",
+    "keywords": "consiliu local, consilieri, sedinta, decizie, buget local, CMC, consiliul raional, vot",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-consiliu-local-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Ședință de consiliu local, consilieri la mese"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-consiliu-local-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Ședință de consiliu local, consilieri la mese"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-coada-ghiseu",
+    "name": "TEMĂ (foto simbol): Cozi la ghișeu: servicii publice, birocrație, acte",
+    "keywords": "coada, ghiseu, servicii publice, acte, birocratie, ASP, cerere, documente",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-coada-ghiseu-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Oameni la coadă la un ghișeu de servicii publice"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-coada-ghiseu-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Oameni la coadă la un ghișeu de servicii publice"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-ulita-sat",
+    "name": "TEMĂ (foto simbol): Satul moldovenesc: ulițe, case și garduri, viața la sat",
+    "keywords": "sat, ulita, satul moldovenesc, case, viata la sat, comuna, localitate, raion",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-ulita-sat-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Uliță de sat cu case și garduri, toamna"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-ulita-sat-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Uliță de sat cu case și garduri, toamna"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-rau-poluat",
+    "name": "TEMĂ (foto simbol): Poluarea apelor: râuri poluate, deversări, gunoi pe malul Nistrului și Prutului",
+    "keywords": "poluare, rau poluat, Nistru, Prut, deversari, gunoaie, ape uzate, Inspectoratul pentru Protectia Mediului, pesti morti",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-rau-poluat-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Mal de râu poluat cu spumă și gunoaie"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-rau-poluat-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Mal de râu poluat cu spumă și gunoaie"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-padure",
+    "name": "TEMĂ (foto simbol): Pădurile Moldovei: pădure de stejar, natura, Moldsilva",
+    "keywords": "padure, paduri, stejar, natura, Moldsilva, impadurire, arii protejate, rezervatie",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-padure-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Potecă printr-o pădure de stejar toamna"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-padure-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Potecă printr-o pădure de stejar toamna"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-defrisare",
+    "name": "TEMĂ (foto simbol): Defrișări: tăieri masive de pădure, bușteni, distrugerea pădurilor",
+    "keywords": "defrisare, defrisari, taieri, busteni, padure taiata, lemn, Moldsilva, taieri ilegale",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-defrisare-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Pantă defrișată cu cioturi și bușteni"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-defrisare-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Pantă defrișată cu cioturi și bușteni"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-animale-salbatice",
+    "name": "TEMĂ (foto simbol): Animale sălbatice: căprioare și mistreți în pădure, vânătoare",
+    "keywords": "animale salbatice, caprioara, mistret, vanatoare, fauna, padure, pesta porcina africana, natura",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-animale-salbatice-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Căprioară într-o pădure dimineața"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-animale-salbatice-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Căprioară într-o pădure dimineața"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-groapa-gunoi",
+    "name": "TEMĂ (foto simbol): Gunoiști ilegale: deșeuri aruncate la marginea satelor",
+    "keywords": "gunoiste, groapa de gunoi, deseuri, gunoi, poluare, sat, depozitare ilegala, amenzi",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-groapa-gunoi-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Grămezi de gunoi la marginea unui sat"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-groapa-gunoi-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Grămezi de gunoi la marginea unui sat"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-aer-poluat",
+    "name": "TEMĂ (foto simbol): Poluarea aerului: smog deasupra orașului, trafic, calitatea aerului",
+    "keywords": "poluarea aerului, smog, calitatea aerului, trafic, Chisinau, noxe, emisii, praf",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-aer-poluat-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Smog deasupra unui oraș cu blocuri și o șosea aglomerată"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-aer-poluat-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Smog deasupra unui oraș cu blocuri și o șosea aglomerată"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-varstnic-smartphone",
+    "name": "TEMĂ (foto simbol): Digitalizarea la sat: vârstnici și telefoane mobile, internet, servicii online",
+    "keywords": "smartphone, telefon, internet, digitalizare, servicii online, varstnici, MPay, EVO, aplicatie",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-varstnic-smartphone-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Bătrân de la sat care folosește un smartphone pe prispă"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-varstnic-smartphone-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Bătrân de la sat care folosește un smartphone pe prispă"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-apel-necunoscut",
+    "name": "TEMĂ (foto simbol): Apeluri și mesaje suspecte: număr necunoscut, fraude prin telefon",
+    "keywords": "apel necunoscut, telefon, frauda, escrocherie, mesaj suspect, SMS, phishing, apel, numar strain",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-apel-necunoscut-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Mâini care țin un telefon cu un apel de la un număr necunoscut"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-apel-necunoscut-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Mâini care țin un telefon cu un apel de la un număr necunoscut"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-biserica-sat",
+    "name": "TEMĂ (foto simbol): Biserica satului: credință, preoți, sărbători religioase",
+    "keywords": "biserica, credinta, preot, Mitropolia, sarbatori religioase, liturghie, manastire, ortodox",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-biserica-sat-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Biserica unui sat moldovenesc"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-biserica-sat-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Biserica unui sat moldovenesc"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-hram",
+    "name": "TEMĂ (foto simbol): Hramul satului: sărbătoare cu mese în curte, tradiții",
+    "keywords": "hram, hramul satului, sarbatoare, traditii, mese, sat, comunitate, oaspeti",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-hram-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Mese lungi în curte la hramul satului"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-hram-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Mese lungi în curte la hramul satului"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-colindatori",
+    "name": "TEMĂ (foto simbol): Colinde și sărbătorile de iarnă: colindători în costume populare",
+    "keywords": "colinde, colindatori, Craciun, sarbatori de iarna, traditii, steaua, Anul Nou, Malanca",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-colindatori-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Colindători în costume populare pe o uliță înzăpezită"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-colindatori-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Colindători în costume populare pe o uliță înzăpezită"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-nunta-hora",
+    "name": "TEMĂ (foto simbol): Nunta moldovenească și hora: tradiții, petreceri la sat",
+    "keywords": "nunta, hora, traditii, petrecere, costume populare, dans popular, cumatri, folclor",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-nunta-hora-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Horă în curte la o nuntă moldovenească"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-nunta-hora-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Horă în curte la o nuntă moldovenească"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-muzeu",
+    "name": "TEMĂ (foto simbol): Muzee și patrimoniu: costume populare, covoare, expoziții",
+    "keywords": "muzeu, patrimoniu, expozitie, costume populare, covoare, cultura, istorie, etnografie",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-muzeu-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Sală de muzeu cu costume populare și covoare"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-muzeu-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Sală de muzeu cu costume populare și covoare"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-festival-vin",
+    "name": "TEMĂ (foto simbol): Ziua Vinului și festivaluri: vin moldovenesc, degustări",
+    "keywords": "festival, vin, Ziua Vinului, degustare, vinificatie, vinarii, turism, eveniment",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-festival-vin-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Oameni la un festival al vinului, cu butoaie și pahare"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-festival-vin-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Oameni la un festival al vinului, cu butoaie și pahare"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-autocar-diaspora",
+    "name": "TEMĂ (foto simbol): Plecări în străinătate: autocare de cursă lungă, diaspora, migrație",
+    "keywords": "autocar, autogara, diaspora, plecari, migratie, curse internationale, valize, munca peste hotare",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-autocar-diaspora-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Oameni cu valize care urcă într-un autocar de cursă lungă"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-autocar-diaspora-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Oameni cu valize care urcă într-un autocar de cursă lungă"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-aeroport-sosiri",
+    "name": "TEMĂ (foto simbol): Revederi la aeroport: diaspora acasă, sosiri, sărbători",
+    "keywords": "aeroport, sosiri, diaspora, revenire acasa, sarbatori, rude, flori, zboruri",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-aeroport-sosiri-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Oameni cu flori care își așteaptă rudele la sosiri, în aeroport"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-aeroport-sosiri-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Oameni cu flori care își așteaptă rudele la sosiri, în aeroport"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-transfer-bani",
+    "name": "TEMĂ (foto simbol): Transferuri de bani din străinătate: remitențe, diaspora",
+    "keywords": "transfer de bani, remitente, diaspora, bani de peste hotare, ghiseu, Western Union, valuta",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-transfer-bani-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Bărbat care numără bani la ghișeul unui serviciu de transfer"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-transfer-bani-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Bărbat care numără bani la ghișeul unui serviciu de transfer"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-consulat",
+    "name": "TEMĂ (foto simbol): Consulate și acte în străinătate: cozi la consulat, pașapoarte, vize",
+    "keywords": "consulat, ambasada, acte, pasaport, viza, diaspora, cetatenie, programare, coada",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-consulat-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Coadă de oameni cu dosare în fața unui consulat"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-consulat-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Coadă de oameni cu dosare în fața unui consulat"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-taxi",
+    "name": "TEMĂ (foto simbol): Taxi: transport în oraș, tarife, șoferi de taxi",
+    "keywords": "taxi, transport, tarif taxi, sofer, aplicatii taxi, Yandex, Bolt, noaptea, oras",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-taxi-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Taxi galben pe o stradă din oraș, noaptea"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-taxi-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Taxi galben pe o stradă din oraș, noaptea"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-examen-auto",
+    "name": "TEMĂ (foto simbol): Permis de conducere: examenul auto, școala de șoferi",
+    "keywords": "permis de conducere, examen auto, scoala auto, ASP, sofer incepator, poligon, proba practica",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-examen-auto-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Mașină de școală auto la proba practică, între conuri"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-examen-auto-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Mașină de școală auto la proba practică, între conuri"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-parcare-blocuri",
+    "name": "TEMĂ (foto simbol): Parcări: mașini parcate între blocuri și pe trotuare, locuri de parcare",
+    "keywords": "parcare, parcari, locuri de parcare, masini parcate, trotuar, curtea blocului, amenzi parcare",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-parcare-blocuri-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Mașini parcate între blocuri"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-parcare-blocuri-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Mașini parcate între blocuri"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-veterinar",
+    "name": "TEMĂ (foto simbol): Animale de companie: câini și pisici la veterinar, vaccinare, îngrijire",
+    "keywords": "veterinar, animale de companie, caine, pisica, vaccinare antirabica, clinica veterinara, ANSA",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-veterinar-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Câine examinat de un medic veterinar"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-veterinar-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Câine examinat de un medic veterinar"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-adapost-animale",
+    "name": "TEMĂ (foto simbol): Adăposturi de animale: câini fără stăpân în adăpost, voluntari",
+    "keywords": "adapost de animale, caini fara stapan, voluntari, adoptie, sterilizare, animale abandonate",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-adapost-animale-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Voluntar care hrănește câinii dintr-un adăpost"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-adapost-animale-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Voluntar care hrănește câinii dintr-un adăpost"
+      }
+    ]
+  },
+  {
+    "id": "ilustratie-foto-drona-shahed-sat",
+    "name": "TEMĂ (foto simbol): Drone deasupra Moldovei: drone de atac tip Shahed în spațiul aerian, noaptea",
+    "keywords": "drona, Shahed, Gheran, spatiul aerian, Moldova, drona deasupra satului, alerta, incalcarea spatiului aerian",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/foto-drona-shahed-sat-1.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Dronă de atac cu aripi delta noaptea deasupra unui sat"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/foto-drona-shahed-sat-2.jpg",
+        "credit": "Imagine simbol generată AI",
+        "source": "",
+        "alt": "Imagine simbol generată AI: Dronă de atac cu aripi delta noaptea deasupra unui sat"
+      }
+    ]
+  },
+  {
+    "id": "card-diaspora-italia",
+    "name": "TEMĂ (card instituție/regiune): Diaspora în Italia: moldovenii din Italia, muncă, acte, consulat, întâmplări",
+    "keywords": "diaspora, Italia, moldovenii din Italia, moldoveni in Italia, conationali, emigranti, munca in Italia, consulat, ambasada",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-italia-1.jpg",
+        "credit": "Grafică: Știri Actuale (fotografie generată AI)",
+        "source": "",
+        "alt": "Card: Diaspora — moldovenii din Italia"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-italia-2.jpg",
+        "credit": "Grafică: Știri Actuale (fotografie generată AI)",
+        "source": "",
+        "alt": "Card: Diaspora — moldovenii din Italia"
+      }
+    ]
+  },
+  {
+    "id": "card-diaspora-franta",
+    "name": "TEMĂ (card instituție/regiune): Diaspora în Franța: moldovenii din Franța, muncă, acte, consulat, întâmplări",
+    "keywords": "diaspora, Franța, moldovenii din Franța, moldoveni in Franța, conationali, emigranti, munca in Franța, consulat, ambasada",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-franta-1.jpg",
+        "credit": "Grafică: Știri Actuale (fotografie generată AI)",
+        "source": "",
+        "alt": "Card: Diaspora — moldovenii din Franța"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-franta-2.jpg",
+        "credit": "Grafică: Știri Actuale (fotografie generată AI)",
+        "source": "",
+        "alt": "Card: Diaspora — moldovenii din Franța"
+      }
+    ]
+  },
+  {
+    "id": "card-diaspora-germania",
+    "name": "TEMĂ (card instituție/regiune): Diaspora în Germania: moldovenii din Germania, muncă, acte, consulat, întâmplări",
+    "keywords": "diaspora, Germania, moldovenii din Germania, moldoveni in Germania, conationali, emigranti, munca in Germania, consulat, ambasada",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-germania-1.jpg",
+        "credit": "Grafică: Știri Actuale (fotografie generată AI)",
+        "source": "",
+        "alt": "Card: Diaspora — moldovenii din Germania"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-germania-2.jpg",
+        "credit": "Grafică: Știri Actuale (fotografie generată AI)",
+        "source": "",
+        "alt": "Card: Diaspora — moldovenii din Germania"
+      }
+    ]
+  },
+  {
+    "id": "card-diaspora-regatul-unit",
+    "name": "TEMĂ (card instituție/regiune): Diaspora în Regatul Unit: moldovenii din Regatul Unit, muncă, acte, consulat, întâmplări",
+    "keywords": "diaspora, Regatul Unit, moldovenii din Regatul Unit, moldoveni in Regatul Unit, conationali, emigranti, munca in Regatul Unit, consulat, ambasada",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-regatul-unit-1.jpg",
+        "credit": "Grafică: Știri Actuale (fotografie generată AI)",
+        "source": "",
+        "alt": "Card: Diaspora — moldovenii din Regatul Unit"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-regatul-unit-2.jpg",
+        "credit": "Grafică: Știri Actuale (fotografie generată AI)",
+        "source": "",
+        "alt": "Card: Diaspora — moldovenii din Regatul Unit"
+      }
+    ]
+  },
+  {
+    "id": "card-diaspora-spania",
+    "name": "TEMĂ (card instituție/regiune): Diaspora în Spania: moldovenii din Spania, muncă, acte, consulat, întâmplări",
+    "keywords": "diaspora, Spania, moldovenii din Spania, moldoveni in Spania, conationali, emigranti, munca in Spania, consulat, ambasada",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-spania-1.jpg",
+        "credit": "Grafică: Știri Actuale (fotografie generată AI)",
+        "source": "",
+        "alt": "Card: Diaspora — moldovenii din Spania"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-spania-2.jpg",
+        "credit": "Grafică: Știri Actuale (fotografie generată AI)",
+        "source": "",
+        "alt": "Card: Diaspora — moldovenii din Spania"
+      }
+    ]
+  },
+  {
+    "id": "card-diaspora-romania",
+    "name": "TEMĂ (card instituție/regiune): Diaspora în România: moldovenii din România, muncă, acte, consulat, întâmplări",
+    "keywords": "diaspora, România, moldovenii din România, moldoveni in România, conationali, emigranti, munca in România, consulat, ambasada",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-romania-1.jpg",
+        "credit": "Grafică: Știri Actuale (fotografie generată AI)",
+        "source": "",
+        "alt": "Card: Diaspora — moldovenii din România"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-romania-2.jpg",
+        "credit": "Grafică: Știri Actuale (fotografie generată AI)",
+        "source": "",
+        "alt": "Card: Diaspora — moldovenii din România"
+      }
+    ]
+  },
+  {
+    "id": "card-diaspora-portugalia",
+    "name": "TEMĂ (card instituție/regiune): Diaspora în Portugalia: moldovenii din Portugalia, muncă, acte, consulat, întâmplări",
+    "keywords": "diaspora, Portugalia, moldovenii din Portugalia, moldoveni in Portugalia, conationali, emigranti, munca in Portugalia, consulat, ambasada",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-portugalia-1.jpg",
+        "credit": "Grafică: Știri Actuale (fotografie generată AI)",
+        "source": "",
+        "alt": "Card: Diaspora — moldovenii din Portugalia"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-portugalia-2.jpg",
+        "credit": "Grafică: Știri Actuale (fotografie generată AI)",
+        "source": "",
+        "alt": "Card: Diaspora — moldovenii din Portugalia"
+      }
+    ]
+  },
+  {
+    "id": "card-diaspora-irlanda",
+    "name": "TEMĂ (card instituție/regiune): Diaspora în Irlanda: moldovenii din Irlanda, muncă, acte, consulat, întâmplări",
+    "keywords": "diaspora, Irlanda, moldovenii din Irlanda, moldoveni in Irlanda, conationali, emigranti, munca in Irlanda, consulat, ambasada",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-irlanda-1.jpg",
+        "credit": "Grafică: Știri Actuale (fotografie generată AI)",
+        "source": "",
+        "alt": "Card: Diaspora — moldovenii din Irlanda"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-irlanda-2.jpg",
+        "credit": "Grafică: Știri Actuale (fotografie generată AI)",
+        "source": "",
+        "alt": "Card: Diaspora — moldovenii din Irlanda"
+      }
+    ]
+  },
+  {
+    "id": "card-diaspora-belgia",
+    "name": "TEMĂ (card instituție/regiune): Diaspora în Belgia: moldovenii din Belgia, muncă, acte, consulat, întâmplări",
+    "keywords": "diaspora, Belgia, moldovenii din Belgia, moldoveni in Belgia, conationali, emigranti, munca in Belgia, consulat, ambasada",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-belgia-1.jpg",
+        "credit": "Grafică: Știri Actuale (fotografie generată AI)",
+        "source": "",
+        "alt": "Card: Diaspora — moldovenii din Belgia"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-belgia-2.jpg",
+        "credit": "Grafică: Știri Actuale (fotografie generată AI)",
+        "source": "",
+        "alt": "Card: Diaspora — moldovenii din Belgia"
+      }
+    ]
+  },
+  {
+    "id": "card-diaspora-olanda",
+    "name": "TEMĂ (card instituție/regiune): Diaspora în Olanda: moldovenii din Olanda, muncă, acte, consulat, întâmplări",
+    "keywords": "diaspora, Olanda, moldovenii din Olanda, moldoveni in Olanda, conationali, emigranti, munca in Olanda, consulat, ambasada",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-olanda-1.jpg",
+        "credit": "Grafică: Știri Actuale (fotografie generată AI)",
+        "source": "",
+        "alt": "Card: Diaspora — moldovenii din Olanda"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-olanda-2.jpg",
+        "credit": "Grafică: Știri Actuale (fotografie generată AI)",
+        "source": "",
+        "alt": "Card: Diaspora — moldovenii din Olanda"
+      }
+    ]
+  },
+  {
+    "id": "card-diaspora-cehia",
+    "name": "TEMĂ (card instituție/regiune): Diaspora în Cehia: moldovenii din Cehia, muncă, acte, consulat, întâmplări",
+    "keywords": "diaspora, Cehia, moldovenii din Cehia, moldoveni in Cehia, conationali, emigranti, munca in Cehia, consulat, ambasada",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-cehia-1.jpg",
+        "credit": "Grafică: Știri Actuale (fotografie generată AI)",
+        "source": "",
+        "alt": "Card: Diaspora — moldovenii din Cehia"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-cehia-2.jpg",
+        "credit": "Grafică: Știri Actuale (fotografie generată AI)",
+        "source": "",
+        "alt": "Card: Diaspora — moldovenii din Cehia"
+      }
+    ]
+  },
+  {
+    "id": "card-diaspora-polonia",
+    "name": "TEMĂ (card instituție/regiune): Diaspora în Polonia: moldovenii din Polonia, muncă, acte, consulat, întâmplări",
+    "keywords": "diaspora, Polonia, moldovenii din Polonia, moldoveni in Polonia, conationali, emigranti, munca in Polonia, consulat, ambasada",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-polonia-1.jpg",
+        "credit": "Grafică: Știri Actuale (fotografie generată AI)",
+        "source": "",
+        "alt": "Card: Diaspora — moldovenii din Polonia"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-polonia-2.jpg",
+        "credit": "Grafică: Știri Actuale (fotografie generată AI)",
+        "source": "",
+        "alt": "Card: Diaspora — moldovenii din Polonia"
+      }
+    ]
+  },
+  {
+    "id": "card-diaspora-israel",
+    "name": "TEMĂ (card instituție/regiune): Diaspora în Israel: moldovenii din Israel, muncă, acte, consulat, întâmplări",
+    "keywords": "diaspora, Israel, moldovenii din Israel, moldoveni in Israel, conationali, emigranti, munca in Israel, consulat, ambasada",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-israel-1.jpg",
+        "credit": "Grafică: Știri Actuale (fotografie generată AI)",
+        "source": "",
+        "alt": "Card: Diaspora — moldovenii din Israel"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-israel-2.jpg",
+        "credit": "Grafică: Știri Actuale (fotografie generată AI)",
+        "source": "",
+        "alt": "Card: Diaspora — moldovenii din Israel"
+      }
+    ]
+  },
+  {
+    "id": "card-diaspora-rusia",
+    "name": "TEMĂ (card instituție/regiune): Diaspora în Rusia: moldovenii din Rusia, muncă, acte, consulat, întâmplări",
+    "keywords": "diaspora, Rusia, moldovenii din Rusia, moldoveni in Rusia, conationali, emigranti, munca in Rusia, consulat, ambasada",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-rusia-1.jpg",
+        "credit": "Grafică: Știri Actuale (fotografie generată AI)",
+        "source": "",
+        "alt": "Card: Diaspora — moldovenii din Rusia"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-rusia-2.jpg",
+        "credit": "Grafică: Știri Actuale (fotografie generată AI)",
+        "source": "",
+        "alt": "Card: Diaspora — moldovenii din Rusia"
+      }
+    ]
+  },
+  {
+    "id": "card-diaspora-sua",
+    "name": "TEMĂ (card instituție/regiune): Diaspora în SUA: moldovenii din SUA, muncă, acte, consulat, întâmplări",
+    "keywords": "diaspora, SUA, moldovenii din SUA, moldoveni in SUA, conationali, emigranti, munca in SUA, consulat, ambasada",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-sua-1.jpg",
+        "credit": "Grafică: Știri Actuale (fotografie generată AI)",
+        "source": "",
+        "alt": "Card: Diaspora — moldovenii din SUA"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-sua-2.jpg",
+        "credit": "Grafică: Știri Actuale (fotografie generată AI)",
+        "source": "",
+        "alt": "Card: Diaspora — moldovenii din SUA"
+      }
+    ]
+  },
+  {
+    "id": "card-diaspora-canada",
+    "name": "TEMĂ (card instituție/regiune): Diaspora în Canada: moldovenii din Canada, muncă, acte, consulat, întâmplări",
+    "keywords": "diaspora, Canada, moldovenii din Canada, moldoveni in Canada, conationali, emigranti, munca in Canada, consulat, ambasada",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-canada-1.jpg",
+        "credit": "Grafică: Știri Actuale (fotografie generată AI)",
+        "source": "",
+        "alt": "Card: Diaspora — moldovenii din Canada"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/diaspora-canada-2.jpg",
+        "credit": "Grafică: Știri Actuale (fotografie generată AI)",
+        "source": "",
+        "alt": "Card: Diaspora — moldovenii din Canada"
+      }
+    ]
   }
 ]
