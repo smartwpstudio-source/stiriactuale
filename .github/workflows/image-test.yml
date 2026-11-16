@@ -1,0 +1,28 @@
+name: Test poze Gemini
+
+# Compară Imagen (fast) și Gemini Image („Nano Banana”) pe aceleași subiecte; pozele
+# ajung în R2 la test-gemini/ (scripts/checks/gemini-images.ts). Pornit manual.
+on:
+  workflow_dispatch:
+    inputs:
+      subiecte:
+        description: "Subiecte în engleză, despărțite prin | (gol = cele 3 implicite)"
+        default: ""
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx tsx scripts/checks/gemini-images.ts
+        env:
+          SUBJECTS: ${{ inputs.subiecte }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
