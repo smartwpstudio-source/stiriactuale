@@ -31,15 +31,6 @@ async function api<T>(path: string, body?: unknown): Promise<T> {
   return JSON.parse(text) as T;
 }
 
-const { models = [] } = await api<{ models?: Model[] }>("models?pageSize=1000");
-const imageModels = models.map((m) => m.name.replace("models/", "")).filter((n) => /imagen|image/i.test(n));
-console.log("Modele de imagine disponibile:", imageModels.join(", ") || "niciunul");
-
-const pick = (re: RegExp) => imageModels.filter((n) => re.test(n)).sort().at(-1);
-const imagen = pick(/^imagen.*fast/) ?? pick(/^imagen/);
-const gemini = pick(/^gemini.*flash.*image/) ?? pick(/^gemini.*image/);
-console.log(`Aleși: Imagen = ${imagen ?? "-"}, Gemini = ${gemini ?? "-"}`);
-
 async function viaImagen(model: string, prompt: string): Promise<Buffer> {
   const r = await api<{ predictions?: { bytesBase64Encoded?: string }[] }>(`models/${model}:predict`, {
     instances: [{ prompt }],
@@ -60,20 +51,36 @@ async function viaGemini(model: string, prompt: string): Promise<Buffer> {
   return Buffer.from(b64, "base64");
 }
 
-const stamp = Date.now().toString(36);
-for (const [i, subject] of subjects.entries()) {
-  const prompt = `${subject}. ${STYLE}`;
-  for (const [label, model, fn] of [
-    ["imagen", imagen, viaImagen],
-    ["gemini", gemini, viaGemini],
-  ] as const) {
-    if (!model) continue;
-    try {
-      const png = await fn(model, prompt);
-      const url = await putMediaExact(`test-gemini/${stamp}-${i + 1}-${label}.png`, png, "image/png");
-      console.log(`OK ${label} (${model}) #${i + 1}: ${url.startsWith("http") ? url : `${MEDIA_ORIGIN}/${url}`}`);
-    } catch (err) {
-      console.log(`EȘEC ${label} (${model}) #${i + 1}: ${err instanceof Error ? err.message : String(err)}`);
+async function main() {
+  const { models = [] } = await api<{ models?: Model[] }>("models?pageSize=1000");
+  const imageModels = models.map((m) => m.name.replace("models/", "")).filter((n) => /imagen|image/i.test(n));
+  console.log("Modele de imagine disponibile:", imageModels.join(", ") || "niciunul");
+
+  const pick = (re: RegExp) => imageModels.filter((n) => re.test(n)).sort().at(-1);
+  const imagen = pick(/^imagen.*fast/) ?? pick(/^imagen/);
+  const gemini = pick(/^gemini.*flash.*image/) ?? pick(/^gemini.*image/);
+  console.log(`Aleși: Imagen = ${imagen ?? "-"}, Gemini = ${gemini ?? "-"}`);
+
+  const stamp = Date.now().toString(36);
+  for (const [i, subject] of subjects.entries()) {
+    const prompt = `${subject}. ${STYLE}`;
+    for (const [label, model, fn] of [
+      ["imagen", imagen, viaImagen],
+      ["gemini", gemini, viaGemini],
+    ] as const) {
+      if (!model) continue;
+      try {
+        const png = await fn(model, prompt);
+        const url = await putMediaExact(`test-gemini/${stamp}-${i + 1}-${label}.png`, png, "image/png");
+        console.log(`OK ${label} (${model}) #${i + 1}: ${url.startsWith("http") ? url : `${MEDIA_ORIGIN}/${url}`}`);
+      } catch (err) {
+        console.log(`EȘEC ${label} (${model}) #${i + 1}: ${err instanceof Error ? err.message : String(err)}`);
+      }
     }
   }
 }
+
+main().catch((err) => {
+  console.error(err instanceof Error ? err.message : String(err));
+  process.exit(1);
+});
