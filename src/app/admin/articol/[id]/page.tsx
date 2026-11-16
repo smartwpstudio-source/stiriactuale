@@ -311,7 +311,7 @@ export default async function EditArticlePage({ params, searchParams }: PageProp
               <UploadImage action={uploadImage.bind(null, id)} />
             </div>
             <form className="mt-4 flex gap-2">
-              <input name="q" defaultValue={query} placeholder="Sau caută în stoc, pe Magnific (în engleză)" className={input} />
+              <input name="q" defaultValue={query} placeholder="Sau caută în stoc, pe Pexels și Pixabay (în engleză)" className={input} />
               <button className="rounded border border-line px-3 py-2 text-ink">Caută</button>
             </form>
             {results.length > 0 && (
@@ -324,7 +324,7 @@ export default async function EditArticlePage({ params, searchParams }: PageProp
                 <div className="grid grid-cols-3 gap-2">
                   {results.map((r) => (
                     <button key={r.id} name="resourceId" value={r.id} className="block w-full" title="Înlocuiește poza cu aceasta">
-                      {/* eslint-disable-next-line @next/next/no-img-element -- miniatură Magnific */}
+                      {/* eslint-disable-next-line @next/next/no-img-element -- miniatură Pexels / Pixabay */}
                       <img src={r.preview} alt="" className="aspect-video w-full rounded object-cover hover:opacity-80" />
                     </button>
                   ))}

@@ -1,7 +1,7 @@
 import { MEDIA_CONFIGURED, putMedia } from "@/lib/media";
 import { HAIKU_MODEL, structured } from "./llm";
 
-const API = "https://api.magnific.com/v1";
+const API = "https://api.magnific.com/v1"; // doar generarea, până pe 30 noiembrie
 const STOCK_RESULTS = 10;
 const GENERATION_TIMEOUT_MS = 120_000;
 
@@ -17,51 +17,69 @@ export interface ArticleImage {
   alt?: string; // descrierea pozei scrisă de editor — singura descriere sigură
 }
 
-// 1. Stock Magnific: gratuit pe Premium+ (max 100/zi), primul din top 5
-//    nefolosit încă pe site — aceeași poză pe două articole arată a șablon.
-// 2. Altfel, generare Flux 2 Turbo prin API. Consumă credite din abonament:
-//    "Unlimited" (Nano Banana) e doar în aplicația web, iar Nano Banana nu
-//    există deloc în API-ul Magnific (verificat 2026-10-01).
-// URL-urile Magnific sunt semnate și expiră, așa că fișierul se copiază în
-// R2 (media.stiriactuale.info, src/lib/media.ts). Fără chei sau la eroare -> articol fără imagine, nu eșec.
+// 1. Stoc gratuit: Pexels, apoi Pixabay (din 2026-11-16; Magnific s-a suspendat, cheia
+//    merge până pe 30 noiembrie). Primul nefolosit încă pe site — aceeași poză pe două
+//    articole arată a șablon. Id-ul Pixabay se ține negativ, ca să nu se ciocnească cu Pexels.
+// 2. Altfel, generare Flux 2 Turbo prin Magnific, doar cât mai există cheia.
+// Fișierul se copiază în R2 (media.stiriactuale.info, src/lib/media.ts): licențele cer
+// descărcarea, nu linkul direct. Fără chei sau la eroare -> articol fără imagine, nu eșec.
 function magnificHeaders(): Record<string, string> | null {
   const key = process.env.MAGNIFIC_API_KEY;
   if (!key || !MEDIA_CONFIGURED()) return null;
   return { "x-magnific-api-key": key, "Content-Type": "application/json" };
 }
 
-async function getJson<T>(url: string, headers: Record<string, string>): Promise<T> {
+async function getJson<T>(url: string, headers: Record<string, string> = {}): Promise<T> {
   const res = await fetch(url, { headers, signal: AbortSignal.timeout(30_000) });
-  if (!res.ok) throw new Error(`HTTP ${res.status} la ${url.replace(API, "").split("?")[0]}`);
+  if (!res.ok) throw new Error(`HTTP ${res.status} la ${new URL(url).host}`);
   return res.json() as Promise<T>;
 }
 
-// Folosit și de /admin (înlocuire imagine) — `preview` e miniatura publică.
-export async function searchStock(term: string, limit: number): Promise<{ id: number; preview: string; title: string }[]> {
-  const headers = magnificHeaders();
-  if (!headers) return [];
-  const params = new URLSearchParams({
-    term,
-    limit: String(limit),
-    order: "relevance",
-    "filters[content_type][photo]": "1",
-    "filters[orientation][landscape]": "1",
-  });
-  const { data = [] } = await getJson<{ data?: { id: number; title?: string; image?: { source?: { url?: string } } }[] }>(
-    `${API}/resources?${params}`,
-    headers,
-  );
-  return data.map((r) => ({ id: r.id, preview: r.image?.source?.url ?? "", title: r.title ?? "" }));
+type Stock = { id: number; preview: string; title: string; full: string };
+type PexelsPhoto = { id: number; alt?: string; src: { medium: string; large: string } };
+type PixabayHit = { id: number; tags?: string; webformatURL: string; largeImageURL: string };
+const pexels = (p: PexelsPhoto): Stock => ({ id: p.id, preview: p.src.medium, title: p.alt ?? "", full: p.src.large });
+const pixabay = (h: PixabayHit): Stock => ({ id: -h.id, preview: h.webformatURL, title: h.tags ?? "", full: h.largeImageURL });
+
+async function searchPexels(term: string, limit: number): Promise<Stock[]> {
+  const key = process.env.PEXELS_API_KEY;
+  if (!key) return [];
+  const params = new URLSearchParams({ query: term, per_page: String(limit), orientation: "landscape" });
+  const { photos = [] } = await getJson<{ photos?: PexelsPhoto[] }>(`https://api.pexels.com/v1/search?${params}`, { Authorization: key });
+  return photos.map(pexels);
 }
 
-export async function stockToBlob(id: number, slug: string): Promise<string> {
-  const headers = magnificHeaders();
-  if (!headers) throw new Error("MAGNIFIC_API_KEY / cheia R2 (CLOUDFLARE_API_TOKEN) lipsesc");
-  const { data } = await getJson<{ data: { url?: string; signed_url?: string } }>(
-    `${API}/resources/${id}/download?image_size=small`,
-    headers,
-  );
-  return copyToBlob(data.url ?? data.signed_url!, `articole/${slug}.jpg`);
+async function searchPixabay(term: string, limit: number): Promise<Stock[]> {
+  const key = process.env.PIXABAY_API_KEY;
+  if (!key) return [];
+  const params = new URLSearchParams({ key, q: term.slice(0, 100), image_type: "photo", orientation: "horizontal", safesearch: "true", per_page: String(Math.max(3, limit)) });
+  const { hits = [] } = await getJson<{ hits?: PixabayHit[] }>(`https://pixabay.com/api/?${params}`);
+  return hits.map(pixabay);
+}
+
+// Folosit și de /admin (înlocuire imagine) — `preview` e miniatura publică.
+export async function searchStock(term: string, limit: number): Promise<Stock[]> {
+  const [a, b] = await Promise.all([searchPexels(term, limit).catch(logEmpty), searchPixabay(term, limit).catch(logEmpty)]);
+  return [...a, ...b];
+}
+const logEmpty = (err: unknown): Stock[] => (logImageError(err), []);
+
+async function stockById(id: number): Promise<string> {
+  if (id > 0) {
+    const key = process.env.PEXELS_API_KEY;
+    if (!key) throw new Error("PEXELS_API_KEY lipsește");
+    return pexels(await getJson<PexelsPhoto>(`https://api.pexels.com/v1/photos/${id}`, { Authorization: key })).full;
+  }
+  const key = process.env.PIXABAY_API_KEY;
+  if (!key) throw new Error("PIXABAY_API_KEY lipsește");
+  const { hits = [] } = await getJson<{ hits?: PixabayHit[] }>(`https://pixabay.com/api/?${new URLSearchParams({ key, id: String(-id) })}`);
+  if (!hits[0]) throw new Error(`poza Pixabay ${-id} nu mai există`);
+  return pixabay(hits[0]).full;
+}
+
+export async function stockToBlob(id: number, slug: string, full?: string): Promise<string> {
+  if (!MEDIA_CONFIGURED()) throw new Error("cheia R2 (CLOUDFLARE_API_TOKEN) lipsește");
+  return copyToBlob(full ?? (await stockById(id)), `articole/${slug}.jpg`);
 }
 
 // Pozele care trădează altă țară sau alt context (2026-10-26: „alegeri” cu steaguri
@@ -140,16 +158,15 @@ export async function findArticleImage(
   usedIds: Set<number>,
   subject: string,
 ): Promise<ArticleImage | null> {
-  const headers = magnificHeaders();
-  if (!headers) return null;
-  // Fiecare pas are propriul try: Magnific dă uneori HTTP 500 la descărcarea
-  // unei poze anume — trecem la următoarea, apoi la generare.
+  if (!MEDIA_CONFIGURED()) return null;
+  // Fiecare pas are propriul try: o poză anume poate da eroare la descărcare —
+  // trecem la următoarea, apoi la generare.
   try {
     const fresh = (await searchStock(stockQuery, STOCK_RESULTS)).filter((r) => !usedIds.has(r.id));
-    for (const { id } of await fitsPlace(await pickStock(subject, fresh), subject)) {
+    for (const { id, full } of await fitsPlace(await pickStock(subject, fresh), subject)) {
       usedIds.add(id); // înainte de primul await — rulările paralele văd rezervarea
       try {
-        return { url: await stockToBlob(id, slug), resourceId: id };
+        return { url: await stockToBlob(id, slug, full), resourceId: id };
       } catch (err) {
         logImageError(err);
       }
@@ -157,6 +174,8 @@ export async function findArticleImage(
   } catch (err) {
     logImageError(err);
   }
+  const headers = magnificHeaders();
+  if (!headers) return null;
   try {
     // aceeași verificare și pentru poza generată: dacă nu trece, articolul rămâne fără poză
     const generated = await generate(imagePrompt, headers);
@@ -170,7 +189,7 @@ export async function findArticleImage(
 
 // Niciodată cheia sau header-ele în log — doar mesajul.
 function logImageError(err: unknown) {
-  console.error(`Magnific: imagine eșuată — ${err instanceof Error ? err.message : String(err)}`);
+  console.error(`Poză: eșuată — ${err instanceof Error ? err.message : String(err)}`);
 }
 
 async function generate(prompt: string, headers: Record<string, string>): Promise<string> {

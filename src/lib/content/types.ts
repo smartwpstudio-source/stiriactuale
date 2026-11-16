@@ -24,7 +24,7 @@ export interface Article {
   topics: Topic[];
   publishedAt: string; // ISO 8601
   sourceCount: number;
-  imageUrl?: string; // stock Magnific sau generată — absentă pe fixtures/articole fără imagine
+  imageUrl?: string; // stoc (Pexels, Pixabay; Magnific până în 2026-11) sau generată — absentă pe fixtures/articole fără imagine
   imageAlt?: string;
   imageDescription?: string; // descrierea pozei scrisă de editor (legenda)
   imageCredit?: string; // „Foto: …” — poză reală, cu autorul ei
