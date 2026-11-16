@@ -15,9 +15,14 @@ const DIR = path.join(process.cwd(), "content", "ghiduri-ru");
 // o dată pe proces în producție, citite pe rând (EMFILE — vezi guides.ts)
 let cache: Promise<GuideRu[]> | undefined;
 
-export function getGuidesRu(): Promise<GuideRu[]> {
+export function getAllGuidesRu(): Promise<GuideRu[]> {
   if (process.env.NODE_ENV !== "production") return loadGuidesRu();
   return (cache ??= loadGuidesRu().catch((e) => ((cache = undefined), Promise.reject(e))));
+}
+
+// fără materialele de partener (vezi Guide.partner)
+export async function getGuidesRu(): Promise<GuideRu[]> {
+  return (await getAllGuidesRu()).filter((g) => !g.partner);
 }
 
 async function loadGuidesRu(): Promise<GuideRu[]> {

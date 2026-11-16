@@ -64,6 +64,10 @@ export interface Guide {
   sources: { name: string; url: string }[]; // surse oficiale consultate
   bodyHtml: string;
   faq?: { q: string; a: string }[];
+  // material de partener (editorul, 2026-11-16): marcat ca atare pe pagină, fără să apară în
+  // cuprinsuri, în lenta, în linkurile automate din știri sau în pipeline — doar la adresa lui și în sitemap
+  partner?: string;
+  image?: string; // poza de sus, din public/ (ex. /parteneri/x.jpg)
 }
 
 const DIR = path.join(process.cwd(), "content", "ghiduri");
@@ -73,9 +77,15 @@ const DIR = path.join(process.cwd(), "content", "ghiduri");
 // limita de fișiere deschise pe Vercel (EMFILE → 500, 2026-10-09).
 let cache: Promise<Guide[]> | undefined;
 
-export function getGuides(): Promise<Guide[]> {
+// toate, inclusiv materialele de partener (pagina lor și sitemap-ul)
+export function getAllGuides(): Promise<Guide[]> {
   if (process.env.NODE_ENV !== "production") return loadGuides();
   return (cache ??= loadGuides().catch((e) => ((cache = undefined), Promise.reject(e))));
+}
+
+// ghidurile redacției: cuprinsuri, legături, pipeline
+export async function getGuides(): Promise<Guide[]> {
+  return (await getAllGuides()).filter((g) => !g.partner);
 }
 
 async function loadGuides(): Promise<Guide[]> {
@@ -86,5 +96,5 @@ async function loadGuides(): Promise<Guide[]> {
 }
 
 export async function getGuide(slug: string): Promise<Guide | undefined> {
-  return (await getGuides()).find((g) => g.slug === slug);
+  return (await getAllGuides()).find((g) => g.slug === slug);
 }
