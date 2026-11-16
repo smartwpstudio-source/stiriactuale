@@ -67,7 +67,7 @@ export const articles = pgTable("articles", {
   // aceleași surse, cu nume — afișate ca linkuri "Surse:" sub articol
   sources: jsonb("sources").$type<{ name: string; url: string }[]>().notNull().default([]),
 
-  // id-ul resursei de stock Magnific — evită aceeași poză la articole diferite
+  // id-ul pozei de stoc (Pexels > 0, Pixabay < 0, Magnific în arhivă) — evită aceeași poză la articole diferite
   imageResourceId: integer("image_resource_id"),
   // mesajul din canalul Telegram — ca retragerea să-l poată șterge și ca
   // republicarea să nu dubleze postarea

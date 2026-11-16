@@ -70,7 +70,7 @@ jobs:
         run: |
           node -e '
             const keys = ["DATABASE_URL","TELEGRAM_BOT_TOKEN","TELEGRAM_ADMIN_CHAT_ID","ADMIN_PASSWORD","CRON_SECRET",
-              "NEXT_PUBLIC_VAPID_PUBLIC_KEY","VAPID_PRIVATE_KEY","BLOB_READ_WRITE_TOKEN","MAGNIFIC_API_KEY","GITHUB_DISPATCH_TOKEN"];
+              "NEXT_PUBLIC_VAPID_PUBLIC_KEY","VAPID_PRIVATE_KEY","BLOB_READ_WRITE_TOKEN","MAGNIFIC_API_KEY","PEXELS_API_KEY","PIXABAY_API_KEY","GITHUB_DISPATCH_TOKEN"];
             if (process.env.PRODUCTION === "true") keys.push("TELEGRAM_CHANNEL_ID","FACEBOOK_PAGE_ID","FACEBOOK_PAGE_TOKEN");
             const out = {};
             for (const k of keys) if (process.env[k]) out[k] = process.env[k];
@@ -95,6 +95,8 @@ jobs:
           VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
           BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
           MAGNIFIC_API_KEY: ${{ secrets.MAGNIFIC_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
           GITHUB_DISPATCH_TOKEN: ${{ secrets.DISPATCH_TOKEN }} # GitHub nu permite secrete care încep cu GITHUB_
 
       # O cerere venită în secundele de propagare a versiunii noi poate salva în cache

@@ -179,7 +179,7 @@ export async function replaceImage(id: number, formData: FormData) {
   const db = getDb();
   const [row] = await db.select({ slug: articles.slug }).from(articles).where(eq(articles.id, id));
   if (!row) redirect("/admin/");
-  if (!Number.isInteger(resourceId) || resourceId <= 0) redirect(`/admin/articol/${id}/`);
+  if (!Number.isInteger(resourceId) || resourceId === 0) redirect(`/admin/articol/${id}/`);
   const url = await stockToBlob(resourceId, row.slug);
   const { credit, alt } = imageMeta(formData);
   await db.update(articles).set({ imageUrl: url, imageResourceId: resourceId, imageCredit: credit, imageAltText: alt }).where(eq(articles.id, id));
