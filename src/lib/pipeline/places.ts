@@ -66,11 +66,28 @@ export function fallbackCard(topics: string[], section: string, places: Place[],
 
 // Cardurile noi sunt în repo înainte să fie pe site (până la deploy): fără verificare, articolul
 // rămânea fără poză (colegiul din Ungheni, 2026-11-12). Se păstrează doar pozele care răspund.
+// Câte 8 verificări deodată și, la eroare sau timeout, poza NU se folosește (2026-11-17: cu ~600 de
+// poze noi verificate toate deodată, cele fără răspuns la timp treceau drept publicate și articolul
+// de la Drochia a rămas fără poză — biblioteca nouă intră abia la deploy).
 export async function onlyLive(places: Place[]): Promise<Place[]> {
   const ok = new Map<string, Promise<boolean>>();
+  let running = 0;
+  const queue: (() => void)[] = [];
+  const slot = () => (running < 8 ? (running++, Promise.resolve()) : new Promise<void>((r) => queue.push(r)));
+  const release = () => (queue.length ? queue.shift()!() : running--);
+  const head = async (url: string) => {
+    await slot();
+    try {
+      return (await fetch(url, { method: "HEAD", signal: AbortSignal.timeout(15_000) })).ok;
+    } catch {
+      return false;
+    } finally {
+      release();
+    }
+  };
   const live = (url: string) => {
     if (!url.startsWith("https://stiriactuale.info/simbol/")) return Promise.resolve(true);
-    if (!ok.has(url)) ok.set(url, fetch(url, { method: "HEAD", signal: AbortSignal.timeout(10_000) }).then((r) => r.ok).catch(() => true));
+    if (!ok.has(url)) ok.set(url, head(url));
     return ok.get(url)!;
   };
   const checked = await Promise.all(
