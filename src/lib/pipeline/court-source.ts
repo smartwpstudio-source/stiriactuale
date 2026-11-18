@@ -5,7 +5,23 @@ import type { RawCandidate } from "./types";
 // „începem cu Drochia, învățăm să publicăm corect, apoi extindem”). Doar în pipeline-ul din
 // GitHub (citirea PDF-urilor nu are ce căuta pe Worker). Rezumatul = faptele + decizia din
 // hotărâre; numele nu se publică (regula e în generate.ts, COURT_RULES).
-export const COURTS = [{ id: "jud-drochia", instance: 11, name: "Judecătoria Drochia" }];
+// 2026-11-18 (editorul: Drochia aduce prea puține): toate judecătoriile din raioane, fără Chișinău,
+// Bălți și Comrat (Găgăuzia); Taraclia și stânga Nistrului ies după text (OUT_OF_SCOPE).
+export const COURTS = [
+  { id: "jud-criuleni", instance: 4, name: "Judecătoria Criuleni" },
+  { id: "jud-hincesti", instance: 5, name: "Judecătoria Hîncești" },
+  { id: "jud-straseni", instance: 6, name: "Judecătoria Strășeni" },
+  { id: "jud-causeni", instance: 7, name: "Judecătoria Căușeni" },
+  { id: "jud-drochia", instance: 11, name: "Judecătoria Drochia" },
+  { id: "jud-edinet", instance: 12, name: "Judecătoria Edineț" },
+  { id: "jud-orhei", instance: 13, name: "Judecătoria Orhei" },
+  { id: "jud-soroca", instance: 14, name: "Judecătoria Soroca" },
+  { id: "jud-ungheni", instance: 15, name: "Judecătoria Ungheni" },
+  { id: "jud-cahul", instance: 20, name: "Judecătoria Cahul" },
+  { id: "jud-cimislia", instance: 22, name: "Judecătoria Cimișlia" },
+];
+// sediile și faptele din Taraclia, Găgăuzia și stânga Nistrului nu intră (editorul, 2026-11-18)
+const OUT_OF_SCOPE = /Taraclia|Tiraspol|Bender|Tighina|Rîbni[țţ]a|Grigoriopol|Camenca|Comrat|Ceadîr|Vulcăne[șş]ti|Găgăuz/i;
 export const COURT_HOST = "instante.justice.md";
 const BASE = "https://instante.justice.md/ro/";
 const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/130 Safari/537.36";
@@ -14,6 +30,8 @@ const TYPES = [2, 3]; // contravențional, penal (civilul — divorțuri, datori
 const INTERESTING =
   /violen|fals\w* a serviciilor|ebriet|alcool|dreptul de a conduce|fara permis|arm|muniti|braconaj|vanat|pescuit|furt|sustrager|huligan|intretinere|copil|minor|taier|arbori|cruzime|animal|drog|stupefiant|psihotrop|incendi|maltrat|amenint|vatamar|escrocher|contraband|corupt/i;
 
+// infracțiunile sexuale nu intră: într-un sat mic victima se recunoaște și fără nume (2026-11-18)
+const SEXUAL = /sexual|viol(?!en)|pornograf|pedofil|perversiun|prostitu|hartuire sexuala/i;
 const strip = (s: string) => s.normalize("NFD").replace(/\p{M}/gu, "");
 
 export interface CourtRow {
@@ -76,12 +94,14 @@ export async function fetchCourtDecisions(known: (urls: string[]) => Promise<Set
     const fresh = rows.filter((r) => {
       const [y, m, d] = r.published.split("-").map(Number);
       const iso = y && m && d ? `${y}-${String(m).padStart(2, "0")}-${String(d).padStart(2, "0")}` : "";
-      return iso >= recent && (/penal/i.test(r.type) || INTERESTING.test(strip(r.subject)));
+      return iso >= recent && !SEXUAL.test(strip(r.subject)) && (/penal/i.test(r.type) || INTERESTING.test(strip(r.subject)));
     });
     const seen = await known(fresh.map((r) => r.pdf));
     for (const r of fresh.filter((x) => !seen.has(x.pdf)).slice(0, 8)) {
       const text = await pdfText(r.pdf).catch(() => "");
       if (text.length < 800) continue;
+      // sediul instanței și începutul faptelor: aici apare localitatea
+      if (OUT_OF_SCOPE.test(courtSummary(text).slice(0, 900))) continue;
       // titlul de lucru, fără numele din lista instanței
       const cleaned = r.subject.replace(/^(Articolul|art\.?)\s*[\d[\]().,/ alin]*\.?\s*/i, "").replace(/\s*(CC|CCo)( al)? RM\.?$/i, "");
       // la penal, tematica e des doar „CP al RM”: atunci titlul spune doar tipul hotărârii
