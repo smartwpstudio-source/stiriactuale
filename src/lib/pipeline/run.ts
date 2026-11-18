@@ -59,7 +59,8 @@ const FEED_ALERT_MIN = 3; // feed-uri căzute deodată, din 14
 // Linkurile manuale nu intră în plafon: editorul a decis explicit.
 // plafon de siguranță, nu țintă (editorul, 2026-11-07): câte se publică decide filtrul de calitate
 const DAILY_ARTICLE_LIMIT = 50;
-const MAX_COURT_PER_DAY = 3;
+const MAX_COURT_PER_DAY = 6; // și cel mult 2 de la aceeași judecătorie (MAX_PER_COURT)
+const MAX_PER_COURT = 2;
 const COURT_DAY_KEY = "court_last_day"; // ziua (Chișinău) în care s-au citit hotărârile
 const MAX_ARTICLES_PER_RUN = 4;
 
@@ -325,16 +326,18 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
     // știrile fără public clar: puține, doar ca site-ul să rămână viu și reprezentativ
     const maxPageOnly = hour === firstHour ? 3 : 1;
     let pageOnly = 0;
-    // hotărârile instanțelor: cel mult 3 pe zi, ca site-ul să nu se umple de „amenzi” (editorul, 2026-11-12)
+    // hotărârile instanțelor: cel mult 6 pe zi și 2 de la aceeași judecătorie, ca site-ul să nu se umple de „amenzi” (editorul, 2026-11-12 / 11-18)
     const isCourt = (c: ScoredCandidate) => c.group.items.some((i) => i.sourceUrl.includes(COURT_HOST));
     const [{ courtToday }] = await db
       .select({ courtToday: count() })
       .from(articles)
       .where(and(gte(articles.createdAt, dayStart), sql`${articles.sourceUrls}::text like ${`%${COURT_HOST}%`}`));
     let courtLeft = MAX_COURT_PER_DAY - courtToday;
+    const perCourt = new Map<string, number>();
+    const courtOf = (c: ScoredCandidate) => c.group.items.find((i) => i.sourceUrl.includes(COURT_HOST))?.sourceName ?? "";
     for (const c of auto.sort(byAudience)) {
       if (autoTaken >= autoSlots) break;
-      if (isCourt(c) && courtLeft <= 0) continue;
+      if (isCourt(c) && (courtLeft <= 0 || (perCourt.get(courtOf(c)) ?? 0) >= MAX_PER_COURT)) continue;
       if (!hasAudience(c) && pageOnly >= maxPageOnly) continue;
       // între știrile aceleiași rulări nu există „continuare”: e același fapt, din alte surse
       // (2026-11-03: Dodon la CSJ de două ori, ambele luate drept continuări ale știrii de dimineață)
@@ -365,7 +368,10 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
       await guideStep(c, "raport", summary, false).catch(() => null);
       toPublish.push(c);
       autoTaken++;
-      if (isCourt(c)) courtLeft--;
+      if (isCourt(c)) {
+        courtLeft--;
+        perCourt.set(courtOf(c), (perCourt.get(courtOf(c)) ?? 0) + 1);
+      }
       if (!hasAudience(c)) pageOnly++;
       // și știrile alese în aceeași rulare intră în comparație (2026-10-05:
       // două articole despre aceeași tranșă UE, scrise în aceeași rulare)

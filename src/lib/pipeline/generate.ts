@@ -225,7 +225,7 @@ const COURT_RULES = [
   "- NU scrie niciun nume de persoană: nici al făptuitorului sau inculpatului, nici al victimei, martorilor, polițiștilor, avocaților, judecătorului, grefierului. Nici numere de telefon, de dosar, de proces-verbal, IDNP.",
   "- Persoanele se descriu așa: „un bărbat de 39 de ani din satul Plop, raionul Dondușeni”. Vârsta, satul, raionul doar dacă reies clar din hotărâre (ce e ascuns cu ***** rămâne necunoscut, nu ghici).",
   "- Spui ce s-a întâmplat (când, unde, cum, pe scurt), apoi ce a decis instanța: sancțiunea exactă (amenda în lei, orele de muncă, pedeapsa, suspendarea, permisul).",
-  "- Sursa, în primul paragraf: „potrivit hotărârii Judecătoriei Drochia, sediul ..., din 9 noiembrie 2026”. Dacă hotărârea poate fi atacată (recurs, apel), spune-o la final: nu e definitivă.",
+  "- Sursa, în primul paragraf: „potrivit hotărârii Judecătoriei <numele instanței din hotărâre>, sediul ..., din 9 noiembrie 2026”. Dacă hotărârea poate fi atacată (recurs, apel), spune-o la final: nu e definitivă.",
   "- Fără considerentele juridice, fără citate din articolele de lege, fără jurisprudența CEDO. Limbaj simplu, ca o știre locală.",
   "- Nu adăuga detalii care nu sunt în hotărâre. Titlul începe cu raionul („Dondușeni: ...”) și spune fapta și sancțiunea.",
 ].join("\n");
