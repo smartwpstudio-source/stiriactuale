@@ -170,3 +170,25 @@ body {
     padding: 0.2rem 0.9rem;
   }
 }
+
+/* „Citește și” din textul articolului (insertReadAlso) */
+.prose-article .read-also {
+  margin-top: 1.25rem;
+  border-left: 4px solid var(--color-teal);
+  background: #fff;
+  padding: 0.5rem 0.75rem;
+  line-height: 1.4;
+}
+.prose-article .read-also span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-teal);
+}
+.prose-article .read-also a {
+  font-weight: 500;
+  color: var(--color-ink);
+  text-decoration: none;
+}

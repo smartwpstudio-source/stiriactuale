@@ -17,7 +17,7 @@ import { TOPIC_LABELS } from "@/lib/content/topic-meta";
 import { articleUrl } from "@/lib/content/url";
 import { absoluteUrl } from "@/lib/seo";
 import { AI_IMAGE_PREFIX } from "@/lib/pipeline/image";
-import { sanitizeBody } from "@/lib/content/sanitize";
+import { insertReadAlso, sanitizeBody } from "@/lib/content/sanitize";
 import { AdBody } from "./ad-body";
 import { ADSENSE_IN_ARTICLE_SLOT } from "@/lib/adsense";
 import { AdSlot } from "./ad-slot";
@@ -82,7 +82,7 @@ export async function ArticlePage({
   breadcrumbItems: BreadcrumbItem[];
 }) {
   const [similar, { items: latest }, guide, previous, calculator, tools, dossier, analyses, [guideTool]] = await Promise.all([
-    getSimilarArticles(article),
+    getSimilarArticles(article, 4),
     getRecentArticles().then((items) => ({ items })),
     article.archived ? undefined : getRelatedGuide(article.title, article.lead, article.locality),
     article.continuesId ? getArticleLink(article.continuesId) : null,
@@ -104,6 +104,11 @@ export async function ArticlePage({
       ? guideTool
       : undefined;
   const topCalc = calculator && !shown.has(`/calculatoare/${calculator.slug}/`) ? calculator : null;
+  // prima similară merge în text („Citește și”), restul jos; fără ea, jos rămân 3
+  const readAlso = article.archived || article.kind === "comunicat" ? undefined : similar[0];
+  const clean = sanitizeBody(article.bodyHtml, article.imageAlt ?? article.title);
+  const bodyHtml = insertReadAlso(clean, readAlso && { href: articleUrl(readAlso), title: readAlso.title });
+  const bottomSimilar = bodyHtml === clean ? similar.slice(0, 3) : similar.slice(1);
 
   return (
     <div className="mx-auto grid w-full max-w-7xl gap-12 px-4 py-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:px-8">
@@ -239,10 +244,9 @@ export async function ArticlePage({
               </ToolLink>
             )}
             {(() => {
-              const clean = sanitizeBody(article.bodyHtml, article.imageAlt ?? article.title);
               // comunicat plătit: orice link e „sponsored” (regula Google pentru linkurile plătite)
               const press = article.kind === "comunicat";
-              const body = press ? clean.replace(/<a\b([^>]*)>/gi, (_, a: string) => `<a${a.replace(/\srel="[^"]*"/i, "")} rel="sponsored noopener">`) : clean;
+              const body = press ? bodyHtml.replace(/<a\b([^>]*)>/gi, (_, a: string) => `<a${a.replace(/\srel="[^"]*"/i, "")} rel="sponsored noopener">`) : bodyHtml;
               const ads = !article.archived && ADSENSE_IN_ARTICLE_SLOT;
               // blocurile: după al 2-lea paragraf, apoi la fiecare 4 (AdBody)
               return (
@@ -254,7 +258,7 @@ export async function ArticlePage({
                   )}
                   <AdBody html={body} ads={!!ads} />
                   {article.postUrl && <PostEmbed src={article.postUrl} />}
-                  {ads && <AdSlot slot={ADSENSE_IN_ARTICLE_SLOT} />}
+                  {ads && <AdSlot />}
                 </>
               );
             })()}
@@ -286,7 +290,7 @@ export async function ArticlePage({
         <GooglePreferred className="mt-6" />
         <TelegramCta />
         <PushOptIn place={article.section === "regiuni" ? article.locality : article.section === "diaspora" ? article.country : undefined} section={article.section} />
-        <SimilarArticles articles={similar} />
+        <SimilarArticles articles={bottomSimilar} />
       {!article.archived && <ViewBeacon slug={article.slug} />}
       </article>
       <aside className="hidden lg:block">

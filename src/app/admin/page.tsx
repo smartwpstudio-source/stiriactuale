@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { and, desc, eq, isNull } from "drizzle-orm";
+import { and, desc, eq, ilike, isNull, or } from "drizzle-orm";
 import { getDb } from "@/lib/pipeline/db/client";
 import { articles, candidates, pipelineRuns } from "@/lib/pipeline/db/schema";
 import { requireAdmin } from "@/lib/admin/auth";
@@ -29,7 +29,10 @@ const time = (d: Date) =>
 
 export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
   await requireAdmin();
-  const { link, run } = await searchParams;
+  const { link, run, q: rawQ } = await searchParams;
+  // căutare după titlu sau după linkul știrii (ultimul segment = slug), orice dată
+  const q = typeof rawQ === "string" ? rawQ.trim() : "";
+  const slugOf = q.replace(/[?#].*$/, "").replace(/\/+$/, "").split("/").pop() ?? "";
   const db = getDb();
 
   const cols = {
@@ -48,7 +51,7 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
     createdAt: articles.createdAt,
     publishedAt: articles.publishedAt,
   };
-  const [published, pending, runs, autoOn, audience] = await Promise.all([
+  const [published, pending, runs, autoOn, audience, found] = await Promise.all([
     db.select(cols).from(articles).where(eq(articles.status, "published")).orderBy(desc(articles.publishedAt)).limit(30),
     db
       .select({ id: candidates.id, title: candidates.title, url: candidates.url })
@@ -57,6 +60,14 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
     db.select().from(pipelineRuns).orderBy(desc(pipelineRuns.startedAt)).limit(9),
     pipelineEnabled(),
     pushAudience(),
+    q
+      ? db
+          .select(cols)
+          .from(articles)
+          .where(or(ilike(articles.title, `%${q}%`), eq(articles.slug, slugOf)))
+          .orderBy(desc(articles.publishedAt))
+          .limit(30)
+      : null,
   ]);
   // câți ar primi push-ul fiecărei știri (segmentare: src/lib/push-segment.ts)
   const reach = (r: (typeof published)[number]) => audience.filter((s) => receives(s, r)).length;
@@ -199,6 +210,22 @@ export default async function AdminPage({ searchParams }: PageProps<"/admin">) {
       </section>
 
       <section>
+        <h2 className="mb-2 font-medium text-ink">Caută o știre</h2>
+        <form className="mb-3 flex gap-2">
+          <input
+            name="q"
+            defaultValue={q}
+            placeholder="Cuvinte din titlu sau linkul știrii de pe site"
+            className="flex-1 rounded border border-line bg-white px-3 py-2 text-ink"
+          />
+          <button className="rounded bg-teal px-4 py-2 text-white">Caută</button>
+        </form>
+        {found && (
+          <div className="mb-6">
+            <p className="mb-2 font-mono text-xs text-sub">Găsite: {found.length}{found.length === 30 ? " (primele 30)" : ""}</p>
+            {list(found, (r) => r.publishedAt ?? r.createdAt)}
+          </div>
+        )}
         <h2 className="mb-2 font-medium text-ink">Publicate recent</h2>
         <p className="mb-2 font-mono text-xs text-sub">
           Abonați push: {audience.length} — toată țara {bySegment("all")} · pe raioane {bySegment("raion")} · pe țări{" "}

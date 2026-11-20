@@ -124,7 +124,7 @@ export default async function RuGuidePage({ params }: PageProps<"/ru/ghiduri/[sl
       })()}
 
       <AdBody html={body} />
-      {ADSENSE_IN_ARTICLE_SLOT && <AdSlot slot={ADSENSE_IN_ARTICLE_SLOT} />}
+      {ADSENSE_IN_ARTICLE_SLOT && <AdSlot />}
 
       {g.faq && g.faq.length > 0 && (
         <section className="mt-10">

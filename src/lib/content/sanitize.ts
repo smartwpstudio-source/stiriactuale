@@ -53,3 +53,14 @@ export function splitForAds(html: string): string[] {
   for (let b = 2; b <= ends.length - 2 && cuts.length < MAX_ADS; b += 4) cuts.push(ends[b - 1]);
   return [0, ...cuts].map((c, i, a) => html.slice(c, a[i + 1]));
 }
+
+// „Citește și”: o știre înrudită după al 3-lea paragraf, doar în textele cu cel puțin 5.
+// Link simplu (pagină nouă, nu navigare Next): vignette-ul AdSense, cel mai bine plătit
+// format, apare doar între încărcări de pagină (2026-11-20).
+export function insertReadAlso(html: string, link?: { href: string; title: string }): string {
+  const ends = [...html.matchAll(/<\/p>/g)].map((m) => m.index! + m[0].length);
+  if (!link || ends.length < 5) return html;
+  const esc = (v: string) => v.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  const box = `<p class="read-also"><span>Citește și</span> <a href="${esc(link.href)}">${esc(link.title)}</a></p>`;
+  return html.slice(0, ends[2]) + box + html.slice(ends[2]);
+}

@@ -123,7 +123,7 @@ export default async function GuidePage({ params }: PageProps<"/ghiduri/[slug]">
         return (
           <>
             <AdBody html={sanitizeBody(g.bodyHtml, g.title)} />
-            {ADSENSE_IN_ARTICLE_SLOT && <AdSlot slot={ADSENSE_IN_ARTICLE_SLOT} />}
+            {ADSENSE_IN_ARTICLE_SLOT && <AdSlot />}
           </>
         );
       })()}

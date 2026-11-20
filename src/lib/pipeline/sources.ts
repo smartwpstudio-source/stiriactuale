@@ -31,6 +31,20 @@ export const FEEDS: { id: string; name: string; url: string; trusted: boolean; t
   { id: "europalibera", name: "Europa Liberă", url: "https://moldova.europalibera.org/api/", trusted: true },
   { id: "digi24", name: "Digi24", url: "https://www.digi24.ro/rss/stiri/externe", trusted: false },
   { id: "hotnews", name: "HotNews", url: "https://hotnews.ro/c/actualitate/international/feed", trusted: false },
+  // diaspora (decizia proprietarului, 2026-11-20): instituțiile care anunță ce schimbă ceva
+  // pentru cei plecați + presa românească din țările-gazdă; verificate live în aceeași zi
+  { id: "mae", name: "MAE", url: "https://mfa.gov.md/ro/press/feed.xml", trusted: true },
+  { id: "brd", name: "Biroul Relații cu Diaspora", url: "https://brd.gov.md/feed/", trusted: true },
+  { id: "cnas", name: "CNAS", url: "https://cnas.gov.md/ro/rss.xml", trusted: true },
+  { id: "vama", name: "Serviciul Vamal", url: "https://customs.gov.md/api/article/rss?language=ro", trusted: true },
+  { id: "gazetaromaneasca", name: "Gazeta Românească (Italia)", url: "https://www.gazetaromaneasca.com/feed/", trusted: false },
+  { id: "ziarulromanesc", name: "Ziarul Românesc (Regatul Unit)", url: "https://www.ziarulromanesc.net/feed/", trusted: false },
+  { id: "stiridiaspora", name: "Știri Diaspora", url: "https://www.stiridiaspora.ro/feed/", trusted: false },
+  // ambasadele: deplasările consulare (consulat mobil), actele gata de ridicare, anunțuri
+  ...Object.entries({
+    italia: "Italia", germania: "Germania", spania: "Spania", franta: "Franța", regatulunit: "Regatul Unit",
+    portugalia: "Portugalia", irlanda: "Irlanda", israel: "Israel", canada: "Canada",
+  }).map(([sub, tara]) => ({ id: `ambasada-${sub}`, name: `Ambasada Moldovei (${tara})`, url: `https://${sub}.mfa.gov.md/rss.xml`, trusted: true })),
 ];
 
 export const TRUSTED_SOURCES = new Set(FEEDS.filter((f) => f.trusted).map((f) => f.name));
