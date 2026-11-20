@@ -218,6 +218,9 @@ export async function chooseCard(subject: string, all: Place[], recent: string[]
         "Exemple: escrocii au luat unui om banii strânși pentru o mașină -> escrocherie, NU mașini; hackerii care atacă energia sau băncile -> securitate cibernetică, NU energie; producția de rachete antigrindină -> producție și industrie, NU război și NU agricultură; colegiul agroindustrial primește un laborator -> educație, NU industrie; alertele false cu bombă -> poliție sau urgențe, NU justiție (justiția doar când știrea e despre instanță, proces, sentință); afacerile primarului Chișinăului -> Primăria Chișinău, NU poliție; pietonul lovit -> accident cu pieton; prețurile ANRE la benzină -> carburanți, NU sigla ANRE; campania pentru bașcan în Găgăuzia -> alegeri; accidentul de mașini -> accident rutier, NU mașini și acte; sportivul medaliat -> cardul sportului lui.",
         "Știrile despre moldovenii dintr-o țară (muncă, acte, accidente, consulat, întâmplări) -> cardul diasporei țării (card-diaspora-italia, card-diaspora-germania...), dacă știrea nu are un subiect mai precis (o crimă, un accident rutier: acolo cardul faptei).",
         "Cardurile ilustratie-foto-… sunt fotografii-simbol realiste (2026-11-16): când una descrie exact subiectul, o preferi cardului desenat pe aceeași temă.",
+        // 2026-11-21: survolul de la Dondușeni–Briceni și drona de la Crocmaz au primit cardul negru
+        // cu sigla Ministerului Apărării, deși biblioteca are fotografii cu drone
+        "Dronele (survol, dronă în spațiul aerian, dronă căzută, resturi găsite, alertă aeriană), chiar anunțate de Ministerul Apărării sau de Poliția de Frontieră -> fotografia cu drone care se potrivește (ilustratie-foto-drona-…: căzută / deasupra satelor / deasupra orașelor), altfel card-drona; NICIODATĂ \"\".",
         "Fără card mai degrabă decât un card fals: dacă știrea e despre o persoană, o întâmplare sau un subiect pe care niciun card nu-l spune, card = \"\".",
       ].join("\n"),
       prompt: `Știrea: ${subject}\n\nCarduri (id — despre ce e):\n${cards.map((p) => `${p.id} — ${p.name.replace(/^TEMĂ \([^)]*\):\s*/, "")}`).join("\n")}`,
@@ -225,8 +228,11 @@ export async function chooseCard(subject: string, all: Place[], recent: string[]
       maxBudgetUsd: 0.1,
     });
     const photo = pickRotated(cards.find((p) => p.id === card)?.photos ?? [], recent);
+    // în jurnalul rulării: de ce o copertă a ajuns card cu siglă (nimic ales / poze folosite recent)
+    console.log(`Copertă: „${subject.slice(0, 70)}” -> ${card || "fără card"}${card && !photo ? " (toate pozele folosite recent)" : ""}`);
     return photo && { url: photo.url, resourceId: null, credit: photo.credit, alt: photo.alt };
-  } catch {
+  } catch (err) {
+    console.error(`Copertă: alegerea cardului a eșuat — ${err instanceof Error ? err.message.slice(0, 200) : err}`);
     return null;
   }
 }
