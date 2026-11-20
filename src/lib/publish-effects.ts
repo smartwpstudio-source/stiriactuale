@@ -40,7 +40,12 @@ export async function announcePublished(id: number, how: "manual" | "auto"): Pro
   if (!a || a.status !== "published") return;
   const path = articleUrl({ ...a, locality: a.locality ?? undefined, country: a.country ?? undefined });
 
-  await notifyEditor(how === "auto" ? "publicat-auto" : "publicat", { id, title: a.title, lead: a.leadText });
+  // diaspora: proprietarul o distribuie în grupurile moldovenilor din țara respectivă
+  const share =
+    a.section === "diaspora" && a.country
+      ? `🌍 DIASPORA · ${countryLabel(a.country)} — de dat în grupuri:\n${absoluteUrl(path)}`
+      : undefined;
+  await notifyEditor(how === "auto" ? "publicat-auto" : "publicat", { id, title: a.title, lead: a.leadText, share });
   await submitIndexNow([path]);
   if (!a.telegramMessageId && (await goesToChannel(a, how))) {
     // continuarea unei știri deja postate: marcată, să nu pară aceeași știre de două ori

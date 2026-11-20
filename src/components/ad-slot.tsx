@@ -13,8 +13,9 @@ declare global {
 // pagină încărcată; la navigarea în site (Next.js, fără reîncărcare) articolul
 // următor rămânea fără. Blocul fix se cere la fiecare montare. push() funcționează
 // și înainte de încărcarea scriptului (coadă).
-// display: blocul grafic responsiv „In text” în locul formatului In-article.
-export function AdSlot({ slot, display = false }: { slot?: string; display?: boolean }) {
+// Mereu blocul grafic responsiv „In text”: In-article (finalul textului) era vizibil doar
+// 34% și aducea 0,20 $/1000 față de 58% și 0,27 $ (AdSense, 30 de zile la 2026-11-20).
+export function AdSlot() {
   const pushed = useRef(false);
   const box = useRef<HTMLDivElement>(null);
   const [hidden, setHidden] = useState(false);
@@ -63,11 +64,10 @@ export function AdSlot({ slot, display = false }: { slot?: string; display?: boo
       <ins
         className="adsbygoogle"
         style={{ display: "block", width: "100%", textAlign: "center" }}
-        data-ad-layout={display ? undefined : "in-article"}
-        data-ad-format={display ? "auto" : "fluid"}
-        data-full-width-responsive={display ? "true" : undefined}
+        data-ad-format="auto"
+        data-full-width-responsive="true"
         data-ad-client={ADSENSE_CLIENT_ID}
-        data-ad-slot={display ? ADSENSE_DISPLAY_SLOT : slot}
+        data-ad-slot={ADSENSE_DISPLAY_SLOT}
       />
     </div>
   );

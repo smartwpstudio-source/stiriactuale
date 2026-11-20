@@ -50,10 +50,11 @@ const HEADS = {
   "push-auto": "🔔 Push automat trimis",
 };
 
-export async function notifyEditor(kind: keyof typeof HEADS, a: { id: number; title: string; lead: string }) {
+// share: rândul de sus pentru știrile de distribuit în grupuri (diaspora), cu linkul public
+export async function notifyEditor(kind: keyof typeof HEADS, a: { id: number; title: string; lead: string; share?: string }) {
   const chatId = process.env.TELEGRAM_ADMIN_CHAT_ID;
   if (!chatId) return;
-  const head = HEADS[kind];
+  const head = a.share ? `${HEADS[kind]}\n${a.share}` : HEADS[kind];
   await call("sendMessage", {
     chat_id: chatId,
     parse_mode: "HTML",

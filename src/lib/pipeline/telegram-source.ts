@@ -5,7 +5,11 @@ import type { RawCandidate } from "./types";
 // t.me/s/<canal> arată ultimele ~20 de postări, fără cont și fără API. Postarea devine candidat
 // ca un articol RSS: titlul = prima frază, textul = postarea; scrierea o tratează ca pe linkurile
 // t.me ale editorului (fără descărcarea paginii, cu pozele postării).
-export const TELEGRAM_FEEDS = [{ id: "politia-tg", name: "Poliția Republicii Moldova", channel: "Politia_Republicii_Moldova" }];
+export const TELEGRAM_FEEDS = [
+  { id: "politia-tg", name: "Poliția Republicii Moldova", channel: "Politia_Republicii_Moldova" },
+  // CEC: alegeri și votul din străinătate (n-are RSS), 2026-11-20
+  { id: "cec-tg", name: "Comisia Electorală Centrală", channel: "CECMoldova" },
+];
 
 const MIN_TEXT = 80; // anunțurile de o linie (felicitări, „urmăriți live”) nu sunt știri
 

@@ -329,7 +329,7 @@ export async function RecipePage({ r, lang, hasOther }: { r: Recipe; lang: Lang;
 
       {ADSENSE_IN_ARTICLE_SLOT && (
         <div className="print:hidden">
-          <AdSlot slot={ADSENSE_IN_ARTICLE_SLOT} />
+          <AdSlot />
         </div>
       )}
 

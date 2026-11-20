@@ -9,7 +9,7 @@ export function AdBody({ html, ads = true }: { html: string; ads?: boolean }) {
   const chunks = ads && ADSENSE_IN_ARTICLE_SLOT ? splitForAds(html) : [html];
   return chunks.map((c, i) => (
     <Fragment key={i}>
-      {i > 0 && <AdSlot display />}
+      {i > 0 && <AdSlot />}
       <div className={`prose-article text-ink${i === 0 ? " mt-4" : ""}`} dangerouslySetInnerHTML={{ __html: c }} />
     </Fragment>
   ));

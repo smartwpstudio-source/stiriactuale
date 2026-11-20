@@ -145,7 +145,7 @@ export async function CalculatorView({ slug, lang }: { slug: string; lang: Lang 
         </Link>
       )}
       {/* reclama după calculator și legături, nu lângă butoane (clicuri accidentale) */}
-      <AdSlot display />
+      <AdSlot />
       {r.note && <p className="mt-6 text-sm text-sub">{r.note}</p>}
       {r.sources.length > 0 && (
         <p className="mt-2 text-sm text-sub">
