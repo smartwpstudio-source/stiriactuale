@@ -203,6 +203,14 @@ export async function matchPlacePhoto(
 
 const isCard = (p: Place) => p.id.startsWith("card-") || p.id.startsWith("ilustratie-");
 
+// Știrile din Diaspora primesc cardul țării (editorul, 2026-11-21: „autocarul cu coletele
+// pentru Italia a luat foc” primise cardul desenat „Incendii · Pompierii au intervenit”).
+// Țara o dă clasificarea; fără card al țării sau cu pozele folosite recent -> chooseCard.
+export function diasporaCard(country: string | undefined, all: Place[], recent: string[]) {
+  const photo = country ? pickRotated(all.find((p) => p.id === `card-diaspora-${country}`)?.photos ?? [], recent) : null;
+  return photo && { url: photo.url, resourceId: null, credit: photo.credit, alt: photo.alt };
+}
+
 // Cardul copertei îl alege AI-ul după SUBIECTUL PRINCIPAL al știrii, nu după un cuvânt din ea
 // (editorul, 2026-11-13, după un șir de greșeli ale regulilor pe cuvinte). Întâi spune în câteva
 // cuvinte despre ce e știrea, apoi alege; fără card potrivit, nimic (urmează stocul / AI).
