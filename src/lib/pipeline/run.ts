@@ -15,7 +15,7 @@ import { putMedia } from "@/lib/media";
 import sharp from "sharp";
 import { photosMatch } from "./photo-check";
 import { loadOfficialItems, matchOfficialPhoto } from "./official-photos";
-import { fallbackCard, loadPlaces, loadSymbolPhotos, matchPlacePhoto, onlyLive, chooseCard } from "./places";
+import { fallbackCard, loadPlaces, loadSymbolPhotos, matchPlacePhoto, onlyLive, chooseCard, diasporaCard } from "./places";
 import { checkRecent, sameStory } from "./recent-duplicate";
 import { mediaTag, photoFigures, type BodyPhoto } from "./media-tag";
 import { pipelineEnabled } from "./settings";
@@ -453,6 +453,8 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
           : (official && (await sourcePhoto(official, generated.slug))) ??
             (diplomacy ? await card() : null) ??
             (place && { url: place.url, resourceId: null, credit: place.credit, alt: place.alt }) ??
+            // știrile din Diaspora: cardul țării (steagurile și simbolul ei), oricare ar fi fapta
+            (c.classification.section === "diaspora" ? diasporaCard(c.classification.country, places, recentImages) : null) ??
             // cardul ales de AI după subiectul principal (chooseCard), înaintea steagului și a siglei
             (await chooseCard(subject, places, recentImages)) ??
             (foreign ? await card() : null) ??
