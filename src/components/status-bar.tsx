@@ -10,12 +10,14 @@ export async function StatusBar() {
   const latest = await getLatestArticle();
   if (!latest) return null;
 
+  // Un singur element, fără blocuri înăuntru (2026-11-21): anunțurile automate AdSense intrau
+  // ÎN bandă, înaintea textului (390 px pe telefon, CLS 0,438 în Search Console), un loc
+  // pe care zonele excluse din AdSense nu-l acoperă. În <p> nu mai au unde intra.
+  // Lățimea ca a paginii (max-w-7xl = 80rem, px-4 / lg:px-8) vine din padding.
   return (
-    <div className="bg-ink2 text-paper">
-      <div className="mx-auto flex max-w-7xl items-center gap-2 px-4 py-1.5 lg:px-8 font-mono text-xs">
-        <span className="inline-block h-1.5 w-1.5 rounded-full bg-amber" />
-        <span>ultima știre publicată: <TimeAgo iso={latest.publishedAt} /></span>
-      </div>
-    </div>
+    <p className="bg-ink2 py-1.5 px-[max(1rem,calc((100%_-_80rem)/2_+_1rem))] font-mono text-xs text-paper lg:px-[max(2rem,calc((100%_-_80rem)/2_+_2rem))]">
+      <span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-amber align-middle" />
+      ultima știre publicată: <TimeAgo iso={latest.publishedAt} />
+    </p>
   );
 }
