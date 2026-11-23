@@ -675,9 +675,10 @@ function resolve(classifications: ({ sameAs?: number } | null)[], i: number): nu
 async function finish(runId: number, summary: PipelineRunSummary) {
   summary.costUsd = Math.round(spentUsd() * 1000) / 1000;
   // Un feed lent o dată (timeout) nu e o problemă — colectarea revine la 30 de
-  // minute. Alertă doar când pică colectarea sau mai multe feed-uri deodată.
-  const feedsDown =
-    summary.failedFeeds.length >= FEED_ALERT_MIN || summary.failedFeeds.some((f) => f.startsWith("colectare:"));
+  // minute. Alertă doar când pică colectarea sau mai multe surse deodată.
+  // Cele 9 ambasade stau pe același server mfa.gov.md — contează ca o singură sursă.
+  const downSources = new Set(summary.failedFeeds.map((f) => f.split(":")[0].replace(/^ambasada-.*/, "ambasada")));
+  const feedsDown = downSources.size >= FEED_ALERT_MIN || summary.failedFeeds.some((f) => f.startsWith("colectare:"));
   const problems = [
     ...(feedsDown ? summary.failedFeeds.map((f) => `Feed: ${f}`) : []),
     ...summary.failedArticles.map((a) => `Articol: ${a}`),
