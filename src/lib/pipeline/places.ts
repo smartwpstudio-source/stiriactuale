@@ -233,7 +233,9 @@ export async function chooseCard(subject: string, all: Place[], recent: string[]
       ].join("\n"),
       prompt: `Știrea: ${subject}\n\nCarduri (id — despre ce e):\n${cards.map((p) => `${p.id} — ${p.name.replace(/^TEMĂ \([^)]*\):\s*/, "")}`).join("\n")}`,
       schema: { type: "object", properties: { subiect: { type: "string" }, card: { type: "string" } }, required: ["subiect", "card"] },
-      maxBudgetUsd: 0.1,
+      // 0,1 $ nu mai ajungea de când biblioteca are ~150 de carduri (2026-11-16): 24 din 38 de
+      // alegeri picau cu error_max_budget_usd -> coperta cădea pe sigla instituției (2026-11-23)
+      maxBudgetUsd: 0.4,
     });
     const photo = pickRotated(cards.find((p) => p.id === card)?.photos ?? [], recent);
     // în jurnalul rulării: de ce o copertă a ajuns card cu siglă (nimic ales / poze folosite recent)
