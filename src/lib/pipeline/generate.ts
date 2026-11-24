@@ -258,8 +258,7 @@ export async function generateArticle(
   let video = items.map((i) => toEmbedUrl(i.sourceUrl)).find(Boolean);
   if (!video) {
     const found = [...new Set(texts.map((t) => t?.video).filter((x): x is string => !!x))];
-    if (group.manual) video = found[0];
-    else if (found.length) {
+    if (found.length) {
       const subject = `${group.representativeTitle}. ${items[0]?.summary.slice(0, 300) ?? ""}`;
       for (const v of found) {
         if (await videoFits(v, subject)) {
@@ -267,7 +266,10 @@ export async function generateArticle(
           break;
         }
       }
-      if (!video) throw new VideoNotConfirmed("video neconfirmat");
+      // linkul editorului: știrea e sigur bună, dar video-ul din pagina sursei poate fi al altui
+      // material (2026-11-24: accidentul de la Țînțăreni a primit din Realitatea un video cu box)
+      // -> se publică fără video
+      if (!video && !group.manual) throw new VideoNotConfirmed("video neconfirmat");
     }
   }
 
