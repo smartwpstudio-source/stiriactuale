@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- transportor blindat pe roți, din profil (editorul, 2026-11-26: „ceva blindat”, nu stele) -->
+  <path fill="#000" d="M6 56 L16 42 L36 42 L40 32 L62 32 L66 42 L80 42 L94 52 L95 60 L90 64 L10 64 L5 60 Z"/>
+  <rect fill="#000" x="62" y="34" width="34" height="4" rx="1.5"/>
+  <path fill="#000" fill-rule="evenodd" d="M12 71 a8 8 0 1 0 16 0 a8 8 0 1 0 -16 0 Z M17 71 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0 Z"/>
+  <path fill="#000" fill-rule="evenodd" d="M31 71 a8 8 0 1 0 16 0 a8 8 0 1 0 -16 0 Z M36 71 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0 Z"/>
+  <path fill="#000" fill-rule="evenodd" d="M55 71 a8 8 0 1 0 16 0 a8 8 0 1 0 -16 0 Z M60 71 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0 Z"/>
+  <path fill="#000" fill-rule="evenodd" d="M74 71 a8 8 0 1 0 16 0 a8 8 0 1 0 -16 0 Z M79 71 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0 Z"/>
+</svg>

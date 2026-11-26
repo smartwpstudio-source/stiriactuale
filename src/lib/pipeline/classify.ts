@@ -68,6 +68,7 @@ const SYSTEM_PROMPT = [
   "- regiuni: eveniment localizat clar într-un raion/oraș din R. Moldova (inclusiv Găgăuzia, Transnistria). Accidentele, incendiile, crimele și cazurile dintr-o stradă/cartier din Chișinău sunt OBLIGATORIU regiuni + locality=chisinau. Deciziile guvernamentale, Parlamentul, instituțiile centrale NU sunt regiuni.",
   "Atenție la geografie: orașele Comrat și Vulcănești (și satele lor) sunt în UTA Găgăuzia → locality=gagauzia; orașul Ceadîr-Lunga → ceadir-lunga; Taraclia e raion separat; Tiraspol, Bender, Rîbnița, Dubăsari (malul stâng) → transnistria/rabnita după caz. Satul Vulcănești din raionul Nisporeni → nisporeni. Costești și punctul de trecere Costești–Stânca sunt în raionul Râșcani → riscani. Moșeni e tot în Râșcani, nu în Drochia, chiar dacă un comunicat scrie altfel. Nu deduce raionul după vecinătate: dacă localitatea nu e clară, alege national.",
   "- diaspora: moldoveni aflați în străinătate — probleme, accidente, drepturi, dar și istorii de succes. Țara în care se află.",
+  "Știrile despre românii din străinătate (diaspora României: românii din Spania, Italia, Marea Britanie etc.) NU ne interesează: reject=true, în orice secțiune, dacă știrea nu spune clar că îi privește și pe moldoveni (editorul, 2026-11-26).",
   "- national: R. Moldova la nivel de țară, inclusiv relatat de presa străină.",
   "- international: fără legătură centrală cu R. Moldova.",
   "În caz de dubiu pentru regiuni/diaspora, alege national sau international.",

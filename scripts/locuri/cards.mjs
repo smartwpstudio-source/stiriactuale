@@ -39,7 +39,10 @@ const THEMES = [
   ["banca-nationala", "Banca Națională", ["Rata de bază", "Cursul leului", "Inflația"], "coins", ["#1F6156", "#0A2A25"], "#E2B84B",
     "BNM, Banca Națională a Moldovei, rata de bază, politica monetară, cursul leului, inflația, rezervele valutare", "Banca Națională: rata de bază, cursul leului, inflația"],
   ["aparare", "Apărare și securitate", ["Armata Națională", "Securitatea statului", "Spațiul aerian"], "shield", ["#4E5D2C", "#1F2710"], "#FFFFFF",
-    "apărare, Armata Națională, Ministerul Apărării, militari, securitate, SIS, spațiul aerian, exerciții militare, neutralitate", "Apărare și securitate: armata, SIS, spațiul aerian"],
+    "apărare, securitate, SIS, securitatea statului, politica de apărare, neutralitate", "Apărare și securitate: SIS, securitatea statului, politica de apărare, neutralitate"],
+  // armata: militarii, exercițiile, serviciul militar (editorul, 2026-11-26: card kaki cu pictogramă)
+  ["armata", "Armata Națională", ["Militari și exerciții", "Serviciul militar", "Ministerul Apărării"], "pic:armata", ["#5A5A32", "#23230F"], "#D9C78F",
+    "armata, Armata Națională, militari, soldați, ofițeri, exerciții militare, aplicații militare, serviciul militar, recruți, încorporare, rezerviști, Ministerul Apărării, ministrul Apărării, unitate militară, Ziua Armatei", "Armata Națională: militari, exerciții, serviciul militar, Ministerul Apărării"],
   ["ucraina", "Ucraina", ["Relațiile cu Ucraina", "Vizită la Kiev", "Războiul din Ucraina"], "map-2", ["#1F4E9C", "#0B2352"], "#FFD43B",
     "Ucraina, Kiev, Kyiv, relațiile moldo-ucrainene, Zelenski, războiul din Ucraina, Odesa, vizită în Ucraina", "Ucraina: relațiile cu Moldova, vizite, războiul"],
   ["diaspora", "Diaspora", ["Moldovenii de peste hotare", "Votul din diaspora", "Servicii consulare"], "plane-departure", ["#3B5DA6", "#16264F"], "#FFFFFF",
@@ -275,6 +278,31 @@ function ballotBox(v, accent) {
   <text x="940" y="520" text-anchor="middle" font-family="${FONT}" font-size="64" font-weight="800" fill="#FFFFFF" fill-opacity="0.92" letter-spacing="6">VOT</text>`;
 }
 
+// camuflaj „woodland” desenat aici (pete netede, semințe fixe -> aceleași 3 variante la fiecare
+// generare), plus umbră spre stânga ca textul să se citească (editorul, 2026-11-26)
+function camo(v) {
+  let seed = 7 + v * 1000;
+  const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+  const blob = (color) => {
+    const cx = rnd() * 1300 - 50, cy = rnd() * 775 - 50, r = 22 + rnd() * 38, sx = 1.6 + rnd() * 1.4, tilt = (rnd() - 0.5) * 0.6;
+    const N = 12;
+    const pts = Array.from({ length: N }, (_, i) => {
+      const a = (i / N) * Math.PI * 2, k = r * (0.4 + rnd() * 0.75);
+      const x = Math.cos(a) * k * sx, y = Math.sin(a) * k;
+      return [cx + x * Math.cos(tilt) - y * Math.sin(tilt), cy + x * Math.sin(tilt) + y * Math.cos(tilt)];
+    });
+    const mid = (p, q) => [(p[0] + q[0]) / 2, (p[1] + q[1]) / 2];
+    let d = `M${mid(pts[N - 1], pts[0]).map((n) => n.toFixed(1)).join(" ")}`;
+    pts.forEach((p, i) => (d += ` Q${p.map((n) => n.toFixed(1)).join(" ")} ${mid(p, pts[(i + 1) % N]).map((n) => n.toFixed(1)).join(" ")}`));
+    return `<path d="${d} Z" fill="${color}"/>`;
+  };
+  const layers = [["#6E6E50", 150], ["#3F4B30", 170], ["#5A5139", 90], ["#23281C", 140]];
+  return `<rect width="1200" height="675" fill="#556043"/>
+  ${layers.map(([c, n]) => Array.from({ length: n }, () => blob(c)).join("")).join("\n  ")}
+  <defs><linearGradient id="shade" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#11140C" stop-opacity="0.7"/><stop offset="0.62" stop-color="#11140C" stop-opacity="0.5"/><stop offset="1" stop-color="#11140C" stop-opacity="0.2"/></linearGradient></defs>
+  <rect width="1200" height="675" fill="url(#shade)"/>`;
+}
+
 function card([id, title, subs, ic, [c1, c2], accent], v) {
   const sub = subs[v];
   // cu panou în dreapta (carburanți, curs, urnă), titlul încape în ~640 px
@@ -288,10 +316,10 @@ function card([id, title, subs, ic, [c1, c2], accent], v) {
   const angle = [["0", "0", "1", "1"], ["0", "1", "1", "0"], ["0", "0", "0", "1"]][v];
   return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
   <defs><linearGradient id="g" x1="${angle[0]}" y1="${angle[1]}" x2="${angle[2]}" y2="${angle[3]}"><stop offset="0" stop-color="${c1}"/><stop offset="1" stop-color="${c2}"/></linearGradient></defs>
-  <rect width="1200" height="675" fill="url(#g)"/>
+  ${id === "armata" ? camo(v) : `<rect width="1200" height="675" fill="url(#g)"/>`}
   ${id === "carburanti" ? pylon(v, accent) : id === "alegeri" ? ballotBox(v, accent) : id === "curs-valutar" ? ratesBoard(v, accent) : id === "vremea" ? forecast(v, accent) : `<circle cx="${wm[0] + wm[2] / 2}" cy="${wm[1] + wm[2] / 2}" r="${wm[2] * 0.62}" fill="none" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="3"/>
   <circle cx="${wm[0] + wm[2] / 2}" cy="${wm[1] + wm[2] / 2}" r="${wm[2] * 0.7}" fill="none" stroke="#FFFFFF" stroke-opacity="0.05" stroke-width="2"/>
-  ${icon(ic, wm[0], wm[1], wm[2], "#FFFFFF", 1.1, 0.1)}`}
+  ${icon(ic, wm[0], wm[1], wm[2], "#FFFFFF", 1.1, id === "armata" ? 0.22 : 0.1)}`}
   <circle cx="132" cy="140" r="52" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFFFFF" stroke-opacity="0.5" stroke-width="2"/>
   ${icon(ic, 100, 108, 64, accent, 1.6, 1)}
   <text x="206" y="132" font-family="${FONT}" font-size="22" font-weight="600" letter-spacing="3" fill="#FFFFFF" fill-opacity="0.85">ȘTIRI ACTUALE</text>

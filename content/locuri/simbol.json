@@ -843,31 +843,6 @@
     ]
   },
   {
-    "id": "card-aparare",
-    "name": "TEMĂ (card instituție/regiune): Apărare și securitate: armata, SIS, spațiul aerian",
-    "keywords": "apărare, Armata Națională, Ministerul Apărării, militari, securitate, SIS, spațiul aerian, exerciții militare, neutralitate",
-    "photos": [
-      {
-        "url": "https://stiriactuale.info/simbol/aparare-1.png",
-        "credit": "Imagine simbol",
-        "source": "",
-        "alt": "Card: Apărare și securitate — Armata Națională"
-      },
-      {
-        "url": "https://stiriactuale.info/simbol/aparare-2.png",
-        "credit": "Imagine simbol",
-        "source": "",
-        "alt": "Card: Apărare și securitate — Securitatea statului"
-      },
-      {
-        "url": "https://stiriactuale.info/simbol/aparare-3.png",
-        "credit": "Imagine simbol",
-        "source": "",
-        "alt": "Card: Apărare și securitate — Spațiul aerian"
-      }
-    ]
-  },
-  {
     "id": "card-ucraina",
     "name": "TEMĂ (card instituție/regiune): Ucraina: relațiile cu Moldova, vizite, războiul",
     "keywords": "Ucraina, Kiev, Kyiv, relațiile moldo-ucrainene, Zelenski, războiul din Ucraina, Odesa, vizită în Ucraina",
@@ -4718,6 +4693,56 @@
         "credit": "Grafică: Știri Actuale (fotografie generată AI)",
         "source": "",
         "alt": "Card: Diaspora — moldovenii din Canada"
+      }
+    ]
+  },
+  {
+    "id": "card-aparare",
+    "name": "TEMĂ (card instituție/regiune): Apărare și securitate: SIS, securitatea statului, politica de apărare, neutralitate",
+    "keywords": "apărare, securitate, SIS, securitatea statului, politica de apărare, neutralitate",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/aparare-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Apărare și securitate — Armata Națională"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/aparare-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Apărare și securitate — Securitatea statului"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/aparare-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Apărare și securitate — Spațiul aerian"
+      }
+    ]
+  },
+  {
+    "id": "card-armata",
+    "name": "TEMĂ (card instituție/regiune): Armata Națională: militari, exerciții, serviciul militar, Ministerul Apărării",
+    "keywords": "armata, Armata Națională, militari, soldați, ofițeri, exerciții militare, aplicații militare, serviciul militar, recruți, încorporare, rezerviști, Ministerul Apărării, ministrul Apărării, unitate militară, Ziua Armatei",
+    "photos": [
+      {
+        "url": "https://stiriactuale.info/simbol/armata-1.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Armata Națională — Militari și exerciții"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/armata-2.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Armata Națională — Serviciul militar"
+      },
+      {
+        "url": "https://stiriactuale.info/simbol/armata-3.png",
+        "credit": "Imagine simbol",
+        "source": "",
+        "alt": "Card: Armata Națională — Ministerul Apărării"
       }
     ]
   }
