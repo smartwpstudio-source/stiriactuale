@@ -3,6 +3,8 @@
 // (src/lib/pipeline/flag-card.ts). Rulează în GitHub Actions (recard.yml); fără
 // „--aplica” doar afișează ce ar schimba. „--repara slug,slug” pune la loc o poză
 // de stoc unde cardul a ieșit greșit.
+import { readFileSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { and, eq, gte, inArray, isNull, or, ilike, isNotNull } from "drizzle-orm";
 import { getDb } from "../../src/lib/pipeline/db/client";
 import { articles } from "../../src/lib/pipeline/db/schema";
@@ -39,6 +41,28 @@ export const mentioned = (code: string, text: string) =>
   const since = process.env.RECARD_SINCE || new Date().toISOString();
   const db = getDb();
   const cols = { id: articles.id, slug: articles.slug, title: articles.title, lead: articles.leadText, url: articles.imageUrl };
+
+  // „--publica content/manual/x.json”: articolul scris de editor, publicat exact cum e
+  // (nu are adresă-sursă pentru „Adaugă știre după link”), cu cardul țării la Diaspora
+  if (process.argv.includes("--publica")) {
+    const a = JSON.parse(readFileSync(process.argv[process.argv.indexOf("--publica") + 1], "utf8")) as {
+      titlu: string; slug: string; lead: string; corp_html: string; meta_description: string; section: "diaspora" | "national"; country?: string; topics: string[];
+    };
+    const photo = a.country ? loadPlaces().find((p) => p.id === `card-diaspora-${a.country}`)?.photos[0] : undefined;
+    const [r] = await db
+      .insert(articles)
+      .values({
+        slug: a.slug, title: a.titlu, leadText: a.lead, bodyHtml: a.corp_html, metaDescription: a.meta_description.slice(0, 200),
+        section: a.section, country: a.country ?? null, topics: a.topics, status: "published", publishedAt: new Date(),
+        normalizedTitleHash: createHash("sha256").update(a.titlu.toLowerCase()).digest("hex"), sourceCount: 0, qualityScore: 70,
+        imageUrl: photo?.url, imageCredit: photo?.credit, imageAltText: photo?.alt ?? a.titlu,
+      })
+      .onConflictDoNothing({ target: articles.slug })
+      .returning({ id: articles.id });
+    console.log(r ? `publicat ${r.id}: ${a.section}/${a.country ?? ""}/${a.slug}` : `există deja: ${a.slug}`);
+    console.log((await requestRevalidate({ since })) ? "site reîmprospătat" : "reîmprospătarea a eșuat");
+    process.exit(0);
+  }
 
   // „--muta slug,slug”: articolul rescris cu altă știre (Apă-Canal -> Starlink) primește
   // adresa după titlul real, rubrica Internațional și cardul; tot site-ul se reface,
