@@ -148,7 +148,12 @@ export async function runPipeline(): Promise<PipelineRunSummary> {
   try {
     // Butonul Pornit/Oprit din admin: oprit = doar linkurile editorului
     // („Publică acum”), fără colectare și fără știri automate.
-    const autoOn = await pipelineEnabled();
+    // Până la resetarea limitei Supabase (5 decembrie), o rulare programată din două e doar
+    // pentru linkurile editorului: fără colectare și fără știri automate (editorul, 2026-11-28:
+    // 121 MB pe 27 noiembrie, mai rămâneau 0,66 GB). Rulări întregi: prima, apoi din 4 în 4 ore, ultima.
+    const h = chisinauHour();
+    const light = Date.now() < Date.parse("2026-12-05T00:00:00Z") && (h - morningHour()) % 4 === 2 && h !== lastRunHour();
+    const autoOn = (await pipelineEnabled()) && !light;
     // Rezervă pentru colectarea orară: dacă cron-ul Vercel a căzut, nu
     // lucrăm pe date vechi.
     if (autoOn) {
